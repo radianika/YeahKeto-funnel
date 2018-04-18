@@ -1,0 +1,27 @@
+{
+  "name": "american-science-cbd-reactjs-app-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Nishchit14@github.com/starlightgroup/American-Science-CBD-ReactJS-App-v2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/starlightgroup/American-Science-CBD-ReactJS-App-v2/issues"
+  },
+  "homepage": "https://github.com/starlightgroup/American-Science-CBD-ReactJS-App-v2#readme",
+  "dependencies": {
+    "next": "^5.1.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  }
+}
