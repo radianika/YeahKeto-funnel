@@ -1,0 +1,24 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["."]
+      }
+    ],
+    "idx"
+  ],
+  "passPerPreset": true,
+  "presets": [
+    "next/babel",
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ],
+    "stage-0"
+  ]
+}
