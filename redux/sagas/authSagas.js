@@ -1,5 +1,5 @@
 import { put, all, fork, takeLatest } from 'redux-saga/effects';
-import { AuthActions } from 'actions';
+import { AuthActions } from 'redux/actions';
 
 function* login(action) {
   yield put(AuthActions.loginRequest());
@@ -23,7 +23,11 @@ function* login(action) {
 function* signUp(action) {
   yield put(AuthActions.signupRequest());
   try {
-    yield put(AuthActions.signupSuccess({ data: { user: action.payload, token: 'dummyToken' } }));
+    yield put(
+      AuthActions.signupSuccess({
+        data: { user: action.payload, token: 'dummyToken' },
+      }),
+    );
   } catch (error) {
     let msgError = `${error}`;
     if (error.data) {

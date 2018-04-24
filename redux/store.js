@@ -3,8 +3,8 @@ import withRedux from 'next-redux-wrapper';
 import nextReduxSaga from 'next-redux-saga';
 import createSagaMiddleware from 'redux-saga';
 
-import rootReducer from 'reducers';
-import rootSaga from 'sagas';
+import rootReducer from 'redux/reducers';
+import rootSaga from 'redux/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 

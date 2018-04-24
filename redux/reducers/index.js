@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import { AuthActions } from 'actions';
+import { AuthActions } from 'redux/actions';
 
 const appReducer = combineReducers({
   form: formReducer,

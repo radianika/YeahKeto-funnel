@@ -1,6 +1,6 @@
 import React from 'react';
-import RootShell from 'components/RootShell';
-import { withReduxSaga } from 'lib/store';
+import RootShell from 'react/components/RootShell';
+import { withReduxSaga } from 'redux/store';
 
 class Index extends React.PureComponent {
   render() {
