@@ -1,6 +1,1 @@
-const Index = ()=> {
-
-	return <h1>StarLight Group</h1>
-}
-
-export default Index;
+/home/nnj/dev/American-Science-CBD-ReactJS-App-v2/pages/index.jsx
