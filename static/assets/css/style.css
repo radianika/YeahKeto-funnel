@@ -117,13 +117,13 @@ ul.menu-list li a {
 
 ul.menu-list li a:hover,ul.menu-list li a.active {
   color: #066035;
-  background: url(/assets/images/hvr-img.png) center bottom no-repeat;
+  background: url(/static/assets/images/hvr-img.png) center bottom no-repeat;
   float: left;
   height: 30px;
 }
 
 .bnr-sec {
-  background: url(/assets/images/bnr-bg.jpg) center top no-repeat;
+  background: url(/static/assets/images/bnr-bg.jpg) center top no-repeat;
   float: left;
   width: 100%;
 }
@@ -284,7 +284,7 @@ ul.sec1-list li:hover {
 .parlx-sec {
   float: left;
   width: 100%;
-  background: url(/assets/images/parlx-bg.jpg) center center no-repeat;
+  background: url(/static/assets/images/parlx-bg.jpg) center center no-repeat;
   padding: 30px 0;
 }
 
@@ -406,7 +406,7 @@ ul.sec2-list li .btn {
 /***************FAQ PAGE**************/
 
 .inner-bg {
-  background: url(/assets/images/inner-bg.jpg) center top no-repeat;
+  background: url(/static/assets/images/inner-bg.jpg) center top no-repeat;
   background-size: cover;
   float: left;
   width: 100%;
@@ -480,12 +480,12 @@ ul.sec2-list li .btn {
 }
 
 .accordion-open {
-  background: url(/assets/images/ahov2.png) 98% center no-repeat;
+  background: url(/static/assets/images/ahov2.png) 98% center no-repeat;
   border-bottom: none;
 }
 
 .accordion-close {
-  background: url(/assets/images/acord2.png) 98% center no-repeat;
+  background: url(/static/assets/images/acord2.png) 98% center no-repeat;
 }
 
 .acdn-content {
@@ -538,7 +538,7 @@ ul.cont-list {
 }
 
 ul.cont-list li {
-  background: url(/assets/images/loc-img.png) left top no-repeat;
+  background: url(/static/assets/images/loc-img.png) left top no-repeat;
   float: left;
   padding-left: 45px;
   width: 100%;
@@ -546,15 +546,15 @@ ul.cont-list li {
 }
 
 ul.cont-list li:nth-child(2) {
-  background: url(/assets/images/tim-img.png) left top no-repeat;
+  background: url(/static/assets/images/tim-img.png) left top no-repeat;
 }
 
 ul.cont-list li:nth-child(3) {
-  background: url(/assets/images/mail-img.png) left top no-repeat;
+  background: url(/static/assets/images/mail-img.png) left top no-repeat;
 }
 
 ul.cont-list li:nth-child(4) {
-  background: url(/assets/images/phn-img.png) left top no-repeat;
+  background: url(/static/assets/images/phn-img.png) left top no-repeat;
 }
 
 ul.cont-list li span {
@@ -709,7 +709,7 @@ ul.prd-sec1-list {
 }
 
 ul.prd-sec1-list li {
-  background: url(/assets/images/sec1-list-img.png) left center no-repeat;
+  background: url(/static/assets/images/sec1-list-img.png) left center no-repeat;
   float: left;
   padding: 12px 0 12px 50px;
   text-align: left;
@@ -746,7 +746,7 @@ ul.prd-sec1-list li {
 .prd-sec2 {
   float: left;
   width: 100%;
-  background: url(/assets/images/prd-sec2-bg.jpg) center top no-repeat;
+  background: url(/static/assets/images/prd-sec2-bg.jpg) center top no-repeat;
   padding: 60px 0;
   background-size: cover;
 }
@@ -855,7 +855,7 @@ ul.prd-sec3-list li:last-child {
   width: 68%;
   padding: 20px 10px;
   float: left;
-  background: url(/assets/images/v2-prd-bg.png) center top no-repeat;
+  background: url(/static/assets/images/v2-prd-bg.png) center top no-repeat;
 }
 
 .version2 ul.prd-sec3-list {
@@ -1662,7 +1662,7 @@ table.tbl2 {
 }
 
 .frmelements select {
-  background: url(/assets/images/arrow-input.png) no-repeat center right;
+  background: url(/static/assets/images/arrow-input.png) no-repeat center right;
 }
 
 .frmelements select {
