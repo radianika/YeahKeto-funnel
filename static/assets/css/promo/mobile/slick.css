@@ -32,8 +32,12 @@
   cursor: hand;
 }
 
+<<<<<<< HEAD
+.slick-slider .slick-track,.slick-slider .slick-list {
+=======
 .slick-slider .slick-track,
 .slick-slider .slick-list {
+>>>>>>> develop
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
@@ -48,10 +52,16 @@
   display: block;
 }
 
+<<<<<<< HEAD
+.slick-track:before,.slick-track:after {
+  display: table;
+  content: '';
+=======
 .slick-track:before,
 .slick-track:after {
   display: table;
   content: "";
+>>>>>>> develop
 }
 
 .slick-track:after {
@@ -69,7 +79,11 @@
   min-height: 1px;
 }
 
+<<<<<<< HEAD
+[dir='rtl'] .slick-slide {
+=======
 [dir="rtl"] .slick-slide {
+>>>>>>> develop
   float: right;
 }
 
@@ -107,8 +121,12 @@
 
 /* Arrows */
 
+<<<<<<< HEAD
+.slick-prev,.slick-next {
+=======
 .slick-prev,
 .slick-next {
+>>>>>>> develop
   position: absolute;
   top: 30%;
   display: block;
@@ -124,12 +142,21 @@
 
 .slick-prev {
   left: 35px;
+<<<<<<< HEAD
+  background: url(../../../../promo/mobile/images/arw-left.png) no-repeat left center;
+=======
   background: url(../../../../promo/mobile/images/arw-left.png) no-repeat left
     center;
+>>>>>>> develop
 }
 
 .slick-next {
   right: 35px;
+<<<<<<< HEAD
+  background: url(../../../../promo/mobile/images/arw-right.png) no-repeat left center;
+}
+=======
   background: url(../../../../promo/mobile/images/arw-right.png) no-repeat left
     center;
 }
+>>>>>>> develop

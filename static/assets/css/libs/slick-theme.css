@@ -11,8 +11,13 @@
 	z-index:999;
 	cursor:pointer;
 	}
+<<<<<<< HEAD
 */
 
+=======
+*/
+
+>>>>>>> develop
 /*.slick-prev{
     left: 15px;
 	background:url(../images/arw-left.png) no-repeat left center;
@@ -20,13 +25,19 @@
 .slick-next{
     right:15px;
 	background:url(../images/arw-right.png) no-repeat left center;
+<<<<<<< HEAD
 	}*/
 
+=======
+	}*/
+
+>>>>>>> develop
 /*.hair-type-box-mob .slick-prev{
     left: -15px;
 	}	
 .hair-type-box-mob .slick-next{
     right: -15px;
+<<<<<<< HEAD
 	}*/
 
 ul.slick-dots {
@@ -42,3 +53,20 @@ ul.slick-dots li {
 ul.slick-dots li.slick-active button {
   background: #39508b;
 }
+=======
+	}*/
+
+ul.slick-dots {
+  width: auto;
+  text-align: center;
+}
+
+ul.slick-dots li {
+  display: inline-block;
+  margin: 10px 1px 0 0;
+}
+
+ul.slick-dots li.slick-active button {
+  background: #39508b;
+}
+>>>>>>> develop

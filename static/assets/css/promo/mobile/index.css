@@ -5,7 +5,11 @@
 body {
   padding: 0;
   margin: 0;
+<<<<<<< HEAD
+  font-family: 'Hind', sans-serif;
+=======
   font-family: "Hind", sans-serif;
+>>>>>>> develop
   font-size: 30px;
   line-height: 40px;
   color: #323232;
@@ -14,6 +18,9 @@ body {
   font-smoothing: antialiased;
 }
 
+<<<<<<< HEAD
+div,ul,li,p,img,form,input,textarea {
+=======
 div,
 ul,
 li,
@@ -22,10 +29,16 @@ img,
 form,
 input,
 textarea {
+>>>>>>> develop
   margin: 0;
   padding: 0;
 }
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> develop
 a:hover {
   outline: none;
 }
@@ -55,6 +68,9 @@ li {
 start section1
 ----------------*/
 
+<<<<<<< HEAD
+#section-one,#section-two,#section-three,#section-four,#section-five,#section-six,#section-seven {
+=======
 #section-one,
 #section-two,
 #section-three,
@@ -62,6 +78,7 @@ start section1
 #section-five,
 #section-six,
 #section-seven {
+>>>>>>> develop
   width: 100%;
   margin: 0 auto;
   display: block;
@@ -218,8 +235,12 @@ ul.s2-list {
 }
 
 ul.s2-list li {
+<<<<<<< HEAD
+  background: url(../../../../promo/mobile/images/s2-line.jpg) bottom center no-repeat;
+=======
   background: url(../../../../promo/mobile/images/s2-line.jpg) bottom center
     no-repeat;
+>>>>>>> develop
   display: inline-block;
   float: left;
   font-weight: 700;
@@ -274,8 +295,12 @@ ul.s3-list li {
   padding: 0 0 0 0;
 }
 
+<<<<<<< HEAD
+ul.s3-list li span,ul.s3-list li b {
+=======
 ul.s3-list li span,
 ul.s3-list li b {
+>>>>>>> develop
   font-weight: 700;
   font-size: 32px;
   line-height: 50px;
@@ -318,8 +343,12 @@ ul.s3-list li b {
   padding: 14px 0 0 0;
 }
 
+<<<<<<< HEAD
+.strip-txt span,.strip-txt b {
+=======
 .strip-txt span,
 .strip-txt b {
+>>>>>>> develop
   font-weight: 600;
   font-size: 28px;
   line-height: 36px;
@@ -433,8 +462,13 @@ start section5
   margin: 30px auto 0 auto;
   position: relative;
   border: 4px solid #fff;
+<<<<<<< HEAD
+  -webkit-box-shadow: 0 0 4px 3px #E8E8E8;
+  box-shadow: 0 0 4px 3px #E8E8E8;
+=======
   -webkit-box-shadow: 0 0 4px 3px #e8e8e8;
   box-shadow: 0 0 4px 3px #e8e8e8;
+>>>>>>> develop
 }
 
 .limited-offer {
@@ -479,7 +513,11 @@ start section5
   font-weight: 500;
   vertical-align: top;
   margin: 0 2px;
+<<<<<<< HEAD
+  font-family: 'Hind', sans-serif;
+=======
   font-family: "Hind", sans-serif;
+>>>>>>> develop
 }
 
 #clockdiv div > span {
@@ -694,8 +732,12 @@ start section7
   padding: 40px 10px 0 10px;
 }
 
+<<<<<<< HEAD
+.ftr-txt a,.ftr-txt a:hover {
+=======
 .ftr-txt a,
 .ftr-txt a:hover {
+>>>>>>> develop
   color: #000101;
   text-decoration: none;
   text-transform: uppercase;
@@ -785,8 +827,12 @@ div#trialsec2 {
   color: #d71e1c;
 }
 
+<<<<<<< HEAD
+.frmelmnts1,.frmelmnts3 {
+=======
 .frmelmnts1,
 .frmelmnts3 {
+>>>>>>> develop
   float: left;
   display: inline-block;
   width: 49%;
@@ -805,9 +851,13 @@ div#trialsec2 {
   position: relative;
 }
 
+<<<<<<< HEAD
+.frmelmnts2 label,.frmelmnts1 label,.frmelmnts3 label {
+=======
 .frmelmnts2 label,
 .frmelmnts1 label,
 .frmelmnts3 label {
+>>>>>>> develop
   font-size: 20px;
   color: #000000;
   text-align: left;
@@ -817,6 +867,13 @@ div#trialsec2 {
   margin: 17px 0 9px 0;
 }
 
+<<<<<<< HEAD
+.frmelmnts2 input,.frmelmnts2 select,.frmelmnts1 input,.frmelmnts1 select,.frmelmnts3 input,.frmelmnts3 select {
+  width: 94%;
+  padding: 0 2% 0 3%;
+  height: 58px;
+  font-family: 'Hind', Arial, Helvetica, sans-serif;
+=======
 .frmelmnts2 input,
 .frmelmnts2 select,
 .frmelmnts1 input,
@@ -827,6 +884,7 @@ div#trialsec2 {
   padding: 0 2% 0 3%;
   height: 58px;
   font-family: "Hind", Arial, Helvetica, sans-serif;
+>>>>>>> develop
   font-size: 20px;
   color: #202020;
   text-align: left;
@@ -840,8 +898,12 @@ div#trialsec2 {
   line-height: 52px;
 }
 
+<<<<<<< HEAD
+.frmelmnts2 select.short,.frmelmnts2 select.short2 {
+=======
 .frmelmnts2 select.short,
 .frmelmnts2 select.short2 {
+>>>>>>> develop
   width: 48%;
   margin-right: 2%;
 }
@@ -896,14 +958,22 @@ PAYMENT PAGE CSS
 .smrhding {
   height: 60px;
   border-bottom: 1px solid #d6d6d6;
+<<<<<<< HEAD
+  background: url(../../../../promo/mobile/images/smryarrow.png) 555px center no-repeat;
+=======
   background: url(../../../../promo/mobile/images/smryarrow.png) 555px center
     no-repeat;
+>>>>>>> develop
   position: relative;
 }
 
 .rotate {
+<<<<<<< HEAD
+  background: url(../../../../promo/mobile/images/smryarrow2.png) 565px center no-repeat;
+=======
   background: url(../../../../promo/mobile/images/smryarrow2.png) 565px center
     no-repeat;
+>>>>>>> develop
 }
 
 .smrhding p {
@@ -924,8 +994,12 @@ PAYMENT PAGE CSS
   width: 100%;
 }
 
+<<<<<<< HEAD
+.lftbox,.rgtbox {
+=======
 .lftbox,
 .rgtbox {
+>>>>>>> develop
   float: left;
   display: inline-block;
 }
@@ -990,13 +1064,24 @@ ul.rgtlist2 li {
   border-bottom: 1px solid #dedede;
 }
 
+<<<<<<< HEAD
+ul.rgtlist2 li:nth-child(2),ul.rgtlist2 li:nth-child(4),ul.rgtlist2 li:nth-child(6) {
+=======
 ul.rgtlist2 li:nth-child(2),
 ul.rgtlist2 li:nth-child(4),
 ul.rgtlist2 li:nth-child(6) {
+>>>>>>> develop
   width: 30%;
   text-align: right;
 }
 
+<<<<<<< HEAD
+ul.rgtlist2 li:nth-child(1),ul.rgtlist2 li:nth-child(2) {
+  border-bottom: none;
+}
+
+ul.rgtlist2 li:nth-child(5),ul.rgtlist2 li:nth-child(6) {
+=======
 ul.rgtlist2 li:nth-child(1),
 ul.rgtlist2 li:nth-child(2) {
   border-bottom: none;
@@ -1004,6 +1089,7 @@ ul.rgtlist2 li:nth-child(2) {
 
 ul.rgtlist2 li:nth-child(5),
 ul.rgtlist2 li:nth-child(6) {
+>>>>>>> develop
   color: #333333;
   font-weight: 700;
   border-bottom: none;
@@ -1114,8 +1200,12 @@ start shipping pageselect-package
   border-top: 1px solid #a9a9a9;
 }
 
+<<<<<<< HEAD
+.select-btn,.slt-box-hd-txt {
+=======
 .select-btn,
 .slt-box-hd-txt {
+>>>>>>> develop
   display: inline-block;
   float: left;
   padding: 6px 0 0 15px;
@@ -1144,8 +1234,12 @@ start shipping pageselect-package
   margin: 0 auto;
 }
 
+<<<<<<< HEAD
+.box-mid-left,.box-mid-right {
+=======
 .box-mid-left,
 .box-mid-right {
+>>>>>>> develop
   display: inline-block;
   float: left;
   width: 346px;
@@ -1155,9 +1249,13 @@ start shipping pageselect-package
   margin: 28px 0 0 0;
 }
 
+<<<<<<< HEAD
+.pkgtype-hding,.pkgtype-hding2,.pkgtype-hding3 {
+=======
 .pkgtype-hding,
 .pkgtype-hding2,
 .pkgtype-hding3 {
+>>>>>>> develop
   background: #fff;
   font-weight: 700;
   font-size: 24px;
@@ -1373,8 +1471,12 @@ start shipping pageselect-package
   padding: 0 0 0 0;
 }
 
+<<<<<<< HEAD
+.thanks-txt a,.thanks-txt a:hover {
+=======
 .thanks-txt a,
 .thanks-txt a:hover {
+>>>>>>> develop
   text-decoration: none;
   color: #9d9d9d;
 }
@@ -1392,12 +1494,16 @@ start shipping pageselect-package
   padding: 19px 10px 0 10px;
 }
 
+<<<<<<< HEAD
+.box1,.box2,.box3,.box4,.box5,.box6 {
+=======
 .box1,
 .box2,
 .box3,
 .box4,
 .box5,
 .box6 {
+>>>>>>> develop
   background: url(../../../../promo/mobile/images/box1.png) center top no-repeat;
   width: 549px;
   height: 437px;
@@ -1598,4 +1704,8 @@ hr {
     -webkit-transform: scale(0.95);
     opacity: 0.7;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> develop

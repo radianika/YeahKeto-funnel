@@ -69,7 +69,11 @@
   right: 15px;
 }
 
+<<<<<<< HEAD
+.fv-form-bootstrap4 .form-group.row .form-check~.fv-control-feedback {
+=======
 .fv-form-bootstrap4 .form-group.row .form-check ~ .fv-control-feedback {
+>>>>>>> develop
   top: -7px;
   /* labelHeight/2 - iconHeight/2 */
 }
@@ -82,22 +86,41 @@
 
 /* Stacked form */
 
+<<<<<<< HEAD
+.fv-form-bootstrap4:not(.form-inline) label~.fv-control-feedback {
+=======
 .fv-form-bootstrap4:not(.form-inline) label ~ .fv-control-feedback {
+>>>>>>> develop
   top: 32px;
 }
 
 /* Without label */
 
+<<<<<<< HEAD
+.fv-form-bootstrap4:not(.form-inline) label.sr-only~.fv-control-feedback {
+=======
 .fv-form-bootstrap4:not(.form-inline) label.sr-only ~ .fv-control-feedback {
+>>>>>>> develop
   top: -7px;
   /* labelHeight/2 - iconHeight/2 */
 }
 
+<<<<<<< HEAD
+.fv-form-bootstrap4:not(.form-inline) .form-check~.fv-control-feedback {
+=======
 .fv-form-bootstrap4:not(.form-inline) .form-check ~ .fv-control-feedback {
+>>>>>>> develop
   top: 25px;
   /* labelHeight + checkboxHeight/2 - iconHeight/2 */
 }
 
+<<<<<<< HEAD
+.fv-form-bootstrap4 .has-success label,.fv-form-bootstrap4 .has-success .fv-control-feedback {
+  color: #5cb85c;
+}
+
+.fv-form-bootstrap4 .has-warning label,.fv-form-bootstrap4 .has-warning .fv-control-feedback {
+=======
 .fv-form-bootstrap4 .has-success label,
 .fv-form-bootstrap4 .has-success .fv-control-feedback {
   color: #5cb85c;
@@ -105,6 +128,7 @@
 
 .fv-form-bootstrap4 .has-warning label,
 .fv-form-bootstrap4 .has-warning .fv-control-feedback {
+>>>>>>> develop
   color: #f0ad4e;
 }
 
@@ -132,10 +156,14 @@
   right: 0;
 }
 
+<<<<<<< HEAD
+.fv-form-foundation5.fv-form-horizontal [type="checkbox"]~.fv-control-feedback,.fv-form-foundation5.fv-form-horizontal [type="radio"]~.fv-control-feedback {
+=======
 .fv-form-foundation5.fv-form-horizontal
   [type="checkbox"]
   ~ .fv-control-feedback,
 .fv-form-foundation5.fv-form-horizontal [type="radio"] ~ .fv-control-feedback {
+>>>>>>> develop
   top: -8px;
   /* labelHeight/2 - iconHeight/2 */
 }
@@ -147,8 +175,12 @@
   /* Same as height of label */
 }
 
+<<<<<<< HEAD
+.fv-form-foundation5 [type="checkbox"]~.fv-control-feedback,.fv-form-foundation5 [type="radio"]~.fv-control-feedback {
+=======
 .fv-form-foundation5 [type="checkbox"] ~ .fv-control-feedback,
 .fv-form-foundation5 [type="radio"] ~ .fv-control-feedback {
+>>>>>>> develop
   top: 15px;
 }
 
@@ -159,9 +191,14 @@
   /* Same as $alert-color, .error */
 }
 
+<<<<<<< HEAD
+.fv-form-foundation5 .fv-has-success label,.fv-form-foundation5 .fv-has-success .fv-control-feedback {
+  color: #43AC6A;
+=======
 .fv-form-foundation5 .fv-has-success label,
 .fv-form-foundation5 .fv-has-success .fv-control-feedback {
   color: #43ac6a;
+>>>>>>> develop
   /* Same as $success-color */
 }
 
@@ -180,8 +217,12 @@
   line-height: 39px;
 }
 
+<<<<<<< HEAD
+.fv-form-foundation [type="checkbox"]~.fv-control-feedback,.fv-form-foundation [type="radio"]~.fv-control-feedback {
+=======
 .fv-form-foundation [type="checkbox"] ~ .fv-control-feedback,
 .fv-form-foundation [type="radio"] ~ .fv-control-feedback {
+>>>>>>> develop
   top: -7px;
   /* labelHeight/2 - iconHeight/2 */
 }
@@ -192,25 +233,37 @@
 
 /* Stacked form */
 
+<<<<<<< HEAD
+.fv-form-foundation label .fv-control-feedback,.fv-form-foundation fieldset [type="checkbox"]~.fv-control-feedback,.fv-form-foundation fieldset [type="radio"]~.fv-control-feedback {
+=======
 .fv-form-foundation label .fv-control-feedback,
 .fv-form-foundation fieldset [type="checkbox"] ~ .fv-control-feedback,
 .fv-form-foundation fieldset [type="radio"] ~ .fv-control-feedback {
+>>>>>>> develop
   top: 25px;
   /* Same as height of label */
 }
 
 /* Color */
 
+<<<<<<< HEAD
+.fv-form-foundation .fv-has-error label,.fv-form-foundation .fv-has-error fieldset legend,.fv-form-foundation .fv-has-error .fv-control-feedback {
+=======
 .fv-form-foundation .fv-has-error label,
 .fv-form-foundation .fv-has-error fieldset legend,
 .fv-form-foundation .fv-has-error .fv-control-feedback {
+>>>>>>> develop
   color: #ec5840;
   /* Same as .alert */
 }
 
+<<<<<<< HEAD
+.fv-form-foundation .fv-has-success label,.fv-form-foundation .fv-has-success fieldset legend,.fv-form-foundation .fv-has-success .fv-control-feedback {
+=======
 .fv-form-foundation .fv-has-success label,
 .fv-form-foundation .fv-has-success fieldset legend,
 .fv-form-foundation .fv-has-success .fv-control-feedback {
+>>>>>>> develop
   color: #3adb76;
   /* Same as .success */
 }
@@ -234,8 +287,12 @@
 
 /* Horizontal form */
 
+<<<<<<< HEAD
+.fv-form-pure.pure-form-aligned [type="checkbox"]~.fv-control-feedback,.fv-form-pure.pure-form-aligned [type="radio"]~.fv-control-feedback {
+=======
 .fv-form-pure.pure-form-aligned [type="checkbox"] ~ .fv-control-feedback,
 .fv-form-pure.pure-form-aligned [type="radio"] ~ .fv-control-feedback {
+>>>>>>> develop
   top: -9px;
   /* labelHeight/2 - iconHeight/2 */
 }
@@ -247,6 +304,15 @@
 
 /* Stacked form */
 
+<<<<<<< HEAD
+.fv-form-pure .fv-has-error label,.fv-form-pure .fv-has-error .fv-help-block,.fv-form-pure .fv-has-error .fv-control-feedback {
+  color: #CA3C3C;
+  /* Same as .button-error */
+}
+
+.fv-form-pure .fv-has-success label,.fv-form-pure .fv-has-success .fv-help-block,.fv-form-pure .fv-has-success .fv-control-feedback {
+  color: #1CB841;
+=======
 .fv-form-pure .fv-has-error label,
 .fv-form-pure .fv-has-error .fv-help-block,
 .fv-form-pure .fv-has-error .fv-control-feedback {
@@ -258,6 +324,7 @@
 .fv-form-pure .fv-has-success .fv-help-block,
 .fv-form-pure .fv-has-success .fv-control-feedback {
   color: #1cb841;
+>>>>>>> develop
   /* Same as .button-success */
 }
 
@@ -284,19 +351,38 @@
   top: 0;
 }
 
+<<<<<<< HEAD
+.fv-form-uikit.uk-form-horizontal [type="checkbox"]~.fv-control-feedback,.fv-form-uikit.uk-form-horizontal [type="radio"]~.fv-control-feedback {
+=======
 .fv-form-uikit.uk-form-horizontal [type="checkbox"] ~ .fv-control-feedback,
 .fv-form-uikit.uk-form-horizontal [type="radio"] ~ .fv-control-feedback {
+>>>>>>> develop
   top: -7px;
 }
 
 /* Without labels */
 
+<<<<<<< HEAD
+.fv-form-uikit label.fv-sr-only~.fv-control-feedback {
+=======
 .fv-form-uikit label.fv-sr-only ~ .fv-control-feedback {
+>>>>>>> develop
   top: -7px !important;
 }
 
 /* Stacked form */
 
+<<<<<<< HEAD
+.fv-form-uikit .fv-has-error label,.fv-form-uikit .fv-has-error .uk-form-label,.fv-form-uikit .fv-has-error .fv-control-feedback {
+  color: #D85030;
+  /* Same as .uk-form-danger */
+}
+
+.fv-form-uikit .fv-has-success label,.fv-form-uikit .fv-has-success .uk-form-label,.fv-form-uikit .fv-has-success .fv-control-feedback {
+  color: #659F13;
+  /* Same as .uk-form-success */
+}
+=======
 .fv-form-uikit .fv-has-error label,
 .fv-form-uikit .fv-has-error .uk-form-label,
 .fv-form-uikit .fv-has-error .fv-control-feedback {
@@ -310,3 +396,4 @@
   color: #659f13;
   /* Same as .uk-form-success */
 }
+>>>>>>> develop

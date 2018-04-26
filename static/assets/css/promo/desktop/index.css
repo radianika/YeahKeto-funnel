@@ -13,6 +13,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
+<<<<<<< HEAD
+  font-family: 'Hind', sans-serif;
+}
+
+div,ul,h1,h2,h3,h4,h5,li,p,img,form,input,textarea {
+=======
   font-family: "Hind", sans-serif;
 }
 
@@ -29,13 +35,18 @@ img,
 form,
 input,
 textarea {
+>>>>>>> develop
   margin: 0;
   padding: 0;
 }
 
+<<<<<<< HEAD
+table,tr,td {
+=======
 table,
 tr,
 td {
+>>>>>>> develop
   border: 0;
 }
 
@@ -111,11 +122,15 @@ MAIN CSS START
 
 /*------------------------------*/
 
+<<<<<<< HEAD
+.s2hding,.s3hding,.s4hding,.s5hding,.s6hding {
+=======
 .s2hding,
 .s3hding,
 .s4hding,
 .s5hding,
 .s6hding {
+>>>>>>> develop
   font-weight: 600;
   font-size: 33px;
   line-height: 44px;
@@ -133,8 +148,12 @@ MAIN CSS START
   padding: 62px 0 0 0;
 }
 
+<<<<<<< HEAD
+.s5hding,.s6hding {
+=======
 .s5hding,
 .s6hding {
+>>>>>>> develop
   padding: 66px 0 0 0;
   text-align: center;
 }
@@ -144,11 +163,15 @@ MAIN CSS START
   font-size: 34px;
 }
 
+<<<<<<< HEAD
+.s2hding span,.s3hding span,.s4hding span,.s5hding span,.s6hding span {
+=======
 .s2hding span,
 .s3hding span,
 .s4hding span,
 .s5hding span,
 .s6hding span {
+>>>>>>> develop
   background: -webkit-linear-gradient(#07d769, #036d3f);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -162,9 +185,13 @@ MAIN CSS START
   font-size: 51px;
 }
 
+<<<<<<< HEAD
+.s2hdimg,.s3hdimg,.s5hdimg {
+=======
 .s2hdimg,
 .s3hdimg,
 .s5hdimg {
+>>>>>>> develop
   margin: 1px 0 0 0;
   display: block;
 }
@@ -180,6 +207,13 @@ MAIN CSS START
 /*-----------------sec1------------------*/
 
 .section1 {
+<<<<<<< HEAD
+  background: url(../../../../promo/desktop/images/section1.jpg) center top no-repeat;
+  height: 720px;
+}
+
+.s1lft,.s1rgt {
+=======
   background: url(../../../../promo/desktop/images/section1.jpg) center top
     no-repeat;
   height: 720px;
@@ -187,6 +221,7 @@ MAIN CSS START
 
 .s1lft,
 .s1rgt {
+>>>>>>> develop
   float: left;
   display: inline-block;
   width: 690px;
@@ -325,9 +360,13 @@ ul.s1list li span {
   margin: 7px 0 0 0;
 }
 
+<<<<<<< HEAD
+.frmElemts input,.frmElemts label,.frmElemts select {
+=======
 .frmElemts input,
 .frmElemts label,
 .frmElemts select {
+>>>>>>> develop
   float: left;
   display: inline-block;
   height: 27px;
@@ -343,16 +382,25 @@ ul.s1list li span {
   font-weight: bold;
 }
 
+<<<<<<< HEAD
+.frmElemts input,.frmElemts select {
+  font-family: 'Hind', Arial, Helvetica, sans-serif;
+=======
 .frmElemts input,
 .frmElemts select {
   font-family: "Hind", Arial, Helvetica, sans-serif;
+>>>>>>> develop
   background: none;
   width: 185px;
   height: 30px;
   font-size: 14px;
   font-style: normal;
   color: #202020;
+<<<<<<< HEAD
+  background-color: #FFF;
+=======
   background-color: #fff;
+>>>>>>> develop
   outline: none;
   padding: 0 7px;
   border: 1px solid #424242;
@@ -390,8 +438,12 @@ ul.s1list li span {
 /*-----------------sec2------------------*/
 
 .section2 {
+<<<<<<< HEAD
+  background: url(../../../../promo/desktop/images/section2.jpg) center top no-repeat;
+=======
   background: url(../../../../promo/desktop/images/section2.jpg) center top
     no-repeat;
+>>>>>>> develop
   height: 799px;
 }
 
@@ -543,8 +595,12 @@ ul.s2list li:nth-child(4) {
 /*-----------------sec3------------------*/
 
 .section3 {
+<<<<<<< HEAD
+  background: url(../../../../promo/desktop/images/section3.jpg) center top no-repeat;
+=======
   background: url(../../../../promo/desktop/images/section3.jpg) center top
     no-repeat;
+>>>>>>> develop
   height: 730px;
 }
 
@@ -728,8 +784,12 @@ ul.s4-list2 li:nth-child(3) {
   margin: 29px auto 0 auto;
 }
 
+<<<<<<< HEAD
+.s5left,.s5right {
+=======
 .s5left,
 .s5right {
+>>>>>>> develop
   display: inline-block;
   width: 517px;
   float: left;
@@ -763,8 +823,13 @@ ul.s4-list2 li:nth-child(3) {
   margin-top: 20px;
   position: relative;
   border: 4px solid #fff;
+<<<<<<< HEAD
+  -webkit-box-shadow: 0 0 4px 3px #E8E8E8;
+  box-shadow: 0 0 4px 3px #E8E8E8;
+=======
   -webkit-box-shadow: 0 0 4px 3px #e8e8e8;
   box-shadow: 0 0 4px 3px #e8e8e8;
+>>>>>>> develop
 }
 
 .s5video .vedio {
@@ -814,7 +879,11 @@ ul.s4-list2 li:nth-child(3) {
   font-weight: 500;
   vertical-align: top;
   margin: 0 2px;
+<<<<<<< HEAD
+  font-family: 'Hind', sans-serif;
+=======
   font-family: "Hind", sans-serif;
+>>>>>>> develop
 }
 
 #clockdiv div > span {
@@ -846,8 +915,12 @@ ul.s4-list2 li:nth-child(3) {
   line-height: 22px;
 }
 
+<<<<<<< HEAD
+.s5-txt3,.s5-txt4 {
+=======
 .s5-txt3,
 .s5-txt4 {
+>>>>>>> develop
   display: inline-block;
   float: left;
   font-size: 20px;
@@ -903,8 +976,12 @@ ul.s4-list2 li:nth-child(3) {
   height: 887px;
 }
 
+<<<<<<< HEAD
+.t-box1,.t-box2 {
+=======
 .t-box1,
 .t-box2 {
+>>>>>>> develop
   position: relative;
   /*background:url(../../../../promo/desktop/images/t-box.png) center top no-repeat;*/
   width: 506px;
@@ -967,8 +1044,12 @@ ul.s4-list2 li:nth-child(3) {
 /*-----------------sec1------------------*/
 
 .section7 {
+<<<<<<< HEAD
+  background: url(../../../../promo/desktop/images/section7.jpg) center top no-repeat;
+=======
   background: url(../../../../promo/desktop/images/section7.jpg) center top
     no-repeat;
+>>>>>>> develop
   height: 685px;
 }
 
@@ -1053,8 +1134,12 @@ ul.s7list li span {
   padding: 40px 10px 0 10px;
 }
 
+<<<<<<< HEAD
+.ftr-txt a,.ftr-txt a:hover {
+=======
 .ftr-txt a,
 .ftr-txt a:hover {
+>>>>>>> develop
   color: #000101;
   text-decoration: none;
   text-transform: uppercase;
@@ -1103,4 +1188,8 @@ ul.s7list li span {
     -webkit-transform: scale(0.95);
     opacity: 0.7;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> develop
