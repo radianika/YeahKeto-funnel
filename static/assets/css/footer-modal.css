@@ -1,0 +1,74 @@
+p.title {
+  text-transform: uppercase;
+}
+p.normal {
+  font-family: "Calibri";
+  margin: 0 0 0.0001pt;
+  font-size: 12pt;
+}
+p.list {
+  margin: 0 0.1in 0.0001pt 0.1in;
+  font-size: 12pt;
+  font-family: "Calibri";
+}
+p.sub-list {
+  margin: 0 0.5in 0.0001pt 0.5in;
+  font-size: 12pt;
+  font-family: "Calibri";
+  text-indent: -0.25in;
+}
+p.text-center {
+  text-align: center;
+}
+p.title,
+p.normal,
+p.list,
+p.sub-list {
+  text-align: left;
+}
+p.title {
+  text-transform: uppercase;
+}
+p.sub-list-content {
+  margin: 0 0.5in 0.0001pt 0.5in;
+  font-size: 12pt;
+  font-family: "Calibri";
+}
+p.title,
+p.normal,
+p.list,
+p.sub-list,
+p.sub-list-content {
+  text-align: left;
+}
+p.list {
+  margin: 0 0 0.0001pt 0.3in;
+  font-size: 12pt;
+  font-family: "Calibri";
+}
+p.sub-list {
+  margin: 0 0 0.0001pt 0.8in;
+  font-size: 12pt;
+  font-family: "Calibri";
+  text-indent: -0.25in;
+}
+p.sub-list-content {
+  margin: 0 0 0.0001pt 0.8in;
+  font-size: 12pt;
+  font-family: "Calibri";
+}
+p.title {
+  text-transform: uppercase;
+}
+p.list {
+  margin: 0 0 0.0001pt 0.3in;
+  font-size: 12pt;
+  font-family: "Calibri";
+}
+p.title,
+p.normal,
+p.list,
+p.sub-list,
+p.sub-list-content {
+  text-align: left;
+}

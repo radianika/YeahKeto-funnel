@@ -10,7 +10,7 @@ require('dotenv').config();
 
 const { env } = process;
 
-const port = parseInt(env.PORT, 10);
+const port = env.PORT ? parseInt(env.PORT, 10) : 3000;
 
 const server = express();
 
