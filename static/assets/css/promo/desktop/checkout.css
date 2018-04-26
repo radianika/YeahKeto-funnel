@@ -13,14 +13,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
-<<<<<<< HEAD
-  font-family: 'Hind', sans-serif;
-  background: url(../../../../promo/desktop/images/checkout.jpg) center top no-repeat;
-  font-weight: 400;
-}
-
-div,ul,h1,h2,h3,h4,h5,li,p,img,form,input,textarea {
-=======
   font-family: "Hind", sans-serif;
   background: url(../../../../promo/desktop/images/checkout.jpg) center top
     no-repeat;
@@ -40,18 +32,13 @@ img,
 form,
 input,
 textarea {
->>>>>>> develop
   margin: 0;
   padding: 0;
 }
 
-<<<<<<< HEAD
-table,tr,td {
-=======
 table,
 tr,
 td {
->>>>>>> develop
   border: 0;
 }
 
@@ -129,12 +116,8 @@ MAIN CSS START
   margin: 13px 52px 0 0;
 }
 
-<<<<<<< HEAD
-.chk-lft,.chk-rgt {
-=======
 .chk-lft,
 .chk-rgt {
->>>>>>> develop
   float: left;
   display: inline-block;
   width: 648px;
@@ -168,12 +151,9 @@ MAIN CSS START
 }
 
 .pkg a {
-<<<<<<< HEAD
-  background: url(../../../../promo/desktop/images/select.png) center top no-repeat;
-=======
   background: url(../../../../promo/desktop/images/select.png) center top
     no-repeat;
->>>>>>> develop
+
   width: 648px;
   height: 260px;
   display: block;
@@ -181,15 +161,11 @@ MAIN CSS START
   -webkit-transition: all linear 1s;
 }
 
-<<<<<<< HEAD
-.pkg a:hover,.pkg a.picked {
-  background: url(../../../../promo/desktop/images/selected.png) center top no-repeat;
-=======
 .pkg a:hover,
 .pkg a.picked {
   background: url(../../../../promo/desktop/images/selected.png) center top
     no-repeat;
->>>>>>> develop
+
   width: 648px;
   height: 260px;
   display: block;
@@ -223,12 +199,9 @@ MAIN CSS START
 }
 
 .freeship p {
-<<<<<<< HEAD
-  background: url(../../../../promo/desktop/images/ship.png) 18px center no-repeat;
-=======
   background: url(../../../../promo/desktop/images/ship.png) 18px center
     no-repeat;
->>>>>>> develop
+
   font-size: 17px;
   line-height: 43px;
   color: #fff;
@@ -241,12 +214,8 @@ MAIN CSS START
   height: 215px;
 }
 
-<<<<<<< HEAD
-.pkg-contboxlft,.pkg-contboxrgt {
-=======
 .pkg-contboxlft,
 .pkg-contboxrgt {
->>>>>>> develop
   float: left;
   display: inline-block;
   width: 370px;
@@ -258,13 +227,9 @@ MAIN CSS START
   margin: 0 0 0 10px;
 }
 
-<<<<<<< HEAD
-.pkgtype-hding,.pkgtype-hding2,.pkgtype-hding3 {
-=======
 .pkgtype-hding,
 .pkgtype-hding2,
 .pkgtype-hding3 {
->>>>>>> develop
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
@@ -280,15 +245,11 @@ MAIN CSS START
   display: block;
 }
 
-<<<<<<< HEAD
-.pkgcont-hding,.pkgcont-price {
-  background: url(../../../../promo/desktop/images/red-cut.png) 149px 23px no-repeat;
-=======
 .pkgcont-hding,
 .pkgcont-price {
   background: url(../../../../promo/desktop/images/red-cut.png) 149px 23px
     no-repeat;
->>>>>>> develop
+
   font-weight: 400;
   font-size: 15px;
   line-height: 22px;
@@ -316,12 +277,9 @@ MAIN CSS START
   display: block;
   width: 214px;
   height: 51px;
-<<<<<<< HEAD
-  background: url(../../../../promo/desktop/images/select-btn.png) center top no-repeat;
-=======
+
   background: url(../../../../promo/desktop/images/select-btn.png) center top
     no-repeat;
->>>>>>> develop
 }
 
 .select-btn-selected {
@@ -329,13 +287,7 @@ MAIN CSS START
   display: block;
   width: 214px;
   height: 51px;
-<<<<<<< HEAD
-  background: url(../../../../promo/desktop/images/selected-btn.png) center top no-repeat;
-}
 
-.pkg1 a:hover .select-btn,.pkg2 a:hover .select-btn,.pkg3 a:hover .select-btn,.pkg1 a.picked .select-btn,.pkg2 a.picked .select-btn,.pkg3 a.picked .select-btn {
-  background: url(../../../../promo/desktop/images/selected-btn.png) center top no-repeat;
-=======
   background: url(../../../../promo/desktop/images/selected-btn.png) center top
     no-repeat;
 }
@@ -348,7 +300,6 @@ MAIN CSS START
 .pkg3 a.picked .select-btn {
   background: url(../../../../promo/desktop/images/selected-btn.png) center top
     no-repeat;
->>>>>>> develop
 }
 
 .summary-box {
@@ -361,12 +312,9 @@ MAIN CSS START
 }
 
 .smry-hding {
-<<<<<<< HEAD
-  background: url(../../../../promo/desktop/images/smry-icon.png) 16px 8px no-repeat;
-=======
   background: url(../../../../promo/desktop/images/smry-icon.png) 16px 8px
     no-repeat;
->>>>>>> develop
+
   padding: 0 0 0 55px;
   font-weight: 700;
   font-size: 20px;
@@ -379,12 +327,8 @@ MAIN CSS START
   border-bottom: 1px solid #d7d5d5;
 }
 
-<<<<<<< HEAD
-.smry-lft,.smry-rgt {
-=======
 .smry-lft,
 .smry-rgt {
->>>>>>> develop
   float: left;
   display: inline-block;
   width: 274px;
@@ -432,24 +376,16 @@ ul.smrylist li {
   padding: 4px 0 5px 0;
 }
 
-<<<<<<< HEAD
-ul.smrylist li:nth-child(2),ul.smrylist li:nth-child(4),ul.smrylist li:nth-child(6),ul.smrylist li:nth-child(8) {
-=======
 ul.smrylist li:nth-child(2),
 ul.smrylist li:nth-child(4),
 ul.smrylist li:nth-child(6),
 ul.smrylist li:nth-child(8) {
->>>>>>> develop
   width: 78px;
   text-align: right;
 }
 
-<<<<<<< HEAD
-ul.smrylist li:first-child,ul.smrylist li:nth-child(2) {
-=======
 ul.smrylist li:first-child,
 ul.smrylist li:nth-child(2) {
->>>>>>> develop
   text-transform: uppercase;
   height: 40px;
   font-weight: 700;
@@ -466,12 +402,8 @@ ul.smrylist li:first-child span {
   font-size: 16px;
 }
 
-<<<<<<< HEAD
-ul.smrylist li:nth-child(7),ul.smrylist li:nth-child(8) {
-=======
 ul.smrylist li:nth-child(7),
 ul.smrylist li:nth-child(8) {
->>>>>>> develop
   border-bottom: 0;
   font-weight: 700;
   text-transform: uppercase;
@@ -486,12 +418,9 @@ ul.smrylist li:nth-child(8) {
 }
 
 .chkfrm-mid {
-<<<<<<< HEAD
-  background: url(../../../../promo/desktop/images/chk-frmmid.png) left top repeat-y;
-=======
   background: url(../../../../promo/desktop/images/chk-frmmid.png) left top
     repeat-y;
->>>>>>> develop
+
   display: table;
   width: 100%;
 }
@@ -549,12 +478,8 @@ ul.smrylist li:nth-child(8) {
 }
 
 .chkbx:checked {
-<<<<<<< HEAD
-  background: url(../../../../promo/desktop/images/checked.png) center center no-repeat;
-=======
   background: url(../../../../promo/desktop/images/checked.png) center center
     no-repeat;
->>>>>>> develop
 }
 
 .frmElemts {
@@ -562,13 +487,9 @@ ul.smrylist li:nth-child(8) {
   margin: 8px 10px 0 15px;
 }
 
-<<<<<<< HEAD
-.frmElemts label,.frmElemts input,.frmElemts select {
-=======
 .frmElemts label,
 .frmElemts input,
 .frmElemts select {
->>>>>>> develop
   float: left;
   display: inline-block;
   -webkit-appearance: none;
@@ -587,25 +508,19 @@ ul.smrylist li:nth-child(8) {
   font-weight: bold;
 }
 
-<<<<<<< HEAD
-.frmElemts input,.frmElemts select {
-  font-family: 'Hind', Arial, Helvetica, sans-serif;
-=======
 .frmElemts input,
 .frmElemts select {
   font-family: "Hind", Arial, Helvetica, sans-serif;
->>>>>>> develop
+
   background: none;
   width: 185px;
   height: 30px;
   font-size: 14px;
   font-style: normal;
   color: #202020;
-<<<<<<< HEAD
-  background-color: #FFF;
-=======
+
   background-color: #fff;
->>>>>>> develop
+
   outline: none;
   padding: 0 7px;
   border: 1px solid #424242;
@@ -618,13 +533,9 @@ ul.smrylist li:nth-child(8) {
   width: 186px;
 }
 
-<<<<<<< HEAD
-.frmElemts select.short,.frmElemts select.short2,.frmElemts input.short {
-=======
 .frmElemts select.short,
 .frmElemts select.short2,
 .frmElemts input.short {
->>>>>>> develop
   width: 93px;
   margin-right: 10px;
 }
@@ -651,12 +562,10 @@ a.what {
 .chk-submit {
   height: 67px;
   width: 280px;
-<<<<<<< HEAD
-  background: url(../../../../promo/desktop/images/submit.png) center top no-repeat;
-=======
+
   background: url(../../../../promo/desktop/images/submit.png) center top
     no-repeat;
->>>>>>> develop
+
   border: none;
   outline: none;
   cursor: pointer;
@@ -688,22 +597,16 @@ a.what {
 }
 
 .moneyback-hding2 {
-<<<<<<< HEAD
-  font-family: 'Hind', sans-serif;
-=======
   font-family: "Hind", sans-serif;
->>>>>>> develop
+
   background: #dfdfdf;
   margin: 6px 0 0 0;
   height: 46px;
 }
 
 .moneyback-hding2 p {
-<<<<<<< HEAD
-  font-family: 'Hind', sans-serif;
-=======
   font-family: "Hind", sans-serif;
->>>>>>> develop
+
   font-size: 16px;
   line-height: 17px;
   color: #414742;
@@ -897,12 +800,8 @@ a.what {
   padding: 0 0 0 0;
 }
 
-<<<<<<< HEAD
-.thanks-txt a,.thanks-txt a:hover {
-=======
 .thanks-txt a,
 .thanks-txt a:hover {
->>>>>>> develop
   text-decoration: none;
   color: #9d9d9d;
 }
@@ -911,10 +810,6 @@ a.what {
   margin: 4px 0 -2px 0;
 }
 
-<<<<<<< HEAD
-.box1,.box2,.box3,.box4,.box5,.box6 {
-  background: url(../../../../promo/desktop/images/box1.png) center top no-repeat;
-=======
 .box1,
 .box2,
 .box3,
@@ -923,7 +818,7 @@ a.what {
 .box6 {
   background: url(../../../../promo/desktop/images/box1.png) center top
     no-repeat;
->>>>>>> develop
+
   display: inline-block;
   float: left;
   margin: 32px 0 0 48px;
@@ -932,13 +827,6 @@ a.what {
 }
 
 .box4 {
-<<<<<<< HEAD
-  background: url(../../../../promo/desktop/images/box4.png) center top no-repeat;
-}
-
-.box2 {
-  background: url(../../../../promo/desktop/images/box2.png) center top no-repeat;
-=======
   background: url(../../../../promo/desktop/images/box4.png) center top
     no-repeat;
 }
@@ -946,37 +834,28 @@ a.what {
 .box2 {
   background: url(../../../../promo/desktop/images/box2.png) center top
     no-repeat;
->>>>>>> develop
+
   margin: 32px 0 0 20px;
 }
 
 .box5 {
-<<<<<<< HEAD
-  background: url(../../../../promo/desktop/images/box5.png) center top no-repeat;
-=======
   background: url(../../../../promo/desktop/images/box5.png) center top
     no-repeat;
->>>>>>> develop
+
   margin: 32px 0 0 20px;
 }
 
 .box3 {
-<<<<<<< HEAD
-  background: url(../../../../promo/desktop/images/box3.png) center top no-repeat;
-=======
   background: url(../../../../promo/desktop/images/box3.png) center top
     no-repeat;
->>>>>>> develop
+
   margin: 32px 0 0 20px;
 }
 
 .box6 {
-<<<<<<< HEAD
-  background: url(../../../../promo/desktop/images/box6.png) center top no-repeat;
-=======
   background: url(../../../../promo/desktop/images/box6.png) center top
     no-repeat;
->>>>>>> develop
+
   margin: 32px 0 0 20px;
 }
 
@@ -1017,12 +896,8 @@ a.what {
   padding: 20px 10px 0 10px;
 }
 
-<<<<<<< HEAD
-.ftr-txt a,.ftr-txt a:hover {
-=======
 .ftr-txt a,
 .ftr-txt a:hover {
->>>>>>> develop
   color: #000101;
   text-decoration: none;
   text-transform: uppercase;
@@ -1039,11 +914,8 @@ a.what {
 }
 
 .thank-bg {
-<<<<<<< HEAD
-  background-image: url(../../../../promo/desktop/images/chk-bg.jpg);
-=======
   /* background-image: url(../../../../promo/desktop/images/chk-bg.jpg); */
->>>>>>> develop
+
   background-position: center top;
   background-repeat: no-repeat;
   display: table;
@@ -1186,8 +1058,4 @@ hr {
     -webkit-transform: scale(0.95);
     opacity: 0.7;
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> develop

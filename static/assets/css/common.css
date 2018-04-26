@@ -32,11 +32,9 @@
   animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
   background-color: #ff3f3f;
   border-radius: 100%;
-<<<<<<< HEAD
-  content: '';
-=======
+
   content: "";
->>>>>>> develop
+
   display: block;
   height: 15%;
   margin: 0 auto;
@@ -72,11 +70,7 @@
 }
 
 .js-div-loading-bar .sk-circle .sk-circle4::before {
-<<<<<<< HEAD
-  animation-delay: .9s;
-=======
   animation-delay: 0.9s;
->>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle5 {
@@ -84,11 +78,7 @@
 }
 
 .js-div-loading-bar .sk-circle .sk-circle5::before {
-<<<<<<< HEAD
-  animation-delay: .8s;
-=======
   animation-delay: 0.8s;
->>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle6 {
@@ -96,11 +86,7 @@
 }
 
 .js-div-loading-bar .sk-circle .sk-circle6::before {
-<<<<<<< HEAD
-  animation-delay: .7s;
-=======
   animation-delay: 0.7s;
->>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle7 {
@@ -108,11 +94,7 @@
 }
 
 .js-div-loading-bar .sk-circle .sk-circle7::before {
-<<<<<<< HEAD
-  animation-delay: .6s;
-=======
   animation-delay: 0.6s;
->>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle8 {
@@ -120,11 +102,7 @@
 }
 
 .js-div-loading-bar .sk-circle .sk-circle8::before {
-<<<<<<< HEAD
-  animation-delay: .5s;
-=======
   animation-delay: 0.5s;
->>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle9 {
@@ -132,11 +110,7 @@
 }
 
 .js-div-loading-bar .sk-circle .sk-circle9::before {
-<<<<<<< HEAD
-  animation-delay: .4s;
-=======
   animation-delay: 0.4s;
->>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle10 {
@@ -144,11 +118,7 @@
 }
 
 .js-div-loading-bar .sk-circle .sk-circle10::before {
-<<<<<<< HEAD
-  animation-delay: .3s;
-=======
   animation-delay: 0.3s;
->>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle11 {
@@ -156,11 +126,7 @@
 }
 
 .js-div-loading-bar .sk-circle .sk-circle11::before {
-<<<<<<< HEAD
-  animation-delay: .2s;
-=======
   animation-delay: 0.2s;
->>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle12 {
@@ -168,13 +134,6 @@
 }
 
 .js-div-loading-bar .sk-circle .sk-circle12::before {
-<<<<<<< HEAD
-  animation-delay: .1s;
-}
-
-@-webkit-keyframes sk-circleBounceDelay {
-  0%, 80%, 100% {
-=======
   animation-delay: 0.1s;
 }
 
@@ -182,7 +141,6 @@
   0%,
   80%,
   100% {
->>>>>>> develop
     -webkit-transform: scale(0);
     transform: scale(0);
   }
@@ -194,13 +152,9 @@
 }
 
 @keyframes sk-circleBounceDelay {
-<<<<<<< HEAD
-  0%, 80%, 100% {
-=======
   0%,
   80%,
   100% {
->>>>>>> develop
     -webkit-transform: scale(0);
     transform: scale(0);
   }
@@ -217,15 +171,10 @@
 
 .fade {
   opacity: 0;
-<<<<<<< HEAD
-  -webkit-transition: opacity .15s linear;
-  -o-transition: opacity .15s linear;
-  transition: opacity .15s linear;
-=======
+
   -webkit-transition: opacity 0.15s linear;
   -o-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear;
->>>>>>> develop
 }
 
 .fade.in {
@@ -260,24 +209,6 @@
 }
 
 .modal.fade .modal-dialog {
-<<<<<<< HEAD
-  -webkit-transition: -webkit-transform .3s ease-out;
-  transition: -webkit-transform .3s ease-out;
-  -o-transition: -o-transform .3s ease-out;
-  transition: transform .3s ease-out;
-  transition: transform .3s ease-out,-webkit-transform .3s ease-out,-o-transform .3s ease-out;
-  -webkit-transform: translate(0,-25%);
-  -ms-transform: translate(0,-25%);
-  -o-transform: translate(0,-25%);
-  transform: translate(0,-25%);
-}
-
-.modal.in .modal-dialog {
-  -webkit-transform: translate(0,0);
-  -ms-transform: translate(0,0);
-  -o-transform: translate(0,0);
-  transform: translate(0,0);
-=======
   -webkit-transition: -webkit-transform 0.3s ease-out;
   transition: -webkit-transform 0.3s ease-out;
   -o-transition: -o-transform 0.3s ease-out;
@@ -295,7 +226,6 @@
   -ms-transform: translate(0, 0);
   -o-transform: translate(0, 0);
   transform: translate(0, 0);
->>>>>>> develop
 }
 
 .modal-content {
@@ -303,13 +233,10 @@
   background-color: #fff;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-<<<<<<< HEAD
-  border: 1px solid rgba(0,0,0,.2);
-  border-radius: .3rem;
-=======
+
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
->>>>>>> develop
+
   outline: 0;
 }
 
@@ -325,11 +252,9 @@
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
-<<<<<<< HEAD
-  opacity: .2;
-=======
+
   opacity: 0.2;
->>>>>>> develop
+
   padding: 0;
   cursor: pointer;
   background: 0 0;
@@ -364,13 +289,8 @@
 }
 
 .comment-box {
-<<<<<<< HEAD
-  height: 100px!important;
-  padding-left: 0px!important;
-=======
   height: 100px !important;
   padding-left: 0px !important;
->>>>>>> develop
 }
 
 /* modal style ends */

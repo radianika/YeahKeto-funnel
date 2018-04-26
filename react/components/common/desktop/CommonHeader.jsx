@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
 
 const Logo = () => {
     return (
@@ -19,7 +19,7 @@ const Menu = (props) => {
     )
 }
 
-class Header extends Component {
+class CommonHeader extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {};
@@ -29,19 +29,13 @@ class Header extends Component {
     render() {  
         return(
             <div className="top-sec">
-            <div className="container">
-                <Logo />
-                <Menu home="HOME" currentPage={this.state.currentPage}/>
-            </div>
+                <div className="container">
+                    <Logo />
+                    <Menu home="HOME" currentPage={this.state.currentPage}/>
+               </div>
             </div>
         )
     }    
-    componentDidMount() {
-        setTimeout(() => {
-            this.setState({currentPage: 'home'});
-            console.log(this.state);
-        }, 1000);
-    }
 }
 
-export default Header;
+export { CommonHeader };

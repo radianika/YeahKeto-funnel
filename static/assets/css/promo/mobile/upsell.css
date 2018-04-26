@@ -5,11 +5,9 @@
 body {
   padding: 0;
   margin: 0;
-<<<<<<< HEAD
-  font-family: 'Source Sans Pro', sans-serif;
-=======
+
   font-family: "Source Sans Pro", sans-serif;
->>>>>>> develop
+
   font-size: 30px;
   line-height: 40px;
   color: #323232;
@@ -19,9 +17,6 @@ body {
   background: #fff;
 }
 
-<<<<<<< HEAD
-div,ul,li,p,img,form,input,textarea {
-=======
 div,
 ul,
 li,
@@ -30,16 +25,10 @@ img,
 form,
 input,
 textarea {
->>>>>>> develop
   margin: 0;
   padding: 0;
 }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> develop
 a:hover {
   outline: ;
 }
@@ -219,12 +208,8 @@ li {
   padding: 0 0 0 0;
 }
 
-<<<<<<< HEAD
-.thanks-txt a,.thanks-txt a:hover {
-=======
 .thanks-txt a,
 .thanks-txt a:hover {
->>>>>>> develop
   text-decoration: none;
   color: #9d9d9d;
 }
@@ -308,15 +293,8 @@ ul.up-list li:nth-child(3) {
   padding: 20px 15px 0 15px;
 }
 
-<<<<<<< HEAD
-.ftr-txt2 a,.ftr-txt2 a:hover {
-  text-decoration: none;
-  color: #7e7e7e;
-}
-=======
 .ftr-txt2 a,
 .ftr-txt2 a:hover {
   text-decoration: none;
   color: #7e7e7e;
 }
->>>>>>> develop
