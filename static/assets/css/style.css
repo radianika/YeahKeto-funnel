@@ -12,14 +12,34 @@ body {
   background: #fff;
   color: #262626;
   text-align: center;
+<<<<<<< HEAD
   font-family: 'Open Sans', sans-serif;
 }
 
 div,ul,h1,h2,h3,h4,h5,li,p,img,form,input,textarea {
+=======
+  font-family: "Open Sans", sans-serif;
+}
+
+div,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+li,
+p,
+img,
+form,
+input,
+textarea {
+>>>>>>> develop
   margin: 0;
   padding: 0;
 }
 
+<<<<<<< HEAD
 header,section,footer,aside,nav,main,article,figure {
   display: block;
 }
@@ -28,6 +48,28 @@ table,tr,td {
   border: 0;
 }
 .b, .strong{font-weight:700}
+=======
+header,
+section,
+footer,
+aside,
+nav,
+main,
+article,
+figure {
+  display: block;
+}
+
+table,
+tr,
+td {
+  border: 0;
+}
+.b,
+.strong {
+  font-weight: 700;
+}
+>>>>>>> develop
 a {
   outline: none;
   color: #333;
@@ -115,15 +157,26 @@ ul.menu-list li a {
   float: left;
 }
 
+<<<<<<< HEAD
 ul.menu-list li a:hover,ul.menu-list li a.active {
   color: #066035;
   background: url(/static/assets/images/hvr-img.png) center bottom no-repeat;
+=======
+ul.menu-list li a:hover,
+ul.menu-list li a.active {
+  color: #066035;
+  background: url(/assets/images/hvr-img.png) center bottom no-repeat;
+>>>>>>> develop
   float: left;
   height: 30px;
 }
 
 .bnr-sec {
+<<<<<<< HEAD
   background: url(/static/assets/images/bnr-bg.jpg) center top no-repeat;
+=======
+  background: url(/assets/images/bnr-bg.jpg) center top no-repeat;
+>>>>>>> develop
   float: left;
   width: 100%;
 }
@@ -137,7 +190,11 @@ ul.menu-list li a:hover,ul.menu-list li a.active {
 .bnr-txt1 {
   font-size: 24px;
   line-height: 30px;
+<<<<<<< HEAD
   font-family: 'Raleway', sans-serif;
+=======
+  font-family: "Raleway", sans-serif;
+>>>>>>> develop
   text-transform: uppercase;
   font-weight: 400;
 }
@@ -227,7 +284,11 @@ ul.strip-list li:last-child {
 }
 
 .comn-hdg {
+<<<<<<< HEAD
   font-family: 'gibsonsemibold';
+=======
+  font-family: "gibsonsemibold";
+>>>>>>> develop
   font-size: 35px;
   line-height: 37px;
   color: #066035;
@@ -237,7 +298,11 @@ ul.strip-list li:last-child {
 .comn-sub-hdg {
   font-size: 28px;
   line-height: 32px;
+<<<<<<< HEAD
   font-family: 'gibsonregular';
+=======
+  font-family: "gibsonregular";
+>>>>>>> develop
   padding: 5px 0;
 }
 
@@ -284,7 +349,11 @@ ul.sec1-list li:hover {
 .parlx-sec {
   float: left;
   width: 100%;
+<<<<<<< HEAD
   background: url(/static/assets/images/parlx-bg.jpg) center center no-repeat;
+=======
+  background: url(/assets/images/parlx-bg.jpg) center center no-repeat;
+>>>>>>> develop
   padding: 30px 0;
 }
 
@@ -385,6 +454,7 @@ ul.sec2-list li .btn {
   font-size: 15px;
 }
 
+<<<<<<< HEAD
 .w40{line-height:40px;}
 .pmtop1 p, .mtop1{margin-top:1em!important}
 .mtop2 {margin-top: 2em!important;}
@@ -393,6 +463,35 @@ ul.sec2-list li .btn {
 .underline{text-decoration:underline;}
 .ingr{font-size:0.9em; padding:0 0.5em;}
 .inline-bl{display:inline-block}
+=======
+.w40 {
+  line-height: 40px;
+}
+.pmtop1 p,
+.mtop1 {
+  margin-top: 1em !important;
+}
+.mtop2 {
+  margin-top: 2em !important;
+}
+.w40 img {
+  height: 40px;
+  vertical-align: middle;
+}
+.just {
+  text-align: justify !important;
+}
+.underline {
+  text-decoration: underline;
+}
+.ingr {
+  font-size: 0.9em;
+  padding: 0 0.5em;
+}
+.inline-bl {
+  display: inline-block;
+}
+>>>>>>> develop
 .copy-rgt-txt {
   color: #191919;
   font-size: 15px;
@@ -406,7 +505,11 @@ ul.sec2-list li .btn {
 /***************FAQ PAGE**************/
 
 .inner-bg {
+<<<<<<< HEAD
   background: url(/static/assets/images/inner-bg.jpg) center top no-repeat;
+=======
+  background: url(/assets/images/inner-bg.jpg) center top no-repeat;
+>>>>>>> develop
   background-size: cover;
   float: left;
   width: 100%;
@@ -456,9 +559,15 @@ ul.sec2-list li .btn {
   /* Old browsers */
   background: -moz-linear-gradient(top, #ebebeb 0%, #c4c4c4 100%);
   /* FF3.6-15 */
+<<<<<<< HEAD
   background: -webkit-linear-gradient(top, #ebebeb 0%,#c4c4c4 100%);
   /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom, #ebebeb 0%,#c4c4c4 100%);
+=======
+  background: -webkit-linear-gradient(top, #ebebeb 0%, #c4c4c4 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #ebebeb 0%, #c4c4c4 100%);
+>>>>>>> develop
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebebeb', endColorstr='#c4c4c4',GradientType=0 );
   /* IE6-9 */
@@ -480,12 +589,20 @@ ul.sec2-list li .btn {
 }
 
 .accordion-open {
+<<<<<<< HEAD
   background: url(/static/assets/images/ahov2.png) 98% center no-repeat;
+=======
+  background: url(/assets/images/ahov2.png) 98% center no-repeat;
+>>>>>>> develop
   border-bottom: none;
 }
 
 .accordion-close {
+<<<<<<< HEAD
   background: url(/static/assets/images/acord2.png) 98% center no-repeat;
+=======
+  background: url(/assets/images/acord2.png) 98% center no-repeat;
+>>>>>>> develop
 }
 
 .acdn-content {
@@ -538,7 +655,11 @@ ul.cont-list {
 }
 
 ul.cont-list li {
+<<<<<<< HEAD
   background: url(/static/assets/images/loc-img.png) left top no-repeat;
+=======
+  background: url(/assets/images/loc-img.png) left top no-repeat;
+>>>>>>> develop
   float: left;
   padding-left: 45px;
   width: 100%;
@@ -546,6 +667,7 @@ ul.cont-list li {
 }
 
 ul.cont-list li:nth-child(2) {
+<<<<<<< HEAD
   background: url(/static/assets/images/tim-img.png) left top no-repeat;
 }
 
@@ -555,6 +677,17 @@ ul.cont-list li:nth-child(3) {
 
 ul.cont-list li:nth-child(4) {
   background: url(/static/assets/images/phn-img.png) left top no-repeat;
+=======
+  background: url(/assets/images/tim-img.png) left top no-repeat;
+}
+
+ul.cont-list li:nth-child(3) {
+  background: url(/assets/images/mail-img.png) left top no-repeat;
+}
+
+ul.cont-list li:nth-child(4) {
+  background: url(/assets/images/phn-img.png) left top no-repeat;
+>>>>>>> develop
 }
 
 ul.cont-list li span {
@@ -567,7 +700,12 @@ ul.cont-list li span {
   padding-bottom: 8px;
 }
 
+<<<<<<< HEAD
 ul.cont-list li p,ul.cont-list li a {
+=======
+ul.cont-list li p,
+ul.cont-list li a {
+>>>>>>> develop
   font-size: 17px;
   line-height: 22px;
   float: left;
@@ -595,19 +733,33 @@ ul.cont-list li p,ul.cont-list li a {
   padding: 10px;
 }
 
+<<<<<<< HEAD
 .frm-container input[type='text'],.frm-container select,.frm-container textarea {
+=======
+.frm-container input[type="text"],
+.frm-container select,
+.frm-container textarea {
+>>>>>>> develop
   width: 100%;
   float: left;
   border: 1px solid #d7d7d7;
   padding: 12px 15px;
   margin-bottom: 10px;
+<<<<<<< HEAD
   font-family: 'Open Sans', sans-serif;
+=======
+  font-family: "Open Sans", sans-serif;
+>>>>>>> develop
 }
 
 textarea {
   resize: none;
   height: 100px;
+<<<<<<< HEAD
   font-family: 'Open Sans', sans-serif;
+=======
+  font-family: "Open Sans", sans-serif;
+>>>>>>> develop
 }
 
 .submit-btn {
@@ -709,7 +861,11 @@ ul.prd-sec1-list {
 }
 
 ul.prd-sec1-list li {
+<<<<<<< HEAD
   background: url(/static/assets/images/sec1-list-img.png) left center no-repeat;
+=======
+  background: url(/assets/images/sec1-list-img.png) left center no-repeat;
+>>>>>>> develop
   float: left;
   padding: 12px 0 12px 50px;
   text-align: left;
@@ -746,7 +902,11 @@ ul.prd-sec1-list li {
 .prd-sec2 {
   float: left;
   width: 100%;
+<<<<<<< HEAD
   background: url(/static/assets/images/prd-sec2-bg.jpg) center top no-repeat;
+=======
+  background: url(/assets/images/prd-sec2-bg.jpg) center top no-repeat;
+>>>>>>> develop
   padding: 60px 0;
   background-size: cover;
 }
@@ -763,7 +923,12 @@ ul.prd-sec1-list li {
   margin-top: 40px;
 }
 
+<<<<<<< HEAD
 .howtouse ul,.howtouse ul li {
+=======
+.howtouse ul,
+.howtouse ul li {
+>>>>>>> develop
   float: left;
   width: 100%;
 }
@@ -771,7 +936,11 @@ ul.prd-sec1-list li {
 .howtouse h3 {
   float: left;
   width: 100%;
+<<<<<<< HEAD
   font-family: 'gibsonsemibold';
+=======
+  font-family: "gibsonsemibold";
+>>>>>>> develop
   font-weight: normal;
   text-transform: uppercase;
   text-align: left;
@@ -796,7 +965,11 @@ ul.prd-sec1-list li {
   -webkit-border-radius: 50%;
   background: #3bb54a;
   color: #fff;
+<<<<<<< HEAD
   font-family: 'gibsonsemibold';
+=======
+  font-family: "gibsonsemibold";
+>>>>>>> develop
   font-size: 19px;
   line-height: 22px;
   text-transform: uppercase;
@@ -811,7 +984,12 @@ ul.prd-sec1-list li {
   line-height: 28px;
 }
 
+<<<<<<< HEAD
 .prd-sec3,.version2 {
+=======
+.prd-sec3,
+.version2 {
+>>>>>>> develop
   float: left;
   width: 100%;
   padding: 60px 0;
@@ -855,7 +1033,11 @@ ul.prd-sec3-list li:last-child {
   width: 68%;
   padding: 20px 10px;
   float: left;
+<<<<<<< HEAD
   background: url(/static/assets/images/v2-prd-bg.png) center top no-repeat;
+=======
+  background: url(/assets/images/v2-prd-bg.png) center top no-repeat;
+>>>>>>> develop
 }
 
 .version2 ul.prd-sec3-list {
@@ -865,7 +1047,11 @@ ul.prd-sec3-list li:last-child {
 
 /**********MEDIA START***********/
 
+<<<<<<< HEAD
 @media only screen and (max-width:1180px) {
+=======
+@media only screen and (max-width: 1180px) {
+>>>>>>> develop
   .container {
     width: 1000px;
   }
@@ -927,7 +1113,11 @@ ul.prd-sec3-list li:last-child {
   }
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width:1010px) {
+=======
+@media only screen and (max-width: 1010px) {
+>>>>>>> develop
   .container {
     width: 750px;
   }
@@ -1106,7 +1296,11 @@ ul.prd-sec3-list li:last-child {
   }
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width:767px) {
+=======
+@media only screen and (max-width: 767px) {
+>>>>>>> develop
   .for-tab {
     display: none;
   }
@@ -1168,7 +1362,11 @@ ul.prd-sec3-list li:last-child {
   }
 
   .bnr-sec {
+<<<<<<< HEAD
     background: #C5D2C1;
+=======
+    background: #c5d2c1;
+>>>>>>> develop
   }
 
   .bnr-lft {
@@ -1364,7 +1562,11 @@ ul.prd-sec3-list li:last-child {
   }
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width:360px) {
+=======
+@media only screen and (max-width: 360px) {
+>>>>>>> develop
   .bnr-txt1 {
     font-size: 18px;
     line-height: 22px;
@@ -1402,7 +1604,11 @@ CSS FOR CART PAGE
 .sec1-cartin {
   width: 100%;
   float: left;
+<<<<<<< HEAD
   border: 1px solid #CCC;
+=======
+  border: 1px solid #ccc;
+>>>>>>> develop
   border-radius: 5px;
   margin: 80px 0;
 }
@@ -1425,18 +1631,32 @@ table.tbl2 {
   color: #4c4c4c;
   font-size: 20px;
   padding: 10px 0;
+<<<<<<< HEAD
   font-family: 'Source Sans Pro', sans-serif;
+=======
+  font-family: "Source Sans Pro", sans-serif;
+>>>>>>> develop
   font-weight: 400;
   background: #c7d5c4;
   text-align: left;
   text-transform: uppercase;
 }
 
+<<<<<<< HEAD
 .row2,.row3 {
   border-bottom: 1px solid #e9e9e9;
 }
 
 .c2,.c3 {
+=======
+.row2,
+.row3 {
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.c2,
+.c3 {
+>>>>>>> develop
   width: 17%;
 }
 
@@ -1451,7 +1671,11 @@ table.tbl2 {
 .txt1-cart {
   color: #343434;
   padding: 8px 0;
+<<<<<<< HEAD
   font-family: 'Source Sans Pro', sans-serif;
+=======
+  font-family: "Source Sans Pro", sans-serif;
+>>>>>>> develop
   font-weight: 400;
   text-align: left;
   font-size: 18px;
@@ -1470,7 +1694,11 @@ table.tbl2 {
 .txt3-crt {
   padding-top: 10px;
   color: #454545;
+<<<<<<< HEAD
   font-family: 'Source Sans Pro', sans-serif;
+=======
+  font-family: "Source Sans Pro", sans-serif;
+>>>>>>> develop
   font-weight: 400;
 }
 
@@ -1500,10 +1728,18 @@ table.tbl2 {
   width: 40%;
 }
 
+<<<<<<< HEAD
 .sec1crt-row4td-l,.sec1crt-row4td-r {
   font-size: 20px;
   color: #686868;
   font-family: 'Source Sans Pro', sans-serif;
+=======
+.sec1crt-row4td-l,
+.sec1crt-row4td-r {
+  font-size: 20px;
+  color: #686868;
+  font-family: "Source Sans Pro", sans-serif;
+>>>>>>> develop
   font-weight: 400;
   text-transform: uppercase;
   padding-top: 10px;
@@ -1610,7 +1846,11 @@ table.tbl2 {
 .frmelements label {
   float: left;
   width: 100%;
+<<<<<<< HEAD
   font-family: 'Source Sans Pro', sans-serif;
+=======
+  font-family: "Source Sans Pro", sans-serif;
+>>>>>>> develop
   font-weight: 400;
   font-size: 16px;
   line-height: 16px;
@@ -1626,7 +1866,11 @@ table.tbl2 {
   position: relative;
   overflow: hidden;
   background: #fff;
+<<<<<<< HEAD
   border: 1px solid #6D6D6D;
+=======
+  border: 1px solid #6d6d6d;
+>>>>>>> develop
   position: relative;
   box-sizing: border-box;
   border-radius: 4px;
@@ -1648,7 +1892,12 @@ table.tbl2 {
   margin-top: 6px;
 }
 
+<<<<<<< HEAD
 .ft-input,.frmelements select {
+=======
+.ft-input,
+.frmelements select {
+>>>>>>> develop
   float: right;
   width: 100%;
   border: none;
@@ -1657,12 +1906,20 @@ table.tbl2 {
   line-height: 40px;
   color: #727272;
   font-size: 18px;
+<<<<<<< HEAD
   font-family: 'Source Sans Pro', sans-serif;
+=======
+  font-family: "Source Sans Pro", sans-serif;
+>>>>>>> develop
   outline: none;
 }
 
 .frmelements select {
+<<<<<<< HEAD
   background: url(/static/assets/images/arrow-input.png) no-repeat center right;
+=======
+  background: url(/assets/images/arrow-input.png) no-repeat center right;
+>>>>>>> develop
 }
 
 .frmelements select {
@@ -1690,7 +1947,12 @@ table.tbl2 {
   color: #727272;
 }
 
+<<<<<<< HEAD
 .short1,.short2 {
+=======
+.short1,
+.short2 {
+>>>>>>> develop
   width: 48%;
   float: left;
 }
@@ -1746,12 +2008,21 @@ table.tbl2 {
   visibility: hidden;
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width:1010px) {
+=======
+@media only screen and (max-width: 1010px) {
+>>>>>>> develop
   .sec1-cartin {
     margin: 40px 0;
   }
 
+<<<<<<< HEAD
   .sec1crt-row4td-l,  .sec1crt-row4td-r {
+=======
+  .sec1crt-row4td-l,
+  .sec1crt-row4td-r {
+>>>>>>> develop
     font-size: 17px;
   }
 
@@ -1771,11 +2042,21 @@ table.tbl2 {
     font-size: 18px;
   }
 
+<<<<<<< HEAD
   .short1,  .short2 {
     width: 100%;
   }
 
   .short2.mob-sort,  .short1.mob-sort {
+=======
+  .short1,
+  .short2 {
+    width: 100%;
+  }
+
+  .short2.mob-sort,
+  .short1.mob-sort {
+>>>>>>> develop
     width: 48%;
   }
 
@@ -1784,7 +2065,11 @@ table.tbl2 {
   }
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width:767px) {
+=======
+@media only screen and (max-width: 767px) {
+>>>>>>> develop
   table.tbl2 {
     padding: 0 10px;
   }
@@ -1860,7 +2145,12 @@ table.tbl2 {
     font-size: 17px;
   }
 
+<<<<<<< HEAD
   .sec1crt-frmlft,  .sec1crt-frmrgt {
+=======
+  .sec1crt-frmlft,
+  .sec1crt-frmrgt {
+>>>>>>> develop
     width: 100%;
     margin-bottom: 20px;
   }
@@ -1874,7 +2164,11 @@ table.tbl2 {
   }
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width:413px) {
+=======
+@media only screen and (max-width: 413px) {
+>>>>>>> develop
   .confidence {
     padding: 10px 0 10px 10px;
   }
@@ -1904,7 +2198,12 @@ table.tbl2 {
     font-size: 15px;
   }
 
+<<<<<<< HEAD
   .sec1crt-row4td-l,  .sec1crt-row4td-r {
+=======
+  .sec1crt-row4td-l,
+  .sec1crt-row4td-r {
+>>>>>>> develop
     font-size: 15px;
   }
 
@@ -1925,7 +2224,11 @@ table.tbl2 {
   }
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width:359px) {
+=======
+@media only screen and (max-width: 359px) {
+>>>>>>> develop
   .confi-img {
     padding: 0 0 0 10px;
   }
@@ -1934,7 +2237,15 @@ table.tbl2 {
     font-size: 13px;
   }
 
+<<<<<<< HEAD
   .txt1-cart,  .pinktxt1,  .sec1crt-row4td-l,  .sec1crt-row4td-r,  .grand {
+=======
+  .txt1-cart,
+  .pinktxt1,
+  .sec1crt-row4td-l,
+  .sec1crt-row4td-r,
+  .grand {
+>>>>>>> develop
     font-size: 14px;
   }
 
@@ -1998,7 +2309,11 @@ table.tbl2 {
   animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
   background-color: #ff3f3f;
   border-radius: 100%;
+<<<<<<< HEAD
   content: '';
+=======
+  content: "";
+>>>>>>> develop
   display: block;
   height: 15%;
   margin: 0 auto;
@@ -2034,7 +2349,11 @@ table.tbl2 {
 }
 
 .js-div-loading-bar .sk-circle .sk-circle4::before {
+<<<<<<< HEAD
   animation-delay: .9s;
+=======
+  animation-delay: 0.9s;
+>>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle5 {
@@ -2042,7 +2361,11 @@ table.tbl2 {
 }
 
 .js-div-loading-bar .sk-circle .sk-circle5::before {
+<<<<<<< HEAD
   animation-delay: .8s;
+=======
+  animation-delay: 0.8s;
+>>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle6 {
@@ -2050,7 +2373,11 @@ table.tbl2 {
 }
 
 .js-div-loading-bar .sk-circle .sk-circle6::before {
+<<<<<<< HEAD
   animation-delay: .7s;
+=======
+  animation-delay: 0.7s;
+>>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle7 {
@@ -2058,7 +2385,11 @@ table.tbl2 {
 }
 
 .js-div-loading-bar .sk-circle .sk-circle7::before {
+<<<<<<< HEAD
   animation-delay: .6s;
+=======
+  animation-delay: 0.6s;
+>>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle8 {
@@ -2066,7 +2397,11 @@ table.tbl2 {
 }
 
 .js-div-loading-bar .sk-circle .sk-circle8::before {
+<<<<<<< HEAD
   animation-delay: .5s;
+=======
+  animation-delay: 0.5s;
+>>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle9 {
@@ -2074,7 +2409,11 @@ table.tbl2 {
 }
 
 .js-div-loading-bar .sk-circle .sk-circle9::before {
+<<<<<<< HEAD
   animation-delay: .4s;
+=======
+  animation-delay: 0.4s;
+>>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle10 {
@@ -2082,7 +2421,11 @@ table.tbl2 {
 }
 
 .js-div-loading-bar .sk-circle .sk-circle10::before {
+<<<<<<< HEAD
   animation-delay: .3s;
+=======
+  animation-delay: 0.3s;
+>>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle11 {
@@ -2090,7 +2433,11 @@ table.tbl2 {
 }
 
 .js-div-loading-bar .sk-circle .sk-circle11::before {
+<<<<<<< HEAD
   animation-delay: .2s;
+=======
+  animation-delay: 0.2s;
+>>>>>>> develop
 }
 
 .js-div-loading-bar .sk-circle .sk-circle12 {
@@ -2098,11 +2445,21 @@ table.tbl2 {
 }
 
 .js-div-loading-bar .sk-circle .sk-circle12::before {
+<<<<<<< HEAD
   animation-delay: .1s;
 }
 
 @-webkit-keyframes sk-circleBounceDelay {
   0%, 80%, 100% {
+=======
+  animation-delay: 0.1s;
+}
+
+@-webkit-keyframes sk-circleBounceDelay {
+  0%,
+  80%,
+  100% {
+>>>>>>> develop
     -webkit-transform: scale(0);
     transform: scale(0);
   }
@@ -2114,7 +2471,13 @@ table.tbl2 {
 }
 
 @keyframes sk-circleBounceDelay {
+<<<<<<< HEAD
   0%, 80%, 100% {
+=======
+  0%,
+  80%,
+  100% {
+>>>>>>> develop
     -webkit-transform: scale(0);
     transform: scale(0);
   }
@@ -2131,9 +2494,15 @@ table.tbl2 {
 
 .fade {
   opacity: 0;
+<<<<<<< HEAD
   -webkit-transition: opacity .15s linear;
   -o-transition: opacity .15s linear;
   transition: opacity .15s linear;
+=======
+  -webkit-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+>>>>>>> develop
 }
 
 .fade.in {
@@ -2168,6 +2537,7 @@ table.tbl2 {
 }
 
 .modal.fade .modal-dialog {
+<<<<<<< HEAD
   -webkit-transition: -webkit-transform .3s ease-out;
   transition: -webkit-transform .3s ease-out;
   -o-transition: -o-transform .3s ease-out;
@@ -2184,6 +2554,25 @@ table.tbl2 {
   -ms-transform: translate(0,0);
   -o-transform: translate(0,0);
   transform: translate(0,0);
+=======
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out,
+    -o-transform 0.3s ease-out;
+  -webkit-transform: translate(0, -25%);
+  -ms-transform: translate(0, -25%);
+  -o-transform: translate(0, -25%);
+  transform: translate(0, -25%);
+}
+
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+>>>>>>> develop
 }
 
 .modal-content {
@@ -2191,8 +2580,13 @@ table.tbl2 {
   background-color: #fff;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+<<<<<<< HEAD
   border: 1px solid rgba(0,0,0,.2);
   border-radius: .3rem;
+=======
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+>>>>>>> develop
   outline: 0;
 }
 
@@ -2208,7 +2602,11 @@ table.tbl2 {
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
+<<<<<<< HEAD
   opacity: .2;
+=======
+  opacity: 0.2;
+>>>>>>> develop
   padding: 0;
   cursor: pointer;
   background: 0 0;
@@ -2243,8 +2641,13 @@ table.tbl2 {
 }
 
 .comment-box {
+<<<<<<< HEAD
   height: 100px!important;
   padding-left: 0px!important;
+=======
+  height: 100px !important;
+  padding-left: 0px !important;
+>>>>>>> develop
 }
 
 /* modal style ends */

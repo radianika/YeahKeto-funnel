@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @media only screen and (max-width:1003px) {
+=======
+@media only screen and (max-width: 1003px) {
+>>>>>>> develop
   a.mnuclose {
     display: inline-block;
     width: 250px;
@@ -11,7 +15,11 @@
     float: left;
     border: 1px solid white;
     text-align: right;
+<<<<<<< HEAD
     font-family: 'Open Sans', sans-serif;
+=======
+    font-family: "Open Sans", sans-serif;
+>>>>>>> develop
   }
 
   .mobimenu {
@@ -55,7 +63,11 @@
     width: 250px;
     float: left;
     color: #000;
+<<<<<<< HEAD
     font-family: 'Open Sans', sans-serif;
+=======
+    font-family: "Open Sans", sans-serif;
+>>>>>>> develop
     font-size: 16px;
     padding: 20px;
     border-top: 1px solid #e5e5e5;
@@ -67,8 +79,17 @@
     border-bottom: 1px solid #e5e5e5;
   }
 
+<<<<<<< HEAD
   ul.mobimenu li a:hover,  ul.mobimenu li a.active {
     background: #fff;
     color: #000;
   }
 }
+=======
+  ul.mobimenu li a:hover,
+  ul.mobimenu li a.active {
+    background: #fff;
+    color: #000;
+  }
+}
+>>>>>>> develop

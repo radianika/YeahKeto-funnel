@@ -1,4 +1,17 @@
+<<<<<<< HEAD
 .fancybox-wrap,.fancybox-skin,.fancybox-outer,.fancybox-inner,.fancybox-image,.fancybox-wrap iframe,.fancybox-wrap object,.fancybox-nav,.fancybox-nav span,.fancybox-tmp {
+=======
+.fancybox-wrap,
+.fancybox-skin,
+.fancybox-outer,
+.fancybox-inner,
+.fancybox-image,
+.fancybox-wrap iframe,
+.fancybox-wrap object,
+.fancybox-nav,
+.fancybox-nav span,
+.fancybox-tmp {
+>>>>>>> develop
   padding: 0;
   margin: 0;
   border: 0;
@@ -28,12 +41,22 @@
 }
 
 .fancybox-opened .fancybox-skin {
+<<<<<<< HEAD
   -webkit-box-shadow: 0 10px 25px rgba(0,0,0,0.5);
   -moz-box-shadow: 0 10px 25px rgba(0,0,0,0.5);
   box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
 .fancybox-outer,.fancybox-inner {
+=======
+  -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.fancybox-outer,
+.fancybox-inner {
+>>>>>>> develop
   position: relative;
 }
 
@@ -47,13 +70,22 @@
 
 .fancybox-error {
   color: #444;
+<<<<<<< HEAD
   font: 14px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+=======
+  font: 14px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+>>>>>>> develop
   margin: 0;
   padding: 15px;
   white-space: nowrap;
 }
 
+<<<<<<< HEAD
 .fancybox-image,.fancybox-iframe {
+=======
+.fancybox-image,
+.fancybox-iframe {
+>>>>>>> develop
   display: block;
   width: 100%;
   height: 100%;
@@ -64,8 +96,16 @@
   max-height: 100%;
 }
 
+<<<<<<< HEAD
 #fancybox-loading,.fancybox-close,.fancybox-prev span,.fancybox-next span {
   background-image: url('../images/fancybox_sprite.png');
+=======
+#fancybox-loading,
+.fancybox-close,
+.fancybox-prev span,
+.fancybox-next span {
+  /* background-image: url('../images/fancybox_sprite.png'); */
+>>>>>>> develop
 }
 
 #fancybox-loading {
@@ -83,7 +123,11 @@
 #fancybox-loading div {
   width: 44px;
   height: 44px;
+<<<<<<< HEAD
   background: url('../images/fancybox_loading.gif') center center no-repeat;
+=======
+  /* background: url("../images/fancybox_loading.gif") center center no-repeat; */
+>>>>>>> develop
 }
 
 .fancybox-close {
@@ -103,8 +147,13 @@
   height: 100%;
   cursor: pointer;
   text-decoration: none;
+<<<<<<< HEAD
   background: transparent url('blank.gif');
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+=======
+  /* background: transparent url('blank.gif'); */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+>>>>>>> develop
   z-index: 8040;
 }
 
@@ -148,20 +197,36 @@
   visibility: hidden;
   max-width: 99999px;
   max-height: 99999px;
+<<<<<<< HEAD
   overflow: visible!important;
 }
 
 .fancybox-lock {
   overflow: hidden!important;
+=======
+  overflow: visible !important;
+}
+
+.fancybox-lock {
+  overflow: hidden !important;
+>>>>>>> develop
   width: auto;
 }
 
 .fancybox-lock body {
+<<<<<<< HEAD
   overflow: hidden!important;
 }
 
 .fancybox-lock-test {
   overflow-y: hidden!important;
+=======
+  overflow: hidden !important;
+}
+
+.fancybox-lock-test {
+  overflow-y: hidden !important;
+>>>>>>> develop
 }
 
 .fancybox-overlay {
@@ -171,7 +236,11 @@
   overflow: hidden;
   display: none;
   z-index: 8010;
+<<<<<<< HEAD
   background: url('../images/fancybox_overlay.png');
+=======
+  /* background: url('../images/fancybox_overlay.png'); */
+>>>>>>> develop
 }
 
 .fancybox-overlay-fixed {
@@ -189,7 +258,11 @@
 
 .fancybox-title {
   visibility: hidden;
+<<<<<<< HEAD
   font: normal 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+=======
+  font: normal 13px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+>>>>>>> develop
   position: relative;
   text-shadow: none;
   z-index: 8050;
@@ -213,12 +286,20 @@
   margin-right: -100%;
   padding: 2px 20px;
   background: transparent;
+<<<<<<< HEAD
   background: rgba(0,0,0,0.8);
+=======
+  background: rgba(0, 0, 0, 0.8);
+>>>>>>> develop
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
   text-shadow: 0 1px 2px #222;
+<<<<<<< HEAD
   color: #FFF;
+=======
+  color: #fff;
+>>>>>>> develop
   font-weight: bold;
   line-height: 24px;
   white-space: nowrap;
@@ -241,23 +322,41 @@
   color: #fff;
   padding: 10px;
   background: #000;
+<<<<<<< HEAD
   background: rgba(0,0,0,.8);
+=======
+  background: rgba(0, 0, 0, 0.8);
+>>>>>>> develop
 }
 
 @media only screen and (max-width: 539px) {
   .fancybox-inner {
+<<<<<<< HEAD
     height: 300px!important;
+=======
+    height: 300px !important;
+>>>>>>> develop
   }
 }
 
 @media only screen and (max-width: 479px) {
   .fancybox-inner {
+<<<<<<< HEAD
     height: 250px!important;
+=======
+    height: 250px !important;
+>>>>>>> develop
   }
 }
 
 @media only screen and (max-width: 369px) {
   .fancybox-inner {
+<<<<<<< HEAD
     height: 200px!important;
   }
 }
+=======
+    height: 200px !important;
+  }
+}
+>>>>>>> develop
