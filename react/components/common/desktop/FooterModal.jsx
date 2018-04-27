@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import 'styles/footer-modal.scss';
 
 class FooterModal extends PureComponent {
 	constructor(props) {
