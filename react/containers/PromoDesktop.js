@@ -15,7 +15,6 @@ import 'styles/promo-desktop.scss';
 class PromoDesktopContainer extends React.PureComponent {
 	render() {
 		const { props } = this;
-		console.log({ props });
 		return (
 			<React.Fragment>
 				<h1 style={{ display: 'none' }}>American cience CBD</h1>
