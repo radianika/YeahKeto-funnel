@@ -1,12 +1,11 @@
 import React from 'react';
-import { RootShell } from 'react/containers';
 
 const PromoMobileContainer = props => {
   console.log({ props });
   return (
-    <RootShell>
+    <React.Fragment>
       <h1>StarLight Group</h1>
-    </RootShell>
+    </React.Fragment>
   );
 };
 

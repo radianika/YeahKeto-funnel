@@ -1,11 +1,15 @@
 import React from 'react';
-import { RootShell } from 'react/containers';
+import { RootShell, MainPageContainer } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
 
 class Index extends React.PureComponent {
-  render() {
-    return <RootShell />;
-  }
+	render() {
+		return (
+			<RootShell>
+				<MainPageContainer />
+			</RootShell>
+		);
+	}
 }
 
 export default withReduxSaga(Index);
