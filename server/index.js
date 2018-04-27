@@ -17,22 +17,24 @@ const server = express();
 server.use(cookieParser());
 server.use(useragent.express());
 if (!dev) {
-	server.use(compression());
+  server.use(compression());
 }
 
 const app = next({ dev });
 const handle = app.getRequestHandler();
 app.prepare().then(() => {
-	server.get('/promo/:useragent?', (req, res) => {
-		const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
-		if (requestAgent !== req.params.useragent) {
-			res.redirect(`/promo/${requestAgent}`);
-		}
-		return app.render(req, res, '/promo', { requestAgent });
-	});
-	server.get('*', (req, res) => handle(req, res));
-	server.listen(port, err => {
-		if (err) throw err;
-		console.log(`> Ready on ${port}`);
-	});
+  server.get('/promo/:useragent?', (req, res) => {
+    const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
+    if (requestAgent !== req.params.useragent) {
+      res.redirect(`/promo/${requestAgent}`);
+    }
+    if (requestAgent === 'desktop') {
+      return app.render(req, res, '/promo-desktop', { requestAgent });
+    }
+  });
+  server.get('*', (req, res) => handle(req, res));
+  server.listen(port, err => {
+    if (err) throw err;
+    console.log(`> Ready on ${port}`);
+  });
 });

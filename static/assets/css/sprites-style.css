@@ -1,7 +1,7 @@
 /*---sprite css---*/
 
 .sprite1 {
-  background-image: url(/assets/sprites/spritesheet1.png);
+  background-image: url(../sprites/spritesheet1.png);
   background-repeat: no-repeat;
   display: block;
 }
@@ -97,7 +97,7 @@
 }
 
 .sprite2 {
-  background-image: url(/assets/sprites/spritesheet2.png);
+  background-image: url(../sprites/spritesheet2.png);
   background-repeat: no-repeat;
   display: block;
 }
@@ -198,7 +198,7 @@
   width: 412px;
   height: 60px;
 
-  background-image: url(/assets/images/as-seen-desktop.png);
+  background-image: url(../images/as-seen-desktop.png);
   background-repeat: no-repeat;
   background-size: contain;
   display: block;
@@ -211,7 +211,7 @@
 }
 
 .sprite3 {
-  background-image: url(/assets/sprites/spritesheet3.png);
+  background-image: url(../sprites/spritesheet3.png);
   background-repeat: no-repeat;
   display: block;
 }
@@ -283,7 +283,7 @@
 }
 
 .sprite4 {
-  background-image: url(/assets/sprites/spritesheet4.png);
+  background-image: url(../sprites/spritesheet4.png);
   background-repeat: no-repeat;
   display: block;
 }
@@ -437,7 +437,7 @@
 }
 
 .sprite5 {
-  background-image: url(/assets/sprites/spritesheet5.png);
+  background-image: url(../sprites/spritesheet5.png);
   background-repeat: no-repeat;
   display: block;
 }
@@ -569,7 +569,7 @@
 }
 
 .sprite-box {
-  background-image: url(/assets/sprites/spritesheet-box.png);
+  background-image: url(../sprites/spritesheet-box.png);
   background-repeat: no-repeat;
   display: block;
 }
