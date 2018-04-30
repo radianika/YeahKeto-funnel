@@ -1,48 +1,49 @@
 import React from 'react';
 import Head from 'next/head';
-import { Home } from 'react/components/home';
+import { PromoDesktopContainer } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
 
-class Index extends React.PureComponent {
+class Promo extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
         <Head>
-          <title>American Science</title>
-          <meta
-            name="description"
-            content="Premium Quality Hemp Extract Products, Organic and Natural"
+          <title>American Science CBD Hemp Oil</title>
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/fonts/font-hind.css"
           />
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/fonts/fonts.css"
+            href="/static/assets/fonts/font-awesome.min.css"
           />
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/fonts/font-open-sans.css"
+            href="/static/assets/css/formvalidation/formvalidation.min.css"
           />
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/fonts/font-raleway.css"
+            href="/static/assets/css/promo/desktop/index.css"
           />
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/css/simpleMobileMenu.css"
+            href="/static/assets/css/promo-style.css"
           />
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/css/style.css"
+            href="/static/assets/css/sprites-style.css"
           />
         </Head>
-        <Home />
+        <PromoDesktopContainer />
       </React.Fragment>
     );
   }
 }
 
-export default withReduxSaga(Index);
+export default withReduxSaga(Promo);

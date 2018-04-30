@@ -3,8 +3,6 @@ import { PromoContactDesktop } from 'react/containers';
 
 class PromoSectionOneDesktop extends React.PureComponent {
   render() {
-    const { props } = this;
-    console.log({ props });
     return (
       <div className="section1 dsplay">
         <h2 style={{ display: 'none' }}>American cience CBD</h2>
