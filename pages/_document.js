@@ -7,6 +7,7 @@ export default class MyDocument extends Document {
       <html lang="en">
         <Head>
           <meta charSet="utf-8" />
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <link
             rel="shortcut icon"
             type="image/x-icon"

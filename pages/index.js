@@ -9,6 +9,7 @@ class Index extends React.PureComponent {
       <React.Fragment>
         <Head>
           <title>American Science</title>
+          <meta name="viewport" content="width=640, user-scalable=0" />
           <meta
             name="description"
             content="Premium Quality Hemp Extract Products, Organic and Natural"

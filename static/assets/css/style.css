@@ -909,6 +909,96 @@ ul.prd-sec3-list li:last-child {
   width: 100%;
 }
 
+/*Footer Modal*/
+p.title {
+  text-transform: uppercase;
+}
+
+p.normal {
+  font-family: "Calibri", "sans-serif";
+  margin: 0 0 0.0001pt;
+  font-size: 12pt;
+}
+
+p.list {
+  margin: 0 0.1in 0.0001pt 0.1in;
+  font-size: 12pt;
+  font-family: "Calibri", "sans-serif";
+}
+
+p.sub-list {
+  margin: 0 0.5in 0.0001pt 0.5in;
+  font-size: 12pt;
+  font-family: "Calibri", "sans-serif";
+  text-indent: -0.25in;
+}
+
+p.text-center {
+  text-align: center;
+}
+
+p.title,
+p.normal,
+p.list,
+p.sub-list {
+  text-align: left;
+}
+
+p.title {
+  text-transform: uppercase;
+}
+
+p.sub-list-content {
+  margin: 0 0.5in 0.0001pt 0.5in;
+  font-size: 12pt;
+  font-family: "Calibri", "sans-serif";
+}
+
+p.title,
+p.normal,
+p.list,
+p.sub-list,
+p.sub-list-content {
+  text-align: left;
+}
+
+p.list {
+  margin: 0 0 0.0001pt 0.3in;
+  font-size: 12pt;
+  font-family: "Calibri", "sans-serif";
+}
+
+p.sub-list {
+  margin: 0 0 0.0001pt 0.8in;
+  font-size: 12pt;
+  font-family: "Calibri", "sans-serif";
+  text-indent: -0.25in;
+}
+
+p.sub-list-content {
+  margin: 0 0 0.0001pt 0.8in;
+  font-size: 12pt;
+  font-family: "Calibri", "sans-serif";
+}
+
+p.title {
+  text-transform: uppercase;
+}
+
+p.list {
+  margin: 0 0 0.0001pt 0.3in;
+  font-size: 12pt;
+  font-family: "Calibri", "sans-serif";
+}
+
+p.title,
+p.normal,
+p.list,
+p.sub-list,
+p.sub-list-content {
+  text-align: left;
+}
+
 /**********MEDIA START***********/
 
 @media only screen and (max-width: 1180px) {
@@ -1028,6 +1118,15 @@ ul.prd-sec3-list li:last-child {
 
   .bnr-rgt {
     width: 40%;
+  }
+
+  .prd-details {
+    height: 400px;
+  }
+
+  ul.sec2-list li:nth-child(1) .btn,
+  ul.sec2-list li:nth-child(2) .btn {
+    padding-top: 25px;
   }
 
   ul.strip-list {
@@ -1211,6 +1310,15 @@ ul.prd-sec3-list li:last-child {
   .comn-sub-hdg {
     font-size: 24px;
     line-height: 26px;
+  }
+
+  .prd-details {
+    height: auto;
+  }
+
+  ul.sec2-list li:nth-child(1) .btn,
+  ul.sec2-list li:nth-child(2) .btn {
+    padding-top: inherit;
   }
 
   .bnr-sec {

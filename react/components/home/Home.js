@@ -185,7 +185,7 @@ class Home extends PureComponent {
                 </a>
               </div>
             </li>
-            <li style={{ margin: '0 calc(2% + 4px)' }}>
+            <li>
               <img
                 src="../static/assets/images/sec2-prd2.png"
                 alt=""
