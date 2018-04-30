@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  PromoSprite,
   PromoSectionOneMobile,
   PromoSectionTwoMobile,
   PromoSectionThreeMobile,
@@ -14,20 +13,17 @@ import {
 class PromoMobileContainer extends React.PureComponent {
   render() {
     return (
-      <React.Fragment>
-        <div id="container">
-          <PromoSectionOneMobile />
-          <PromoSectionTwoMobile />
-          <PromoSprite />
-          <PromoSectionThreeMobile />
-          <PromoSectionFourMobile />
-          <PromoSectionFiveMobile />
-          <PromoSectionSixMobile />
-          <PromoSectionSevenMobile />
-          <div style={{ clear: 'both' }} />
-          <FooterPromo />
-        </div>
-      </React.Fragment>
+      <div id="container">
+        <PromoSectionOneMobile />
+        <PromoSectionTwoMobile />
+        <PromoSectionThreeMobile />
+        <PromoSectionFourMobile />
+        <PromoSectionFiveMobile />
+        <PromoSectionSixMobile />
+        <PromoSectionSevenMobile />
+        <div style={{ clear: 'both' }} />
+        <FooterPromo />
+      </div>
     );
   }
 }

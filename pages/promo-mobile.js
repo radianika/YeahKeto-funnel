@@ -22,32 +22,7 @@ class Promo extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/fonts/font-awesome.min.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/formvalidation/formvalidation.min.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
             href="/static/assets/css/promo/mobile/index.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/promo/mobile/slick.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/promo/mobile/upsell.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/promo-style.css"
           />
           <link
             rel="stylesheet"

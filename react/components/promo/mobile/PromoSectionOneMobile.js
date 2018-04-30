@@ -8,32 +8,33 @@ class PromoSectionOneMobile extends React.PureComponent {
         <i className="s1-logo sprite3 sprite-s1-logo " />
         <i className="s1-hd sprite3 sprite-s1-hd" />
         <p className="s1-txt4">
-          Made from Hemp organically grown & harvested in the USA, and medically
-          proven to offer therapeutic benefits.{' '}
+          Made from Hemp organically grown &amp; harvested in the USA, and
+          medically proven to offer therapeutic benefits.
         </p>
         <p className="clearall" />
         <ul className="s1-list">
           <li>
             <i className="sprite3 sprite-s1-tick" />
             <span>Relieves</span>
-            <br /> Anxiety & Stress{' '}
+            <br /> Anxiety &amp; Stress
           </li>
           <li>
             <i className="sprite3 sprite-s1-tick" />
             <span>Eliminates</span>
-            <br />Chronic Pain & Aches{' '}
+            <br />Chronic Pain &amp; Aches
           </li>
           <li>
             <i className="sprite3 sprite-s1-tick" />
             <span>Promotes</span>
-            <br /> Mood & Sleep Patterns{' '}
+            <br /> Mood &amp; Sleep Patterns
           </li>
           <li>
             <i className="sprite3 sprite-s1-tick" />
-            <span>Enhances </span> <br /> Focus & Clarity{' '}
+            <span>Enhances </span>
+            <br /> Focus &amp; Clarity
           </li>
         </ul>
-        <p className="clearall" />
+        <p className="clearall" />{' '}
         <i className="as-seen sprite1 sprite-as-seen" />
         <i className="s1-bottle sprite3 sprite-s1-bottle" />
       </div>
