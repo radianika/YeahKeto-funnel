@@ -31,6 +31,9 @@ app.prepare().then(() => {
     if (requestAgent === 'desktop') {
       return app.render(req, res, '/promo-desktop', { requestAgent });
     }
+    if (requestAgent === 'mobile') {
+      return app.render(req, res, '/promo-mobile', { requestAgent });
+    }
   });
   server.get('*', (req, res) => handle(req, res));
   server.listen(port, err => {

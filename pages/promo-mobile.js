@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { PromoDesktopContainer } from 'react/containers';
+import { PromoMobileContainer } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
 
 class Promo extends React.PureComponent {
@@ -27,7 +27,17 @@ class Promo extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/css/promo/desktop/index.css"
+            href="/static/assets/css/promo/mobile/index.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/css/promo/mobile/slick.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/css/promo/mobile/upsell.css"
           />
           <link
             rel="stylesheet"
@@ -37,10 +47,15 @@ class Promo extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/css/sprites-style.css"
+            href="/static/assets/css/mb-style.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/css/mb-sprites-style.css"
           />
         </Head>
-        <PromoDesktopContainer />
+        <PromoMobileContainer />
       </React.Fragment>
     );
   }
