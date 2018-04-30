@@ -7,8 +7,8 @@ import {
   PromoSectionFiveMobile,
   PromoSectionSixMobile,
   PromoSectionSevenMobile,
-  FooterPromo,
 } from 'react/components/promo/mobile';
+import { FooterPromo } from 'react/components/promo';
 
 class PromoMobileContainer extends React.PureComponent {
   render() {
@@ -22,7 +22,7 @@ class PromoMobileContainer extends React.PureComponent {
         <PromoSectionSixMobile />
         <PromoSectionSevenMobile />
         <div style={{ clear: 'both' }} />
-        <FooterPromo />
+        <FooterPromo isMobile />
       </div>
     );
   }

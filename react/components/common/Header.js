@@ -1,58 +1,49 @@
 import React, { PureComponent } from 'react';
+import { ActiveLink } from 'react/components/common';
+import Head from 'next/head';
 
-const Menu = props => (
+const Menu = () => (
   <React.Fragment>
     <li>
-      <a href="home" className={props.currentPage === 'home' ? 'active' : ''}>
-        Home
-      </a>
+      <ActiveLink href="/">Home</ActiveLink>
     </li>
     <li>
-      <a
-        href="products"
-        className={props.currentPage === 'products' ? 'active' : ''}
-      >
-        Products
-      </a>
+      <ActiveLink href="/products">Products</ActiveLink>
     </li>
     <li>
-      <a href="faq" className={props.currentPage === 'faq' ? 'active' : ''}>
-        FAQ'S
-      </a>
+      <ActiveLink href="/faq">FAQ's</ActiveLink>
     </li>
     <li>
-      <a href="cart" className={props.currentPage === 'cart' ? 'active' : ''}>
-        Cart
-      </a>
+      <ActiveLink href="/cart">Cart</ActiveLink>
     </li>
     <li>
-      <a
-        href="contact"
-        className={props.currentPage === 'contact' ? 'active' : ''}
-      >
-        Contact
-      </a>
+      <ActiveLink href="/contact">Contact</ActiveLink>
     </li>
   </React.Fragment>
 );
 
-class CommonHeader extends PureComponent {
+class Header extends PureComponent {
   constructor(props) {
     super(props);
-    this.toggleClass = this.toggleClass.bind(this);
     this.state = {
       activeMobileMenu: false,
-      currentPage: props.currentPage,
     };
   }
 
-  toggleClass() {
+  toggleClass = () => {
     this.setState({ activeMobileMenu: !this.state.activeMobileMenu });
-  }
+  };
 
   render() {
     return (
       <React.Fragment>
+        <Head>
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/css/simpleMobileMenu.css"
+          />
+        </Head>
         <div
           className={
             this.state.activeMobileMenu ? 'overally ovrActv' : 'overally'
@@ -61,10 +52,10 @@ class CommonHeader extends PureComponent {
         />
         <div className="top-sec">
           <div className="container">
-            <a href="index.html">
+            <a href="/">
               <img
                 className="logo"
-                src="../static/assets/images/logo.png"
+                src="/static/assets/images/logo.png"
                 alt="Logo"
               />
             </a>
@@ -75,7 +66,7 @@ class CommonHeader extends PureComponent {
                   className="smobitrigger mob-mnu inrwrpr"
                   onClick={this.toggleClass}
                 >
-                  <img src="../static/assets/images/mob-menu-btn.png" alt="" />
+                  <img src="/static/assets/images/mob-menu-btn.png" alt="" />
                 </a>
                 <ul
                   className={
@@ -96,7 +87,7 @@ class CommonHeader extends PureComponent {
               </div>
             </div>
             <ul className="menu-list for-desk">
-              <Menu home="HOME" currentPage={this.state.currentPage} />
+              <Menu />
             </ul>
           </div>
         </div>
@@ -105,4 +96,4 @@ class CommonHeader extends PureComponent {
   }
 }
 
-export { CommonHeader };
+export { Header };

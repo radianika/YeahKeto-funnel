@@ -1,10 +1,5 @@
 import React, { PureComponent } from 'react';
-import {
-  CommonHeader,
-  CommonFooter,
-  SquareTop,
-  SquareBot,
-} from 'react/components/common/desktop';
+import { Header, Footer } from 'react/components/common';
 
 const Strip = () => (
   <div className="strip-sec">
@@ -49,11 +44,11 @@ const Frame = props => (
   </div>
 );
 
-class Home extends PureComponent {
+class HomeContainer extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <CommonHeader currentPage="home" />
+        <Header />
         <div className="bnr-sec">
           <div className="container">
             <div className="bnr-lft">
@@ -109,7 +104,7 @@ class Home extends PureComponent {
               revolution.
             </strong>
           </p>
-          <SquareTop>
+          <ul className="sec1-list">
             <li>
               <img src="../static/assets/images/sec1-list-img3.png" alt="" />
               <span>100% ORGANIC & NATURAL</span>
@@ -137,7 +132,7 @@ class Home extends PureComponent {
                 cognitive function & health.
               </p>
             </li>
-          </SquareTop>
+          </ul>
         </Frame>
         <div className="parlx-sec">
           <div className="container">
@@ -161,7 +156,7 @@ class Home extends PureComponent {
           </p>
           <img src="../static/assets/images/comn-hdg-img.png" alt="" />
           <p className="comn-txt">&nbsp;</p>
-          <SquareBot>
+          <ul className="sec2-list">
             <li>
               <img
                 src="../static/assets/images/sec2-prd1.png"
@@ -231,12 +226,35 @@ class Home extends PureComponent {
                 </a>
               </div>
             </li>
-          </SquareBot>
+          </ul>
         </Frame>
-        <CommonFooter />
+        <Footer>
+          <p className="ftr-txt w40 mtop2">
+            We accept:
+            <img
+              src="../static/assets/images/mc-v.png"
+              alt="We accept VISA, MasterCard"
+            />
+          </p>
+          <p className="ftr-txt just">
+            <br />This product is not for use by or sale to persons under the
+            age of 18. This product should be used only as directed on the
+            label. It should not be used if you are pregnant or nursing. Consult
+            with a physician before use if you have a serious medical condition
+            or use prescription medications. A Doctor's advice should be sought
+            before using this and any supplemental dietary product. All
+            trademarks and copyrights are property of their respective owners
+            and are not affiliated with nor do they endorse this product. These
+            statements have not been evaluated by the FDA. This product is not
+            intended to diagnose, treat, cure or prevent any disease. Individual
+            weight loss results will vary. By using this site, you agree to
+            follow the Privacy Policy and all Terms & Conditions printed on this
+            site. Void Where Prohibited by Law.
+          </p>
+        </Footer>
       </React.Fragment>
     );
   }
 }
 
-export { Home };
+export { HomeContainer };

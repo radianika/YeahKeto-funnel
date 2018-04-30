@@ -1,14 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
-import { HomeContainer } from 'react/containers';
+import { MobileShippingContainer } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
 
-class Index extends React.PureComponent {
+class Promo extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
         <Head>
-          <title>American Science</title>
+          <title>American Science CBD Hemp Oil</title>
           <meta name="viewport" content="width=640, user-scalable=0" />
           <meta
             name="description"
@@ -17,28 +17,28 @@ class Index extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/fonts/fonts.css"
+            href="/static/assets/fonts/font-hind.css"
           />
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/fonts/font-open-sans.css"
+            href="/static/assets/fonts/font-awesome.min.css"
           />
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/fonts/font-raleway.css"
+            href="/static/assets/css/promo/mobile/index.css"
           />
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/css/style.css"
+            href="/static/assets/css/mb-style.css"
           />
         </Head>
-        <HomeContainer />
+        <MobileShippingContainer />
       </React.Fragment>
     );
   }
 }
 
-export default withReduxSaga(Index);
+export default withReduxSaga(Promo);

@@ -10,7 +10,7 @@ import {
   PromoSectionSixDesktop,
   PromoSectionSevenDesktop,
 } from 'react/components/promo/desktop';
-import { CommonFooter } from 'react/components/common/desktop';
+import { FooterPromo } from 'react/components/promo';
 
 class PromoDesktopContainer extends React.PureComponent {
   render() {
@@ -41,7 +41,7 @@ class PromoDesktopContainer extends React.PureComponent {
         <PromoStrip />
         <PromoSectionSevenDesktop />
         <div style={{ clear: 'both' }} />
-        <CommonFooter />
+        <FooterPromo />
       </React.Fragment>
     );
   }
