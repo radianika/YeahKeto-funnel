@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { packages } from 'helpers';
-import { Upsell1, Upsell2, Upsell3 } from 'react/components/upsell';
+import { Upsell1, Upsell2, Upsell3 } from '../components/upsell';
 
 class UpsellMobileContainer extends React.PureComponent {
   render() {

@@ -8,3 +8,5 @@ export * from './HomeContainer';
 export * from './MobileSelectPackageContainer';
 export * from './MobileConfirmContainer';
 export * from './UpsellMobileContainer';
+export * from './PromoCheckoutContainer';
+export * from './UpsellDesktopContainer';

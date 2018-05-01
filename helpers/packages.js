@@ -9,6 +9,7 @@ const packages = [
       </React.Fragment>
     ),
     img: 'product-box1.png',
+    desktopImg: 'pkg1-img.png',
     msg: 'MOST POPULAR PACKAGE',
     regularPrice: '$345.00',
     price: '$39.00',
@@ -22,6 +23,7 @@ const packages = [
       </React.Fragment>
     ),
     img: 'product-box2.png',
+    desktopImg: 'pkg2-img.png',
     msg: 'BEST VALUE PACKAGE',
     regularPrice: '$207.00',
     price: '$49.00',
@@ -31,6 +33,7 @@ const packages = [
     id: 152,
     title: <React.Fragment>BUY 1 BOTTLES</React.Fragment>,
     img: 'product-box3.png',
+    desktopImg: 'pkg3-img.png',
     msg: 'SIMPLER PACKAGE',
     regularPrice: '$69.00',
     price: '$69.00',
