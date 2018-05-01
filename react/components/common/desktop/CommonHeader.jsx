@@ -3,32 +3,51 @@ import React, { PureComponent } from 'react';
 const Menu = props => (
   <React.Fragment>
     <li>
-      <a href="home" className={props.currentPage === 'home' ? 'active' : ''}>
+      <a
+        className={props.currentPage === 'home' ? 'active' : ''}
+        onClick={() => {
+          props.switchPages('home');
+        }}
+      >
         Home
       </a>
     </li>
     <li>
       <a
-        href="products"
         className={props.currentPage === 'products' ? 'active' : ''}
+        onClick={() => {
+          props.switchPages('products');
+        }}
       >
         Products
       </a>
     </li>
     <li>
-      <a href="faq" className={props.currentPage === 'faq' ? 'active' : ''}>
+      <a
+        className={props.currentPage === 'faq' ? 'active' : ''}
+        onClick={() => {
+          props.switchPages('faq');
+        }}
+      >
         FAQ'S
       </a>
     </li>
     <li>
-      <a href="cart" className={props.currentPage === 'cart' ? 'active' : ''}>
+      <a
+        className={props.currentPage === 'cart' ? 'active' : ''}
+        onClick={() => {
+          props.switchPages('cart');
+        }}
+      >
         Cart
       </a>
     </li>
     <li>
       <a
-        href="contact"
         className={props.currentPage === 'contact' ? 'active' : ''}
+        onClick={() => {
+          props.switchPages('contact');
+        }}
       >
         Contact
       </a>
@@ -42,7 +61,6 @@ class CommonHeader extends PureComponent {
     this.toggleClass = this.toggleClass.bind(this);
     this.state = {
       activeMobileMenu: false,
-      currentPage: props.currentPage,
     };
   }
 
@@ -96,7 +114,11 @@ class CommonHeader extends PureComponent {
               </div>
             </div>
             <ul className="menu-list for-desk">
-              <Menu home="HOME" currentPage={this.state.currentPage} />
+              <Menu
+                home="HOME"
+                currentPage={this.props.currentPage}
+                switchPages={this.props.switchPages}
+              />
             </ul>
           </div>
         </div>

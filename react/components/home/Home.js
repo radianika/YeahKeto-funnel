@@ -1,10 +1,5 @@
 import React, { PureComponent } from 'react';
-import {
-  CommonHeader,
-  CommonFooter,
-  SquareTop,
-  SquareBot,
-} from 'react/components/common/desktop';
+import { SquareTop, SquareBot } from 'react/components/common/desktop';
 
 const Strip = () => (
   <div className="strip-sec">
@@ -53,7 +48,6 @@ class Home extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <CommonHeader currentPage="home" />
         <div className="bnr-sec">
           <div className="container">
             <div className="bnr-lft">
@@ -157,7 +151,7 @@ class Home extends PureComponent {
         <Frame sec="sec2">
           <p className="comn-hdg">OUR PRODUCT RANGE</p>
           <p className="comn-sub-hdg">
-            Explore American Science's Custom Formulations
+            Explore American Science&#8217;s Custom Formulations
           </p>
           <img src="../static/assets/images/comn-hdg-img.png" alt="" />
           <p className="comn-txt">&nbsp;</p>
@@ -233,7 +227,6 @@ class Home extends PureComponent {
             </li>
           </SquareBot>
         </Frame>
-        <CommonFooter />
       </React.Fragment>
     );
   }
