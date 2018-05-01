@@ -1,0 +1,45 @@
+import React from 'react';
+import Head from 'next/head';
+import { MobileConfirmContainer } from 'react/containers';
+import { withReduxSaga } from 'redux/store';
+
+class Confirm extends React.PureComponent {
+  render() {
+    const { props } = this;
+    return (
+      <React.Fragment>
+        <Head>
+          <title>American Science CBD Hemp Oil</title>
+          <meta name="viewport" content="width=640, user-scalable=0" />
+          <meta
+            name="description"
+            content="Premium Quality Hemp Extract Products, Organic and Natural"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/fonts/font-hind.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/fonts/font-awesome.min.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/css/mb-style.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/css/promo/mobile/index.css"
+          />
+        </Head>
+        <MobileConfirmContainer {...props} />
+      </React.Fragment>
+    );
+  }
+}
+
+export default withReduxSaga(Confirm);

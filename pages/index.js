@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { Home } from 'react/components/home';
+import { HomeContainer } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
 
 class Index extends React.PureComponent {
@@ -9,6 +9,7 @@ class Index extends React.PureComponent {
       <React.Fragment>
         <Head>
           <title>American Science</title>
+          <meta name="viewport" content="width=640, user-scalable=0" />
           <meta
             name="description"
             content="Premium Quality Hemp Extract Products, Organic and Natural"
@@ -31,15 +32,10 @@ class Index extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/css/simpleMobileMenu.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
             href="/static/assets/css/style.css"
           />
         </Head>
-        <Home />
+        <HomeContainer />
       </React.Fragment>
     );
   }

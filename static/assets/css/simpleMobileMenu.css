@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1003px) {
+@media only screen and (max-width: 1010px) {
   a.mnuclose {
     display: inline-block;
     width: 250px;
@@ -15,6 +15,7 @@
   }
 
   .mobimenu {
+    transition: 0.5s;
     list-style: none;
     margin: 0px;
     width: 250px;

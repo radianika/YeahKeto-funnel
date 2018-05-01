@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-class FooterModal extends PureComponent {
+class Modal extends PureComponent {
   render() {
     return (
       // eslint-disable-next-line
@@ -60,4 +60,4 @@ class FooterModal extends PureComponent {
   }
 }
 
-export { FooterModal };
+export { Modal };

@@ -24,7 +24,10 @@ export function configureStore(initialState = {}) {
     bindMiddleware([sagaMiddleware]),
   );
 
-  store.sagaTask = sagaMiddleware.run(rootSaga);
+  store.runSagaTask = () => {
+    store.sagaTask = sagaMiddleware.run(rootSaga);
+  };
+  store.runSagaTask();
   return store;
 }
 

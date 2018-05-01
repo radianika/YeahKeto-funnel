@@ -1,13 +1,16 @@
 import React from 'react';
+import { withRouter } from 'next/router';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
 class PromoContact extends React.PureComponent {
+  submitShippingForm = () => {
+    this.props.router.push('/checkout');
+  };
   render() {
     return (
       <form
         id="form-contact"
-        method="POST"
         className="pure-form pure-form-aligned fv-form fv-form-pure"
       >
         <button
@@ -242,7 +245,10 @@ class PromoContact extends React.PureComponent {
           <i style={{ display: 'none' }} className="fv-control-feedback" />
         </div>
         <div className="clearall" />
-        <button type="submit" className="submit pulse sprite5 sprite-submit" />
+        <button
+          onClick={this.submitShippingForm}
+          className="submit pulse sprite5 sprite-submit"
+        />
         <div className="clearall" />
         <div>
           <i className="s1logos sprite3 sprite-s1logos" />
@@ -260,6 +266,8 @@ function mapStateToProps() {
   return {};
 }
 
-const PromoContactDesktop = connect(mapStateToProps)(PromoContactForm);
+const PromoContactConnect = connect(mapStateToProps)(PromoContactForm);
+
+const PromoContactDesktop = withRouter(PromoContactConnect);
 
 export { PromoContactDesktop };
