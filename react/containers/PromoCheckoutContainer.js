@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'next/router';
+import { connect } from 'react-redux';
 import { Footer } from 'react/components/common';
+import { OrderActions } from 'redux/actions';
 import { PromoCheckoutPaymentForm } from 'react/components/promo/desktop';
 import { packages } from 'helpers';
 
@@ -12,8 +14,11 @@ class PromoCheckoutContainer extends React.PureComponent {
     };
   }
   submitBillingForm = values => {
-    console.log({ values });
-    // this.props.router.push('/promo/desktop/upsell-1');
+    this.props.placeOrder({
+      values,
+      pack: this.state.selected,
+      router: this.props.router,
+    });
   };
   render() {
     return (
@@ -169,5 +174,13 @@ class PromoCheckoutContainer extends React.PureComponent {
 }
 
 PromoCheckoutContainer = withRouter(PromoCheckoutContainer);
+
+function mapStateToProps() {
+  return {};
+}
+
+PromoCheckoutContainer = connect(mapStateToProps, { ...OrderActions })(
+  PromoCheckoutContainer,
+);
 
 export { PromoCheckoutContainer };

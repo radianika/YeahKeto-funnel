@@ -16,7 +16,7 @@ class Footer extends PureComponent {
     return (
       <React.Fragment>
         <div className="footer">
-          <div className="container">
+          <div className="contentWrap">
             <p className="ftr-txt">
               <a
                 href="#"

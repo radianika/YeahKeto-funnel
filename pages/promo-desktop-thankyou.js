@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { UpsellDesktopContainer } from 'react/containers';
+import { PromoThankyouDesktop } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
 import { AuthActions, OrderActions } from 'redux/actions';
 
@@ -20,18 +20,12 @@ class SelectPackage extends React.PureComponent {
       <React.Fragment>
         <Head>
           <title>American Science CBD Hemp Oil</title>
-          <meta name="viewport" content="width=640, user-scalable=0" />
           <meta
             name="description"
             content="Premium Quality Hemp Extract Products, Organic and Natural"
           />
-          <link
-            href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700"
-            rel="stylesheet"
-          />
-          <link href="/static/desktop/css/style.css" rel="stylesheet" />
         </Head>
-        <UpsellDesktopContainer {...props} />
+        <PromoThankyouDesktop />
       </React.Fragment>
     );
   }

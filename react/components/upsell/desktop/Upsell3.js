@@ -1,57 +1,81 @@
 import React from 'react';
-import Head from 'next/head';
+import { upsell3Packs } from 'helpers';
 import { Carousel } from './Carousel';
 import { SatisfactionBox } from './SatisfactionBox';
 import { Shortage } from '../Shortage';
-import { UpsellFooter } from '../UpsellFooter';
 
 class Upsell3 extends React.PureComponent {
+  upgrade = productId => {
+    this.props.upgrade(productId, 'thankyou');
+  };
+  scrollToTop = () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   render() {
     return (
       <React.Fragment>
-        <Head>
-          <link rel="stylesheet" type="text/css" href="/static/desktop/v1/css/style.css" />
-        </Head>
         <div className="redbar">
           <p>
             Wait before you go!<br />
-            Do you know someone who wants CBD in capsule form?
+            If muscle and joint pain is what’s torturing you, boost your results{' '}
+            <br />
+            tenfold and get INSTANT relief that will amaze you!
           </p>
         </div>
         <div className="sec1 display">
-          <p className="s1txt1">
-            Although sublingual oil is the fastest form of delivery, some customers have told us
-            that they would rather not have the taste of the oil under their tongue.<br />
+          <p className="s1hding">INTRODUCING OUR NEWEST PRODUCT</p>
+          <p className="s1txt6" style={{ padding: '30px 0 0 0' }}>
+            <span>American Science CBD Warming Rub</span>
             <br />
-            Our <span>CBD Capsules</span> are equally effective, very easy to swallow and leave no
-            taste in your mouth. Perhaps you know someone who is struggling with aches and pains,
-            poor sleep and mental fuzziness? Our CBD Capsules make a loving gift at only $77 per
-            container.
+            with our proprietary blend of 10 all natural active ingredients
           </p>
-          <Carousel />
+          <Carousel
+            upsells={upsell3Packs}
+            onUpgrade={this.upgrade}
+            title="Special introductory pricing reserved for our new customers only:"
+          />
           <div className="clearall" />
-          <SatisfactionBox />
+          <SatisfactionBox onUpgrade={this.scrollToTop} />
           <p className="s1txt3">
             <span>Dear Friend…</span>
             <br />
             <br />
-            First of all, we want to thank you for your order of CBD Oil and welcome you to our
-            family of happy customers.<br />
+            First of all, we want to thank you for your order of CBD Oil and
+            welcome you to our family of happy customers.<br />
             <br />
-            There has been a lot of media buzz about the incredible results people are achieving
-            with our CBD products.<br />
+            There has been a lot of media buzz about the incredible results
+            people are achieving with our CBD products.<br />
             <br />
-            So many people are catching on to the effectiveness of natural solutions to common
-            complaints. And that applies especially to our PURE CBD. Unlike prescription
-            medications, PURE CBD comes with no undesirable side effects.<br />
+            So many people are catching on to the effectiveness of natural
+            solutions to common complaints. And that applies especially to our
+            PURE CBD. Unlike prescription medications, PURE CBD comes with no
+            undesirable side effects.<br />
             <br />
-            All you’ll experience is less aches and pains, better sleep quality, and marked
-            improvements in memory recall and cognitive brain functions.
+            All you’ll experience is less aches and pains, better sleep quality,
+            and marked improvements in memory recall and cognitive brain
+            functions.
           </p>
           <Shortage />
-          <Carousel />
-          <SatisfactionBox />
-          <UpsellFooter />
+          <Carousel
+            upsells={upsell3Packs}
+            onUpgrade={this.upgrade}
+            title="Special introductory pricing reserved for our new customers only:"
+          />
+          <SatisfactionBox onUpgrade={this.scrollToTop} />
+          <div className="clearall" />
+          <a href="#" className="nothank">
+            No thank you. I’ll pass on this huge savings now and realize I will
+            never have this opportunity again.
+          </a>
+          <div className="clearall" />
+          <img
+            src="/static/mobile/v2/images/secure-logos.png"
+            alt=""
+            className="secure-logos"
+          />
         </div>
       </React.Fragment>
     );

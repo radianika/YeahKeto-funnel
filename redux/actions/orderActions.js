@@ -23,3 +23,33 @@ export const getOrderDetailsSuccess = createAction(GET_ORDER_DETAILS_SUCCESS);
 
 export const GET_ORDER_DETAILS_FAILURE = 'GET_ORDER_DETAILS_FAILURE';
 export const getOrderDetailsFailure = createAction(GET_ORDER_DETAILS_FAILURE);
+
+export const PLACE_ORDER = 'PLACE_ORDER';
+export const placeOrder = createAction(PLACE_ORDER);
+
+export const PLACE_ORDER_REQUEST = 'PLACE_ORDER_REQUEST';
+export const placeOrderRequest = createAction(PLACE_ORDER_REQUEST);
+
+export const PLACE_ORDER_SUCCESS = 'PLACE_ORDER_SUCCESS';
+export const placeOrderSuccess = createAction(PLACE_ORDER_SUCCESS);
+
+export const PLACE_ORDER_FAILURE = 'PLACE_ORDER_FAILURE';
+export const placeOrderFailure = createAction(PLACE_ORDER_FAILURE);
+
+export const ADD_UPSELL_TO_ORDER = 'ADD_UPSELL_TO_ORDER';
+export const addUpsellToOrder = createAction(ADD_UPSELL_TO_ORDER);
+
+export const ADD_UPSELL_TO_ORDER_REQUEST = 'ADD_UPSELL_TO_ORDER_REQUEST';
+export const addUpsellToOrderRequest = createAction(
+  ADD_UPSELL_TO_ORDER_REQUEST,
+);
+
+export const ADD_UPSELL_TO_ORDER_SUCCESS = 'ADD_UPSELL_TO_ORDER_SUCCESS';
+export const addUpsellToOrderSuccess = createAction(
+  ADD_UPSELL_TO_ORDER_SUCCESS,
+);
+
+export const ADD_UPSELL_TO_ORDER_FAILURE = 'ADD_UPSELL_TO_ORDER_FAILURE';
+export const addUpsellToOrderFailure = createAction(
+  ADD_UPSELL_TO_ORDER_FAILURE,
+);

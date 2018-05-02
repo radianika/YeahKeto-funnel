@@ -5,13 +5,13 @@ class Carousel extends React.PureComponent {
     const { props } = this;
     return (
       <React.Fragment>
-        <p className="pkg-hding">Special Deal for New Customers Only</p>
+        <p className="pkg-hding">{props.title}</p>
         <div className="pkg-container dsplay">
           {props.upsells.map((upsell, index) => (
-            <div key={String(index)} className={`pkg${index + 1}-box`}>
+            <div key={String(index)} className={upsell.boxClassName}>
               <p className="pkgbox-hding">{upsell.title}</p>
               <img
-                src={`/static/desktop-new/images/${upsell.img}`}
+                src={`/static/desktop/images/${upsell.img}`}
                 alt=""
                 className="pkgbox-btl"
               />
@@ -23,7 +23,11 @@ class Carousel extends React.PureComponent {
                 <br />
                 {upsell.discount}
               </p>
-              <a href="#" className="select">
+              <a
+                href="javascript:void(0)"
+                className="select"
+                onClick={() => props.onUpgrade(upsell.id)}
+              >
                 Select
               </a>
             </div>

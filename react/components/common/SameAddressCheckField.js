@@ -6,18 +6,18 @@ const SameAddressCheckField = props => (
     <br />your shipping address?<br />
     <span>
       <input
-        checked={props.input.value === 'Yes'}
         className="chkbx"
         type="radio"
         value="Yes"
-        {...props.input}
+        checked={props.input.value === 'Yes'}
+        onChange={props.input.onChange}
       />&nbsp;Yes
       <input
-        checked={props.input.value === 'No'}
         className="chkbx"
         type="radio"
         value="No"
-        {...props.input}
+        checked={props.input.value === 'No'}
+        onChange={props.input.onChange}
       />&nbsp;No
     </span>
   </div>

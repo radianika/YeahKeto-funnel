@@ -13,6 +13,8 @@ export default function (state = initialState, action) {
       return ip.setIn(state, ['lead'], action.payload.lead);
     case OrderActions.GET_ORDER_DETAILS_SUCCESS:
       return ip.setIn(state, ['order'], action.payload.order);
+    case OrderActions.PLACE_ORDER_SUCCESS:
+      return ip.setIn(state, ['order'], action.payload.order);
     default:
       return state;
   }

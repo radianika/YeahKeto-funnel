@@ -34,7 +34,7 @@ const getSessionId = async (req, res) => {
     });
     if (idx(sessionResponse, _ => _.response.data)) {
       token = sessionResponse.response.data.data.token;
-      res.cookie('ascbd_session', token, { httpOnly: true });
+      res.cookie('ascbd_session', token, { httpOnly: true, maxAge: 36000 });
     }
   }
   return {
@@ -66,15 +66,37 @@ app.prepare().then(() => {
       sessionId,
     });
   });
-  server.get('/promo/desktop/upsell-1', (req, res) =>
-    app.render(req, res, '/promo-desktop-upsell', { upsell: 1 }),
-  );
-  server.get('/promo/desktop/upsell-2', (req, res) =>
-    app.render(req, res, '/promo-desktop-upsell', { upsell: 2 }),
-  );
-  server.get('/promo/desktop/upsell-3', (req, res) =>
-    app.render(req, res, '/promo-desktop-upsell', { upsell: 3 }),
-  );
+  server.get('/promo/desktop/upsell-1', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/promo-desktop-upsell', {
+      upsell: 1,
+      orderId: req.query.orderId,
+      sessionId,
+    });
+  });
+  server.get('/promo/desktop/upsell-2', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/promo-desktop-upsell', {
+      upsell: 2,
+      orderId: req.query.orderId,
+      sessionId,
+    });
+  });
+  server.get('/promo/desktop/upsell-3', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/promo-desktop-upsell', {
+      upsell: 3,
+      orderId: req.query.orderId,
+      sessionId,
+    });
+  });
+  server.get('/promo/desktop/thankyou', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/promo-desktop-thankyou', {
+      orderId: req.query.orderId,
+      sessionId,
+    });
+  });
   server.get('*', (req, res) => handle(req, res));
   server.listen(port, err => {
     if (err) throw err;
