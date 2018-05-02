@@ -1,16 +1,19 @@
 import axios from 'axios';
 
-const { API_BASE_URL } = process.env;
+const API_BASE_URL = process.env == 'production'
+    ? `https://americanscienceapi-production1.herokuapp.com`
+    : `https://americanscienceapi-staging1.herokuapp.com`;
 
 export function post(location, body) {
   console.log(`post ${API_BASE_URL}${location}`);
   return axios
     .post(`${API_BASE_URL}${location}`, body)
     .then(response => {
-      console.log({ response });
+      // console.log(123, { response });
       return { error: null, response };
     })
     .catch(error => {
+      console.log(error)
       if (error.response) {
         return { error: error.response };
       }

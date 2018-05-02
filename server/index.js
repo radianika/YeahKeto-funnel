@@ -28,7 +28,7 @@ const getSessionId = async (req, res) => {
   const { cookies } = req;
   let token = idx(cookies, _ => _.ascbd_session);
   if (!token) {
-    const sessionResponse = await post('/v1/auth', {
+    const sessionResponse = await post('/api/v1/auth', {
       username: 'larby@starlightgroup.io',
       password: 'P@ssw0rd',
     });
@@ -46,7 +46,8 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 app.prepare().then(() => {
   server.get('/promo/:useragent?', async (req, res) => {
-    const sessionId = await getSessionId(req);
+    const sessionId = await getSessionId(req, res);
+    // console.log(sessionId)
     const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
     if (requestAgent !== req.params.useragent) {
       res.redirect(`/promo/${requestAgent}`);
