@@ -48,10 +48,10 @@ export function get(location) {
   console.log(`get ${API_BASE_URL}${location}`);
   return axios
     .get(`${API_BASE_URL}${location}`)
-    .then(response => {
-      console.log({ response });
-      return { error: null, response };
-    })
+    .then(response =>
+      // console.log({ response });
+      ({ error: null, response }),
+    )
     .catch(error => {
       if (error.response) {
         return { error: error.response };

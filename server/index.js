@@ -59,9 +59,13 @@ app.prepare().then(() => {
       return app.render(req, res, '/promo-mobile', { requestAgent, sessionId });
     }
   });
-  server.get('/promo/desktop/checkout', (req, res) =>
-    app.render(req, res, '/promo-desktop-checkout'),
-  );
+  server.get('/promo/desktop/checkout', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/promo-desktop-checkout', {
+      orderId: req.query.orderId,
+      sessionId,
+    });
+  });
   server.get('/promo/desktop/upsell-1', (req, res) =>
     app.render(req, res, '/promo-desktop-upsell', { upsell: 1 }),
   );

@@ -2,8 +2,18 @@ import React from 'react';
 import Head from 'next/head';
 import { PromoCheckoutContainer } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
+import { AuthActions, OrderActions } from 'redux/actions';
 
 class Promo extends React.PureComponent {
+  static async getInitialProps({ store, isServer, query }) {
+    if (isServer) {
+      store.dispatch(
+        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
+      );
+      store.dispatch(OrderActions.getOrderDetails({ orderId: query.orderId }));
+    }
+  }
+
   render() {
     return (
       <React.Fragment>

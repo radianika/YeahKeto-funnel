@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import { Footer } from 'react/components/common';
-import { PromoShippingFormDesktop } from 'react/components/promo/desktop';
+import { PromoCheckoutPaymentForm } from 'react/components/promo/desktop';
 import { packages } from 'helpers';
 
 class PromoCheckoutContainer extends React.PureComponent {
@@ -13,7 +13,7 @@ class PromoCheckoutContainer extends React.PureComponent {
   }
   submitBillingForm = values => {
     console.log({ values });
-    this.props.router.push('/promo/desktop/upsell-1');
+    // this.props.router.push('/promo/desktop/upsell-1');
   };
   render() {
     return (
@@ -132,37 +132,7 @@ class PromoCheckoutContainer extends React.PureComponent {
                     </p>
                   </div>
                 </div>
-                <div className="chkfrm-mid">
-                  <button
-                    type="submit"
-                    className="fv-hidden-submit"
-                    style={{ display: 'none', height: 0, width: 0 }}
-                  />
-                  <div className="cards">
-                    <span className="card-visa">
-                      <img
-                        src="/static/promo/desktop/images/card-visa.png"
-                        alt=""
-                      />
-                    </span>
-                    <span className="card-mastercard">
-                      <img
-                        src="/static/promo/desktop/images/card-mastercard.png"
-                        alt=""
-                      />
-                    </span>
-                    <span className="card-discover">
-                      <img
-                        src="/static/promo/desktop/images/card-discover.png"
-                        alt=""
-                      />
-                    </span>
-                  </div>
-                  <PromoShippingFormDesktop
-                    onSubmit={this.submitBillingForm}
-                    billing
-                  />
-                </div>
+                <PromoCheckoutPaymentForm onSubmit={this.submitBillingForm} />
                 <div className="chkfrm-btm">
                   <img
                     src="/static/promo/desktop/images/chk-frmbtm.png"

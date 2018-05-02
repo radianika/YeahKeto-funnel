@@ -5,8 +5,20 @@ const SameAddressCheckField = props => (
     Is your billing address the same as
     <br />your shipping address?<br />
     <span>
-      <input className="chkbx" type="radio" {...props.input} />&nbsp;Yes
-      <input className="chkbx" type="radio" {...props.input} />&nbsp;No
+      <input
+        checked={props.input.value === 'Yes'}
+        className="chkbx"
+        type="radio"
+        value="Yes"
+        {...props.input}
+      />&nbsp;Yes
+      <input
+        checked={props.input.value === 'No'}
+        className="chkbx"
+        type="radio"
+        value="No"
+        {...props.input}
+      />&nbsp;No
     </span>
   </div>
 );
