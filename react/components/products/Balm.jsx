@@ -9,8 +9,8 @@ class BalmSlider extends React.PureComponent {
         <p className="prd-sec-1txt3">Premium Cognitive Function</p>
         <p className="comn-txt prd-sec1-txt5">
           Formulated with a range of brain health-supporting ingredients,
-          American Science's Warming balm may help support relief from problems
-          like soreness, inflammation, and irritated skin.
+          American Science&#8217;s Warming balm may help support relief from
+          problems like soreness, inflammation, and irritated skin.
         </p>
         <ul className="prd-sec1-list">
           <li>Reduces age-related decline in cognitive health</li>
@@ -21,7 +21,13 @@ class BalmSlider extends React.PureComponent {
         </ul>
         <div style={{ float: 'left', width: '100%' }}>
           <p className="prd-sec1-txt6">$87.00</p>
-          <a href="cart.html" className="prd-sec1-btn">
+          <a
+            className="prd-sec1-btn"
+            onClick={ev => {
+              ev.preventDefault();
+              this.props.switcher('cart');
+            }}
+          >
             <img src="../static/assets/images/btn.png" alt="" />
           </a>
         </div>

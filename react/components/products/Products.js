@@ -176,11 +176,11 @@ class Products extends PureComponent {
               {(() => {
                 switch (this.state.productType) {
                   case 'oil':
-                    return <OilSlider />;
+                    return <OilSlider switcher={this.props.switcher} />;
                   case 'balm':
-                    return <BalmSlider />;
+                    return <BalmSlider switcher={this.props.switcher} />;
                   case 'cap':
-                    return <CapSlider />;
+                    return <CapSlider switcher={this.props.switcher} />;
                   default:
                     return undefined;
                 }

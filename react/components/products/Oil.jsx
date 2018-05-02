@@ -8,9 +8,10 @@ class OilSlider extends React.PureComponent {
         <p className="prd-sec1-txt2">CBD hemp oil</p>
         <p className="prd-sec-1txt3">Pure Cannabidiol complex</p>
         <p className="comn-txt prd-sec1-txt5">
-          Formulated with high-potency 500MG Hemp Extract, American Science's
-          Hemp Oil is rich in a wide range of cannabinoids (CBD) that have been
-          proven to support mood patterns, joint health, and mental clarity.
+          Formulated with high-potency 500MG Hemp Extract, American
+          Science&#8217;s Hemp Oil is rich in a wide range of cannabinoids (CBD)
+          that have been proven to support mood patterns, joint health, and
+          mental clarity.
         </p>
         <ul className="prd-sec1-list">
           <li>
@@ -24,7 +25,13 @@ class OilSlider extends React.PureComponent {
         </ul>
         <div style={{ float: 'left', width: '100%' }}>
           <p className="prd-sec1-txt6">$69.00</p>
-          <a href="cart.html" className="prd-sec1-btn">
+          <a
+            className="prd-sec1-btn"
+            onClick={ev => {
+              ev.preventDefault();
+              this.props.switcher('cart');
+            }}
+          >
             <img src="../static/assets/images/btn.png" alt="" />
           </a>
         </div>

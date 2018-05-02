@@ -8,10 +8,10 @@ class CapSlider extends React.PureComponent {
         <p className="prd-sec1-txt2">CBD hemp Capsules</p>
         <p className="prd-sec-1txt3">Pure Cannabidiol complex</p>
         <p className="comn-txt prd-sec1-txt5">
-          Formulated with high-potency 300MG Hemp Extract, American Science's
-          Hemp Capsule is rich in a wide range of cannabinoids (CBD) which has
-          been proven to support mood patterns, joint health, and mental
-          clarity.
+          Formulated with high-potency 300MG Hemp Extract, American
+          Science&#8217;s Hemp Capsule is rich in a wide range of cannabinoids
+          (CBD) which has been proven to support mood patterns, joint health,
+          and mental clarity.
         </p>
         <ul className="prd-sec1-list">
           <li>Available in an easy-to-take capsule form</li>
@@ -23,7 +23,13 @@ class CapSlider extends React.PureComponent {
         </ul>
         <div style={{ float: 'left', width: '100%' }}>
           <p className="prd-sec1-txt6">$77.00</p>
-          <a href="cart.html" className="prd-sec1-btn">
+          <a
+            className="prd-sec1-btn"
+            onClick={ev => {
+              ev.preventDefault();
+              this.props.switcher('cart');
+            }}
+          >
             <img src="../static/assets/images/btn.png" alt="" />
           </a>
         </div>
