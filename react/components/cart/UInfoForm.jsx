@@ -100,6 +100,7 @@ class UInfoForm extends PureComponent {
     if (props.fType === 'cart_billing_info') {
       newState.card_number = '';
       newState.month = '';
+      newState.year = '';
       newState.cvv = '';
     }
     this.state = Object.assign({}, newState);
@@ -115,6 +116,14 @@ class UInfoForm extends PureComponent {
     this.setState({
       [e.target.id]: e.target.value,
     });
+    if (
+      this.props.fType === 'cart_user_info' &&
+      e.target.id !== 'agreeChecked'
+    ) {
+      this.props.updater({
+        [e.target.id]: e.target.value,
+      });
+    }
     return undefined;
   }
   switchAgree() {
@@ -500,6 +509,11 @@ class UInfoForm extends PureComponent {
                     src="/static/assets/images/btn.png"
                     className="button-crt"
                     id="cart_submit"
+                    onClick={ev => {
+                      ev.preventDefault();
+                      this.props.submitHandler(this.state);
+                      return false;
+                    }}
                   />
                 </div>
                 <center>

@@ -28,6 +28,9 @@ class ChoseProductsForm extends PureComponent {
     this.setState({
       [`product${productId}Selected`]: e.target.value,
     });
+    this.props.updater({
+      [`product${productId}_qty`]: parseInt(e.target.value, 10),
+    });
   }
   render() {
     return (
