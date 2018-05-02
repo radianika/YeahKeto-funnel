@@ -50,34 +50,7 @@ class PromoSectionOneDesktop extends React.PureComponent {
               </p>
             </div>
             <div className="frm" id="topfrm">
-              <button
-                type="submit"
-                className="fv-hidden-submit"
-                style={{ display: 'none', width: '0px', height: '0px' }}
-              />
-              <div className="sldrtxt" id="fades">
-                <p style={{ opacity: '0.816285' }}>
-                  <i className="sprite2 sprite-eye" /> 13 others are viewing
-                  this offer right now!
-                </p>
-                <p style={{ display: 'none' }}>
-                  <i className="sprite2 sprite-eye" /> 25 people purchased this
-                  in the last hour
-                </p>
-              </div>
-              <div className="frmhdr sprite2 sprite-frmhdr">
-                <p className="frmhd-txt">
-                  TELL US WHERE TO SEND
-                  <br /> <span>Your Bottle Today!</span>
-                </p>
-              </div>
-              <PromoShippingFormDesktop
-                shipping
-                onSubmit={this.submitShippingForm}
-              />
-              <div>
-                <i className="s1logos sprite3 sprite-s1logos" />
-              </div>
+              <PromoShippingFormDesktop onSubmit={this.submitShippingForm} />
             </div>
           </div>
         </div>
