@@ -3,6 +3,13 @@ import { OilSlider, OilHowToUse, OilSquare, OilIngredients } from './Oil';
 import { CapSlider, CapHowToUse, CapSquare, CapIngredients } from './Cap';
 import { BalmSlider, BalmHowToUse, BalmSquare, BalmIngredients } from './Balm';
 
+const urlTemplate = 'http://localhost:3000';
+const links = {
+  oil: `${urlTemplate}/hemp-oil.html`,
+  cap: `${urlTemplate}/hemp-capsule.html`,
+  balm: `${urlTemplate}/warming_balm.html`,
+};
+
 class Products extends PureComponent {
   constructor(props) {
     super(props);
@@ -12,10 +19,23 @@ class Products extends PureComponent {
     };
   }
 
+  componentDidMount() {
+    history.pushState(
+      { id: 'oil' },
+      'American Science Hemp Oil CBD',
+      links.oil,
+    );
+  }
+  componentDidUpdate() {
+    history.pushState(
+      { id: this.state.productType },
+      'American Science Hemp Oil CBD',
+      links[this.state.productType],
+    );
+  }
   sliderClick(e) {
     this.setState({ translate3d: e });
   }
-
   changeType(block) {
     if (block === 'frst') {
       return this.state.productType === 'oil'
