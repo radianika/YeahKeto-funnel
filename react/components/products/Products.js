@@ -1,104 +1,155 @@
 import React, { PureComponent } from 'react';
-
-const Slider = props => (
-  <React.Fragment>
-    <div className="prd-sec1-inr-lft slider-nav-thumbnails slick-initialized slick-slider">
-      <div className="slick-list draggable">
-        <div className="slick-track">
-          <div
-            className="slick-slide slick-current slick-active"
-            data-slick-index="0"
-            aria-hidden="false"
-          >
-            <div>
-              <div className="smll-sec">
-                <img
-                  src={`../static/assets/images/cbd-${props.type}-side1.png`}
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-          <div className="slick-slide" data-slick-index="1" aria-hidden="false">
-            <div>
-              <div className="smll-sec">
-                <img
-                  src={`../static/assets/images/cbd-${props.type}-side2.png`}
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-          <div className="slick-slide" data-slick-index="2" aria-hidden="false">
-            <div>
-              <div className="smll-sec">
-                <img
-                  src={`../static/assets/images/cbd-${props.type}-side3.png`}
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div className="slider slick-initialized slick-slider">
-      <div className="slick-list draggable">
-        <div className="slick-track">
-          <div
-            className="slick-slide slick-current slick-active"
-            data-slick-index="0"
-            aria-hidden="false"
-          >
-            <div>
-              <div className="prd-sec1-inr-rgt">
-                <img
-                  src={`../static/assets/images/cbd-${props.type}-side1.png`}
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            className="slick-slide"
-            data-slick-index="1"
-            aria-hidden="true"
-            tabIndex="-1"
-          >
-            <div>
-              <div className="prd-sec1-inr-rgt">
-                <img
-                  src={`../static/assets/images/cbd-${props.type}-side2.png`}
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            className="slick-slide"
-            data-slick-index="2"
-            aria-hidden="true"
-            tabIndex="-1"
-          >
-            <div>
-              <div className="prd-sec1-inr-rgt">
-                <img
-                  src={`../static/assets/images/cbd-${props.type}-side3.png`}
-                  alt=""
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div className="prd-sec1-rgt">{props.children}</div>
-  </React.Fragment>
-);
+import { OilSlider, OilHowToUse, OilSquare, OilIngredients } from './Oil';
+import { CapSlider, CapHowToUse, CapSquare, CapIngredients } from './Cap';
+import { BalmSlider, BalmHowToUse, BalmSquare, BalmIngredients } from './Balm';
 
 class Products extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      productType: 'oil',
+      translate3d: '0%',
+    };
+  }
+
+  sliderClick(e) {
+    this.setState({ translate3d: e });
+  }
+
+  changeType(block) {
+    if (block === 'frst') {
+      return this.state.productType === 'oil'
+        ? this.setState({ productType: 'cap' })
+        : this.setState({ productType: 'oil' });
+    } else if (block === 'scnd') {
+      return this.state.productType === 'balm'
+        ? this.setState({ productType: 'cap' })
+        : this.setState({ productType: 'balm' });
+    }
+    return '';
+  }
+
+  Slider = props => (
+    <React.Fragment>
+      <div className="prd-sec1-lft">
+        <div className="prd-sec1-inr-lft slider-nav-thumbnails slick-initialized slick-slider">
+          <div className="slick-list draggable">
+            <div className="slick-track">
+              <div
+                className="slick-slide slick-current slick-active"
+                data-slick-index="0"
+                aria-hidden="false"
+              >
+                <div>
+                  <div
+                    className="smll-sec"
+                    onClick={() => this.sliderClick('0%')}
+                  >
+                    <img
+                      src={`../static/assets/images/cbd-${
+                        props.type
+                      }-side1.png`}
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="slick-slide">
+                <div>
+                  <div
+                    className="smll-sec"
+                    onClick={() => this.sliderClick('33.33%')}
+                  >
+                    <img
+                      src={`../static/assets/images/cbd-${
+                        props.type
+                      }-side2.png`}
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="slick-slide">
+                <div>
+                  <div
+                    className="smll-sec"
+                    onClick={() => this.sliderClick('66.66%')}
+                  >
+                    <img
+                      src={`../static/assets/images/cbd-${
+                        props.type
+                      }-side3.png`}
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="slider slick-initialized slick-slider">
+          <div className="slick-list draggable">
+            <div
+              className="slick-track"
+              style={{
+                width: '300%',
+                transition: '0.5s',
+                transform: `translate3d(-${this.state.translate3d}, 0px, 0px)`,
+              }}
+            >
+              <div className="slick-slide" style={{ width: '33.333%' }}>
+                <div>
+                  <div
+                    className="prd-sec1-inr-rgt"
+                    style={{ width: '100%', display: 'inline-block' }}
+                  >
+                    <img
+                      src={`../static/assets/images/cbd-${
+                        props.type
+                      }-side1.png`}
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="slick-slide" style={{ width: '33.333%' }}>
+                <div>
+                  <div
+                    className="prd-sec1-inr-rgt"
+                    style={{ width: '100%', display: 'inline-block' }}
+                  >
+                    <img
+                      src={`../static/assets/images/cbd-${
+                        props.type
+                      }-side2.png`}
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="slick-slide" style={{ width: '33.333%' }}>
+                <div>
+                  <div
+                    className="prd-sec1-inr-rgt"
+                    style={{ width: '100%', display: 'inline-block' }}
+                  >
+                    <img
+                      src={`../static/assets/images/cbd-${
+                        props.type
+                      }-side3.png`}
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="prd-sec1-rgt">{props.children}</div>
+    </React.Fragment>
+  );
+
   render() {
     return (
       <React.Fragment>
@@ -121,35 +172,52 @@ class Products extends PureComponent {
 
         <div className="prd-sec1">
           <div className="container">
-            <Slider type="oil">
-              <p className="prd-sec1-txt1">American science</p>
-              <p className="prd-sec1-txt2">CBD hemp oil</p>
-              <p className="prd-sec-1txt3">Pure Cannabidiol complex</p>
-              <p className="comn-txt prd-sec1-txt5">
-                Formulated with high-potency 500MG Hemp Extract, American
-                Science's Hemp Oil is rich in a wide range of cannabinoids (CBD)
-                that have been proven to support mood patterns, joint health,
-                and mental clarity.{' '}
-              </p>
-              <ul className="prd-sec1-list">
-                <li>
-                  Available in an easy-to-take tincture or herbal drops form
-                </li>
-                <li>
-                  Free from THC, harmful chemicals, pesticides, and synthetics
-                </li>
-                <li>
-                  Made from hemp extract that is organically grown &amp;
-                  extracted in the USA
-                </li>
-              </ul>
-              <div style={{ float: 'left', width: '100%' }}>
-                <p className="prd-sec1-txt6">$69.00</p>
-                <a href="cart.html" className="prd-sec1-btn">
-                  <img src="../static/assets/images/btn.png" alt="" />
-                </a>
+            <this.Slider type={this.state.productType}>
+              {(() => {
+                switch (this.state.productType) {
+                  case 'oil':
+                    return <OilSlider />;
+                  case 'balm':
+                    return <BalmSlider />;
+                  case 'cap':
+                    return <CapSlider />;
+                  default:
+                    return undefined;
+                }
+              })()}
+            </this.Slider>
+          </div>
+
+          <div className="container inline-bl">
+            <div className="prd-sec1-lft">
+              <div className="slider slick-initialized slick-slider">
+                <div className="slick-list draggable">
+                  <div className="slick-track" style={{ width: '100%' }}>
+                    <div
+                      className="slick-slide slick-current slick-active"
+                      data-slick-index="0"
+                      aria-hidden="false"
+                    >
+                      <div>
+                        {(() => {
+                          switch (this.state.productType) {
+                            case 'oil':
+                              return <OilIngredients />;
+                            case 'balm':
+                              return <BalmIngredients />;
+                            case 'cap':
+                              return <CapIngredients />;
+                            default:
+                              return undefined;
+                          }
+                        })()}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </Slider>
+            </div>
+            <div className="prd-sec1-rgt" />
           </div>
         </div>
 
@@ -163,40 +231,29 @@ class Products extends PureComponent {
             <img src="../static/assets/images/comn-hdg-img.png" alt="" />
             <div className="clearall" />
             <img
-              src="../static/assets/images/cbd-oil-label.jpg"
+              src={`../static/assets/images/cbd-${
+                this.state.productType === 'cap'
+                  ? 'capsule'
+                  : this.state.productType
+              }-label.jpg`}
               className="cbd-label-img"
               alt=""
             />
             <div className="howtouse">
               <h3>How to use</h3>
               <ul>
-                <li>
-                  <span>
-                    Step<br />1
-                  </span>
-                  <p>
-                    Take 1 dropper full of the American Science Hemp Oil once a
-                    day.
-                  </p>
-                </li>
-                <li>
-                  <span>
-                    Step<br />2
-                  </span>
-                  <p>
-                    Follow a healthy lifestyle along with a balanced diet &amp;
-                    regular exercise.
-                  </p>
-                </li>
-                <li>
-                  <span>
-                    Step<br />3
-                  </span>
-                  <p>
-                    Follow the supplementation &amp; use daily for best results
-                    and maximum benefits.
-                  </p>
-                </li>
+                {(() => {
+                  switch (this.state.productType) {
+                    case 'oil':
+                      return <OilHowToUse />;
+                    case 'balm':
+                      return <BalmHowToUse />;
+                    case 'cap':
+                      return <CapHowToUse />;
+                    default:
+                      return undefined;
+                  }
+                })()}
               </ul>
             </div>
           </div>
@@ -212,19 +269,21 @@ class Products extends PureComponent {
             <ul className="prd-sec3-list">
               <li>
                 <img
-                  src="../static/assets/images/sec2-prd2.png"
+                  src={
+                    this.state.productType === 'oil'
+                      ? '../static/assets/images/sec2-prd2.png'
+                      : '../static/assets/images/sec2-prd1.png'
+                  }
                   alt=""
                   className="sec2-prd"
                 />
                 <div className="prd-details">
-                  <p className="prd-txt1">American Science</p>
-                  <p className="prd-txt2">CBD hemp capsules</p>
-                  <p className="prd-txt3">Pure Cannabidiol complex</p>
-                  <p className="prd-txt4 comn-txt">
-                    Hemp capsules may help support joint health &amp; may
-                    promote better sleep quality.
-                  </p>
-                  <a href="hemp-capsule.html">
+                  {this.state.productType === 'oil' ? (
+                    <CapSquare />
+                  ) : (
+                    <OilSquare />
+                  )}
+                  <a onClick={() => this.changeType('frst')}>
                     <img
                       src="../static/assets/images/btn.png"
                       alt=""
@@ -235,19 +294,21 @@ class Products extends PureComponent {
               </li>
               <li>
                 <img
-                  src="../static/assets/images/sec2-prd3.png"
+                  src={
+                    this.state.productType === 'balm'
+                      ? '../static/assets/images/sec2-prd2.png'
+                      : '../static/assets/images/sec2-prd3.png'
+                  }
                   alt=""
                   className="sec2-prd"
                 />
                 <div className="prd-details">
-                  <p className="prd-txt1">American Science</p>
-                  <p className="prd-txt2">Warming balm</p>
-                  <p className="prd-txt3">Premium Cognitive Function</p>
-                  <p className="prd-txt4 comn-txt">
-                    Warming balm may help support relief from problems like
-                    soreness, inflammation, and irritated skin.
-                  </p>
-                  <a href="warming_balm.html">
+                  {this.state.productType === 'balm' ? (
+                    <CapSquare />
+                  ) : (
+                    <BalmSquare />
+                  )}
+                  <a onClick={() => this.changeType('scnd')}>
                     <img
                       src="../static/assets/images/btn.png"
                       alt=""
