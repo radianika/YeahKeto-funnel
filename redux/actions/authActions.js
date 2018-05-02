@@ -1,5 +1,8 @@
 import { createAction } from 'redux-actions';
 
+export const SET_UNIQUE_SESSION_ID = 'AUTH/SET_UNIQUE_SESSION_ID';
+export const setUniqueSessionId = createAction(SET_UNIQUE_SESSION_ID);
+
 export const LOGIN = 'AUTH/LOGIN';
 export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST';
 export const LOGIN_FAILURE = 'AUTH/LOGIN_FAILURE';

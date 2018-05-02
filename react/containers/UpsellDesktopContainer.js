@@ -1,45 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { packages } from 'helpers';
-import { Upsell1 } from '../components/upsell/desktop/UpSell1';
+import { Upsell1, Upsell2, Upsell3 } from '../components/upsell/desktop';
 
 class UpsellDesktopContainer extends React.PureComponent {
   render() {
-    const { upsell } = this.props.pack;
+    const { upsell } = this.props.url.query;
     return (
       <div className="contentWrap">
         <div className="header position">
           <img
-            src="/static/desktop/v1/images/logo.png"
+            src="/static/desktop-new/images/logo.png"
             alt=""
             className="logo"
           />
           <img
-            src="/static/desktop/v1/images/step.png"
+            src="/static/desktop-new/images/step.png"
             alt=""
             className="step"
           />
           <img
-            src="/static/desktop/v1/images/seals.png"
+            src="/static/desktop-new/images/seals.png"
             alt=""
             className="seals"
           />
         </div>
-        <Upsell1 />
-        {/* {upsell === 1 && <Upsell1 />}
+        {upsell === 1 && <Upsell1 />}
         {upsell === 2 && <Upsell2 />}
-        {upsell === 3 && <Upsell3 />} */}
+        {upsell === 3 && <Upsell3 />}
       </div>
     );
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  const { productid } = ownProps.url.query;
-  const pack = packages.find(p => String(p.id) === String(productid)) || {};
-  return {
-    pack,
-  };
+function mapStateToProps() {
+  return {};
 }
 
 UpsellDesktopContainer = connect(mapStateToProps)(UpsellDesktopContainer);

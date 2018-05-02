@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { packages } from 'helpers';
-import { Upsell1, Upsell2, Upsell3 } from '../components/upsell';
+import { Upsell1, Upsell2, Upsell3 } from 'react/components/upsell/mobile';
 
 class UpsellMobileContainer extends React.PureComponent {
   render() {
-    const { upsell } = this.props.pack;
+    const { upsell } = this.props.url.query;
     return (
       <div className="contentWrap">
         <div className="header position">
@@ -23,12 +22,8 @@ class UpsellMobileContainer extends React.PureComponent {
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  const { productid } = ownProps.url.query;
-  const pack = packages.find(p => String(p.id) === String(productid));
-  return {
-    pack,
-  };
+function mapStateToProps() {
+  return {};
 }
 
 UpsellMobileContainer = connect(mapStateToProps)(UpsellMobileContainer);

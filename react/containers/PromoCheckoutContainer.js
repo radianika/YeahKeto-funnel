@@ -1,9 +1,20 @@
 import React from 'react';
+import { withRouter } from 'next/router';
 import { Footer } from 'react/components/common';
-import { PromoCheckoutPaymentForm } from 'react/components/promo/desktop';
+import { PromoShippingFormDesktop } from 'react/components/promo/desktop';
 import { packages } from 'helpers';
 
 class PromoCheckoutContainer extends React.PureComponent {
+  constructor() {
+    super();
+    this.state = {
+      selected: packages[0],
+    };
+  }
+  submitBillingForm = values => {
+    console.log({ values });
+    this.props.router.push('/promo/desktop/upsell-1');
+  };
   render() {
     return (
       <React.Fragment>
@@ -35,8 +46,10 @@ class PromoCheckoutContainer extends React.PureComponent {
                   <div key={pack.id} className="pkg">
                     <a
                       href="javascript:void(0);"
-                      className=""
-                      data-productid="154"
+                      className={pack.id === this.state.selected.id && 'picked'}
+                      onClick={() => {
+                        this.setState({ selected: pack });
+                      }}
                     >
                       <div className="pkg-hdbox">
                         <p className="pkg-hding">{pack.title}</p>
@@ -56,9 +69,12 @@ class PromoCheckoutContainer extends React.PureComponent {
                         </div>
                         <div className="pkg-contboxrgt">
                           <p className="pkgtype-hding">most popular package</p>
-                          <p className="pkgcont-hding">REGULAR PRICE $345.00</p>
-                          <p className="pkgcont-price" data-price="195.00">
-                            $39.00<span>/ea</span>
+                          <p className="pkgcont-hding">
+                            REGULAR PRICE {pack.regularPrice}
+                          </p>
+                          <p className="pkgcont-price">
+                            {pack.price}
+                            <span>/ea</span>
                           </p>
                           <div className="select-btn" />
                           <div
@@ -89,14 +105,15 @@ class PromoCheckoutContainer extends React.PureComponent {
                     <ul className="smrylist">
                       <li>
                         american science
-                        <br /> <span id="pkg-name">Buy 1 Month Supply</span>
+                        <br />{' '}
+                        <span id="pkg-name">{this.state.selected.title}</span>
                       </li>
                       <li id="" style={{ fontWeight: 400 }} />
                       <li>Shipping and Handling</li>
                       <li id="shp">$0.00</li>
                       <li>Total</li>
                       <li id="total" style={{ fontWeight: 600 }}>
-                        $69.00
+                        {this.state.selected.price}
                       </li>
                     </ul>
                   </div>
@@ -115,7 +132,37 @@ class PromoCheckoutContainer extends React.PureComponent {
                     </p>
                   </div>
                 </div>
-                <PromoCheckoutPaymentForm />
+                <div className="chkfrm-mid">
+                  <button
+                    type="submit"
+                    className="fv-hidden-submit"
+                    style={{ display: 'none', height: 0, width: 0 }}
+                  />
+                  <div className="cards">
+                    <span className="card-visa">
+                      <img
+                        src="/static/promo/desktop/images/card-visa.png"
+                        alt=""
+                      />
+                    </span>
+                    <span className="card-mastercard">
+                      <img
+                        src="/static/promo/desktop/images/card-mastercard.png"
+                        alt=""
+                      />
+                    </span>
+                    <span className="card-discover">
+                      <img
+                        src="/static/promo/desktop/images/card-discover.png"
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                  <PromoShippingFormDesktop
+                    onSubmit={this.submitBillingForm}
+                    billing
+                  />
+                </div>
                 <div className="chkfrm-btm">
                   <img
                     src="/static/promo/desktop/images/chk-frmbtm.png"
@@ -150,5 +197,7 @@ class PromoCheckoutContainer extends React.PureComponent {
     );
   }
 }
+
+PromoCheckoutContainer = withRouter(PromoCheckoutContainer);
 
 export { PromoCheckoutContainer };

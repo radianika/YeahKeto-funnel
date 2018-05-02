@@ -7,3 +7,4 @@ export * from './PromoSectionFiveDesktop';
 export * from './PromoSectionSixDesktop';
 export * from './PromoSectionSevenDesktop';
 export * from './PromoCheckoutPaymentForm';
+export * from './PromoShippingFormDesktop';

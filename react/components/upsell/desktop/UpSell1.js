@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { upsells1 } from 'helpers';
 import { Carousel } from './Carousel';
 import { SatisfactionBox } from './SatisfactionBox';
 import { Shortage } from '../Shortage';
@@ -34,7 +35,7 @@ class Upsell1 extends React.PureComponent {
             fuzziness? Our CBD Capsules make a loving gift at only $77 per
             container.
           </p>
-          <Carousel />
+          <Carousel upsells={upsells1} />
           <div className="clearall" />
           <SatisfactionBox />
           <p className="s1txt3">
@@ -57,7 +58,7 @@ class Upsell1 extends React.PureComponent {
             functions.
           </p>
           <Shortage />
-          <Carousel />
+          <Carousel upsells={upsells1} />
           <SatisfactionBox />
           <UpsellFooter />
         </div>

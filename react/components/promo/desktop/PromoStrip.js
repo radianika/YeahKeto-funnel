@@ -3,7 +3,6 @@ import React from 'react';
 class PromoStrip extends React.PureComponent {
   render() {
     const { props } = this;
-    console.log({ props });
     return (
       <div className="strip dsplay sprite5 sprite-strip">
         <div className="container position">
