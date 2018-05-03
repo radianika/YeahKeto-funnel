@@ -81,7 +81,7 @@ class Cart extends PureComponent {
       body.phoneNumber = sFormState.billing_cart_phone_number;
     }
     axios
-      .post('/api/v1/konnektive/lead', body)
+      .post('/v1/konnektive/lead', body)
       .then(result => {
         console.log(result);
       })

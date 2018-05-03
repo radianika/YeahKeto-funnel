@@ -30,7 +30,7 @@ function* submitLeadsForm(action) {
     };
     const sessionId = yield select(getSession);
     setAuthHeaders(sessionId);
-    const apiResponse = yield post('/api/v1/konnektive/lead', {
+    const apiResponse = yield post('/v1/konnektive/lead', {
       ...values,
       shipping,
     });
@@ -50,7 +50,7 @@ function* getOrderDetails(action) {
     const { orderId } = action.payload;
     const sessionId = yield select(getSession);
     setAuthHeaders(sessionId);
-    const apiResponse = yield get(`/api/v1/konnektive/order/${orderId}`);
+    const apiResponse = yield get(`/v1/konnektive/order/${orderId}`);
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data.data[0];
       yield put(OrderActions.getOrderDetailsSuccess({ order }));
@@ -100,7 +100,7 @@ function* placeOrder(action) {
         postalCode,
       },
     };
-    const apiResponse = yield post('/api/v1/konnektive/order', payload);
+    const apiResponse = yield post('/v1/konnektive/order', payload);
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order }));
@@ -124,7 +124,7 @@ function* addUpsellToOrder(action) {
       productId,
       productQty: 1,
     };
-    const apiResponse = yield post('/api/v1/konnektive/upsale', payload);
+    const apiResponse = yield post('/v1/konnektive/upsale', payload);
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const newOrder = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order: newOrder }));
