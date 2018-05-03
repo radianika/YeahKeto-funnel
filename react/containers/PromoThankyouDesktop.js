@@ -7,7 +7,7 @@ class PromoThankyouDesktop extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
-        <h1>Thank You Mobile</h1>
+        <h1>Thank You Desktop</h1>
         <hr />
         {JSON.stringify(this.props.order)}
       </React.Fragment>
