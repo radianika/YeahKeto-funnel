@@ -20,22 +20,25 @@ class Products extends PureComponent {
   }
 
   componentDidMount() {
-    history.pushState(
+    /* history.pushState(
       { id: 'oil' },
       'American Science Hemp Oil CBD',
       links.oil,
-    );
+    ); */
   }
+
   componentDidUpdate() {
-    history.pushState(
+    /* history.pushState(
       { id: this.state.productType },
       'American Science Hemp Oil CBD',
       links[this.state.productType],
-    );
+    ); */
   }
+
   sliderClick(e) {
     this.setState({ translate3d: e });
   }
+
   changeType(block) {
     if (block === 'frst') {
       return this.state.productType === 'oil'
