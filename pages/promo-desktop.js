@@ -7,9 +7,7 @@ import { AuthActions } from 'redux/actions';
 class Promo extends React.PureComponent {
   static async getInitialProps({ store, isServer, query }) {
     if (isServer) {
-      store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
-      );
+      store.dispatch(AuthActions.setUniqueSessionId({ sessionId: query.sessionId }));
     }
   }
 
@@ -18,36 +16,16 @@ class Promo extends React.PureComponent {
       <React.Fragment>
         <Head>
           <title>American Science CBD Hemp Oil</title>
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/fonts/font-hind.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/fonts/font-awesome.min.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/formvalidation/formvalidation.css"
-          />
+          <link rel="stylesheet" type="text/css" href="/static/assets/fonts/font-hind.css" />
+          <link rel="stylesheet" type="text/css" href="/static/assets/fonts/font-awesome.min.css" />
+          <link rel="stylesheet" type="text/css" href="/static/assets/css/formvalidation.min.css" />
           <link
             rel="stylesheet"
             type="text/css"
             href="/static/assets/css/promo/desktop/index.css"
           />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/promo-style.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/sprites-style.css"
-          />
+          <link rel="stylesheet" type="text/css" href="/static/assets/css/promo-style.css" />
+          <link rel="stylesheet" type="text/css" href="/static/assets/css/sprites-style.css" />
         </Head>
         <PromoDesktopContainer />
       </React.Fragment>
