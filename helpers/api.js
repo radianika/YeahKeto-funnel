@@ -1,9 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL =
-  process.env == 'production'
-    ? 'https://americanscienceapi-production1.herokuapp.com'
-    : 'https://americanscienceapi-staging1.herokuapp.com';
+const { API_BASE_URL } = process.env;
 
 export function post(location, body) {
   console.log(`post ${API_BASE_URL}${location}`);
