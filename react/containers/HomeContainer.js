@@ -228,30 +228,7 @@ class HomeContainer extends PureComponent {
             </li>
           </ul>
         </Frame>
-        <Footer>
-          <p className="ftr-txt w40 mtop2">
-            We accept:
-            <img
-              src="../static/assets/images/mc-v.png"
-              alt="We accept VISA, MasterCard"
-            />
-          </p>
-          <p className="ftr-txt just">
-            <br />This product is not for use by or sale to persons under the
-            age of 18. This product should be used only as directed on the
-            label. It should not be used if you are pregnant or nursing. Consult
-            with a physician before use if you have a serious medical condition
-            or use prescription medications. A Doctor's advice should be sought
-            before using this and any supplemental dietary product. All
-            trademarks and copyrights are property of their respective owners
-            and are not affiliated with nor do they endorse this product. These
-            statements have not been evaluated by the FDA. This product is not
-            intended to diagnose, treat, cure or prevent any disease. Individual
-            weight loss results will vary. By using this site, you agree to
-            follow the Privacy Policy and all Terms & Conditions printed on this
-            site. Void Where Prohibited by Law.
-          </p>
-        </Footer>
+        <Footer />
       </React.Fragment>
     );
   }

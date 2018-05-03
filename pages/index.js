@@ -26,8 +26,8 @@ class Index extends React.PureComponent {
     switch (this.state.currentPage) {
       case 'products':
         return <Products switcher={this.switchPages} />;
-      case 'faq':
-        return <Faq />;
+      // case 'faq':
+      //   return <Faq />;
       case 'cart':
         return <Cart />;
       case 'contact':

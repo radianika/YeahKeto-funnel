@@ -12,18 +12,44 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "react/**/*.js": ["prettier --write", "./node_modules/.bin/eslint --fix", "git add"],
-    "redux/**/*.js": ["prettier --write", "./node_modules/.bin/eslint --fix", "git add"],
-    "pages/**/*.js": ["prettier --write", "./node_modules/.bin/eslint --fix", "git add"],
-    "react/**/*.jsx": ["prettier --write", "./node_modules/.bin/eslint --fix", "git add"],
-    "redux/**/*.jsx": ["prettier --write", "./node_modules/.bin/eslint --fix", "git add"],
-    "pages/**/*.jsx": ["prettier --write", "./node_modules/.bin/eslint --fix", "git add"],
-    "**/*.css": ["prettier --write", "git add"]
+    "react/**/*.js": [
+      "prettier --write",
+      "./node_modules/.bin/eslint --fix",
+      "git add"
+    ],
+    "redux/**/*.js": [
+      "prettier --write",
+      "./node_modules/.bin/eslint --fix",
+      "git add"
+    ],
+    "pages/**/*.js": [
+      "prettier --write",
+      "./node_modules/.bin/eslint --fix",
+      "git add"
+    ],
+    "react/**/*.jsx": [
+      "prettier --write",
+      "./node_modules/.bin/eslint --fix",
+      "git add"
+    ],
+    "redux/**/*.jsx": [
+      "prettier --write",
+      "./node_modules/.bin/eslint --fix",
+      "git add"
+    ],
+    "pages/**/*.jsx": [
+      "prettier --write",
+      "./node_modules/.bin/eslint --fix",
+      "git add"
+    ],
+    "**/*.css": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
-    "url":
-      "git+https://Nishchit14@github.com/starlightgroup/American-Science-CBD-ReactJS-App-v2.git"
+    "url": "git+https://Nishchit14@github.com/starlightgroup/American-Science-CBD-ReactJS-App-v2.git"
   },
   "author": "",
   "license": "ISC",

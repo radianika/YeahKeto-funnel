@@ -11,7 +11,7 @@ const Menu = () => (
       <ActiveLink href="/products">Products</ActiveLink>
     </li>
     <li>
-      <ActiveLink href="/faq">FAQ's</ActiveLink>
+      <ActiveLink href="/faqs">FAQ's</ActiveLink>
     </li>
     <li>
       <ActiveLink href="/cart">Cart</ActiveLink>
