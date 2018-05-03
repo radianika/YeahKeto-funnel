@@ -35,6 +35,7 @@ module.exports = {
     'function-paren-newline': 0,
     'arrow-parens': 0,
     'react/no-unescaped-entities': 1,
+    'no-useless-escape': 0,
   },
   settings: {
     'import/resolver': {
