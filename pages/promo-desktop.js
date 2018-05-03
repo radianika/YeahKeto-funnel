@@ -18,7 +18,11 @@ class Promo extends React.PureComponent {
           <title>American Science CBD Hemp Oil</title>
           <link rel="stylesheet" type="text/css" href="/static/assets/fonts/font-hind.css" />
           <link rel="stylesheet" type="text/css" href="/static/assets/fonts/font-awesome.min.css" />
-          <link rel="stylesheet" type="text/css" href="/static/assets/css/formvalidation.min.css" />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/css/formvalidation/formValidation.min.css"
+          />
           <link
             rel="stylesheet"
             type="text/css"

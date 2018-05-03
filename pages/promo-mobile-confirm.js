@@ -7,9 +7,7 @@ import { AuthActions, OrderActions } from 'redux/actions';
 class Confirm extends React.PureComponent {
   static async getInitialProps({ store, isServer, query }) {
     if (isServer) {
-      store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
-      );
+      store.dispatch(AuthActions.setUniqueSessionId({ sessionId: query.sessionId }));
       store.dispatch(OrderActions.getOrderDetails({ orderId: query.orderId }));
     }
   }
@@ -24,25 +22,14 @@ class Confirm extends React.PureComponent {
             name="description"
             content="Premium Quality Hemp Extract Products, Organic and Natural"
           />
+          <link rel="stylesheet" type="text/css" href="/static/assets/fonts/font-hind.css" />
+          <link rel="stylesheet" type="text/css" href="/static/assets/fonts/font-awesome.min.css" />
+          <link rel="stylesheet" type="text/css" href="/static/assets/css/mb-style.css" />
+          <link rel="stylesheet" type="text/css" href="/static/assets/css/promo/mobile/index.css" />
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/fonts/font-hind.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/fonts/font-awesome.min.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/mb-style.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/promo/mobile/index.css"
+            href="/static/assets/css/formvalidation/formValidation.min.css"
           />
         </Head>
         <MobileConfirmContainer {...props} />
