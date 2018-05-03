@@ -6,7 +6,7 @@ import { Shortage } from '../Shortage';
 
 class Upsell3 extends React.PureComponent {
   upgrade = productId => {
-    this.props.upgrade(productId, 'thankyou');
+    this.props.upgrade(productId, '/promo/mobile/thankyou');
   };
   scrollToTop = () => {
     window.scroll({

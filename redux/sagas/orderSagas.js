@@ -29,7 +29,6 @@ function* submitLeadsForm(action) {
       postalCode,
     };
     const sessionId = yield select(getSession);
-    console.log({ sessionId });
     setAuthHeaders(sessionId);
     const apiResponse = yield post('/api/v1/konnektive/lead', {
       ...values,
@@ -127,10 +126,9 @@ function* addUpsellToOrder(action) {
     };
     const apiResponse = yield post('/api/v1/konnektive/upsale', payload);
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
-      console.log({ apiResponse });
       const newOrder = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order: newOrder }));
-      router.push(`/promo/desktop/${sendTo}?orderId=${order.orderId}`);
+      router.push(`${sendTo}?orderId=${order.orderId}`);
     }
   } catch (error) {
     console.log({ error });

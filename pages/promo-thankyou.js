@@ -1,10 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-import { PromoThankyouDesktop } from 'react/containers';
+import { PromoThankyouDesktop, PromoThankyouMobile } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
 import { AuthActions, OrderActions } from 'redux/actions';
 
-class SelectPackage extends React.PureComponent {
+class PromoThankyou extends React.PureComponent {
   static async getInitialProps({ store, isServer, query }) {
     if (isServer) {
       store.dispatch(
@@ -16,6 +16,7 @@ class SelectPackage extends React.PureComponent {
 
   render() {
     const { props } = this;
+    const { device } = props.url.query;
     return (
       <React.Fragment>
         <Head>
@@ -24,11 +25,15 @@ class SelectPackage extends React.PureComponent {
             name="description"
             content="Premium Quality Hemp Extract Products, Organic and Natural"
           />
+          {device === 'mobile' && (
+            <meta name="viewport" content="width=640, user-scalable=0" />
+          )}
         </Head>
-        <PromoThankyouDesktop />
+        {device === 'desktop' && <PromoThankyouDesktop />}
+        {device === 'mobile' && <PromoThankyouMobile />}
       </React.Fragment>
     );
   }
 }
 
-export default withReduxSaga(SelectPackage);
+export default withReduxSaga(PromoThankyou);

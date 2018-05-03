@@ -4,7 +4,7 @@ import { SatisfactionBox } from './SatisfactionBox';
 
 class Upsell1 extends React.PureComponent {
   upgrade = () => {
-    this.props.upgrade(155, 'upsell-2');
+    this.props.upgrade(155, '/promo/desktop/upsell-2');
   };
   render() {
     return (

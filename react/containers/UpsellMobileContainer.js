@@ -19,18 +19,22 @@ class UpsellMobileContainer extends React.PureComponent {
         <div className="header position">
           <img src="/static/mobile/images/logo.png" alt="" className="logo" />
         </div>
-        {upsell === 1 && <Upsell1 />}
-        {upsell === 2 && <Upsell2 />}
-        {upsell === 3 && <Upsell3 />}
+        {upsell === 1 && <Upsell1 upgrade={this.upgrade} />}
+        {upsell === 2 && <Upsell2 upgrade={this.upgrade} />}
+        {upsell === 3 && <Upsell3 upgrade={this.upgrade} />}
       </div>
     );
   }
 }
 
+UpsellMobileContainer = withRouter(UpsellMobileContainer);
+
 function mapStateToProps() {
   return {};
 }
 
-UpsellMobileContainer = connect(mapStateToProps)(UpsellMobileContainer);
+UpsellMobileContainer = connect(mapStateToProps, { ...OrderActions })(
+  UpsellMobileContainer,
+);
 
 export { UpsellMobileContainer };

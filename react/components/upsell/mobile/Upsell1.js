@@ -1,10 +1,12 @@
 import React from 'react';
 import { Coupon } from '../desktop/Coupon';
 import { SatisfactionBox } from './SatisfactionBox';
-import { Shortage } from '../Shortage';
 import { UpsellFooter } from '../UpsellFooter';
 
 class Upsell1 extends React.PureComponent {
+  upgrade = () => {
+    this.props.upgrade(155, '/promo/mobile/upsell-2');
+  };
   render() {
     return (
       <React.Fragment>

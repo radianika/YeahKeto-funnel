@@ -47,7 +47,7 @@ const upsell2Packs = [
 
 const upsell3Packs = [
   {
-    id: 156,
+    id: 158,
     title: 'Add 1 Container',
     img: 'jar1.jpg',
     boxTxt: (
@@ -61,7 +61,7 @@ const upsell3Packs = [
     boxClassName: 'pkg1-box',
   },
   {
-    id: 157,
+    id: 159,
     title: 'Add 2 Containers',
     img: 'jar2.jpg',
     boxTxt: (
@@ -75,7 +75,7 @@ const upsell3Packs = [
     boxClassName: 'pkg1-box',
   },
   {
-    id: 158,
+    id: 160,
     title: 'Add 3 Containers',
     img: 'jar3.jpg',
     boxTxt: (

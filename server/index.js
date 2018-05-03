@@ -92,9 +92,10 @@ app.prepare().then(() => {
   });
   server.get('/promo/desktop/thankyou', async (req, res) => {
     const sessionId = await getSessionId(req, res);
-    return app.render(req, res, '/promo-desktop-thankyou', {
+    return app.render(req, res, '/promo-thankyou', {
       orderId: req.query.orderId,
       sessionId,
+      device: 'desktop',
     });
   });
   server.get('/promo/mobile/shipping', async (req, res) => {
@@ -144,9 +145,10 @@ app.prepare().then(() => {
   });
   server.get('/promo/mobile/thankyou', async (req, res) => {
     const sessionId = await getSessionId(req, res);
-    return app.render(req, res, '/promo-mobile-thankyou', {
+    return app.render(req, res, '/promo-thankyou', {
       orderId: req.query.orderId,
       sessionId,
+      device: 'mobile',
     });
   });
   server.get('*', (req, res) => handle(req, res));

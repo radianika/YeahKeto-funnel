@@ -3,7 +3,7 @@ import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
 
-class PromoThankyouDesktop extends React.PureComponent {
+class PromoThankyouMobile extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
@@ -15,7 +15,7 @@ class PromoThankyouDesktop extends React.PureComponent {
   }
 }
 
-PromoThankyouDesktop = withRouter(PromoThankyouDesktop);
+PromoThankyouMobile = withRouter(PromoThankyouMobile);
 
 function mapStateToProps(state) {
   return {
@@ -23,8 +23,8 @@ function mapStateToProps(state) {
   };
 }
 
-PromoThankyouDesktop = connect(mapStateToProps, { ...OrderActions })(
-  PromoThankyouDesktop,
+PromoThankyouMobile = connect(mapStateToProps, { ...OrderActions })(
+  PromoThankyouMobile,
 );
 
-export { PromoThankyouDesktop };
+export { PromoThankyouMobile };

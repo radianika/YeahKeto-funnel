@@ -9,3 +9,4 @@ export * from './UpsellMobileContainer';
 export * from './PromoCheckoutContainer';
 export * from './UpsellDesktopContainer';
 export * from './PromoThankyouDesktop';
+export * from './PromoThankyouMobile';
