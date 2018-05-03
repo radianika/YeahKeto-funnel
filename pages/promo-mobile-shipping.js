@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import { PromoMobileContainer } from 'react/containers';
-import { withReduxSaga } from 'redux/store';
+import { MobileShippingContainer } from 'react/containers';
 import { AuthActions } from 'redux/actions';
+import { withReduxSaga } from 'redux/store';
 
 class Promo extends React.PureComponent {
   static async getInitialProps({ store, isServer, query }) {
@@ -12,7 +12,6 @@ class Promo extends React.PureComponent {
       );
     }
   }
-
   render() {
     return (
       <React.Fragment>
@@ -31,6 +30,11 @@ class Promo extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
+            href="/static/assets/fonts/font-awesome.min.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
             href="/static/assets/css/promo/mobile/index.css"
           />
           <link
@@ -41,10 +45,10 @@ class Promo extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/css/mb-sprites-style.css"
+            href="/static/assets/css/formvalidation/formvalidation.min.css"
           />
         </Head>
-        <PromoMobileContainer />
+        <MobileShippingContainer />
       </React.Fragment>
     );
   }

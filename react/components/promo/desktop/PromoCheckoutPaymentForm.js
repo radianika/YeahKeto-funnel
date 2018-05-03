@@ -6,7 +6,7 @@ import {
   SelectField,
   SameAddressCheckField,
 } from 'react/components/common';
-import { stateslist } from 'helpers';
+import { stateslist, billingFormValidator } from 'helpers';
 
 class PromoCheckoutPaymentForm extends React.PureComponent {
   render() {
@@ -174,26 +174,9 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
   }
 }
 
-function validate(values) {
-  const errors = {};
-  if (!values.cardNumber) {
-    errors.cardNumber = 'Card number is required';
-  }
-  if (!values.cardMonth) {
-    errors.cardMonth = 'Month is required';
-  }
-  if (!values.cardYear) {
-    errors.cardYear = 'Year is required';
-  }
-  if (!values.cardSecurityCode) {
-    errors.cardSecurityCode = 'Security Code is required';
-  }
-  return errors;
-}
-
 PromoCheckoutPaymentForm = reduxForm({
   form: 'BillingForm',
-  validate,
+  validate: billingFormValidator,
 })(PromoCheckoutPaymentForm);
 
 const selector = formValueSelector('BillingForm');

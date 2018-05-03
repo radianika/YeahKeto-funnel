@@ -18,6 +18,7 @@ class PromoCheckoutContainer extends React.PureComponent {
       values,
       pack: this.state.selected,
       router: this.props.router,
+      nextUrl: '/promo/desktop/upsell-1',
     });
   };
   render() {

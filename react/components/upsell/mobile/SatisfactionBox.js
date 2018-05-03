@@ -3,7 +3,7 @@ import React from 'react';
 const SatisfactionBox = () => (
   <div className="satisfaction-box">
     <img
-      src="/static/mobile/v1/images/satisfaction-seal.jpg"
+      src="/static/mobile/images/satisfaction-seal.jpg"
       alt=""
       className="satisfaction-seal"
     />
@@ -17,7 +17,7 @@ const SatisfactionBox = () => (
     </p>
     <div className="upgrade-btn">
       <a href="#">
-        <img src="/static/mobile/v1/images/upgrade-btn.png" alt="" />
+        <img src="/static/mobile/images/upgrade-btn.png" alt="" />
       </a>
     </div>
   </div>

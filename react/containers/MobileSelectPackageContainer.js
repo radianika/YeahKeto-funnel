@@ -5,7 +5,10 @@ import { packages } from 'helpers';
 
 class MobileSelectPackageContainer extends React.PureComponent {
   selectPackage = pack => {
-    this.props.router.push(`/confirm-mobile?productid=${pack.id}`);
+    const { orderId } = this.props.url.query;
+    this.props.router.push(
+      `/promo/mobile/confirm?orderId=${orderId}&productId=${pack.id}`,
+    );
   };
 
   render() {

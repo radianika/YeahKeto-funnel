@@ -1,13 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'next/router';
-import { Footer } from 'react/components/common';
-import { packages } from 'helpers';
+import { Footer, TextField, SelectField } from 'react/components/common';
+import { stateslist, packages, billingFormValidator } from 'helpers';
+import { OrderActions } from 'redux/actions';
 
 class MobileConfirmContainer extends React.PureComponent {
-  confirmOrder = () => {
-    const { productid } = this.props.url.query;
-    this.props.router.push(`/upsell-mobile?productid=${productid}`);
+  constructor() {
+    super();
+    this.state = {
+      isSame: true,
+    };
+  }
+
+  confirmOrder = values => {
+    const { pack, router } = this.props;
+    this.props.placeOrder({
+      values,
+      pack,
+      router,
+      nextUrl: '/promo/mobile/upsell-1',
+    });
   };
 
   render() {
@@ -70,9 +84,7 @@ class MobileConfirmContainer extends React.PureComponent {
               <div className="trialfrmmid">
                 <form
                   id="form-checkout"
-                  method="POST"
                   className="pure-form pure-form-aligned fv-form fv-form-pure"
-                  noValidate="novalidate"
                 >
                   <button
                     type="submit"
@@ -81,8 +93,15 @@ class MobileConfirmContainer extends React.PureComponent {
                   />
                   <div className="sameas">
                     <p>
-                      <input id="checkbox" type="checkbox" checked="" /> Billing
-                      address is the same as shipping
+                      <input
+                        id="checkbox"
+                        type="checkbox"
+                        checked={this.state.isSame}
+                        onChange={() => {
+                          this.setState({ isSame: !this.state.isSame });
+                        }}
+                      />{' '}
+                      Billing address is the same as shipping
                     </p>
                     <div className="cards">
                       <span className="card-visa">
@@ -106,220 +125,167 @@ class MobileConfirmContainer extends React.PureComponent {
                     </div>
                   </div>
                   <div className="clearall" />
-                  <div style={{ display: 'none' }} id="billingDiv">
-                    <div className="pure-control-group frmelmnts2 fv-has-feedback">
-                      <label>
-                        First Name<span>*</span>:
-                      </label>
-                      <input
+                  {!this.state.isSame && (
+                    <div id="billingDiv">
+                      <Field
+                        containerClass="frmelmnts1"
+                        component={TextField}
                         name="firstName"
-                        type="text"
-                        autoCorrect="off"
-                        autoComplete="name"
-                        placeholder="First name"
-                        data-fv-field="firstName"
+                        label="First Name"
+                        placeholder="First Name"
                       />
-                    </div>
-                    <div className="pure-control-group frmelmnts2 fv-has-feedback">
-                      <label>
-                        Last Name<span>*</span>:
-                      </label>
-                      <input
+                      <Field
+                        containerClass="frmelmnts3"
+                        component={TextField}
                         name="lastName"
-                        type="text"
-                        autoCorrect="off"
-                        autoComplete="name"
-                        placeholder="First name"
-                        data-fv-field="lastName"
+                        label="Last Name"
+                        placeholder="Last Name"
                       />
-                    </div>
-                    <div className="clearfix" />
-                    <div className="pure-control-group frmelmnts2 fv-has-feedback">
-                      <label>
-                        Address Line 1<span>*</span>:
-                      </label>
-                      <input
-                        type="text"
+                      <div className="clearfix" />
+                      <Field
+                        containerClass="frmelmnts2"
+                        component={TextField}
                         name="address"
-                        id="address_1"
-                        autoCorrect="off"
-                        autoComplete="off"
-                        onFocus={this.geolocate}
+                        label="Adress Line 1"
                         placeholder="Street and number, P.O. box, c/o."
-                        data-fv-field="address"
                       />
-                    </div>
-                    <div className="pure-control-group frmelmnts2 fv-has-feedback">
-                      <label>Address Line 2:</label>
-                      <input
-                        type="text"
+                      <Field
+                        containerClass="frmelmnts2"
+                        component={TextField}
                         name="address2"
-                        id="address_2"
-                        autoCorrect="off"
-                        autoComplete="address-line2"
+                        label="Adress Line 2"
                         placeholder="Apartment, suite, unit, building, floor, etc."
-                        data-fv-field="address2"
                       />
-                    </div>
-                    <div className="clearfix" />
-                    <div className="pure-control-group frmelmnts2 fv-has-feedback">
-                      <label>
-                        City<span>*</span>:
-                      </label>
-                      <input
-                        type="text"
+                      <div className="clearfix" />
+                      <Field
+                        containerClass="frmelmnts2"
+                        component={TextField}
                         name="city"
-                        id="city"
-                        autoCorrect="off"
-                        autoComplete="address-level2"
+                        label="City"
                         placeholder="Your City"
-                        data-fv-field="city"
                       />
-                    </div>
-                    <div className="clearfix" />
-                    <div className="pure-control-group frmelmnts2 fv-has-feedback">
-                      <label>
-                        Zip Code<span>*</span>:
-                      </label>
-                      <input
-                        type="number"
+                      <div className="clearfix" />
+                      <Field
+                        containerClass="frmelmnts1"
+                        component={TextField}
                         name="postalCode"
-                        inputMode="numeric"
-                        id="zip_code"
-                        pattern="[0-9]*"
-                        noValidate=""
-                        autoCorrect="off"
-                        autoComplete="postal-code"
+                        label="Zip Code"
                         placeholder="Zip Code"
-                        data-fv-field="postalCode"
-                        maxLength="5"
+                        required
+                        type="number"
                       />
-                    </div>
-                    <div className="pure-control-group frmelmnts2 fv-has-feedback">
-                      <label>
-                        State<span>*</span>:
-                      </label>
-                      <select name="state" id="state" data-fv-field="state">
-                        <option value="" />
-                      </select>
-                    </div>
-                    <div className="clearfix" />
-                    <div className="pure-control-group frmelmnts2 fv-has-feedback">
-                      <label>
-                        Phone<span>*</span>:
-                      </label>
-                      <input
+                      <Field
+                        containerClass="frmelmnts3"
+                        component={SelectField}
+                        name="state"
+                        label="State"
+                        placeholder="Select State"
+                        required
+                        options={stateslist}
+                      />
+                      <div className="clearfix" />
+                      <Field
+                        containerClass="frmelmnts1"
+                        component={TextField}
                         name="phoneNumber"
-                        inputMode="numeric"
-                        id="phone_number"
-                        pattern="\d*"
-                        autoCorrect="off"
-                        autoComplete="tel"
-                        type="tel"
+                        label="Phone Number"
                         placeholder="Example: (123) 555-6789"
-                        data-fv-field="phoneNumber"
-                        maxLength="14"
+                        required
+                        type="tel"
                       />
-                    </div>
-                    <div className="clearfix" />
-                    <div className="pure-control-group frmelmnts2 fv-has-feedback">
-                      <label>
-                        Email<span>*</span>:
-                      </label>
-                      <input
+                      <Field
+                        containerClass="frmelmnts3"
+                        component={TextField}
                         name="email"
-                        type="email"
-                        autoCapitalize="off"
-                        autoCorrect="off"
-                        autoComplete="email"
+                        label="Email"
                         placeholder="Example: email@somewhere.com"
-                        data-fv-field="email"
+                        required
+                        type="email"
                       />
                     </div>
-                  </div>
+                  )}
                   <div className="clearfix" />
                   <div style={{ display: 'block' }} id="cardDiv">
                     <div className="clearfix" />
                     <div className="clearfix" />
-                    <div className="pure-control-group frmelmnts2 fv-has-feedback">
-                      <label>
-                        Card Number<span>*</span>:
-                      </label>
-                      <input
-                        type="tel"
-                        inputMode="numeric"
-                        pattern="[0-9]*"
-                        name="cardNumber"
-                        className="creditcard"
-                        maxLength="19"
-                        placeholder="•••• •••• •••• ••••"
-                        noValidate=""
-                        autoCorrect="off"
-                        autoComplete="cc-number"
-                        data-fv-field="cardNumber"
-                      />
-                    </div>
+                    <Field
+                      containerClass="frmelmnts2"
+                      component={TextField}
+                      name="cardNumber"
+                      className="creditcard"
+                      maxLength="19"
+                      placeholder="•••• •••• •••• ••••"
+                      label="Card No"
+                      required
+                      type="tel"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
+                      autoComplete="cc-number"
+                      autoCorrect="off"
+                    />
                     <div className="clearfix" />
                     <div className="pure-control-group frmelmnts2 hideIcon fv-has-feedback">
                       <label className="exp-label">
                         Expiry Date<span>*</span>: <span>(MM/YY)</span>
                       </label>
-                      <select
-                        className="short"
-                        name="month"
-                        autoComplete="cc-exp-month"
-                        data-fv-field="month"
-                      >
-                        <option disabled="" value="">
-                          – –
-                        </option>
-                        <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                      </select>
-                      <select
-                        className="short2"
-                        name="year"
-                        autoComplete="cc-exp-year"
-                        data-fv-field="year"
-                      >
-                        <option disabled="" value="">
-                          – –
-                        </option>
-                        <option value="2018">18</option>
-                        <option value="2019">19</option>
-                        <option value="2020">20</option>
-                        <option value="2021">21</option>
-                        <option value="2022">22</option>
-                        <option value="2023">23</option>
-                        <option value="2024">24</option>
-                      </select>
+                      <Field
+                        name="cardMonth"
+                        component={props => (
+                          <select
+                            className="short"
+                            autoComplete="cc-exp-month"
+                            {...props.input}
+                          >
+                            <option disabled="" value="">
+                              – –
+                            </option>
+                            {[...Array(12).keys()].map(month => (
+                              <option key={month} value={month + 1}>
+                                {month + 1}
+                              </option>
+                            ))}
+                          </select>
+                        )}
+                      />
+                      <Field
+                        name="cardYear"
+                        component={props => (
+                          <select
+                            className="short2"
+                            autoComplete="cc-exp-year"
+                            {...props.input}
+                          >
+                            <option disabled="" value="">
+                              – –
+                            </option>
+                            {[18, 19, 20, 21, 22, 23, 24].map(year => (
+                              <option key={year} value={year}>
+                                {year}
+                              </option>
+                            ))}
+                          </select>
+                        )}
+                      />
                     </div>
                     <div className="clearfix" />
                     <div className="pure-control-group frmelmnts2 frmelmnts-cvv fv-has-feedback">
                       <label>
                         CVV<span>*</span>:
                       </label>
-                      <input
-                        type="tel"
+                      <Field
                         name="cardSecurityCode"
-                        inputMode="numeric"
-                        className="short"
-                        pattern="[0-9]*"
-                        maxLength="3"
-                        noValidate=""
-                        autoCorrect="off"
-                        autoComplete="cc-csc"
-                        data-fv-field="cardSecurityCode"
+                        component={props => (
+                          <input
+                            {...props.input}
+                            type="tel"
+                            inputMode="numeric"
+                            className="short"
+                            pattern="[0-9]*"
+                            maxLength="3"
+                            autoCorrect="off"
+                            autoComplete="cc-csc"
+                          />
+                        )}
                       />
                       <img
                         src="/static/promo/mobile/images/cvv.png"
@@ -335,7 +301,11 @@ class MobileConfirmContainer extends React.PureComponent {
             </div>
             <div className="clearall" />
             <div className="shpbtm">
-              <a onClick={this.confirmOrder} className="button">
+              <a
+                href="javascript:void(0)"
+                onClick={this.props.handleSubmit(this.confirmOrder)}
+                className="button"
+              >
                 <img
                   src="/static/promo/mobile/images/conf-btn.png"
                   alt=""
@@ -359,14 +329,45 @@ class MobileConfirmContainer extends React.PureComponent {
 
 MobileConfirmContainer = withRouter(MobileConfirmContainer);
 
-function mapStateToProps(state, ownProps) {
-  const { productid } = ownProps.url.query;
-  const pack = packages.find(p => String(p.id) === String(productid));
+MobileConfirmContainer = reduxForm({
+  form: 'MobileConfirmForm',
+  validate: billingFormValidator,
+})(MobileConfirmContainer);
+
+function mapStateToProps(reduxState, ownProps) {
+  const { productId } = ownProps.url.query;
+  const pack = packages.find(p => String(p.id) === String(productId));
+  const {
+    orderId,
+    firstName,
+    lastName,
+    address1,
+    address2,
+    city,
+    state,
+    postalCode,
+    phoneNumber,
+    emailAddress,
+  } = reduxState.order.order;
   return {
+    initialValues: {
+      orderId,
+      firstName,
+      lastName,
+      address: address1,
+      address2,
+      city,
+      state,
+      postalCode,
+      phoneNumber,
+      email: emailAddress,
+    },
     pack,
   };
 }
 
-MobileConfirmContainer = connect(mapStateToProps)(MobileConfirmContainer);
+MobileConfirmContainer = connect(mapStateToProps, { ...OrderActions })(
+  MobileConfirmContainer,
+);
 
 export { MobileConfirmContainer };

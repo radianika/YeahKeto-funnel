@@ -97,6 +97,58 @@ app.prepare().then(() => {
       sessionId,
     });
   });
+  server.get('/promo/mobile/shipping', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/promo-mobile-shipping', {
+      sessionId,
+    });
+  });
+  server.get('/promo/mobile/select-package', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/promo-mobile-select-package', {
+      sessionId,
+      orderId: req.query.orderId,
+    });
+  });
+  server.get('/promo/mobile/confirm', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/promo-mobile-confirm', {
+      sessionId,
+      orderId: req.query.orderId,
+      productId: req.query.productId,
+    });
+  });
+  server.get('/promo/mobile/upsell-1', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/promo-mobile-upsell', {
+      upsell: 1,
+      orderId: req.query.orderId,
+      sessionId,
+    });
+  });
+  server.get('/promo/mobile/upsell-2', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/promo-mobile-upsell', {
+      upsell: 2,
+      orderId: req.query.orderId,
+      sessionId,
+    });
+  });
+  server.get('/promo/mobile/upsell-3', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/promo-mobile-upsell', {
+      upsell: 3,
+      orderId: req.query.orderId,
+      sessionId,
+    });
+  });
+  server.get('/promo/mobile/thankyou', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/promo-mobile-thankyou', {
+      orderId: req.query.orderId,
+      sessionId,
+    });
+  });
   server.get('*', (req, res) => handle(req, res));
   server.listen(port, err => {
     if (err) throw err;

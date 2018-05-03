@@ -9,7 +9,7 @@ const getOrder = state => state.order.order;
 function* submitLeadsForm(action) {
   yield put(OrderActions.submitLeadsFormRequest());
   try {
-    const { values, router } = action.payload;
+    const { values, nextUrl, router } = action.payload;
     const {
       firstName,
       lastName,
@@ -29,6 +29,7 @@ function* submitLeadsForm(action) {
       postalCode,
     };
     const sessionId = yield select(getSession);
+    console.log({ sessionId });
     setAuthHeaders(sessionId);
     const apiResponse = yield post('/api/v1/konnektive/lead', {
       ...values,
@@ -37,7 +38,7 @@ function* submitLeadsForm(action) {
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const { lead } = apiResponse.response.data.data;
       yield put(OrderActions.submitLeadsFormSuccess({ lead }));
-      router.push(`/promo/desktop/checkout?orderId=${lead.orderId}`);
+      router.push(`${nextUrl}?orderId=${lead.orderId}`);
     }
   } catch (error) {
     yield put(OrderActions.submitLeadsFormFailure({ error }));
@@ -63,7 +64,9 @@ function* getOrderDetails(action) {
 function* placeOrder(action) {
   yield put(OrderActions.placeOrderRequest());
   try {
-    const { values, pack, router } = action.payload;
+    const {
+      values, pack, router, nextUrl,
+    } = action.payload;
     const sessionId = yield select(getSession);
     const {
       orderId,
@@ -102,7 +105,7 @@ function* placeOrder(action) {
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order }));
-      router.push(`/promo/desktop/upsell-1?orderId=${order.orderId}`);
+      router.push(`${nextUrl}?orderId=${order.orderId}`);
     }
   } catch (error) {
     console.log({ error });

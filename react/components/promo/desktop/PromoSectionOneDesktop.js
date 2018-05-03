@@ -6,7 +6,11 @@ import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
 class PromoSectionOneDesktop extends React.PureComponent {
   submitShippingForm = values => {
-    this.props.submitLeadsForm({ values, router: this.props.router });
+    this.props.submitLeadsForm({
+      values,
+      router: this.props.router,
+      nextUrl: '/promo/desktop/checkout',
+    });
   };
 
   render() {

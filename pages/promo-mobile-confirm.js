@@ -1,10 +1,20 @@
 import React from 'react';
 import Head from 'next/head';
-import { MobileShippingContainer } from 'react/containers';
+import { MobileConfirmContainer } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
+import { AuthActions, OrderActions } from 'redux/actions';
 
-class Promo extends React.PureComponent {
+class Confirm extends React.PureComponent {
+  static async getInitialProps({ store, isServer, query }) {
+    if (isServer) {
+      store.dispatch(
+        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
+      );
+      store.dispatch(OrderActions.getOrderDetails({ orderId: query.orderId }));
+    }
+  }
   render() {
+    const { props } = this;
     return (
       <React.Fragment>
         <Head>
@@ -27,18 +37,18 @@ class Promo extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/css/promo/mobile/index.css"
+            href="/static/assets/css/mb-style.css"
           />
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/css/mb-style.css"
+            href="/static/assets/css/promo/mobile/index.css"
           />
         </Head>
-        <MobileShippingContainer />
+        <MobileConfirmContainer {...props} />
       </React.Fragment>
     );
   }
 }
 
-export default withReduxSaga(Promo);
+export default withReduxSaga(Confirm);

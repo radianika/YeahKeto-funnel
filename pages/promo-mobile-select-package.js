@@ -1,11 +1,19 @@
 import React from 'react';
 import Head from 'next/head';
-import { MobileConfirmContainer } from 'react/containers';
+import { MobileSelectPackageContainer } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
+import { AuthActions, OrderActions } from 'redux/actions';
 
-class Confirm extends React.PureComponent {
+class SelectPackage extends React.PureComponent {
+  static async getInitialProps({ store, isServer, query }) {
+    if (isServer) {
+      store.dispatch(
+        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
+      );
+      store.dispatch(OrderActions.getOrderDetails({ orderId: query.orderId }));
+    }
+  }
   render() {
-    const { props } = this;
     return (
       <React.Fragment>
         <Head>
@@ -23,23 +31,13 @@ class Confirm extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/fonts/font-awesome.min.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/mb-style.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
             href="/static/assets/css/promo/mobile/index.css"
           />
         </Head>
-        <MobileConfirmContainer {...props} />
+        <MobileSelectPackageContainer {...this.props} />
       </React.Fragment>
     );
   }
 }
 
-export default withReduxSaga(Confirm);
+export default withReduxSaga(SelectPackage);

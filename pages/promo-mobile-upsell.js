@@ -1,10 +1,20 @@
 import React from 'react';
 import Head from 'next/head';
-import { MobileSelectPackageContainer } from 'react/containers';
+import { UpsellMobileContainer } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
+import { AuthActions, OrderActions } from 'redux/actions';
 
 class SelectPackage extends React.PureComponent {
+  static async getInitialProps({ store, isServer, query }) {
+    if (isServer) {
+      store.dispatch(
+        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
+      );
+      store.dispatch(OrderActions.getOrderDetails({ orderId: query.orderId }));
+    }
+  }
   render() {
+    const { props } = this;
     return (
       <React.Fragment>
         <Head>
@@ -15,17 +25,12 @@ class SelectPackage extends React.PureComponent {
             content="Premium Quality Hemp Extract Products, Organic and Natural"
           />
           <link
+            href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700"
             rel="stylesheet"
-            type="text/css"
-            href="/static/assets/fonts/font-hind.css"
           />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/promo/mobile/index.css"
-          />
+          <link href="/static/mobile/css/style.css" rel="stylesheet" />
         </Head>
-        <MobileSelectPackageContainer />
+        <UpsellMobileContainer {...props} />
       </React.Fragment>
     );
   }
