@@ -152,7 +152,7 @@ class HomeContainer extends PureComponent {
         <Frame sec="sec2">
           <p className="comn-hdg">OUR PRODUCT RANGE</p>
           <p className="comn-sub-hdg">
-            Explore American Science's Custom Formulations
+            Explore American Science&#8217;s Custom Formulations
           </p>
           <img src="../static/assets/images/comn-hdg-img.png" alt="" />
           <p className="comn-txt">&nbsp;</p>

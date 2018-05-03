@@ -10,6 +10,8 @@ module.exports = {
     UIkit: true,
   },
   rules: {
+    'no-restricted-globals': 0,
+    'no-undef': 0,
     'no-console': 1,
     'no-underscore-dangle': 0,
     'no-param-reassign': 0,
