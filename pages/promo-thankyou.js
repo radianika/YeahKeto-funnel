@@ -28,6 +28,20 @@ class PromoThankyou extends React.PureComponent {
           {device === 'mobile' && (
             <meta name="viewport" content="width=640, user-scalable=0" />
           )}
+          {device === 'desktop' && (
+            <link
+              rel="stylesheet"
+              type="text/css"
+              href="/static/desktop/css/style.css"
+            />
+          )}
+          {device === 'mobile' && (
+            <link
+              rel="stylesheet"
+              type="text/css"
+              href="/static/mobile/css/style.css"
+            />
+          )}
         </Head>
         {device === 'desktop' && <PromoThankyouDesktop />}
         {device === 'mobile' && <PromoThankyouMobile />}
