@@ -1,15 +1,20 @@
 import React from 'react';
-import { withRouter } from 'next/router';
+import { connect } from 'react-redux';
+import { reduxForm, Field, formValueSelector } from 'redux-form';
+import {
+  TextField,
+  SelectField,
+  SameAddressCheckField,
+} from 'react/components/common';
+import { stateslist, billingFormValidator } from 'helpers';
 
 class PromoCheckoutPaymentForm extends React.PureComponent {
-  submitForm = () => {
-    this.props.router.push('/upsell-desktop');
-  };
   render() {
+    const { same } = this.props.currentValues;
     return (
       <div className="chkfrm-mid">
         <form
-          id="form-checkout"
+          onSubmit={this.props.handleSubmit}
           className="pure-form pure-form-aligned fv-form fv-form-pure"
         >
           <button
@@ -34,40 +39,85 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
               />
             </span>
           </div>
-          <div className="sameas">
-            {' '}
-            Is your billing address the same as
-            <br />your shipping address?<br />
-            <span>
-              <input
-                id="radioOne"
-                checked="checked"
-                className="chkbx"
-                name="same"
-                type="radio"
-              />&nbsp;Yes
-              <input
-                id="radioTwo"
-                className="chkbx"
-                name="same"
-                type="radio"
-              />&nbsp;No
-            </span>
-          </div>
+          <Field component={SameAddressCheckField} name="same" />
           <div className="clearfix" />
           <div id="billingDiv" style={{ display: 'none' }} />
-          <div className="pure-control-group frmElemts fv-has-feedback">
-            <label>
-              Card No<span>*</span>:
-            </label>
-            <input
-              name="cardNumber"
-              className="creditcard"
-              maxLength="19"
-              placeholder="•••• •••• •••• ••••"
-              data-fv-field="cardNumber"
-            />
-          </div>
+          {same !== 'Yes' && (
+            <React.Fragment>
+              <Field
+                component={TextField}
+                name="firstName"
+                label="First Name"
+                placeholder="First Name"
+                required
+              />
+              <Field
+                component={TextField}
+                name="lastName"
+                label="Last Name"
+                placeholder="Last Name"
+                required
+              />
+              <Field
+                component={TextField}
+                name="address"
+                label="Address Line 1"
+                placeholder="Street and number, P.O. box, c/o."
+                required
+              />
+              <Field
+                component={TextField}
+                name="address2"
+                label="Address Line 2"
+                placeholder="Apartment, suite, unit, building, floor, etc."
+              />
+              <Field
+                component={TextField}
+                name="city"
+                label="City"
+                placeholder="Your City"
+                required
+              />
+              <Field
+                component={SelectField}
+                name="state"
+                label="State"
+                placeholder="State"
+                required
+                options={stateslist}
+              />
+              <Field
+                component={TextField}
+                name="postalCode"
+                label="Zip Code"
+                placeholder="Zip Code"
+                required
+              />
+              <Field
+                component={TextField}
+                name="phoneNumber"
+                label="Phone"
+                placeholder="Example: (123) 555-6789"
+                required
+              />
+              <Field
+                component={TextField}
+                name="email"
+                label="Email"
+                placeholder="Example: email@somewhere.com"
+                required
+              />
+            </React.Fragment>
+          )}
+          <Field
+            component={TextField}
+            name="cardNumber"
+            className="creditcard"
+            maxLength="19"
+            placeholder="•••• •••• •••• ••••"
+            label="Card No"
+            required
+          />
           <div className="frmElemts exp-label">
             <label>&nbsp;</label>
             <label>(MM/YY)</label>
@@ -79,40 +129,43 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
             <label>
               Expiry Date<span>*</span>:
             </label>
-            <select
-              className="short"
-              name="month"
-              autoComplete="cc-exp-month"
-              data-fv-field="month"
-            >
-              <option disabled="" selected="" value="">
-                – –
-              </option>
-            </select>
-            <select
-              className="short2"
-              name="year"
-              autoComplete="cc-exp-year"
-              data-fv-field="year"
-            >
-              <option disabled="" selected="" value="">
-                – –
-              </option>
-            </select>
-          </div>
-          <div className="pure-control-group frmElemts frm-elem-cvv fv-has-feedback">
-            <label>
-              CVV<span>*</span>:
-            </label>
-            <input
-              name="cardSecurityCode"
-              className="short"
-              pattern="\d*"
-              maxLength="3"
-              data-fv-field="cardSecurityCode"
-              type="text"
+            <Field
+              component={props => (
+                <select className="short" {...props.input}>
+                  <option>– –</option>
+                  {[...Array(12).keys()].map(month => (
+                    <option key={month} value={month + 1}>
+                      {month + 1}
+                    </option>
+                  ))}
+                </select>
+              )}
+              name="cardMonth"
+            />
+            <Field
+              component={props => (
+                <select className="short2" {...props.input}>
+                  <option>– –</option>
+                  {[18, 19, 20, 21, 22, 23, 24].map(year => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              )}
+              name="cardYear"
             />
           </div>
+          <Field
+            containerClass="frm-elem-cvv"
+            component={TextField}
+            label="CVV"
+            name="cardSecurityCode"
+            className="short"
+            required
+            maxLength={3}
+            type="password"
+          />
           <div className="clearall" />
           <button onClick={this.submitForm} className="chk-submit pulse" />
         </form>
@@ -121,6 +174,46 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
   }
 }
 
-PromoCheckoutPaymentForm = withRouter(PromoCheckoutPaymentForm);
+PromoCheckoutPaymentForm = reduxForm({
+  form: 'BillingForm',
+  validate: billingFormValidator,
+})(PromoCheckoutPaymentForm);
+
+const selector = formValueSelector('BillingForm');
+
+function mapStateToProps(reduxState) {
+  const {
+    orderId,
+    firstName,
+    lastName,
+    address1,
+    address2,
+    city,
+    state,
+    postalCode,
+    phoneNumber,
+    emailAddress,
+  } = reduxState.order.order;
+  return {
+    initialValues: {
+      same: 'Yes',
+      orderId,
+      firstName,
+      lastName,
+      address: address1,
+      address2,
+      city,
+      state,
+      postalCode,
+      phoneNumber,
+      email: emailAddress,
+    },
+    currentValues: {
+      same: selector(reduxState, 'same'),
+    },
+  };
+}
+
+PromoCheckoutPaymentForm = connect(mapStateToProps)(PromoCheckoutPaymentForm);
 
 export { PromoCheckoutPaymentForm };

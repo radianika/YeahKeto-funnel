@@ -1,8 +1,19 @@
 import React from 'react';
-import { Footer } from 'react/components/common';
-import Link from 'next/link';
+import { connect } from 'react-redux';
+import { stateslist, shippingFormValidator } from 'helpers';
+import { Footer, TextField, SelectField } from 'react/components/common';
+import { Field, reduxForm } from 'redux-form';
+import { withRouter } from 'next/router';
+import { OrderActions } from 'redux/actions';
 
 class MobileShippingContainer extends React.PureComponent {
+  onSubmit = values => {
+    this.props.submitLeadsForm({
+      values,
+      router: this.props.router,
+      nextUrl: '/promo/mobile/select-package',
+    });
+  };
   render() {
     return (
       <div className="mobile-body">
@@ -24,131 +35,98 @@ class MobileShippingContainer extends React.PureComponent {
               <div className="trialform">
                 <form
                   id="form-contact"
-                  method="POST"
-                  className="pure-form pure-form-aligned"
-                  action="select-package.html"
+                  className="pure-form pure-form-aligned fv-form fv-form-pure"
                 >
                   <div className="trialfrmmid">
-                    <div className="pure-control-group frmelmnts1">
-                      <label htmlFor="index_first_name">
-                        First Name<span>*</span>:
-                      </label>
-                      <input
-                        type="text"
-                        name="firstName"
-                        placeholder="First name"
-                        id="index_first_name"
-                      />
-                    </div>
-                    <div className="pure-control-group frmelmnts3">
-                      <label htmlFor="index_last_name">
-                        Last Name<span>*</span>:
-                      </label>
-                      <input
-                        type="text"
-                        name="lastName"
-                        placeholder="Last name"
-                        id="index_last_name"
-                      />
-                    </div>
+                    <Field
+                      containerClass="frmelmnts1"
+                      component={TextField}
+                      name="firstName"
+                      label="First Name"
+                      placeholder="First Name"
+                    />
+                    <Field
+                      containerClass="frmelmnts3"
+                      component={TextField}
+                      name="lastName"
+                      label="Last Name"
+                      placeholder="Last Name"
+                    />
                     <div className="clearfix" />
-                    <div className="pure-control-group frmelmnts2">
-                      <label htmlFor="address_1">
-                        Address Line 1<span>*</span>:
-                      </label>
-                      <input
-                        type="text"
-                        name="address"
-                        id="address_1"
-                        onFocus="geolocate()"
-                        placeholder="Street and number, P.O. box, c/o."
-                      />
-                    </div>
-                    <div className="pure-control-group frmelmnts2">
-                      <label htmlFor="address_2">Address Line 2:</label>
-                      <input
-                        type="text"
-                        name="address2"
-                        id="address_2"
-                        placeholder="Apartment, suite, unit, building, floor, etc."
-                      />
-                    </div>
+                    <Field
+                      containerClass="frmelmnts2"
+                      component={TextField}
+                      name="address"
+                      label="Adress Line 1"
+                      placeholder="Street and number, P.O. box, c/o."
+                    />
+                    <Field
+                      containerClass="frmelmnts2"
+                      component={TextField}
+                      name="address2"
+                      label="Adress Line 2"
+                      placeholder="Apartment, suite, unit, building, floor, etc."
+                    />
                     <div className="clearfix" />
-                    <div className="pure-control-group frmelmnts2">
-                      <label htmlFor="city">
-                        City<span>*</span>:
-                      </label>
-                      <input
-                        type="text"
-                        name="city"
-                        id="city"
-                        placeholder="Your City"
-                      />
-                    </div>
+                    <Field
+                      containerClass="frmelmnts2"
+                      component={TextField}
+                      name="city"
+                      label="City"
+                      placeholder="Your City"
+                    />
                     <div className="clearfix" />
-                    <div className="pure-control-group frmelmnts1">
-                      <label htmlFor="zip_code">
-                        Zip Code<span>*</span>:
-                      </label>
-                      <input
-                        type="number"
-                        name="postalCode"
-                        id="zip_code"
-                        placeholder="Zip Code"
-                        pattern="\d*"
-                      />
-                    </div>
-                    <div className="pure-control-group frmelmnts3">
-                      <label htmlFor="state">
-                        State<span>*</span>:
-                      </label>
-                      <select style={{ width: '99%' }} name="state" id="state">
-                        <option value="" onClick="">
-                          Select State
-                        </option>
-                      </select>
-                    </div>
+                    <Field
+                      containerClass="frmelmnts1"
+                      component={TextField}
+                      name="postalCode"
+                      label="Zip Code"
+                      placeholder="Zip Code"
+                      required
+                      type="number"
+                    />
+                    <Field
+                      containerClass="frmelmnts3"
+                      component={SelectField}
+                      name="state"
+                      label="State"
+                      placeholder="Select State"
+                      required
+                      options={stateslist}
+                    />
                     <div className="clearfix" />
-                    <div className="pure-control-group frmelmnts1">
-                      <label htmlFor="phone_number">
-                        Phone Number<span>*</span>:
-                      </label>
-                      <input
-                        name="phoneNumber"
-                        inputMode="numeric"
-                        id="phone_number"
-                        autoCorrect="off"
-                        autoComplete="tel"
-                        pattern="\d*"
-                        type="tel"
-                        placeholder="Example: (123) 555-6789"
-                      />
-                    </div>
-                    <div className="clearfix" />
-                    <div className="pure-control-group frmelmnts3">
-                      <label htmlFor="index_email_id">
-                        E-mail<span>*</span>:
-                      </label>
-                      <input
-                        name="email"
-                        type="email"
-                        id="index_email_id"
-                        placeholder="Example: email@somewhere.com"
-                      />
-                    </div>
+                    <Field
+                      containerClass="frmelmnts1"
+                      component={TextField}
+                      name="phoneNumber"
+                      label="Phone Number"
+                      placeholder="Example: (123) 555-6789"
+                      required
+                      type="tel"
+                    />
+                    <Field
+                      containerClass="frmelmnts3"
+                      component={TextField}
+                      name="email"
+                      label="Email"
+                      placeholder="Example: email@somewhere.com"
+                      required
+                      type="email"
+                    />
                   </div>
                   <div className="clearfix" />
                   <div className="shpbtm">
-                    <Link href="/select-package">
-                      <a className="button">
-                        <img
-                          src="/static/promo/mobile/images/ship-btn.png"
-                          alt="American Science CBD"
-                          className="ship-btn pulse"
-                        />
-                      </a>
-                    </Link>
-
+                    <a
+                      href="javascript:void(0)"
+                      className="button"
+                      onClick={this.props.handleSubmit(this.onSubmit)}
+                    >
+                      <img
+                        src="/static/promo/mobile/images/ship-btn.png"
+                        alt="American Science CBD"
+                        className="ship-btn pulse"
+                      />
+                    </a>
                     <img
                       src="/static/promo/mobile/images/loogs.png"
                       alt="American Science CBD"
@@ -182,5 +160,16 @@ class MobileShippingContainer extends React.PureComponent {
     );
   }
 }
+
+MobileShippingContainer = withRouter(MobileShippingContainer);
+
+MobileShippingContainer = reduxForm({
+  form: 'MobileShippingForm',
+  validate: shippingFormValidator,
+})(MobileShippingContainer);
+
+MobileShippingContainer = connect(null, { ...OrderActions })(
+  MobileShippingContainer,
+);
 
 export { MobileShippingContainer };

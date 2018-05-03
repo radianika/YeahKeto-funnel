@@ -3,7 +3,6 @@ import React from 'react';
 class PromoSectionFiveDesktop extends React.PureComponent {
   render() {
     const { props } = this;
-    console.log({ props });
     return (
       <div className="section5">
         <div className="container position">

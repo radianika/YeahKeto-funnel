@@ -10,6 +10,8 @@ module.exports = {
     UIkit: true,
   },
   rules: {
+    'no-restricted-globals': 0,
+    'no-undef': 0,
     'no-console': 1,
     'no-underscore-dangle': 0,
     'no-param-reassign': 0,
@@ -33,6 +35,7 @@ module.exports = {
     'function-paren-newline': 0,
     'arrow-parens': 0,
     'react/no-unescaped-entities': 1,
+    'no-useless-escape': 0,
   },
   settings: {
     'import/resolver': {

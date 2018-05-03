@@ -1,47 +1,67 @@
 import React from 'react';
+import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
-import { packages } from 'helpers';
-import { Upsell1 } from '../components/upsell/desktop/UpSell1';
+import { OrderActions } from 'redux/actions';
+import { Upsell1, Upsell2, Upsell3 } from '../components/upsell/desktop';
 
 class UpsellDesktopContainer extends React.PureComponent {
+  upgrade = (productId, nextPage) => {
+    this.props.addUpsellToOrder({
+      productId,
+      sendTo: nextPage,
+      router: this.props.router,
+    });
+  };
+
   render() {
-    const { upsell } = this.props.pack;
+    const { upsell } = this.props.url.query;
     return (
-      <div className="contentWrap">
-        <div className="header position">
-          <img
-            src="/static/desktop/v1/images/logo.png"
-            alt=""
-            className="logo"
-          />
-          <img
-            src="/static/desktop/v1/images/step.png"
-            alt=""
-            className="step"
-          />
-          <img
-            src="/static/desktop/v1/images/seals.png"
-            alt=""
-            className="seals"
-          />
+      <div className="container">
+        <div className="contentWrap shadow">
+          <div className="header position">
+            <img
+              src="/static/desktop/images/logo.png"
+              alt=""
+              className="logo"
+            />
+            <img
+              src="/static/desktop/images/step.png"
+              alt=""
+              className="step"
+            />
+            <img
+              src="/static/desktop/images/seals.png"
+              alt=""
+              className="seals"
+            />
+          </div>
+          {upsell === 1 && <Upsell1 upgrade={this.upgrade} />}
+          {upsell === 2 && <Upsell2 upgrade={this.upgrade} />}
+          {upsell === 3 && <Upsell3 upgrade={this.upgrade} />}
         </div>
-        <Upsell1 />
-        {/* {upsell === 1 && <Upsell1 />}
-        {upsell === 2 && <Upsell2 />}
-        {upsell === 3 && <Upsell3 />} */}
+        <div className="footer">
+          <div className="contentWrap">
+            <p className="ftrtxt">
+              <a href="#">TERMS AND CONDITIONS</a> |
+              <a href="#">PRIVACY POLICY</a> |
+              <a href="#">CONTACT US</a> <br />
+              Copyright 2018 © All Rights Reserved - American Science
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  const { productid } = ownProps.url.query;
-  const pack = packages.find(p => String(p.id) === String(productid)) || {};
-  return {
-    pack,
-  };
+UpsellDesktopContainer = withRouter(UpsellDesktopContainer);
+
+function mapStateToProps() {
+  return {};
 }
 
-UpsellDesktopContainer = connect(mapStateToProps)(UpsellDesktopContainer);
+UpsellDesktopContainer = connect(mapStateToProps, { ...OrderActions })(
+  UpsellDesktopContainer,
+);
 
 export { UpsellDesktopContainer };

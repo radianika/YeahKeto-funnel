@@ -47,25 +47,22 @@ class PromoSectionFiveMobile extends React.PureComponent {
           non-habit forming benefits of CBD have been widely publicized across
           print & media.
         </p>
-        <div className="vedio">
-          <div
-            className="wistia_responsive_wrapper"
-            style={{
-              height: '100%',
-              left: '0',
-              position: 'absolute',
-              top: '0',
-              width: '100%',
-            }}
-          >
-            <div
-              className="wistia_embed wistia_async_5xe74yifg5 seo=false videoFoam=true"
-              style={{ height: '100%', width: '100%' }}
-            >
-              {' '}
-            </div>
-          </div>
-        </div>
+        <p>
+          <a href="/promo/mobile/?wvideo=5xe74yifg5">
+            <img
+              alt=""
+              src="https://embedwistia-a.akamaihd.net/deliveries/a1427acc25ee59ea265e881b30d4e279f391ca2b.jpg?image_play_button_size=2x&amp;image_crop_resized=960x540&amp;image_play_button=1&amp;image_play_button_color=7fff54e0"
+              width="400"
+              height="225"
+              style={{ width: '400px', height: '225px' }}
+            />
+          </a>
+        </p>
+        <p>
+          <a href="/promo/mobile/?wvideo=5xe74yifg5">
+            American Science CBD Hemp Oil
+          </a>
+        </p>
         <i className="vdo-arw sprite3 sprite-vdo-arw" />
         <p className="limited-offer">HURRY! Limited Time Offer</p>
         <div id="clockdiv">

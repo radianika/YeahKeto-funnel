@@ -1,5 +1,3 @@
-export * from './PromoContactFormDesktop';
-export * from './PromoContactFormMobile';
 export * from './PromoDesktop';
 export * from './PromoMobile';
 export * from './MobileShippingContainer';
@@ -10,3 +8,5 @@ export * from './MobileConfirmContainer';
 export * from './UpsellMobileContainer';
 export * from './PromoCheckoutContainer';
 export * from './UpsellDesktopContainer';
+export * from './PromoThankyouDesktop';
+export * from './PromoThankyouMobile';

@@ -1,7 +1,18 @@
 import React from 'react';
-import { PromoContactDesktop } from 'react/containers';
+import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
+import { OrderActions } from 'redux/actions';
+import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
 class PromoSectionOneDesktop extends React.PureComponent {
+  submitShippingForm = values => {
+    this.props.submitLeadsForm({
+      values,
+      router: this.props.router,
+      nextUrl: '/promo/desktop/checkout',
+    });
+  };
+
   render() {
     return (
       <div className="section1 dsplay">
@@ -43,7 +54,7 @@ class PromoSectionOneDesktop extends React.PureComponent {
               </p>
             </div>
             <div className="frm" id="topfrm">
-              <PromoContactDesktop onSubmit={this.submitContactForm} />
+              <PromoShippingFormDesktop onSubmit={this.submitShippingForm} />
             </div>
           </div>
         </div>
@@ -51,5 +62,15 @@ class PromoSectionOneDesktop extends React.PureComponent {
     );
   }
 }
+
+PromoSectionOneDesktop = withRouter(PromoSectionOneDesktop);
+
+function mapStateToProps() {
+  return {};
+}
+
+PromoSectionOneDesktop = connect(mapStateToProps, { ...OrderActions })(
+  PromoSectionOneDesktop,
+);
 
 export { PromoSectionOneDesktop };

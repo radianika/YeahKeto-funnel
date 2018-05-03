@@ -2,8 +2,17 @@ import React from 'react';
 import Head from 'next/head';
 import { PromoDesktopContainer } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
+import { AuthActions } from 'redux/actions';
 
 class Promo extends React.PureComponent {
+  static async getInitialProps({ store, isServer, query }) {
+    if (isServer) {
+      store.dispatch(
+        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
+      );
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
