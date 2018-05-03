@@ -4,7 +4,7 @@ import next from 'next';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import useragent from 'express-useragent';
-import { post } from 'helpers';
+import { post } from './api-helpers';
 
 require('dotenv').config();
 
