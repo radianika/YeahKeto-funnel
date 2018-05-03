@@ -1,4 +1,5 @@
 import React from 'react';
+import { PromoSession } from 'react/components/common';
 import { Coupon } from '../desktop/Coupon';
 import { SatisfactionBox } from './SatisfactionBox';
 import { UpsellFooter } from '../UpsellFooter';
@@ -10,6 +11,7 @@ class Upsell1 extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
+        <PromoSession pageType="leadPage/checkoutPage/upsellPage" />
         <div className="redbar">
           <p>
             Wait before you go!<br />

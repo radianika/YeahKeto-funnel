@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { PromoMobileContainer } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
 import { AuthActions } from 'redux/actions';
+import { PromoSession } from 'react/components/common';
 
 class Promo extends React.PureComponent {
   static async getInitialProps({ store, isServer, query }) {
@@ -44,6 +45,7 @@ class Promo extends React.PureComponent {
             href="/static/assets/css/mb-sprites-style.css"
           />
         </Head>
+        <PromoSession pageType="leadPage" />
         <PromoMobileContainer />
       </React.Fragment>
     );
