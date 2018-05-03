@@ -28,7 +28,7 @@ const getSessionId = async (req, res) => {
   const { cookies } = req;
   let token = idx(cookies, _ => _.ascbd_session);
   if (!token) {
-    const sessionResponse = await post('/api/v1/auth', {
+    const sessionResponse = await post('/v1/auth', {
       username: 'larby@starlightgroup.io',
       password: 'P@ssw0rd',
     });
