@@ -1,7 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { stateslist, shippingFormValidator, normalizePhone } from 'helpers';
-import { Footer, TextField, SelectField } from 'react/components/common';
+import {
+  Footer,
+  TextField,
+  SelectField,
+  AddressField,
+} from 'react/components/common';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
 import { OrderActions } from 'redux/actions';
