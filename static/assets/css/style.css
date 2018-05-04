@@ -1020,9 +1020,6 @@ ul.prd-sec3-list li:last-child {
 }
 
 /*Footer Modal*/
-p.title {
-  text-transform: uppercase;
-}
 
 p.normal {
   font-family: "Calibri", "sans-serif";
@@ -1054,10 +1051,6 @@ p.sub-list {
   text-align: left;
 }
 
-p.title {
-  text-transform: uppercase;
-}
-
 p.sub-list-content {
   margin: 0 0.5in 0.0001pt 0.5in;
   font-size: 12pt;
@@ -1091,10 +1084,6 @@ p.sub-list-content {
   font-family: "Calibri", "sans-serif";
 }
 
-p.title {
-  text-transform: uppercase;
-}
-
 p.list {
   margin: 0 0 0.0001pt 0.3in;
   font-size: 12pt;
@@ -1106,7 +1095,7 @@ p.normal,
 p.list,
 p.sub-list,
 p.sub-list-content {
-  text-align: left;
+  text-align: center;
 }
 
 /**********MEDIA START***********/
