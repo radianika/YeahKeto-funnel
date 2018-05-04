@@ -97,6 +97,7 @@
     "redux-form": "7.3.0",
     "redux-saga": "0.16.0",
     "uglifyjs-webpack-plugin": "1.2.5",
+    "validator": "10.0.0",
     "yarn": "^1.6.0"
   },
   "devDependencies": {
