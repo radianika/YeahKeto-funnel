@@ -7,7 +7,7 @@ class UpsellFooter extends React.PureComponent {
       <React.Fragment>
         <div className="clearall" />
         <img
-          src="/static/mobile/v2/images/secure-logos.png"
+          src="/static/mobile/images/secure-logos.png"
           alt=""
           className="secure-logos"
         />

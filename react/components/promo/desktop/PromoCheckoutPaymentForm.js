@@ -5,6 +5,7 @@ import {
   TextField,
   SelectField,
   SameAddressCheckField,
+  AddressField,
 } from 'react/components/common';
 import { stateslist, billingFormValidator, normalizePhone } from 'helpers';
 
@@ -59,11 +60,12 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
                 required
               />
               <Field
-                component={TextField}
+                component={AddressField}
                 name="address"
                 label="Address Line 1"
                 placeholder="Street and number, P.O. box, c/o."
                 required
+                changeField={this.props.change}
               />
               <Field
                 component={TextField}

@@ -10,3 +10,5 @@ export * from './PromoCheckoutContainer';
 export * from './UpsellDesktopContainer';
 export * from './PromoThankyouDesktop';
 export * from './PromoThankyouMobile';
+export * from './ContactContainer';
+export * from './CartContainer';

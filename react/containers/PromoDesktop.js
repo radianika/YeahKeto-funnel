@@ -17,7 +17,7 @@ class PromoDesktopContainer extends React.PureComponent {
     const { props } = this;
     return (
       <React.Fragment>
-        <h1 style={{ display: 'none' }}>American cience CBD</h1>
+        <h1 style={{ display: 'none' }}>American Science CBD</h1>
         <div className="topbar">
           <div className="container">
             <p className="topbartxt">

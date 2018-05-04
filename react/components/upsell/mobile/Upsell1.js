@@ -1,15 +1,17 @@
 import React from 'react';
+import { PromoSession } from 'react/components/common';
 import { Coupon } from '../desktop/Coupon';
 import { SatisfactionBox } from './SatisfactionBox';
 import { UpsellFooter } from '../UpsellFooter';
 
 class Upsell1 extends React.PureComponent {
   upgrade = () => {
-    this.props.upgrade(155, '/promo/mobile/upsell-2');
+    this.props.upgrade(214, '/promo/mobile/upsell-2');
   };
   render() {
     return (
       <React.Fragment>
+        <PromoSession pageType="leadPage/checkoutPage/upsellPage" />
         <div className="redbar">
           <p>
             Wait before you go!<br />

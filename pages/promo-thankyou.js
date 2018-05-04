@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { PromoSession } from 'react/components/common';
 import { PromoThankyouDesktop, PromoThankyouMobile } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
 import { AuthActions, OrderActions } from 'redux/actions';
@@ -28,7 +29,22 @@ class PromoThankyou extends React.PureComponent {
           {device === 'mobile' && (
             <meta name="viewport" content="width=640, user-scalable=0" />
           )}
+          {device === 'desktop' && (
+            <link
+              rel="stylesheet"
+              type="text/css"
+              href="/static/desktop/css/style.css"
+            />
+          )}
+          {device === 'mobile' && (
+            <link
+              rel="stylesheet"
+              type="text/css"
+              href="/static/mobile/css/style.css"
+            />
+          )}
         </Head>
+        <PromoSession pageType="leadPage/checkoutPage/upsellPage/upsell2Page/upsell3Page/thankyouPage" />
         {device === 'desktop' && <PromoThankyouDesktop />}
         {device === 'mobile' && <PromoThankyouMobile />}
       </React.Fragment>

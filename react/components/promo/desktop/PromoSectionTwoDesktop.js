@@ -71,7 +71,12 @@ class PromoSectionTwoDesktop extends React.PureComponent {
               <i className="s5limg2 sprite4 sprite-s2line" />{' '}
             </li>
           </ul>{' '}
-          <i className="s2bottle sprite3 sprite-s2bottle" />{' '}
+          {/* <i className="s2bottle sprite3 sprite-s2bottle" />{' '} */}
+          <img
+            src="/static/promo/desktop/images/s2bottle.png"
+            className="s2bottle"
+            alt=""
+          />
         </div>
       </div>
     );
