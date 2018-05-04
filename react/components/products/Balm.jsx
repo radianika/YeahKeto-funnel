@@ -28,7 +28,7 @@ class BalmSlider extends React.PureComponent {
               this.props.switcher('cart');
             }}
           >
-            <img src="../static/assets/images/btn.png" alt="" />
+            <img src="/static/assets/images/btn.png" alt="" />
           </a>
         </div>
       </React.Fragment>

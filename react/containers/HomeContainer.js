@@ -57,12 +57,12 @@ class HomeContainer extends PureComponent {
               </p>
               <span>Enriched With Hemp Extract</span>
               <img
-                src="../static/assets/images/bnr-img-btm.png"
+                src="/static/assets/images/bnr-img-btm.png"
                 alt=""
                 className="bnr-img-btm"
               />
               <img
-                src="../static/assets/images/bnr-prd.png"
+                src="/static/assets/images/bnr-prd.png"
                 alt=""
                 className="bnr-prd for-mob"
               />
@@ -73,14 +73,14 @@ class HomeContainer extends PureComponent {
               </p>
               <a href="#">
                 <img
-                  src="../static/assets/images/btn.png"
+                  src="/static/assets/images/btn.png"
                   alt=""
                   className="bnr-btn"
                 />
               </a>
             </div>
             <div className="bnr-rgt for-desk for-tab">
-              <img src="../static/assets/images/bnr-prd.png" alt="" />
+              <img src="/static/assets/images/bnr-prd.png" alt="" />
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@ class HomeContainer extends PureComponent {
         <Frame sec="sec1">
           <p className="comn-hdg">Welcome to American Science</p>
           <p className="comn-sub-hdg">Premium Quality Hemp Extract Products</p>
-          <img src="../static/assets/images/comn-hdg-img.png" alt="" />
+          <img src="/static/assets/images/comn-hdg-img.png" alt="" />
           <p className="comn-txt">
             American Science is a leading brand of hemp extract dietary
             supplements that offer a wide range of physical, psychological and
@@ -106,7 +106,7 @@ class HomeContainer extends PureComponent {
           </p>
           <ul className="sec1-list">
             <li>
-              <img src="../static/assets/images/sec1-list-img3.png" alt="" />
+              <img src="/static/assets/images/sec1-list-img3.png" alt="" />
               <span>100% ORGANIC & NATURAL</span>
               <p className="comn-txt">
                 American Science products are formulated with hemp extract that
@@ -115,7 +115,7 @@ class HomeContainer extends PureComponent {
               </p>
             </li>
             <li>
-              <img src="../static/assets/images/sec1-list-img2.png" alt="" />
+              <img src="/static/assets/images/sec1-list-img2.png" alt="" />
               <span>ZERO THC GUARANTEE</span>
               <p className="comn-txt">
                 American Science products are made with hemp extract derived
@@ -124,7 +124,7 @@ class HomeContainer extends PureComponent {
               </p>
             </li>
             <li>
-              <img src="../static/assets/images/sec1-list-img1.png" alt="" />
+              <img src="/static/assets/images/sec1-list-img1.png" alt="" />
               <span>MULTIPLE LIFESTYLE BENEFITS</span>
               <p className="comn-txt">
                 Hemp Extract supplements help reduce anxiety & stress, support
@@ -154,12 +154,12 @@ class HomeContainer extends PureComponent {
           <p className="comn-sub-hdg">
             Explore American Science&#8217;s Custom Formulations
           </p>
-          <img src="../static/assets/images/comn-hdg-img.png" alt="" />
+          <img src="/static/assets/images/comn-hdg-img.png" alt="" />
           <p className="comn-txt">&nbsp;</p>
           <ul className="sec2-list">
             <li>
               <img
-                src="../static/assets/images/sec2-prd1.png"
+                src="/static/assets/images/sec2-prd1.png"
                 alt=""
                 className="sec2-prd"
               />
@@ -173,7 +173,7 @@ class HomeContainer extends PureComponent {
                 </p>
                 <a href="#">
                   <img
-                    src="../static/assets/images/btn.png"
+                    src="/static/assets/images/btn.png"
                     alt=""
                     className="btn"
                   />
@@ -182,7 +182,7 @@ class HomeContainer extends PureComponent {
             </li>
             <li>
               <img
-                src="../static/assets/images/sec2-prd2.png"
+                src="/static/assets/images/sec2-prd2.png"
                 alt=""
                 className="sec2-prd"
               />
@@ -196,7 +196,7 @@ class HomeContainer extends PureComponent {
                 </p>
                 <a href="#">
                   <img
-                    src="../static/assets/images/btn.png"
+                    src="/static/assets/images/btn.png"
                     alt=""
                     className="btn"
                   />
@@ -205,7 +205,7 @@ class HomeContainer extends PureComponent {
             </li>
             <li>
               <img
-                src="../static/assets/images/sec2-prd3.png"
+                src="/static/assets/images/sec2-prd3.png"
                 alt=""
                 className="sec2-prd"
               />
@@ -219,7 +219,7 @@ class HomeContainer extends PureComponent {
                 </p>
                 <a href="#">
                   <img
-                    src="../static/assets/images/btn.png"
+                    src="/static/assets/images/btn.png"
                     alt=""
                     className="btn"
                   />

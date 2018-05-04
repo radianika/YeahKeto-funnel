@@ -151,6 +151,27 @@ app.prepare().then(() => {
       device: 'mobile',
     });
   });
+  server.get('/hemp-oil', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/products', {
+      sessionId,
+      product: 'hemp-oil',
+    });
+  });
+  server.get('/hemp-capsule', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/products', {
+      sessionId,
+      product: 'hemp-capsule',
+    });
+  });
+  server.get('/warming_balm', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/products', {
+      sessionId,
+      product: 'warming_balm',
+    });
+  });
   server.get('*', (req, res) => handle(req, res));
   server.listen(port, err => {
     if (err) throw err;
