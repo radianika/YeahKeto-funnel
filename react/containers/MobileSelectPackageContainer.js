@@ -80,6 +80,7 @@ class MobileSelectPackageContainer extends React.PureComponent {
             <div style={{ clear: 'both' }} />
           </React.Fragment>
         ))}
+        <div className="clearboth" />
         <Footer />
       </div>
     );

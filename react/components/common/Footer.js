@@ -24,7 +24,7 @@ class Footer extends PureComponent {
             <div className="contentWrap">
               <p className="ftr-txt">
                 <a
-                  href="#"
+                  href="javascript:void(0)"
                   onClick={() => {
                     this.setState({ modal: 'footer_terms' });
                   }}
@@ -32,7 +32,7 @@ class Footer extends PureComponent {
                   Terms and Conditions
                 </a>&nbsp;|&nbsp;
                 <a
-                  href="#"
+                  href="javascript:void(0)"
                   onClick={() => {
                     this.setState({ modal: 'footer_privacy' });
                   }}
@@ -40,7 +40,7 @@ class Footer extends PureComponent {
                   Privacy Policy
                 </a>&nbsp;|&nbsp;
                 <a
-                  href="#"
+                  href="javascript:void(0)"
                   onClick={() => {
                     this.setState({ modal: 'footer_customer' });
                   }}
@@ -48,7 +48,7 @@ class Footer extends PureComponent {
                   Customer Care
                 </a>&nbsp;|&nbsp;
                 <a
-                  href="#"
+                  href="javascript:void(0)"
                   onClick={() => {
                     this.setState({ modal: 'footer_refund' });
                   }}

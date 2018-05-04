@@ -33,6 +33,16 @@ class SelectPackage extends React.PureComponent {
             type="text/css"
             href="/static/assets/css/promo/mobile/index.css"
           />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/css/mb-style.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/css/mb-sprites-style.css"
+          />
         </Head>
         <MobileSelectPackageContainer {...this.props} />
       </React.Fragment>

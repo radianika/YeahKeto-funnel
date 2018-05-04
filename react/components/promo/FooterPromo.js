@@ -53,11 +53,10 @@ class FooterPromo extends React.PureComponent {
               you are pregnant, nursing, taking medications, or have a medical
               condition, consult your physician before using this product.
               Representations regarding the efficacy and safety of American
-              Science CBD & American Science Nootripic Complex have not been
-              evaluated by the Food and Drug Administration. The FDA only
-              evaluates foods and drugs, not supplements like these products.
-              These products are not intended to diagnose, prevent, treat, or
-              cure any disease.
+              Science CBD have not been evaluated by the Food and Drug
+              Administration. The FDA only evaluates foods and drugs, not
+              supplements like these products. These products are not intended
+              to diagnose, prevent, treat, or cure any disease.
               <a
                 href="https://www.ncbi.nlm.nih.gov/pubmed/18728714"
                 target="_blank"
@@ -68,8 +67,7 @@ class FooterPromo extends React.PureComponent {
               </a>
               to find evidence of a test, analysis, research, or study
               describing the benefits, performance or efficacy of American
-              Science CBD & American Science Nootripic Complex based on the
-              expertise of relevant professionals.
+              Science CBD based on the expertise of relevant professionals.
             </Footer>
           </div>
         </div>
