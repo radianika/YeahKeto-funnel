@@ -6,3 +6,4 @@ export * from './TextField';
 export * from './SelectField';
 export * from './CardExpiryField';
 export * from './SameAddressCheckField';
+export * from './PromoSession';
