@@ -178,6 +178,7 @@ class PromoContact extends React.PureComponent {
             placeholder="Zip Code"
             maxLength="5"
             type="text"
+            pattern="[0-9]*"
           />
           <i style={{ display: 'none' }} className="fv-control-feedback" />
           <small

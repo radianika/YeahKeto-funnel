@@ -94,6 +94,8 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
                 label="Zip Code"
                 placeholder="Zip Code"
                 required
+                type="number"
+                maxLength={5}
               />
               <Field
                 component={TextField}
@@ -120,6 +122,7 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
             placeholder="•••• •••• •••• ••••"
             label="Card No"
             required
+            pattern="[0-9]*"
           />
           <div className="frmElemts exp-label">
             <label>&nbsp;</label>
@@ -168,6 +171,7 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
             required
             maxLength={3}
             type="password"
+            pattern="[0-9]*"
           />
           <div className="clearall" />
           <button onClick={this.submitForm} className="chk-submit pulse" />

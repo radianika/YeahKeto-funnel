@@ -85,6 +85,7 @@ class MobileShippingContainer extends React.PureComponent {
                       placeholder="Zip Code"
                       required
                       type="number"
+                      maxLength={5}
                     />
                     <Field
                       containerClass="frmelmnts3"

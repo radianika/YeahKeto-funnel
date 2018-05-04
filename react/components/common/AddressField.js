@@ -28,16 +28,23 @@ class AddressField extends React.PureComponent {
     let city = place.address_components.find(
       c => c.types.indexOf('locality') >= 0,
     );
-    console.log(city);
     city = idx(city, _ => _.long_name);
     let state = place.address_components.find(
       c => c.types.indexOf('administrative_area_level_1') >= 0,
     );
     state = idx(state, _ => _.short_name);
+    let postalCode = place.address_components.find(
+      c => c.types.indexOf('postal_code') >= 0,
+    );
+    postalCode = idx(postalCode, _ => _.short_name);
     setImmediate(() => {
-      this.props.changeField('address', address);
+      this.props.changeField(
+        'address',
+        this.autocompleteRef.current.value.split(',')[0],
+      );
       this.props.changeField('city', city);
       this.props.changeField('state', state);
+      this.props.changeField('postalCode', postalCode);
     });
   };
 

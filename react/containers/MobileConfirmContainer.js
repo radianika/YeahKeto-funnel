@@ -185,6 +185,8 @@ class MobileConfirmContainer extends React.PureComponent {
                         placeholder="Zip Code"
                         required
                         type="number"
+                        maxLength={5}
+                        pattern="[0-9]*"
                       />
                       <Field
                         containerClass="frmelmnts3"

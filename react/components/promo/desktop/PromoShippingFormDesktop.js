@@ -83,6 +83,9 @@ class PromoShippingFormDesktop extends React.PureComponent {
           label="Zip Code"
           placeholder="Zip Code"
           required
+          type="number"
+          maxLength={5}
+          pattern="[0-9]*"
         />
         <Field
           component={TextField}
