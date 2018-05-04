@@ -2,7 +2,7 @@ import React from 'react';
 
 const upsell2Packs = [
   {
-    id: 156,
+    id: 212,
     title: 'Add 1 Container',
     img: 'one-bottle.png',
     boxTxt: (
@@ -11,12 +11,12 @@ const upsell2Packs = [
         CBD Capsules
       </span>
     ),
-    price: '$90',
-    discount: '($5 off retail)',
+    price: '$77',
+    discount: '($8 off retail)',
     boxClassName: 'pkg1-box',
   },
   {
-    id: 157,
+    id: 211,
     title: 'Add 2 Containers',
     img: 'two-bottles.png',
     boxTxt: (
@@ -25,12 +25,12 @@ const upsell2Packs = [
         CBD Capsules
       </span>
     ),
-    price: '$149',
-    discount: '($5 off retail)',
+    price: '$154',
+    discount: '($16 off retail)',
     boxClassName: 'pkg1-box',
   },
   {
-    id: 158,
+    id: 213,
     title: 'Add 3 Containers',
     img: 'three-bottles.png',
     boxTxt: (
@@ -39,15 +39,15 @@ const upsell2Packs = [
         CBD Capsules
       </span>
     ),
-    price: '$195',
-    discount: '($36 off retail)',
+    price: '$231',
+    discount: '($24 off retail)',
     boxClassName: 'pkg2-box',
   },
 ];
 
 const upsell3Packs = [
   {
-    id: 158,
+    id: 215,
     title: 'Add 1 Container',
     img: 'jar1.jpg',
     boxTxt: (
@@ -56,12 +56,12 @@ const upsell3Packs = [
         CBD Warming Rub
       </span>
     ),
-    price: '$xx.00',
-    discount: '($XX.00 savings off retail)',
+    price: '$87.00',
+    discount: '($18.00 savings off retail)',
     boxClassName: 'pkg1-box',
   },
   {
-    id: 159,
+    id: 216,
     title: 'Add 2 Containers',
     img: 'jar2.jpg',
     boxTxt: (
@@ -70,12 +70,12 @@ const upsell3Packs = [
         CBD Warming Rub
       </span>
     ),
-    price: '$xx.00',
-    discount: '($xx.00 savings off retail)',
+    price: '$174.00',
+    discount: '($36.00 savings off retail)',
     boxClassName: 'pkg1-box',
   },
   {
-    id: 160,
+    id: 217,
     title: 'Add 3 Containers',
     img: 'jar3.jpg',
     boxTxt: (
@@ -84,8 +84,8 @@ const upsell3Packs = [
         CBD Warming Rub
       </span>
     ),
-    price: '$xx.00',
-    discount: '($xx.00 off retail)',
+    price: '$261.00',
+    discount: '($54.00 off retail)',
     boxClassName: 'pkg2-box',
   },
 ];
