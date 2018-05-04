@@ -2,7 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'next/router';
-import { Footer, TextField, SelectField } from 'react/components/common';
+import {
+  Footer,
+  TextField,
+  SelectField,
+  AddressField,
+} from 'react/components/common';
 import { stateslist, packages, billingFormValidator } from 'helpers';
 import { OrderActions } from 'redux/actions';
 
@@ -144,10 +149,12 @@ class MobileConfirmContainer extends React.PureComponent {
                       <div className="clearfix" />
                       <Field
                         containerClass="frmelmnts2"
-                        component={TextField}
+                        component={AddressField}
                         name="address"
-                        label="Adress Line 1"
+                        label="Address Line 1"
                         placeholder="Street and number, P.O. box, c/o."
+                        required
+                        changeField={this.props.change}
                       />
                       <Field
                         containerClass="frmelmnts2"

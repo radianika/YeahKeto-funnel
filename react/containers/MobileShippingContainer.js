@@ -55,10 +55,11 @@ class MobileShippingContainer extends React.PureComponent {
                     <div className="clearfix" />
                     <Field
                       containerClass="frmelmnts2"
-                      component={TextField}
+                      component={AddressField}
                       name="address"
                       label="Adress Line 1"
                       placeholder="Street and number, P.O. box, c/o."
+                      changeField={this.props.change}
                     />
                     <Field
                       containerClass="frmelmnts2"
