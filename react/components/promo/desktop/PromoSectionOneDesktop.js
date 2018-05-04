@@ -42,7 +42,9 @@ class PromoSectionOneDesktop extends React.PureComponent {
             </ul>
             <div className="clearall" />
             <i className="chkarrow sprite3 sprite-s1arrow" />
-            <i className="s1bottle sprite3 sprite-s1bottle" />
+            {/*<i className="s1bottle sprite3 sprite-s1bottle" />*/}
+            <img src="/static/promo/desktop/images/s1bottle.png"
+                 className="s1bottle" alt="" />
             <i className="s1asseen sprite2 sprite-s1asseen" />
           </div>
           <div className="s1rgt">

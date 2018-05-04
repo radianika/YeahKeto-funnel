@@ -31,7 +31,9 @@ class PromoSectionSevenMobile extends React.PureComponent {
         </ul>
         <p className="clearall" />{' '}
         <i className="s7-photos sprite3 sprite-s7-photos" />{' '}
-        <i className="s1-bottle sprite3 sprite-s1-bottle" />
+        {/*<i className="s1-bottle sprite3 sprite-s1-bottle" />*/}
+        <img src="/static/promo/mobile/images/s1-bottle.png"
+             className="s1-bottle" alt="" />
       </div>
     );
   }
