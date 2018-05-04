@@ -29,9 +29,12 @@ class PromoSectionSevenDesktop extends React.PureComponent {
             </li>
           </ul>
           <div className="clearall" />
-          {/*<i className="s7bottle sprite4 sprite-s7-bottle" />*/}
-          <img src="/static/promo/desktop/images/s7-bottle.png"
-               className="s7bottle" alt="" />
+          {/* <i className="s7bottle sprite4 sprite-s7-bottle" /> */}
+          <img
+            src="/static/promo/desktop/images/s7-bottle.png"
+            className="s7bottle"
+            alt=""
+          />
           <i className="s7-photos sprite4 sprite-s7-photos" />
           <a href="javascript:bookmarkscroll.scrollTo('topfrm')">
             <i className="s7btn pulse sprite5 sprite-submit" />

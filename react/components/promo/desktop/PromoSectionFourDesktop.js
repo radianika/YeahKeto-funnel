@@ -63,9 +63,12 @@ class PromoSectionFourDesktop extends React.PureComponent {
               All-Natural, Organic &amp; High Potency Cannabidiol Blend
             </p>
           </div>{' '}
-          {/*<i className="s4-bottle sprite4 sprite-s4-bottle" />{' '}*/}
-          <img src="/static/promo/desktop/images/s4-bottle.png"
-               className="s4-bottle" alt="" />
+          {/* <i className="s4-bottle sprite4 sprite-s4-bottle" />{' '} */}
+          <img
+            src="/static/promo/desktop/images/s4-bottle.png"
+            className="s4-bottle"
+            alt=""
+          />
         </div>
       </div>
     );

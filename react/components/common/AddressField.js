@@ -74,7 +74,7 @@ class AddressField extends React.PureComponent {
 
   render() {
     const { props } = this;
-    const hasError = props.meta.submitFailed && props.meta.error;
+    const hasError = props.meta.touched && props.meta.error;
     const valid = props.meta.touched && props.meta.valid;
     return (
       <React.Fragment>

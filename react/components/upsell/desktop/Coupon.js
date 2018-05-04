@@ -4,7 +4,8 @@ class Coupon extends React.PureComponent {
   render() {
     const discount = '43%';
     const price = '$39.00';
-    const discount_line = 'That’s an incredible $180.00 off our regular price! ';
+    const discount_line =
+      'That’s an incredible $180.00 off our regular price! ';
 
     return (
       <div className="s1-doteed-sec">

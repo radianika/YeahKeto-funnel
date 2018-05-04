@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SelectField = props => {
-  const hasError = props.meta.submitFailed && props.meta.error;
+  const hasError = props.meta.touched && props.meta.error;
   const valid = props.meta.touched && props.meta.valid;
   return (
     <div
