@@ -8,7 +8,11 @@ class PromoSectionTwoMobile extends React.PureComponent {
           <span>AMERICAN SCIENCE HEMP OIL </span>
           <br />Enriched with Cannabidiol Extract (CBD)
         </p>
-        <i className="s2-img sprite1 sprite-s2-img" />
+
+        {/*<i className="s2-img sprite1 sprite-s2-img" />*/}
+        <img src="/static/promo/mobile/images/s2-img.jpg"
+             className="s2-img" alt="" />
+
         <p className="s2-txt1">
           Cannabidiol is a non-psychoactive component of Hemp that has been
           clinically proven to offer a wide range of therapeutic health

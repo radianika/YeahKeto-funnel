@@ -8,7 +8,9 @@ class PromoSectionThreeMobile extends React.PureComponent {
           <span>WHY AMERICAN SCIENCE HEMP OIL </span>
           <br />Triple Filtration Technology For High Potency
         </p>{' '}
-        <i className="s2-img sprite1 sprite-s3-img" />
+        {/*<i className="s2-img sprite1 sprite-s3-img" />*/}
+        <img src="/static/promo/mobile/images/s3-img.jpg"
+             className="s2-img" alt="" />
         <p className="s2-txt1">
           <strong>American Science Hemp Oil</strong> is made with the purest
           hemp extract at a certified facility to meet and exceed industry
