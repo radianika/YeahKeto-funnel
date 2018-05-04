@@ -291,7 +291,6 @@ class MobileConfirmContainer extends React.PureComponent {
                         component={props => (
                           <input
                             {...props.input}
-                            type="password"
                             inputMode="numeric"
                             className="short"
                             pattern="[0-9]*"

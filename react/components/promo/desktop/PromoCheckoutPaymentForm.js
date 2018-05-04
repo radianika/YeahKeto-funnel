@@ -174,7 +174,6 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
             className="short"
             required
             maxLength={3}
-            type="password"
             pattern="[0-9]*"
           />
           <div className="clearall" />

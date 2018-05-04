@@ -108,4 +108,23 @@ const recommendedProducts = {
   },
 };
 
-export { products, recommendedProducts };
+const tyProductImages = {
+  oil: '/static/desktop/images/ty-prod1.png',
+  capsule: '/static/desktop/images/ty-prod3.png',
+  balm: '/static/desktop/images/ty-prod5.png',
+};
+
+const getTyProductImage = product => {
+  console.log({ product });
+  if (product.name.toLowerCase().indexOf('balm') >= 0) {
+    return tyProductImages.balm;
+  }
+  if (product.name.toLowerCase().indexOf('oil') >= 0) {
+    return tyProductImages.oil;
+  }
+  if (product.name.toLowerCase().indexOf('capsule') >= 0) {
+    return tyProductImages.capsule;
+  }
+};
+
+export { products, recommendedProducts, tyProductImages, getTyProductImage };

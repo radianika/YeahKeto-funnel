@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
+import { getTyProductImage } from 'helpers';
 import { OrderActions } from 'redux/actions';
 
 class PromoThankyouMobile extends React.PureComponent {
@@ -71,7 +72,7 @@ class PromoThankyouMobile extends React.PureComponent {
               <div key={item.productId} className="prod-row">
                 <div className="prod-data ty">
                   <div className="prod-shoot">
-                    {/* <img src={`/images/desktop/${originalProduct.img}`} /> */}
+                    <img src={getTyProductImage(item)} />
                   </div>
                   <p className="prod-name">
                     {item.name}
