@@ -8,14 +8,19 @@ const format = input => {
 class PromoSectionFiveMobile extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.state.hours = '00';
-    this.state.minutes = '04';
-    this.state.seconds = '33';
+    this.state = {
+      hours: '00',
+      minutes: '04',
+      seconds: '33',
+    };
+  }
+
+  componentDidMount() {
     setInterval(() => {
       this.updateTime();
     }, 1000);
   }
+
   updateTime() {
     let seconds = parseInt(this.state.seconds, 10) - 1;
     let minutes = parseInt(this.state.minutes, 10);
@@ -35,6 +40,7 @@ class PromoSectionFiveMobile extends React.PureComponent {
       hours: format(hours),
     });
   }
+
   render() {
     return (
       <div id="section-five">
@@ -47,22 +53,38 @@ class PromoSectionFiveMobile extends React.PureComponent {
           non-habit forming benefits of CBD have been widely publicized across
           print & media.
         </p>
-        <p>
-          <a href="/promo/mobile/?wvideo=5xe74yifg5">
-            <img
-              alt=""
-              src="https://embedwistia-a.akamaihd.net/deliveries/a1427acc25ee59ea265e881b30d4e279f391ca2b.jpg?image_play_button_size=2x&amp;image_crop_resized=960x540&amp;image_play_button=1&amp;image_play_button_color=7fff54e0"
-              width="400"
-              height="225"
-              style={{ width: '400px', height: '225px' }}
+        <div
+          className="wistia_responsive_padding"
+          style={{ padding: '56.25% 0 0 0', position: 'relative' }}
+        >
+          <div
+            className="wistia_responsive_wrapper"
+            style={{
+              height: '100%',
+              left: 0,
+              position: 'absolute',
+              top: 0,
+              width: '100%',
+            }}
+          >
+            <iframe
+              src="https://fast.wistia.net/embed/iframe/5xe74yifg5?videoFoam=true"
+              title="Wistia video player"
+              allowTransparency="true"
+              frameBorder="0"
+              scrolling="no"
+              className="wistia_embed"
+              name="wistia_embed"
+              allowFullScreen
+              mozallowfullscreen
+              webkitallowfullscreen
+              oallowfullscreen
+              msallowfullscreen
+              width="100%"
+              height="100%"
             />
-          </a>
-        </p>
-        <p>
-          <a href="/promo/mobile/?wvideo=5xe74yifg5">
-            American Science CBD Hemp Oil
-          </a>
-        </p>
+          </div>
+        </div>
         <i className="vdo-arw sprite3 sprite-vdo-arw" />
         <p className="limited-offer">HURRY! Limited Time Offer</p>
         <div id="clockdiv">
