@@ -86,4 +86,17 @@ const normalizePhone = value => {
   return `(${onlyNums.slice(0, 3)}) ${onlyNums.slice(3, 6)}-${onlyNums.slice(6, 10)}`;
 };
 
-export { shippingFormValidator, billingFormValidator, normalizePhone };
+const normalizePostalCode = value => {
+  if (isNaN(value)) {
+    return '';
+  }
+
+  if (!value) {
+    return value;
+  }
+
+  const onlyNums = value.replace(/[^\d]/g, '');
+  return onlyNums.slice(0, 5);
+};
+
+export { shippingFormValidator, billingFormValidator, normalizePhone, normalizePostalCode };

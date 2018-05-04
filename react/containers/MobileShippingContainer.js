@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { stateslist, shippingFormValidator, normalizePhone } from 'helpers';
+import {
+  stateslist,
+  shippingFormValidator,
+  normalizePhone,
+  normalizePostalCode,
+} from 'helpers';
 import {
   Footer,
   TextField,
@@ -89,8 +94,7 @@ class MobileShippingContainer extends React.PureComponent {
                       label="Zip Code"
                       placeholder="Zip Code"
                       required
-                      type="number"
-                      maxLength={5}
+                      normalize={normalizePostalCode}
                     />
                     <Field
                       containerClass="frmelmnts3"

@@ -2,7 +2,7 @@ import React from 'react';
 
 const TextField = props => {
   const hasError = props.meta.touched && props.meta.error;
-  const valid = props.meta.touched && props.meta.valid;
+  const valid = props.input.value && props.meta.valid;
   return (
     <div
       className={`${

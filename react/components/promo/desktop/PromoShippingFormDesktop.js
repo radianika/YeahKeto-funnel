@@ -1,6 +1,11 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { stateslist, shippingFormValidator, normalizePhone } from 'helpers';
+import {
+  stateslist,
+  shippingFormValidator,
+  normalizePhone,
+  normalizePostalCode,
+} from 'helpers';
 import { TextField, SelectField, AddressField } from 'react/components/common';
 import { connect } from 'react-redux';
 
@@ -83,9 +88,7 @@ class PromoShippingFormDesktop extends React.PureComponent {
           label="Zip Code"
           placeholder="Zip Code"
           required
-          type="number"
-          maxLength={5}
-          pattern="[0-9]*"
+          normalize={normalizePostalCode}
         />
         <Field
           component={TextField}

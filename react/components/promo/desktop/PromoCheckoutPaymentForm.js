@@ -7,7 +7,12 @@ import {
   SameAddressCheckField,
   AddressField,
 } from 'react/components/common';
-import { stateslist, billingFormValidator, normalizePhone } from 'helpers';
+import {
+  stateslist,
+  billingFormValidator,
+  normalizePhone,
+  normalizePostalCode,
+} from 'helpers';
 
 class PromoCheckoutPaymentForm extends React.PureComponent {
   render() {
@@ -94,8 +99,7 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
                 label="Zip Code"
                 placeholder="Zip Code"
                 required
-                type="number"
-                maxLength={5}
+                normalize={normalizePostalCode}
               />
               <Field
                 component={TextField}

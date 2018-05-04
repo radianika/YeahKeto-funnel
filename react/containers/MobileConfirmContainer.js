@@ -7,6 +7,7 @@ import {
   packages,
   billingFormValidator,
   normalizePhone,
+  normalizePostalCode,
 } from 'helpers';
 import {
   Footer,
@@ -184,9 +185,7 @@ class MobileConfirmContainer extends React.PureComponent {
                         label="Zip Code"
                         placeholder="Zip Code"
                         required
-                        type="number"
-                        maxLength={5}
-                        pattern="[0-9]*"
+                        normalize={normalizePostalCode}
                       />
                       <Field
                         containerClass="frmelmnts3"
@@ -292,7 +291,7 @@ class MobileConfirmContainer extends React.PureComponent {
                         component={props => (
                           <input
                             {...props.input}
-                            type="tel"
+                            type="password"
                             inputMode="numeric"
                             className="short"
                             pattern="[0-9]*"
