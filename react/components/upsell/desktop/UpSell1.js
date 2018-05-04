@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { PromoSession } from 'react/components/common';
 import { Coupon } from './Coupon';
 import { SatisfactionBox } from './SatisfactionBox';
@@ -9,6 +10,7 @@ class Upsell1 extends React.PureComponent {
   };
 
   render() {
+    const { orderId } = this.props.url.query;
     return (
       <React.Fragment>
         <PromoSession pageType="leadPage/checkoutPage/upsellPage" />
@@ -74,13 +76,16 @@ class Upsell1 extends React.PureComponent {
           <div className="clearall" />
           <SatisfactionBox onUpgrade={this.upgrade} />
           <div className="clearall" />
-          <a href="#" className="nothank">
-            No thanks. I understand that this is my only opportunity to get
-            access to this special offer, and I’m okay with missing out.
-            Instead, if I’m blown away by the results I get using CBD HEMP OIL,
-            like so many thousands of folks before me, I’ll just re-order at
-            $149 per bottle in the future. I’ll pass on this chance forever.
-          </a>
+          <Link href={`/promo/desktop/upsell-2?orderId=${orderId}`}>
+            <a className="nothank">
+              No thanks. I understand that this is my only opportunity to get
+              access to this special offer, and I’m okay with missing out.
+              Instead, if I’m blown away by the results I get using CBD HEMP
+              OIL, like so many thousands of folks before me, I’ll just re-order
+              at $149 per bottle in the future. I’ll pass on this chance
+              forever.
+            </a>
+          </Link>
           <div className="clearall" />
           <img
             src="/static/mobile/v2/images/secure-logos.png"

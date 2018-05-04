@@ -35,9 +35,9 @@ class UpsellDesktopContainer extends React.PureComponent {
               className="seals"
             />
           </div>
-          {upsell === 1 && <Upsell1 upgrade={this.upgrade} />}
-          {upsell === 2 && <Upsell2 upgrade={this.upgrade} />}
-          {upsell === 3 && <Upsell3 upgrade={this.upgrade} />}
+          {upsell === 1 && <Upsell1 upgrade={this.upgrade} {...this.props} />}
+          {upsell === 2 && <Upsell2 upgrade={this.upgrade} {...this.props} />}
+          {upsell === 3 && <Upsell3 upgrade={this.upgrade} {...this.props} />}
         </div>
         <div className="footer">
           <div className="clearall" />

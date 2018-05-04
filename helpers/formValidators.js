@@ -53,7 +53,7 @@ const billingFormValidator = values => {
     errors.cardNumber = 'Card number is required';
   }
 
-  if (values.cardNumber && values.cardNumber.length != 16) {
+  if (values.cardNumber && values.cardNumber.length !== 16) {
     errors.cardNumber = 'Card number should be 16 digits';
   }
 

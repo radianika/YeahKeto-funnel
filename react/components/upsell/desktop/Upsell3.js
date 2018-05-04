@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { PromoSession } from 'react/components/common';
 import { upsell3Packs } from 'helpers';
 import { Carousel } from './Carousel';
@@ -16,6 +17,7 @@ class Upsell3 extends React.PureComponent {
     });
   };
   render() {
+    const { orderId } = this.props.url.query;
     return (
       <React.Fragment>
         <PromoSession pageType="leadPage/checkoutPage/upsellPage/upsell2Page/upsell3Page" />
@@ -68,10 +70,12 @@ class Upsell3 extends React.PureComponent {
           />
           <SatisfactionBox onUpgrade={this.scrollToTop} />
           <div className="clearall" />
-          <a href="#" className="nothank">
-            No thank you. I’ll pass on this huge savings now and realize I will
-            never have this opportunity again.
-          </a>
+          <Link href={`/promo/desktop/thankyou?orderId=${orderId}`}>
+            <a href="#" className="nothank">
+              No thank you. I’ll pass on this huge savings now and realize I
+              will never have this opportunity again.
+            </a>
+          </Link>
           <div className="clearall" />
           <img
             src="/static/mobile/v2/images/secure-logos.png"

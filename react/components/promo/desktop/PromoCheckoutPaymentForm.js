@@ -118,7 +118,7 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
             component={TextField}
             name="cardNumber"
             className="creditcard"
-            maxLength="19"
+            maxLength="16"
             placeholder="•••• •••• •••• ••••"
             label="Card No"
             required
