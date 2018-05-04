@@ -16,7 +16,7 @@ class PromoSectionOneDesktop extends React.PureComponent {
   render() {
     return (
       <div className="section1 dsplay">
-        <h2 style={{ display: 'none' }}>American cience CBD</h2>
+        <h2 style={{ display: 'none' }}>American Science CBD</h2>
         <div className="container">
           <div className="s1lft position">
             <i className="logo sprite2 sprite-logo" />

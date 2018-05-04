@@ -6,7 +6,7 @@ import { UpsellFooter } from '../UpsellFooter';
 
 class Upsell1 extends React.PureComponent {
   upgrade = () => {
-    this.props.upgrade(155, '/promo/mobile/upsell-2');
+    this.props.upgrade(214, '/promo/mobile/upsell-2');
   };
   render() {
     return (
