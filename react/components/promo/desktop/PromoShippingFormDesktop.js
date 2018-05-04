@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { TextField, SelectField } from 'react/components/common';
-import { stateslist, shippingFormValidator } from 'helpers';
+import { stateslist, shippingFormValidator, normalizePhone } from 'helpers';
 import { connect } from 'react-redux';
 
 class PromoShippingFormDesktop extends React.PureComponent {
@@ -89,6 +89,7 @@ class PromoShippingFormDesktop extends React.PureComponent {
           label="Phone"
           placeholder="Example: (123) 555-6789"
           required
+          normalize={normalizePhone}
         />
         <Field
           component={TextField}

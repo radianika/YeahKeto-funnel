@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { stateslist, shippingFormValidator } from 'helpers';
+import { stateslist, shippingFormValidator, normalizePhone } from 'helpers';
 import { Footer, TextField, SelectField } from 'react/components/common';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
@@ -99,9 +99,10 @@ class MobileShippingContainer extends React.PureComponent {
                       containerClass="frmelmnts1"
                       component={TextField}
                       name="phoneNumber"
-                      label="Phone Number"
+                      label="Phone Numbe"
                       placeholder="Example: (123) 555-6789"
                       required
+                      normalize={normalizePhone}
                       type="tel"
                     />
                     <Field

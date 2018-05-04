@@ -3,7 +3,12 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'next/router';
 import { Footer, TextField, SelectField } from 'react/components/common';
-import { stateslist, packages, billingFormValidator } from 'helpers';
+import {
+  stateslist,
+  packages,
+  billingFormValidator,
+  normalizePhone,
+} from 'helpers';
 import { OrderActions } from 'redux/actions';
 
 class MobileConfirmContainer extends React.PureComponent {
@@ -191,6 +196,7 @@ class MobileConfirmContainer extends React.PureComponent {
                         label="Phone Number"
                         placeholder="Example: (123) 555-6789"
                         required
+                        normalize={normalizePhone}
                         type="tel"
                       />
                       <Field

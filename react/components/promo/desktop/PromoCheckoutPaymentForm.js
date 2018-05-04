@@ -6,7 +6,7 @@ import {
   SelectField,
   SameAddressCheckField,
 } from 'react/components/common';
-import { stateslist, billingFormValidator } from 'helpers';
+import { stateslist, billingFormValidator, normalizePhone } from 'helpers';
 
 class PromoCheckoutPaymentForm extends React.PureComponent {
   render() {
@@ -99,6 +99,7 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
                 label="Phone"
                 placeholder="Example: (123) 555-6789"
                 required
+                normalize={normalizePhone}
               />
               <Field
                 component={TextField}
