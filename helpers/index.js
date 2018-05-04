@@ -4,3 +4,4 @@ export * from './stateslist';
 export * from './upsells';
 export * from './api';
 export * from './formValidators';
+export * from './products';

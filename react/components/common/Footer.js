@@ -56,7 +56,7 @@ class Footer extends PureComponent {
               <p className="ftr-txt w40 mtop2">
                 We accept:
                 <img
-                  src="../static/assets/images/mc-v.png"
+                  src="/static/assets/images/mc-v.png"
                   alt="We accept VISA, MasterCard"
                 />
               </p>

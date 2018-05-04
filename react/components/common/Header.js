@@ -8,7 +8,7 @@ const Menu = () => (
       <ActiveLink href="/">Home</ActiveLink>
     </li>
     <li>
-      <ActiveLink href="/products">Products</ActiveLink>
+      <ActiveLink href="/hemp-oil">Products</ActiveLink>
     </li>
     <li>
       <ActiveLink href="/faqs">FAQ's</ActiveLink>
