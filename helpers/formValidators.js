@@ -29,18 +29,18 @@ const shippingFormValidator = values => {
   }
   if (!values.phoneNumber) {
     errors.phoneNumber = 'Please enter your phone number';
-    
   }
-  //we have put length 12 below because as per UI we need to show two parenthesis,space and one hyphen too
-  if(values.phoneNumber && values.phoneNumber.length!==14){
-    errors.phoneNumber = "Not a valid 10-digit US phone number (must not include spaces or special characters)."
+  // we have put length 12 below because as per UI we need to show two parenthesis,space and one hyphen too
+  if (values.phoneNumber && values.phoneNumber.length !== 14) {
+    errors.phoneNumber =
+      'Not a valid 10-digit US phone number (must not include spaces or special characters).';
   }
   if (!values.email) {
     errors.email = 'The email address is required';
     // The value is not a valid email address
   }
 
-  if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'The value is not a valid email address';
   }
 
@@ -53,7 +53,7 @@ const billingFormValidator = values => {
     errors.cardNumber = 'Card number is required';
   }
 
-  if (values.cardNumber && values.cardNumber.length !=16) {
+  if (values.cardNumber && values.cardNumber.length != 16) {
     errors.cardNumber = 'Card number should be 16 digits';
   }
 
@@ -72,20 +72,18 @@ const billingFormValidator = values => {
 
 const normalizePhone = value => {
   if (!value) {
-    return value
+    return value;
   }
 
-  const onlyNums = value.replace(/[^\d]/g, '')
-  console.log('only number ==',onlyNums);
+  const onlyNums = value.replace(/[^\d]/g, '');
+  console.log('only number ==', onlyNums);
   if (onlyNums.length <= 3) {
-    return `(${onlyNums}`
+    return `(${onlyNums}`;
   }
   if (onlyNums.length <= 6) {
-    return `(${onlyNums.slice(0, 3)}) ${onlyNums.slice(3)}`
-  } 
-  return `(${onlyNums.slice(0, 3)}) ${onlyNums.slice(3, 6)}-${onlyNums.slice(
-    6 , 10
-  )}`
-}
+    return `(${onlyNums.slice(0, 3)}) ${onlyNums.slice(3)}`;
+  }
+  return `(${onlyNums.slice(0, 3)}) ${onlyNums.slice(3, 6)}-${onlyNums.slice(6, 10)}`;
+};
 
-export { shippingFormValidator, billingFormValidator ,normalizePhone };
+export { shippingFormValidator, billingFormValidator, normalizePhone };
