@@ -94,7 +94,7 @@ function* placeOrder(action) {
         firstName,
         lastName,
         address,
-        address2,
+        address2: address2 || '.',
         city,
         state,
         postalCode,

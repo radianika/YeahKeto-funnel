@@ -75,11 +75,11 @@ class PromoSectionFiveMobile extends React.PureComponent {
               scrolling="no"
               className="wistia_embed"
               name="wistia_embed"
-              allowFullScreen
-              mozallowfullscreen
-              webkitallowfullscreen
-              oallowfullscreen
-              msallowfullscreen
+              allowFullScreen="true"
+              mozallowfullscreen="true"
+              webkitallowfullscreen="true"
+              oallowfullscreen="true"
+              msallowfullscreen="true"
               width="100%"
               height="100%"
             />

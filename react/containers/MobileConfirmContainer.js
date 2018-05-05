@@ -15,6 +15,7 @@ import {
   TextField,
   SelectField,
   AddressField,
+  Spinner,
 } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
 
@@ -327,6 +328,7 @@ class MobileConfirmContainer extends React.PureComponent {
             <Footer />
           </div>
         </div>
+        {this.props.submitStatus === 'submitting' && <Spinner />}
       </div>
     );
   }
@@ -368,6 +370,7 @@ function mapStateToProps(reduxState, ownProps) {
       email: emailAddress,
     },
     pack,
+    submitStatus: reduxState.order.placeOrderStatus,
   };
 }
 

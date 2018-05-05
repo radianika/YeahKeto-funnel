@@ -20,11 +20,6 @@ class AddressField extends React.PureComponent {
 
   fillInAddress = () => {
     const place = this.autocomplete.getPlace();
-    console.log(place.address_components);
-    let address = place.address_components.find(
-      c => c.types.indexOf('sublocality') >= 0,
-    );
-    address = idx(address, _ => _.long_name);
     let city = place.address_components.find(
       c => c.types.indexOf('locality') >= 0,
     );

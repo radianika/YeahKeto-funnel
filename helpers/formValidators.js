@@ -77,7 +77,6 @@ const billingFormValidator = values => {
   if (!values.cardSecurityCode) {
     errors.cardSecurityCode = 'Security Code is required';
   }
-  console.log({ errors });
   return errors;
 };
 
@@ -85,9 +84,7 @@ const normalizePhone = value => {
   if (!value) {
     return value;
   }
-
   const onlyNums = value.replace(/[^\d]/g, '');
-  console.log('only number ==', onlyNums);
   if (onlyNums.length <= 3) {
     return `(${onlyNums}`;
   }
@@ -120,7 +117,6 @@ const normalizeCardNumber = value => {
     const [length] = cardTypes[0].lengths;
     let { gaps } = cardTypes[0];
     gaps = [0, ...gaps, length];
-    console.log(gaps);
     let returnVal = [];
     for (let i = 0; i < gaps.length - 1; i += 1) {
       returnVal = [...returnVal, value.substring(gaps[i], gaps[i + 1])];

@@ -10,8 +10,6 @@ module.exports = {
     UIkit: true,
   },
   rules: {
-    'no-restricted-globals': 0,
-    'no-undef': 0,
     'no-console': 1,
     'no-underscore-dangle': 0,
     'no-param-reassign': 0,
@@ -22,7 +20,7 @@ module.exports = {
     'react/no-danger': 1,
     'react/jsx-indent-props': [2, 2],
     'global-require': 1,
-    'import/prefer-default-export': 0,
+    'import/prefer-default-export': 1,
     'class-methods-use-this': 1,
     'jsx-a11y/no-autofocus': 0,
     'jsx-a11y/anchor-is-valid': 0,
@@ -34,8 +32,6 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 0,
     'function-paren-newline': 0,
     'arrow-parens': 0,
-    'react/no-unescaped-entities': 1,
-    'no-useless-escape': 0,
   },
   settings: {
     'import/resolver': {

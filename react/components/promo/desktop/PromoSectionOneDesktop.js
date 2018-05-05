@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 import { OrderActions } from 'redux/actions';
+import { Spinner } from 'react/components/common';
 import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
 class PromoSectionOneDesktop extends React.PureComponent {
@@ -63,6 +64,7 @@ class PromoSectionOneDesktop extends React.PureComponent {
             </div>
           </div>
         </div>
+        {this.props.submitStatus === 'submitting' && <Spinner />}
       </div>
     );
   }
@@ -70,8 +72,10 @@ class PromoSectionOneDesktop extends React.PureComponent {
 
 PromoSectionOneDesktop = withRouter(PromoSectionOneDesktop);
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return {
+    submitStatus: state.order.submitLeadsFormStatus,
+  };
 }
 
 PromoSectionOneDesktop = connect(mapStateToProps, { ...OrderActions })(

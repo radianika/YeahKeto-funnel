@@ -6,6 +6,7 @@ import {
   SelectField,
   SameAddressCheckField,
   AddressField,
+  Spinner,
 } from 'react/components/common';
 import {
   stateslist,
@@ -173,6 +174,7 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
           <div className="clearall" />
           <button onClick={this.submitForm} className="chk-submit pulse" />
         </form>
+        {this.props.submitStatus === 'submitting' && <Spinner />}
       </div>
     );
   }
@@ -215,6 +217,7 @@ function mapStateToProps(reduxState) {
     currentValues: {
       same: selector(reduxState, 'same'),
     },
+    submitStatus: reduxState.order.placeOrderStatus,
   };
 }
 
