@@ -8,6 +8,7 @@ import {
   billingFormValidator,
   normalizePhone,
   normalizePostalCode,
+  normalizeCardNumber,
 } from 'helpers';
 import {
   Footer,
@@ -116,22 +117,13 @@ class MobileConfirmContainer extends React.PureComponent {
                     </p>
                     <div className="cards">
                       <span className="card-visa">
-                        <img
-                          src="/static/promo/mobile/images/card-visa.png"
-                          alt=""
-                        />
+                        <img src="/static/visa.png" alt="" />
                       </span>
                       <span className="card-mastercard">
-                        <img
-                          src="/static/promo/mobile/images/card-mastercard.png"
-                          alt=""
-                        />
+                        <img src="/static/Mastercard.png" alt="" />
                       </span>
                       <span className="card-discover">
-                        <img
-                          src="/static/promo/mobile/images/card-discover.png"
-                          alt=""
-                        />
+                        <img src="/static/amex.png" alt="" />
                       </span>
                     </div>
                   </div>
@@ -227,7 +219,6 @@ class MobileConfirmContainer extends React.PureComponent {
                       component={TextField}
                       name="cardNumber"
                       className="creditcard"
-                      maxLength="19"
                       placeholder="•••• •••• •••• ••••"
                       label="Card No"
                       required
@@ -236,6 +227,7 @@ class MobileConfirmContainer extends React.PureComponent {
                       pattern="[0-9]*"
                       autoComplete="cc-number"
                       autoCorrect="off"
+                      normalize={normalizeCardNumber}
                     />
                     <div className="clearfix" />
                     <div className="pure-control-group frmelmnts2 hideIcon fv-has-feedback">

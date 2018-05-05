@@ -12,6 +12,7 @@ import {
   billingFormValidator,
   normalizePhone,
   normalizePostalCode,
+  normalizeCardNumber,
 } from 'helpers';
 
 class PromoCheckoutPaymentForm extends React.PureComponent {
@@ -30,19 +31,13 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
           />
           <div className="cards">
             <span className="card-visa">
-              <img src="/static/promo/desktop/images/card-visa.png" alt="" />
+              <img src="/static/visa.png" alt="" />
             </span>
             <span className="card-mastercard">
-              <img
-                src="/static/promo/desktop/images/card-mastercard.png"
-                alt=""
-              />
+              <img src="/static/Mastercard.png" alt="" />
             </span>
             <span className="card-discover">
-              <img
-                src="/static/promo/desktop/images/card-discover.png"
-                alt=""
-              />
+              <img src="/static/amex.png" alt="" />
             </span>
           </div>
           <Field component={SameAddressCheckField} name="same" />
@@ -122,11 +117,10 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
             component={TextField}
             name="cardNumber"
             className="creditcard"
-            maxLength="16"
             placeholder="•••• •••• •••• ••••"
             label="Card No"
             required
-            pattern="[0-9]*"
+            normalize={normalizeCardNumber}
           />
           <div className="frmElemts exp-label">
             <label>&nbsp;</label>

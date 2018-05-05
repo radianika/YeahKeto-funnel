@@ -1,4 +1,5 @@
 import validator from 'validator';
+import creditCartType from 'credit-card-type';
 
 const shippingFormValidator = values => {
   const errors = {};
@@ -55,8 +56,16 @@ const billingFormValidator = values => {
     errors.cardNumber = 'Card number is required';
   }
 
-  if (values.cardNumber && values.cardNumber.length !== 16) {
-    errors.cardNumber = 'Card number should be 16 digits';
+  if (values.cardNumber) {
+    const value = values.cardNumber.replace(/\s/g, '');
+    const cardTypes = creditCartType(value);
+    let length = 16;
+    if (cardTypes.length === 1) {
+      [length] = cardTypes[0].lengths;
+    }
+    if (value.length !== length) {
+      errors.cardNumber = `Card number should be ${length} digits`;
+    }
   }
 
   if (!values.cardMonth) {
@@ -90,7 +99,7 @@ const normalizePhone = value => {
 
 const normalizePostalCode = value => {
   if (isNaN(value)) {
-    return '';
+    return value.substring(0, value.length - 1);
   }
 
   if (!value) {
@@ -101,4 +110,37 @@ const normalizePostalCode = value => {
   return onlyNums.slice(0, 5);
 };
 
-export { shippingFormValidator, billingFormValidator, normalizePhone, normalizePostalCode };
+const normalizeCardNumber = value => {
+  value = value.replace(/\s/g, '');
+  if (isNaN(value)) {
+    value = value.substring(0, value.length - 1);
+  }
+  const cardTypes = creditCartType(value);
+  if (cardTypes.length === 1) {
+    const [length] = cardTypes[0].lengths;
+    let { gaps } = cardTypes[0];
+    gaps = [0, ...gaps, length];
+    console.log(gaps);
+    let returnVal = [];
+    for (let i = 0; i < gaps.length - 1; i += 1) {
+      returnVal = [...returnVal, value.substring(gaps[i], gaps[i + 1])];
+    }
+    return returnVal.filter(v => !!v).join(' ');
+  }
+  return [
+    value.substring(0, 4),
+    value.substring(4, 8),
+    value.substring(8, 12),
+    value.substring(12, 16),
+  ]
+    .filter(v => !!v)
+    .join(' ');
+};
+
+export {
+  shippingFormValidator,
+  billingFormValidator,
+  normalizePhone,
+  normalizePostalCode,
+  normalizeCardNumber,
+};
