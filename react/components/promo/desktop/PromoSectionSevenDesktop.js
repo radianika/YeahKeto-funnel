@@ -36,7 +36,12 @@ class PromoSectionSevenDesktop extends React.PureComponent {
             alt=""
           />
           <i className="s7-photos sprite4 sprite-s7-photos" />
-          <a href="javascript:bookmarkscroll.scrollTo('topfrm')">
+          <a
+            href="javascript:void(0)"
+            onClick={() => {
+              window.scroll({ top: 0, behavior: 'smooth' });
+            }}
+          >
             <i className="s7btn pulse sprite5 sprite-submit" />
           </a>
         </div>
