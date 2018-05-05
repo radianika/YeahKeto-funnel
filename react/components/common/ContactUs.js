@@ -1,33 +1,57 @@
 import React from 'react';
+import validator from 'validator';
 
 class ContactUs extends React.Component {
   state = {
-    name: '',
-    email: '',
-    phoneNumber: '',
+    contact: {
+			name: '',
+			email: '',
+			phoneNumber: ''
+    },
     error: {},
   };
 
-  handleChange = e => {
+  _handleChange = e => {
     const { name, value } = e.target;
-    this.setState({
-      [name]: value,
+    this.setState((ps, pp)=> {
+      return {
+				contact: {
+					...ps.contact,
+					[name]: value
+				},
+        error: {}
+			}
     });
   };
 
-  submitForm = () => {
-    const { name, email, phoneNumber } = this.state;
-    const error = {};
-    if (name === '') {
-      error.name = true;
+  _submitForm = () => {
+
+    const { name, email, phoneNumber } = this.state.contact;
+    const error = {
+      hasError: false
+    };
+    if (!name) {
+      error.hasError = true;
+      error.name = "The first name is required.";
     }
-    if (email === '') {
-      error.email = true;
+    if (!email || !validator.isEmail(email)) {
+			error.hasError = true;
+      error.email = "The value is not a valid email address.";
     }
-    if (phoneNumber === '') {
-      error.phoneNumber = true;
+    if (!phoneNumber) {
+			error.hasError = true;
+      error.phoneNumber = "please enter the phone";
     }
-    this.setState({ error });
+
+		console.log(this.state)
+    if(error.hasError){
+			this.setState({ error });
+    }
+    else {
+
+      console.log(this.state.contact)
+      //Call the API
+    }
   };
 
   render() {
@@ -109,7 +133,7 @@ class ContactUs extends React.Component {
                         autoComplete="off"
                         placeholder="First name"
                         data-fv-field="name"
-                        onChange={this.handleChange}
+                        onChange={this._handleChange}
                       />
                       <i
                         className="fv-control-feedback"
@@ -123,7 +147,7 @@ class ContactUs extends React.Component {
                         data-fv-for="name"
                         data-fv-result="NOT_VALIDATED"
                       >
-                        The first name is required.
+                        {error.name}
                       </small>
                     )}
                   </div>
@@ -148,7 +172,7 @@ class ContactUs extends React.Component {
                         required
                         autoComplete="off"
                         data-fv-field="email"
-                        onChange={this.handleChange}
+                        onChange={this._handleChange}
                       />
                       <i
                         className="fv-control-feedback"
@@ -172,7 +196,7 @@ class ContactUs extends React.Component {
                         data-fv-for="email"
                         data-fv-result="NOT_VALIDATED"
                       >
-                        The value is not a valid email address.
+                        {error.email}
                       </small>
                     )}
                   </div>
@@ -199,7 +223,7 @@ class ContactUs extends React.Component {
                         autoComplete="off"
                         data-fv-field="phoneNumber"
                         maxLength="14"
-                        onChange={this.handleChange}
+                        onChange={this._handleChange}
                       />
                       <i
                         className="fv-control-feedback"
@@ -213,7 +237,7 @@ class ContactUs extends React.Component {
                         data-fv-for="phoneNumber"
                         data-fv-result="NOT_VALIDATED"
                       >
-                        Please enter your phone number.
+                        {error.phoneNumber}
                       </small>
                     )}
                     {error.phoneNumber && (
@@ -237,13 +261,13 @@ class ContactUs extends React.Component {
                         name="comment"
                         id=""
                         placeholder="Comment"
-                        onChange={this.handleChange}
+                        onChange={this._handleChange}
                       />
                     </div>
                   </div>
                   <div
                     className="frmelements btn-element"
-                    onClick={this.submitForm}
+                    onClick={this._submitForm}
                   >
                     <img
                       src="/static/assets/images/submit-btn.png"
