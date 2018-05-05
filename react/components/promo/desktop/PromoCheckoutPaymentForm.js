@@ -15,6 +15,7 @@ import {
   normalizePhone,
   normalizePostalCode,
   normalizeCardNumber,
+  normalizeSecurityCode,
 } from 'helpers';
 
 const ExpiryMonth = props => (
@@ -204,12 +205,11 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
           <Field
             containerClass="frm-elem-cvv"
             component={TextField}
-            label="CVV"
+            label="CVV/CID"
             name="cardSecurityCode"
             className="short"
             required
-            maxLength={3}
-            pattern="[0-9]*"
+            normalize={normalizeSecurityCode}
           />
           <div className="clearall" />
           <button onClick={this.submitForm} className="chk-submit pulse" />

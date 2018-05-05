@@ -9,6 +9,7 @@ import {
   normalizePhone,
   normalizePostalCode,
   normalizeCardNumber,
+  normalizeSecurityCode,
 } from 'helpers';
 import {
   Footer,
@@ -277,7 +278,7 @@ class MobileConfirmContainer extends React.PureComponent {
                     <div className="clearfix" />
                     <div className="pure-control-group frmelmnts2 frmelmnts-cvv fv-has-feedback">
                       <label>
-                        CVV<span>*</span>:
+                        CVV/CID<span>*</span>:
                       </label>
                       <Field
                         name="cardSecurityCode"
@@ -286,12 +287,11 @@ class MobileConfirmContainer extends React.PureComponent {
                             {...props.input}
                             inputMode="numeric"
                             className="short"
-                            pattern="[0-9]*"
-                            maxLength="3"
                             autoCorrect="off"
                             autoComplete="cc-csc"
                           />
                         )}
+                        normalize={normalizeSecurityCode}
                       />
                       <img
                         src="/static/promo/mobile/images/cvv.png"

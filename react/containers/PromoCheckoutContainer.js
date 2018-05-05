@@ -7,7 +7,6 @@ import { PromoCheckoutPaymentForm } from 'react/components/promo/desktop';
 import { packages } from 'helpers';
 
 class PromoCheckoutContainer extends React.PureComponent {
-
   constructor() {
     super();
     this.state = {
@@ -25,8 +24,7 @@ class PromoCheckoutContainer extends React.PureComponent {
   };
 
   render() {
-
-    let { selected } = this.state;
+    const { selected } = this.state;
 
     return (
       <React.Fragment>
@@ -89,8 +87,18 @@ class PromoCheckoutContainer extends React.PureComponent {
                             <span>/ea</span>
                           </p>
 
-                          <div className="select-btn" style={{ display: selected.id != pack.id ? 'block' : 'none' }}/>
-                          <div className="select-btn-selected" style={{ display: selected.id == pack.id ? 'block' : 'none' }}/>
+                          <div
+                            className="select-btn"
+                            style={{
+                              display: selected.id != pack.id ? 'block' : 'none',
+                            }}
+                          />
+                          <div
+                            className="select-btn-selected"
+                            style={{
+                              display: selected.id == pack.id ? 'block' : 'none',
+                            }}
+                          />
                         </div>
                       </div>
                     </a>

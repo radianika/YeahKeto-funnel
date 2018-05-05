@@ -77,6 +77,19 @@ const billingFormValidator = values => {
   if (!values.cardSecurityCode) {
     errors.cardSecurityCode = 'Security Code is required';
   }
+  if (values.cardSecurityCode) {
+    let length = 3;
+    if (values.cardNumber) {
+      const value = values.cardNumber.replace(/\s/g, '');
+      const cardTypes = creditCartType(value);
+      if (cardTypes.length === 1) {
+        length = cardTypes[0].code.size;
+      }
+      if (values.cardSecurityCode.length !== length) {
+        errors.cardSecurityCode = `Security code should be ${length} digits`;
+      }
+    }
+  }
   return errors;
 };
 
@@ -133,10 +146,26 @@ const normalizeCardNumber = value => {
     .join(' ');
 };
 
+const normalizeSecurityCode = (value, previousValue, allValues) => {
+  if (isNaN(value)) {
+    value = value.substring(0, value.length - 1);
+  }
+  let length = 3;
+  const { cardNumber } = allValues;
+  const cardTypes = creditCartType(cardNumber);
+  if (cardTypes.length === 1) {
+    console.log(cardTypes[0]);
+    length = cardTypes[0].code.size;
+  }
+  console.log({ length });
+  return value.substring(0, length);
+};
+
 export {
   shippingFormValidator,
   billingFormValidator,
   normalizePhone,
   normalizePostalCode,
   normalizeCardNumber,
+  normalizeSecurityCode,
 };
