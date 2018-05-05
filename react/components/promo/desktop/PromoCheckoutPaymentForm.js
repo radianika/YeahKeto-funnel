@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field, formValueSelector } from 'redux-form';
+import creditCartType from 'credit-card-type';
 import {
   TextField,
   SelectField,
@@ -17,8 +18,37 @@ import {
 } from 'helpers';
 
 class PromoCheckoutPaymentForm extends React.PureComponent {
+
+  constructor(props){
+    super(props)
+
+    this.state = {
+      active_cc_type: ''
+    }
+  }
+
+  _checkCardType(cc) {
+
+    if(!cc) return;
+
+    // let value = '4222222222222222';
+    let value = cc.toString().replace(/\s/g,'');
+		let cc_type = creditCartType(value)
+    // console.log(cc, cc_type)
+
+    if(cc_type && cc_type[0] && value.length > 3){
+		  this.setState({active_cc_type: cc_type[0].type})
+    }
+    else if(this.state.active_cc_type || value.length <3) {
+			this.setState({active_cc_type: ''})
+    }
+  }
+
   render() {
+
+    let { active_cc_type } = this.state;
     const { same } = this.props.currentValues;
+
     return (
       <div className="chkfrm-mid">
         <form
@@ -31,13 +61,13 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
             style={{ display: 'none', height: 0, width: 0 }}
           />
           <div className="cards">
-            <span className="card-visa">
+            <span className={`card-visa ${active_cc_type == 'visa'? 'active': '' }`}>
               <img src="/static/visa.png" alt="" />
             </span>
-            <span className="card-mastercard">
+            <span className={`card-mastercard ${active_cc_type == 'master-card'? 'active': '' }`}>
               <img src="/static/Mastercard.png" alt="" />
             </span>
-            <span className="card-discover">
+            <span className={`card-discover" ${active_cc_type == 'american-express'? 'active': '' }`}>
               <img src="/static/amex.png" alt="" />
             </span>
           </div>
@@ -121,6 +151,7 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
             placeholder="•••• •••• •••• ••••"
             label="Card No"
             required
+            onChange={e=>this._checkCardType(e.target.value)}
             normalize={normalizeCardNumber}
           />
           <div className="frmElemts exp-label">
@@ -145,7 +176,7 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
                   ))}
                 </select>
               )}
-              name="cardMonth"
+              name="month"
             />
             <Field
               component={props => (
@@ -158,7 +189,7 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
                   ))}
                 </select>
               )}
-              name="cardYear"
+              name="year"
             />
           </div>
           <Field

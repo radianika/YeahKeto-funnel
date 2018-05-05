@@ -473,7 +473,7 @@ ul.smrylist li:nth-child(8) {
   appearance: none;
   width: 17px;
   height: 17px;
-  margin: 0 0 -2px 0;
+  margin: 0 0 -2px 5px;
   background: url(../../../../promo/desktop/images/check.png) left top no-repeat;
 }
 

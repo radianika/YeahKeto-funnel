@@ -68,11 +68,11 @@ const billingFormValidator = values => {
     }
   }
 
-  if (!values.cardMonth) {
-    errors.cardMonth = 'Month is required';
+  if (!values.month) {
+    errors.month = 'Month is required';
   }
-  if (!values.cardYear) {
-    errors.cardYear = 'Year is required';
+  if (!values.year) {
+    errors.year = 'Year is required';
   }
   if (!values.cardSecurityCode) {
     errors.cardSecurityCode = 'Security Code is required';
