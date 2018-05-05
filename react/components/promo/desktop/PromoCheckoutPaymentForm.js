@@ -17,62 +17,57 @@ import {
   normalizeCardNumber,
 } from 'helpers';
 
-const ExpiryMonth = (props) => (
-
-    <span>
-      <select className="short" {...props.input}>
-        <option>– –</option>
-        {[...Array(12).keys()].map(month => (
-            <option key={month} value={month + 1}>
-              {month + 1}
-            </option>
-        ))}
-      </select>
-    </span>
-)
-const ExpiryYear = (props) => (
-	    <span>
-        <select className="short2" {...props.input}>
-          <option>– –</option>
-          {[18, 19, 20, 21, 22, 23, 24].map(year => (
-              <option key={year} value={year}>
-                {year}
-              </option>
-          ))}
-        </select>
-      </span>
-)
+const ExpiryMonth = props => (
+  <span>
+    <select className="short" {...props.input}>
+      <option>– –</option>
+      {[...Array(12).keys()].map(month => (
+        <option key={month} value={month + 1}>
+          {month + 1}
+        </option>
+      ))}
+    </select>
+  </span>
+);
+const ExpiryYear = props => (
+  <span>
+    <select className="short2" {...props.input}>
+      <option>– –</option>
+      {[18, 19, 20, 21, 22, 23, 24].map(year => (
+        <option key={year} value={year}>
+          {year}
+        </option>
+      ))}
+    </select>
+  </span>
+);
 
 class PromoCheckoutPaymentForm extends React.PureComponent {
-
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
 
     this.state = {
-      active_cc_type: ''
-    }
+      active_cc_type: '',
+    };
   }
 
   _checkCardType(cc) {
-
-    if(!cc) return;
+    if (!cc) return;
 
     // let value = '4222222222222222';
-    let value = cc.toString().replace(/\s/g,'');
-		let cc_type = creditCartType(value)
+    const value = cc.toString().replace(/\s/g, '');
+    const cc_type = creditCartType(value);
     // console.log(cc, cc_type)
 
-    if(cc_type && cc_type[0] && value.length > 3){
-		  this.setState({active_cc_type: cc_type[0].type})
-    }
-    else if(this.state.active_cc_type || value.length <3) {
-			this.setState({active_cc_type: ''})
+    if (cc_type && cc_type[0] && value.length > 3) {
+      this.setState({ active_cc_type: cc_type[0].type });
+    } else if (this.state.active_cc_type || value.length < 3) {
+      this.setState({ active_cc_type: '' });
     }
   }
 
   render() {
-
-    let { active_cc_type } = this.state;
+    const { active_cc_type } = this.state;
     const { same } = this.props.currentValues;
 
     return (
@@ -87,13 +82,25 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
             style={{ display: 'none', height: 0, width: 0 }}
           />
           <div className="cards">
-            <span className={`card-visa ${active_cc_type == 'visa'? 'active': '' }`}>
-              <img src="/static/visa.png" alt="" />
+            <span
+              className={`card-visa ${
+                active_cc_type == 'visa' ? 'active' : ''
+              }`}
+            >
+              <img src="/static/Visa.png" alt="" />
             </span>
-            <span className={`card-mastercard ${active_cc_type == 'master-card'? 'active': '' }`}>
+            <span
+              className={`card-mastercard ${
+                active_cc_type == 'master-card' ? 'active' : ''
+              }`}
+            >
               <img src="/static/Mastercard.png" alt="" />
             </span>
-            <span className={`card-discover" ${active_cc_type == 'american-express'? 'active': '' }`}>
+            <span
+              className={`card-discover" ${
+                active_cc_type == 'american-express' ? 'active' : ''
+              }`}
+            >
               <img src="/static/amex.png" alt="" />
             </span>
           </div>
@@ -177,7 +184,7 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
             placeholder="•••• •••• •••• ••••"
             label="Card No"
             required
-            onChange={e=>this._checkCardType(e.target.value)}
+            onChange={e => this._checkCardType(e.target.value)}
             normalize={normalizeCardNumber}
           />
           <div className="frmElemts exp-label">
@@ -191,14 +198,8 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
             <label>
               Expiry Date<span>*</span>:
             </label>
-            <Field
-              component={ExpiryMonth}
-              name="cardMonth"
-            />
-            <Field
-              component={ExpiryYear}
-              name="cardYear"
-            />
+            <Field component={ExpiryMonth} name="cardMonth" />
+            <Field component={ExpiryYear} name="cardYear" />
           </div>
           <Field
             containerClass="frm-elem-cvv"
