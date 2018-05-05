@@ -1189,6 +1189,7 @@ start shipping pageselect-package
 
 .rd-strk {
   margin: -20px 0 0 170px;
+  position: absolute;
 }
 
 .pkgcont-price {
