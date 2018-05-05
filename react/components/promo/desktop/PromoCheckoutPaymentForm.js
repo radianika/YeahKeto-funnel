@@ -17,6 +17,32 @@ import {
   normalizeCardNumber,
 } from 'helpers';
 
+const ExpiryMonth = (props) => (
+
+    <span>
+      <select className="short" {...props.input}>
+        <option>– –</option>
+        {[...Array(12).keys()].map(month => (
+            <option key={month} value={month + 1}>
+              {month + 1}
+            </option>
+        ))}
+      </select>
+    </span>
+)
+const ExpiryYear = (props) => (
+	    <span>
+        <select className="short2" {...props.input}>
+          <option>– –</option>
+          {[18, 19, 20, 21, 22, 23, 24].map(year => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+          ))}
+        </select>
+      </span>
+)
+
 class PromoCheckoutPaymentForm extends React.PureComponent {
 
   constructor(props){
@@ -166,30 +192,12 @@ class PromoCheckoutPaymentForm extends React.PureComponent {
               Expiry Date<span>*</span>:
             </label>
             <Field
-              component={props => (
-                <select className="short" {...props.input}>
-                  <option>– –</option>
-                  {[...Array(12).keys()].map(month => (
-                    <option key={month} value={month + 1}>
-                      {month + 1}
-                    </option>
-                  ))}
-                </select>
-              )}
-              name="month"
+              component={ExpiryMonth}
+              name="cardMonth"
             />
             <Field
-              component={props => (
-                <select className="short2" {...props.input}>
-                  <option>– –</option>
-                  {[18, 19, 20, 21, 22, 23, 24].map(year => (
-                    <option key={year} value={year}>
-                      {year}
-                    </option>
-                  ))}
-                </select>
-              )}
-              name="year"
+              component={ExpiryYear}
+              name="cardYear"
             />
           </div>
           <Field

@@ -35,7 +35,7 @@
 }
 
 .frm-elem-cvv .fv-control-feedback {
-  right: 88px !important;
+  right: 9px !important;
 }
 
 .frmElemts input,
@@ -69,8 +69,8 @@ input::-webkit-inner-spin-button {
   line-height: 20px;
 }
 
-.frmElemts select[name="month"],
-.frmElemts select[name="year"] {
+.frmElemts select[name="cardMonth"],
+.frmElemts select[name="cardYear"] {
   width: 60px;
   margin-right: 5px;
 }
