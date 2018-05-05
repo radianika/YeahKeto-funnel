@@ -75,6 +75,7 @@
     "express": "4.16.3",
     "express-jwt": "5.3.1",
     "express-useragent": "1.0.12",
+    "fs": "0.0.1-security",
     "icepick": "2.3.0",
     "idx": "2.3.0",
     "moment": "2.22.1",
