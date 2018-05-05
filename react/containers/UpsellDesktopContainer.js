@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
+import { Footer } from 'react/components/common';
 import { Upsell1, Upsell2, Upsell3 } from '../components/upsell/desktop';
 
 class UpsellDesktopContainer extends React.PureComponent {
@@ -78,10 +79,7 @@ class UpsellDesktopContainer extends React.PureComponent {
 
           <div className="contentWrap">
             <p className="ftrtxt">
-              <a href="#">TERMS AND CONDITIONS</a> |
-              <a href="#">PRIVACY POLICY</a> |
-              <a href="#">CONTACT US</a> <br />
-              Copyright 2018 © All Rights Reserved - American Science
+              <Footer />
             </p>
           </div>
         </div>

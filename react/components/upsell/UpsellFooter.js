@@ -11,7 +11,9 @@ class UpsellFooter extends React.PureComponent {
           alt=""
           className="secure-logos"
         />
-        <Footer />
+        <p className="ftrtxt">
+          <Footer />
+        </p>
       </React.Fragment>
     );
   }
