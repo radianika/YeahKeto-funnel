@@ -1,58 +1,68 @@
 import React from 'react';
 import validator from 'validator';
+import { post } from 'helpers';
+import { Modal, Spinner } from 'react/components/common';
 
 class ContactUs extends React.Component {
   state = {
     contact: {
-			name: '',
-			email: '',
-			phoneNumber: ''
+      question: '',
+      name: '',
+      email: '',
+      phoneNumber: '',
     },
     error: {},
+    submitting: null,
   };
 
   _handleChange = e => {
     const { name, value } = e.target;
-    this.setState((ps, pp)=> {
-      return {
-				contact: {
-					...ps.contact,
-					[name]: value
-				},
-        error: {}
-			}
-    });
+    this.setState((ps, pp) => ({
+      contact: {
+        ...ps.contact,
+        [name]: value,
+      },
+      error: {},
+    }));
   };
 
   _submitForm = () => {
-
-    const { name, email, phoneNumber } = this.state.contact;
+    const {
+      question, name, email, phoneNumber,
+    } = this.state.contact;
     const error = {
-      hasError: false
+      hasError: false,
     };
     if (!name) {
       error.hasError = true;
-      error.name = "The first name is required.";
+      error.name = 'The first name is required.';
     }
     if (!email || !validator.isEmail(email)) {
-			error.hasError = true;
-      error.email = "The value is not a valid email address.";
+      error.hasError = true;
+      error.email = 'The value is not a valid email address.';
     }
     if (!phoneNumber) {
-			error.hasError = true;
-      error.phoneNumber = "please enter the phone";
+      error.hasError = true;
+      error.phoneNumber = 'please enter the phone';
     }
 
-		console.log(this.state)
-    if(error.hasError){
-			this.setState({ error });
-    }
-    else {
-
-      console.log(this.state.contact)
-      //Call the API
+    console.log(this.state);
+    if (error.hasError) {
+      this.setState({ error });
+    } else {
+      this.setState({ submitting: 'submitting' }, async () => {
+        const apiResponse = await post('/v1/contact-us', {
+          name,
+          email,
+          phone: phoneNumber,
+          question,
+        });
+        this.setState({ submitting: 'success' });
+      });
     }
   };
+
+  closeModal = () => this.setState({ submitting: null });
 
   render() {
     const { error } = this.state;
@@ -258,7 +268,7 @@ class ContactUs extends React.Component {
                     </label>
                     <div className="field no-icon comment-box">
                       <textarea
-                        name="comment"
+                        name="question"
                         id=""
                         placeholder="Comment"
                         onChange={this._handleChange}
@@ -277,6 +287,20 @@ class ContactUs extends React.Component {
                     />
                   </div>
                 </form>
+                {this.state.submitting === 'success' && (
+                  <Modal onClose={this.closeModal}>
+                    <h3 className="modal-title">Submission successful!</h3>
+                    <div className="modal-body">
+                      <p>
+                        We have received your message successfully.<br />Thank
+                        you.
+                      </p>
+                      <br />
+                      <br />
+                    </div>
+                  </Modal>
+                )}
+                {this.state.submitting === 'submitting' && <Spinner />}
               </div>
             </div>
           </div>
