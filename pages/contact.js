@@ -60,6 +60,11 @@ class Contact extends React.PureComponent {
             type="text/css"
             href="/static/assets/css/style.css"
           />
+          <link
+              rel="stylesheet"
+              type="text/css"
+              href="/static/assets/css/formvalidation/formValidation.min.css"
+          />
         </Head>
         <ContactContainer />
       </React.Fragment>
