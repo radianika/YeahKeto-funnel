@@ -1,55 +1,161 @@
 import React from 'react';
 import validator from 'validator';
-import { post } from 'helpers';
+import { post, normalizePhone } from 'helpers';
 import { Modal, Spinner } from 'react/components/common';
 
 class ContactUs extends React.Component {
-  state = {
-    contact: {
-      question: '',
-      name: '',
-      email: '',
-      phoneNumber: '',
-    },
-    error: {},
-    submitting: null,
-  };
+
+  constructor(props) {
+
+    super(props)
+    this.state = {
+			contact: {
+				question: '',
+				name: '',
+				email: '',
+				phoneNumber: '',
+			},
+			error: {},
+			submitting: null,
+		};
+
+  }
 
   _handleChange = e => {
+
     const { name, value } = e.target;
-    this.setState((ps, pp) => ({
+
+    let val = value
+    if(name=='phoneNumber'){
+    	val = normalizePhone(value)
+		}
+
+		this.setState((ps, pp) => ({
       contact: {
         ...ps.contact,
-        [name]: value,
-      },
-      error: {},
+        [name]: val,
+      }
     }));
   };
 
+  _validateName = (e) => {
+
+		const { name, value } = e.target;
+		let hasError = false, message;
+    if(!value) {
+			hasError = true;
+			message = 'The first name is required.'
+    }
+		this.setState((ps, pp) => {
+			return {
+				error: {
+					...ps.error,
+					nameHasError: hasError,
+					name: message
+				}
+			}
+		})
+  };
+
+	_validateEmail = (e) => {
+
+		const { name, value } = e.target;
+		let message = "", hasError = false;
+
+    if(!value){
+    	message = 'The email address is required.'
+			hasError = true;
+		}
+    else if(!validator.isEmail(value)) {
+			message = 'The value is not a valid email address.'
+			hasError = true
+    }
+
+		this.setState((ps, pp) => {
+			return {
+				error: {
+					...ps.error,
+					emailHasError: hasError,
+					email: message
+				}
+			}
+		})
+
+  }
+
+  _validatePhone = (e) => {
+
+		const { name, value } = e.target;
+		let message = "", hasError = false;
+
+		// console.log(validator.isMobilePhone(value, 'en-US'))
+
+    if(!value){
+			hasError = true;
+    	message = 'Please enter your phone number.'
+		}
+    else if(value.length != 14) {
+			hasError = true;
+			message = 'Not a valid 10-digit US phone number (must not include spaces or special characters).'
+    }
+
+		this.setState((ps, pp) => {
+			return {
+				error: {
+					...ps.error,
+					phoneHasError: hasError,
+					phoneNumber: message
+				}
+			}
+		})
+  }
+
+  _validateState = () => {
+
+		let { name, email, phoneNumber } = this.state.contact
+		let error = {}
+
+		if(!name){
+			error.nameHasError= true;
+			error.name= 'The first name is required.'
+		}
+		if(!email){
+			error.emailHasError= true;
+			error.email= 'The email address is required.';
+		}
+		else if(validator.isEmail(email)){
+			error.emailHasError= true
+			error.email= 'The value is not a valid email address.'
+		}
+
+		if(!phoneNumber){
+			error.phoneHasError= true;
+			error.phoneNumber= 'Please enter your phone number.'
+		}
+		else if(phoneNumber.length != 14) {
+			error.phoneHasError= true;
+			error.phoneNumber= 'Not a valid 10-digit US phone number (must not include spaces or special characters).';
+		}
+
+		return error
+	}
+
   _submitForm = () => {
     const {
-      question, name, email, phoneNumber,
-    } = this.state.contact;
+			nameHasError,
+			emailHasError,
+			phoneHasError,
+    } = this.state.error;
     const error = {
       hasError: false,
     };
-    if (!name) {
-      error.hasError = true;
-      error.name = 'The first name is required.';
-    }
-    if (!email || !validator.isEmail(email)) {
-      error.hasError = true;
-      error.email = 'The value is not a valid email address.';
-    }
-    if (!phoneNumber) {
-      error.hasError = true;
-      error.phoneNumber = 'please enter the phone';
-    }
 
-    console.log(this.state);
-    if (error.hasError) {
-      this.setState({ error });
-    } else {
+    if(
+    		nameHasError === false
+				&& emailHasError === false
+				&& phoneHasError === false
+		)
+		{
       this.setState({ submitting: 'submitting' }, async () => {
         const apiResponse = await post('/v1/contact-us', {
           name,
@@ -57,15 +163,22 @@ class ContactUs extends React.Component {
           phone: phoneNumber,
           question,
         });
-        this.setState({ submitting: 'success' });
+        this.setState({ submitting: 'success', contact: {} });
       });
     }
+    else {
+    	let error = this._validateState()
+    	this.setState({error})
+		}
   };
 
-  closeModal = () => this.setState({ submitting: null });
+  _closeModal = () => this.setState({ submitting: null });
 
   render() {
+
     const { error } = this.state;
+    const { phoneNumber } = this.state.contact;
+    // console.log(error)
 
     return (
       <div>
@@ -122,7 +235,9 @@ class ContactUs extends React.Component {
               <p className="frm-hdg-txt">Send us A Message</p>
               <div className="frm-container">
                 <form id="contact_main" className="fv-form fv-form-pure">
-                  <div className="frmelements pure-control-group fv-has-feedback">
+                  <div className={`frmelements pure-control-group fv-has-feedback
+                                    ${error.nameHasError === false ?' fv-has-success':''}
+                                    ${error.nameHasError === true ?' fv-has-error':''}`}>
                     <label>
                       Name<span>*</span>
                     </label>
@@ -144,6 +259,7 @@ class ContactUs extends React.Component {
                         placeholder="First name"
                         data-fv-field="name"
                         onChange={this._handleChange}
+                        onBlur={this._validateName}
                       />
                       <i
                         className="fv-control-feedback"
@@ -161,7 +277,9 @@ class ContactUs extends React.Component {
                       </small>
                     )}
                   </div>
-                  <div className="frmelements pure-control-group fv-has-feedback">
+                  <div className={`frmelements pure-control-group fv-has-feedback
+                                    ${error.emailHasError === false ?' fv-has-success':''}
+                                    ${error.emailHasError === true ?' fv-has-error':''}`}>
                     <label>
                       Email <span>*</span>{' '}
                     </label>
@@ -183,22 +301,13 @@ class ContactUs extends React.Component {
                         autoComplete="off"
                         data-fv-field="email"
                         onChange={this._handleChange}
+                        onBlur={this._validateEmail}
                       />
                       <i
                         className="fv-control-feedback"
                         data-fv-icon-for="email"
                       />
                     </div>
-                    {error.email && (
-                      <small
-                        className="fv-help-block"
-                        data-fv-validator="notEmpty"
-                        data-fv-for="email"
-                        data-fv-result="NOT_VALIDATED"
-                      >
-                        The email address is required.
-                      </small>
-                    )}
                     {error.email && (
                       <small
                         className="fv-help-block"
@@ -210,7 +319,9 @@ class ContactUs extends React.Component {
                       </small>
                     )}
                   </div>
-                  <div className="frmelements pure-control-group fv-has-feedback">
+                  <div className={`frmelements pure-control-group fv-has-feedback
+                                    ${error.phoneHasError === false ?' fv-has-success':''}
+                                    ${error.phoneHasError === true ?' fv-has-error':''}`}>
                     <label>
                       Phone Number <span>*</span>
                     </label>
@@ -233,7 +344,9 @@ class ContactUs extends React.Component {
                         autoComplete="off"
                         data-fv-field="phoneNumber"
                         maxLength="14"
+												value={phoneNumber}
                         onChange={this._handleChange}
+                        onBlur={this._validatePhone}
                       />
                       <i
                         className="fv-control-feedback"
@@ -243,28 +356,17 @@ class ContactUs extends React.Component {
                     {error.phoneNumber && (
                       <small
                         className="fv-help-block"
-                        data-fv-validator="notEmpty"
-                        data-fv-for="phoneNumber"
-                        data-fv-result="NOT_VALIDATED"
-                      >
-                        {error.phoneNumber}
-                      </small>
-                    )}
-                    {error.phoneNumber && (
-                      <small
-                        className="fv-help-block"
                         data-fv-validator="callback"
                         data-fv-for="phoneNumber"
                         data-fv-result="NOT_VALIDATED"
                       >
-                        Not a valid 10-digit US phone number (must not include
-                        spaces or special characters).
+												{error.phoneNumber}
                       </small>
                     )}
                   </div>
                   <div className="frmelements pure-control-group">
                     <label>
-                      My Question <span>*</span>
+                      My Question <span></span>
                     </label>
                     <div className="field no-icon comment-box">
                       <textarea
@@ -288,7 +390,7 @@ class ContactUs extends React.Component {
                   </div>
                 </form>
                 {this.state.submitting === 'success' && (
-                  <Modal onClose={this.closeModal}>
+                  <Modal onClose={this._closeModal}>
                     <h3 className="modal-title">Submission successful!</h3>
                     <div className="modal-body">
                       <p>
@@ -296,7 +398,7 @@ class ContactUs extends React.Component {
                         you.
                       </p>
                       <br />
-                      <br />
+                      <br/>
                     </div>
                   </Modal>
                 )}
