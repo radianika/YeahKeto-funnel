@@ -74,7 +74,7 @@ const billingFormValidator = values => {
   if (!values.cardYear) {
     errors.cardYear = 'Year is required';
   }
-  if (!values.cardSecurityCode || values.cardSecurityCode.length != 4) {
+  if (!values.cardSecurityCode) {
     errors.cardSecurityCode = 'Security Code is required';
   }
   if (values.cardSecurityCode) {
@@ -158,7 +158,7 @@ const normalizeSecurityCode = (value, previousValue, allValues) => {
     // console.log(cardTypes[0]);
     length = cardTypes[0].code.size;
   }
-  // console.log({ length });
+  console.log({ length });
   return value.substring(0, length);
 };
 
