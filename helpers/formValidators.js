@@ -155,10 +155,10 @@ const normalizeSecurityCode = (value, previousValue, allValues) => {
   cardNumber = cardNumber.toString().replace(/\s/g, '');
   const cardTypes = creditCartType(cardNumber);
   if (cardTypes.length === 1) {
-    console.log(cardTypes[0]);
+    // console.log(cardTypes[0]);
     length = cardTypes[0].code.size;
   }
-  console.log({ length });
+  // console.log({ length });
   return value.substring(0, length);
 };
 
