@@ -74,7 +74,7 @@ const billingFormValidator = values => {
   if (!values.cardYear) {
     errors.cardYear = 'Year is required';
   }
-  if (!values.cardSecurityCode || values.cardSecurityCode.length != 4) {
+  if (!values.cardSecurityCode) {
     errors.cardSecurityCode = 'Security Code is required';
   }
   if (values.cardSecurityCode) {
