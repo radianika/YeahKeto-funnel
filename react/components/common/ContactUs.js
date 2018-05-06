@@ -141,14 +141,14 @@ class ContactUs extends React.Component {
 	}
 
   _submitForm = () => {
-    const {
+
+		const {
 			nameHasError,
 			emailHasError,
 			phoneHasError,
     } = this.state.error;
-    const error = {
-      hasError: false,
-    };
+
+		let { name, email, phoneNumber, question } = this.state.contact
 
     if(
     		nameHasError === false
@@ -391,7 +391,7 @@ class ContactUs extends React.Component {
                 </form>
                 {this.state.submitting === 'success' && (
                   <Modal onClose={this._closeModal}>
-                    <h3 className="modal-title">Submission successful!</h3>
+                    Submission successful!
                     <div className="modal-body">
                       <p>
                         We have received your message successfully.<br />Thank
