@@ -33,4 +33,38 @@ const TextField = props => {
   );
 };
 
-export { TextField };
+const CVVField = props => {
+  const hasError = props.meta.touched && props.meta.error;
+  const valid = props.input.value && props.meta.valid;
+  return (
+    <div
+      className={`${
+        props.containerClass
+      } pure-control-group frmElemts fv-has-feedback ${hasError &&
+        'fv-has-error'} ${valid && 'fv-has-success'}`}
+    >
+      <label>
+        {props.label}
+        {props.required && <span>*</span>}:
+      </label>
+      <input
+        className={props.className}
+        placeholder={props.placeholder}
+        autoFocus={props.autofocus}
+        type={props.type}
+        {...props.input}
+        maxLength={props.maxLength}
+        disabled={props.disabled}
+      />
+      <i
+        style={{ display: hasError || valid }}
+        className={`fv-control-feedback ${hasError && 'fa fa-times'} ${valid &&
+          'fa fa-check'}`}
+      />
+      <a href={''} onClick={props.cvvClick} class="fancybox fancybox.iframe what">What is This?</a>
+      {hasError && <small className="fv-help-block">{props.meta.error}</small>}
+    </div>
+  );
+};
+
+export { TextField, CVVField };
