@@ -46,7 +46,7 @@ class FooterPromo extends React.PureComponent {
         <p className="clearall" />
         <div className="legal">
           <div className="ftr-txt">
-            <Footer>
+            <Footer promo>
               <br /> * These statements have not been evaluated by the FDA. If
               you are pregnant, nursing, taking medications, or have a medical
               condition, consult your physician before using this product.
