@@ -95,6 +95,7 @@ class MobileShippingContainer extends React.PureComponent {
                       label="Zip Code"
                       placeholder="Zip Code"
                       normalize={normalizePostalCode}
+                      type="tel"
                     />
                     <Field
                       containerClass="frmelmnts3"
@@ -146,7 +147,11 @@ class MobileShippingContainer extends React.PureComponent {
               </div>
             </div>
           </div>
-          <Footer />
+          <div className="legal">
+            <div className="ftr-txt">
+              <Footer promo />
+            </div>
+          </div>
         </div>
         {this.props.submitStatus === 'submitting' && <Spinner />}
       </div>
