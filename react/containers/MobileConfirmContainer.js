@@ -317,7 +317,11 @@ class MobileConfirmContainer extends React.PureComponent {
               />
             </div>
             <div className="clearfix" />
-            <Footer promo />
+            <div className="legal">
+              <div className="ftr-txt">
+                <Footer promo />
+              </div>
+            </div>
           </div>
         </div>
         {this.props.submitStatus === 'submitting' && <Spinner />}
