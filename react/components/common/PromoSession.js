@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { post, setAuthHeaders } from 'helpers';
 
 function setCookie(cname, cvalue) {
-  document.cookie = `${cname}=${cvalue};expires=36000;path=/`;
+  document.cookie = `${cname}=${cvalue};path=/`;
 }
 
 function getCookie(cname) {

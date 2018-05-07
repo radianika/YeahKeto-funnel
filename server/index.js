@@ -35,7 +35,7 @@ const getSessionId = async (req, res) => {
     console.log(idx(sessionResponse, _ => _.response.data));
     if (idx(sessionResponse, _ => _.response.data)) {
       token = sessionResponse.response.data.data.token;
-      res.cookie('ascbd_session', token, { httpOnly: true, maxAge: 36000 });
+      res.cookie('ascbd_session', token, { httpOnly: true });
     }
   }
   return {
