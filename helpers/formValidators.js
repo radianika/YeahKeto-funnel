@@ -93,6 +93,14 @@ const billingFormValidator = values => {
   return errors;
 };
 
+const cartFormValidator = values => {
+  let errors = shippingFormValidator(values);
+  const orderValues = values.order || {};
+  const cardErrors = billingFormValidator(orderValues);
+  errors = { ...errors, cardErrors };
+  return errors;
+};
+
 const normalizePhone = value => {
   if (!value) {
     return value;
@@ -150,21 +158,24 @@ const normalizeSecurityCode = (value, previousValue, allValues) => {
   if (isNaN(value)) {
     value = value.substring(0, value.length - 1);
   }
-  let length = 4;
+  let length = 3;
   let { cardNumber } = allValues;
-  cardNumber = cardNumber.toString().replace(/\s/g, '');
-  const cardTypes = creditCartType(cardNumber);
-  if (cardTypes.length === 1) {
-    // console.log(cardTypes[0]);
-    length = cardTypes[0].code.size;
+  if (cardNumber) {
+    cardNumber = cardNumber.toString().replace(/\s/g, '');
+    const cardTypes = creditCartType(cardNumber);
+    if (cardTypes.length === 1) {
+      // console.log(cardTypes[0]);
+      length = cardTypes[0].code.size;
+    }
+    // console.log({ length });
   }
-  // console.log({ length });
   return value.substring(0, length);
 };
 
 export {
   shippingFormValidator,
   billingFormValidator,
+  cartFormValidator,
   normalizePhone,
   normalizePostalCode,
   normalizeCardNumber,

@@ -81,26 +81,38 @@ class AddressField extends React.PureComponent {
     return (
       <React.Fragment>
         <div
-          className={`${
-            props.containerClass
-          } pure-control-group frmElemts fv-has-feedback ${hasError &&
-            'fv-has-error'} ${valid && 'fv-has-success'}`}
+          className={`${props.containerClass} pure-control-group ${
+            props.large ? 'frmelements' : 'frmElemts'
+          } fv-has-feedback ${hasError && 'fv-has-error'} ${valid &&
+            'fv-has-success'}`}
         >
           <label>
             {props.label}
             {props.required && <span>*</span>}:
           </label>
-          <input
-            onFocus={this.geolocate}
-            ref={this.autocompleteRef}
-            className={props.className}
-            placeholder={props.placeholder}
-            autoFocus={props.autofocus}
-            type={props.type}
-            {...props.input}
-            maxLength={props.maxLength}
-            disabled={props.disabled}
-          />
+          {!props.large ? (
+            <input
+              onFocus={this.geolocate}
+              ref={this.autocompleteRef}
+              {...props}
+              {...props.input}
+            />
+          ) : (
+            <div className="field">
+              <div className="icon-box">
+                <center>
+                  <img src={props.icon} />
+                </center>
+              </div>
+              <input
+                className="ft-input"
+                onFocus={this.geolocate}
+                ref={this.autocompleteRef}
+                {...props}
+                {...props.input}
+              />
+            </div>
+          )}
           <i
             style={{ display: hasError || valid }}
             className={`fv-control-feedback ${hasError &&

@@ -32,7 +32,7 @@ const getSessionId = async (req, res) => {
       username: 'larby@starlightgroup.io',
       password: 'P@ssw0rd',
     });
-    console.log(idx(sessionResponse, _ => _.response.data))
+    console.log(idx(sessionResponse, _ => _.response.data));
     if (idx(sessionResponse, _ => _.response.data)) {
       token = sessionResponse.response.data.data.token;
       res.cookie('ascbd_session', token, { httpOnly: true, maxAge: 36000 });
@@ -46,6 +46,19 @@ const getSessionId = async (req, res) => {
 const app = next({ dev });
 const handle = app.getRequestHandler();
 app.prepare().then(() => {
+  server.get('/cart', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/cart', { sessionId });
+  });
+  server.get('/thankyou?', async (req, res) => {
+    const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
+    if (requestAgent === 'desktop') {
+      res.redirect(`/promo/desktop/thankyou?orderId=${req.query.orderId}`);
+    }
+    if (requestAgent === 'mobile') {
+      res.redirect(`/promo/mobile/thankyou?orderId=${req.query.orderId}`);
+    }
+  });
   server.get('/promo/:useragent?', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     // console.log(sessionId)

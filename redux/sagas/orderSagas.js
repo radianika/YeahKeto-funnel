@@ -19,7 +19,7 @@ function* submitLeadsForm(action) {
       state,
       postalCode,
     } = values;
-    const shipping = {
+    const shipping = values.shipping || {
       firstName,
       lastName,
       address,
@@ -30,6 +30,7 @@ function* submitLeadsForm(action) {
     };
     const sessionId = yield select(getSession);
     setAuthHeaders(sessionId);
+    console.log({ ...values, shipping });
     const apiResponse = yield post('/v1/konnektive/lead', {
       ...values,
       shipping,
