@@ -2027,7 +2027,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-credit-card-type@6.3.0:
+credit-card-type@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/credit-card-type/-/credit-card-type-6.3.0.tgz#6e6c13e7e592f83b067c24429486a4f250eaa030"
 
@@ -7671,9 +7671,9 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-validator@10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/validator/-/validator-10.0.0.tgz#f57664d1d4bee46291f76be95ed27733cc8156aa"
+validator@^10.0.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-10.1.0.tgz#0ef24583c23556922f0228a8fe4ac5f1b4a08cd5"
 
 vary@~1.1.2:
   version "1.1.2"
