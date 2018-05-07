@@ -23,7 +23,7 @@ class PromoDesktopContainer extends React.PureComponent {
             <p className="topbartxt">
               <span>WARNING:</span> Due to extremely high media demand, there is
               limited supply of <span>Hemp Oil</span> in stock as of{' '}
-              <span>{moment().format('DD/MMM/YYYY')}</span>
+              <span>{moment().format('dddd, ll')}</span>
             </p>
           </div>
         </div>
