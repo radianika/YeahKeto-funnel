@@ -1,4 +1,4 @@
-# American-Science-CBD-ReactJS-App-v2
+# American-Science-CBD-ReactJS-App-v2 Frontend
 
 ## Setup
 
