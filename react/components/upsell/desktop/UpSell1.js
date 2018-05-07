@@ -29,7 +29,7 @@ class Upsell1 extends React.PureComponent {
             of <span>American Science CBD Oil.</span>
           </p>
 
-          <Coupon onUpgrade={this.upgrade} />
+          <Coupon onUpgrade={this.upgrade} showSeal />
           <div className="clearall" />
           <SatisfactionBox onUpgrade={this.upgrade} />
           <div className="clearall" />
@@ -72,7 +72,7 @@ class Upsell1 extends React.PureComponent {
             supply.
           </p>
           <div className="clearall" />
-          <Coupon onUpgrade={this.upgrade} />
+          <Coupon onUpgrade={this.upgrade} showSeal />
           <div className="clearall" />
           <SatisfactionBox onUpgrade={this.upgrade} />
           <div className="clearall" />

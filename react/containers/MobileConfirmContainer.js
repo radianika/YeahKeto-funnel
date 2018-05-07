@@ -281,6 +281,7 @@ class MobileConfirmContainer extends React.PureComponent {
                             className="short"
                             autoCorrect="off"
                             autoComplete="cc-csc"
+                            type="tel"
                           />
                         )}
                         normalize={normalizeSecurityCode}

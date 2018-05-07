@@ -11,10 +11,13 @@ class Coupon extends React.PureComponent {
       <div className="s1-doteed-sec">
         <div className="s1-dot-left">
           <img src="/static/desktop/images/up-btl1.png" className="up-btl1" />
-          <div className="save-seal">
-            save<br />
-            <span>{discount}</span>
-          </div>
+          <br />
+          {this.props.showSeal && (
+            <div className="save-seal">
+              save<br />
+              <span>{discount}</span>
+            </div>
+          )}
           <img
             src="/static/desktop/images/free-ship.png"
             className="free-ship"
