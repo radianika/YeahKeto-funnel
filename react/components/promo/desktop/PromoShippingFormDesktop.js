@@ -44,21 +44,18 @@ class PromoShippingFormDesktop extends React.PureComponent {
           name="firstName"
           label="First Name"
           placeholder="First Name"
-          required
         />
         <Field
           component={TextField}
           name="lastName"
           label="Last Name"
           placeholder="Last Name"
-          required
         />
         <Field
           component={AddressField}
           name="address"
           label="Address Line 1"
           placeholder="Street and number, P.O. box, c/o."
-          required
           changeField={this.props.change}
         />
         <Field
@@ -72,14 +69,12 @@ class PromoShippingFormDesktop extends React.PureComponent {
           name="city"
           label="City"
           placeholder="Your City"
-          required
         />
         <Field
           component={SelectField}
           name="state"
           label="State"
           placeholder="State"
-          required
           options={stateslist}
         />
         <Field
@@ -87,7 +82,6 @@ class PromoShippingFormDesktop extends React.PureComponent {
           name="postalCode"
           label="Zip Code"
           placeholder="Zip Code"
-          required
           normalize={normalizePostalCode}
         />
         <Field
@@ -95,7 +89,6 @@ class PromoShippingFormDesktop extends React.PureComponent {
           name="phoneNumber"
           label="Phone"
           placeholder="Example: (123) 555-6789"
-          required
           normalize={normalizePhone}
         />
         <Field
@@ -103,7 +96,6 @@ class PromoShippingFormDesktop extends React.PureComponent {
           name="email"
           label="Email"
           placeholder="Example: email@somewhere.com"
-          required
         />
         <div className="clearall" />
         <button
