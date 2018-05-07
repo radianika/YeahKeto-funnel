@@ -909,6 +909,16 @@ PAYMENT PAGE CSS
   position: relative;
 }
 
+.smrhding-close {
+  height: 60px;
+  border-bottom: 1px solid #d6d6d6;
+
+  background: url(../../../../promo/mobile/images/smryarrow2.png) 555px center
+    no-repeat;
+
+  position: relative;
+}
+
 .rotate {
   background: url(../../../../promo/mobile/images/smryarrow2.png) 565px center
     no-repeat;

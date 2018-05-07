@@ -11,13 +11,7 @@ import {
   normalizeCardNumber,
   normalizeSecurityCode,
 } from 'helpers';
-import {
-  Footer,
-  TextField,
-  SelectField,
-  AddressField,
-  Spinner,
-} from 'react/components/common';
+import { Footer, TextField, SelectField, AddressField, Spinner } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
 
 class MobileConfirmContainer extends React.PureComponent {
@@ -25,7 +19,16 @@ class MobileConfirmContainer extends React.PureComponent {
     super();
     this.state = {
       isSame: true,
+      summaryOpen: false,
     };
+    this.toggleSummary = this.toggleSummary.bind(this);
+  }
+
+  getPrice() {
+    if (this.props.pack.packagePrice) {
+      return this.props.pack.packagePrice;
+    }
+    return this.props.pack.price;
   }
 
   confirmOrder = values => {
@@ -38,62 +41,73 @@ class MobileConfirmContainer extends React.PureComponent {
     });
   };
 
-  render() {
+  toggleSummary() {
+    this.setState({ summaryOpen: !this.state.summaryOpen });
+  }
+
+  renderSummary() {
     const { pack } = this.props;
+
+    if (this.state.summaryOpen) {
+      return (
+        <div className="package picked" onClick={this.toggleSummary}>
+          <div className="smrhding">
+            <p>Order Summary</p>
+          </div>
+          <div className="odrsmry">
+            <div className="detailbox">
+              <div className="lftbox">
+                <img src="/static/promo/mobile/images/con-pro5.png" alt="" className="lftbtl" />
+              </div>
+              <div className="rgtbox">
+                <ul className="rgtlist1">
+                  <li>
+                    <span>american science</span>
+                    <br /> {pack.title}
+                  </li>
+                </ul>
+                <ul className="rgtlist2">
+                  {/* <!--<li>Subtotal:</li>-->
+            <!--<li>$195.00</li>--> */}
+                  <li>S&amp;H: </li>
+                  <li>$0.00</li>
+                  <li>TOTAL</li>
+                  <li style={{ fontWeight: 600 }}>{this.getPrice()}</li>
+                </ul>
+              </div>
+              <img src="/static/promo/mobile/images/post.jpg" />
+            </div>
+          </div>
+        </div>
+      );
+    }
+    return (
+      <div className="package picked" onClick={this.toggleSummary}>
+        <div className="smrhding smrhding-close">
+          <p>Order Summary</p>
+        </div>
+      </div>
+    );
+  }
+
+  render() {
     return (
       <div className="mobile-body">
         <div className="container">
           <div className="getHeight">
             <div className="spng-hd1">
               <div className="spng-hd2">
-                <img
-                  src="/static/promo/mobile/images/ck-top.jpg"
-                  alt=""
-                  className="sping-logo"
-                />
+                <img src="/static/promo/mobile/images/ck-top.jpg" alt="" className="sping-logo" />
               </div>
             </div>
             <div className="con-hd2" />
             <p className="clearall" />
             <div className="trialsec2">
-              <div className="package picked">
-                <div className="smrhding">
-                  <p>Order Summary</p>
-                </div>
-                <div className="odrsmry">
-                  <div className="detailbox">
-                    <div className="lftbox">
-                      <img
-                        src="/static/promo/mobile/images/con-pro5.png"
-                        alt=""
-                        className="lftbtl"
-                      />
-                    </div>
-                    <div className="rgtbox">
-                      <ul className="rgtlist1">
-                        <li>
-                          <span>american science</span>
-                          <br /> {pack.title}
-                        </li>
-                      </ul>
-                      <ul className="rgtlist2">
-                        {/* <!--<li>Subtotal:</li>-->
-                  <!--<li>$195.00</li>--> */}
-                        <li>S&amp;H: </li>
-                        <li>$0.00</li>
-                        <li>TOTAL</li>
-                        <li style={{ fontWeight: 600 }}>{pack.price}</li>
-                      </ul>
-                    </div>
-                    <img src="/static/promo/mobile/images/post.jpg" alt="" />
-                  </div>
-                </div>
-              </div>
+              {this.renderSummary()}
+
               <div className="clearfix" />
               <p className="clearall" />
-              <p className="trial-toptxt1 border-bottom">
-                Enter your payment information
-              </p>
+              <p className="trial-toptxt1 border-bottom">Enter your payment information</p>
               <p className="clearall" />
               <div className="trialfrmmid">
                 <form
@@ -231,11 +245,7 @@ class MobileConfirmContainer extends React.PureComponent {
                       <Field
                         name="cardMonth"
                         component={props => (
-                          <select
-                            className="short"
-                            autoComplete="cc-exp-month"
-                            {...props.input}
-                          >
+                          <select className="short" autoComplete="cc-exp-month" {...props.input}>
                             <option disabled="" value="">
                               – –
                             </option>
@@ -250,11 +260,7 @@ class MobileConfirmContainer extends React.PureComponent {
                       <Field
                         name="cardYear"
                         component={props => (
-                          <select
-                            className="short2"
-                            autoComplete="cc-exp-year"
-                            {...props.input}
-                          >
+                          <select className="short2" autoComplete="cc-exp-year" {...props.input}>
                             <option disabled="" value="">
                               – –
                             </option>
@@ -311,11 +317,7 @@ class MobileConfirmContainer extends React.PureComponent {
                   className="ship-btn pulse"
                 />
               </a>
-              <img
-                src="/static/promo/mobile/images/loogs.png"
-                alt=""
-                className="loogs"
-              />
+              <img src="/static/promo/mobile/images/loogs.png" alt="" className="loogs" />
             </div>
             <div className="clearfix" />
             <div className="legal">
@@ -371,8 +373,6 @@ function mapStateToProps(reduxState, ownProps) {
   };
 }
 
-MobileConfirmContainer = connect(mapStateToProps, { ...OrderActions })(
-  MobileConfirmContainer,
-);
+MobileConfirmContainer = connect(mapStateToProps, { ...OrderActions })(MobileConfirmContainer);
 
 export { MobileConfirmContainer };
