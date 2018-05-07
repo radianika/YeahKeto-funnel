@@ -85,7 +85,7 @@ class MobileConfirmContainer extends React.PureComponent {
                         <li style={{ fontWeight: 600 }}>{pack.price}</li>
                       </ul>
                     </div>
-                    <img src="/static/promo/mobile/images/post.jpg" />
+                    <img src="/static/promo/mobile/images/post.jpg" alt="" />
                   </div>
                 </div>
               </div>
@@ -119,7 +119,7 @@ class MobileConfirmContainer extends React.PureComponent {
                     </p>
                     <div className="cards">
                       <span className="card-visa">
-                        <img src="/static/visa.png" alt="" />
+                        <img src="/static/Visa.png" alt="" />
                       </span>
                       <span className="card-mastercard">
                         <img src="/static/Mastercard.png" alt="" />
