@@ -13,6 +13,7 @@ export const RefundPolicy = () => (
           href="#"
           className="popup-link underline"
           data-html="terms-and-conditions"
+          style={{ paddingLeft: '5px' }}
         >
           Terms and Conditions
         </a>.
