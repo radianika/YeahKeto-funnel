@@ -29,7 +29,7 @@ const getSessionId = async (req, res) => {
   let token = idx(cookies, _ => _.ascbd_session);
   const tokenType = typeof token;
   console.log({ token, tokenType });
-  if (!token) {
+  if (!token || token === 'undefined') {
     const sessionResponse = await post('/v1/auth', {
       username: 'larby@starlightgroup.io',
       password: 'P@ssw0rd',
