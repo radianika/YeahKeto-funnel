@@ -19,6 +19,7 @@ const SelectField = props => {
           {...props.input}
           className="sprite5 sprite-select-arrow"
           disabled={props.disabled}
+          style={props.inputStyle}
         >
           <option value={null}>{props.placeholder}</option>
           {Object.keys(props.options).map(val => (

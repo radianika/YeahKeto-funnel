@@ -98,6 +98,7 @@ class MobileShippingContainer extends React.PureComponent {
                       type="tel"
                     />
                     <Field
+                      inputStyle={{ width: '99%' }}
                       containerClass="frmelmnts3"
                       component={SelectField}
                       name="state"
