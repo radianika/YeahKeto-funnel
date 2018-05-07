@@ -1,49 +1,43 @@
 import validator from 'validator';
 import creditCartType from 'credit-card-type';
 
+console.log();
+
 const shippingFormValidator = values => {
   const errors = {};
-  if (!values.firstName) {
+  if (!values.firstName || !values.firstName.trim()) {
     errors.firstName = 'The first name is required.';
   }
-  if (!values.lastName) {
+  if (!values.lastName || !values.lastName.trim()) {
     errors.lastName = 'The last name is required.';
   }
-  if (!values.address) {
+  if (!values.address || !values.address.trim()) {
     errors.address = 'The address is required';
-  }
-  if (values.address && values.address.length > 100) {
+  } else if (values.address && values.address.trim().length > 100) {
     errors.address = 'The address must be less than 100 characters long.';
   }
-  if (!values.city) {
+  if (!values.city || !values.city.trim()) {
     errors.city = 'The city is required';
-  }
-  if (values.city && values.city.length > 50) {
+  } else if (values.city && values.city.trim().length > 50) {
     errors.city = 'The city must be less than 50 characters long.';
   }
-  if (!values.state) {
+  if (!values.state || !values.state.trim()) {
     errors.state = 'The state is required';
   }
-  if (!values.postalCode) {
+  if (!values.postalCode || !values.postalCode.trim()) {
     errors.postalCode = 'The zip code is required';
-  }
-  if (values.postalCode && values.postalCode.length !== 5) {
+  } else if (values.postalCode && values.postalCode.trim().length !== 5) {
     errors.postalCode = 'The zip code must be 5 characters long.';
   }
-  if (!values.phoneNumber) {
+  if (!values.phoneNumber || !values.phoneNumber.trim()) {
     errors.phoneNumber = 'Please enter your phone number';
-  }
-  // we have put length 12 below because as per UI we need to show two parenthesis,space and one hyphen too
-  if (values.phoneNumber && values.phoneNumber.length !== 14) {
+  } else if (values.phoneNumber && values.phoneNumber.length !== 14) {
     errors.phoneNumber =
       'Not a valid 10-digit US phone number (must not include spaces or special characters).';
   }
-  if (!values.email) {
+  if (!values.email || !values.email.trim()) {
     errors.email = 'The email address is required';
-    // The value is not a valid email address
-  }
-
-  if (values.email && !validator.isEmail(values.email)) {
+  } else if (values.email && !validator.isEmail(values.email)) {
     errors.email = 'The value is not a valid email address';
   }
 
@@ -52,11 +46,9 @@ const shippingFormValidator = values => {
 
 const billingFormValidator = values => {
   const errors = shippingFormValidator(values);
-  if (!values.cardNumber) {
+  if (!values.cardNumber || !values.cardNumber.trim()) {
     errors.cardNumber = 'Card number is required';
-  }
-
-  if (values.cardNumber) {
+  } else if (values.cardNumber) {
     const value = values.cardNumber.replace(/\s/g, '');
     const cardTypes = creditCartType(value);
     let length = 16;
@@ -68,16 +60,15 @@ const billingFormValidator = values => {
     }
   }
 
-  if (!values.cardMonth) {
+  if (!values.cardMonth || !values.cardMonth.trim()) {
     errors.cardMonth = 'Month is required';
   }
-  if (!values.cardYear) {
+  if (!values.cardYear || !values.cardYear.trim()) {
     errors.cardYear = 'Year is required';
   }
-  if (!values.cardSecurityCode) {
+  if (!values.cardSecurityCode || !values.cardSecurityCode.trim()) {
     errors.cardSecurityCode = 'Security Code is required';
-  }
-  if (values.cardSecurityCode) {
+  } else if (values.cardSecurityCode) {
     let length = 3;
     if (values.cardNumber) {
       const value = values.cardNumber.replace(/\s/g, '');

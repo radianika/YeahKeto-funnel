@@ -135,21 +135,18 @@ class PromoCheckoutPaymentForm extends React.Component {
                 name="firstName"
                 label="First Name"
                 placeholder="First Name"
-                required
               />
               <Field
                 component={TextField}
                 name="lastName"
                 label="Last Name"
                 placeholder="Last Name"
-                required
               />
               <Field
                 component={AddressField}
                 name="address"
                 label="Address 1"
                 placeholder="Street and number, P.O. box, c/o."
-                required
                 changeField={this.props.change}
               />
               <Field
@@ -163,14 +160,12 @@ class PromoCheckoutPaymentForm extends React.Component {
                 name="city"
                 label="City"
                 placeholder="Your City"
-                required
               />
               <Field
                 component={SelectField}
                 name="state"
                 label="State"
                 placeholder="State"
-                required
                 options={stateslist}
               />
               <Field
@@ -178,7 +173,6 @@ class PromoCheckoutPaymentForm extends React.Component {
                 name="postalCode"
                 label="Zip Code"
                 placeholder="Zip Code"
-                required
                 normalize={normalizePostalCode}
               />
               <Field
@@ -186,7 +180,6 @@ class PromoCheckoutPaymentForm extends React.Component {
                 name="phoneNumber"
                 label="Phone"
                 placeholder="Example: (123) 555-6789"
-                required
                 normalize={normalizePhone}
               />
               <Field
@@ -194,7 +187,6 @@ class PromoCheckoutPaymentForm extends React.Component {
                 name="email"
                 label="Email"
                 placeholder="Example: email@somewhere.com"
-                required
               />
             </React.Fragment>
           )}
@@ -204,7 +196,6 @@ class PromoCheckoutPaymentForm extends React.Component {
             className="creditcard"
             placeholder="•••• •••• •••• ••••"
             label="Card No"
-            required
             onChange={e => this._checkCardType(e.target.value)}
             normalize={normalizeCardNumber}
           />
@@ -228,7 +219,6 @@ class PromoCheckoutPaymentForm extends React.Component {
             label="CVV/CID"
             name="cardSecurityCode"
             className="short"
-            required
             normalize={normalizeSecurityCode}
             cvvClick={this._toggleCVVModal}
           />
