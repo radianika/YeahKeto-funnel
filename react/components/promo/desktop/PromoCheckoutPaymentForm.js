@@ -4,12 +4,12 @@ import { reduxForm, Field, formValueSelector } from 'redux-form';
 import creditCartType from 'credit-card-type';
 import {
   TextField,
-	CVVField,
+  CVVField,
   SelectField,
   SameAddressCheckField,
   AddressField,
   Spinner,
-  Modal
+  Modal,
 } from 'react/components/common';
 import {
   stateslist,
@@ -51,14 +51,14 @@ class PromoCheckoutPaymentForm extends React.Component {
 
     this.state = {
       active_cc_type: '',
-      show_cvv_modal: false
+      show_cvv_modal: false,
     };
-    this._toggleCVVModal = this._toggleCVVModal.bind(this)
+    this._toggleCVVModal = this._toggleCVVModal.bind(this);
   }
 
   _toggleCVVModal(e) {
-    e.preventDefault()
-    this.setState({show_cvv_modal: !this.state.show_cvv_modal})
+    e.preventDefault();
+    this.setState({ show_cvv_modal: !this.state.show_cvv_modal });
   }
 
   _checkCardType(cc) {
@@ -82,18 +82,17 @@ class PromoCheckoutPaymentForm extends React.Component {
 
     return (
       <div className="chkfrm-mid">
-
-        {
-          show_cvv_modal && (
-              <Modal onClose={this._toggleCVVModal}>
-                CVV/CID
-
-                <center>
-                  <img src="/static/promo/desktop/images/cvv2-location.jpeg" alt=""/>
-                </center>
-              </Modal>
-          )
-        }
+        {show_cvv_modal && (
+          <Modal onClose={this._toggleCVVModal}>
+            CVV/CID
+            <center>
+              <img
+                src="/static/promo/desktop/images/cvv2-location.jpeg"
+                alt=""
+              />
+            </center>
+          </Modal>
+        )}
         <form
           onSubmit={this.props.handleSubmit}
           className="pure-form pure-form-aligned fv-form fv-form-pure"

@@ -1,101 +1,49 @@
 import React, { PureComponent } from 'react';
 import Head from 'next/head';
-import 'styles/cart.scss';
-import { ChoseProductsForm } from './ChoseProductsForm';
-import { UInfoForm } from './UInfoForm';
-
-const axios = require('axios');
+import { withRouter } from 'next/router';
+import { Spinner } from 'react/components/common';
+import { connect } from 'react-redux';
+import { OrderActions } from 'redux/actions';
+import { ChooseProductsForm } from './ChooseProductsForm';
+import { CartForm } from './CartForm';
 
 class Cart extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      billingAsShipping: true,
-      firstName: '',
-      lastName: '',
-      email: '',
-      address_1: '',
-      address_2: '',
-      state: 'select_state',
-      city: '',
-      zip_code: '',
-      phone_number: '',
-      product1_qty: 0,
-      product2_qty: 0,
-      product3_qty: 0,
+      products: {},
     };
-    this.switchBillingAsShipping = this.switchBillingAsShipping.bind(this);
-    this.submitHandler = this.submitHandler.bind(this);
-    this.fFormUpdater = this.fFormUpdater.bind(this);
-    this.updateProducts = this.updateProducts.bind(this);
   }
-  switchBillingAsShipping() {
-    this.setState({
-      billingAsShipping: !this.state.billingAsShipping,
+
+  submit = values => {
+    const { products } = this.state;
+    const orderPayload = {};
+    console.log(Object.values(products));
+    Object.values(products).forEach(item => {
+      orderPayload[`${item.label}id`] = item.product.id;
+      orderPayload[`${item.label}qty`] = item.quantity;
     });
-  }
-  submitHandler(sFormState) {
-    console.log(sFormState);
-    console.log(this.state);
-    let body = {
-      email: this.state.email,
-      order: {
-        cardNumber: sFormState.card_number,
-        cardMonth: sFormState.month,
-        cardYear: sFormState.year,
-        cardSecurityCode: sFormState.cvv,
-      },
-      shipping: {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        address: this.state.address_1,
-        address2: this.state.address_2,
-        city: this.state.city,
-        state: this.state.state,
-        postalCode: this.state.zip_code,
-        phoneNumber: this.state.phone_number,
-      },
+    values.order = { ...values.order, ...orderPayload };
+    this.props.submitLeadsForm({
+      values,
+      nextUrl: '/thankyou',
+      router: this.props.router,
+    });
+  };
+
+  updateProducts = details => {
+    const { index, product, quantity } = details;
+    const products = { ...this.state.products };
+    products[product.id] = {
+      product,
+      quantity,
+      label: `product${index + 1}_`,
     };
-    if (this.state.product1_qty > 0) {
-      body.order.product1_qty = this.state.product1_qty;
-      body.order.product1_id = 152;
-    }
-    if (this.state.product2_qty > 0) {
-      body.order.product2_qty = this.state.product2_qty;
-      body.order.product2_id = 157;
-    }
-    if (this.state.product3_qty > 0) {
-      body.order.product3_qty = this.state.product3_qty;
-      body.order.product3_id = 175;
-    }
-    if (this.state.billingAsShipping) {
-      body = Object.assign({}, body, body.shipping);
-    } else {
-      body.firstName = sFormState.firstName;
-      body.lastName = sFormState.lastName;
-      body.address = sFormState.billing_cart_address_1;
-      body.address2 = sFormState.billing_cart_address_2;
-      body.city = sFormState.billing_cart_city;
-      body.state = sFormState.billing_cart_state;
-      body.postalCode = sFormState.billing_cart_zip_code;
-      body.phoneNumber = sFormState.billing_cart_phone_number;
-    }
-    axios
-      .post('/v1/konnektive/lead', body)
-      .then(result => {
-        console.log(result);
-      })
-      .catch(e => {
-        console.error(e);
-      });
-  }
-  fFormUpdater(update) {
-    this.setState(update);
-  }
-  updateProducts(update) {
-    this.setState(update);
-  }
+    this.setState({ products });
+  };
+
   render() {
+    console.log(this.state);
     return (
       <React.Fragment>
         <Head>
@@ -137,7 +85,10 @@ class Cart extends PureComponent {
                 </tr>
                 <tr>
                   <td colSpan="3">
-                    <ChoseProductsForm updater={this.updateProducts} />
+                    <ChooseProductsForm
+                      update={this.updateProducts}
+                      cart={this.state.products}
+                    />
                   </td>
                 </tr>
               </tbody>
@@ -152,20 +103,26 @@ class Cart extends PureComponent {
                     className="confi-img"
                   />
                 </div>
-                <UInfoForm fType="cart_user_info" updater={this.fFormUpdater} />
-                <UInfoForm
-                  fType="cart_billing_info"
-                  basSwitcher={this.switchBillingAsShipping}
-                  basEnabled={this.state.billingAsShipping}
-                  submitHandler={this.submitHandler}
-                />
+                <CartForm onSubmit={this.submit} />
               </div>
             </div>
           </div>
         </div>
+        {this.props.submitStatus === 'submitting' && <Spinner />}
       </React.Fragment>
     );
   }
 }
+
+Cart = withRouter(Cart);
+
+function mapStateToProps(state) {
+  return {
+    sessionId: state.auth.sessionId,
+    submitStatus: state.order.submitLeadsFormStatus,
+  };
+}
+
+Cart = connect(mapStateToProps, { ...OrderActions })(Cart);
 
 export { Cart };

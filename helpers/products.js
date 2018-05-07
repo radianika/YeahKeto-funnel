@@ -11,7 +11,7 @@ const products = {
       'Free from THC, harmful chemicals, pesticides, and synthetics',
       'Made from hemp extract that is organically grown & extracted in the USA',
     ],
-    price: '$69.00',
+    price: 69.0,
     ingredients: 'Ingredients: Hemp Seed Oil, Ethanol, Full Spectrum CBD',
     supplement: {
       image: '/static/assets/images/cbd-oil-label.jpg',
@@ -22,6 +22,8 @@ const products = {
       },
     },
     recommended_products: ['hemp-capsule', 'warming_balm'],
+    name: 'hemp-oil',
+    id: 152,
   },
   'hemp-capsule': {
     type: 'cap',
@@ -35,7 +37,7 @@ const products = {
       'Free from THC, harmful chemicals, pesticides, and synthetics',
       'Made from hemp extract that is organically grown & extracted in the USA',
     ],
-    price: '$77.00',
+    price: 77.0,
     ingredients: 'Ingredients: Hemp Powder, CBD Isolate, Vegetable Capsule',
     supplement: {
       image: '/static/assets/images/cbd-capsule-label.jpg',
@@ -46,6 +48,8 @@ const products = {
       },
     },
     recommended_products: ['hemp-oil', 'warming_balm'],
+    name: 'hemp-capsule',
+    id: 157,
   },
   warming_balm: {
     type: 'balm',
@@ -59,7 +63,7 @@ const products = {
       'Supports mental clarity & agility with higher focus & concentration',
       'Improves information rention & memory recall',
     ],
-    price: '$87.00',
+    price: 87.0,
     ingredients: `
                       Ingredient List: Grapeseed Oil,
                       Beeswax, Cocoa Butter, Menthol
@@ -79,6 +83,8 @@ const products = {
       },
     },
     recommended_products: ['hemp-oil', 'hemp-capsule'],
+    name: 'warming_balm',
+    id: 175,
   },
 };
 
