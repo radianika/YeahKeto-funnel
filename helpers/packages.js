@@ -13,6 +13,7 @@ const packages = [
     msg: 'MOST POPULAR PACKAGE',
     regularPrice: '$345.00',
     price: '$39.00',
+    packagePrice:'$195.00',
     upsell: 1,
   },
   {
@@ -27,6 +28,7 @@ const packages = [
     msg: 'BEST VALUE PACKAGE',
     regularPrice: '$207.00',
     price: '$49.00',
+    packagePrice:'$147.00',
     upsell: 2,
   },
   {
@@ -37,6 +39,7 @@ const packages = [
     msg: 'SIMPLER PACKAGE',
     regularPrice: '$69.00',
     price: '$69.00',
+    packagePrice:'$69.00',
     upsell: 3,
   },
 ];
