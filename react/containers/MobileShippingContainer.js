@@ -94,7 +94,6 @@ class MobileShippingContainer extends React.PureComponent {
                       name="postalCode"
                       label="Zip Code"
                       placeholder="Zip Code"
-                      required
                       normalize={normalizePostalCode}
                     />
                     <Field
@@ -103,7 +102,6 @@ class MobileShippingContainer extends React.PureComponent {
                       name="state"
                       label="State"
                       placeholder="Select State"
-                      required
                       options={stateslist}
                     />
                     <div className="clearfix" />
@@ -113,7 +111,6 @@ class MobileShippingContainer extends React.PureComponent {
                       name="phoneNumber"
                       label="Phone Numbe"
                       placeholder="Example: (123) 555-6789"
-                      required
                       normalize={normalizePhone}
                       type="tel"
                     />
@@ -123,7 +120,6 @@ class MobileShippingContainer extends React.PureComponent {
                       name="email"
                       label="Email"
                       placeholder="Example: email@somewhere.com"
-                      required
                       type="email"
                     />
                   </div>

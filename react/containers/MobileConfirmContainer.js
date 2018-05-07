@@ -153,7 +153,6 @@ class MobileConfirmContainer extends React.PureComponent {
                         name="address"
                         label="Address Line 1"
                         placeholder="Street and number, P.O. box, c/o."
-                        required
                         changeField={this.props.change}
                       />
                       <Field
@@ -178,7 +177,6 @@ class MobileConfirmContainer extends React.PureComponent {
                         name="postalCode"
                         label="Zip Code"
                         placeholder="Zip Code"
-                        required
                         normalize={normalizePostalCode}
                       />
                       <Field
@@ -187,7 +185,6 @@ class MobileConfirmContainer extends React.PureComponent {
                         name="state"
                         label="State"
                         placeholder="Select State"
-                        required
                         options={stateslist}
                       />
                       <div className="clearfix" />
@@ -197,7 +194,6 @@ class MobileConfirmContainer extends React.PureComponent {
                         name="phoneNumber"
                         label="Phone Number"
                         placeholder="Example: (123) 555-6789"
-                        required
                         normalize={normalizePhone}
                         type="tel"
                       />
@@ -207,7 +203,6 @@ class MobileConfirmContainer extends React.PureComponent {
                         name="email"
                         label="Email"
                         placeholder="Example: email@somewhere.com"
-                        required
                         type="email"
                       />
                     </div>
@@ -223,10 +218,7 @@ class MobileConfirmContainer extends React.PureComponent {
                       className="creditcard"
                       placeholder="•••• •••• •••• ••••"
                       label="Card No"
-                      required
                       type="tel"
-                      inputMode="numeric"
-                      pattern="[0-9]*"
                       autoComplete="cc-number"
                       autoCorrect="off"
                       normalize={normalizeCardNumber}
@@ -325,7 +317,7 @@ class MobileConfirmContainer extends React.PureComponent {
               />
             </div>
             <div className="clearfix" />
-            <Footer />
+            <Footer promo />
           </div>
         </div>
         {this.props.submitStatus === 'submitting' && <Spinner />}

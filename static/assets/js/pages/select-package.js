@@ -13,7 +13,7 @@ const pSelectPackage = (function () {
     _loadSession() {
       window.utilsInstance.initSessionIfNoCookies(() => {
         if (!UniversalStorage.cookiesEnabled) {
-          window.utilsInstance.callAPI('session', null, 'GET', (response) => {
+          window.utilsInstance.callAPI('session', null, 'GET', response => {
             if (response.success) {
               UniversalStorage.saveCheckoutDetails(response.data);
             }
@@ -24,18 +24,27 @@ const pSelectPackage = (function () {
 
     _initTimeLogging() {
       window.onbeforeunload = function () {
-        window.utilsInstance.callAPI('session/log', {
-          level: 'info',
-          type: 'shipping:leave',
-          ttl: (Date.now() - this.appear),
-        }, 'GET', () => {}, () => {});
+        window.utilsInstance.callAPI(
+          'session/log',
+          {
+            level: 'info',
+            type: 'shipping:leave',
+            ttl: Date.now() - this.appear,
+          },
+          'GET',
+          () => {},
+          () => {},
+        );
       };
     },
 
     _selectPackage() {
       $('.link-container-3').click(function () {
-        var query = ((window.location.search) ? window.location.search + "&" : "?") + 'productId=' + $(this).data('productid');
-        window.utilsInstance.wrapLocationChange(`confirm.html` + query);
+        const query =
+          `${window.location.search ? `${window.location.search}&` : '?'
+          }productId=${
+            $(this).data('productid')}`;
+        window.utilsInstance.wrapLocationChange(`confirm.html${query}`);
       });
     },
   };

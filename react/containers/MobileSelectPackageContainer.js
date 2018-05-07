@@ -81,7 +81,11 @@ class MobileSelectPackageContainer extends React.PureComponent {
           </React.Fragment>
         ))}
         <div className="clearboth" />
-        <Footer />
+        <div className="legal">
+          <div className="ftr-txt">
+            <Footer promo />
+          </div>
+        </div>
       </div>
     );
   }
