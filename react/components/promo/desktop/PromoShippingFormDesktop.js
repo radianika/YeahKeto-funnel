@@ -10,6 +10,7 @@ import { TextField, SelectField, AddressField } from 'react/components/common';
 import { connect } from 'react-redux';
 
 class PromoShippingFormDesktop extends React.PureComponent {
+  
   render() {
     const { props } = this;
     return (
@@ -24,14 +25,17 @@ class PromoShippingFormDesktop extends React.PureComponent {
           style={{ display: 'none', width: '0px', height: '0px' }}
         />
         <div className="sldrtxt" id="fades">
-          <p style={{ opacity: '0.816285' }}>
-            <i className="sprite2 sprite-eye" /> 13 others are viewing this
-            offer right now!
-          </p>
-          <p style={{ display: 'none' }}>
-            <i className="sprite2 sprite-eye" /> 25 people purchased this in the
-            last hour
-          </p>
+
+         <div className="aggettivi">
+            <div className="text-animated-one">
+              <i className="sprite2 sprite-eye" /> 13 others are viewing this offer right now!
+            </div>    
+            <div className="text-animated-two">
+              <i className="sprite2 sprite-eye" /> 25 people purchased this in the last hour
+            </div>
+        </div>
+
+
         </div>
         <div className="frmhdr sprite2 sprite-frmhdr">
           <p className="frmhd-txt">
