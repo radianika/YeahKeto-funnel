@@ -1113,3 +1113,36 @@ ul.s7list li span {
     opacity: 0.7;
   }
 }
+
+@-webkit-keyframes fade-in{
+    from{
+        opacity:1;
+        top:0px;
+    }
+    to{
+        opacity:0;
+        top:0px;
+    }
+  
+}
+.text-animated-one{
+    display:inline;
+    position:relative;
+    top:0px;
+    -webkit-animation:fade-in 4s infinite;
+
+}
+.text-animated-two{
+    opacity:0;
+    display:inline;
+    position:relative;
+    margin-left:-294px;
+    -webkit-animation:fade-in 4s infinite;
+    -webkit-animation-delay: 2s;
+}
+
+.aggettivi{
+    display:inline;
+    width:100px;
+    height:100px;
+}
