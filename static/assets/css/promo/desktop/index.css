@@ -1114,6 +1114,7 @@ ul.s7list li span {
   }
 }
 
+
 @-webkit-keyframes fade-in{
     from{
         opacity:1;
@@ -1146,3 +1147,14 @@ ul.s7list li span {
     width:100px;
     height:100px;
 }
+
+/* modal style */
+.modal-title {
+    text-align: center;
+}
+.modal-body p {
+  text-align: left;
+}
+
+/* modal style ends */
+

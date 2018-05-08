@@ -349,6 +349,7 @@ input::-webkit-inner-spin-button {
 .modal-title {
   margin: 0;
   line-height: 1.5;
+  text-align: center;
 }
 
 .modal-header::after {
@@ -365,6 +366,10 @@ input::-webkit-inner-spin-button {
   /* modal style ends */
 
   width: 310px !important;
+}
+
+.modal-body p {
+  text-align: left;
 }
 
 /* modal style ends */
