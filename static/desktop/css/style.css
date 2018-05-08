@@ -859,6 +859,7 @@ ul.user-info li span {
 .modal-title {
   margin: 0;
   line-height: 1.5;
+  text-align: center;
 }
 
 .modal-header::after {
@@ -875,6 +876,10 @@ ul.user-info li span {
   /* modal style ends */
 
   width: 310px !important;
+}
+
+.modal-body p {
+  text-align: left;
 }
 
 /* modal style ends */

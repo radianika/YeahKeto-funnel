@@ -669,3 +669,13 @@ ul.user-info li span {
   color: #2b2b2b;
   font-weight: 600;
 }
+
+/* modal style */
+.modal-title {
+    text-align: center;
+}
+.modal-body p {
+  text-align: left;
+}
+
+/* modal style ends */
