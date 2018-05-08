@@ -21,7 +21,7 @@ const shippingFormValidator = values => {
   } else if (values.city && values.city.trim().length > 50) {
     errors.city = 'The city must be less than 50 characters long.';
   }
-  if (!values.state || !values.state.trim()) {
+  if (!values.state || !values.state.trim() || values.state === 'State') {
     errors.state = 'The state is required';
   }
   if (!values.postalCode || !values.postalCode.trim()) {
