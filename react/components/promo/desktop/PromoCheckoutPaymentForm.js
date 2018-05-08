@@ -86,10 +86,7 @@ class PromoCheckoutPaymentForm extends React.Component {
           <Modal onClose={this._toggleCVVModal}>
             CVV/CID
             <center>
-              <img
-                src="/static/promo/desktop/images/cvv2-location.jpeg"
-                alt=""
-              />
+              <img src="/static/promo/common/cvv.jpg" alt="" />
             </center>
           </Modal>
         )}
