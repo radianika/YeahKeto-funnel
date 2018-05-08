@@ -2506,6 +2506,7 @@ table.tbl2 {
 .modal-title {
   margin: 0;
   line-height: 1.5;
+  text-align: 'center';
 }
 
 .modal-header::after {

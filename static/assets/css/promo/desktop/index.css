@@ -1113,3 +1113,13 @@ ul.s7list li span {
     opacity: 0.7;
   }
 }
+
+/* modal style */
+.modal-title {
+    text-align: center;
+}
+.modal-body p {
+  text-align: left;
+}
+
+/* modal style ends */
