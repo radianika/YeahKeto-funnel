@@ -2,6 +2,7 @@ import { select, put, all, fork, takeLatest } from 'redux-saga/effects';
 import idx from 'idx';
 import { OrderActions } from 'redux/actions';
 import { post, get, setAuthHeaders } from 'helpers';
+import { getCookie } from 'react/components/common';
 
 const getSession = state => state.auth.sessionId;
 const getOrder = state => state.order.order;
@@ -28,9 +29,12 @@ function* submitLeadsForm(action) {
       state,
       postalCode,
     };
-    const sessionId = yield select(getSession);
+    const sessionId = yield getCookie('ascbd_session');
+    if (!sessionId || !sessionId.length) {
+      window.location.href = window.location.href;
+      return;
+    }
     setAuthHeaders(sessionId);
-    console.log({ ...values, shipping });
     const apiResponse = yield post('/v1/konnektive/lead', {
       ...values,
       shipping,
@@ -41,6 +45,7 @@ function* submitLeadsForm(action) {
       router.push(`${nextUrl}?orderId=${lead.orderId}`);
     }
   } catch (error) {
+    console.log({ error });
     yield put(OrderActions.submitLeadsFormFailure({ error }));
   }
 }
@@ -49,7 +54,11 @@ function* getOrderDetails(action) {
   yield put(OrderActions.getOrderDetailsRequest());
   try {
     const { orderId } = action.payload;
-    const sessionId = yield select(getSession);
+    const sessionId = yield getCookie('ascbd_session');
+    if (!sessionId || !sessionId.length) {
+      window.location.href = window.location.href;
+      return;
+    }
     setAuthHeaders(sessionId);
     const apiResponse = yield get(`/v1/konnektive/order/${orderId}`);
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
@@ -67,7 +76,11 @@ function* placeOrder(action) {
     const {
       values, pack, router, nextUrl,
     } = action.payload;
-    const sessionId = yield select(getSession);
+    const sessionId = yield getCookie('ascbd_session');
+    if (!sessionId || !sessionId.length) {
+      window.location.href = window.location.href;
+      return;
+    }
     const {
       orderId,
       cardNumber,
@@ -117,7 +130,11 @@ function* addUpsellToOrder(action) {
   yield put(OrderActions.addUpsellToOrderRequest());
   try {
     const { productId, sendTo, router } = action.payload;
-    const sessionId = yield select(getSession);
+    const sessionId = yield getCookie('ascbd_session');
+    if (!sessionId || !sessionId.length) {
+      window.location.href = window.location.href;
+      return;
+    }
     const order = yield select(getOrder);
     setAuthHeaders(sessionId);
     const payload = {
