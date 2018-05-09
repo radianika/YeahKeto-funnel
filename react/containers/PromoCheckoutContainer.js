@@ -78,7 +78,7 @@ class PromoCheckoutContainer extends React.PureComponent {
                           />
                         </div>
                         <div className="pkg-contboxrgt">
-                          <p className="pkgtype-hding">most popular package</p>
+                          <p className="pkgtype-hding">{pack.msg}</p>
                           <p className="pkgcont-hding">
                             REGULAR PRICE {pack.regularPrice}
                           </p>
