@@ -57,28 +57,30 @@ class Footer extends PureComponent {
                 </a>
               </p>
 
-              <p className="ftr-txt w40 mtop2">
-                {!this.props.promo ? (
-                  <img
-                    src="/static/assets/images/mc-v.png"
-                    alt="We accept VISA, MasterCard"
-                  />
-                ) : (
-                  <React.Fragment>
-                    <div className="cards">
-                      <span className="card-visa">
-                        <img src="/static/Visa.png" alt="" />
-                      </span>
-                      <span className="card-mastercard">
-                        <img src="/static/Mastercard.png" alt="" />
-                      </span>
-                      <span className="card-discover">
-                        <img src="/static/amex.png" alt="" />
-                      </span>
-                    </div>
-                  </React.Fragment>
-                )}
-              </p>
+              {!this.props.noLogo && (
+                <p className="ftr-txt w40 mtop2">
+                  {!this.props.promo ? (
+                    <img
+                      src="/static/assets/images/mc-v.png"
+                      alt="We accept VISA, MasterCard"
+                    />
+                  ) : (
+                    <React.Fragment>
+                      <div className="cards">
+                        <span className="card-visa">
+                          <img src="/static/Visa.png" alt="" />
+                        </span>
+                        <span className="card-mastercard">
+                          <img src="/static/Mastercard.png" alt="" />
+                        </span>
+                        <span className="card-discover">
+                          <img src="/static/amex.png" alt="" />
+                        </span>
+                      </div>
+                    </React.Fragment>
+                  )}
+                </p>
+              )}
 
               <p className="ftr-txt just">
                 {this.props.children || (

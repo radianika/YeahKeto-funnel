@@ -4,6 +4,7 @@ import { upsell3Packs } from 'helpers';
 import { Carousel } from './Carousel';
 import { SatisfactionBox } from './SatisfactionBox';
 import { Shortage } from '../Shortage';
+import { UpsellFooter } from '../UpsellFooter';
 
 class Upsell3 extends React.PureComponent {
   upgrade = productId => {
@@ -104,6 +105,7 @@ class Upsell3 extends React.PureComponent {
         />
         <div className="clearall" />
         <SatisfactionBox />
+        <UpsellFooter />
       </React.Fragment>
     );
   }

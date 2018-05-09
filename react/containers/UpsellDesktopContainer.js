@@ -39,49 +39,50 @@ class UpsellDesktopContainer extends React.PureComponent {
           {upsell === 1 && <Upsell1 upgrade={this.upgrade} {...this.props} />}
           {upsell === 2 && <Upsell2 upgrade={this.upgrade} {...this.props} />}
           {upsell === 3 && <Upsell3 upgrade={this.upgrade} {...this.props} />}
+          <div className="footer">
+            <div className="clearall" />
+
+            <div
+              style={{
+                display: 'table',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+              }}
+            >
+              <img
+                src="/static/assets/images/badges/mcafee.png"
+                alt=""
+                style={{ height: 50, width: 150, display: 'inline-block' }}
+              />
+              <img
+                src="/static/assets/images/badges/imgnortonsiteseal.png"
+                alt=""
+                style={{
+                  height: 54,
+                  width: 100,
+                  display: 'inline-block',
+                  marginLeft: 15,
+                }}
+              />
+              <img
+                src="/static/assets/images/badges/ext.jpeg"
+                alt=""
+                style={{
+                  height: 60,
+                  width: 105,
+                  display: 'inline-block',
+                  marginLeft: 15,
+                }}
+              />
+            </div>
+          </div>
         </div>
-        <div className="footer">
-          <div className="clearall" />
-
-          <div
-            style={{
-              display: 'table',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-            }}
-          >
-            <img
-              src="/static/assets/images/badges/mcafee.png"
-              alt=""
-              style={{ height: 50, width: 150, display: 'inline-block' }}
-            />
-            <img
-              src="/static/assets/images/badges/imgnortonsiteseal.png"
-              alt=""
-              style={{
-                height: 54,
-                width: 100,
-                display: 'inline-block',
-                marginLeft: 15,
-              }}
-            />
-            <img
-              src="/static/assets/images/badges/ext.jpeg"
-              alt=""
-              style={{
-                height: 60,
-                width: 105,
-                display: 'inline-block',
-                marginLeft: 15,
-              }}
-            />
-          </div>
-
-          <div className="contentWrap">
-            <p className="ftrtxt">
-              <Footer />
-            </p>
-          </div>
+        <div className="contentWrap">
+          <p className="ftrtxt">
+            <Footer noLogo>
+              <br />
+            </Footer>
+          </p>
         </div>
       </div>
     );
