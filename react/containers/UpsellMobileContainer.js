@@ -3,6 +3,7 @@ import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
 import { Upsell1, Upsell2, Upsell3 } from 'react/components/upsell/mobile';
+import { Spinner } from 'react/components/common';
 
 class UpsellMobileContainer extends React.PureComponent {
   upgrade = (productId, nextPage) => {
@@ -22,6 +23,7 @@ class UpsellMobileContainer extends React.PureComponent {
         {upsell === 1 && <Upsell1 upgrade={this.upgrade} />}
         {upsell === 2 && <Upsell2 upgrade={this.upgrade} />}
         {upsell === 3 && <Upsell3 upgrade={this.upgrade} />}
+        {this.props.submitStatus === 'submitting' && <Spinner />}
       </div>
     );
   }
@@ -29,8 +31,10 @@ class UpsellMobileContainer extends React.PureComponent {
 
 UpsellMobileContainer = withRouter(UpsellMobileContainer);
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return {
+    submitStatus: state.order.addUpsellToOrderStatus,
+  };
 }
 
 UpsellMobileContainer = connect(mapStateToProps, { ...OrderActions })(

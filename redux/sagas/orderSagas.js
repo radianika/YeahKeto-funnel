@@ -29,10 +29,15 @@ function* submitLeadsForm(action) {
       state,
       postalCode,
     };
-    const sessionId = yield getCookie('ascbd_session');
-    if (!sessionId || !sessionId.length) {
-      window.location.href = window.location.href;
-      return;
+    let sessionId = '';
+    if (typeof window !== 'undefined') {
+      sessionId = yield getCookie('ascbd_session');
+      if (!sessionId || !sessionId.length) {
+        window.location.href = window.location.href;
+        return;
+      }
+    } else {
+      sessionId = yield select(getSession);
     }
     setAuthHeaders(sessionId);
     const apiResponse = yield post('/v1/konnektive/lead', {
@@ -54,10 +59,15 @@ function* getOrderDetails(action) {
   yield put(OrderActions.getOrderDetailsRequest());
   try {
     const { orderId } = action.payload;
-    const sessionId = yield getCookie('ascbd_session');
-    if (!sessionId || !sessionId.length) {
-      window.location.href = window.location.href;
-      return;
+    let sessionId = '';
+    if (typeof window !== 'undefined') {
+      sessionId = yield getCookie('ascbd_session');
+      if (!sessionId || !sessionId.length) {
+        window.location.href = window.location.href;
+        return;
+      }
+    } else {
+      sessionId = yield select(getSession);
     }
     setAuthHeaders(sessionId);
     const apiResponse = yield get(`/v1/konnektive/order/${orderId}`);
@@ -76,11 +86,17 @@ function* placeOrder(action) {
     const {
       values, pack, router, nextUrl,
     } = action.payload;
-    const sessionId = yield getCookie('ascbd_session');
-    if (!sessionId || !sessionId.length) {
-      window.location.href = window.location.href;
-      return;
+    let sessionId = '';
+    if (typeof window !== 'undefined') {
+      sessionId = yield getCookie('ascbd_session');
+      if (!sessionId || !sessionId.length) {
+        window.location.href = window.location.href;
+        return;
+      }
+    } else {
+      sessionId = yield select(getSession);
     }
+    setAuthHeaders(sessionId);
     const {
       orderId,
       cardNumber,
@@ -95,7 +111,6 @@ function* placeOrder(action) {
       state,
       postalCode,
     } = values;
-    setAuthHeaders(sessionId);
     const payload = {
       orderId,
       cardNumber,
@@ -130,13 +145,18 @@ function* addUpsellToOrder(action) {
   yield put(OrderActions.addUpsellToOrderRequest());
   try {
     const { productId, sendTo, router } = action.payload;
-    const sessionId = yield getCookie('ascbd_session');
-    if (!sessionId || !sessionId.length) {
-      window.location.href = window.location.href;
-      return;
+    let sessionId = '';
+    if (typeof window !== 'undefined') {
+      sessionId = yield getCookie('ascbd_session');
+      if (!sessionId || !sessionId.length) {
+        window.location.href = window.location.href;
+        return;
+      }
+    } else {
+      sessionId = yield select(getSession);
     }
-    const order = yield select(getOrder);
     setAuthHeaders(sessionId);
+    const order = yield select(getOrder);
     const payload = {
       orderId: order.orderId,
       productId,

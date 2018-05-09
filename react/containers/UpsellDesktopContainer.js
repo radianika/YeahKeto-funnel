@@ -16,6 +16,7 @@ class UpsellDesktopContainer extends React.PureComponent {
 
   render() {
     const { upsell } = this.props.url.query;
+    console.log(this.props.submitStatus);
     return (
       <div className="container">
         <div className="contentWrap shadow">
@@ -84,6 +85,7 @@ class UpsellDesktopContainer extends React.PureComponent {
             </Footer>
           </p>
         </div>
+        {this.props.submitStatus === 'submitting' && <Spinner />}
       </div>
     );
   }
@@ -91,8 +93,10 @@ class UpsellDesktopContainer extends React.PureComponent {
 
 UpsellDesktopContainer = withRouter(UpsellDesktopContainer);
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return {
+    submitStatus: state.order.addUpsellToOrderStatus,
+  };
 }
 
 UpsellDesktopContainer = connect(mapStateToProps, { ...OrderActions })(
