@@ -29,6 +29,7 @@ class SelectPackage extends React.PureComponent {
             rel="stylesheet"
           />
           <link href="/static/mobile/css/style.css" rel="stylesheet" />
+          <link rel="stylesheet" type="text/css" href="/static/assets/css/mb-style.css" />
         </Head>
         <UpsellMobileContainer {...props} />
       </React.Fragment>
