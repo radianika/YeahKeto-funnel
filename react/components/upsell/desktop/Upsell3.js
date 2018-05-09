@@ -42,6 +42,12 @@ class Upsell3 extends React.PureComponent {
             title="Special introductory pricing reserved for our new customers only:"
           />
           <div className="clearall" />
+          <p className="s1txt5">
+            Read the details below and learn why adding our{' '}
+            <span>CBD Warming Rub</span> to your CBD Oil regimen will boost your
+            results tenfold – and provide you with the INSTANT relief you crave.{' '}
+          </p>
+          <div className="clearall" />
           <SatisfactionBox onUpgrade={this.scrollToTop} />
           <p className="s1txt3">
             <span className="span1">Dear Friend…</span>
