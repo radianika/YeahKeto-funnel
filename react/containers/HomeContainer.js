@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import Link from 'next/link';
 import { Header, Footer } from 'react/components/common';
 
 const Strip = () => (
@@ -71,13 +72,15 @@ class HomeContainer extends PureComponent {
                 is enriched with over 80 cannabinoids that offer a wide range of
                 therapeutic health benefits.{' '}
               </p>
-              <a href="#">
-                <img
-                  src="/static/assets/images/btn.png"
-                  alt=""
-                  className="bnr-btn"
-                />
-              </a>
+              <Link href="/hemp-oil">
+                <a href="#">
+                  <img
+                    src="/static/assets/images/btn.png"
+                    alt=""
+                    className="bnr-btn"
+                  />
+                </a>
+              </Link>
             </div>
             <div className="bnr-rgt for-desk for-tab">
               <img src="/static/assets/images/bnr-prd.png" alt="" />
