@@ -1,7 +1,7 @@
 import React from 'react';
 import idx from 'idx';
 import { connect } from 'react-redux';
-import { post, setAuthHeaders } from 'helpers';
+import { post } from 'helpers';
 
 function setCookie(cname, cvalue) {
   document.cookie = `${cname}=${cvalue};path=/`;
@@ -25,24 +25,29 @@ export function getCookie(cname) {
 class PromoSession extends React.PureComponent {
   async componentDidMount() {
     const existingCookie = getCookie('ascbd_promo_session');
-    setAuthHeaders(this.props.sessionId);
     if (!existingCookie) {
-      setAuthHeaders(this.props.sessionId);
-      const apiResponse = await post('/v1/konnektive/session', {
-        pageType: this.props.pageType,
-        requestUri: window.location.href,
-      });
+      const apiResponse = await post(
+        '/v1/konnektive/session',
+        {
+          pageType: this.props.pageType,
+          requestUri: window.location.href,
+        },
+        this.props.sessionId,
+      );
       const ascbd_promo_session = idx(
         apiResponse,
         _ => _.response.data.data.sessionId,
       );
       setCookie('ascbd_promo_session', ascbd_promo_session);
     } else {
-      setAuthHeaders(this.props.sessionId);
-      post('/v1/konnektive/session', {
-        pageType: this.props.pageType,
-        sessionId: existingCookie,
-      });
+      post(
+        '/v1/konnektive/session',
+        {
+          pageType: this.props.pageType,
+          sessionId: existingCookie,
+        },
+        this.props.sessionId,
+      );
     }
   }
   render() {

@@ -1,7 +1,7 @@
 import { select, put, all, fork, takeLatest } from 'redux-saga/effects';
 import idx from 'idx';
 import { OrderActions } from 'redux/actions';
-import { post, get, setAuthHeaders } from 'helpers';
+import { post, get } from 'helpers';
 import { getCookie } from 'react/components/common';
 
 const getSession = state => state.auth.sessionId;
@@ -39,11 +39,14 @@ function* submitLeadsForm(action) {
     } else {
       sessionId = yield select(getSession);
     }
-    setAuthHeaders(sessionId);
-    const apiResponse = yield post('/v1/konnektive/lead', {
-      ...values,
-      shipping,
-    });
+    const apiResponse = yield post(
+      '/v1/konnektive/lead',
+      {
+        ...values,
+        shipping,
+      },
+      sessionId,
+    );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const { lead } = apiResponse.response.data.data;
       yield put(OrderActions.submitLeadsFormSuccess({ lead }));
@@ -69,8 +72,7 @@ function* getOrderDetails(action) {
     } else {
       sessionId = yield select(getSession);
     }
-    setAuthHeaders(sessionId);
-    const apiResponse = yield get(`/v1/konnektive/order/${orderId}`);
+    const apiResponse = yield get(`/v1/konnektive/order/${orderId}`, sessionId);
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data.data[0];
       yield put(OrderActions.getOrderDetailsSuccess({ order }));
@@ -96,7 +98,6 @@ function* placeOrder(action) {
     } else {
       sessionId = yield select(getSession);
     }
-    setAuthHeaders(sessionId);
     const {
       orderId,
       cardNumber,
@@ -129,7 +130,7 @@ function* placeOrder(action) {
         postalCode,
       },
     };
-    const apiResponse = yield post('/v1/konnektive/order', payload);
+    const apiResponse = yield post('/v1/konnektive/order', payload, sessionId);
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order }));
@@ -155,14 +156,13 @@ function* addUpsellToOrder(action) {
     } else {
       sessionId = yield select(getSession);
     }
-    setAuthHeaders(sessionId);
     const order = yield select(getOrder);
     const payload = {
       orderId: order.orderId,
       productId,
       productQty: 1,
     };
-    const apiResponse = yield post('/v1/konnektive/upsale', payload);
+    const apiResponse = yield post('/v1/konnektive/upsale', payload, sessionId);
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const newOrder = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order: newOrder }));

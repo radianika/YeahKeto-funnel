@@ -62,6 +62,6 @@ export function get(location) {
     });
 }
 
-export function setAuthHeaders(authToken) {
-  axios.defaults.headers.common.Authorization = `JWT ${authToken}`;
-}
+// export function setAuthHeaders(authToken) {
+//   axios.defaults.headers.common.Authorization = `JWT ${authToken}`;
+// }
