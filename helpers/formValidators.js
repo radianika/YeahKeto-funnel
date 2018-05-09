@@ -88,7 +88,8 @@ const cartFormValidator = values => {
   let errors = shippingFormValidator(values);
   const orderValues = values.order || {};
   const cardErrors = billingFormValidator(orderValues);
-  errors = { ...errors, cardErrors };
+  errors = { ...errors, shipping: { ...cardErrors }, order: { ...cardErrors } };
+  console.log({ errors });
   return errors;
 };
 
