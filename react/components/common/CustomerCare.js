@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const CustomerCare = () => (
+const CustomerCare = () => (
   <div className="modal-body">
     <p className="normal title">
       <b>Customer Care</b>
@@ -13,7 +13,7 @@ export const CustomerCare = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="list">
-      <b>Customer Service:</b> (888) 313-8529<br />
+      <b>Customer Service:</b> 1-844-260-1422<br />
       <b>Email:</b> support&#64;americansciencecbd.com
     </p>
     <p className="normal">&nbsp;</p>
@@ -25,3 +25,5 @@ export const CustomerCare = () => (
     <p className="normal">&nbsp;</p>
   </div>
 );
+
+export { CustomerCare };

@@ -4,158 +4,140 @@ import { post, normalizePhone } from 'helpers';
 import { Modal, Spinner } from 'react/components/common';
 
 class ContactUs extends React.Component {
-
   constructor(props) {
-
-    super(props)
+    super(props);
     this.state = {
-			contact: {
-				question: '',
-				name: '',
-				email: '',
-				phoneNumber: '',
-			},
-			error: {},
-			submitting: null,
-		};
-
+      contact: {
+        question: '',
+        name: '',
+        email: '',
+        phoneNumber: '',
+      },
+      error: {},
+      submitting: null,
+    };
   }
 
   _handleChange = e => {
-
     const { name, value } = e.target;
 
-    let val = value
-    if(name=='phoneNumber'){
-    	val = normalizePhone(value)
-		}
+    let val = value;
+    if (name == 'phoneNumber') {
+      val = normalizePhone(value);
+    }
 
-		this.setState((ps, pp) => ({
+    this.setState((ps, pp) => ({
       contact: {
         ...ps.contact,
         [name]: val,
-      }
+      },
     }));
   };
 
-  _validateName = (e) => {
-
-		const { name, value } = e.target;
-		let hasError = false, message;
-    if(!value) {
-			hasError = true;
-			message = 'The first name is required.'
+  _validateName = e => {
+    const { name, value } = e.target;
+    let hasError = false,
+      message;
+    if (!value) {
+      hasError = true;
+      message = 'The first name is required.';
     }
-		this.setState((ps, pp) => {
-			return {
-				error: {
-					...ps.error,
-					nameHasError: hasError,
-					name: message
-				}
-			}
-		})
+    this.setState((ps, pp) => ({
+      error: {
+        ...ps.error,
+        nameHasError: hasError,
+        name: message,
+      },
+    }));
   };
 
-	_validateEmail = (e) => {
+  _validateEmail = e => {
+    const { name, value } = e.target;
+    let message = '',
+      hasError = false;
 
-		const { name, value } = e.target;
-		let message = "", hasError = false;
-
-    if(!value){
-    	message = 'The email address is required.'
-			hasError = true;
-		}
-    else if(!validator.isEmail(value)) {
-			message = 'The value is not a valid email address.'
-			hasError = true
+    if (!value) {
+      message = 'The email address is required.';
+      hasError = true;
+    } else if (!validator.isEmail(value)) {
+      message = 'The value is not a valid email address.';
+      hasError = true;
     }
 
-		this.setState((ps, pp) => {
-			return {
-				error: {
-					...ps.error,
-					emailHasError: hasError,
-					email: message
-				}
-			}
-		})
+    this.setState((ps, pp) => ({
+      error: {
+        ...ps.error,
+        emailHasError: hasError,
+        email: message,
+      },
+    }));
+  };
 
-  }
+  _validatePhone = e => {
+    const { name, value } = e.target;
+    let message = '',
+      hasError = false;
 
-  _validatePhone = (e) => {
+    // console.log(validator.isMobilePhone(value, 'en-US'))
 
-		const { name, value } = e.target;
-		let message = "", hasError = false;
-
-		// console.log(validator.isMobilePhone(value, 'en-US'))
-
-    if(!value){
-			hasError = true;
-    	message = 'Please enter your phone number.'
-		}
-    else if(value.length != 14) {
-			hasError = true;
-			message = 'Not a valid 10-digit US phone number (must not include spaces or special characters).'
+    if (!value) {
+      hasError = true;
+      message = 'Please enter your phone number.';
+    } else if (value.length != 14) {
+      hasError = true;
+      message =
+        'Not a valid 10-digit US phone number (must not include spaces or special characters).';
     }
 
-		this.setState((ps, pp) => {
-			return {
-				error: {
-					...ps.error,
-					phoneHasError: hasError,
-					phoneNumber: message
-				}
-			}
-		})
-  }
+    this.setState((ps, pp) => ({
+      error: {
+        ...ps.error,
+        phoneHasError: hasError,
+        phoneNumber: message,
+      },
+    }));
+  };
 
   _validateState = () => {
+    const { name, email, phoneNumber } = this.state.contact;
+    const error = {};
 
-		let { name, email, phoneNumber } = this.state.contact
-		let error = {}
+    if (!name) {
+      error.nameHasError = true;
+      error.name = 'The first name is required.';
+    }
+    if (!email) {
+      error.emailHasError = true;
+      error.email = 'The email address is required.';
+    } else if (validator.isEmail(email)) {
+      error.emailHasError = true;
+      error.email = 'The value is not a valid email address.';
+    }
 
-		if(!name){
-			error.nameHasError= true;
-			error.name= 'The first name is required.'
-		}
-		if(!email){
-			error.emailHasError= true;
-			error.email= 'The email address is required.';
-		}
-		else if(validator.isEmail(email)){
-			error.emailHasError= true
-			error.email= 'The value is not a valid email address.'
-		}
+    if (!phoneNumber) {
+      error.phoneHasError = true;
+      error.phoneNumber = 'Please enter your phone number.';
+    } else if (phoneNumber.length != 14) {
+      error.phoneHasError = true;
+      error.phoneNumber =
+        'Not a valid 10-digit US phone number (must not include spaces or special characters).';
+    }
 
-		if(!phoneNumber){
-			error.phoneHasError= true;
-			error.phoneNumber= 'Please enter your phone number.'
-		}
-		else if(phoneNumber.length != 14) {
-			error.phoneHasError= true;
-			error.phoneNumber= 'Not a valid 10-digit US phone number (must not include spaces or special characters).';
-		}
-
-		return error
-	}
+    return error;
+  };
 
   _submitForm = () => {
+    const { nameHasError, emailHasError, phoneHasError } = this.state.error;
 
-		const {
-			nameHasError,
-			emailHasError,
-			phoneHasError,
-    } = this.state.error;
+    const {
+      name, email, phoneNumber, question,
+    } = this.state.contact;
 
-		let { name, email, phoneNumber, question } = this.state.contact
-
-    if(
-    		nameHasError === false
-				&& emailHasError === false
-				&& phoneHasError === false
-		)
-		{
+    if (
+      nameHasError === false &&
+      emailHasError === false &&
+      phoneHasError === false
+    ) {
       this.setState({ submitting: 'submitting' }, async () => {
         const apiResponse = await post('/v1/contact-us', {
           name,
@@ -165,17 +147,15 @@ class ContactUs extends React.Component {
         });
         this.setState({ submitting: 'success', contact: {} });
       });
+    } else {
+      const error = this._validateState();
+      this.setState({ error });
     }
-    else {
-    	let error = this._validateState()
-    	this.setState({error})
-		}
   };
 
   _closeModal = () => this.setState({ submitting: null });
 
   render() {
-
     const { error } = this.state;
     const { phoneNumber } = this.state.contact;
     // console.log(error)
@@ -227,7 +207,7 @@ class ContactUs extends React.Component {
                 </li>
                 <li>
                   <span>Phone</span>
-                  <p>(888) 313-8529</p>
+                  <p>1-844-260-1422</p>
                 </li>
               </ul>
             </div>
@@ -235,9 +215,19 @@ class ContactUs extends React.Component {
               <p className="frm-hdg-txt">Send us A Message</p>
               <div className="frm-container">
                 <form id="contact_main" className="fv-form fv-form-pure">
-                  <div className={`frmelements pure-control-group fv-has-feedback
-                                    ${error.nameHasError === false ?' fv-has-success':''}
-                                    ${error.nameHasError === true ?' fv-has-error':''}`}>
+                  <div
+                    className={`frmelements pure-control-group fv-has-feedback
+                                    ${
+                                      error.nameHasError === false
+                                        ? ' fv-has-success'
+                                        : ''
+                                    }
+                                    ${
+                                      error.nameHasError === true
+                                        ? ' fv-has-error'
+                                        : ''
+                                    }`}
+                  >
                     <label>
                       Name<span>*</span>
                     </label>
@@ -277,9 +267,19 @@ class ContactUs extends React.Component {
                       </small>
                     )}
                   </div>
-                  <div className={`frmelements pure-control-group fv-has-feedback
-                                    ${error.emailHasError === false ?' fv-has-success':''}
-                                    ${error.emailHasError === true ?' fv-has-error':''}`}>
+                  <div
+                    className={`frmelements pure-control-group fv-has-feedback
+                                    ${
+                                      error.emailHasError === false
+                                        ? ' fv-has-success'
+                                        : ''
+                                    }
+                                    ${
+                                      error.emailHasError === true
+                                        ? ' fv-has-error'
+                                        : ''
+                                    }`}
+                  >
                     <label>
                       Email <span>*</span>{' '}
                     </label>
@@ -319,9 +319,19 @@ class ContactUs extends React.Component {
                       </small>
                     )}
                   </div>
-                  <div className={`frmelements pure-control-group fv-has-feedback
-                                    ${error.phoneHasError === false ?' fv-has-success':''}
-                                    ${error.phoneHasError === true ?' fv-has-error':''}`}>
+                  <div
+                    className={`frmelements pure-control-group fv-has-feedback
+                                    ${
+                                      error.phoneHasError === false
+                                        ? ' fv-has-success'
+                                        : ''
+                                    }
+                                    ${
+                                      error.phoneHasError === true
+                                        ? ' fv-has-error'
+                                        : ''
+                                    }`}
+                  >
                     <label>
                       Phone Number <span>*</span>
                     </label>
@@ -344,7 +354,7 @@ class ContactUs extends React.Component {
                         autoComplete="off"
                         data-fv-field="phoneNumber"
                         maxLength="14"
-												value={phoneNumber}
+                        value={phoneNumber}
                         onChange={this._handleChange}
                         onBlur={this._validatePhone}
                       />
@@ -360,13 +370,13 @@ class ContactUs extends React.Component {
                         data-fv-for="phoneNumber"
                         data-fv-result="NOT_VALIDATED"
                       >
-												{error.phoneNumber}
+                        {error.phoneNumber}
                       </small>
                     )}
                   </div>
                   <div className="frmelements pure-control-group">
                     <label>
-                      My Question <span></span>
+                      My Question <span />
                     </label>
                     <div className="field no-icon comment-box">
                       <textarea
@@ -398,7 +408,7 @@ class ContactUs extends React.Component {
                         you.
                       </p>
                       <br />
-                      <br/>
+                      <br />
                     </div>
                   </Modal>
                 )}
