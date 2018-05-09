@@ -26,12 +26,10 @@ class PromoShippingFormDesktop extends React.PureComponent {
         <div className="sldrtxt" id="fades">
           <div className="aggettivi">
             <div className="text-animated-one">
-              <i className="sprite2 sprite-eye" /> 13 others are viewing this
-              offer right now!
+              <i className="sprite2 sprite-eye" /> 13 others are viewing this offer right now!
             </div>
             <div className="text-animated-two">
-              <i className="sprite2 sprite-eye" /> 25 people purchased this in
-              the last hour
+              <i className="sprite2 sprite-eye" /> 25 people purchased this in the last hour
             </div>
           </div>
         </div>
