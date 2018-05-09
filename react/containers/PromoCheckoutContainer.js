@@ -180,7 +180,7 @@ class PromoCheckoutContainer extends React.PureComponent {
             </div>
           </div>
         </div>
-        <Footer />
+        <Footer promo />
       </React.Fragment>
     );
   }
