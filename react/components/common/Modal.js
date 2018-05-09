@@ -13,7 +13,13 @@ class Modal extends PureComponent {
         }}
         onClick={this.props.onClose}
       >
-        <div className="modal-dialog" role="document">
+        <div
+          className="modal-dialog"
+          role="document"
+          onClick={e => {
+            e.stopPropagation();
+          }}
+        >
           <div className="modal-content">
             <div className="modal-header">
               <button
