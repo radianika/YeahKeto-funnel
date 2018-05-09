@@ -27,7 +27,7 @@ class Modal extends PureComponent {
                 className="close close-modal"
                 data-dismiss="modal"
                 aria-label="Close"
-                onClick={this.props.onCloseBtn}
+                onClick={this.props.onClose}
               >
                 <span aria-hidden="true">
                   <svg
