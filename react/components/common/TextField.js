@@ -56,7 +56,7 @@ const CVVField = props => {
     >
       <label>
         {props.label}
-        {props.required && <span>*</span>}:
+        {props.required && <span>*</span>}
       </label>
       <input
         className={props.className}
