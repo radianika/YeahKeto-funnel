@@ -16,11 +16,6 @@ const shippingFormValidator = values => {
   } else if (values.address && values.address.trim().length > 100) {
     errors.address = 'The address must be less than 100 characters long.';
   }
-  if (!values.address2 || !values.address2.trim()) {
-    errors.address2 = 'The address is required';
-  } else if (values.address2 && values.address2.trim().length > 100) {
-    errors.address2 = 'The address must be less than 100 characters long.';
-  }
   if (!values.city || !values.city.trim()) {
     errors.city = 'The city is required';
   } else if (values.city && values.city.trim().length > 50) {
