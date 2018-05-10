@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
-import { Footer, Spinner } from 'react/components/common';
+import { Footer, Spinner, SuccessModal } from 'react/components/common';
 import { Upsell1, Upsell2, Upsell3 } from '../components/upsell/desktop';
 
 class UpsellDesktopContainer extends React.PureComponent {
@@ -86,6 +86,10 @@ class UpsellDesktopContainer extends React.PureComponent {
           </p>
         </div>
         {this.props.submitStatus === 'submitting' && <Spinner />}
+        <SuccessModal
+          visible={this.props.submitStatus === 'success'}
+          message="Order updated successfully."
+        />
       </div>
     );
   }

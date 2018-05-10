@@ -9,6 +9,7 @@ import {
   SameAddressCheckField,
   AddressField,
   Spinner,
+  SuccessModal,
   Modal,
 } from 'react/components/common';
 import {
@@ -223,6 +224,10 @@ class PromoCheckoutPaymentForm extends React.Component {
           <button onClick={this.submitForm} className="chk-submit pulse" />
         </form>
         {this.props.submitStatus === 'submitting' && <Spinner />}
+        <SuccessModal
+          visible={this.props.submitStatus === 'success'}
+          message="Your order has been placed successfully."
+        />
       </div>
     );
   }

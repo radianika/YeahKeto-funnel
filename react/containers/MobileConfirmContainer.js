@@ -11,7 +11,14 @@ import {
   normalizeCardNumber,
   normalizeSecurityCode,
 } from 'helpers';
-import { Footer, TextField, SelectField, AddressField, Spinner } from 'react/components/common';
+import {
+  Footer,
+  TextField,
+  SelectField,
+  AddressField,
+  Spinner,
+  SuccessModal,
+} from 'react/components/common';
 import { OrderActions } from 'redux/actions';
 
 class MobileConfirmContainer extends React.PureComponent {
@@ -57,7 +64,11 @@ class MobileConfirmContainer extends React.PureComponent {
           <div className="odrsmry">
             <div className="detailbox">
               <div className="lftbox">
-                <img src="/static/promo/mobile/images/con-pro5.png" alt="" className="lftbtl" />
+                <img
+                  src="/static/promo/mobile/images/con-pro5.png"
+                  alt=""
+                  className="lftbtl"
+                />
               </div>
               <div className="rgtbox">
                 <ul className="rgtlist1">
@@ -97,7 +108,11 @@ class MobileConfirmContainer extends React.PureComponent {
           <div className="getHeight">
             <div className="spng-hd1">
               <div className="spng-hd2">
-                <img src="/static/promo/mobile/images/ck-top.jpg" alt="" className="sping-logo" />
+                <img
+                  src="/static/promo/mobile/images/ck-top.jpg"
+                  alt=""
+                  className="sping-logo"
+                />
               </div>
             </div>
             <div className="con-hd2" />
@@ -107,7 +122,9 @@ class MobileConfirmContainer extends React.PureComponent {
 
               <div className="clearfix" />
               <p className="clearall" />
-              <p className="trial-toptxt1 border-bottom">Enter your payment information</p>
+              <p className="trial-toptxt1 border-bottom">
+                Enter your payment information
+              </p>
               <p className="clearall" />
               <div className="trialfrmmid">
                 <form
@@ -245,7 +262,11 @@ class MobileConfirmContainer extends React.PureComponent {
                       <Field
                         name="cardMonth"
                         component={props => (
-                          <select className="short" autoComplete="cc-exp-month" {...props.input}>
+                          <select
+                            className="short"
+                            autoComplete="cc-exp-month"
+                            {...props.input}
+                          >
                             <option disabled="" value="">
                               – –
                             </option>
@@ -260,7 +281,11 @@ class MobileConfirmContainer extends React.PureComponent {
                       <Field
                         name="cardYear"
                         component={props => (
-                          <select className="short2" autoComplete="cc-exp-year" {...props.input}>
+                          <select
+                            className="short2"
+                            autoComplete="cc-exp-year"
+                            {...props.input}
+                          >
                             <option disabled="" value="">
                               – –
                             </option>
@@ -317,7 +342,11 @@ class MobileConfirmContainer extends React.PureComponent {
                   className="ship-btn pulse"
                 />
               </a>
-              <img src="/static/promo/mobile/images/loogs.png" alt="" className="loogs" />
+              <img
+                src="/static/promo/mobile/images/loogs.png"
+                alt=""
+                className="loogs"
+              />
             </div>
             <div className="clearfix" />
             <div className="legal">
@@ -328,6 +357,10 @@ class MobileConfirmContainer extends React.PureComponent {
           </div>
         </div>
         {this.props.submitStatus === 'submitting' && <Spinner />}
+        <SuccessModal
+          visible={this.props.submitStatus === 'success'}
+          message="Your order has been placed successfully."
+        />
       </div>
     );
   }
@@ -373,6 +406,8 @@ function mapStateToProps(reduxState, ownProps) {
   };
 }
 
-MobileConfirmContainer = connect(mapStateToProps, { ...OrderActions })(MobileConfirmContainer);
+MobileConfirmContainer = connect(mapStateToProps, { ...OrderActions })(
+  MobileConfirmContainer,
+);
 
 export { MobileConfirmContainer };
