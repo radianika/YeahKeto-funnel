@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Footer } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
 import { PromoCheckoutPaymentForm } from 'react/components/promo/desktop';
-import { packages } from 'helpers';
+import { packages, normalizePhone } from 'helpers';
 import moment from 'moment';
 
 class PromoCheckoutContainer extends React.PureComponent {
@@ -16,6 +16,17 @@ class PromoCheckoutContainer extends React.PureComponent {
   }
 
   submitBillingForm = values => {
+    if (values.same === 'Yes') {
+      values.address = this.props.initialValues.address;
+      values.address2 = this.props.initialValues.address2;
+      values.city = this.props.initialValues.city;
+      values.email = this.props.initialValues.email;
+      values.firstName = this.props.initialValues.firstName;
+      values.lastName = this.props.initialValues.lastName;
+      values.phoneNumber = this.props.initialValues.phoneNumber;
+      values.postalCode = this.props.initialValues.postalCode;
+      values.state = this.props.initialValues.state;
+    }
     this.props.placeOrder({
       values,
       pack: this.state.selected,
@@ -189,9 +200,37 @@ class PromoCheckoutContainer extends React.PureComponent {
 
 PromoCheckoutContainer = withRouter(PromoCheckoutContainer);
 
-const mapStateToProps = state => ({
-  order: state.order.order,
-});
+const mapStateToProps = reduxState => {
+  const {
+    orderId,
+    firstName,
+    lastName,
+    address1,
+    address2,
+    city,
+    state,
+    postalCode,
+    phoneNumber,
+    emailAddress,
+  } = reduxState.order.order;
+  const initialValues = {
+    same: 'Yes',
+    orderId,
+    firstName,
+    lastName,
+    address: address1,
+    address2,
+    city,
+    state,
+    postalCode,
+    phoneNumber: normalizePhone(phoneNumber),
+    email: emailAddress,
+  };
+  return {
+    order: reduxState.order.order,
+    initialValues,
+  };
+};
 
 PromoCheckoutContainer = connect(mapStateToProps, { ...OrderActions })(
   PromoCheckoutContainer,
