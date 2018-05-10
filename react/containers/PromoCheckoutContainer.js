@@ -131,7 +131,7 @@ class PromoCheckoutContainer extends React.PureComponent {
                       <li id="shp">$0.00</li>
                       <li>Total</li>
                       <li id="total" style={{ fontWeight: 600 }}>
-                        {this.state.selected.price}
+                        {this.state.selected.packagePrice}
                       </li>
                     </ul>
                   </div>
