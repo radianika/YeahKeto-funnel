@@ -192,7 +192,7 @@ class PromoCheckoutPaymentForm extends React.Component {
             name="cardNumber"
             className="creditcard"
             placeholder="•••• •••• •••• ••••"
-            label="Card No"
+            label="Card No*"
             onChange={e => this._checkCardType(e.target.value)}
             normalize={normalizeCardNumber}
           />
@@ -213,7 +213,7 @@ class PromoCheckoutPaymentForm extends React.Component {
           <Field
             containerClass="frm-elem-cvv"
             component={CVVField}
-            label="CVV/CID"
+            label="CVV/CID*"
             name="cardSecurityCode"
             className="short"
             normalize={normalizeSecurityCode}
