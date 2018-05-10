@@ -5,6 +5,7 @@ export * from './Modal';
 export * from './TextField';
 export * from './SelectField';
 export * from './CardExpiryField';
+export * from './MobileCardExpiryField';
 export * from './SameAddressCheckField';
 export * from './AddressField';
 export * from './PromoSession';

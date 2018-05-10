@@ -1,5 +1,6 @@
 import validator from 'validator';
 import creditCartType from 'credit-card-type';
+import idx from 'idx';
 
 console.log();
 
@@ -46,7 +47,21 @@ const shippingFormValidator = values => {
 
 const billingFormValidator = values => {
   const errors = shippingFormValidator(values);
-  if (!values.cardNumber || !values.cardNumber.trim()) {
+  if (!values.cardExpiry) {
+    errors.cardExpiry = 'Card details are required';
+  } else if (
+    !idx(values, _ => _.cardExpiry.cardMonth) ||
+    !idx(values, _ => _.cardExpiry.cardMonth).trim()
+  ) {
+    errors.cardExpiry = 'Expiry month is required';
+  } else if (
+    !idx(values, _ => _.cardExpiry.cardYear) ||
+    !idx(values, _ => _.cardExpiry.cardYear).trim()
+  ) {
+    errors.cardExpiry = 'Year is required';
+  }
+  console.log({ errors });
+  if (!values.cardNumber) {
     errors.cardNumber = 'Card number is required';
   } else if (values.cardNumber) {
     const value = values.cardNumber.replace(/\s/g, '');
@@ -60,12 +75,6 @@ const billingFormValidator = values => {
     }
   }
 
-  if (!values.cardMonth || !values.cardMonth.trim()) {
-    errors.cardMonth = 'Month is required';
-  }
-  if (!values.cardYear || !values.cardYear.trim()) {
-    errors.cardYear = 'Year is required';
-  }
   if (!values.cardSecurityCode || !values.cardSecurityCode.trim()) {
     errors.cardSecurityCode = 'Security Code is required';
   } else if (values.cardSecurityCode) {

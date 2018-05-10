@@ -102,9 +102,8 @@ function* placeOrder(action) {
     }
     const {
       orderId,
+      cardExpiry,
       cardNumber,
-      cardMonth,
-      cardYear,
       cardSecurityCode,
       firstName,
       lastName,
@@ -117,8 +116,8 @@ function* placeOrder(action) {
     const payload = {
       orderId,
       cardNumber,
-      cardMonth,
-      cardYear,
+      cardMonth: cardExpiry.cardMonth,
+      cardYear: cardExpiry.cardYear,
       cardSecurityCode,
       product1_id: pack.id,
       product1_qty: 1,

@@ -18,6 +18,7 @@ import {
   AddressField,
   Spinner,
   SuccessModal,
+  MobileCardExpiryField,
 } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
 
@@ -255,76 +256,51 @@ class MobileConfirmContainer extends React.PureComponent {
                       normalize={normalizeCardNumber}
                     />
                     <div className="clearfix" />
-                    <div className="pure-control-group frmelmnts2 hideIcon fv-has-feedback">
-                      <label className="exp-label">
-                        Expiry Date<span>*</span>: <span>(MM/YY)</span>
-                      </label>
-                      <Field
-                        name="cardMonth"
-                        component={props => (
-                          <select
-                            className="short"
-                            autoComplete="cc-exp-month"
-                            {...props.input}
-                          >
-                            <option disabled="" value="">
-                              – –
-                            </option>
-                            {[...Array(12).keys()].map(month => (
-                              <option key={month} value={month + 1}>
-                                {month + 1}
-                              </option>
-                            ))}
-                          </select>
-                        )}
-                      />
-                      <Field
-                        name="cardYear"
-                        component={props => (
-                          <select
-                            className="short2"
-                            autoComplete="cc-exp-year"
-                            {...props.input}
-                          >
-                            <option disabled="" value="">
-                              – –
-                            </option>
-                            {[18, 19, 20, 21, 22, 23, 24].map(year => (
-                              <option key={year} value={year}>
-                                {year}
-                              </option>
-                            ))}
-                          </select>
-                        )}
-                      />
-                    </div>
+                    <Field
+                      name="cardExpiry"
+                      component={MobileCardExpiryField}
+                    />
                     <div className="clearfix" />
-                    <div className="pure-control-group frmelmnts2 frmelmnts-cvv fv-has-feedback">
-                      <label>
-                        CVV/CID<span>*</span>:
-                      </label>
-                      <Field
-                        name="cardSecurityCode"
-                        component={props => (
-                          <input
-                            {...props.input}
-                            inputMode="numeric"
-                            className="short"
-                            autoCorrect="off"
-                            autoComplete="cc-csc"
-                            type="tel"
-                          />
-                        )}
-                        normalize={normalizeSecurityCode}
-                      />
-                      <img
-                        src="/static/promo/mobile/images/cvv.png"
-                        width="402"
-                        height="69"
-                        alt=""
-                        className="cvv"
-                      />
-                    </div>
+                    <Field
+                      name="cardSecurityCode"
+                      component={props => {
+                        const hasError = props.meta.touched && props.meta.error;
+                        const valid = props.input.value && props.meta.valid;
+                        return (
+                          <div
+                            className={`frmelmnts2 frmelmnts-cvv fv-has-feedback ${hasError &&
+                              'fv-has-error'} ${valid && 'fv-has-success'}`}
+                          >
+                            <label>
+                              CVV/CID<span>*</span>:
+                            </label>
+                            <input
+                              {...props.input}
+                              inputMode="numeric"
+                              className="short"
+                              autoCorrect="off"
+                              autoComplete="cc-csc"
+                              type="tel"
+                            />
+                            <img
+                              src="/static/promo/mobile/images/cvv.png"
+                              width="402"
+                              height="69"
+                              alt=""
+                              className="cvv"
+                            />
+                            <div className="clearall" />
+                            {props.meta.touched &&
+                              props.meta.error && (
+                                <small className="fv-help-block">
+                                  {props.meta.error}
+                                </small>
+                              )}
+                          </div>
+                        );
+                      }}
+                      normalize={normalizeSecurityCode}
+                    />
                   </div>
                 </form>
               </div>

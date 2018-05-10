@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CardExpiryField extends React.PureComponent {
+class MobileCardExpiryField extends React.PureComponent {
   updateMonth = e => {
     this.props.input.onChange({
       cardYear: this.props.input.value.cardYear,
@@ -23,19 +23,12 @@ class CardExpiryField extends React.PureComponent {
     console.log(props.meta.error);
     return (
       <React.Fragment>
-        <div className="frmElemts exp-label">
-          <label>&nbsp;</label>
-          <label>(MM/YY)</label>
-        </div>
         <div
-          className={`pure-control-group ${
-            props.large ? 'frmelements' : 'frmElemts'
-          } fv-has-feedback ${hasError && 'fv-has-error'} ${valid &&
-            'fv-has-success'}`}
-          style={{ marginTop: 0 }}
+          className={`pure-control-group frmelmnts2 fv-has-feedback ${hasError &&
+            'fv-has-error'} ${valid && 'fv-has-success'}`}
         >
-          <label>
-            Expiry Date<span>*</span>:
+          <label className="exp-label">
+            Expiry Date<span>*</span>: <span>(MM/YY)</span>
           </label>
           <span>
             <select
@@ -77,4 +70,4 @@ class CardExpiryField extends React.PureComponent {
   }
 }
 
-export { CardExpiryField };
+export { MobileCardExpiryField };

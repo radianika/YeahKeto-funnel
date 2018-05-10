@@ -11,6 +11,7 @@ import {
   Spinner,
   SuccessModal,
   Modal,
+  CardExpiryField,
 } from 'react/components/common';
 import {
   stateslist,
@@ -20,31 +21,6 @@ import {
   normalizeCardNumber,
   normalizeSecurityCode,
 } from 'helpers';
-
-const ExpiryMonth = props => (
-  <span>
-    <select className="short" {...props.input}>
-      <option>– –</option>
-      {[...Array(12).keys()].map(month => (
-        <option key={month} value={month + 1}>
-          {month + 1}
-        </option>
-      ))}
-    </select>
-  </span>
-);
-const ExpiryYear = props => (
-  <span>
-    <select className="short2" {...props.input}>
-      <option>– –</option>
-      {[18, 19, 20, 21, 22, 23, 24].map(year => (
-        <option key={year} value={year}>
-          {year}
-        </option>
-      ))}
-    </select>
-  </span>
-);
 
 class PromoCheckoutPaymentForm extends React.Component {
   constructor(props) {
@@ -103,21 +79,21 @@ class PromoCheckoutPaymentForm extends React.Component {
           <div className="cards">
             <span
               className={`card-visa ${
-                active_cc_type == 'visa' ? 'active' : ''
+                active_cc_type === 'visa' ? 'active' : ''
               }`}
             >
               <img src="/static/Visa.png" alt="" />
             </span>
             <span
               className={`card-mastercard ${
-                active_cc_type == 'master-card' ? 'active' : ''
+                active_cc_type === 'master-card' ? 'active' : ''
               }`}
             >
               <img src="/static/Mastercard.png" alt="" />
             </span>
             <span
               className={`card-discover" ${
-                active_cc_type == 'american-express' ? 'active' : ''
+                active_cc_type === 'american-express' ? 'active' : ''
               }`}
             >
               <img src="/static/amex.png" alt="" />
@@ -197,20 +173,7 @@ class PromoCheckoutPaymentForm extends React.Component {
             onChange={e => this._checkCardType(e.target.value)}
             normalize={normalizeCardNumber}
           />
-          <div className="frmElemts exp-label">
-            <label>&nbsp;</label>
-            <label>(MM/YY)</label>
-          </div>
-          <div
-            className="pure-control-group frmElemts frm-elem-expiry hideIcon fv-has-feedback"
-            style={{ marginTop: 0 }}
-          >
-            <label>
-              Expiry Date<span>*</span>:
-            </label>
-            <Field component={ExpiryMonth} name="cardMonth" />
-            <Field component={ExpiryYear} name="cardYear" />
-          </div>
+          <Field component={CardExpiryField} name="cardExpiry" />
           <Field
             containerClass="frm-elem-cvv"
             component={CVVField}
