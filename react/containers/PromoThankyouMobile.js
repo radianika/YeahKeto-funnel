@@ -104,6 +104,33 @@ class PromoThankyouMobile extends React.PureComponent {
             <div className="sh-heading">Shipping Info</div>
             <ul className="user-info">
               <li>
+                <span>First Name:</span> {order.firstName}
+              </li>
+              <li>
+                <span>Last Name:</span> {order.lastName}
+              </li>
+              <li>
+                <span>Address:</span> {order.address1} <br /> {order.address2}
+              </li>
+              <li>
+                <span>City:</span> {order.city}
+              </li>
+              <li>
+                <span>State:</span> {order.state}
+              </li>
+              <li>
+                <span>Zip Code:</span> {order.postalCode}
+              </li>
+              <li>
+                <span>Phone:</span> {order.phoneNumber}
+              </li>
+              <li>
+                <span>Email:</span> {order.emailAddress}
+              </li>
+            </ul>
+            <div className="sh-heading">Billing Info</div>
+            <ul className="user-info">
+              <li>
                 <span>First Name:</span> {order.shipFirstName}
               </li>
               <li>
@@ -121,33 +148,6 @@ class PromoThankyouMobile extends React.PureComponent {
               </li>
               <li>
                 <span>Zip Code:</span> {order.shipPostalCode}
-              </li>
-              <li>
-                <span>Phone:</span> {order.phoneNumber}
-              </li>
-              <li>
-                <span>Email:</span> {order.emailAddress}
-              </li>
-            </ul>
-            <div className="sh-heading">Billing Info</div>
-            <ul className="user-info">
-              <li>
-                <span>First Name:</span> {order.firstName}
-              </li>
-              <li>
-                <span>Last Name:</span> {order.lastName}
-              </li>
-              <li>
-                <span>Address:</span> {order.address1} <br /> {order.address2}
-              </li>
-              <li>
-                <span>City:</span> {order.city}
-              </li>
-              <li>
-                <span>State:</span> {order.state}
-              </li>
-              <li>
-                <span>Zip Code:</span> {order.postalCode}
               </li>
               <li>
                 <span>Phone:</span> {order.phoneNumber}
