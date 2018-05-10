@@ -5,6 +5,7 @@ import { Footer } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
 import { PromoCheckoutPaymentForm } from 'react/components/promo/desktop';
 import { packages } from 'helpers';
+import moment from 'moment';
 
 class PromoCheckoutContainer extends React.PureComponent {
   constructor() {
@@ -25,7 +26,7 @@ class PromoCheckoutContainer extends React.PureComponent {
 
   render() {
     const { selected } = this.state;
-
+    const shippingDate = moment(this.props.order.dateCreated).add(5, 'day');
     return (
       <React.Fragment>
         <div className="secone">
@@ -110,8 +111,8 @@ class PromoCheckoutContainer extends React.PureComponent {
                   <div className="smry-lft">
                     <p className="smry-lfttxt">
                       Your Order is estimated
-                      <br /> to arrive by Wednesday,
-                      <br /> <span>May 6, 2018</span>
+                      <br /> to arrive by {shippingDate.format('dddd')},
+                      <br /> <span>{shippingDate.format('ll')}</span>
                     </p>{' '}
                     <img
                       src="/static/promo/desktop/images/smryimg.png"
@@ -188,9 +189,9 @@ class PromoCheckoutContainer extends React.PureComponent {
 
 PromoCheckoutContainer = withRouter(PromoCheckoutContainer);
 
-function mapStateToProps() {
-  return {};
-}
+const mapStateToProps = state => ({
+  order: state.order.order,
+});
 
 PromoCheckoutContainer = connect(mapStateToProps, { ...OrderActions })(
   PromoCheckoutContainer,
