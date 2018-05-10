@@ -374,7 +374,7 @@ function mapStateToProps(reduxState, ownProps) {
       city,
       state,
       postalCode,
-      phoneNumber,
+      phoneNumber: normalizePhone(phoneNumber),
       email: emailAddress,
     },
     pack,
