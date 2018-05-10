@@ -1,3 +1,4 @@
+import { delay } from 'redux-saga';
 import { select, put, all, fork, takeLatest } from 'redux-saga/effects';
 import idx from 'idx';
 import { OrderActions } from 'redux/actions';
@@ -50,6 +51,7 @@ function* submitLeadsForm(action) {
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const { lead } = apiResponse.response.data.data;
       yield put(OrderActions.submitLeadsFormSuccess({ lead }));
+      yield delay(2000);
       router.push(`${nextUrl}?orderId=${lead.orderId}`);
     }
   } catch (error) {
@@ -134,6 +136,7 @@ function* placeOrder(action) {
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order }));
+      yield delay(2000);
       router.push(`${nextUrl}?orderId=${order.orderId}`);
     }
   } catch (error) {
@@ -166,6 +169,8 @@ function* addUpsellToOrder(action) {
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const newOrder = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order: newOrder }));
+      yield put(OrderActions.addUpsellToOrderSuccess());
+      yield delay(2000);
       router.push(`${sendTo}?orderId=${order.orderId}`);
     }
   } catch (error) {

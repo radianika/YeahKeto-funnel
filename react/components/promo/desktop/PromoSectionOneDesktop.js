@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 import { OrderActions } from 'redux/actions';
-import { Spinner } from 'react/components/common';
+import { Spinner, SuccessModal } from 'react/components/common';
 import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
 class PromoSectionOneDesktop extends React.PureComponent {
@@ -65,6 +65,10 @@ class PromoSectionOneDesktop extends React.PureComponent {
           </div>
         </div>
         {this.props.submitStatus === 'submitting' && <Spinner />}
+        <SuccessModal
+          visible={this.props.submitStatus === 'success'}
+          message="Information captured successfully."
+        />
       </div>
     );
   }

@@ -12,6 +12,7 @@ import {
   SelectField,
   AddressField,
   Spinner,
+  SuccessModal,
 } from 'react/components/common';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
@@ -155,6 +156,10 @@ class MobileShippingContainer extends React.PureComponent {
           </div>
         </div>
         {this.props.submitStatus === 'submitting' && <Spinner />}
+        <SuccessModal
+          visible={this.props.submitStatus === 'success'}
+          message="Information captured successfully."
+        />
       </div>
     );
   }

@@ -3,7 +3,7 @@ import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
 import { Upsell1, Upsell2, Upsell3 } from 'react/components/upsell/mobile';
-import { Spinner } from 'react/components/common';
+import { Spinner, SuccessModal } from 'react/components/common';
 
 class UpsellMobileContainer extends React.PureComponent {
   upgrade = (productId, nextPage) => {
@@ -17,6 +17,10 @@ class UpsellMobileContainer extends React.PureComponent {
     const { upsell } = this.props.url.query;
     return (
       <div className="contentWrap">
+        <SuccessModal
+          visible={this.props.submitStatus === 'success'}
+          message="Order updated successfully."
+        />
         <div className="header position">
           <img src="/static/mobile/images/logo.png" alt="" className="logo" />
         </div>
