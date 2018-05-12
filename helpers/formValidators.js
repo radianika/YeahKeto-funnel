@@ -1,8 +1,7 @@
 import validator from 'validator';
+import moment from 'moment';
 import creditCartType from 'credit-card-type';
 import idx from 'idx';
-
-console.log();
 
 const shippingFormValidator = values => {
   const errors = {};
@@ -59,8 +58,14 @@ const billingFormValidator = values => {
     !idx(values, _ => _.cardExpiry.cardYear).trim()
   ) {
     errors.cardExpiry = 'Year is required';
+  } else {
+    const { cardMonth, cardYear } = values.cardExpiry;
+    const currentMonth = moment().month();
+    const currentYear = moment().year();
+    if (Number(cardMonth) < currentMonth && Number(cardYear) <= currentYear) {
+      errors.cardExpiry = 'Card has expired.';
+    }
   }
-  console.log({ errors });
   if (!values.cardNumber) {
     errors.cardNumber = 'Card number is required';
   } else if (values.cardNumber) {

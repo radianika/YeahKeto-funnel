@@ -1,6 +1,12 @@
 import React from 'react';
 
 class MobileCardExpiryField extends React.PureComponent {
+  onBlur = () => {
+    this.props.input.onBlur({
+      cardYear: this.props.input.value.cardYear,
+      cardMonth: this.props.input.value.cardMonth,
+    });
+  };
   updateMonth = e => {
     this.props.input.onChange({
       cardYear: this.props.input.value.cardYear,
@@ -15,12 +21,10 @@ class MobileCardExpiryField extends React.PureComponent {
   };
 
   render() {
-    console.log(this.props);
     const { props } = this;
     const { value, onChange } = props.input;
     const hasError = props.meta.touched && props.meta.error;
     const valid = props.input.value && props.meta.valid;
-    console.log(props.meta.error);
     return (
       <React.Fragment>
         <div
@@ -36,6 +40,7 @@ class MobileCardExpiryField extends React.PureComponent {
               className="short"
               value={value.cardMonth}
               onChange={this.updateMonth}
+              onBlur={this.onBlur}
             >
               <option value={null}>– –</option>
               {[...Array(12).keys()].map(month => (
@@ -51,10 +56,11 @@ class MobileCardExpiryField extends React.PureComponent {
               className="short2"
               value={value.cardYear}
               onChange={this.updateYear}
+              onBlur={this.onBlur}
             >
               <option value={null}>– –</option>
               {[18, 19, 20, 21, 22, 23, 24].map(year => (
-                <option key={year} value={year}>
+                <option key={year} value={`20${year}`}>
                   {year}
                 </option>
               ))}
