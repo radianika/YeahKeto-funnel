@@ -287,7 +287,7 @@ class CartForm extends React.PureComponent {
                 large
               />
               <Field
-                containerClass="frm-elem-cvv"
+                containerClass="frmelements short1 mob-sort frm-elem-cvv"
                 component={TextField}
                 label="CVV/CID*"
                 name="order.cardSecurityCode"
@@ -295,8 +295,19 @@ class CartForm extends React.PureComponent {
                 large
                 // cvvClick={this._toggleCVVModal}
               />
+              <div className="frmelements short2 mob-sort">
+                <a
+                  href="javascript:;"
+                  className="whats-this"
+                  style={{ marginTop: '45px' }}
+                >
+                  What is this?{' '}
+                </a>
+              </div>
               <p className="billing-toggle-txt">
                 <input
+                  id="agree_terms"
+                  name="agree_terms"
                   className="chkbx-chk"
                   checked={this.state.tncAgreed}
                   type="checkbox"
@@ -304,8 +315,8 @@ class CartForm extends React.PureComponent {
                     this.setState({ tncAgreed: !this.state.tncAgreed })
                   }
                 />
-                I agree to the Terms &amp; Conditions &amp;Privacy Policy.<br />All
-                charges on your bank statement will appear as
+                I agree to the Terms &amp; Conditions &amp;Privacy Policy.
+                <br />All charges on your bank statement will appear as
                 "AmericanScience8442601422"
               </p>
               <div className="clearall" />
