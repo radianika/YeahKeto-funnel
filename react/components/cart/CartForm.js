@@ -105,6 +105,7 @@ class CartForm extends React.PureComponent {
                 large
               />
               <Field
+                containerClass="short1"
                 component={SelectField}
                 name="state"
                 label="State*"
@@ -114,6 +115,7 @@ class CartForm extends React.PureComponent {
                 large
               />
               <Field
+                containerClass="short2"
                 component={TextField}
                 name="city"
                 label="City*"
@@ -122,6 +124,7 @@ class CartForm extends React.PureComponent {
                 large
               />
               <Field
+                containerClass="short1"
                 component={TextField}
                 name="postalCode"
                 label="Zip Code*"
@@ -131,6 +134,7 @@ class CartForm extends React.PureComponent {
                 large
               />
               <Field
+                containerClass="short2"
                 component={TextField}
                 name="phoneNumber"
                 label="Phone*"
