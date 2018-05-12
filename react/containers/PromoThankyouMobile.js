@@ -77,10 +77,7 @@ class PromoThankyouMobile extends React.PureComponent {
                   <p className="prod-name">
                     {item.name}
                     <br />
-                    <span>
-                      Organic Cannabidiol Complex<br />
-                      6 Bottles
-                    </span>
+                    <span>{item.qty} Bottles</span>
                   </p>
                 </div>
                 <div className="prod-price">${item.price}</div>
