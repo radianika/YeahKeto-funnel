@@ -8,7 +8,7 @@ import {
   normalizeCardNumber,
   normalizeSecurityCode,
 } from 'helpers';
-import { TextField, AddressField, SelectField } from 'react/components/common';
+import { TextField, AddressField, SelectField, Modal } from 'react/components/common';
 
 class CartForm extends React.PureComponent {
   constructor() {
@@ -16,6 +16,7 @@ class CartForm extends React.PureComponent {
     this.state = {
       isSame: true,
       tncAgreed: true,
+      show_cvv_modal: false,
     };
   }
 
@@ -35,6 +36,11 @@ class CartForm extends React.PureComponent {
     return yearOptions;
   };
 
+  _toggleCVVModal = e => {
+    e.preventDefault();
+    this.setState({ show_cvv_modal: !this.state.show_cvv_modal });
+  };
+
   render() {
     const { props } = this;
     return (
@@ -50,16 +56,13 @@ class CartForm extends React.PureComponent {
           />
           <div className="sec1crt-frmlft">
             <div className="form-top">
-              <img
-                src="/static/assets/images/hdng-icon1.png"
-                className="hdng-icon"
-              />
+              <img src="/static/assets/images/hdng-icon1.png" className="hdng-icon" />
               <p className="txt2-chk">Shipping Information</p>
             </div>
             <div>
               <p>
-                All packages are shipped via Standard Shipping and are estimated
-                to arrive within 3-5 business days from the day you place order.
+                All packages are shipped via Standard Shipping and are estimated to arrive within
+                3-5 business days from the day you place order.
               </p>
             </div>
             <div className="form-content">
@@ -154,10 +157,7 @@ class CartForm extends React.PureComponent {
           />
           <div className="sec1crt-frmrgt">
             <div className="form-top">
-              <img
-                src="/static/assets/images/hdng-icon2.png"
-                className="hdng-icon"
-              />
+              <img src="/static/assets/images/hdng-icon2.png" className="hdng-icon" />
               <p className="txt2-chk">Payment Information</p>
             </div>
             <div className="form-content">
@@ -266,11 +266,12 @@ class CartForm extends React.PureComponent {
                 name="order.cardNumber"
                 className="creditcard"
                 placeholder="•••• •••• •••• ••••"
-                label="Card No*"
+                label="Card Number*"
                 normalize={normalizeCardNumber}
                 large
               />
               <Field
+                containerClass="short1"
                 component={SelectField}
                 name="order.cardMonth"
                 label="Expiration Month*"
@@ -279,6 +280,7 @@ class CartForm extends React.PureComponent {
                 large
               />
               <Field
+                containerClass="short2"
                 component={SelectField}
                 name="order.cardYear"
                 label="Expiration Year*"
@@ -293,13 +295,13 @@ class CartForm extends React.PureComponent {
                 name="order.cardSecurityCode"
                 normalize={normalizeSecurityCode}
                 large
-                // cvvClick={this._toggleCVVModal}
               />
               <div className="frmelements short2 mob-sort">
                 <a
                   href="javascript:;"
                   className="whats-this"
                   style={{ marginTop: '45px' }}
+                  onClick={this._toggleCVVModal}
                 >
                   What is this?{' '}
                 </a>
@@ -311,13 +313,10 @@ class CartForm extends React.PureComponent {
                   className="chkbx-chk"
                   checked={this.state.tncAgreed}
                   type="checkbox"
-                  onChange={() =>
-                    this.setState({ tncAgreed: !this.state.tncAgreed })
-                  }
+                  onChange={() => this.setState({ tncAgreed: !this.state.tncAgreed })}
                 />
                 I agree to the Terms &amp; Conditions &amp;Privacy Policy.
-                <br />All charges on your bank statement will appear as
-                "AmericanScience8442601422"
+                <br />All charges on your bank statement will appear as "AmericanScience8442601422"
               </p>
               <div className="clearall" />
               <div className="frmelements btn-element">
@@ -330,14 +329,19 @@ class CartForm extends React.PureComponent {
                 </span>
               </div>
               <center>
-                <img
-                  src="/static/assets/images/postal-crt.png"
-                  className="postal-crt"
-                />
+                <img src="/static/assets/images/postal-crt.png" className="postal-crt" />
               </center>
             </div>
           </div>
         </div>
+        {this.state.show_cvv_modal && (
+          <Modal onClose={this._toggleCVVModal}>
+            CVV/CID
+            <center>
+              <img src="/static/promo/common/cvv.jpg" alt="" />
+            </center>
+          </Modal>
+        )}
       </form>
     );
   }
