@@ -8,7 +8,12 @@ import {
   normalizeCardNumber,
   normalizeSecurityCode,
 } from 'helpers';
-import { TextField, AddressField, SelectField, Modal } from 'react/components/common';
+import {
+  TextField,
+  AddressField,
+  SelectField,
+  Modal,
+} from 'react/components/common';
 
 class CartForm extends React.PureComponent {
   constructor() {
@@ -56,13 +61,16 @@ class CartForm extends React.PureComponent {
           />
           <div className="sec1crt-frmlft">
             <div className="form-top">
-              <img src="/static/assets/images/hdng-icon1.png" className="hdng-icon" />
+              <img
+                src="/static/assets/images/hdng-icon1.png"
+                className="hdng-icon"
+              />
               <p className="txt2-chk">Shipping Information</p>
             </div>
             <div>
               <p>
-                All packages are shipped via Standard Shipping and are estimated to arrive within
-                3-5 business days from the day you place order.
+                All packages are shipped via Standard Shipping and are estimated
+                to arrive within 3-5 business days from the day you place order.
               </p>
             </div>
             <div className="form-content">
@@ -157,7 +165,10 @@ class CartForm extends React.PureComponent {
           />
           <div className="sec1crt-frmrgt">
             <div className="form-top">
-              <img src="/static/assets/images/hdng-icon2.png" className="hdng-icon" />
+              <img
+                src="/static/assets/images/hdng-icon2.png"
+                className="hdng-icon"
+              />
               <p className="txt2-chk">Payment Information</p>
             </div>
             <div className="form-content">
@@ -290,6 +301,7 @@ class CartForm extends React.PureComponent {
               />
               <Field
                 containerClass="frmelements short1 mob-sort frm-elem-cvv"
+                placeholder="123"
                 component={TextField}
                 label="CVV/CID*"
                 name="order.cardSecurityCode"
@@ -313,10 +325,13 @@ class CartForm extends React.PureComponent {
                   className="chkbx-chk"
                   checked={this.state.tncAgreed}
                   type="checkbox"
-                  onChange={() => this.setState({ tncAgreed: !this.state.tncAgreed })}
+                  onChange={() =>
+                    this.setState({ tncAgreed: !this.state.tncAgreed })
+                  }
                 />
                 I agree to the Terms &amp; Conditions &amp;Privacy Policy.
-                <br />All charges on your bank statement will appear as "AmericanScience8442601422"
+                <br />All charges on your bank statement will appear as
+                "AmericanScience8442601422"
               </p>
               <div className="clearall" />
               <div className="frmelements btn-element">
@@ -329,7 +344,10 @@ class CartForm extends React.PureComponent {
                 </span>
               </div>
               <center>
-                <img src="/static/assets/images/postal-crt.png" className="postal-crt" />
+                <img
+                  src="/static/assets/images/postal-crt.png"
+                  className="postal-crt"
+                />
               </center>
             </div>
           </div>
