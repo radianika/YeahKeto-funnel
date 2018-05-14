@@ -31,6 +31,7 @@ export default class MyDocument extends Document {
             type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css"
           />
+          <script type="text/javascript" src="/static/assets/js/segment.js" />
         </Head>
         <body>
           <Main />

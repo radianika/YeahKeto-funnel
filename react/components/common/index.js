@@ -11,3 +11,4 @@ export * from './AddressField';
 export * from './PromoSession';
 export * from './Spinner';
 export * from './SuccessModal';
+export * from './SegmentioTracker';
