@@ -67,12 +67,17 @@ class CartForm extends React.PureComponent {
               />
               <p className="txt2-chk">Shipping Information</p>
             </div>
-            <div>
-              <p>
-                All packages are shipped via Standard Shipping and are estimated
-                to arrive within 3-5 business days from the day you place order.
-              </p>
-            </div>
+            <p
+              style={{
+                fontSize: '14px',
+                lineHeight: '22.5px',
+                marginLeft: '10px',
+                marginRight: '10px',
+              }}
+            >
+              All packages are shipped via Standard Shipping and are estimated
+              to arrive within 3-5 business days from the day you place order.
+            </p>
             <div className="form-content">
               <Field
                 component={TextField}
