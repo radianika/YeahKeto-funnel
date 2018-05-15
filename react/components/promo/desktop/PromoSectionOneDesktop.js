@@ -80,8 +80,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default {
-  PromoSectionOneDesktop: connect(mapStateToProps, { ...OrderActions })(
-    withRouter(PromoSectionOneDesktop),
-  ),
-};
+export default connect(mapStateToProps, { ...OrderActions })(
+  withRouter(PromoSectionOneDesktop),
+);

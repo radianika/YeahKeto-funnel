@@ -49,4 +49,4 @@ class PromoSectionSevenDesktop extends React.PureComponent {
   }
 }
 
-export default { PromoSectionSevenDesktop };
+export default PromoSectionSevenDesktop;
