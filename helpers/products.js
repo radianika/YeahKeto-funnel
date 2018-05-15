@@ -61,7 +61,7 @@ const products = {
     bullets: [
       'Reduces age-related decline in cognitive health',
       'Supports mental clarity & agility with higher focus & concentration',
-      'Improves information rention & memory recall',
+      'Improves information retention & memory recall',
     ],
     price: 87.0,
     ingredients: `
@@ -115,9 +115,9 @@ const recommendedProducts = {
 };
 
 const tyProductImages = {
-  oil: '/static/desktop/images/ty-prod1.png',
-  capsule: '/static/desktop/images/ty-prod3.png',
-  balm: '/static/desktop/images/ty-prod5.png',
+  oil: '/static/assets/images/pro1crt.png',
+  capsule: '/static/assets/images/pro2crt.png',
+  balm: '/static/assets/images/pro3crt.png',
 };
 
 const getTyProductImage = product => {

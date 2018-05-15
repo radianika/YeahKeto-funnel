@@ -1847,7 +1847,11 @@ table.tbl2 {
   position: relative;
   padding-left: 80px;
 }
-
+.sec1crt-frmlft__ship-info {
+  font-size: 16px;
+  line-height: 22.5px;
+  margin: 0 10px 0;
+}
 .hdng-icon {
   position: absolute;
   left: 15px;
@@ -1978,7 +1982,7 @@ table.tbl2 {
   font-size: 16px;
   color: #626262;
   text-align: left;
-  line-height: 18px;
+  line-height: 23px;
 }
 
 .chkbx-chk {
@@ -1990,7 +1994,7 @@ table.tbl2 {
 .cards {
   margin: 20px 0;
   float: left;
-  padding-left: 100px;
+  padding-left: 150px;
 }
 
 .field.no-icon {
