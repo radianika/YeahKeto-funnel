@@ -5,7 +5,7 @@ import { OrderActions } from 'redux/actions';
 import { Spinner, SuccessModal } from 'react/components/common';
 import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
-class PromoSectionOneDesktop extends React.PureComponent {
+class PromoSectionOneDesktopComponent extends React.PureComponent {
   submitShippingForm = values => {
     this.props.submitLeadsForm({
       values,
@@ -80,6 +80,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { ...OrderActions })(
-  withRouter(PromoSectionOneDesktop),
+const PromoSectionOneDesktop = connect(mapStateToProps, { ...OrderActions })(
+  withRouter(PromoSectionOneDesktopComponent),
 );
+
+export { PromoSectionOneDesktop };

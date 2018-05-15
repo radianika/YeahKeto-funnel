@@ -47,4 +47,4 @@ class PromoSectionOneMobile extends React.PureComponent {
   }
 }
 
-export default PromoSectionOneMobile;
+export { PromoSectionOneMobile };

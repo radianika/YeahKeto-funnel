@@ -42,4 +42,4 @@ class PromoSectionSevenMobile extends React.PureComponent {
   }
 }
 
-export default PromoSectionSevenMobile;
+export { PromoSectionSevenMobile };
