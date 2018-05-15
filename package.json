@@ -74,6 +74,7 @@
     "dotenv": "5.0.1",
     "express": "4.16.3",
     "express-jwt": "5.3.1",
+    "express-session": "1.15.6",
     "express-useragent": "1.0.12",
     "icepick": "2.3.0",
     "idx": "2.3.0",
@@ -86,6 +87,7 @@
     "planner": "0.0.1",
     "postcss-easy-import": "3.0.0",
     "postcss-url": "7.3.2",
+    "range_check": "1.4.0",
     "react": "16.3.2",
     "react-dom": "16.3.2",
     "react-modal": "3.4.4",
@@ -95,8 +97,11 @@
     "redux-actions": "2.3.0",
     "redux-form": "7.3.0",
     "redux-saga": "0.16.0",
+    "strict-rate-limiter": "0.2.0",
     "uglifyjs-webpack-plugin": "1.2.5",
     "validator": "^10.0.0",
+    "winston": "2.4.2",
+    "xss": "0.3.8",
     "yarn": "^1.6.0"
   },
   "devDependencies": {
