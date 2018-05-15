@@ -24,8 +24,8 @@ class PromoSectionOneDesktop extends React.PureComponent {
             <i className="s1seal sprite3 sprite-s1seal" />
             <i className="s1hd sprite3 sprite-s1hd" />
             <p className="s1txt">
-              Made from Hemp organically grown &amp; harvested in the USA, and
-              medically proven to offer therapeutic benefits.{' '}
+              Derived from organic, US-harvested hemp, lab-tested for quality.
+              Clinically proven therapeutic effects.{' '}
             </p>
             <ul className="s1list ">
               <li className="sprite2 sprite-s1bullet">
@@ -74,16 +74,14 @@ class PromoSectionOneDesktop extends React.PureComponent {
   }
 }
 
-PromoSectionOneDesktop = withRouter(PromoSectionOneDesktop);
-
 function mapStateToProps(state) {
   return {
     submitStatus: state.order.submitLeadsFormStatus,
   };
 }
 
-PromoSectionOneDesktop = connect(mapStateToProps, { ...OrderActions })(
-  PromoSectionOneDesktop,
-);
-
-export { PromoSectionOneDesktop };
+export default {
+  PromoSectionOneDesktop: connect(mapStateToProps, { ...OrderActions })(
+    withRouter(PromoSectionOneDesktop),
+  ),
+};

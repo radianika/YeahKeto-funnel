@@ -2,7 +2,6 @@ import React from 'react';
 
 class PromoSectionSevenDesktop extends React.PureComponent {
   render() {
-    const { props } = this;
     return (
       <div className="section7">
         <div className="container position">
@@ -10,8 +9,8 @@ class PromoSectionSevenDesktop extends React.PureComponent {
           <i className="s7seal sprite3 sprite-s1seal" />
           <i className="s7hd sprite3 sprite-s1hd" />
           <p className="s7txt">
-            Made from Hemp organically grown &amp; harvested in the USA, and
-            medically proven to offer therapeutic benefits.{' '}
+            Derived from organic, US-harvested hemp, lab-tested for quality.
+            Clinically proven therapeutic effects.{' '}
           </p>
           <ul className="s7list">
             <li className="sprite2 sprite-s1bullet">
@@ -50,4 +49,4 @@ class PromoSectionSevenDesktop extends React.PureComponent {
   }
 }
 
-export { PromoSectionSevenDesktop };
+export default { PromoSectionSevenDesktop };

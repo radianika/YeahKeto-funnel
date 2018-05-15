@@ -8,8 +8,8 @@ class PromoSectionOneMobile extends React.PureComponent {
         <i className="s1-logo sprite3 sprite-s1-logo " />
         <i className="s1-hd sprite3 sprite-s1-hd" />
         <p className="s1-txt4">
-          Made from Hemp organically grown &amp; harvested in the USA, and
-          medically proven to offer therapeutic benefits.
+          Derived from organic, US-harvested hemp, lab-tested for quality.
+          Clinically proven therapeutic effects.
         </p>
         <p className="clearall" />
         <ul className="s1-list">
@@ -47,4 +47,4 @@ class PromoSectionOneMobile extends React.PureComponent {
   }
 }
 
-export { PromoSectionOneMobile };
+export default { PromoSectionOneMobile };
