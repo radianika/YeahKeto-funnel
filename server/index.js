@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import useragent from 'express-useragent';
 import { post } from './api-helpers';
+import security from './middlewares/security';
+import session from 'express-session';
 
 require('dotenv').config();
 
@@ -24,8 +26,38 @@ if (!dev) {
   server.use(compression());
 }
 
+server.use(
+  session({
+    secret: 'ascbd',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true },
+  }),
+);
+
+server.use((req, res, cb) => {
+  res.set('X-Powered-By', 'American Science CBD');
+  res.set('X-XSS-Protection', 1);
+  res.set('X-Frame-Options', 'SAMEORIGIN');
+  res.set('Referrer-Policy', 'strict-origin');
+
+  if (req.session) {
+    res.set('PHPSESSID', req.sessionID);
+
+    if (!req.session.ip) {
+      req.session.ip = security.getIp(req); // eslint-disable-line no-param-reassign
+    }
+
+    if (!req.session.userAgent) {
+      req.session.userAgent = req.get('User-Agent'); // eslint-disable-line no-param-reassign
+    }
+  }
+  return cb();
+});
+
 const getSessionId = async (req, res) => {
   const { cookies } = req;
+
   let token = idx(cookies, _ => _.ascbd_session);
   const tokenType = typeof token;
   console.log({ token, tokenType });
@@ -47,6 +79,7 @@ const getSessionId = async (req, res) => {
 
 const app = next({ dev });
 const handle = app.getRequestHandler();
+
 app.prepare().then(() => {
   server.get('/cart', async (req, res) => {
     const sessionId = await getSessionId(req, res);
