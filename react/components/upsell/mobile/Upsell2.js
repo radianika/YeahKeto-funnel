@@ -19,7 +19,7 @@ class Upsell2 extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
-        <PromoSession pageType="leadPage/checkoutPage/upsellPage/upsell2Page" />
+        <PromoSession pageType="upsellPage2" />
         <div className="redbar">
           <p>
             Wait before you go!<br />

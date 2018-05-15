@@ -44,7 +44,7 @@ class PromoThankyou extends React.PureComponent {
             />
           )}
         </Head>
-        <PromoSession pageType="leadPage/checkoutPage/upsellPage/upsell2Page/upsell3Page/thankyouPage" />
+        <PromoSession pageType="thankyouPage" />
         {device === 'desktop' && <PromoThankyouDesktop />}
         {device === 'mobile' && <PromoThankyouMobile />}
       </React.Fragment>

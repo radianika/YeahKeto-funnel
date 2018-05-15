@@ -20,7 +20,7 @@ class Upsell3 extends React.PureComponent {
     const { orderId } = this.props.url.query;
     return (
       <React.Fragment>
-        <PromoSession pageType="leadPage/checkoutPage/upsellPage/upsell2Page/upsell3Page" />
+        <PromoSession pageType="upsellPage3" />
         <div className="redbar">
           <p>
             Wait before you go!<br />
