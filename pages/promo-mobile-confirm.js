@@ -51,7 +51,7 @@ class Confirm extends React.PureComponent {
             href="/static/assets/css/formvalidation/formValidation.min.css"
           />
         </Head>
-        <PromoSession pageType="leadPage/checkoutPage" />
+        <PromoSession pageType="checkoutPage" />
         <MobileConfirmContainer {...props} />
       </React.Fragment>
     );
