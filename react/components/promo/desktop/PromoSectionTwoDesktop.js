@@ -2,7 +2,6 @@ import React from 'react';
 
 class PromoSectionTwoDesktop extends React.PureComponent {
   render() {
-    const { props } = this;
     return (
       <div className="section2">
         <div className="container position">
@@ -12,12 +11,18 @@ class PromoSectionTwoDesktop extends React.PureComponent {
           </p>{' '}
           <i className="s2hdimg sprite3 sprite-s2hd" />
           <p className="sec2txt bdfont">
-            Cannabidiol is a non-psychoactive component of Hemp that has been
+            {/* Cannabidiol is a non-psychoactive component of Hemp that has been
             clinically proven to offer a wide range of therapeutic health
             benefits. <strong>American Science Hemp Oil</strong> is formulated
             with hemp extract that is organically grown &amp; harvested in the
             USA and is patented (under Patent #6,630,507) to support nutritional
-            health of aging bodies.
+            health of aging bodies. */}
+            Cannabidiol, part of a family of molecules called cannabinoids, is
+            non-psychoactive and has been clinically proven to offer a wide
+            range of therapeutic health benefits.{' '}
+            <strong>American Science CBD Oil</strong> is formulated with organic
+            hemp, grown &amp; harvested in the US, and is patented (under Patent
+            #6,630,507) to support our bodies as we age.
             <br />
             <br />
             <b>
@@ -55,9 +60,9 @@ class PromoSectionTwoDesktop extends React.PureComponent {
               {' '}
               <i className="s2limg sprite4 sprite-s2limg3" />
               <p className="s2ltxt">
-                <span>Doesn't</span>
+                <span>Doesn{"'"}t</span>
                 <br /> Show On
-                <br />Drug test{' '}
+                <br /> Drug test{' '}
               </p>{' '}
               <i className="s5limg2 sprite4 sprite-s2line" />{' '}
             </li>
