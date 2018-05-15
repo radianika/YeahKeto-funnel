@@ -4,9 +4,13 @@ import next from 'next';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import useragent from 'express-useragent';
+import expressSession from 'express-session';
+import connectRedis from 'connect-redis';
 import { post } from './api-helpers';
-import security from './middlewares/security';
-import session from 'express-session';
+import security from './middlewares/Security';
+import rateLimiter from './middlewares/RateLimiter';
+import config from './server-config';
+import redis from './redis-config';
 
 require('dotenv').config();
 
@@ -26,14 +30,27 @@ if (!dev) {
   server.use(compression());
 }
 
+const RedisSessionStore = connectRedis(expressSession);
+
 server.use(
-  session({
-    secret: 'ascbd',
-    resave: false,
+  expressSession({
+    key: 'ABCBDSESSID',
+    store: new RedisSessionStore({
+      prefix: 'starlight_session_',
+      client: redis,
+    }),
+    expireAfterSeconds: 3 * 60 * 60, // session is valid for 3 hours
+    secret: config.secret,
+    httpOnly: true,
+    resave: true,
     saveUninitialized: true,
-    cookie: { secure: true },
+    cookie: {
+      secure: false,
+    },
   }),
 );
+
+server.use('/*', rateLimiter);
 
 server.use((req, res, cb) => {
   res.set('X-Powered-By', 'American Science CBD');
@@ -42,7 +59,7 @@ server.use((req, res, cb) => {
   res.set('Referrer-Policy', 'strict-origin');
 
   if (req.session) {
-    res.set('PHPSESSID', req.sessionID);
+    res.set('ABCBDSESSID', req.sessionID);
 
     if (!req.session.ip) {
       req.session.ip = security.getIp(req); // eslint-disable-line no-param-reassign
@@ -57,16 +74,12 @@ server.use((req, res, cb) => {
 
 const getSessionId = async (req, res) => {
   const { cookies } = req;
-
   let token = idx(cookies, _ => _.ascbd_session);
-  const tokenType = typeof token;
-  console.log({ token, tokenType });
   if (!token || token === 'undefined') {
     const sessionResponse = await post('/v1/auth', {
       username: 'larby@starlightgroup.io',
       password: 'P@ssw0rd',
     });
-    console.log(idx(sessionResponse, _ => _.response.data));
     if (idx(sessionResponse, _ => _.response.data)) {
       token = sessionResponse.response.data.data.token;
       res.cookie('ascbd_session', token, { maxAge: 3600000 });
