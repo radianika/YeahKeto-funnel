@@ -1,13 +1,17 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
-import { getTyProductImage } from 'helpers';
+import {
+  getTyProductImage,
+  getTyProductContainer,
+  getTyProductName,
+  getTyProductQuantity,
+} from 'helpers';
 import { OrderActions } from 'redux/actions';
 
 class PromoThankyouDesktop extends React.PureComponent {
   render() {
     const { order } = this.props;
-    console.log({ order });
     return (
       <div className="container">
         <div className="contentWrap shadow">
@@ -99,9 +103,14 @@ class PromoThankyouDesktop extends React.PureComponent {
                       <img src={getTyProductImage(item)} />
                     </div>
                     <p className="prod-name">
-                      {item.name}
+                      American Science CBD
                       <br />
-                      <span>{item.qty} Bottles</span>
+                      {getTyProductName(item)}
+                      <br />
+                      <span>
+                        {getTyProductQuantity(item)}{' '}
+                        {getTyProductContainer(item)}
+                      </span>
                     </p>
                   </div>
                   <div className="prod-price">${item.price}</div>
