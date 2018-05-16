@@ -140,7 +140,7 @@ class CartForm extends React.PureComponent {
                 component={SelectField}
                 name="state"
                 label="State*"
-                placeholder="State"
+                placeholder="Select State"
                 options={stateslist}
                 icon="/static/assets/images/frmicon7.png"
                 large
