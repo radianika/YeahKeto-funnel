@@ -4,16 +4,32 @@ import {
   stateslist,
   normalizePostalCode,
   normalizePhone,
-  cartFormValidator,
+  shippingCartFormValidator,
   normalizeCardNumber,
   normalizeSecurityCode,
 } from 'helpers';
+
 import {
   TextField,
   AddressField,
   SelectField,
   Modal,
 } from 'react/components/common';
+
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
 class CartForm extends React.PureComponent {
   constructor() {
@@ -28,7 +44,7 @@ class CartForm extends React.PureComponent {
   getMonthOptions = () => {
     const monthOptions = {};
     [...Array(12).keys()].forEach(v => {
-      monthOptions[v] = v;
+      monthOptions[v] = months[v];
     });
     return monthOptions;
   };
@@ -62,6 +78,7 @@ class CartForm extends React.PureComponent {
           <div className="sec1crt-frmlft">
             <div className="form-top">
               <img
+                alt="hdng-icon"
                 src="/static/assets/images/hdng-icon1.png"
                 className="hdng-icon"
               />
@@ -125,7 +142,7 @@ class CartForm extends React.PureComponent {
                 component={SelectField}
                 name="state"
                 label="State*"
-                placeholder="State"
+                placeholder="Select State"
                 options={stateslist}
                 icon="/static/assets/images/frmicon7.png"
                 large
@@ -171,6 +188,7 @@ class CartForm extends React.PureComponent {
           <div className="sec1crt-frmrgt">
             <div className="form-top">
               <img
+                alt="hdng-icon"
                 src="/static/assets/images/hdng-icon2.png"
                 className="hdng-icon"
               />
@@ -342,6 +360,7 @@ class CartForm extends React.PureComponent {
               <div className="frmelements btn-element">
                 <span onClick={props.handleSubmit}>
                   <img
+                    alt="btn"
                     src="/static/assets/images/btn.png"
                     className="button-crt"
                     id="cart_submit"
@@ -350,6 +369,7 @@ class CartForm extends React.PureComponent {
               </div>
               <center>
                 <img
+                  alt="postal"
                   src="/static/assets/images/postal-crt.png"
                   className="postal-crt"
                 />
@@ -372,7 +392,7 @@ class CartForm extends React.PureComponent {
 
 CartForm = reduxForm({
   form: 'CartForm',
-  validate: cartFormValidator,
+  validate: shippingCartFormValidator,
 })(CartForm);
 
 export { CartForm };

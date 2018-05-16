@@ -7,12 +7,11 @@ class SuccessModal extends React.PureComponent {
   }
   componentDidMount() {
     const $ = window.jQuery;
-    // eslint-disable-next-line
-    $("#animatedModal").fancybox();
+    $('#animatedModal').fancybox();
   }
   componentDidUpdate() {
     const $ = window.jQuery;
-    if (this.props.display === true) {
+    if (this.props.visible === true) {
       $.fancybox.open({
         src: '#animatedModal',
         type: 'inline',
