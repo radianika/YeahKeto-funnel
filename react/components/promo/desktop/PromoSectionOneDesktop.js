@@ -5,7 +5,7 @@ import { OrderActions } from 'redux/actions';
 import { Spinner, SuccessModal } from 'react/components/common';
 import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
-class PromoSectionOneDesktop extends React.PureComponent {
+class PromoSectionOneDesktopComponent extends React.PureComponent {
   submitShippingForm = values => {
     this.props.submitLeadsForm({
       values,
@@ -24,8 +24,8 @@ class PromoSectionOneDesktop extends React.PureComponent {
             <i className="s1seal sprite3 sprite-s1seal" />
             <i className="s1hd sprite3 sprite-s1hd" />
             <p className="s1txt">
-              Made from Hemp organically grown &amp; harvested in the USA, and
-              medically proven to offer therapeutic benefits.{' '}
+              Derived from organic, US-harvested hemp, lab-tested for quality.
+              Clinically proven therapeutic effects.{' '}
             </p>
             <ul className="s1list ">
               <li className="sprite2 sprite-s1bullet">
@@ -35,7 +35,7 @@ class PromoSectionOneDesktop extends React.PureComponent {
                 <span>Eliminates</span> Chronic Pain &amp; Aches{' '}
               </li>
               <li className="sprite2 sprite-s1bullet">
-                <span>Promotes</span> Mood &amp; Sleep Patterns{' '}
+                <span>Regulates</span> Mood &amp; Sleep Patterns{' '}
               </li>
               <li className="sprite2 sprite-s1bullet">
                 <span>Enhances </span> Focus &amp; Clarity{' '}
@@ -74,16 +74,14 @@ class PromoSectionOneDesktop extends React.PureComponent {
   }
 }
 
-PromoSectionOneDesktop = withRouter(PromoSectionOneDesktop);
-
 function mapStateToProps(state) {
   return {
     submitStatus: state.order.submitLeadsFormStatus,
   };
 }
 
-PromoSectionOneDesktop = connect(mapStateToProps, { ...OrderActions })(
-  PromoSectionOneDesktop,
+const PromoSectionOneDesktop = connect(mapStateToProps, { ...OrderActions })(
+  withRouter(PromoSectionOneDesktopComponent),
 );
 
 export { PromoSectionOneDesktop };

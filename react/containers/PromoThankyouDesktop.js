@@ -9,7 +9,7 @@ import {
 } from 'helpers';
 import { OrderActions } from 'redux/actions';
 
-class PromoThankyouDesktop extends React.PureComponent {
+class PromoThankyouDesktopComponent extends React.PureComponent {
   render() {
     const { order } = this.props;
     return (
@@ -36,8 +36,8 @@ class PromoThankyouDesktop extends React.PureComponent {
             <div className="thank-lft">
               <p className="thank-txt1">Congratulations! </p>
               <p className="thank-txt2">
-                You've taken the first step to better health and wellness. We
-                are confident that you will enjoy the benefits of American
+                You&#39;ve taken the first step to better health and wellness.
+                We are confident that you will enjoy the benefits of American
                 Science products.
               </p>
               <ul className="thank-list">
@@ -48,7 +48,7 @@ class PromoThankyouDesktop extends React.PureComponent {
                 </li>
                 <li>
                   <span>
-                    Promotes <br />
+                    REGULATES <br />
                   </span>Mood &amp; Sleep Patterns
                 </li>
                 <li>
@@ -67,11 +67,11 @@ class PromoThankyouDesktop extends React.PureComponent {
           <div className="clearall" />
           <div className="green-sec">
             <p className="green-txt1">
-              We're here<br />
+              We&#39;re here<br />
               <span>to help</span>
             </p>
             <p className="green-txt2">
-              If you have any questions regarding the product, it's usage or
+              If you have any questions regarding the product, it&#39;s usage or
               billing, our customer care executives are available 24/7 to assist
               you with the same.
             </p>
@@ -100,7 +100,7 @@ class PromoThankyouDesktop extends React.PureComponent {
                 <div key={item.productId} className="prod-row">
                   <div className="prod-data ty">
                     <div className="prod-shoot">
-                      <img src={getTyProductImage(item)} />
+                      <img src={getTyProductImage(item)} alt="" />
                     </div>
                     <p className="prod-name">
                       American Science CBD
@@ -194,16 +194,14 @@ class PromoThankyouDesktop extends React.PureComponent {
   }
 }
 
-PromoThankyouDesktop = withRouter(PromoThankyouDesktop);
-
 function mapStateToProps(state) {
   return {
     order: state.order.order,
   };
 }
 
-PromoThankyouDesktop = connect(mapStateToProps, { ...OrderActions })(
-  PromoThankyouDesktop,
+const PromoThankyouDesktop = connect(mapStateToProps, { ...OrderActions })(
+  withRouter(PromoThankyouDesktopComponent),
 );
 
 export { PromoThankyouDesktop };

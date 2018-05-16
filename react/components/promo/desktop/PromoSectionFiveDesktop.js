@@ -48,13 +48,13 @@ class PromoSectionFiveDesktop extends React.PureComponent {
         <div className="container position">
           <p className="s5hding">
             <span>In The Media</span>
-            <br />Hemp Benefits Has Global Media Buzzing{' '}
+            <br />CBD Benefits Has Global Media Buzzing{' '}
           </p>{' '}
           <i className="s5hdimg sprite4 sprite-s5hd" />
           <p className="s5-txt1 bdfont">
-            CBD (Hemp Extract) has taken the American media by storm. The safe
-            &amp; non-habit forming benefits of CBD have been widely publicized
-            across print &amp; media.
+            The press is catching onto the amazing benefits of Cannabidiol
+            (CBD). The incredibly powerful benefits of CBD Oil have been widely
+            featured across print &amp; media in 2018.
           </p>
           <i className="s5-line sprite4 sprite-s5-line" />
           <div className="s5left">
@@ -112,7 +112,7 @@ class PromoSectionFiveDesktop extends React.PureComponent {
           <div className="s5right">
             <p className="s5-txt5">
               <span>BENEFITS OF CBD </span>
-              <br />HAS BEEN ADVERTISED ON{' '}
+              <br />HAVE BEEN SEEN ON{' '}
             </p>
             <i className="s5-logos sprite4 sprite-s5-logos" />
           </div>

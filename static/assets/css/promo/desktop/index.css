@@ -67,6 +67,11 @@ li {
   height: 1px;
 }
 
+.success-modal h2,
+p {
+  padding-top: 10px;
+}
+
 /*-----------------------
 MAIN CSS START
 ------------------------*/
@@ -157,6 +162,7 @@ MAIN CSS START
   font-size: 46px;
   text-transform: uppercase;
   letter-spacing: -2px;
+  vertical-align: middle;
 }
 
 .s6hding span {
@@ -539,6 +545,10 @@ ul.s2list li:nth-child(4) {
   text-align: left;
 }
 
+p.striptxt2 {
+  padding-top: 10px;
+}
+
 .stripbtn {
   position: absolute;
   right: 0;
@@ -552,6 +562,7 @@ ul.s2list li:nth-child(4) {
     no-repeat;
 
   height: 730px;
+  margin-bottom: 50px;
 }
 
 .sec3txt {
@@ -583,6 +594,7 @@ ul.s3list li i {
   color: #28424b;
   text-align: left;
   text-transform: uppercase;
+  padding-top: 10px;
 }
 
 .s3lhding span {
@@ -591,12 +603,14 @@ ul.s3list li i {
 
 .s3ltxt {
   text-align: left;
+  padding-top: 10px;
 }
 
 /*-----------------sec4------------------*/
 
 .section4 {
   height: 751px;
+  margin-bottom: 30px;
 }
 
 ul.s4-list1 {
@@ -994,7 +1008,7 @@ ul.s4-list2 li:nth-child(3) {
 }
 
 .s7hd {
-  margin: 33px 0 0 94px;
+  margin: 24px 0 0 94px;
   display: block;
 }
 
@@ -1114,47 +1128,43 @@ ul.s7list li span {
   }
 }
 
-
-@-webkit-keyframes fade-in{
-    from{
-        opacity:1;
-        top:0px;
-    }
-    to{
-        opacity:0;
-        top:0px;
-    }
-  
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 1;
+    top: 0px;
+  }
+  to {
+    opacity: 0;
+    top: 0px;
+  }
 }
-.text-animated-one{
-    display:inline;
-    position:relative;
-    top:0px;
-    -webkit-animation:fade-in 4s infinite;
-
+.text-animated-one {
+  display: inline;
+  position: relative;
+  top: 0px;
+  -webkit-animation: fade-in 4s infinite;
 }
-.text-animated-two{
-    opacity:0;
-    display:inline;
-    position:relative;
-    margin-left:-294px;
-    -webkit-animation:fade-in 4s infinite;
-    -webkit-animation-delay: 2s;
+.text-animated-two {
+  opacity: 0;
+  display: inline;
+  position: relative;
+  margin-left: -294px;
+  -webkit-animation: fade-in 4s infinite;
+  -webkit-animation-delay: 2s;
 }
 
-.aggettivi{
-    display:inline;
-    width:100px;
-    height:100px;
+.aggettivi {
+  display: inline;
+  width: 100px;
+  height: 100px;
 }
 
 /* modal style */
 .modal-title {
-    text-align: center;
+  text-align: center;
 }
 .modal-body p {
   text-align: left;
 }
 
 /* modal style ends */
-
