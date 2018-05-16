@@ -35,7 +35,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
                 <span>Eliminates</span> Chronic Pain &amp; Aches{' '}
               </li>
               <li className="sprite2 sprite-s1bullet">
-                <span>Promotes</span> Mood &amp; Sleep Patterns{' '}
+                <span>Regulates</span> Mood &amp; Sleep Patterns{' '}
               </li>
               <li className="sprite2 sprite-s1bullet">
                 <span>Enhances </span> Focus &amp; Clarity{' '}

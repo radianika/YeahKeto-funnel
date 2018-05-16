@@ -25,7 +25,7 @@ class PromoSectionOneMobile extends React.PureComponent {
           </li>
           <li>
             <i className="sprite3 sprite-s1-tick" />
-            <span>Promotes</span>
+            <span>Regulates</span>
             <br /> Mood &amp; Sleep Patterns
           </li>
           <li>

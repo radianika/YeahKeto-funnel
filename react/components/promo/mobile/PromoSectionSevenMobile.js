@@ -21,7 +21,7 @@ class PromoSectionSevenMobile extends React.PureComponent {
             <br />Chronic Pain & Aches{' '}
           </li>
           <li>
-            <span>Promotes</span>
+            <span>Regulates</span>
             <br /> Mood & Sleep Patterns{' '}
           </li>
           <li>

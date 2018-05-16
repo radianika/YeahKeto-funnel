@@ -126,12 +126,6 @@ MAIN CSS START
   padding: 56px 0 0 0;
 }
 
-.s2hding {
-  line-height: 40px;
-  padding-top: 58px;
-  padding-bottom: 2px;
-}
-
 .s3hding {
   padding: 64px 0 0 308px;
 }
@@ -163,6 +157,7 @@ MAIN CSS START
   font-size: 46px;
   text-transform: uppercase;
   letter-spacing: -2px;
+  vertical-align: middle;
 }
 
 .s6hding span {

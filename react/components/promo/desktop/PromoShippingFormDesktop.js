@@ -9,7 +9,7 @@ import {
 import { TextField, SelectField, AddressField } from 'react/components/common';
 import { connect } from 'react-redux';
 
-class PromoShippingFormDesktop extends React.PureComponent {
+class PromoShippingFormDesktopComponent extends React.PureComponent {
   render() {
     const { props } = this;
     return (
@@ -26,10 +26,12 @@ class PromoShippingFormDesktop extends React.PureComponent {
         <div className="sldrtxt" id="fades">
           <div className="aggettivi">
             <div className="text-animated-one">
-              <i className="sprite2 sprite-eye" /> 13 others are viewing this offer right now!
+              <i className="sprite2 sprite-eye" /> 13 others are viewing this
+              offer right now!
             </div>
             <div className="text-animated-two">
-              <i className="sprite2 sprite-eye" /> 25 people purchased this in the last hour
+              <i className="sprite2 sprite-eye" /> 25 people purchased this in
+              the last hour
             </div>
           </div>
         </div>
@@ -42,59 +44,59 @@ class PromoShippingFormDesktop extends React.PureComponent {
         <Field
           component={TextField}
           name="firstName"
-          label="First Name*"
+          label="First name*:"
           placeholder="First Name"
         />
         <Field
           component={TextField}
           name="lastName"
-          label="Last Name*"
+          label="Last name*:"
           placeholder="Last Name"
         />
         <Field
           component={AddressField}
           name="address"
-          label="Address Line 1*"
+          label="Address Line 1*:"
           placeholder="Street and number, P.O. box, c/o."
           changeField={this.props.change}
         />
         <Field
           component={TextField}
           name="address2"
-          label="Address Line 2"
+          label="Address Line 2:"
           placeholder="Apartment, suite, unit, building, floor, etc."
         />
         <Field
           component={TextField}
           name="city"
-          label="City*"
+          label="City*:"
           placeholder="Your City"
         />
         <Field
           component={SelectField}
           name="state"
-          label="State*"
+          label="State*:"
           placeholder="State"
           options={stateslist}
         />
         <Field
           component={TextField}
           name="postalCode"
-          label="Zip Code*"
+          label="Zip Code*:"
           placeholder="Zip Code"
           normalize={normalizePostalCode}
         />
         <Field
           component={TextField}
           name="phoneNumber"
-          label="Phone*"
+          label="Phone*:"
           placeholder="Example: (123) 555-6789"
           normalize={normalizePhone}
         />
         <Field
           component={TextField}
           name="email"
-          label="Email*"
+          label="Email*:"
           placeholder="Example: email@somewhere.com"
         />
         <div className="clearall" />
@@ -111,15 +113,15 @@ class PromoShippingFormDesktop extends React.PureComponent {
   }
 }
 
-PromoShippingFormDesktop = reduxForm({
-  form: 'PromoContact',
-  validate: shippingFormValidator,
-})(PromoShippingFormDesktop);
-
 function mapStateToProps() {
   return {};
 }
 
-PromoShippingFormDesktop = connect(mapStateToProps)(PromoShippingFormDesktop);
+const PromoShippingFormDesktop = connect(mapStateToProps)(
+  reduxForm({
+    form: 'PromoContact',
+    validate: shippingFormValidator,
+  })(PromoShippingFormDesktopComponent),
+);
 
 export { PromoShippingFormDesktop };
