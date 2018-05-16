@@ -1,6 +1,6 @@
 import React from 'react';
 
-const $ = window.jQuery;
+let $;
 
 class SuccessModal extends React.PureComponent {
   constructor() {
