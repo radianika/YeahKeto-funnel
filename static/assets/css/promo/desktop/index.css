@@ -545,6 +545,10 @@ ul.s2list li:nth-child(4) {
   text-align: left;
 }
 
+p.striptxt2 {
+  padding-top: 10px;
+}
+
 .stripbtn {
   position: absolute;
   right: 0;

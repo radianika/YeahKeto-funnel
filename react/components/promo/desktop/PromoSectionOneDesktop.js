@@ -66,7 +66,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
         </div>
         {this.props.submitStatus === 'submitting' && <Spinner />}
         <SuccessModal
-          visible={this.props.submitStatus === 'success'}
+          visible={this.props.submitStatus === 'success' && false}
           message="Information captured successfully."
         />
       </div>

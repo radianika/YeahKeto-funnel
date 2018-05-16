@@ -117,7 +117,7 @@ class PromoSectionFiveMobile extends React.PureComponent {
           style={{ 'margin-top': '40px' }}
         >
           <p className="strip-txt">
-            <b>ORDER YOUR BOTTLE OF</b> <span>HEMP OIL</span> <b>TODAY!</b>
+            <b>ORDER YOUR BOTTLE OF</b> <span>CBD OIL</span> <b>TODAY!</b>
             <br />Limited Time Offer - Get Free Bottles
             <br />On Select Packages
           </p>

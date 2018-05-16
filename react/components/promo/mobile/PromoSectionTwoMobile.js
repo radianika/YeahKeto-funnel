@@ -37,7 +37,7 @@ class PromoSectionTwoMobile extends React.PureComponent {
             boosts cognitive performance.
           </b>
         </p>
-        <p className="s2-txt3">All Natural Organic Hemp Extract</p>
+        <p className="s2-txt3">All Natural Organic CBD Extract</p>
         <p className="s2-txt4">Quick Absorption, Extended Release Formula</p>
         <p className="clearall" />
         <ul className="s2-list">
@@ -66,7 +66,7 @@ class PromoSectionTwoMobile extends React.PureComponent {
         <p className="clearall" />
         <div className="strip sprite3 sprite-strip-bg">
           <p className="strip-txt">
-            <b>ORDER YOUR BOTTLE OF</b> <span>HEMP OIL</span> <b>TODAY!</b>
+            <b>ORDER YOUR BOTTLE OF</b> <span>CBD OIL</span> <b>TODAY!</b>
             <br />Limited Time Offer - Get Free Bottles
             <br />On Select Packages
           </p>
