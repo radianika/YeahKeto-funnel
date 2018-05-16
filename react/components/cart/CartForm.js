@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import {
   stateslist,
@@ -15,7 +15,7 @@ import {
   Modal,
 } from 'react/components/common';
 
-class CartForm extends PureComponent {
+class CartForm extends React.PureComponent {
   constructor() {
     super();
     this.state = {

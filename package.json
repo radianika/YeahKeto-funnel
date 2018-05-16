@@ -87,6 +87,7 @@
     "postcss-easy-import": "3.0.0",
     "postcss-url": "7.3.2",
     "react": "16.3.2",
+    "react-collapsible": "^2.2.0",
     "react-dom": "16.3.2",
     "react-modal": "3.4.4",
     "react-redux": "5.0.7",
@@ -102,6 +103,7 @@
   "devDependencies": {
     "eslint": "4.9.0",
     "eslint-config-airbnb": "16.1.0",
+    "eslint-config-jquery": "^1.0.1",
     "eslint-import-resolver-babel-module": "4.0.0",
     "eslint-plugin-babel": "5.1.0",
     "eslint-plugin-import": "2.7.0",
@@ -111,6 +113,7 @@
     "lint-staged": "7.0.4",
     "nodemon": "1.17.3",
     "prettier": "1.12.1",
+    "react-responsive-accordion": "^1.0.0",
     "redux-devtools-extension": "2.13.2"
   }
 }

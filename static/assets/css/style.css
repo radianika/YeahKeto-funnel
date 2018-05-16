@@ -2544,3 +2544,59 @@ table.tbl2 {
 }
 
 /* modal style ends */
+
+/* accordion faq start */
+.Collapsible {
+  float: left;
+  width: 100%;
+  margin: 10px 0;
+  border: 1px solid #c2c2c2;
+  background: #ebebeb;
+  background: -moz-linear-gradient(top, #ebebeb 0%, #c4c4c4 100%);
+  background: -webkit-linear-gradient(top, #ebebeb 0%, #c4c4c4 100%);
+  background: linear-gradient(to bottom, #ebebeb 0%, #c4c4c4 100%);
+}
+.Collapsible__trigger {
+  box-sizing: border-box;
+  color: #066035;
+  cursor: pointer;
+  float: left;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: left;
+  line-height: 24px;
+  margin: 4px 0;
+  padding: 10px 25px 15px 30px;
+  width: 100%;
+  letter-spacing: -0.5px;
+}
+.Collapsible__contentOuter {
+  height: 0px;
+  transition: height 400ms linear 0s;
+  overflow: hidden;
+  box-sizing: border-box;
+  color: rgb(62, 62, 62);
+  float: left;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: left;
+  letter-spacing: -0.5px;
+  background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+  width: 100%;
+}
+.Collapsible__contentInner {
+  padding: 15px 60px 15px 25px;
+}
+.txt1 {
+  font-size: 16px;
+  line-height: 22px;
+  padding-top: 10px;
+}
+.is-open {
+  background: url(../images/ahov2.png) 98% center no-repeat;
+  border-bottom: none;
+}
+.is-closed {
+  background: url(../images/acord2.png) 98% center no-repeat;
+}
+/* accordion faq end */
