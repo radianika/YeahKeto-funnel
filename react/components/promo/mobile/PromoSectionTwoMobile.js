@@ -53,7 +53,7 @@ class PromoSectionTwoMobile extends React.PureComponent {
           </li>
           <li>
             <i className="s2-icons sprite3 sprite-s2limg3" />{' '}
-            <span>DOESNT </span>
+            <span>DOESN&#39;T </span>
             <br />SHOW ON
             <br />DRUG TEST
           </li>

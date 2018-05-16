@@ -60,7 +60,7 @@ class PromoSectionTwoDesktop extends React.PureComponent {
               {' '}
               <i className="s2limg sprite4 sprite-s2limg3" />
               <p className="s2ltxt">
-                <span>Doesn{"'"}t</span>
+                <span>Doesn&#39;t</span>
                 <br /> Show On
                 <br /> Drug test{' '}
               </p>{' '}
