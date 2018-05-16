@@ -161,6 +161,7 @@ MAIN CSS START
   border: 3px dashed #000;
   padding: 27px 10px 20px 20px;
   float: left;
+  height: 417px;
 }
 .s1-dot-left {
   width: 36%;
@@ -168,6 +169,7 @@ MAIN CSS START
   text-align: center;
   position: relative;
   margin: 35px 0 0 0;
+  height: 382px;
 }
 .up-btl1 {
   float: left;
@@ -244,6 +246,14 @@ MAIN CSS START
 }
 .button {
   margin: 16px 0 0 0;
+}
+
+/*************************************
+ * CSS FOR UPSELL
+ ************************************/
+.success-modal h2,
+p {
+  padding-top: 10px;
 }
 
 /*--------------------------

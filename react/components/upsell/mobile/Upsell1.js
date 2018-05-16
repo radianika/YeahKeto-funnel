@@ -1,6 +1,6 @@
 import React from 'react';
 import { PromoSession } from 'react/components/common';
-import { Coupon } from '../desktop/Coupon';
+import { Coupon } from '../mobile/Coupon';
 import { SatisfactionBox } from './SatisfactionBox';
 import { UpsellFooter } from '../UpsellFooter';
 
@@ -13,18 +13,15 @@ class Upsell1 extends React.PureComponent {
       <React.Fragment>
         <PromoSession pageType="upsellPage1" />
         <div className="redbar">
-          <p>
-            Wait before you go!<br />
-            We have an important message regarding coninuing supply.
-          </p>
+          <p>Before you go! An URGENT message regarding future supply.</p>
         </div>
         <div className="sec1">
           <p className="s1txt1">
-            Recent media buzz about the incredible results people are achieving
-            with our CBD Oil has created huge demand, and our stock is rapidly
-            dwindling. Read below why this is happening. In the meantime, assure
-            yourself of an adequate supply to truly experience all the benefits
-            of <span>American Science CBD Oil.</span>
+            Huge demand, driven by recent media buzz covering the results people
+            are achieving with our CBD oil, means our stock is dwindling fast.
+            More information on this below. Before we restock, you can ensure an
+            adequate supply of <span>American Science CBD Oil</span> at an
+            additional discount.
           </p>
           <Coupon onUpgrade={this.upgrade} />
           <div className="clearall" />

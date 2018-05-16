@@ -10,8 +10,11 @@ class Coupon extends React.PureComponent {
     return (
       <div className="s1-doteed-sec">
         <div className="s1-dot-left">
+          <p className="dot-rgt-txt1">
+            Purchase 6 additional bottles of our CBD Oil at an astounding{' '}
+          </p>
           <img
-            src="/static/desktop/images/up-btl1.png"
+            src="/static/mobile/images/up-btl1.png"
             className="up-btl1"
             alt=""
           />
@@ -23,15 +26,12 @@ class Coupon extends React.PureComponent {
             </div>
           )}
           <img
-            src="/static/desktop/images/free-ship.png"
+            src="/static/mobile/images/free-ship.png"
             className="free-ship"
             alt="Free Shipping"
           />
         </div>
         <div className="s1-dot-right">
-          <p className="dot-rgt-txt1">
-            Purchase 6 additional bottles of our CBD Oil at an astounding{' '}
-          </p>
           <p className="dot-rgt-txt2">{discount} discount off retail </p>
           <p className="dot-rgt-txt3">
             Only <span>{price}</span>/ Bottle{' '}
@@ -48,7 +48,7 @@ class Coupon extends React.PureComponent {
           </p>
           <a href="javascript:void(0)" onClick={this.props.onUpgrade}>
             <img
-              src="/static/desktop/images/button.png"
+              src="/static/mobile/images/button.png"
               className="button"
               alt="Upgrade My Order"
             />

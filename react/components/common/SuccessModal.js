@@ -1,5 +1,7 @@
 import React from 'react';
 
+const $ = window.jQuery;
+
 class SuccessModal extends React.PureComponent {
   constructor() {
     super();
@@ -16,7 +18,7 @@ class SuccessModal extends React.PureComponent {
         type: 'inline',
       });
     } else {
-      $.fancybox.open({
+      $.fancybox.close({
         src: '#animatedModal',
         type: 'inline',
       });
