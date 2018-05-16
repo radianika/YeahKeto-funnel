@@ -6,6 +6,8 @@ class SuccessModal extends React.PureComponent {
   constructor() {
     super();
     this.modalRef = React.createRef();
+
+    $ = window.jQuery;
   }
   componentDidMount() {
     // eslint-disable-next-line
