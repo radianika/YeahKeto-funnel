@@ -67,6 +67,11 @@ li {
   height: 1px;
 }
 
+.success-modal h2,
+p {
+  padding-top: 10px;
+}
+
 /*-----------------------
 MAIN CSS START
 ------------------------*/
@@ -557,6 +562,7 @@ p.striptxt2 {
     no-repeat;
 
   height: 730px;
+  margin-bottom: 50px;
 }
 
 .sec3txt {
@@ -588,6 +594,7 @@ ul.s3list li i {
   color: #28424b;
   text-align: left;
   text-transform: uppercase;
+  padding-top: 10px;
 }
 
 .s3lhding span {
@@ -596,12 +603,14 @@ ul.s3list li i {
 
 .s3ltxt {
   text-align: left;
+  padding-top: 10px;
 }
 
 /*-----------------sec4------------------*/
 
 .section4 {
   height: 751px;
+  margin-bottom: 30px;
 }
 
 ul.s4-list1 {
@@ -999,7 +1008,7 @@ ul.s4-list2 li:nth-child(3) {
 }
 
 .s7hd {
-  margin: 33px 0 0 94px;
+  margin: 24px 0 0 94px;
   display: block;
 }
 

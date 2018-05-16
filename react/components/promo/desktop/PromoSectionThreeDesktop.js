@@ -3,7 +3,7 @@ import React from 'react';
 class PromoSectionThreeDesktop extends React.PureComponent {
   render() {
     return (
-      <div className="section3" style={{ marginBottom: 50 }}>
+      <div className="section3">
         <div className="container">
           <p className="s3hding">
             <span>Why American Science Hemp Oil </span>

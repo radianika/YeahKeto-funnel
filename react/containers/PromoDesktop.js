@@ -14,7 +14,6 @@ import { FooterPromo } from 'react/components/promo';
 
 class PromoDesktopContainer extends React.PureComponent {
   render() {
-    const { props } = this;
     return (
       <React.Fragment>
         <h1 style={{ display: 'none' }}>American Science CBD</h1>
@@ -22,7 +21,7 @@ class PromoDesktopContainer extends React.PureComponent {
           <div className="container">
             <p className="topbartxt">
               <span>WARNING:</span> Due to extremely high media demand, there is
-              limited supply of <span>Hemp Oil</span> in stock as of{' '}
+              limited supply of <span>CBD Oil</span> in stock as of{' '}
               <span>{moment().format('dddd, ll')}</span>
             </p>
           </div>
