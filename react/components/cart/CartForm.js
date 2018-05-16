@@ -15,6 +15,21 @@ import {
   Modal,
 } from 'react/components/common';
 
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
 class CartForm extends React.PureComponent {
   constructor() {
     super();
@@ -28,7 +43,7 @@ class CartForm extends React.PureComponent {
   getMonthOptions = () => {
     const monthOptions = {};
     [...Array(12).keys()].forEach(v => {
-      monthOptions[v] = v;
+      monthOptions[v] = months[v];
     });
     return monthOptions;
   };

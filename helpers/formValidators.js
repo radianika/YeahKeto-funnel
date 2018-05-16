@@ -46,25 +46,17 @@ const shippingFormValidator = values => {
 
 const billingFormValidator = values => {
   const errors = shippingFormValidator(values);
-  if (!values.cardExpiry) {
-    errors.cardExpiry = 'Card details are required';
-  } else if (
-    !idx(values, _ => _.cardExpiry.cardMonth) ||
-    !idx(values, _ => _.cardExpiry.cardMonth).trim()
-  ) {
-    errors.cardExpiry = 'Expiry month is required';
-  } else if (
-    !idx(values, _ => _.cardExpiry.cardYear) ||
-    !idx(values, _ => _.cardExpiry.cardYear).trim()
-  ) {
-    errors.cardExpiry = 'Year is required';
-  } else {
-    const { cardMonth, cardYear } = values.cardExpiry;
-    const currentMonth = moment().month();
-    const currentYear = moment().year();
-    if (Number(cardMonth) < currentMonth && Number(cardYear) <= currentYear) {
-      errors.cardExpiry = 'Card has expired.';
-    }
+  if (!(values.cardMonth && (values.cardMonth || values.cardMonth.trim()))) {
+    errors.cardMonth = 'Expiry month is required';
+  }
+  if (!(values.cardYear && (values.cardYear || values.cardYear.trim()))) {
+    errors.cardYear = 'Year is required';
+  }
+  const { cardMonth, cardYear } = values;
+  const currentMonth = moment().month();
+  const currentYear = moment().year();
+  if (Number(cardMonth) < currentMonth && Number(cardYear) <= currentYear) {
+    errors.cardExpiry = 'Card has expired.';
   }
   if (!values.cardNumber) {
     errors.cardNumber = 'Card number is required';
@@ -103,7 +95,6 @@ const cartFormValidator = values => {
   const orderValues = values.order || {};
   const cardErrors = billingFormValidator(orderValues);
   errors = { ...errors, shipping: { ...cardErrors }, order: { ...cardErrors } };
-  console.log({ errors });
   return errors;
 };
 
