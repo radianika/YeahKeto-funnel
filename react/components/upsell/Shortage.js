@@ -8,7 +8,7 @@ const Shortage = () => (
     <p className="s1txt4">
       We insist on certified US-grown hemp and lab-test to ensure the highest
       concentration of CBD- 500 mg per serving—and our filtration and extraction
-      processes mean zero THC. This is what makes our product legal in al 50
+      processes mean zero THC. This is what makes our product legal in all 50
       states, no prescription necessary.<br />
       <br />
       Farmers who meet all of our stringent specifications are hard to find. As
