@@ -27,9 +27,8 @@ class PromoSectionThreeMobile extends React.PureComponent {
             <span>Cold Press </span>
             <b>& Unrefined</b>
             <p className="s3-list-txt">
-              Cold-pressed extraction of the oil from Hemp Extract ensure
-              retention of all the therapeutic properties without the use of any
-              chemicals.
+              Cold-pressed oil extraction to ensure full retention of
+              therapeutic properties. Fully organic, no chemicals.
             </p>
           </li>
           <li>

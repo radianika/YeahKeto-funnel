@@ -2,7 +2,6 @@ import React from 'react';
 
 class PromoSectionThreeDesktop extends React.PureComponent {
   render() {
-    const { props } = this;
     return (
       <div className="section3">
         <div className="container">
@@ -24,9 +23,8 @@ class PromoSectionThreeDesktop extends React.PureComponent {
                 Cold Press <span>&amp; Unrefined</span>
               </p>
               <p className="s3ltxt bdfont">
-                Cold-pressed extraction of the oil from Hemp Extract ensure
-                retention of all the therapeutic properties without the use of
-                any chemicals.{' '}
+                Cold-pressed oil extraction to ensure full retention of
+                therapeutic properties. Fully organic, no chemicals.{' '}
               </p>
             </li>
             <li>
