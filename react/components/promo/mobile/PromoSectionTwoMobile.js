@@ -32,9 +32,9 @@ class PromoSectionTwoMobile extends React.PureComponent {
           <br />
           <br />{' '}
           <b>
-            When used as directed, American Science Hemp Oil supports mood
-            patterns, improves sleep cycle, triggers a healthy inflammatory
-            response, and boosts cognitive performance.
+            When used as directed, American Science CBD Oil regulates mood
+            patterns and sleep cycle, mitigates inflammatory response, and
+            boosts cognitive performance.
           </b>
         </p>
         <p className="s2-txt3">All Natural Organic Hemp Extract</p>
