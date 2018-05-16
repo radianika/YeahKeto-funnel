@@ -5,7 +5,7 @@ class PromoSectionFourMobile extends React.PureComponent {
     return (
       <div id="section-four">
         <p className="s2-hd-txt">
-          <span>BENEFITS OF HEMP OIL</span>
+          <span>BENEFITS OF AMERICAN SCIENCE CBD</span>
           <br />Supports Neurological, Physical & Mental Health{' '}
         </p>
         <ul className="s4-list1">
