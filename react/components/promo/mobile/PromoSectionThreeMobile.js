@@ -33,34 +33,33 @@ class PromoSectionThreeMobile extends React.PureComponent {
           </li>
           <li>
             {' '}
-            <i className="s3-icons sprite3 sprite-s3-icon2" /> <span>co2</span>
-            <b> extraction</b>
+            <i className="s3-icons sprite3 sprite-s3-icon2" /> <span>CO2</span>
+            <b> CBD EXTRACTION- Zero THC</b>
             <p className="s3-list-txt">
-              Utilizes the most advanced, cleanest, & safest extraction method
-              that preserves essential cannabinoids (CBD) and filters out THC
-              (the high causing compound.)
+              We use the cleanest, safest extraction method to preserve
+              essential cannabinoids (CBD) and filter out the psychoactive
+              compound (THC)
             </p>
           </li>
           <li>
             {' '}
             <i className="s3-icons sprite3 sprite-s3-icon3" />{' '}
-            <span>organic </span>
-            <b>& pure</b>
+            <span>Organic </span>
+            <b>, AMERICAN-MADE</b>
             <p className="s3-list-txt">
-              Hemp Oil that is made from hemp leaves organically grown and
-              extracted in the USA, and is certified-free of any synthetics,
-              pesticides or herbicides.
+              Derived from organic, Colorado grown hemp. Certified-free of any
+              synthetics, pesticides or herbicides.
             </p>
           </li>
           <li>
             {' '}
             <i className="s3-icons sprite3 sprite-s3-icon4" />{' '}
-            <span>sublingual </span>
-            <b>delivery system</b>
+            <span>Sublingual </span>
+            <b>Delivery System</b>
             <p className="s3-list-txt">
-              A cutting-edge delivery system ensures that the Hemp Oil is
-              absorbed directly into the blood vessels and lymphatics of the
-              mouth for rapid action & relief.{' '}
+              Designed for sublingual delivery, ensuring that our CBD Oil is
+              absorbed directly into the bloodstream for rapid action &amp;
+              relief.{' '}
             </p>
           </li>
         </ul>
