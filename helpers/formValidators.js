@@ -44,9 +44,66 @@ const shippingFormValidator = values => {
   return errors;
 };
 
-//this validator is used in promo pages
+// this validator is used in promo pages
 const billingFormValidator = values => {
   const errors = shippingFormValidator(values);
+  if (!values.cardExpiry) {
+    errors.cardExpiry = 'Card details are required';
+  } else if (
+    !idx(values, _ => _.cardExpiry.cardMonth) ||
+    !idx(values, _ => _.cardExpiry.cardMonth).trim()
+  ) {
+    errors.cardExpiry = 'Expiry month is required';
+  } else if (
+    !idx(values, _ => _.cardExpiry.cardYear) ||
+    !idx(values, _ => _.cardExpiry.cardYear).trim()
+  ) {
+    errors.cardExpiry = 'Year is required';
+  } else {
+    const { cardMonth, cardYear } = values.cardExpiry;
+    const currentMonth = moment().month();
+    const currentYear = moment().year();
+    if (Number(cardMonth) < currentMonth && Number(cardYear) <= currentYear) {
+      errors.cardExpiry = 'Card has expired.';
+    }
+  }
+  if (!values.cardNumber) {
+    errors.cardNumber = 'Card number is required';
+  } else if (values.cardNumber) {
+    const value = values.cardNumber.replace(/\s/g, '');
+    const cardTypes = creditCartType(value);
+    let length = 16;
+    if (cardTypes.length === 1) {
+      [length] = cardTypes[0].lengths;
+    }
+    if (value.length !== length) {
+      errors.cardNumber = `Card number should be ${length} digits`;
+    }
+  }
+
+  if (!values.cardSecurityCode || !values.cardSecurityCode.trim()) {
+    errors.cardSecurityCode = 'Security Code is required';
+  } else if (values.cardSecurityCode) {
+    let length = 3;
+    if (values.cardNumber) {
+      const value = values.cardNumber.replace(/\s/g, '');
+      const cardTypes = creditCartType(value);
+      if (cardTypes.length === 1) {
+        length = cardTypes[0].code.size;
+      }
+      if (values.cardSecurityCode.length !== length) {
+        errors.cardSecurityCode = `Security code should be ${length} digits`;
+      }
+    }
+  }
+  return errors;
+};
+
+// this validator is used inside cart page
+// TODO: cardFormValidator and billingFormValidator should be refactored into one,
+// in future if we have similar UX for both
+const cardFormValidator = values => {
+  const errors = {};
   if (!(values.cardMonth && (values.cardMonth || values.cardMonth.trim()))) {
     errors.cardMonth = 'Expiry month is required';
   }
@@ -91,68 +148,13 @@ const billingFormValidator = values => {
   return errors;
 };
 
-// this validator is used inside cart page
-// TODO: cardFormValidator and billingFormValidator should be refactored into one,
-// in future if we have similar UX for both
-const cardFormValidator = values => {
-  const errors = shippingFormValidator(values);
-  if (!(values.cardMonth && (values.cardMonth || values.cardMonth.trim()))) {
-    errors.cardMonth = "Expiry month is required";
-  }
-  if (!(values.cardYear && (values.cardYear || values.cardYear.trim()))) {
-    errors.cardYear = "Year is required";
-  }
-  const { cardMonth, cardYear } = values;
-  const currentMonth = moment().month();
-  const currentYear = moment().year();
-  if (Number(cardMonth) < currentMonth && Number(cardYear) <= currentYear) {
-    errors.cardExpiry = "Card has expired.";
-  }
-  if (!values.cardNumber) {
-    errors.cardNumber = "Card number is required";
-  } else if (values.cardNumber) {
-    const value = values.cardNumber.replace(/\s/g, "");
-    const cardTypes = creditCartType(value);
-    let length = 16;
-    if (cardTypes.length === 1) {
-      [length] = cardTypes[0].lengths;
-    }
-    if (value.length !== length) {
-      errors.cardNumber = `Card number should be ${length} digits`;
-    }
-  }
-
-  if (!values.cardSecurityCode || !values.cardSecurityCode.trim()) {
-    errors.cardSecurityCode = "Security Code is required";
-  } else if (values.cardSecurityCode) {
-    let length = 3;
-    if (values.cardNumber) {
-      const value = values.cardNumber.replace(/\s/g, "");
-      const cardTypes = creditCartType(value);
-      if (cardTypes.length === 1) {
-        length = cardTypes[0].code.size;
-      }
-      if (values.cardSecurityCode.length !== length) {
-        errors.cardSecurityCode = `Security code should be ${length} digits`;
-      }
-    }
-  }
-  return errors;
-};
-
-const cartFormValidator = values => {
-  let errors = shippingFormValidator(values);
-  const orderValues = values.order || {};
-  const cardErrors = billingFormValidator(orderValues);
-  errors = { ...errors, shipping: { ...cardErrors }, order: { ...cardErrors } };
-  return errors;
-};
-
 const shippingCartFormValidator = values => {
   let errors = shippingFormValidator(values);
   const orderValues = values.order || {};
+  const shippingValues = values.shipping || {};
+  const shippingErrors = shippingFormValidator(shippingValues);
   const cardErrors = cardFormValidator(orderValues);
-  errors = { ...errors, shipping: { ...cardErrors }, order: { ...cardErrors } };
+  errors = { ...errors, shipping: { ...shippingErrors }, order: { ...cardErrors } };
   return errors;
 };
 
@@ -219,10 +221,8 @@ const normalizeSecurityCode = (value, previousValue, allValues) => {
     cardNumber = cardNumber.toString().replace(/\s/g, '');
     const cardTypes = creditCartType(cardNumber);
     if (cardTypes.length === 1) {
-      // console.log(cardTypes[0]);
       length = cardTypes[0].code.size;
     }
-    // console.log({ length });
   }
   return value.substring(0, length);
 };
@@ -230,7 +230,6 @@ const normalizeSecurityCode = (value, previousValue, allValues) => {
 export {
   shippingFormValidator,
   billingFormValidator,
-  cartFormValidator,
   shippingCartFormValidator,
   normalizePhone,
   normalizePostalCode,
