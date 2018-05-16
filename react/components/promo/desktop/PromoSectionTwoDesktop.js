@@ -11,12 +11,6 @@ class PromoSectionTwoDesktop extends React.PureComponent {
           </p>{' '}
           <i className="s2hdimg sprite3 sprite-s2hd" />
           <p className="sec2txt bdfont">
-            {/* Cannabidiol is a non-psychoactive component of Hemp that has been
-            clinically proven to offer a wide range of therapeutic health
-            benefits. <strong>American Science Hemp Oil</strong> is formulated
-            with hemp extract that is organically grown &amp; harvested in the
-            USA and is patented (under Patent #6,630,507) to support nutritional
-            health of aging bodies. */}
             Cannabidiol, part of a family of molecules called cannabinoids, is
             non-psychoactive and has been clinically proven to offer a wide
             range of therapeutic health benefits.{' '}
