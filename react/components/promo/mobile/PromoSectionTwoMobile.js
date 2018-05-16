@@ -38,7 +38,7 @@ class PromoSectionTwoMobile extends React.PureComponent {
           </b>
         </p>
         <p className="s2-txt3">All Natural Organic Hemp Extract</p>
-        <p className="s2-txt4">Quick Absorption & Fast Action Formula</p>
+        <p className="s2-txt4">Quick Absorption, Extended Release Formula</p>
         <p className="clearall" />
         <ul className="s2-list">
           <li>

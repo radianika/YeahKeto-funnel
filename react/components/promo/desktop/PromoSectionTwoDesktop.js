@@ -31,9 +31,9 @@ class PromoSectionTwoDesktop extends React.PureComponent {
               boosts cognitive performance.{' '}
             </b>{' '}
           </p>
-          <p className="s2subhd1">All Natural Organic Hemp Extract </p>
+          <p className="s2subhd1">All Natural Organic CBD Extract </p>
           <p className="s2subhd2">
-            Quick Absorption &amp; Fast Action Formula{' '}
+            Quick Absorption, Extended Release Formula{' '}
           </p>
           <ul className="s2list">
             <li>
