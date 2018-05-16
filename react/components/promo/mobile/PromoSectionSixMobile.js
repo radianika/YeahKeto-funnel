@@ -18,12 +18,12 @@ class PromoSectionSixMobile extends React.PureComponent {
             Finally, a high-performance hemp product that delivers results.{' '}
           </p>
           <p className="t-txt2">
-            I was introduced to Hemp Oil by a colleague at the office, who spoke
-            highly about its benefits as a safe alternative to anti-anxiety
-            pills. I decided to give it a shot and since then have become not
-            only a believer but an advocate of its benefits! It helps me sleep
-            better, wake up refreshed and power through my day with more energy
-            and calm.
+            I was introduced to American Science’s CBD Oil by a colleague who
+            spoke highly of its benefits as a safe alternative to my anxiety
+            medication. I decided to give it a shot and since then have become a
+            major advocate of its benefits. It helps me sleep better, wake up
+            refreshed and power through my day. I’m anxiety free thanks to
+            American Science.
           </p>{' '}
           <i className="t-img1 sprite3 sprite-t-img1" />{' '}
           <i className="stars sprite3 sprite-stars" />
@@ -33,15 +33,14 @@ class PromoSectionSixMobile extends React.PureComponent {
         </div>
         <div className="t-box sprite2 sprite-t-box">
           <p className="t-txt1">
-            Hemp Oil has helped me eliminate the most chronic pains & aches!{' '}
+            CBD Oil has helped me eliminate my chronic pains &amp; aches!{' '}
           </p>
           <p className="t-txt2">
-            My pain therapist, recommended I give Hemp Oil a try to combat the
-            joint pain that has riddled my lifestyle for years. In just about 2
-            months, I could feel a marked difference in my mobility. It not only
-            helped reduce my joint pain but also got me to a point where I can
-            enjoy my walks and a more active lifestyle again! Highly
-            recommended!{' '}
+            My physical therapist recommended I give CBD Oil a try to combat the
+            joint pain that has plagued me for years. After roughly 1 month
+            using the CBD oil, there’s been a significant difference in my
+            mobility. The best news? My joint pain is gone, and I can finally
+            enjoy walks and a more active lifestyle again!{' '}
           </p>{' '}
           <i className="t-img1 sprite3 sprite-t-img2" />
           <i className="stars sprite3 sprite-stars" />
