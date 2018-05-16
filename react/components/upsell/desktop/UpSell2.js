@@ -45,6 +45,7 @@ class Upsell2 extends React.PureComponent {
           />
           <div className="clearall" />
           <SatisfactionBox onUpgrade={this.scrollToTop} />
+          <div className="clearall" />
           <p className="s1txt3">
             <span>Dear Friend…</span>
             <br />
@@ -56,7 +57,7 @@ class Upsell2 extends React.PureComponent {
             people are achieving with our CBD products.<br />
             <br />
             So many people are catching on to the effectiveness of natural
-            solutions to common complaints. And that applies especially to our
+            solutions to common ailments. And that applies especially to our
             PURE CBD. Unlike prescription medications, PURE CBD comes with no
             undesirable side effects.<br />
             <br />

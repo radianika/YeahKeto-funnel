@@ -56,8 +56,8 @@ class Upsell2 extends React.PureComponent {
           are achieving with our CBD products.<br />
           <br />
           So many people are catching on to the effectiveness of natural
-          solutions to common complaints. And that applies especially to our
-          PURE CBD. Unlike prescription medications, PURE CBD comes with no
+          solutions to common ailments. And that applies especially to our PURE
+          CBD. Unlike prescription medications, PURE CBD comes with no
           undesirable side effects.<br />
           <br />
           All you’ll experience is less aches and pains, better sleep quality,

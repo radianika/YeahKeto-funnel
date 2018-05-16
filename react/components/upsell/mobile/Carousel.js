@@ -36,10 +36,9 @@ class Carousel extends React.PureComponent {
                   <div className={upsell.boxClassName}>
                     <p className="pkgbox-hding">{upsell.title}</p>
                     <img
-                      src={`/static/desktop/images/${upsell.img}`}
+                      src={`/static/mobile/images/${upsell.img}`}
                       alt=""
                       className="pkgbox-btl"
-                      style={{ width: '35%' }}
                     />
                     <p className="pkgbox-txt">
                       {upsell.boxTxt}
