@@ -1,19 +1,17 @@
 import React from 'react';
 
-let $;
-
 class SuccessModal extends React.PureComponent {
   constructor() {
     super();
     this.modalRef = React.createRef();
-
-    $ = window.jQuery;
   }
   componentDidMount() {
+    const $ = window.jQuery;
     // eslint-disable-next-line
     $("#animatedModal").fancybox();
   }
   componentDidUpdate() {
+    const $ = window.jQuery;
     if (this.props.display === true) {
       $.fancybox.open({
         src: '#animatedModal',
