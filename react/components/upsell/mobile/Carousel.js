@@ -63,8 +63,8 @@ class Carousel extends React.PureComponent {
           </div>
         </div>
         <p className="s1txt2">
-          But to get this special pricing, you must respond to this page! Once
-          you leave this page, the offer is gone.
+          This offer is promotional and will not last. Act now to enjoy this
+          discount!
         </p>
       </React.Fragment>
     );
