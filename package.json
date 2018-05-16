@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch server server --exec babel-node",
     "build": "babel server -d dist && next build",
-    "start": "NODE_ENV=production & nodemon ./dist/index.js",
+    "start": "NODE_ENV=production node ./dist/index.js",
     "postinstall": "yarn build",
     "precommit": "lint-staged"
   },

@@ -90,15 +90,13 @@ class MobileConfirmContainer extends React.PureComponent {
                   </li>
                 </ul>
                 <ul className="rgtlist2">
-                  {/* <!--<li>Subtotal:</li>-->
-            <!--<li>$195.00</li>--> */}
                   <li>S&amp;H: </li>
                   <li>$0.00</li>
                   <li>TOTAL</li>
                   <li style={{ fontWeight: 600 }}>{this.getPrice()}</li>
                 </ul>
               </div>
-              <img src="/static/promo/mobile/images/post.jpg" />
+              <img src="/static/promo/mobile/images/post.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -353,13 +351,6 @@ class MobileConfirmContainer extends React.PureComponent {
   }
 }
 
-MobileConfirmContainer = withRouter(MobileConfirmContainer);
-
-MobileConfirmContainer = reduxForm({
-  form: 'MobileConfirmForm',
-  validate: billingFormValidator,
-})(MobileConfirmContainer);
-
 function mapStateToProps(reduxState, ownProps) {
   const { productId } = ownProps.url.query;
   const pack = packages.find(p => String(p.id) === String(productId));
@@ -393,8 +384,10 @@ function mapStateToProps(reduxState, ownProps) {
   };
 }
 
-MobileConfirmContainer = connect(mapStateToProps, { ...OrderActions })(
-  MobileConfirmContainer,
+export default connect(mapStateToProps, { ...OrderActions })(
+  reduxForm({
+    form: 'MobileConfirmForm',
+    validate: billingFormValidator,
+  })(MobileConfirmContainer),
+  withRouter(MobileConfirmContainer),
 );
-
-export { MobileConfirmContainer };

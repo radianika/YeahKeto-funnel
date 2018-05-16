@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { Modal } from './Modal';
-// import { RefundPolicy } from './RefundPolicy';
 import { CustomerCare } from './CustomerCare';
 import { PrivacyPolicy } from './PrivacyPolicy';
 import { TermsAndConditions } from './TermsAndConditions';
@@ -47,14 +46,6 @@ class Footer extends PureComponent {
                 >
                   Customer Care
                 </a>&nbsp;|&nbsp;
-                {/* <a */}
-                {/* href="javascript:void(0)" */}
-                {/* onClick={() => { */}
-                {/* this.setState({ modal: 'footer_refund' }); */}
-                {/* }} */}
-                {/* > */}
-                {/* Refund Policy */}
-                {/* </a> */}
               </p>
 
               <p className="ftr-txt w40 mtop2">
@@ -114,12 +105,6 @@ class Footer extends PureComponent {
             <CustomerCare />
           </Modal>
         )}
-        {/* {this.state.modal === 'footer_refund' && ( */}
-        {/* <Modal onClose={this.closeModal}> */}
-        {/* <React.Fragment>Refund Policy</React.Fragment> */}
-        {/* <RefundPolicy /> */}
-        {/* </Modal> */}
-        {/* )} */}
       </React.Fragment>
     );
   }

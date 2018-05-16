@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import {
   stateslist,
@@ -15,7 +15,7 @@ import {
   Modal,
 } from 'react/components/common';
 
-export class CartForm extends Component {
+class CartForm extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -370,13 +370,6 @@ export class CartForm extends Component {
     );
   }
 }
-
-// CartForm = reduxForm({
-//   form: 'CartForm',
-//   validate: cartFormValidator,
-// })(CartForm);
-//
-// export { CartForm };
 
 export default reduxForm({
   form: 'CartForm',

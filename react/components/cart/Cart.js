@@ -5,7 +5,7 @@ import { Spinner } from 'react/components/common';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
 import { ChooseProductsForm } from './ChooseProductsForm';
-import { CartForm } from './CartForm';
+import CartForm from './CartForm';
 
 class Cart extends PureComponent {
   constructor(props) {
@@ -113,16 +113,10 @@ class Cart extends PureComponent {
     );
   }
 }
-
-Cart = withRouter(Cart);
-
 function mapStateToProps(state) {
   return {
     sessionId: state.auth.sessionId,
     submitStatus: state.order.submitLeadsFormStatus,
   };
 }
-
-Cart = connect(mapStateToProps, { ...OrderActions })(Cart);
-
-export { Cart };
+export default connect(mapStateToProps, { ...OrderActions })(withRouter(Cart));
