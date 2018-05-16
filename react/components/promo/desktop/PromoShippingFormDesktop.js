@@ -44,14 +44,14 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         <Field
           component={TextField}
           name="firstName"
-          label="First name*:"
-          placeholder="First Name"
+          label="First Name*:"
+          placeholder="First name"
         />
         <Field
           component={TextField}
           name="lastName"
-          label="Last name*:"
-          placeholder="Last Name"
+          label="Last Name*:"
+          placeholder="Last name"
         />
         <Field
           component={AddressField}
