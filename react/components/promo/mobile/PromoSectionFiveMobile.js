@@ -55,16 +55,15 @@ class PromoSectionFiveMobile extends React.PureComponent {
         </p>
         <div
           className="wistia_responsive_padding"
-          style={{ padding: '56.25% 0 0 0', position: 'relative' }}
+          style={{ padding: '0 0 0 0', position: 'relative' }}
         >
           <div
             className="wistia_responsive_wrapper"
             style={{
-              height: '100%',
+              height: '300px',
               left: 0,
-              position: 'absolute',
+              position: 'relative',
               top: 0,
-              width: '100%',
             }}
           >
             <iframe
@@ -73,15 +72,15 @@ class PromoSectionFiveMobile extends React.PureComponent {
               allowTransparency="true"
               frameBorder="0"
               scrolling="no"
-              className="wistia_embed"
+              className="wistia_embed vedio"
               name="wistia_embed"
               allowFullScreen="true"
               mozallowfullscreen="true"
               webkitallowfullscreen="true"
               oallowfullscreen="true"
               msallowfullscreen="true"
-              width="100%"
-              height="100%"
+              width="517px"
+              height="300px"
             />
           </div>
         </div>

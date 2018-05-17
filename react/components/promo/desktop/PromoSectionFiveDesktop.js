@@ -66,11 +66,11 @@ class PromoSectionFiveDesktop extends React.PureComponent {
               <div
                 className="wistia_responsive_wrapper"
                 style={{
-                  height: '100%',
+                  height: '277px',
                   left: 0,
                   position: 'absolute',
                   top: 0,
-                  width: '100%',
+                  width: '490px',
                 }}
               >
                 <iframe
@@ -86,8 +86,8 @@ class PromoSectionFiveDesktop extends React.PureComponent {
                   webkitallowfullscreen="true"
                   oallowfullscreen="true"
                   msallowfullscreen="true"
-                  width="100%"
-                  height="100%"
+                  width="490px"
+                  height="277px"
                 />
               </div>
             </div>
