@@ -91,7 +91,7 @@ class PromoThankyouDesktopComponent extends React.PureComponent {
                   Order Placed:{' '}
                   <span>{moment().format('dddd, MMM DD, YYYY')}</span>
                   <br />
-                  Order Number: <span>341160</span>
+                  Order Number: <span>{order.clientOrderId}</span>
                   <br />
                   Estimated Delivery Date:{' '}
                   <span>
