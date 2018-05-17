@@ -9,17 +9,18 @@ class SuccessModal extends React.PureComponent {
     const $ = window.jQuery;
     $('#animatedModal').fancybox();
   }
+
   componentDidUpdate() {
     const $ = window.jQuery;
     if (this.props.visible === true) {
       $.fancybox.open({
         src: '#animatedModal',
         type: 'inline',
+        modal: true,
       });
     } else {
       $.fancybox.close({
         src: '#animatedModal',
-        type: 'inline',
       });
     }
   }
