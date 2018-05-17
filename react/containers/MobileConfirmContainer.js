@@ -351,6 +351,14 @@ class MobileConfirmContainer extends React.PureComponent {
   }
 }
 
+MobileConfirmContainer = withRouter(MobileConfirmContainer); // eslint-disable-line
+
+// eslint-disable-next-line
+MobileConfirmContainer = reduxForm({
+  form: 'MobileConfirmForm',
+  validate: billingFormValidator,
+})(MobileConfirmContainer);
+
 function mapStateToProps(reduxState, ownProps) {
   const { productId } = ownProps.url.query;
   const pack = packages.find(p => String(p.id) === String(productId));
@@ -386,12 +394,6 @@ function mapStateToProps(reduxState, ownProps) {
 
 const MobileConfirmContainerPage = connect(mapStateToProps, {
   ...OrderActions,
-})(
-  reduxForm({
-    form: 'MobileConfirmForm',
-    validate: billingFormValidator,
-  })(MobileConfirmContainer),
-  withRouter(MobileConfirmContainer),
-);
+})(MobileConfirmContainer);
 
 export { MobileConfirmContainer, MobileConfirmContainerPage };
