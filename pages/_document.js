@@ -19,10 +19,6 @@ export default class MyDocument extends Document {
           />
           <script
             type="text/javascript"
-            src="/static/assets/js/libs/jquery.accordion.js"
-          />
-          <script
-            type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"
           />
           <link

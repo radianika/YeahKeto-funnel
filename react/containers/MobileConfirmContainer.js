@@ -384,10 +384,14 @@ function mapStateToProps(reduxState, ownProps) {
   };
 }
 
-export default connect(mapStateToProps, { ...OrderActions })(
+const MobileConfirmContainerPage = connect(mapStateToProps, {
+  ...OrderActions,
+})(
   reduxForm({
     form: 'MobileConfirmForm',
     validate: billingFormValidator,
   })(MobileConfirmContainer),
   withRouter(MobileConfirmContainer),
 );
+
+export { MobileConfirmContainer, MobileConfirmContainerPage };

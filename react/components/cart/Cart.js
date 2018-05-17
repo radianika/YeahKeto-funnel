@@ -4,8 +4,8 @@ import { withRouter } from 'next/router';
 import { Spinner } from 'react/components/common';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
+import { CartFormContainer } from './CartForm';
 import { ChooseProductsForm } from './ChooseProductsForm';
-import CartForm from './CartForm';
 
 class Cart extends PureComponent {
   constructor(props) {
@@ -103,7 +103,7 @@ class Cart extends PureComponent {
                     className="confi-img"
                   />
                 </div>
-                <CartForm onSubmit={this.submit} />
+                <CartFormContainer onSubmit={this.submit} />
               </div>
             </div>
           </div>
@@ -113,10 +113,15 @@ class Cart extends PureComponent {
     );
   }
 }
+
 function mapStateToProps(state) {
   return {
     sessionId: state.auth.sessionId,
     submitStatus: state.order.submitLeadsFormStatus,
   };
 }
-export default connect(mapStateToProps, { ...OrderActions })(withRouter(Cart));
+const CartPageContainer = connect(mapStateToProps, { ...OrderActions })(
+  withRouter(Cart),
+);
+
+export { Cart, CartPageContainer };

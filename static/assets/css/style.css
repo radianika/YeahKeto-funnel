@@ -236,7 +236,6 @@ ul.menu-list li a.active {
 
 .slick-list.dragging {
   cursor: pointer;
-  cursor: hand;
 }
 
 .slick-slider .slick-track,
@@ -277,41 +276,41 @@ ul.menu-list li a.active {
   min-height: 1px;
 }
 
+/*[dir="rtl"] .slick-slide {*/
 [dir="rtl"] .slick-slide {
-  [dir="rtl"] .slick-slide {
-    float: right;
-  }
-
-  .slick-slide img {
-    display: block;
-  }
-
-  .slick-slide.slick-loading img {
-    display: none;
-  }
-
-  .slick-slide.dragging img {
-    pointer-events: none;
-  }
-
-  .slick-initialized .slick-slide {
-    display: block;
-  }
-
-  .slick-loading .slick-slide {
-    visibility: hidden;
-  }
-
-  .slick-vertical .slick-slide {
-    display: block;
-    height: auto;
-    border: 1px solid transparent;
-  }
-
-  .slick-arrow.slick-hidden {
-    display: none;
-  }
+  float: right;
 }
+
+.slick-slide img {
+  display: block;
+}
+
+.slick-slide.slick-loading img {
+  display: none;
+}
+
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+  display: block;
+}
+
+.slick-loading .slick-slide {
+  visibility: hidden;
+}
+
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+  display: none;
+}
+/*}*/
 
 ul.strip-list {
   display: inline-block;
@@ -643,7 +642,7 @@ ul.sec2-list li .btn {
   line-height: 28px;
   text-align: left;
   padding: 15px 60px 15px 25px;
-  width: auto;
+  /*width: auto;*/
   letter-spacing: -0.5px;
   background: #fff;
   width: 100%;
@@ -1500,7 +1499,7 @@ p.sub-list-content {
   /********PRODUCT SECTION********/
 
   .slick-track {
-    width: 0px;
+    width: 0;
   }
 
   /***************FAQ PAGE**************/
@@ -1567,9 +1566,8 @@ p.sub-list-content {
 
   .prd-sec1-txt6 {
     margin-right: 0;
-    padding: 0;
+    padding: 0 0 15px 0;
     border: none;
-    padding-bottom: 15px;
     float: left;
     width: 100%;
   }
@@ -1901,7 +1899,6 @@ table.tbl2 {
   overflow: hidden;
   background: #fff;
   border: 1px solid #6d6d6d;
-  position: relative;
   box-sizing: border-box;
   border-radius: 4px;
   padding-left: 45px;
@@ -2462,8 +2459,7 @@ table.tbl2 {
   transition: -webkit-transform 0.3s ease-out;
   -o-transition: -o-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
-  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out,
-    -o-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out, -o-transform 0.3s ease-out;
   -webkit-transform: translate(0, -25%);
   -ms-transform: translate(0, -25%);
   -o-transform: translate(0, -25%);
@@ -2511,7 +2507,7 @@ table.tbl2 {
 .modal-title {
   margin: 0;
   line-height: 1.5;
-  text-align: "center";
+  text-align: center;
 }
 
 .modal-header::after {
@@ -2536,7 +2532,7 @@ table.tbl2 {
 
 .comment-box {
   height: 100px !important;
-  padding-left: 0px !important;
+  padding-left: 0 !important;
 }
 
 .modal-body p {
@@ -2571,7 +2567,7 @@ table.tbl2 {
   letter-spacing: -0.5px;
 }
 .Collapsible__contentOuter {
-  height: 0px;
+  height: 0;
   transition: height 400ms linear 0s;
   overflow: hidden;
   box-sizing: border-box;
@@ -2581,7 +2577,7 @@ table.tbl2 {
   line-height: 28px;
   text-align: left;
   letter-spacing: -0.5px;
-  background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+  background: rgb(255, 255, 255) none repeat scroll 0 0;
   width: 100%;
 }
 .Collapsible__contentInner {
@@ -2599,4 +2595,4 @@ table.tbl2 {
 .is-closed {
   background: url(../images/acord2.png) 98% center no-repeat;
 }
-/* accordion faq end */
+/* accordion faq end     */
