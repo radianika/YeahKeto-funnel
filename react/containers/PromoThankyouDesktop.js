@@ -8,6 +8,7 @@ import {
   getTyProductQuantity,
 } from 'helpers';
 import { OrderActions } from 'redux/actions';
+import moment from 'moment';
 
 class PromoThankyouDesktopComponent extends React.PureComponent {
   render() {
@@ -87,11 +88,17 @@ class PromoThankyouDesktopComponent extends React.PureComponent {
             <div className="ty-left">
               <div className="opt-top">
                 <p className="order-top">
-                  Order Placed: <span>Thursday, May 3, 2018</span>
+                  Order Placed:{' '}
+                  <span>{moment().format('dddd, MMM DD, YYYY')}</span>
                   <br />
                   Order Number: <span>341160</span>
                   <br />
-                  Estimated Delivery Date: <span>Monday, May 7, 2018</span>
+                  Estimated Delivery Date:{' '}
+                  <span>
+                    {moment()
+                      .add(4, 'days')
+                      .format('dddd, MMM DD, YYYY')}
+                  </span>
                 </p>
               </div>
               <div className="itemordered-heading">Items Ordered</div>
