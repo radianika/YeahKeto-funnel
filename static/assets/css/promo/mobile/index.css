@@ -17,13 +17,13 @@ body {
 }
 
 div,
-ul,
+form,
+img,
+input,
 li,
 p,
-img,
-form,
-input,
-textarea {
+textarea,
+ul {
   margin: 0;
   padding: 0;
 }
@@ -57,13 +57,13 @@ li {
 start section1
 ----------------*/
 
-#section-one,
-#section-two,
-#section-three,
-#section-four,
 #section-five,
+#section-four,
+#section-one,
+#section-seven,
 #section-six,
-#section-seven {
+#section-three,
+#section-two {
   width: 100%;
   margin: 0 auto;
   display: block;
@@ -85,7 +85,7 @@ start section1
 }
 
 .s1-hd {
-  padding: 30px 0 0 0;
+  padding: 30px 0 0;
   margin: 0 0 0 167px;
   display: inline-block;
 }
@@ -101,7 +101,7 @@ start section1
 
 ul.s1-list {
   margin: 24px 0 0 233px;
-  padding: 0 0 0 0;
+  padding: 0;
 }
 
 ul.s1-list li {
@@ -111,7 +111,7 @@ ul.s1-list li {
   line-height: 33px;
   text-align: left;
   color: #263238;
-  margin: 0 0 0 0;
+  margin: 0;
   padding: 4px 0 0 10px;
 }
 
@@ -126,26 +126,26 @@ ul.s1-list li span {
 }
 
 ul.s1-list li:nth-child(2) {
-  margin: 11px 0 0 0;
+  margin: 11px 0 0;
 }
 
 ul.s1-list li:nth-child(3) {
-  margin: 11px 0 0 0;
+  margin: 11px 0 0;
 }
 
 ul.s1-list li:nth-child(4) {
-  margin: 11px 0 0 0;
+  margin: 11px 0 0;
 }
 
 .as-seen {
   display: block;
-  margin: 24px auto 0 auto;
+  margin: 24px auto 0;
 }
 
 .s1-bottle {
   position: absolute;
   top: 345px;
-  left: 0px;
+  left: 0;
 }
 
 /*----------------
@@ -163,7 +163,7 @@ start section2
   color: #395761;
   text-align: center;
   letter-spacing: -1px;
-  padding: 45px 0 15px 0;
+  padding: 45px 0 15px;
   border-bottom: 2px dotted #e2e2e2;
 }
 
@@ -180,7 +180,7 @@ start section2
 
 .s2-img {
   display: block;
-  margin: 5px auto 0 auto;
+  margin: 5px auto 0;
 }
 
 .s2-txt1 {
@@ -189,7 +189,7 @@ start section2
   text-align: center;
   color: #2d2d2d;
   margin: 0 auto;
-  padding: 10px 20px 0 20px;
+  padding: 10px 20px 0;
 }
 
 .s2-txt3 {
@@ -199,8 +199,8 @@ start section2
   text-align: center;
   color: #058a4e;
   text-transform: uppercase;
-  margin: 0 0 0 0;
-  padding: 33px 0 0 0;
+  margin: 0;
+  padding: 33px 0 0;
 }
 
 .s2-txt4 {
@@ -210,17 +210,17 @@ start section2
   line-height: 50px;
   text-align: center;
   color: #fff;
-  margin: 5px 0 0 0;
-  padding: 5px 0 0 0;
+  margin: 5px 0 0;
+  padding: 5px 0 0;
 }
 
 ul.s2-list {
   margin: 30px 0 0 10px;
-  padding: 0 0 0 0;
+  padding: 0;
 }
 
 ul.s2-list li {
-  background: url(../../../../promo/mobile/images/s2-line.jpg) bottom center
+  background: url("../../../../promo/mobile/images/s2-line.jpg") bottom center
     no-repeat;
 
   display: inline-block;
@@ -233,7 +233,7 @@ ul.s2-list li {
   text-transform: uppercase;
   width: 21%;
   margin: 0 16px 0 0;
-  padding: 0 0 14px 0;
+  padding: 0 0 14px;
 }
 
 ul.s2-list li span {
@@ -242,7 +242,7 @@ ul.s2-list li span {
 
 .s2-icons {
   display: block;
-  margin: 0 auto 14px auto;
+  margin: 0 auto 14px;
 }
 
 ul.s2-list li:nth-child(2) {
@@ -267,18 +267,18 @@ start section3
 }
 
 ul.s3-list {
-  margin: 30px 0 0 0;
-  padding: 0 0 0 0;
+  margin: 30px 0 0;
+  padding: 0;
 }
 
 ul.s3-list li {
   text-align: center;
-  margin: 50px auto 0 auto;
-  padding: 0 0 0 0;
+  margin: 50px auto 0;
+  padding: 0;
 }
 
-ul.s3-list li span,
-ul.s3-list li b {
+ul.s3-list li b,
+ul.s3-list li span {
   font-weight: 700;
   font-size: 32px;
   line-height: 50px;
@@ -292,7 +292,7 @@ ul.s3-list li b {
 
 .s3-icons {
   display: block;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
 }
 
 .s3-list-txt {
@@ -300,7 +300,7 @@ ul.s3-list li b {
   font-size: 30px;
   line-height: 40px;
   color: #2d2d2d;
-  padding: 0 60px 0 60px;
+  padding: 0 60px;
 }
 
 /*-----------------strip------------------*/
@@ -309,7 +309,7 @@ ul.s3-list li b {
   /*background: url(../../../../promo/mobile/images/strip-bg.jpg) center top no-repeat;*/
   height: 125px;
   display: block;
-  margin: 20px auto 0 auto;
+  margin: 20px auto 0;
 }
 
 .strip-txt {
@@ -317,12 +317,12 @@ ul.s3-list li b {
   line-height: 33px;
   text-align: center;
   color: #fff;
-  margin: 0 0 0 0;
-  padding: 14px 0 0 0;
+  margin: 0;
+  padding: 14px 0 0;
 }
 
-.strip-txt span,
-.strip-txt b {
+.strip-txt b,
+.strip-txt span {
   font-weight: 600;
   font-size: 28px;
   line-height: 36px;
@@ -343,7 +343,7 @@ start section4
 
 ul.s4-list1 {
   margin: 10px 0 0 16px;
-  padding: 0 0 0 0;
+  padding: 0;
 }
 
 ul.s4-list1 li {
@@ -377,7 +377,7 @@ ul.s4-list1 li:nth-child(3) {
   /*background: url(../../../../promo/mobile/images/s4-icon3.jpg) left 8px no-repeat;*/
   /*margin: 0 0 0 15px;*/
   border-right: none;
-  padding: 15px 0 0 0;
+  padding: 15px 0 0;
 }
 
 ul.s4-list1 li:nth-child(3) i {
@@ -385,8 +385,8 @@ ul.s4-list1 li:nth-child(3) i {
 }
 
 ul.s4-list2 {
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
+  margin: 0;
+  padding: 0;
 }
 
 ul.s4-list2 li {
@@ -394,8 +394,8 @@ ul.s4-list2 li {
   font-size: 30px;
   line-height: 40px;
   color: #2d2d2d;
-  margin: 0 0 0 0;
-  padding: 60px 75px 0 75px;
+  margin: 0;
+  padding: 60px 75px 0;
 }
 
 ul.s4-list2 li span {
@@ -409,7 +409,7 @@ ul.s4-list2 li span {
 .s4-icons {
   width: 130px;
   display: block;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
 }
 
 /*----------------
@@ -426,14 +426,14 @@ start section5
   text-align: center;
   color: #2d2d2d;
   margin: 0 auto;
-  padding: 20px 20px 0 20px;
+  padding: 20px 20px 0;
 }
 
 .vedio {
   width: 517px;
   height: 300px;
   display: block;
-  margin: 30px auto 0 auto;
+  margin: 30px auto 0;
   position: relative;
   border: 4px solid #fff;
 
@@ -442,7 +442,7 @@ start section5
 }
 
 .limited-offer {
-  float: left;
+  /* float: left;
   width: 100%;
   color: #ff0000;
   font-size: 36px;
@@ -450,13 +450,24 @@ start section5
   text-align: center;
   padding-right: 15px;
   box-sizing: border-box;
-  margin-top: 35px;
+  margin-top: 35px; */
+
+  float: left;
+  width: 100%;
+  color: #ff0000;
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+  padding-right: 15px;
+  box-sizing: border-box;
+  margin-top: 100px;
 }
 
 .vdo-arw {
   position: absolute;
-  left: 0px;
-  top: 650px;
+  left: 0;
+  /* top: 650px; */
+  top: 590px;
 }
 
 #clockdiv {
@@ -466,6 +477,7 @@ start section5
   margin-top: 14px;
   padding-right: 15px;
   box-sizing: border-box;
+  display: none;
 }
 
 #clockdiv > div {
@@ -516,7 +528,7 @@ start section5
   color: #2d2d2d;
   font-style: italic;
   margin: 0 auto;
-  padding: 20px 60px 0 60px;
+  padding: 20px 60px 0;
 }
 
 .s5-txt3 {
@@ -527,7 +539,7 @@ start section5
   font-weight: 700;
   text-transform: uppercase;
   margin: 0 auto;
-  padding: 20px 0 0 0;
+  padding: 20px 0 0;
 }
 
 .s5-txt4 {
@@ -537,7 +549,7 @@ start section5
   color: #7a7979;
   font-style: italic;
   margin: 0 auto;
-  padding: 10px 0 0 0;
+  padding: 10px 0 0;
 }
 
 .s5-txt5 {
@@ -547,7 +559,7 @@ start section5
   line-height: 45px;
   text-align: center;
   color: #395761;
-  margin: 30px auto -15px auto;
+  margin: 30px auto -15px;
   /*padding: 30px 0 0 0;*/
 }
 
@@ -559,17 +571,17 @@ start section5
 
 .s5-line {
   display: block;
-  margin: 10px auto 0 auto;
+  margin: 10px auto 0;
 }
 
 .s5-logos {
   display: block;
-  margin: 40px auto 0 auto;
+  margin: 40px auto 0;
 }
 
 .cnn {
   width: 50px;
-  margin: 0 0 0 0;
+  margin: 0;
 }
 
 /*----------------
@@ -583,7 +595,7 @@ start section6
 .t-box {
   /*background: url(../../../../promo/mobile/images/t-box.jpg) center top no-repeat;*/
   height: 1010px;
-  margin: 40px auto 0 auto;
+  margin: 40px auto 0;
 }
 
 .t-txt1 {
@@ -593,8 +605,8 @@ start section6
   text-align: center;
   color: #009b5b;
   font-style: italic;
-  margin: 0 auto 0 auto;
-  padding: 79px 60px 0 60px;
+  margin: 0 auto;
+  padding: 79px 60px 0;
 }
 
 .t-txt2 {
@@ -603,17 +615,17 @@ start section6
   text-align: center;
   color: #2d2d2d;
   margin: 0 auto;
-  padding: 12px 75px 0 75px;
+  padding: 12px 75px 0;
 }
 
 .t-img1 {
   display: block;
-  margin: 4px auto 0 auto;
+  margin: 4px auto 0;
 }
 
 .stars {
   display: block;
-  margin: 6px auto 0 auto;
+  margin: 6px auto 0;
 }
 
 .t-txt3 {
@@ -623,7 +635,7 @@ start section6
   color: #979797;
   text-transform: uppercase;
   margin: 0 auto;
-  padding: 19px 0 0 0;
+  padding: 19px 0 0;
 }
 
 .t-txt3 span {
@@ -637,8 +649,9 @@ start section7
 ----------------*/
 
 #section-seven {
-  /*background: url(../../../../promo/mobile/images/sec7.jpg) center top no-repeat;*/
-  height: 745px;
+  background: url("../../../../promo/mobile/images/sec7.jpg") center top
+    no-repeat;
+  height: 800px;
 }
 
 .s7-logo {
@@ -655,16 +668,16 @@ start section7
 /*==============================*/
 
 .btn {
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   display: block;
-  padding: 20px 0 0 0;
+  padding: 20px 0 0;
 }
 
 .legal {
   margin-top: -4px;
   color: white;
   text-align: center;
-  padding: 0 0px 0 0;
+  padding: 0;
   height: 340px;
 }
 
@@ -678,10 +691,10 @@ start section7
 
 #cta {
   max-width: 640px;
-  padding: 0 0% 0 0%;
+  padding: 0;
   background: #069852;
   position: fixed;
-  bottom: 0%;
+  bottom: 0;
   left: auto;
   z-index: 10;
   transition: bottom 1s;
@@ -695,8 +708,8 @@ start section7
   line-height: 27px;
   text-align: center;
   color: #000101;
-  margin: 0 0 0 0;
-  padding: 40px 10px 0 10px;
+  margin: 0;
+  padding: 40px 10px 0;
 }
 
 .ftr-txt a,
@@ -714,13 +727,13 @@ start shipping page
   height: 143px;
   position: relative;
   border-bottom: 1px solid #d6d6d6;
-  margin: 5px 0 0 0;
+  margin: 5px 0 0;
 }
 
 .spng-hd1 {
   position: relative;
   border-bottom: 1px solid #d6d6d6;
-  margin: 5px 0 0 0;
+  margin: 5px 0 0;
 }
 
 .spng-hd2 {
@@ -737,7 +750,7 @@ start shipping page
 .shipping-hd {
   display: block;
   margin: 0 auto;
-  padding: 17px 0 13px 0;
+  padding: 17px 0 13px;
 }
 
 div#trialsec1 {
@@ -761,11 +774,11 @@ div#trialsec2 {
   height: 94px;
   background: #ddf4ff;
   border-bottom: 1px solid #d6d6d6;
-  padding: 0% 0 3% 0;
+  padding: 0 0 3%;
 }
 
 .payment-top {
-  padding: 3% 0 4% 0;
+  padding: 3% 0 4%;
   text-align: center;
   margin: 0;
 }
@@ -776,8 +789,8 @@ div#trialsec2 {
   line-height: 30px;
   text-align: center;
   height: 60px;
-  margin: 0 0 10px 0;
-  padding: 2px 0 20px 0;
+  margin: 0 0 10px;
+  padding: 2px 0 20px;
   border-bottom: 1px solid #d6d6d6;
 }
 
@@ -799,19 +812,19 @@ div#trialsec2 {
 }
 
 .frmelmnts3 {
-  margin: 0% 0 3% 0;
+  margin: 0 0 3%;
 }
 
 .frmelmnts2 {
-  margin: 3% auto 2% auto;
+  margin: 3% auto 2%;
   clear: both;
   display: block;
   box-sizing: border-box;
   position: relative;
 }
 
-.frmelmnts2 label,
 .frmelmnts1 label,
+.frmelmnts2 label,
 .frmelmnts3 label {
   font-size: 20px;
   color: #000000;
@@ -819,13 +832,13 @@ div#trialsec2 {
   line-height: 25px;
   margin-right: 2%;
   display: block;
-  margin: 17px 0 9px 0;
+  margin: 17px 0 9px;
 }
 
-.frmelmnts2 input,
-.frmelmnts2 select,
 .frmelmnts1 input,
 .frmelmnts1 select,
+.frmelmnts2 input,
+.frmelmnts2 select,
 .frmelmnts3 input,
 .frmelmnts3 select {
   width: 94%;
@@ -868,7 +881,7 @@ PAYMENT PAGE CSS
 .conf-box {
   background: #dff7ff;
   width: 94%;
-  margin: 25px auto 0 auto;
+  margin: 25px auto 0;
   border: 2px solid #0b98c7;
   height: 50px;
 }
@@ -880,7 +893,7 @@ PAYMENT PAGE CSS
   color: #032842;
   text-align: center;
   margin: 0 auto;
-  padding: 10px 0 0 0;
+  padding: 10px 0 0;
 }
 
 .conf-box-txt span {
@@ -896,14 +909,14 @@ PAYMENT PAGE CSS
   text-align: left;
   margin: 0;
   position: relative;
-  padding: 30px 0 0 0;
+  padding: 30px 0 0;
 }
 
 .smrhding {
   height: 60px;
   border-bottom: 1px solid #d6d6d6;
 
-  background: url(../../../../promo/mobile/images/smryarrow.png) 555px center
+  background: url("../../../../promo/mobile/images/smryarrow.png") 555px center
     no-repeat;
 
   position: relative;
@@ -913,14 +926,14 @@ PAYMENT PAGE CSS
   height: 60px;
   border-bottom: 1px solid #d6d6d6;
 
-  background: url(../../../../promo/mobile/images/smryarrow2.png) 555px center
+  background: url("../../../../promo/mobile/images/smryarrow2.png") 555px center
     no-repeat;
 
   position: relative;
 }
 
 .rotate {
-  background: url(../../../../promo/mobile/images/smryarrow2.png) 565px center
+  background: url("../../../../promo/mobile/images/smryarrow2.png") 565px center
     no-repeat;
 }
 
@@ -938,7 +951,7 @@ PAYMENT PAGE CSS
 .detailbox {
   height: 258px;
   display: table;
-  margin: 13px auto 0 auto;
+  margin: 13px auto 0;
   width: 100%;
 }
 
@@ -954,13 +967,13 @@ PAYMENT PAGE CSS
 }
 
 .lftbtl {
-  margin: 18px auto 18px auto;
+  margin: 18px auto;
   display: block;
 }
 
 .rgtbox {
   width: 370px;
-  padding: 12px 0 14px 0px;
+  padding: 12px 0 14px;
   margin: 0 0 0 18px;
 }
 
@@ -976,7 +989,7 @@ ul.rgtlist1 li {
   line-height: 26px;
   text-align: left;
   color: #000000;
-  padding: 0 8px 16px 8px;
+  padding: 0 8px 16px;
   width: 80%;
   box-sizing: border-box;
   border-bottom: 1px solid #dedede;
@@ -992,8 +1005,8 @@ ul.rgtlist1 li span {
 }
 
 ul.rgtlist2 {
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
+  margin: 0;
+  padding: 0;
 }
 
 ul.rgtlist2 li {
@@ -1026,7 +1039,7 @@ ul.rgtlist2 li:nth-child(6) {
   font-weight: 700;
   border-bottom: none;
   font-size: 22px;
-  margin: 10px 0 0 0;
+  margin: 10px 0 0;
 }
 
 .sameas {
@@ -1034,14 +1047,14 @@ ul.rgtlist2 li:nth-child(6) {
   font-size: 19px;
   color: #000;
   line-height: 23px;
-  padding: 40px 0 0px 0;
-  margin: 0 0 20px 0;
+  padding: 40px 0 0;
+  margin: 0 0 20px;
   position: relative;
   text-align: center;
 }
 
 .card {
-  margin: 28px 0 0 0;
+  margin: 28px 0 0;
 }
 
 .trialform {
@@ -1053,7 +1066,7 @@ ul.rgtlist2 li:nth-child(6) {
 .trialfrmmid {
   display: table;
   width: 90%;
-  padding: 0 0;
+  padding: 0;
   margin: 0 5.5%;
 }
 
@@ -1074,7 +1087,7 @@ ul.rgtlist2 li:nth-child(6) {
 
 .shpbtm {
   background: #069852;
-  padding: 15px 0 13px 0;
+  padding: 15px 0 13px;
   margin-top: 30px;
 }
 
@@ -1087,16 +1100,16 @@ ul.rgtlist2 li:nth-child(6) {
 .ship-btn {
   display: block;
   margin: 0 auto;
-  padding: 0 0 0 0;
+  padding: 0;
 }
 
 .cvv {
   float: right;
-  margin: -3px 0 0 0;
+  margin: -3px 0 0;
 }
 
 .loogs {
-  margin: 10px auto 0 auto;
+  margin: 10px auto 0;
   display: block;
 }
 
@@ -1111,8 +1124,8 @@ start shipping pageselect-package
   color: #000;
   text-align: center;
   line-height: 40px;
-  margin: 0 0 0 0;
-  padding: 8px 0 0 0;
+  margin: 0;
+  padding: 8px 0 0;
 }
 
 .border-bottom {
@@ -1121,7 +1134,7 @@ start shipping pageselect-package
 
 .select-box1 {
   height: 324px;
-  margin: 0 0 0 0;
+  margin: 0;
 }
 
 .slt-box-hd {
@@ -1170,7 +1183,7 @@ start shipping pageselect-package
 }
 
 .pkgtype-hdbox {
-  margin: 28px 0 0 0;
+  margin: 28px 0 0;
 }
 
 .pkgtype-hding,
@@ -1193,8 +1206,8 @@ start shipping pageselect-package
   line-height: 26px;
   text-align: center;
   color: #fff;
-  margin: 0 0 0 0;
-  padding: 20px 0 0 0;
+  margin: 0;
+  padding: 20px 0 0;
 }
 
 .rd-strk {
@@ -1205,7 +1218,7 @@ start shipping pageselect-package
 .pkgcont-price {
   font-size: 45px;
   line-height: 45px;
-  padding: 7px 0px 0 0;
+  padding: 7px 0 0;
   position: relative;
   color: #fff;
   font-weight: 700;
@@ -1219,13 +1232,13 @@ start shipping pageselect-package
 .box-mid-right-box {
   background: #283c91;
   border-radius: 6px;
-  margin: 17px auto 0 auto;
-  padding: 0 0 14px 0;
+  margin: 17px auto 0;
+  padding: 0 0 14px;
 }
 
 .ship-icon {
   display: block;
-  margin: 18px auto 0 auto;
+  margin: 18px auto 0;
 }
 
 .box-mid-right {
@@ -1233,7 +1246,7 @@ start shipping pageselect-package
 }
 
 .product-box1 {
-  margin: 19px 0 00px;
+  margin: 19px 0 0;
 }
 
 .product-box2 {
@@ -1249,12 +1262,12 @@ start shipping pageselect-package
 .logo {
   display: block;
   margin: 0 auto;
-  padding: 15px 0 0 0;
+  padding: 15px 0 0;
 }
 
 .up-strip {
   background: #283c91;
-  margin: 20px 0 0 0;
+  margin: 20px 0 0;
 }
 
 .strip-txt1 {
@@ -1265,7 +1278,7 @@ start shipping pageselect-package
   color: #fff;
   text-transform: uppercase;
   margin: 0 auto;
-  padding: 10px 0 0 0;
+  padding: 10px 0 0;
 }
 
 .strip-txt2 {
@@ -1273,8 +1286,8 @@ start shipping pageselect-package
   line-height: 26px;
   text-align: center;
   color: #fff;
-  margin: 0 auto 0 auto;
-  padding: 2px 0 10px 0;
+  margin: 0 auto;
+  padding: 2px 0 10px;
 }
 
 .strip-txt2 b {
@@ -1288,7 +1301,7 @@ start shipping pageselect-package
   color: #fff;
   text-transform: uppercase;
   margin: 0 auto;
-  padding: 10px 70px 10px 70px;
+  padding: 10px 70px;
 }
 
 .strip-txt3 b {
@@ -1301,9 +1314,9 @@ start shipping pageselect-package
   text-align: center;
   font-weight: 700;
   color: #000000;
-  margin: 30px auto 0 auto;
+  margin: 30px auto 0;
   width: 491px;
-  padding: 6px 0 0 0;
+  padding: 6px 0 0;
 }
 
 .up-txt1 span {
@@ -1318,8 +1331,8 @@ start shipping pageselect-package
   line-height: 31px;
   text-align: center;
   font-weight: 700;
-  margin: 0 auto 0 auto;
-  padding: 0 0 0 0;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .price-box {
@@ -1327,7 +1340,7 @@ start shipping pageselect-package
   height: 207px;
   width: 508px;
   float: right;
-  margin: 60px 0 0 0;
+  margin: 60px 0 0;
 }
 
 .price-box-txt1 {
@@ -1336,8 +1349,8 @@ start shipping pageselect-package
   line-height: 30px;
   font-weight: 900;
   color: #ffea00;
-  margin: 0 auto 0 auto;
-  padding: 21px 0px 0 0px;
+  margin: 0 auto;
+  padding: 21px 0 0;
 }
 
 .price-box-txt2 {
@@ -1345,8 +1358,8 @@ start shipping pageselect-package
   text-align: center;
   line-height: 36px;
   color: #fff;
-  margin: 10px auto 0 auto;
-  padding: 0 0 0 0;
+  margin: 10px auto 0;
+  padding: 0;
 }
 
 .price-box-txt3 {
@@ -1355,8 +1368,8 @@ start shipping pageselect-package
   line-height: 33px;
   font-weight: 900;
   color: #ffea00;
-  margin: 20px auto 0 auto;
-  padding: 0 0 0 0;
+  margin: 20px auto 0;
+  padding: 0;
 }
 
 .arrow-left {
@@ -1379,7 +1392,7 @@ start shipping pageselect-package
 
 .ord-btn {
   display: block;
-  margin: 30px auto 0 auto;
+  margin: 30px auto 0;
 }
 
 .thanks-txt {
@@ -1388,8 +1401,8 @@ start shipping pageselect-package
   line-height: 15px;
   text-align: center;
   color: #9d9d9d;
-  margin: 5px 0 0 0;
-  padding: 0 0 0 0;
+  margin: 5px 0 0;
+  padding: 0;
 }
 
 .thanks-txt a,
@@ -1399,7 +1412,7 @@ start shipping pageselect-package
 }
 
 .cut-icon {
-  margin: 4px 0 -2px 0;
+  margin: 4px 0 -2px;
 }
 
 .up-txt3 {
@@ -1408,7 +1421,7 @@ start shipping pageselect-package
   text-align: center;
   color: #1b1b1b;
   margin: 0 auto;
-  padding: 19px 10px 0 10px;
+  padding: 19px 10px 0;
 }
 
 .box1,
@@ -1417,34 +1430,40 @@ start shipping pageselect-package
 .box4,
 .box5,
 .box6 {
-  background: url(../../../../promo/mobile/images/box1.png) center top no-repeat;
+  background: url("../../../../promo/mobile/images/box1.png") center top
+    no-repeat;
   width: 549px;
   height: 437px;
-  margin: 30px auto 0 auto;
+  margin: 30px auto 0;
 }
 
 .box4 {
-  background: url(../../../../promo/mobile/images/box4.png) center top no-repeat;
+  background: url("../../../../promo/mobile/images/box4.png") center top
+    no-repeat;
 }
 
 .box2 {
-  background: url(../../../../promo/mobile/images/box2.png) center top no-repeat;
-  margin: 10px auto 0 auto;
+  background: url("../../../../promo/mobile/images/box2.png") center top
+    no-repeat;
+  margin: 10px auto 0;
 }
 
 .box5 {
-  background: url(../../../../promo/mobile/images/box5.png) center top no-repeat;
-  margin: 10px auto 0 auto;
+  background: url("../../../../promo/mobile/images/box5.png") center top
+    no-repeat;
+  margin: 10px auto 0;
 }
 
 .box3 {
-  background: url(../../../../promo/mobile/images/box3.png) center top no-repeat;
-  margin: 10px auto 0 auto;
+  background: url("../../../../promo/mobile/images/box3.png") center top
+    no-repeat;
+  margin: 10px auto 0;
 }
 
 .box6 {
-  background: url(../../../../promo/mobile/images/box6.png) center top no-repeat;
-  margin: 10px auto 0 auto;
+  background: url("../../../../promo/mobile/images/box6.png") center top
+    no-repeat;
+  margin: 10px auto 0;
 }
 
 .up-box-txt1 {
@@ -1455,7 +1474,7 @@ start shipping pageselect-package
   color: #0f75bc;
   text-transform: uppercase;
   margin: 0 auto;
-  padding: 245px 0 0 0;
+  padding: 245px 0 0;
 }
 
 .up-box-txt2 {
@@ -1464,7 +1483,7 @@ start shipping pageselect-package
   text-align: center;
   color: #000000;
   margin: 0 auto;
-  padding: 10px 20px 0 20px;
+  padding: 10px 20px 0;
 }
 
 .position {
@@ -1473,7 +1492,7 @@ start shipping pageselect-package
 
 .up-bottom-line {
   display: block;
-  margin: 15px auto 0 auto;
+  margin: 15px auto 0;
 }
 
 /*--------------------thank you--------------------*/
@@ -1492,13 +1511,13 @@ start shipping pageselect-package
   font-size: 17px;
   float: left;
   text-align: left;
-  padding: 0px 0 0 23px;
+  padding: 0 0 0 23px;
   color: #5a5a5a;
-  margin: -14px 0 0 0;
+  margin: -14px 0 0;
 }
 
 hr {
-  margin: 21px 0 0 0;
+  margin: 21px 0 0;
 }
 
 .thnk-order-p1 {
@@ -1514,10 +1533,10 @@ hr {
   font-size: 18px;
   color: #5a5a5a;
   line-height: 26px;
-  padding: 0px 0 0 32px;
+  padding: 0 0 0 32px;
   font-weight: 700;
   text-align: left;
-  margin: -12px 0 0 0;
+  margin: -12px 0 0;
 }
 
 .thnk-order-p2 span {
@@ -1525,14 +1544,14 @@ hr {
 }
 
 .thank-middle {
-  margin: 0 0 0 0;
+  margin: 0;
   width: 90%;
   margin: 43px auto;
 }
 
 .thnk-rgt {
   width: 100%;
-  margin: -15px 0px 0 0;
+  margin: -15px 0 0;
   border-top: 1px solid #dbdada;
 }
 
@@ -1549,7 +1568,7 @@ hr {
   font-size: 16px;
   color: #5a5a5a;
   font-weight: 700;
-  padding: 0 0 0 0;
+  padding: 0;
   line-height: 25px;
 }
 
@@ -1561,12 +1580,12 @@ hr {
   font-size: 16px;
   line-height: 20px;
   color: #5a5a5a;
-  padding: 0 0 10px 0;
+  padding: 0 0 10px;
 }
 
 .txt1-tnk2 span {
   color: #004f7e;
-  padding: 0 0 0 0px;
+  padding: 0;
   float: right;
 }
 
@@ -1584,7 +1603,6 @@ hr {
   animation-iteration-count: infinite;
   -webkit-animation-iteration-count: infinite;
 }
-
 @keyframes pulse {
   0% {
     transform: scale(0.9);
@@ -1601,7 +1619,6 @@ hr {
     opacity: 0.9;
   }
 }
-
 @-webkit-keyframes pulse {
   0% {
     -webkit-transform: scale(0.95);
@@ -1623,6 +1640,7 @@ hr {
 .modal-title {
   text-align: center;
 }
+
 .modal-body p {
   text-align: left;
 }
