@@ -8,6 +8,7 @@ import {
   getTyProductContainer,
 } from 'helpers';
 import { OrderActions } from 'redux/actions';
+import moment from 'moment';
 
 class PromoThankyouMobileComponent extends React.PureComponent {
   render() {
@@ -57,17 +58,15 @@ class PromoThankyouMobileComponent extends React.PureComponent {
             <div className="opt-top">
               <p className="order-top">
                 Order Placed:{' '}
-                <span>
-                  <script type="text/javascript">getDate(0);</script>Thursday,
-                  May 3, 2018
-                </span>
+                <span>{moment().format('dddd, MMM DD, YYYY')}</span>
                 <br />
-                Order Number: <span>341160</span>
+                Order Number: <span>{order.clientOrderId}</span>
                 <br />
                 Estimated Delivery Date:{' '}
                 <span>
-                  <script type="text/javascript">getDate(4);</script>Monday, May
-                  7, 2018
+                  {moment()
+                    .add(4, 'days')
+                    .format('dddd, MMM DD, YYYY')}
                 </span>
               </p>
             </div>

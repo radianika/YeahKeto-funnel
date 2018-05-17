@@ -93,24 +93,30 @@ const getSessionId = async (req, res) => {
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+const redirectToPromo = (orderId, res) => {
+  if (!orderId) {
+    res.redirect(`/promo/`);
+  }
+}
+
 app.prepare().then(() => {
   server.get('/cart', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     return app.render(req, res, '/cart', { sessionId });
   });
+
   server.get('/thankyou?', async (req, res) => {
     const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
-    if (requestAgent === 'desktop') {
-      res.redirect(`/promo/desktop/thankyou?orderId=${req.query.orderId}`);
-    }
-    if (requestAgent === 'mobile') {
-      res.redirect(`/promo/mobile/thankyou?orderId=${req.query.orderId}`);
-    }
+    const orderId = req.query.orderId;
+    redirectToPromo(orderId, res);
+    res.redirect(`/promo/${requestAgent}/thankyou?orderId=${orderId}`);
   });
+
   server.get('/promo/:useragent?', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     // console.log(sessionId)
     const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
+    
     if (requestAgent !== req.params.useragent) {
       res.redirect(`/promo/${requestAgent}`);
     }
@@ -121,98 +127,133 @@ app.prepare().then(() => {
       return app.render(req, res, '/promo-mobile', { requestAgent, sessionId });
     }
   });
+
   server.get('/promo/desktop/checkout', async (req, res) => {
     const sessionId = await getSessionId(req, res);
+    const orderId = req.query.orderId;
+    redirectToPromo(orderId, res);
     return app.render(req, res, '/promo-desktop-checkout', {
-      orderId: req.query.orderId,
+      orderId,
       sessionId,
     });
   });
+
   server.get('/promo/desktop/upsell-1', async (req, res) => {
     const sessionId = await getSessionId(req, res);
+    const orderId = req.query.orderId;
+    redirectToPromo(orderId, res);
     return app.render(req, res, '/promo-desktop-upsell', {
       upsell: 1,
-      orderId: req.query.orderId,
+      orderId,
       sessionId,
     });
   });
+
   server.get('/promo/desktop/upsell-2', async (req, res) => {
     const sessionId = await getSessionId(req, res);
+    const orderId = req.query.orderId;
+    redirectToPromo(orderId, res);
     return app.render(req, res, '/promo-desktop-upsell', {
       upsell: 2,
-      orderId: req.query.orderId,
+      orderId,
       sessionId,
     });
   });
+
   server.get('/promo/desktop/upsell-3', async (req, res) => {
     const sessionId = await getSessionId(req, res);
+    const orderId = req.query.orderId;
+    redirectToPromo(orderId, res);
     return app.render(req, res, '/promo-desktop-upsell', {
       upsell: 3,
-      orderId: req.query.orderId,
+      orderId,
       sessionId,
     });
   });
+
   server.get('/promo/desktop/thankyou', async (req, res) => {
     const sessionId = await getSessionId(req, res);
+    const orderId = req.query.orderId;
+    redirectToPromo(orderId, res);
     return app.render(req, res, '/promo-thankyou', {
-      orderId: req.query.orderId,
+      orderId,
       sessionId,
       device: 'desktop',
     });
   });
+
   server.get('/promo/mobile/shipping', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     return app.render(req, res, '/promo-mobile-shipping', {
       sessionId,
     });
   });
+
   server.get('/promo/mobile/select-package', async (req, res) => {
     const sessionId = await getSessionId(req, res);
+    const orderId = req.query.orderId;
+    redirectToPromo(orderId, res);
     return app.render(req, res, '/promo-mobile-select-package', {
       sessionId,
-      orderId: req.query.orderId,
+      orderId,
     });
   });
+
   server.get('/promo/mobile/confirm', async (req, res) => {
     const sessionId = await getSessionId(req, res);
+    const orderId = req.query.orderId;
+    redirectToPromo(orderId, res);
     return app.render(req, res, '/promo-mobile-confirm', {
       sessionId,
-      orderId: req.query.orderId,
+      orderId,
       productId: req.query.productId,
     });
   });
+
   server.get('/promo/mobile/upsell-1', async (req, res) => {
     const sessionId = await getSessionId(req, res);
+    const orderId = req.query.orderId;
+    redirectToPromo(orderId, res);
     return app.render(req, res, '/promo-mobile-upsell', {
       upsell: 1,
-      orderId: req.query.orderId,
+      orderId,
       sessionId,
     });
   });
+
   server.get('/promo/mobile/upsell-2', async (req, res) => {
     const sessionId = await getSessionId(req, res);
+    const orderId = req.query.orderId;
+    redirectToPromo(orderId, res);
     return app.render(req, res, '/promo-mobile-upsell', {
       upsell: 2,
-      orderId: req.query.orderId,
+      orderId,
       sessionId,
     });
   });
+
   server.get('/promo/mobile/upsell-3', async (req, res) => {
     const sessionId = await getSessionId(req, res);
+    const orderId = req.query.orderId;
+    redirectToPromo(orderId, res);
     return app.render(req, res, '/promo-mobile-upsell', {
       upsell: 3,
-      orderId: req.query.orderId,
+      orderId,
       sessionId,
     });
   });
+
   server.get('/promo/mobile/thankyou', async (req, res) => {
     const sessionId = await getSessionId(req, res);
+    const orderId = req.query.orderId;
+    redirectToPromo(orderId, res);
     return app.render(req, res, '/promo-thankyou', {
-      orderId: req.query.orderId,
+      orderId,
       sessionId,
       device: 'mobile',
     });
   });
+
   server.get('/hemp-oil', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     return app.render(req, res, '/products', {
@@ -220,6 +261,7 @@ app.prepare().then(() => {
       product: 'hemp-oil',
     });
   });
+
   server.get('/hemp-capsule', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     return app.render(req, res, '/products', {
@@ -227,6 +269,7 @@ app.prepare().then(() => {
       product: 'hemp-capsule',
     });
   });
+
   server.get('/warming_balm', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     return app.render(req, res, '/products', {
@@ -234,6 +277,7 @@ app.prepare().then(() => {
       product: 'warming_balm',
     });
   });
+
   server.get('*', (req, res) => handle(req, res));
   server.listen(port, err => {
     if (err) throw err;

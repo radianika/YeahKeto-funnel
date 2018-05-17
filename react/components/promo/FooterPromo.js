@@ -36,7 +36,7 @@ class FooterPromo extends React.PureComponent {
       <footer ref={this.footerRef}>
         {this.props.isMobile && (
           <div id="cta" ref={this.ctaRef} style={this.state.ctaStyle}>
-            <Link href="/promo/mobile/shipping">
+            <Link href="/promo/mobile/shipping" prefetch>
               <a className="shipping_redirect">
                 <i className="btn pulse sprite3 sprite-ship-btn" />
               </a>
