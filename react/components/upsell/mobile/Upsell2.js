@@ -22,21 +22,20 @@ class Upsell2 extends React.PureComponent {
         <PromoSession pageType="upsellPage2" />
         <div className="redbar">
           <p>
-            Wait before you go!<br />
-            Do you know someone who wants CBD in capsule form?
+            Before you go!<br />
+            Know someone who prefers capsules?
           </p>
         </div>
         <div className="sec1 dsplay">
           <p className="s1txt1">
-            Although sublingual oil is the fastest form of delivery, some
-            customers have told us that they would rather not have the taste of
-            the oil under their tongue.<br />
+            We get it, not everyone loves sublingual delivery. Although it
+            offers the fastest absorption, the taste or feeling of the oil may
+            not be for them.<br />
             <br />
             Our <span>CBD Capsules</span> are equally effective, very easy to
-            swallow and leave no taste in your mouth. Perhaps you know someone
-            who is struggling with aches and pains, poor sleep and mental
-            fuzziness? Our CBD Capsules make a loving gift at only $77 per
-            container.
+            swallow and leave no taste in your mouth. Know someone who is
+            struggling with aches, pains, poor sleep or brain fog? Our CBD
+            Capsules make a loving gift at only $77 per container.
           </p>
         </div>
         <Carousel
@@ -57,8 +56,8 @@ class Upsell2 extends React.PureComponent {
           are achieving with our CBD products.<br />
           <br />
           So many people are catching on to the effectiveness of natural
-          solutions to common complaints. And that applies especially to our
-          PURE CBD. Unlike prescription medications, PURE CBD comes with no
+          solutions to common ailments. And that applies especially to our PURE
+          CBD. Unlike prescription medications, PURE CBD comes with no
           undesirable side effects.<br />
           <br />
           All you’ll experience is less aches and pains, better sleep quality,
