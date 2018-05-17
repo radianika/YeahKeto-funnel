@@ -81,7 +81,6 @@ class CartForm extends React.PureComponent {
                 alt="hdng-icon"
                 src="/static/assets/images/hdng-icon1.png"
                 className="hdng-icon"
-                alt=""
               />
               <p className="txt2-chk">Shipping Information</p>
             </div>
@@ -185,7 +184,6 @@ class CartForm extends React.PureComponent {
                 alt="hdng-icon"
                 src="/static/assets/images/hdng-icon2.png"
                 className="hdng-icon"
-                alt=""
               />
               <p className="txt2-chk">Payment Information</p>
             </div>
@@ -363,7 +361,6 @@ class CartForm extends React.PureComponent {
                     src="/static/assets/images/btn.png"
                     className="button-crt"
                     id="cart_submit"
-                    alt=""
                   />
                 </span>
               </div>
@@ -372,7 +369,6 @@ class CartForm extends React.PureComponent {
                   alt="postal"
                   src="/static/assets/images/postal-crt.png"
                   className="postal-crt"
-                  alt=""
                 />
               </center>
             </div>

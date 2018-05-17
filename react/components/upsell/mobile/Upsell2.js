@@ -17,6 +17,7 @@ class Upsell2 extends React.PureComponent {
     });
   };
   render() {
+    const { orderId } = this.props.url.query;
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage2" />
@@ -72,7 +73,7 @@ class Upsell2 extends React.PureComponent {
         />
         <div className="clearall" />
         <SatisfactionBox onUpgrade={this.scrollToTop} />
-        <UpsellFooter />
+        <UpsellFooter orderId={orderId} />
       </React.Fragment>
     );
   }

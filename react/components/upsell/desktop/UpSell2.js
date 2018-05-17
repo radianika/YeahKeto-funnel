@@ -80,11 +80,37 @@ class Upsell2 extends React.PureComponent {
             </a>
           </Link>
           <div className="clearall" />
-          <img
+          {/* <img
             src="/static/mobile/v2/images/secure-logos.png"
             alt=""
             className="secure-logos"
-          />
+          /> */}
+          <div
+            className="secure-logo-container"
+            style={{ textAlign: 'center' }}
+          >
+            <img
+              src="/static/assets/images/badges/ext.jpeg"
+              alt=""
+              className="secure-logos trusty"
+              width="100px"
+              height="50px"
+            />
+            <img
+              src="/static/assets/images/badges/imgnortonsiteseal.png"
+              alt=""
+              className="secure-logos nortan"
+              width="100px"
+              height="50px"
+            />
+            <img
+              src="/static/assets/images/badges/mcafee.png"
+              alt=""
+              className="secure-logos mcafee"
+              width="125px"
+              height="45px"
+            />
+          </div>
         </div>
       </React.Fragment>
     );

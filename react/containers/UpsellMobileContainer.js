@@ -5,7 +5,7 @@ import { OrderActions } from 'redux/actions';
 import { Upsell1, Upsell2, Upsell3 } from 'react/components/upsell/mobile';
 import { Spinner, SuccessModal } from 'react/components/common';
 
-class UpsellMobileContainer extends React.PureComponent {
+class UpsellMobileContainerComponent extends React.PureComponent {
   upgrade = (productId, nextPage) => {
     this.props.addUpsellToOrder({
       productId,
@@ -24,16 +24,14 @@ class UpsellMobileContainer extends React.PureComponent {
         <div className="header position">
           <img src="/static/mobile/images/logo.png" alt="" className="logo" />
         </div>
-        {upsell === 1 && <Upsell1 upgrade={this.upgrade} />}
-        {upsell === 2 && <Upsell2 upgrade={this.upgrade} />}
-        {upsell === 3 && <Upsell3 upgrade={this.upgrade} />}
+        {upsell === 1 && <Upsell1 upgrade={this.upgrade} {...this.props} />}
+        {upsell === 2 && <Upsell2 upgrade={this.upgrade} {...this.props} />}
+        {upsell === 3 && <Upsell3 upgrade={this.upgrade} {...this.props} />}
         {this.props.submitStatus === 'submitting' && <Spinner />}
       </div>
     );
   }
 }
-
-UpsellMobileContainer = withRouter(UpsellMobileContainer);
 
 function mapStateToProps(state) {
   return {
@@ -41,8 +39,8 @@ function mapStateToProps(state) {
   };
 }
 
-UpsellMobileContainer = connect(mapStateToProps, { ...OrderActions })(
-  UpsellMobileContainer,
+const UpsellMobileContainer = connect(mapStateToProps, { ...OrderActions })(
+  withRouter(UpsellMobileContainerComponent),
 );
 
 export { UpsellMobileContainer };
