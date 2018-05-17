@@ -2,7 +2,6 @@ import React from 'react';
 
 class PromoSectionThreeDesktop extends React.PureComponent {
   render() {
-    const { props } = this;
     return (
       <div className="section3">
         <div className="container">
@@ -24,33 +23,31 @@ class PromoSectionThreeDesktop extends React.PureComponent {
                 Cold Press <span>&amp; Unrefined</span>
               </p>
               <p className="s3ltxt bdfont">
-                Cold-pressed extraction of the oil from Hemp Extract ensure
-                retention of all the therapeutic properties without the use of
-                any chemicals.{' '}
+                Cold-pressed oil extraction to ensure full retention of
+                therapeutic properties. Fully organic, no chemicals.{' '}
               </p>
             </li>
             <li>
               {' '}
               <i className="sprite4 sprite-s3img2" />
               <p className="s3lhding">
-                <span>CO2</span> Extraction
+                <span>CO2</span> CBD EXTRACTION- Zero THC
               </p>
               <p className="s3ltxt bdfont">
-                Utilizes the most advanced, cleanest, &amp; safest extraction
-                method that preserves essential cannabinoids (CBD) and filters
-                out THC (the high causing compound.){' '}
+                We use the cleanest, safest extraction method to preserve
+                essential cannabinoids (CBD) and filter out the psychoactive
+                compound (THC){' '}
               </p>
             </li>
             <li>
               {' '}
               <i className="sprite4 sprite-s3img3" />
               <p className="s3lhding">
-                <span>Organic</span> &amp; Pure
+                <span>Organic</span>, AMERICAN-MADE
               </p>
               <p className="s3ltxt bdfont">
-                <strong>Hemp Oil</strong> that is made from hemp leaves
-                organically grown and extracted in the USA, and is
-                certified-free of any synthetics, pesticides or herbicides.{' '}
+                Derived from organic, Colorado grown hemp. Certified-free of any
+                synthetics, pesticides or herbicides.{' '}
               </p>
             </li>
             <li>
@@ -60,9 +57,9 @@ class PromoSectionThreeDesktop extends React.PureComponent {
                 <span>Sublingual</span> Delivery System
               </p>
               <p className="s3ltxt bdfont">
-                A cutting-edge delivery system ensures that the Hemp Oil is
-                absorbed directly into the blood vessels and lymphatics of the
-                mouth for rapid action &amp; relief.{' '}
+                Designed for sublingual delivery, ensuring that our CBD Oil is
+                absorbed directly into the bloodstream for rapid action &amp;
+                relief.{' '}
               </p>
             </li>
           </ul>

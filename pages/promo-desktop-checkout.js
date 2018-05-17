@@ -46,7 +46,7 @@ class Promo extends React.PureComponent {
             href="/static/assets/css/promo-style.css"
           />
         </Head>
-        <PromoSession pageType="leadPage/checkoutPage" />
+        <PromoSession pageType="checkoutPage" />
         <PromoCheckoutContainer />
       </React.Fragment>
     );

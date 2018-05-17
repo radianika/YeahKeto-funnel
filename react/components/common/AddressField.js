@@ -88,7 +88,7 @@ class AddressField extends React.PureComponent {
         >
           <label>
             {props.label}
-            {props.required && <span>*</span>}:
+            {props.required && <span>*</span>}
           </label>
           {!props.large ? (
             <input

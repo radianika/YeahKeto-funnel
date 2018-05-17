@@ -7,8 +7,8 @@ class PromoSectionSevenMobile extends React.PureComponent {
         <i className="s7-logo sprite3 sprite-s7-logo" />{' '}
         <i className="s1-hd sprite3 sprite-s1-hd" />
         <p className="s1-txt4">
-          Made from Hemp organically grown & harvested in the USA, and medically
-          proven to offer therapeutic benefits.{' '}
+          Derived from organic, US-harvested hemp, lab-tested for quality.
+          Clinically proven therapeutic effects.{' '}
         </p>
         <p className="clearall" />
         <ul className="s1-list">
@@ -21,7 +21,7 @@ class PromoSectionSevenMobile extends React.PureComponent {
             <br />Chronic Pain & Aches{' '}
           </li>
           <li>
-            <span>Promotes</span>
+            <span>Regulates</span>
             <br /> Mood & Sleep Patterns{' '}
           </li>
           <li>

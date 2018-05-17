@@ -12,7 +12,7 @@ class PromoStrip extends React.PureComponent {
       <div className="strip dsplay sprite5 sprite-strip">
         <div className="container position">
           <p className="striptxt1">
-            ORDER YOUR BOTTLE OF<span> HEMP OIL</span> TODAY!{' '}
+            ORDER YOUR BOTTLE OF<span> CBD OIL</span> TODAY!{' '}
           </p>
           <p className="striptxt2">
             Limited Time Offer - Get Free Bottles On Select Packages

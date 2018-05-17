@@ -2,12 +2,11 @@ import React from 'react';
 
 class PromoSectionFourDesktop extends React.PureComponent {
   render() {
-    const { props } = this;
     return (
       <div className="section4">
         <div className="container position">
           <p className="s4hding">
-            <span>Benefits of Hemp Oil </span>
+            <span>Benefits of American Science CBD </span>
             <br /> Supports Neurological, Physical &amp; Mental Health{' '}
           </p>{' '}
           <i className="s2hdimg sprite3 sprite-s2hd" />

@@ -121,7 +121,6 @@ const tyProductImages = {
 };
 
 const getTyProductImage = product => {
-  console.log({ product });
   if (product.name.toLowerCase().indexOf('balm') >= 0) {
     return tyProductImages.balm;
   }
@@ -133,4 +132,38 @@ const getTyProductImage = product => {
   }
 };
 
-export { products, recommendedProducts, tyProductImages, getTyProductImage };
+const getTyProductContainer = product => {
+  if (product.name.toLowerCase().indexOf('balm') >= 0) {
+    return 'Jars';
+  }
+  if (product.name.toLowerCase().indexOf('oil') >= 0) {
+    return 'Bottles';
+  }
+  if (product.name.toLowerCase().indexOf('capsule') >= 0) {
+    return 'Bottles';
+  }
+};
+
+const getTyProductName = product => {
+  const titleString = 'american science cbd';
+  const titleIndex = product.name.toLowerCase().indexOf(titleString);
+  const productName = product.name.substring(titleIndex + titleString.length);
+  return productName;
+};
+
+const getTyProductQuantity = product => {
+  const titleString = 'american science cbd';
+  const titleIndex = product.name.toLowerCase().indexOf(titleString);
+  const productQuantity = product.name.substring(0, titleIndex);
+  return productQuantity;
+};
+
+export {
+  products,
+  recommendedProducts,
+  tyProductImages,
+  getTyProductImage,
+  getTyProductContainer,
+  getTyProductName,
+  getTyProductQuantity,
+};

@@ -11,12 +11,12 @@ const SatisfactionBox = props => (
     <p className="satisfaction-txt">
       Try this product for a <span>full 180 days.</span> If you are dissatisfied
       for any reason within those 6 months, just send us an email. Your purchase
-      price will be cheerfully refunded without any questions asked. And there
-      is no need to return any unused product. We can’t make it any fairer. You
-      risk absolutely nothing by upgrading your order.
+      price will be fully refunded, no questions asked. There is no need to
+      return unused product. We can’t make it any fairer. You risk absolutely
+      nothing by upgrading your order.
     </p>
     <a href="javascript:void(0)" onClick={props.onUpgrade}>
-      <img src="/static/desktop/images/button.png" className="button" />
+      <img src="/static/desktop/images/button.png" className="button" alt="" />
     </a>
   </div>
 );
