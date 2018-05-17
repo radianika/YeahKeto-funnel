@@ -22,7 +22,7 @@ class Footer extends PureComponent {
         <div className="footer">
           <div className="container">
             <div className="contentWrap">
-              <p className="ftr-txt">
+              <p className="ftrtxt">
                 <a
                   href="javascript:void(0)"
                   onClick={() => {
@@ -57,33 +57,33 @@ class Footer extends PureComponent {
                 </a>
               </p>
 
-              {!this.props.noLogo && (
-                <p className="ftr-txt w40 mtop2">
+              {/* {!this.props.noLogo && (
+                <p className="ftrtxt w40 mtop2">
                   {!this.props.promo ? (
                     <img
                       src="/static/assets/images/mc-v.png"
                       alt="We accept VISA, MasterCard"
                     />
                   ) : (
-                    <React.Fragment>
-                      <div className="cards">
-                        <span className="card-visa">
-                          <img src="/static/Visa.png" alt="" />
-                        </span>
-                        <span className="card-mastercard">
-                          <img src="/static/Mastercard.png" alt="" />
-                        </span>
-                        <span className="card-discover">
-                          <img src="/static/amex.png" alt="" />
-                        </span>
-                      </div>
-                    </React.Fragment>
-                  )}
+                      <React.Fragment>
+                        <div className="cards">
+                          <span className="card-visa">
+                            <img src="/static/Visa.png" alt="" />
+                          </span>
+                          <span className="card-mastercard">
+                            <img src="/static/Mastercard.png" alt="" />
+                          </span>
+                          <span className="card-discover">
+                            <img src="/static/amex.png" alt="" />
+                          </span>
+                        </div>
+                      </React.Fragment>
+                    )}
                 </p>
               )}
 
-              <p className="ftr-txt just">
-                {this.props.children || (
+              {this.props.children || (
+                <p className="ftrtxt just">
                   <React.Fragment>
                     <br />This product is not for use by or sale to persons
                     under the age of 18. This product should be used only as
@@ -101,10 +101,10 @@ class Footer extends PureComponent {
                     all Terms & Conditions printed on this site. Void Where
                     Prohibited by Law.
                   </React.Fragment>
-                )}
-              </p>
+                </p>
+              )} */}
 
-              <p className="ftr-txt mtop2">
+              <p className="ftrtxt mtop2">
                 Copyright 2018 © All Rights Reserved - American Science CBD
               </p>
             </div>

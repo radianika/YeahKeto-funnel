@@ -386,7 +386,7 @@ a.nothank {
 }
 .secure-logos {
   margin: 24px auto 19px auto;
-  display: block;
+  padding-left: 10px;
 }
 
 /*-----------------footer------------------*/
@@ -404,6 +404,13 @@ a.nothank {
 .ftrtxt a:hover {
   color: #000101;
 }
+.footer .contentWrap {
+  padding-top: 10px;
+}
+.footer .contentWrap p {
+  padding-top: 0px;
+}
+
 /*-----------------Thank-you------------------*/
 .thank-mid {
   float: left;

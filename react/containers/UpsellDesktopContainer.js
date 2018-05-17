@@ -5,7 +5,7 @@ import { OrderActions } from 'redux/actions';
 import { Footer, Spinner, SuccessModal } from 'react/components/common';
 import { Upsell1, Upsell2, Upsell3 } from '../components/upsell/desktop';
 
-class UpsellDesktopContainer extends React.PureComponent {
+class UpsellDesktopContainerComponent extends React.PureComponent {
   upgrade = (productId, nextPage) => {
     this.props.addUpsellToOrder({
       productId,
@@ -40,7 +40,7 @@ class UpsellDesktopContainer extends React.PureComponent {
           {upsell === 1 && <Upsell1 upgrade={this.upgrade} {...this.props} />}
           {upsell === 2 && <Upsell2 upgrade={this.upgrade} {...this.props} />}
           {upsell === 3 && <Upsell3 upgrade={this.upgrade} {...this.props} />}
-          <div className="footer">
+          {/* <div className="footer">
             <div className="clearall" />
 
             <div
@@ -49,7 +49,7 @@ class UpsellDesktopContainer extends React.PureComponent {
                 marginLeft: 'auto',
                 marginRight: 'auto',
               }}
-            >
+              >
               <img
                 src="/static/assets/images/badges/mcafee.png"
                 alt=""
@@ -76,15 +76,11 @@ class UpsellDesktopContainer extends React.PureComponent {
                 }}
               />
             </div>
-          </div>
+          </div> */}
         </div>
-        <div className="contentWrap">
-          <p className="ftrtxt">
-            <Footer noLogo>
-              <br />
-            </Footer>
-          </p>
-        </div>
+        <Footer noLogo>
+          <br />
+        </Footer>
         {this.props.submitStatus === 'submitting' && <Spinner />}
         <SuccessModal
           visible={this.props.submitStatus === 'success'}
@@ -95,16 +91,14 @@ class UpsellDesktopContainer extends React.PureComponent {
   }
 }
 
-UpsellDesktopContainer = withRouter(UpsellDesktopContainer);
-
 function mapStateToProps(state) {
   return {
     submitStatus: state.order.addUpsellToOrderStatus,
   };
 }
 
-UpsellDesktopContainer = connect(mapStateToProps, { ...OrderActions })(
-  UpsellDesktopContainer,
+const UpsellDesktopContainer = connect(mapStateToProps, { ...OrderActions })(
+  withRouter(UpsellDesktopContainerComponent),
 );
 
 export { UpsellDesktopContainer };
