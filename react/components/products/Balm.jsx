@@ -17,7 +17,7 @@ class BalmSlider extends React.PureComponent {
           <li>
             Supports mental clarity & agility with higher focus & concentration
           </li>
-          <li>Improves information rention & memory recall</li>
+          <li>Improves information retention & memory recall</li>
         </ul>
         <div style={{ float: 'left', width: '100%' }}>
           <p className="prd-sec1-txt6">$87.00</p>
