@@ -81,17 +81,11 @@ class CartForm extends React.PureComponent {
                 alt="hdng-icon"
                 src="/static/assets/images/hdng-icon1.png"
                 className="hdng-icon"
+                alt=""
               />
               <p className="txt2-chk">Shipping Information</p>
             </div>
-            <p
-              style={{
-                fontSize: '14px',
-                lineHeight: '22.5px',
-                marginLeft: '10px',
-                marginRight: '10px',
-              }}
-            >
+            <p className="sec1crt-frmlft__ship-info">
               All packages are shipped via Standard Shipping and are estimated
               to arrive within 3-5 business days from the day you place order.
             </p>
@@ -100,7 +94,7 @@ class CartForm extends React.PureComponent {
                 component={TextField}
                 name="firstName"
                 label="First Name*"
-                placeholder="First Name"
+                placeholder="First name"
                 icon="/static/assets/images/frmicon1.png"
                 large
               />
@@ -108,7 +102,7 @@ class CartForm extends React.PureComponent {
                 component={TextField}
                 name="lastName"
                 label="Last Name*"
-                placeholder="Last Name"
+                placeholder="Last name"
                 icon="/static/assets/images/frmicon1.png"
                 large
               />
@@ -170,7 +164,7 @@ class CartForm extends React.PureComponent {
                 containerClass="short2"
                 component={TextField}
                 name="phoneNumber"
-                label="Phone*"
+                label="Phone Number*"
                 placeholder="Example: (123) 555-6789"
                 normalize={normalizePhone}
                 icon="/static/assets/images/frmicon4.png"
@@ -191,6 +185,7 @@ class CartForm extends React.PureComponent {
                 alt="hdng-icon"
                 src="/static/assets/images/hdng-icon2.png"
                 className="hdng-icon"
+                alt=""
               />
               <p className="txt2-chk">Payment Information</p>
             </div>
@@ -294,6 +289,9 @@ class CartForm extends React.PureComponent {
                 <span className="card-mastercard">
                   <img src="/static/assets/images/card-mastercard.png" alt="" />
                 </span>
+                <span className="card-amex">
+                  <img src="/static/assets/images/card-amex.png" alt="" />
+                </span>
               </div>
               <Field
                 component={TextField}
@@ -352,9 +350,10 @@ class CartForm extends React.PureComponent {
                     this.setState({ tncAgreed: !this.state.tncAgreed })
                   }
                 />
-                I agree to the Terms &amp; Conditions &amp;Privacy Policy.
-                <br />All charges on your bank statement will appear as
-                "AmericanScience8442601422"
+                I agree to the Terms &amp; Conditions &amp; Privacy Policy.{' '}
+                <br />
+                All charges on your bank statement will appear as &quot;American
+                Science CBD 8883138529&quot;
               </p>
               <div className="clearall" />
               <div className="frmelements btn-element">
@@ -364,6 +363,7 @@ class CartForm extends React.PureComponent {
                     src="/static/assets/images/btn.png"
                     className="button-crt"
                     id="cart_submit"
+                    alt=""
                   />
                 </span>
               </div>
@@ -372,6 +372,7 @@ class CartForm extends React.PureComponent {
                   alt="postal"
                   src="/static/assets/images/postal-crt.png"
                   className="postal-crt"
+                  alt=""
                 />
               </center>
             </div>
@@ -390,9 +391,10 @@ class CartForm extends React.PureComponent {
   }
 }
 
-CartForm = reduxForm({
-  form: 'CartForm',
-  validate: shippingCartFormValidator,
-})(CartForm);
+const CartFormContainer = () =>
+  reduxForm({
+    form: 'CartForm',
+    validate: shippingCartFormValidator,
+  })(CartForm);
 
-export { CartForm };
+export { CartForm, CartFormContainer };

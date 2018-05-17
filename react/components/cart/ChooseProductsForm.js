@@ -8,15 +8,17 @@ class ChooseProductsForm extends PureComponent {
     Object.keys(cart).forEach(productId => {
       total += cart[productId].product.price * cart[productId].quantity;
     });
-    return total;
+    return total.toFixed(2);
   };
   getSubTotal = product => {
     const { cart } = this.props;
     const productId = product.id;
     if (cart[productId]) {
-      return cart[productId].product.price * cart[productId].quantity;
+      return (cart[productId].product.price * cart[productId].quantity).toFixed(
+        2,
+      );
     }
-    return 0;
+    return (0).toFixed(2);
   };
   selectProduct = (e, product, index) => {
     this.props.update({
@@ -70,7 +72,7 @@ class ChooseProductsForm extends PureComponent {
                   className="row2 txt1-cart midc3 pinktxt1"
                   id="cbd-oil-price"
                 >
-                  {this.getSubTotal(product)}
+                  ${this.getSubTotal(product)}
                 </td>
               </tr>
             ))}
