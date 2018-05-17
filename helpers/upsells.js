@@ -7,7 +7,7 @@ const upsell2Packs = [
     img: 'one-bottle.png',
     boxTxt: (
       <span className="span1">
-        Purchase 1 containers of<br />
+        Purchase 1 container of<br />
         CBD Capsules
       </span>
     ),

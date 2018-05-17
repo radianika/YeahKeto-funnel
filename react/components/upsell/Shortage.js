@@ -6,16 +6,18 @@ const Shortage = () => (
       Why our stringent specs may cause a product shortage
     </p>
     <p className="s1txt4">
-      We insist on quality-certified U.S. organic growers of hemp who deliver
-      the highest concentration of CBD with not a trace of the mind-altering
-      THC. This is what makes our product legal in all 50 states without a
-      prescription. <br />
+      We insist on certified US-grown hemp and lab-test to ensure the highest
+      concentration of CBD- 500 mg per serving—and our filtration and extraction
+      processes mean zero THC. This is what makes our product legal in all 50
+      states, no prescription necessary.<br />
       <br />
-      Growers who meet all of our stringent specifications are hard to find. So
-      far, we have found only one such grower, and he is scrambling to keep up
-      with demand.<br />
+      Farmers who meet all of our stringent specifications are hard to find. As
+      we expand, we will continue to find new sources, but so far we are limited
+      to a single farm that meets our standards. This means supply struggles to
+      keep up with huge demand.<br />
       <br />
-      That’s why it’s so urgent that you assure yourself of an adequate supply.
+      For this reason, we suggest you ensure an adequate supply, and we’ve
+      established these special promotional offers to help you do just that.
     </p>
   </React.Fragment>
 );

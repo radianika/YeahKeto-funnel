@@ -20,6 +20,7 @@ const Slider = props => (
                 >
                   <img
                     src={`/static/assets/images/cbd-${props.type}-side1.png`}
+                    alt=""
                   />
                 </div>
               </div>
@@ -32,6 +33,7 @@ const Slider = props => (
                 >
                   <img
                     src={`/static/assets/images/cbd-${props.type}-side2.png`}
+                    alt=""
                   />
                 </div>
               </div>
@@ -44,6 +46,7 @@ const Slider = props => (
                 >
                   <img
                     src={`/static/assets/images/cbd-${props.type}-side3.png`}
+                    alt=""
                   />
                 </div>
               </div>
@@ -69,6 +72,7 @@ const Slider = props => (
                 >
                   <img
                     src={`/static/assets/images/cbd-${props.type}-side1.png`}
+                    alt=""
                   />
                 </div>
               </div>
@@ -81,6 +85,7 @@ const Slider = props => (
                 >
                   <img
                     src={`/static/assets/images/cbd-${props.type}-side2.png`}
+                    alt=""
                   />
                 </div>
               </div>
@@ -93,6 +98,7 @@ const Slider = props => (
                 >
                   <img
                     src={`/static/assets/images/cbd-${props.type}-side3.png`}
+                    alt=""
                   />
                 </div>
               </div>
@@ -139,13 +145,14 @@ class Product extends PureComponent {
             <div className="inner-txt">
               <span>our products</span>
               <p className="comn-txt">
-                Find out more about American Science's range of hemp extract
-                enriched dietary supplements.{' '}
+                Find out more about American Science&apos;s range of hemp
+                extract enriched dietary supplements.{' '}
               </p>
             </div>
             <img
               src="/static/assets/images/bnr-prd.png"
               className="inner-prd for-desk for-tab"
+              alt=""
             />
           </div>
         </div>
@@ -154,7 +161,7 @@ class Product extends PureComponent {
           <div className="container">
             <Slider
               type={type}
-              sliderClick={this.sliderClick.bind(this)}
+              // sliderClick={this.sliderClick.bind()}
               translate3d={translate3d}
             />
 
@@ -167,7 +174,7 @@ class Product extends PureComponent {
                 {bullets.map((b, i) => <li key={`b-${i}`}>{b}</li>)}
               </ul>
               <div style={{ float: 'left', width: '100%' }}>
-                <p className="prd-sec1-txt6">{price}</p>
+                <p className="prd-sec1-txt6">${price.toFixed(2)}</p>
                 <Link href="/cart">
                   <a className="prd-sec1-btn">
                     <img src="/static/assets/images/btn.png" alt="" />
@@ -203,12 +210,12 @@ class Product extends PureComponent {
           <div className="container">
             <p className="comn-hdg">Supplement Facts &amp; Directions Of Use</p>
             <p className="comn-sub-hdg">
-              Find out what's inside our hemp supplements and how to use them
-              for best results.
+              Find out what&apos;s inside our hemp supplements and how to use
+              them for best results.
             </p>
-            <img src="/static/assets/images/comn-hdg-img.png" />
+            <img src="/static/assets/images/comn-hdg-img.png" alt="" />
             <div className="clearall" />
-            <img src={supplement.image} className="cbd-label-img" />
+            <img src={supplement.image} className="cbd-label-img" alt="" />
             <div className="howtouse">
               <h3>How to use</h3>
               <ul>
@@ -253,13 +260,17 @@ class RecommendedProducts extends PureComponent {
         <p className="comn-sub-hdg">
           Complete Your American Science Supplement Stack
         </p>
-        <img src="/static/assets/images/comn-hdg-img.png" />
+        <img src="/static/assets/images/comn-hdg-img.png" alt="" />
         <ul className="prd-sec3-list">
           {this.props.products.map(key => {
             const recommendedProduct = recommendedProducts[key];
             return (
               <li key={recommendedProduct.title}>
-                <img src={recommendedProduct.image} className="sec2-prd" />
+                <img
+                  src={recommendedProduct.image}
+                  className="sec2-prd"
+                  alt=""
+                />
                 <div className="prd-details">
                   <p className="prd-txt1">American Science</p>
                   <p className="prd-txt2">{recommendedProduct.title}</p>
@@ -272,6 +283,7 @@ class RecommendedProducts extends PureComponent {
                       <img
                         src="/static/assets/images/btn.png"
                         className="btn"
+                        alt=""
                       />
                     </a>
                   </Link>
