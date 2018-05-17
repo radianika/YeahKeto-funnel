@@ -1,12 +1,20 @@
 import React from 'react';
 import { PromoSession } from 'react/components/common';
-import { Coupon } from '../mobile/Coupon';
+import { upsell1Packs } from 'helpers';
+import { Carousel } from './Carousel';
 import { SatisfactionBox } from './SatisfactionBox';
+import { Shortage } from '../Shortage';
 import { UpsellFooter } from '../UpsellFooter';
 
 class Upsell1 extends React.PureComponent {
-  upgrade = () => {
-    this.props.upgrade(214, '/promo/mobile/upsell-2');
+  upgrade = productId => {
+    this.props.upgrade(productId, '/promo/mobile/upsell-2');
+  };
+  scrollToTop = () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
   render() {
     const { orderId } = this.props.url.query;
@@ -14,62 +22,57 @@ class Upsell1 extends React.PureComponent {
       <React.Fragment>
         <PromoSession pageType="upsellPage1" />
         <div className="redbar">
-          <p>Before you go! An URGENT message regarding future supply.</p>
+          <p>
+            Before you go!<br />
+            Know someone who prefers capsules?
+          </p>
         </div>
-        <div className="sec1">
+        <div className="sec1 dsplay">
           <p className="s1txt1">
-            Huge demand, driven by recent media buzz covering the results people
-            are achieving with our CBD oil, means our stock is dwindling fast.
-            More information on this below. Before we restock, you can ensure an
-            adequate supply of <span>American Science CBD Oil</span> at an
-            additional discount.
+            We get it, not everyone loves sublingual delivery. Although it
+            offers the fastest absorption, the taste or feeling of the oil may
+            not be for them.<br />
+            <br />
+            Our <span>CBD Capsules</span> are equally effective, very easy to
+            swallow and leave no taste in your mouth. Know someone who is
+            struggling with aches, pains, poor sleep or brain fog? Our CBD
+            Capsules make a loving gift at only $77 per container.
           </p>
-          <Coupon onUpgrade={this.upgrade} />
-          <div className="clearall" />
-          <SatisfactionBox />
-          <p className="s1txt3">
-            <span>Dear Friend…</span>
-            <br />
-            <br />
-            First of all, we want to thank you for your order of CBD Oil and
-            welcome you to our family of happy customers.
-            <br />
-            <br />
-            So many people are catching on to the effectiveness of natural
-            solutions to common ailments. And that applies especially to PURE
-            CBD. Unlike prescription medications, PURE CBD comes with no
-            undesirable side effects.
-            <br />
-            <br />
-            All you’ll experience is less aches and pains, better sleep quality,
-            and marked improvements in memory recall and cognitive brain
-            functions.
-            <br />
-            <br />
-            You have also chosen wisely by putting your trust in American
-            Science.
-            <br />
-            <br />
-            We insist on certified US-grown hemp and lab-test to ensure the
-            highest concentration of CBD- 500 mg per serving—and our filtration
-            and extraction processes mean zero THC. This is what makes our
-            product legal in al 50 states, no prescription necessary.
-            <br />
-            <br />
-            Farmers who meet all of our stringent specifications are hard to
-            find. As we expand, we will continue to find new sources, but so far
-            we are limited to a single farm that meets our standards. This means
-            supply struggles to keep up with huge demand.
-            <br />
-            <br />
-            For this reason, we suggest you ensure an adequate supply, and we’ve
-            established these special promotional offers to help you do just
-            that.
-          </p>
-          <div className="clearall" />
-          <Coupon onUpgrade={this.upgrade} />
-          <SatisfactionBox />
         </div>
+        <Carousel
+          upsells={upsell1Packs}
+          onUpgrade={this.upgrade}
+          title="Special Deal for New Customers Only"
+        />
+        <div className="clearall" />
+        <SatisfactionBox onUpgrade={this.scrollToTop} />
+        <p className="s1txt3">
+          <span>Dear Friend…</span>
+          <br />
+          <br />
+          First of all, we want to thank you for your order of CBD Oil and
+          welcome you to our family of happy customers.<br />
+          <br />
+          There has been a lot of media buzz about the incredible results people
+          are achieving with our CBD products.<br />
+          <br />
+          So many people are catching on to the effectiveness of natural
+          solutions to common ailments. And that applies especially to our PURE
+          CBD. Unlike prescription medications, PURE CBD comes with no
+          undesirable side effects.<br />
+          <br />
+          All you’ll experience is less aches and pains, better sleep quality,
+          and marked improvements in memory recall and cognitive brain
+          functions.
+        </p>
+        <Shortage />
+        <Carousel
+          upsells={upsell1Packs}
+          onUpgrade={this.upgrade}
+          title="Special Deal for New Customers Only"
+        />
+        <div className="clearall" />
+        <SatisfactionBox onUpgrade={this.scrollToTop} />
         <UpsellFooter orderId={orderId} />
       </React.Fragment>
     );
