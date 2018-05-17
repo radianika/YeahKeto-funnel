@@ -1,6 +1,6 @@
 import React from 'react';
 
-const upsell2Packs = [
+const upsell1Packs = [
   {
     id: 212,
     title: 'Add 1 Container',
@@ -45,7 +45,7 @@ const upsell2Packs = [
   },
 ];
 
-const upsell3Packs = [
+const upsell2Packs = [
   {
     id: 215,
     title: 'Add 1 Container',
@@ -90,4 +90,4 @@ const upsell3Packs = [
   },
 ];
 
-export { upsell2Packs, upsell3Packs };
+export { upsell1Packs, upsell2Packs };
