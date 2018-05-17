@@ -15,3 +15,4 @@
 `yarn start`
 
 localhost:3001
+localhost:3001/promo
