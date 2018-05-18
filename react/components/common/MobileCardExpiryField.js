@@ -42,7 +42,9 @@ class MobileCardExpiryField extends React.PureComponent {
               onChange={this.updateMonth}
               onBlur={this.onBlur}
             >
-              <option value={null}>– –</option>
+              <option value={null} disabled>
+                – –
+              </option>
               {[...Array(12).keys()].map(month => (
                 <option key={month} value={month + 1}>
                   {month + 1 < 10 ? `0${month + 1}` : month + 1}

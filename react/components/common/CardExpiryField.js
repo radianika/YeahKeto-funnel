@@ -66,7 +66,9 @@ class CardExpiryField extends React.PureComponent {
               onChange={this.updateYear}
               onBlur={this.onBlur}
             >
-              <option value={null}>– –</option>
+              <option value={null} disabled>
+                – –
+              </option>
               {[18, 19, 20, 21, 22, 23, 24].map(year => (
                 <option key={year} value={`20${year}`}>
                   {year}
