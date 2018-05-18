@@ -32,7 +32,7 @@ class MobileCardExpiryField extends React.PureComponent {
             'fv-has-error'} ${valid && 'fv-has-success'}`}
         >
           <label className="exp-label">
-            Expirys Date<span>*</span>: <span>(MM/YY)</span>
+            Expiry Date<span>*</span>: <span>(MM/YY)</span>
           </label>
           <span>
             <select
