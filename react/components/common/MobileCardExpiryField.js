@@ -22,7 +22,7 @@ class MobileCardExpiryField extends React.PureComponent {
 
   render() {
     const { props } = this;
-    const { value, onChange } = props.input;
+    const { value } = props.input;
     const hasError = props.meta.touched && props.meta.error;
     const valid = props.input.value && props.meta.valid;
     return (
@@ -32,7 +32,7 @@ class MobileCardExpiryField extends React.PureComponent {
             'fv-has-error'} ${valid && 'fv-has-success'}`}
         >
           <label className="exp-label">
-            Expiry Date<span>*</span>: <span>(MM/YY)</span>
+            Expirys Date<span>*</span>: <span>(MM/YY)</span>
           </label>
           <span>
             <select
@@ -45,7 +45,7 @@ class MobileCardExpiryField extends React.PureComponent {
               <option value={null}>– –</option>
               {[...Array(12).keys()].map(month => (
                 <option key={month} value={month + 1}>
-                  {month + 1}
+                  {month + 1 < 10 ? `0${month + 1}` : month + 1}
                 </option>
               ))}
             </select>
