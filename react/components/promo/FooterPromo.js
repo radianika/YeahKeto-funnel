@@ -54,7 +54,7 @@ class FooterPromo extends React.PureComponent {
               Science CBD have not been evaluated by the Food and Drug
               Administration. The FDA only evaluates foods and drugs, not
               supplements like these products. These products are not intended
-              to diagnose, prevent, treat, or cure any disease.
+              to diagnose, prevent, treat, or cure any disease. &nbsp;
               <a
                 href="https://www.ncbi.nlm.nih.gov/pubmed/18728714"
                 target="_blank"
@@ -63,8 +63,8 @@ class FooterPromo extends React.PureComponent {
               >
                 CLICK HERE
               </a>
-              to find evidence of a test, analysis, research, or study
-              describing the benefits, performance or efficacy of American
+              &nbsp; to find evidence of a test, analysis, research, or study
+              describing the ben efits, performance or efficacy of American
               Science CBD based on the expertise of relevant professionals.
             </Footer>
           </div>
