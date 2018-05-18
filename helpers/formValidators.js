@@ -115,6 +115,8 @@ const cardFormValidator = values => {
   const currentYear = moment().year();
   if (Number(cardMonth) < currentMonth && Number(cardYear) <= currentYear) {
     errors.cardExpiry = 'Card has expired.';
+    errors.cardMonth = 'Card has expired.';
+    errors.cardYear = 'Card has expired.';
   }
   if (!values.cardNumber) {
     errors.cardNumber = 'Card number is required';
