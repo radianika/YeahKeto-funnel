@@ -22,7 +22,7 @@ class MobileCardExpiryField extends React.PureComponent {
 
   render() {
     const { props } = this;
-    const { value, onChange } = props.input;
+    const { value } = props.input;
     const hasError = props.meta.touched && props.meta.error;
     const valid = props.input.value && props.meta.valid;
     return (
@@ -45,7 +45,7 @@ class MobileCardExpiryField extends React.PureComponent {
               <option value={null}>– –</option>
               {[...Array(12).keys()].map(month => (
                 <option key={month} value={month + 1}>
-                  {month + 1}
+                  {month + 1 < 10 ? `0${month + 1}` : month + 1}
                 </option>
               ))}
             </select>
