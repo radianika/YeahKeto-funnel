@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
+import { withRouter } from 'next/router';
 import {
   stateslist,
   packages,
@@ -354,7 +355,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
 const MobileConfirmContainerPage = reduxForm({
   form: 'MobileConfirmForm',
   validate: billingFormValidator,
-})(MobileConfirmContainerComponent);
+})(withRouter(MobileConfirmContainerComponent));
 
 function mapStateToProps(reduxState, ownProps) {
   const { productId } = ownProps.url.query;
