@@ -19,12 +19,14 @@ import { withRouter } from 'next/router';
 import { OrderActions } from 'redux/actions';
 
 class MobileShippingContainerComponent extends React.PureComponent {
-  onSubmit = values => {
-    this.props.submitLeadsForm({
-      values,
-      router: this.props.router,
-      nextUrl: '/promo/mobile/select-package',
-    });
+  onSubmit = e => {
+    this.props.handleSubmit(values => {
+      this.props.submitLeadsForm({
+        values,
+        router: this.props.router,
+        nextUrl: '/promo/mobile/select-package',
+      });
+    })(e);
   };
   render() {
     return (
@@ -131,7 +133,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                     <a
                       href="javascript:void(0)"
                       className="button"
-                      onClick={this.props.handleSubmit(this.onSubmit)}
+                      onClick={this.onSubmit}
                     >
                       <img
                         src="/static/promo/mobile/images/ship-btn.png"
