@@ -95,7 +95,7 @@ class CartForm extends React.PureComponent {
                 label="First Name*"
                 placeholder="First name"
                 icon="/static/assets/images/frmicon1.png"
-                large="true"
+                large
               />
               <Field
                 component={TextField}
@@ -103,7 +103,7 @@ class CartForm extends React.PureComponent {
                 label="Last Name*"
                 placeholder="Last name"
                 icon="/static/assets/images/frmicon1.png"
-                large="true"
+                large
               />
               <Field
                 component={TextField}
@@ -111,7 +111,7 @@ class CartForm extends React.PureComponent {
                 label="Email*"
                 placeholder="Example: email@somewhere.com"
                 icon="/static/assets/images/frmicon3.png"
-                large="true"
+                large
               />
               <Field
                 component={AddressField}
@@ -120,7 +120,7 @@ class CartForm extends React.PureComponent {
                 placeholder="Street and number, P.O. box, c/o."
                 icon="/static/assets/images/frmicon5.png"
                 changeField={this.props.change}
-                large="true"
+                large
               />
               <Field
                 component={TextField}
@@ -128,7 +128,7 @@ class CartForm extends React.PureComponent {
                 label="Address Line 2"
                 placeholder="Apartment, suite, unit, building, floor, etc."
                 icon="/static/assets/images/frmicon5.png"
-                large="true"
+                large
               />
               <Field
                 containerClass="short1"
@@ -138,7 +138,7 @@ class CartForm extends React.PureComponent {
                 placeholder="Select State"
                 options={stateslist}
                 icon="/static/assets/images/frmicon7.png"
-                large="true"
+                large
               />
               <Field
                 containerClass="short2"
@@ -147,7 +147,7 @@ class CartForm extends React.PureComponent {
                 label="City*"
                 placeholder="Your City"
                 icon="/static/assets/images/frmicon6.png"
-                large="true"
+                large
               />
               <Field
                 containerClass="short1"
@@ -157,7 +157,7 @@ class CartForm extends React.PureComponent {
                 placeholder="Zip Code"
                 normalize={normalizePostalCode}
                 icon="/static/assets/images/frmicon8.png"
-                large="true"
+                large
               />
               <Field
                 containerClass="short2"
@@ -167,7 +167,7 @@ class CartForm extends React.PureComponent {
                 placeholder="Example: (123) 555-6789"
                 normalize={normalizePhone}
                 icon="/static/assets/images/frmicon4.png"
-                large="true"
+                large
               />
             </div>
           </div>
@@ -208,7 +208,7 @@ class CartForm extends React.PureComponent {
                     label="First Name*"
                     placeholder="First Name"
                     icon="/static/assets/images/frmicon1.png"
-                    large="true"
+                    large
                   />
                   <Field
                     component={TextField}
@@ -216,7 +216,7 @@ class CartForm extends React.PureComponent {
                     label="Last Name*"
                     placeholder="Last Name"
                     icon="/static/assets/images/frmicon1.png"
-                    large="true"
+                    large
                   />
                   <Field
                     component={TextField}
@@ -224,7 +224,7 @@ class CartForm extends React.PureComponent {
                     label="Email*"
                     placeholder="Example: email@somewhere.com"
                     icon="/static/assets/images/frmicon3.png"
-                    large="true"
+                    large
                   />
                   <Field
                     component={AddressField}
@@ -233,7 +233,7 @@ class CartForm extends React.PureComponent {
                     placeholder="Street and number, P.O. box, c/o."
                     icon="/static/assets/images/frmicon5.png"
                     changeField={this.props.change}
-                    large="true"
+                    large
                   />
                   <Field
                     component={TextField}
@@ -241,7 +241,7 @@ class CartForm extends React.PureComponent {
                     label="Address Line 2"
                     placeholder="Apartment, suite, unit, building, floor, etc."
                     icon="/static/assets/images/frmicon5.png"
-                    large="true"
+                    large
                   />
                   <Field
                     component={SelectField}
@@ -250,7 +250,7 @@ class CartForm extends React.PureComponent {
                     placeholder="State"
                     options={stateslist}
                     icon="/static/assets/images/frmicon7.png"
-                    large="true"
+                    large
                   />
                   <Field
                     component={TextField}
@@ -258,7 +258,7 @@ class CartForm extends React.PureComponent {
                     label="City*"
                     placeholder="Your City"
                     icon="/static/assets/images/frmicon6.png"
-                    large="true"
+                    large
                   />
                   <Field
                     component={TextField}
@@ -267,7 +267,7 @@ class CartForm extends React.PureComponent {
                     placeholder="Zip Code"
                     normalize={normalizePostalCode}
                     icon="/static/assets/images/frmicon8.png"
-                    large="true"
+                    large
                   />
                   <Field
                     component={TextField}
@@ -276,7 +276,7 @@ class CartForm extends React.PureComponent {
                     placeholder="Example: (123) 555-6789"
                     normalize={normalizePhone}
                     icon="/static/assets/images/frmicon4.png"
-                    large="true"
+                    large
                   />
                 </div>
               )}
@@ -298,7 +298,7 @@ class CartForm extends React.PureComponent {
                 placeholder="•••• •••• •••• ••••"
                 label="Card Number*"
                 normalize={normalizeCardNumber}
-                large="true"
+                large
               />
               <Field
                 containerClass="short1"
@@ -307,7 +307,7 @@ class CartForm extends React.PureComponent {
                 label="Expiration Month*"
                 placeholder="- -"
                 options={this.getMonthOptions()}
-                large="true"
+                large
               />
               <Field
                 containerClass="short2"
@@ -316,7 +316,7 @@ class CartForm extends React.PureComponent {
                 label="Expiration Year*"
                 placeholder="- -"
                 options={this.getYearOptions()}
-                large="true"
+                large
               />
               <Field
                 containerClass="frmelements short1 mob-sort frm-elem-cvv"
@@ -325,7 +325,7 @@ class CartForm extends React.PureComponent {
                 label="CVV/CID*"
                 name="order.cardSecurityCode"
                 normalize={normalizeSecurityCode}
-                large="true"
+                large
               />
               <div className="frmelements short2 mob-sort">
                 <a

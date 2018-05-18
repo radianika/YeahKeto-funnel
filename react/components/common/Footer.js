@@ -48,7 +48,7 @@ class Footer extends PureComponent {
                 </a>
               </p>
 
-              {/* {!this.props.noLogo && (
+              {!this.props.noLogo && (
                 <p className="ftrtxt w40 mtop2">
                   {!this.props.promo ? (
                     <img
@@ -59,13 +59,16 @@ class Footer extends PureComponent {
                     <React.Fragment>
                       <div className="cards">
                         <span className="card-amex">
-                          <img src="/static/amex-card.png" alt="" />
+                          <img src="/static/amex-card.png" alt="Amex" />
                         </span>
                         <span className="card-visa">
-                          <img src="/static/visa-card.png" alt="" />
+                          <img src="/static/visa-card.png" alt="Visa" />
                         </span>
                         <span className="card-mastercard">
-                          <img src="/static/mastercard-card.png" alt="" />
+                          <img
+                            src="/static/mastercard-card.png"
+                            alt="Mastercard"
+                          />
                         </span>
                       </div>
                     </React.Fragment>
@@ -93,8 +96,7 @@ class Footer extends PureComponent {
                     Where Prohibited by Law.
                   </React.Fragment>
                 </p>
-              )} */}
-
+              )}
               <p className="ftrtxt mtop2">
                 Copyright 2018 © All Rights Reserved - American Science CBD
               </p>

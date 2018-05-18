@@ -903,6 +903,11 @@ a.what {
   text-transform: uppercase;
 }
 
+.footer p {
+  text-align: center;
+  margin: 25px 0;
+}
+
 /*------------thank------------*/
 
 .thnk-bg {

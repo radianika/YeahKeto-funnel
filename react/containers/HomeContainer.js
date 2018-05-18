@@ -147,9 +147,15 @@ class HomeContainer extends PureComponent {
               (CBD) that help with quicker absorption, faster action, and
               excellent results!
             </p>
-            <a href="">
-              <img src="/static/assets/images/btn.png" alt="" className="btn" />
-            </a>
+            <Link href="/hemp-oil">
+              <a href="">
+                <img
+                  src="/static/assets/images/btn.png"
+                  alt=""
+                  className="btn"
+                />
+              </a>
+            </Link>
           </div>
         </div>
         <Frame sec="sec2">
@@ -174,13 +180,15 @@ class HomeContainer extends PureComponent {
                   Hemp Oil may help reduce pains &amp; aches while improving
                   mood patterns &amp; relaxation.
                 </p>
-                <a href="#">
-                  <img
-                    src="/static/assets/images/btn.png"
-                    alt=""
-                    className="btn"
-                  />
-                </a>
+                <Link href="/hemp-oil">
+                  <a href="#">
+                    <img
+                      src="/static/assets/images/btn.png"
+                      alt=""
+                      className="btn"
+                    />
+                  </a>
+                </Link>
               </div>
             </li>
             <li>
@@ -197,13 +205,15 @@ class HomeContainer extends PureComponent {
                   Hemp Capsules may help support joint health &amp; may promote
                   better sleep quality.
                 </p>
-                <a href="#">
-                  <img
-                    src="/static/assets/images/btn.png"
-                    alt=""
-                    className="btn"
-                  />
-                </a>
+                <Link href="/hemp-capsule">
+                  <a href="#">
+                    <img
+                      src="/static/assets/images/btn.png"
+                      alt=""
+                      className="btn"
+                    />
+                  </a>
+                </Link>
               </div>
             </li>
             <li>
@@ -220,13 +230,15 @@ class HomeContainer extends PureComponent {
                   Warming balm may help support relief from problems like
                   soreness, inflammation, and irritated skin.
                 </p>
-                <a href="#">
-                  <img
-                    src="/static/assets/images/btn.png"
-                    alt=""
-                    className="btn"
-                  />
-                </a>
+                <Link href="/warming_balm">
+                  <a href="#">
+                    <img
+                      src="/static/assets/images/btn.png"
+                      alt=""
+                      className="btn"
+                    />
+                  </a>
+                </Link>
               </div>
             </li>
           </ul>
