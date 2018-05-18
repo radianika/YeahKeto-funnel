@@ -13,7 +13,6 @@ import moment from 'moment';
 class ThankyouDesktopComponent extends React.PureComponent {
   render() {
     const { order, isPromo } = this.props;
-    console.log(order);
     return (
       <div className="container">
         <div className="contentWrap shadow">

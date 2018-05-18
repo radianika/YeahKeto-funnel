@@ -51,7 +51,6 @@ function* submitLeadsForm(action) {
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const { lead } = apiResponse.response.data.data;
       yield put(OrderActions.submitLeadsFormSuccess({ lead }));
-      yield delay(2000);
       router.push(`${nextUrl}?orderId=${lead.orderId}`);
     }
   } catch (error) {
