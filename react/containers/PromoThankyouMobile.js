@@ -1,10 +1,16 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
-import { getTyProductImage } from 'helpers';
+import {
+  getTyProductImage,
+  getTyProductName,
+  getTyProductQuantity,
+  getTyProductContainer,
+} from 'helpers';
 import { OrderActions } from 'redux/actions';
+import moment from 'moment';
 
-class PromoThankyouMobile extends React.PureComponent {
+class PromoThankyouMobileComponent extends React.PureComponent {
   render() {
     const { order } = this.props;
     return (
@@ -15,8 +21,8 @@ class PromoThankyouMobile extends React.PureComponent {
         <div className="thank-mid">
           <p className="thank-txt1">Congratulations! </p>
           <p className="thank-txt2">
-            You've taken the first step to better health and wellness. We are
-            confident that you will enjoy the benefits of American Science
+            You&#39;ve taken the first step to better health and wellness. We
+            are confident that you will enjoy the benefits of American Science
             products.{' '}
           </p>
           <ul className="thank-list">
@@ -24,7 +30,7 @@ class PromoThankyouMobile extends React.PureComponent {
               <span>RELIEVES </span>Anxiety &amp; Stress
             </li>
             <li>
-              <span>Promotes </span>Mood &amp; Sleep Patterns
+              <span>REGULATES </span>Mood &amp; Sleep Patterns
             </li>
             <li>
               <span>Eliminate </span>Chronic Pain &amp; Aches
@@ -34,9 +40,9 @@ class PromoThankyouMobile extends React.PureComponent {
             </li>
           </ul>
         </div>
-        <p className="green-bg-txt1">We're here to help</p>
+        <p className="green-bg-txt1">We&#39;re here to help</p>
         <p className="thank-txt2">
-          If you have any questions regarding the product, it's usage or
+          If you have any questions regarding the product, it&#39;s usage or
           billing, our customer care executives are available 24/7 to assist you
           with the same.{' '}
         </p>
@@ -52,17 +58,15 @@ class PromoThankyouMobile extends React.PureComponent {
             <div className="opt-top">
               <p className="order-top">
                 Order Placed:{' '}
-                <span>
-                  <script type="text/javascript">getDate(0);</script>Thursday,
-                  May 3, 2018
-                </span>
+                <span>{moment().format('dddd, MMM DD, YYYY')}</span>
                 <br />
-                Order Number: <span>341160</span>
+                Order Number: <span>{order.clientOrderId}</span>
                 <br />
                 Estimated Delivery Date:{' '}
                 <span>
-                  <script type="text/javascript">getDate(4);</script>Monday, May
-                  7, 2018
+                  {moment()
+                    .add(4, 'days')
+                    .format('dddd, MMM DD, YYYY')}
                 </span>
               </p>
             </div>
@@ -72,12 +76,16 @@ class PromoThankyouMobile extends React.PureComponent {
               <div key={item.productId} className="prod-row">
                 <div className="prod-data ty">
                   <div className="prod-shoot">
-                    <img src={getTyProductImage(item)} />
+                    <img src={getTyProductImage(item)} alt="" />
                   </div>
                   <p className="prod-name">
-                    {item.name}
+                    American Science CBD
                     <br />
-                    <span>{item.qty} Bottles</span>
+                    {getTyProductName(item)}
+                    <br />
+                    <span>
+                      {getTyProductQuantity(item)} {getTyProductContainer(item)}
+                    </span>
                   </p>
                 </div>
                 <div className="prod-price">${item.price}</div>
@@ -160,16 +168,14 @@ class PromoThankyouMobile extends React.PureComponent {
   }
 }
 
-PromoThankyouMobile = withRouter(PromoThankyouMobile);
-
 function mapStateToProps(state) {
   return {
     order: state.order.order,
   };
 }
 
-PromoThankyouMobile = connect(mapStateToProps, { ...OrderActions })(
-  PromoThankyouMobile,
+const PromoThankyouMobile = connect(mapStateToProps, { ...OrderActions })(
+  withRouter(PromoThankyouMobileComponent),
 );
 
 export { PromoThankyouMobile };

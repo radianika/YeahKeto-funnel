@@ -21,7 +21,7 @@ class Footer extends PureComponent {
         <div className="footer">
           <div className="container">
             <div className="contentWrap">
-              <p className="ftr-txt">
+              <p className="ftrtxt">
                 <a
                   href="javascript:void(0)"
                   onClick={() => {
@@ -48,8 +48,8 @@ class Footer extends PureComponent {
                 </a>
               </p>
 
-              {!this.props.noLogo && (
-                <p className="ftr-txt w40 mtop2">
+              {/* {!this.props.noLogo && (
+                <p className="ftrtxt w40 mtop2">
                   {!this.props.promo ? (
                     <img
                       src="/static/assets/images/mc-v-a.png"
@@ -73,8 +73,8 @@ class Footer extends PureComponent {
                 </p>
               )}
 
-              <p className="ftr-txt just">
-                {this.props.children || (
+              {this.props.children || (
+                <p className="ftrtxt just">
                   <React.Fragment>
                     <br />This product is not for use by or sale to persons
                     under the age of 18. This product should be used only as
@@ -92,10 +92,10 @@ class Footer extends PureComponent {
                     Policy and all Terms & Conditions printed on this site. Void
                     Where Prohibited by Law.
                   </React.Fragment>
-                )}
-              </p>
+                </p>
+              )} */}
 
-              <p className="ftr-txt mtop2">
+              <p className="ftrtxt mtop2">
                 Copyright 2018 © All Rights Reserved - American Science CBD
               </p>
             </div>

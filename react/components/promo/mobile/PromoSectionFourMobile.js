@@ -5,7 +5,7 @@ class PromoSectionFourMobile extends React.PureComponent {
     return (
       <div id="section-four">
         <p className="s2-hd-txt">
-          <span>BENEFITS OF HEMP OIL</span>
+          <span>BENEFITS OF AMERICAN SCIENCE CBD</span>
           <br />Supports Neurological, Physical & Mental Health{' '}
         </p>
         <ul className="s4-list1">
@@ -58,7 +58,7 @@ class PromoSectionFourMobile extends React.PureComponent {
           style={{ 'margin-top': '50px' }}
         >
           <p className="strip-txt">
-            <b>ORDER YOUR BOTTLE OF</b> <span>HEMP OIL</span> <b>TODAY!</b>
+            <b>ORDER YOUR BOTTLE OF</b> <span>CBD OIL</span> <b>TODAY!</b>
             <br />Limited Time Offer - Get Free Bottles
             <br />On Select Packages
           </p>

@@ -1,13 +1,18 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
-import { getTyProductImage } from 'helpers';
+import {
+  getTyProductImage,
+  getTyProductContainer,
+  getTyProductName,
+  getTyProductQuantity,
+} from 'helpers';
 import { OrderActions } from 'redux/actions';
+import moment from 'moment';
 
-class PromoThankyouDesktop extends React.PureComponent {
+class PromoThankyouDesktopComponent extends React.PureComponent {
   render() {
     const { order } = this.props;
-    console.log({ order });
     return (
       <div className="container">
         <div className="contentWrap shadow">
@@ -32,8 +37,8 @@ class PromoThankyouDesktop extends React.PureComponent {
             <div className="thank-lft">
               <p className="thank-txt1">Congratulations! </p>
               <p className="thank-txt2">
-                You've taken the first step to better health and wellness. We
-                are confident that you will enjoy the benefits of American
+                You&#39;ve taken the first step to better health and wellness.
+                We are confident that you will enjoy the benefits of American
                 Science products.
               </p>
               <ul className="thank-list">
@@ -44,7 +49,7 @@ class PromoThankyouDesktop extends React.PureComponent {
                 </li>
                 <li>
                   <span>
-                    Promotes <br />
+                    REGULATES <br />
                   </span>Mood &amp; Sleep Patterns
                 </li>
                 <li>
@@ -63,11 +68,11 @@ class PromoThankyouDesktop extends React.PureComponent {
           <div className="clearall" />
           <div className="green-sec">
             <p className="green-txt1">
-              We're here<br />
+              We&#39;re here<br />
               <span>to help</span>
             </p>
             <p className="green-txt2">
-              If you have any questions regarding the product, it's usage or
+              If you have any questions regarding the product, it&#39;s usage or
               billing, our customer care executives are available 24/7 to assist
               you with the same.
             </p>
@@ -83,11 +88,17 @@ class PromoThankyouDesktop extends React.PureComponent {
             <div className="ty-left">
               <div className="opt-top">
                 <p className="order-top">
-                  Order Placed: <span>Thursday, May 3, 2018</span>
+                  Order Placed:{' '}
+                  <span>{moment().format('dddd, MMM DD, YYYY')}</span>
                   <br />
-                  Order Number: <span>341160</span>
+                  Order Number: <span>{order.clientOrderId}</span>
                   <br />
-                  Estimated Delivery Date: <span>Monday, May 7, 2018</span>
+                  Estimated Delivery Date:{' '}
+                  <span>
+                    {moment()
+                      .add(4, 'days')
+                      .format('dddd, MMM DD, YYYY')}
+                  </span>
                 </p>
               </div>
               <div className="itemordered-heading">Items Ordered</div>
@@ -96,12 +107,17 @@ class PromoThankyouDesktop extends React.PureComponent {
                 <div key={item.productId} className="prod-row">
                   <div className="prod-data ty">
                     <div className="prod-shoot">
-                      <img src={getTyProductImage(item)} />
+                      <img src={getTyProductImage(item)} alt="" />
                     </div>
                     <p className="prod-name">
-                      {item.name}
+                      American Science CBD
                       <br />
-                      <span>{item.qty} Bottles</span>
+                      {getTyProductName(item)}
+                      <br />
+                      <span>
+                        {getTyProductQuantity(item)}{' '}
+                        {getTyProductContainer(item)}
+                      </span>
                     </p>
                   </div>
                   <div className="prod-price">${item.price}</div>
@@ -185,16 +201,14 @@ class PromoThankyouDesktop extends React.PureComponent {
   }
 }
 
-PromoThankyouDesktop = withRouter(PromoThankyouDesktop);
-
 function mapStateToProps(state) {
   return {
     order: state.order.order,
   };
 }
 
-PromoThankyouDesktop = connect(mapStateToProps, { ...OrderActions })(
-  PromoThankyouDesktop,
+const PromoThankyouDesktop = connect(mapStateToProps, { ...OrderActions })(
+  withRouter(PromoThankyouDesktopComponent),
 );
 
 export { PromoThankyouDesktop };

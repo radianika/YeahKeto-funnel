@@ -161,6 +161,7 @@ MAIN CSS START
   border: 3px dashed #000;
   padding: 27px 10px 20px 20px;
   float: left;
+  height: 417px;
 }
 .s1-dot-left {
   width: 36%;
@@ -168,6 +169,7 @@ MAIN CSS START
   text-align: center;
   position: relative;
   margin: 35px 0 0 0;
+  height: 382px;
 }
 .up-btl1 {
   float: left;
@@ -244,6 +246,14 @@ MAIN CSS START
 }
 .button {
   margin: 16px 0 0 0;
+}
+
+/*************************************
+ * CSS FOR UPSELL
+ ************************************/
+.success-modal h2,
+p {
+  padding-top: 10px;
 }
 
 /*--------------------------
@@ -341,6 +351,7 @@ a.select:hover {
   float: left;
   text-align: center;
   padding: 0 0 22px 0;
+  height: 349px;
 }
 .satisfaction-seal {
   margin: -51px auto 0 auto;
@@ -372,12 +383,12 @@ a.nothank {
   color: #158fc0;
   text-align: center;
   text-decoration: underline;
-  margin: 24px 0 0 0;
+  margin: 24px 20px 0 20px;
   display: block;
 }
 .secure-logos {
   margin: 24px auto 19px auto;
-  display: block;
+  padding-left: 10px;
 }
 
 .s1hding {
@@ -450,6 +461,12 @@ FOOTER CSS
 .ftrtxt a,
 .ftrtxt a:hover {
   color: #000101;
+}
+.footer .contentWrap {
+  padding-top: 10px;
+}
+.footer .contentWrap p {
+  padding-top: 0px;
 }
 
 /*-------------------------------------

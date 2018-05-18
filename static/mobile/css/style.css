@@ -140,11 +140,12 @@ MAIN CSS START
   text-align: center;
   border: 3px dashed #000;
   padding: 27px 10px 20px 20px;
+  height: 960px;
 }
 .up-btl1 {
 }
 .free-ship {
-  margin: 8px 0 0 0;
+  /* margin: 8px 0 0 0; */
 }
 .dot-rgt-txt1 {
   color: #212020;
@@ -161,7 +162,7 @@ MAIN CSS START
   float: left;
   line-height: 40px;
   width: 100%;
-  padding: 8px 0 0 0;
+  padding: 0;
 }
 .dot-rgt-txt3 {
   color: #1e1e1e;
@@ -345,6 +346,7 @@ ul.s1list li {
   box-sizing: border-box;
   margin: 94px auto 15px auto;
   width: 96%;
+  height: 378px;
 }
 .satisfaction-seal {
   margin: -51px auto 0 auto;
@@ -384,7 +386,7 @@ a.nothank {
 }
 .secure-logos {
   margin: 24px auto 19px auto;
-  display: block;
+  padding-left: 10px;
 }
 
 /*-----------------footer------------------*/
@@ -402,6 +404,13 @@ a.nothank {
 .ftrtxt a:hover {
   color: #000101;
 }
+.footer .contentWrap {
+  padding-top: 10px;
+}
+.footer .contentWrap p {
+  padding-top: 0px;
+}
+
 /*-----------------Thank-you------------------*/
 .thank-mid {
   float: left;
@@ -848,3 +857,11 @@ ul.user-info li span {
 }
 
 /* loading bar ends */
+
+/*************************************
+ * CSS FOR UPSELL
+ ************************************/
+.success-modal h2,
+p {
+  padding-top: 10px;
+}

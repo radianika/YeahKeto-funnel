@@ -2,7 +2,7 @@
 
 ## Setup
 
-1.  `yarn install`
+1.  `yarn`
 2.  `cp example.env .env`
 3.  `yarn dev`
 
@@ -14,4 +14,5 @@
 
 `yarn start`
 
-localhost:3000
+localhost:3001
+localhost:3001/promo

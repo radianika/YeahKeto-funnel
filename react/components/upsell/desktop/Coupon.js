@@ -10,7 +10,11 @@ class Coupon extends React.PureComponent {
     return (
       <div className="s1-doteed-sec">
         <div className="s1-dot-left">
-          <img src="/static/desktop/images/up-btl1.png" className="up-btl1" />
+          <img
+            src="/static/desktop/images/up-btl1.png"
+            className="up-btl1"
+            alt=""
+          />
           <br />
           {this.props.showSeal && (
             <div className="save-seal">
@@ -21,6 +25,7 @@ class Coupon extends React.PureComponent {
           <img
             src="/static/desktop/images/free-ship.png"
             className="free-ship"
+            alt="Free Shipping"
           />
         </div>
         <div className="s1-dot-right">
@@ -38,11 +43,15 @@ class Coupon extends React.PureComponent {
             hand.
             <br />
             <br />
-            You will never see this price again. Make sure you act right now
-            before you leave this page!
+            This offer is promotional and will not last. Act now to enjoy this
+            discount!
           </p>
           <a href="javascript:void(0)" onClick={this.props.onUpgrade}>
-            <img src="/static/desktop/images/button.png" className="button" />
+            <img
+              src="/static/desktop/images/button.png"
+              className="button"
+              alt="Upgrade My Order"
+            />
           </a>
         </div>
       </div>

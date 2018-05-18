@@ -27,41 +27,39 @@ class PromoSectionThreeMobile extends React.PureComponent {
             <span>Cold Press </span>
             <b>& Unrefined</b>
             <p className="s3-list-txt">
-              Cold-pressed extraction of the oil from Hemp Extract ensure
-              retention of all the therapeutic properties without the use of any
-              chemicals.
+              Cold-pressed oil extraction to ensure full retention of
+              therapeutic properties. Fully organic, no chemicals.
             </p>
           </li>
           <li>
             {' '}
-            <i className="s3-icons sprite3 sprite-s3-icon2" /> <span>co2</span>
-            <b> extraction</b>
+            <i className="s3-icons sprite3 sprite-s3-icon2" /> <span>CO2</span>
+            <b> CBD EXTRACTION- Zero THC</b>
             <p className="s3-list-txt">
-              Utilizes the most advanced, cleanest, & safest extraction method
-              that preserves essential cannabinoids (CBD) and filters out THC
-              (the high causing compound.)
+              We use the cleanest, safest extraction method to preserve
+              essential cannabinoids (CBD) and filter out the psychoactive
+              compound (THC)
             </p>
           </li>
           <li>
             {' '}
             <i className="s3-icons sprite3 sprite-s3-icon3" />{' '}
-            <span>organic </span>
-            <b>& pure</b>
+            <span>Organic </span>
+            <b>, AMERICAN-MADE</b>
             <p className="s3-list-txt">
-              Hemp Oil that is made from hemp leaves organically grown and
-              extracted in the USA, and is certified-free of any synthetics,
-              pesticides or herbicides.
+              Derived from organic, Colorado grown hemp. Certified-free of any
+              synthetics, pesticides or herbicides.
             </p>
           </li>
           <li>
             {' '}
             <i className="s3-icons sprite3 sprite-s3-icon4" />{' '}
-            <span>sublingual </span>
-            <b>delivery system</b>
+            <span>Sublingual </span>
+            <b>Delivery System</b>
             <p className="s3-list-txt">
-              A cutting-edge delivery system ensures that the Hemp Oil is
-              absorbed directly into the blood vessels and lymphatics of the
-              mouth for rapid action & relief.{' '}
+              Designed for sublingual delivery, ensuring that our CBD Oil is
+              absorbed directly into the bloodstream for rapid action &amp;
+              relief.{' '}
             </p>
           </li>
         </ul>
@@ -71,7 +69,7 @@ class PromoSectionThreeMobile extends React.PureComponent {
           style={{ 'margin-top': '50px' }}
         >
           <p className="strip-txt">
-            <b>ORDER YOUR BOTTLE OF</b> <span>HEMP OIL</span> <b>TODAY!</b>
+            <b>ORDER YOUR BOTTLE OF</b> <span>CBD OIL</span> <b>TODAY!</b>
             <br />Limited Time Offer - Get Free Bottles
             <br />On Select Packages
           </p>
