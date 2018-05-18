@@ -1,11 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
 import { PromoSession } from 'react/components/common';
-import { PromoThankyouDesktop, PromoThankyouMobile } from 'react/containers';
+import { ThankyouDesktop, ThankyouMobile } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
 import { AuthActions, OrderActions } from 'redux/actions';
 
-class PromoThankyou extends React.PureComponent {
+class Thankyou extends React.PureComponent {
   static async getInitialProps({ store, isServer, query }) {
     if (isServer) {
       store.dispatch(
@@ -17,7 +17,7 @@ class PromoThankyou extends React.PureComponent {
 
   render() {
     const { props } = this;
-    const { device } = props.url.query;
+    const { device, isPromo } = props.url.query;
     return (
       <React.Fragment>
         <Head>
@@ -45,11 +45,11 @@ class PromoThankyou extends React.PureComponent {
           )}
         </Head>
         <PromoSession pageType="thankyouPage" />
-        {device === 'desktop' && <PromoThankyouDesktop />}
-        {device === 'mobile' && <PromoThankyouMobile />}
+        {device === 'desktop' && <ThankyouDesktop isPromo={isPromo} />}
+        {device === 'mobile' && <ThankyouMobile isPromo={isPromo} />}
       </React.Fragment>
     );
   }
 }
 
-export default withReduxSaga(PromoThankyou);
+export default withReduxSaga(Thankyou);

@@ -1,7 +1,7 @@
 const products = {
   'hemp-oil': {
     type: 'oil',
-    title: 'CBD HEMP OIL',
+    title: 'CBD HEMP OIL 500 mg',
     sub_title: 'Pure Cannabidiol complex',
     header: 'AMERICAN SCIENCE',
     description:
@@ -27,7 +27,7 @@ const products = {
   },
   'hemp-capsule': {
     type: 'cap',
-    title: 'CBD HEMP CAPSULES',
+    title: 'CBD HEMP CAPSULES 300 mg',
     sub_title: 'Pure Cannabidiol complex',
     header: 'AMERICAN SCIENCE',
     description:
@@ -53,7 +53,7 @@ const products = {
   },
   warming_balm: {
     type: 'balm',
-    title: 'WARMING BALM',
+    title: 'WARMING BALM 50 mg',
     sub_title: 'Premium Cognitive Function',
     header: 'AMERICAN SCIENCE',
     description:
@@ -90,7 +90,7 @@ const products = {
 
 const recommendedProducts = {
   'hemp-oil': {
-    title: 'CBD HEMP OIL',
+    title: 'CBD HEMP OIL 500 mg',
     sub_title: 'PURE CANNABIDIOL COMPLEX',
     description:
       'Hemp oil may help reduce pains & aches while improving mood patterns & relaxation.',
@@ -98,14 +98,14 @@ const recommendedProducts = {
     image: '/static/assets/images/sec2-prd1.png',
   },
   'hemp-capsule': {
-    title: 'CBD HEMP CAPSULES',
+    title: 'CBD HEMP CAPSULES 300 mg',
     sub_title: 'PURE CANNABIDIOL COMPLEX',
     description: 'Hemp capsules may help support joint health & may promote better sleep quality.',
     link: '/hemp-capsule',
     image: '/static/assets/images/sec2-prd2.png',
   },
   warming_balm: {
-    title: 'WARMING BALM',
+    title: 'WARMING BALM 50 mg',
     sub_title: 'PREMIUM COGNITIVE FUNCTION',
     description:
       'Warming balm may help support relief from problems like soreness, inflammation, and irritated skin.',
@@ -145,6 +145,15 @@ const getTyProductContainer = product => {
 };
 
 const getTyProductName = product => {
+  if (product.name.toLowerCase().indexOf('balm') >= 0) {
+    return 'CBD Oil 500mg 1 oz';
+  }
+  if (product.name.toLowerCase().indexOf('oil') >= 0) {
+    return 'CBD Capsules 300 mg';
+  }
+  if (product.name.toLowerCase().indexOf('capsule') >= 0) {
+    return 'CBD Warming Balm 50mg';
+  }
   const titleString = 'american science cbd';
   const titleIndex = product.name.toLowerCase().indexOf(titleString);
   const productName = product.name.substring(titleIndex + titleString.length);
