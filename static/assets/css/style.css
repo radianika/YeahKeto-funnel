@@ -505,6 +505,7 @@ ul.sec2-list li .btn {
   float: left;
   width: 100%;
   margin: 5px 0;
+  text-align: center;
 }
 
 .footer p a {
@@ -527,7 +528,7 @@ ul.sec2-list li .btn {
   vertical-align: middle;
 }
 .just {
-  text-align: justify !important;
+  /*text-align: justify !important;*/
 }
 .underline {
   text-decoration: underline;

@@ -387,10 +387,9 @@ class CartForm extends React.PureComponent {
   }
 }
 
-const CartFormContainer = () =>
-  reduxForm({
-    form: 'CartForm',
-    validate: shippingCartFormValidator,
-  })(CartForm);
+const CartFormContainer = reduxForm({
+  form: 'CartForm',
+  validate: shippingCartFormValidator,
+})(CartForm);
 
-export { CartForm, CartFormContainer };
+export { CartFormContainer };

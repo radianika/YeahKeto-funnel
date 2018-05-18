@@ -4,8 +4,8 @@ import { withRouter } from 'next/router';
 import { Spinner } from 'react/components/common';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
-import { CartFormContainer } from './CartForm';
 import { ChooseProductsForm } from './ChooseProductsForm';
+import { CartFormContainer } from './CartForm';
 
 class Cart extends PureComponent {
   constructor(props) {
@@ -120,8 +120,8 @@ function mapStateToProps(state) {
     submitStatus: state.order.submitLeadsFormStatus,
   };
 }
-const CartPageContainer = connect(mapStateToProps, { ...OrderActions })(
+const CartPage = connect(mapStateToProps, { ...OrderActions })(
   withRouter(Cart),
 );
 
-export { Cart, CartPageContainer };
+export { CartPage };
