@@ -22,7 +22,6 @@ class CardExpiryField extends React.PureComponent {
 
   render() {
     const { props } = this;
-    console.log({ props });
     const { value } = props.input;
     const hasError = props.meta.touched && props.meta.error;
     const valid = props.input.value && props.meta.valid;
@@ -50,7 +49,7 @@ class CardExpiryField extends React.PureComponent {
               onChange={this.updateMonth}
               onBlur={this.onBlur}
             >
-              <option value={null}>– –</option>
+              <option value="">– –</option>
               {[...Array(12).keys()].map(month => (
                 <option key={month} value={month + 1}>
                   {month + 1 < 10 ? `0${month + 1}` : month + 1}
@@ -66,9 +65,7 @@ class CardExpiryField extends React.PureComponent {
               onChange={this.updateYear}
               onBlur={this.onBlur}
             >
-              <option value={null} disabled>
-                – –
-              </option>
+              <option value="">– –</option>
               {[18, 19, 20, 21, 22, 23, 24].map(year => (
                 <option key={year} value={`20${year}`}>
                   {year}

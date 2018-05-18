@@ -21,7 +21,7 @@ const SelectField = props => {
           disabled={props.disabled}
           style={props.inputStyle}
         >
-          <option value={null}>{props.placeholder}</option>
+          <option value="">{props.placeholder}</option>
           {Object.keys(props.options).map(val => (
             <option key={val} value={val}>
               {props.options[val]}
@@ -33,7 +33,7 @@ const SelectField = props => {
           {props.icon && (
             <div className="icon-box">
               <center>
-                <img src={props.icon} />
+                <img alt="icon" src={props.icon} />
               </center>
             </div>
           )}
@@ -42,7 +42,7 @@ const SelectField = props => {
             className="ft-input"
             disabled={props.disabled}
           >
-            <option value={null}>{props.placeholder}</option>
+            <option value="">{props.placeholder}</option>
             {Object.keys(props.options).map(val => (
               <option key={val} value={val}>
                 {props.options[val]}
