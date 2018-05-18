@@ -18,13 +18,15 @@ import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
 import { OrderActions } from 'redux/actions';
 
-class MobileShippingContainer extends React.PureComponent {
-  onSubmit = values => {
-    this.props.submitLeadsForm({
-      values,
-      router: this.props.router,
-      nextUrl: '/promo/mobile/select-package',
-    });
+class MobileShippingContainerComponent extends React.PureComponent {
+  onSubmit = e => {
+    this.props.handleSubmit(values => {
+      this.props.submitLeadsForm({
+        values,
+        router: this.props.router,
+        nextUrl: '/promo/mobile/select-package',
+      });
+    })(e);
   };
   render() {
     return (
@@ -131,7 +133,7 @@ class MobileShippingContainer extends React.PureComponent {
                     <a
                       href="javascript:void(0)"
                       className="button"
-                      onClick={this.props.handleSubmit(this.onSubmit)}
+                      onClick={this.onSubmit}
                     >
                       <img
                         src="/static/promo/mobile/images/ship-btn.png"
@@ -165,21 +167,17 @@ class MobileShippingContainer extends React.PureComponent {
   }
 }
 
-MobileShippingContainer = withRouter(MobileShippingContainer);
-
-MobileShippingContainer = reduxForm({
-  form: 'MobileShippingForm',
-  validate: shippingFormValidator,
-})(MobileShippingContainer);
-
 function mapStateToProps(state) {
   return {
     submitStatus: state.order.submitLeadsFormStatus,
   };
 }
 
-MobileShippingContainer = connect(mapStateToProps, { ...OrderActions })(
-  MobileShippingContainer,
+const MobileShippingContainer = connect(mapStateToProps, { ...OrderActions })(
+  reduxForm({
+    form: 'MobileShippingForm',
+    validate: shippingFormValidator,
+  })(withRouter(MobileShippingContainerComponent)),
 );
 
 export { MobileShippingContainer };
