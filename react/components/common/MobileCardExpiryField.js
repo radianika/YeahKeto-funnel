@@ -42,7 +42,7 @@ class MobileCardExpiryField extends React.PureComponent {
               onChange={this.updateMonth}
               onBlur={this.onBlur}
             >
-              <option value={null}>– –</option>
+              <option value="">– –</option>
               {[...Array(12).keys()].map(month => (
                 <option key={month} value={month + 1}>
                   {month + 1 < 10 ? `0${month + 1}` : month + 1}
@@ -58,7 +58,7 @@ class MobileCardExpiryField extends React.PureComponent {
               onChange={this.updateYear}
               onBlur={this.onBlur}
             >
-              <option value={null}>– –</option>
+              <option value="">– –</option>
               {[18, 19, 20, 21, 22, 23, 24].map(year => (
                 <option key={year} value={`20${year}`}>
                   {year}
