@@ -108,8 +108,13 @@ app.prepare().then(() => {
   server.get('/thankyou?', async (req, res) => {
     const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
     const orderId = req.query.orderId;
-    redirectToPromo(orderId, res);
-    res.redirect(`/promo/${requestAgent}/thankyou?orderId=${orderId}`);
+
+    const sessionId = await getSessionId(req, res);
+    return app.render(req, res, '/thankyou-page', {
+      orderId,
+      sessionId,
+      device: requestAgent,
+    });
   });
 
   server.get('/promo/:useragent?', async (req, res) => {
@@ -175,9 +180,10 @@ app.prepare().then(() => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
     redirectToPromo(orderId, res);
-    return app.render(req, res, '/promo-thankyou', {
+    return app.render(req, res, '/thankyou-page', {
       orderId,
       sessionId,
+      isPromo: true,
       device: 'desktop',
     });
   });
@@ -247,9 +253,10 @@ app.prepare().then(() => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
     redirectToPromo(orderId, res);
-    return app.render(req, res, '/promo-thankyou', {
+    return app.render(req, res, '/thankyou-page', {
       orderId,
       sessionId,
+      isPromo: true,
       device: 'mobile',
     });
   });

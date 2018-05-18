@@ -10,9 +10,10 @@ import {
 import { OrderActions } from 'redux/actions';
 import moment from 'moment';
 
-class PromoThankyouDesktopComponent extends React.PureComponent {
+class ThankyouDesktopComponent extends React.PureComponent {
   render() {
-    const { order } = this.props;
+    const { order, isPromo } = this.props;
+    console.log(order);
     return (
       <div className="container">
         <div className="contentWrap shadow">
@@ -115,7 +116,7 @@ class PromoThankyouDesktopComponent extends React.PureComponent {
                       {getTyProductName(item)}
                       <br />
                       <span>
-                        {getTyProductQuantity(item)}{' '}
+                        {isPromo ? getTyProductQuantity(item) : item.qty}{' '}
                         {getTyProductContainer(item)}
                       </span>
                     </p>
@@ -207,8 +208,8 @@ function mapStateToProps(state) {
   };
 }
 
-const PromoThankyouDesktop = connect(mapStateToProps, { ...OrderActions })(
-  withRouter(PromoThankyouDesktopComponent),
+const ThankyouDesktop = connect(mapStateToProps, { ...OrderActions })(
+  withRouter(ThankyouDesktopComponent),
 );
 
-export { PromoThankyouDesktop };
+export { ThankyouDesktop };
