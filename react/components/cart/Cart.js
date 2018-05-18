@@ -120,8 +120,8 @@ function mapStateToProps(state) {
     submitStatus: state.order.submitLeadsFormStatus,
   };
 }
-const CartPageContainer = connect(mapStateToProps, { ...OrderActions })(
+const CartPage = connect(mapStateToProps, { ...OrderActions })(
   withRouter(Cart),
 );
 
-export { CartPageContainer };
+export { CartPage };

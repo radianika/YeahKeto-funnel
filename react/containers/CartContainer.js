@@ -1,13 +1,13 @@
 import React from 'react';
 import { Header, Footer } from 'react/components/common';
-import { CartPageContainer } from 'react/components/cart/Cart';
+import { CartPage } from 'react/components/cart/Cart';
 
 class CartContainer extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
         <Header />
-        <CartPageContainer />
+        <CartPage />
         <Footer />
       </React.Fragment>
     );
