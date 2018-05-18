@@ -18,7 +18,7 @@ import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
 import { OrderActions } from 'redux/actions';
 
-class MobileShippingContainer extends React.PureComponent {
+class MobileShippingContainerComponent extends React.PureComponent {
   onSubmit = values => {
     this.props.submitLeadsForm({
       values,
@@ -165,21 +165,17 @@ class MobileShippingContainer extends React.PureComponent {
   }
 }
 
-MobileShippingContainer = withRouter(MobileShippingContainer);
-
-MobileShippingContainer = reduxForm({
-  form: 'MobileShippingForm',
-  validate: shippingFormValidator,
-})(MobileShippingContainer);
-
 function mapStateToProps(state) {
   return {
     submitStatus: state.order.submitLeadsFormStatus,
   };
 }
 
-MobileShippingContainer = connect(mapStateToProps, { ...OrderActions })(
-  MobileShippingContainer,
+const MobileShippingContainer = connect(mapStateToProps, { ...OrderActions })(
+  reduxForm({
+    form: 'MobileShippingForm',
+    validate: shippingFormValidator,
+  })(withRouter(MobileShippingContainerComponent)),
 );
 
 export { MobileShippingContainer };
