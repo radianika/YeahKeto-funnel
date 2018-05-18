@@ -4,8 +4,8 @@ import { withRouter } from 'next/router';
 import { Spinner } from 'react/components/common';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
-import { CartFormContainer } from './CartForm';
 import { ChooseProductsForm } from './ChooseProductsForm';
+import { CartFormContainer } from './CartForm';
 
 class Cart extends PureComponent {
   constructor(props) {
