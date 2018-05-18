@@ -53,7 +53,7 @@ class CardExpiryField extends React.PureComponent {
               <option value={null}>– –</option>
               {[...Array(12).keys()].map(month => (
                 <option key={month} value={month + 1}>
-                  {month + 1}
+                  {month + 1 < 10 ? `0${month + 1}` : month + 1}
                 </option>
               ))}
             </select>

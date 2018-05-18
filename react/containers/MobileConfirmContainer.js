@@ -22,7 +22,7 @@ import {
 } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
 
-class MobileConfirmContainer extends React.PureComponent {
+class MobileConfirmContainerComponent extends React.PureComponent {
   constructor() {
     super();
     this.state = {
@@ -351,13 +351,11 @@ class MobileConfirmContainer extends React.PureComponent {
   }
 }
 
-MobileConfirmContainer = withRouter(MobileConfirmContainer); // eslint-disable-line
-
 // eslint-disable-next-line
-MobileConfirmContainer = reduxForm({
+const MobileConfirmContainerPage = reduxForm({
   form: 'MobileConfirmForm',
   validate: billingFormValidator,
-})(MobileConfirmContainer);
+})(withRouter(MobileConfirmContainerComponent));
 
 function mapStateToProps(reduxState, ownProps) {
   const { productId } = ownProps.url.query;
@@ -392,8 +390,8 @@ function mapStateToProps(reduxState, ownProps) {
   };
 }
 
-const MobileConfirmContainerPage = connect(mapStateToProps, {
+const MobileConfirmContainer = connect(mapStateToProps, {
   ...OrderActions,
-})(MobileConfirmContainer);
+})(MobileConfirmContainerPage);
 
-export { MobileConfirmContainer, MobileConfirmContainerPage };
+export { MobileConfirmContainer };
