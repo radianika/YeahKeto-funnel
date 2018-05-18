@@ -6,7 +6,6 @@
 2.  `cp example.env .env`
 3.  `yarn dev`
 
-
 ## Build
 
 `yarn build`
