@@ -12,13 +12,18 @@ class Cart extends PureComponent {
     super(props);
     this.state = {
       products: {},
+      showEmptyError: false,
     };
   }
 
   submit = values => {
+    if (this.isProductsEmpty()) {
+      console.log('empty');
+      this.setState({ showEmptyError: true });
+      return;
+    }
     const { products } = this.state;
     const orderPayload = {};
-    console.log(Object.values(products));
     Object.values(products).forEach(item => {
       orderPayload[`${item.label}id`] = item.product.id;
       orderPayload[`${item.label}qty`] = item.quantity;
@@ -39,11 +44,19 @@ class Cart extends PureComponent {
       quantity,
       label: `product${index + 1}_`,
     };
-    this.setState({ products });
+    this.setState({ products, showEmptyError: false });
+  };
+
+  isProductsEmpty = () => {
+    const { products } = this.state;
+    const productSelected =
+      Object.values(products).filter(product => product.quantity > 0).length >
+      0;
+    return !productSelected;
   };
 
   render() {
-    console.log(this.state);
+    const { showEmptyError } = this.state;
     return (
       <React.Fragment>
         <Head>
@@ -93,6 +106,7 @@ class Cart extends PureComponent {
                 </tr>
               </tbody>
             </table>
+            {showEmptyError && <div>Please select at least one product</div>}
             <div className="clearall">
               <div className="sec1crt-frm" id="select_cart_form">
                 <div className="confidence">
