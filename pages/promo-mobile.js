@@ -3,7 +3,8 @@ import Head from 'next/head';
 import { PromoMobileContainer } from 'react/containers';
 import { withReduxSaga } from 'redux/store';
 import { AuthActions } from 'redux/actions';
-import { PromoSession } from 'react/components/common';
+import { PromoSession, Spinner } from 'react/components/common';
+import Router from 'next/router';
 
 class Promo extends React.PureComponent {
   static async getInitialProps({ store, isServer, query }) {
@@ -12,6 +13,19 @@ class Promo extends React.PureComponent {
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
     }
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      showSpinner: false,
+    };
+  }
+
+  componentDidMount() {
+    Router.onRouteChangeStart = () => {
+      this.setState({ showSpinner: true });
+    };
   }
 
   render() {
@@ -47,6 +61,7 @@ class Promo extends React.PureComponent {
         </Head>
         <PromoSession pageType="leadPage" />
         <PromoMobileContainer />
+        {this.state.showSpinner && <Spinner />}
       </React.Fragment>
     );
   }
