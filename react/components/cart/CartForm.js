@@ -104,7 +104,6 @@ class CartForm extends React.PureComponent {
                 placeholder="Street and number, P.O. box, c/o."
                 icon="/static/assets/images/frmicon5.png"
                 changeField={this.props.change}
-                gi
                 large="true"
               />
               <Field
