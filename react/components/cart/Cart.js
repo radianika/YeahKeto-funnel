@@ -124,4 +124,4 @@ const CartPageContainer = connect(mapStateToProps, { ...OrderActions })(
   withRouter(Cart),
 );
 
-export { Cart, CartPageContainer };
+export { CartPageContainer };

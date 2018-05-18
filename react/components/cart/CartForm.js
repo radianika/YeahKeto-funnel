@@ -392,4 +392,4 @@ const CartFormContainer = reduxForm({
   validate: shippingCartFormValidator,
 })(CartForm);
 
-export { CartForm, CartFormContainer };
+export { CartFormContainer };
