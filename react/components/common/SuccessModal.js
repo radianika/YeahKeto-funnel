@@ -24,13 +24,8 @@ class SuccessModal extends React.PureComponent {
     super(props);
 
     this.state = {
-      modalIsOpen: true,
+      modalIsOpen: false,
     };
-
-    this.modalRef = React.createRef();
-
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidUpdate() {
@@ -41,13 +36,13 @@ class SuccessModal extends React.PureComponent {
     }
   }
 
-  openModal() {
+  openModal = () => {
     this.setState({ modalIsOpen: true });
-  }
+  };
 
-  closeModal() {
+  closeModal = () => {
     this.setState({ modalIsOpen: false });
-  }
+  };
 
   render() {
     return (
