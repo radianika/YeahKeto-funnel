@@ -48,7 +48,7 @@ class UpsellFooter extends React.PureComponent {
         </div>
         <p className="ftrtxt">
           <Footer noLogo>
-            <br />
+            <span />
           </Footer>
         </p>
       </React.Fragment>
