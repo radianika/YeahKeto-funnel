@@ -6,7 +6,7 @@ import {
   TextField,
   CVVField,
   SelectField,
-  SameAddressCheckField,
+  // SameAddressCheckField, TODO: Some time later this might be used
   AddressField,
   Spinner,
   SuccessModal,
@@ -22,7 +22,7 @@ import {
   normalizeSecurityCode,
 } from 'helpers';
 
-class PromoCheckoutPaymentForm extends React.Component {
+class PromoCheckoutPaymentFormClass extends React.Component {
   constructor(props) {
     super(props);
 
@@ -99,7 +99,12 @@ class PromoCheckoutPaymentForm extends React.Component {
               <img src="/static/amex.png" alt="" />
             </span>
           </div>
-          <Field component={SameAddressCheckField} name="same" />
+          {/*
+            TODO: Some time later this might be used if we have a user requirement to input
+              different addresses for billing and shipping.
+              For now it is not used.
+            <Field component={SameAddressCheckField} name="same" />
+          */}
           <div className="clearfix" />
           <div id="billingDiv" style={{ display: 'none' }} />
           {same !== 'Yes' && (
@@ -196,10 +201,10 @@ class PromoCheckoutPaymentForm extends React.Component {
   }
 }
 
-PromoCheckoutPaymentForm = reduxForm({
+const PromoCheckoutPaymentFormComponent = reduxForm({
   form: 'BillingForm',
   validate: billingFormValidator,
-})(PromoCheckoutPaymentForm);
+})(PromoCheckoutPaymentFormClass);
 
 const selector = formValueSelector('BillingForm');
 
@@ -237,6 +242,8 @@ function mapStateToProps(reduxState) {
   };
 }
 
-PromoCheckoutPaymentForm = connect(mapStateToProps)(PromoCheckoutPaymentForm);
+const PromoCheckoutPaymentForm = connect(mapStateToProps)(
+  PromoCheckoutPaymentFormComponent,
+);
 
 export { PromoCheckoutPaymentForm };
