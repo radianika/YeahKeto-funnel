@@ -188,18 +188,23 @@ class CartForm extends React.PureComponent {
               <p className="txt2-chk">Payment Information</p>
             </div>
             <div className="form-content">
-              <p className="billing-toggle-txt">
-                <input
-                  className="chkbx-chk"
-                  id="billing_same"
-                  checked={this.state.isSame}
-                  type="checkbox"
-                  onChange={() => {
-                    this.setState({ isSame: !this.state.isSame });
-                  }}
-                />
-                Billing Address is the same as Shipping Address
-              </p>
+              {/*
+                TODO: might be used later when there is the case that
+                billing andshipping have different addresses
+
+                <p className="billing-toggle-txt">
+                  <input
+                    className="chkbx-chk"
+                    id="billing_same"
+                    checked={this.state.isSame}
+                    type="checkbox"
+                    onChange={() => {
+                      this.setState({ isSame: !this.state.isSame });
+                    }}
+                  />
+                  Billing Address is the same as Shipping Address
+                </p>
+              */}
               {!this.state.isSame && (
                 <div id="billingflds">
                   <Field
