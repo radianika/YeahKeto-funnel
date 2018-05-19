@@ -147,17 +147,21 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                     style={{ display: 'none', width: '0px', height: '0px' }}
                   />
                   <div className="sameas">
-                    <p>
-                      <input
-                        id="checkbox"
-                        type="checkbox"
-                        checked={this.state.isSame}
-                        onChange={() => {
-                          this.setState({ isSame: !this.state.isSame });
-                        }}
-                      />{' '}
-                      Billing address is the same as shipping
-                    </p>
+                    {/*
+                      TODO: might be used later when there is the case that
+                      billing andshipping have different addresses
+                      <p>
+                        <input
+                          id="checkbox"
+                          type="checkbox"
+                          checked={this.state.isSame}
+                          onChange={() => {
+                            this.setState({ isSame: !this.state.isSame });
+                          }}
+                        />{' '}
+                        Billing address is the same as shipping
+                      </p>
+                    */}
                     <div className="cards">
                       <span className="card-visa">
                         <img src="/static/Visa.png" alt="" />

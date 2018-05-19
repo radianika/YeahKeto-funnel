@@ -146,21 +146,26 @@ class UInfoForm extends PureComponent {
             </p>
           </div>
           <div className="form-content">
-            {this.props.fType === 'cart_billing_info' && (
-              <React.Fragment>
-                <p className="billing-toggle-txt">
-                  <input
-                    type="checkbox"
-                    name="agree_terms"
-                    className="chkbx-chk"
-                    id="billing_same"
-                    value={this.props.basEnabled}
-                    onChange={this.props.basSwitcher}
-                  />
-                  Billing Address is the same as Shipping Address
-                </p>
-              </React.Fragment>
-            )}
+            {/*
+              TODO: might be used later when there is the case that
+              billing andshipping have different addresses
+
+              {this.props.fType === 'cart_billing_info' && (
+                <React.Fragment>
+                  <p className="billing-toggle-txt">
+                    <input
+                      type="checkbox"
+                      name="agree_terms"
+                      className="chkbx-chk"
+                      id="billing_same"
+                      value={this.props.basEnabled}
+                      onChange={this.props.basSwitcher}
+                    />
+                    Billing Address is the same as Shipping Address
+                  </p>
+                </React.Fragment>
+              )}
+            */}
             {this.props.fType === 'cart_user_info' && (
               <React.Fragment>
                 <UInfoInput
