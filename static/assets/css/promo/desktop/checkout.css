@@ -411,7 +411,50 @@ ul.smrylist li:nth-child(8) {
 
 /*-----------RIGHT SIDE---------------*/
 
-/*.chkfrm-top{height:145px;background:url(../../../../promo/desktop/images/chk-frmtop.png) center top no-repeat; position:relative;}*/
+@keyframes fade-loop {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.chkfrm-top {
+  height: 145px;
+  background: url(../../../../promo/desktop/images/chk-frmtop.png) center top
+    no-repeat;
+  position: relative;
+}
+
+.chkfrm-top .sldrtxt {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 33px;
+  color: #fff;
+  text-align: center;
+  height: 33px;
+  padding: 22px 0 0 0;
+}
+
+.chkfrm-top p {
+  animation-name: fade-loop;
+  animation-iteration-count: infinite;
+  animation-duration: 7s;
+  position: absolute;
+  left: 30px;
+}
+
+.chkfrm-top p:last-child {
+  animation-delay: 3.5s;
+  opacity: 0;
+}
 
 .chkfrm-btm {
   height: 55px;

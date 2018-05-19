@@ -7,7 +7,7 @@ import { PromoCheckoutPaymentForm } from 'react/components/promo/desktop';
 import { packages, normalizePhone } from 'helpers';
 import moment from 'moment';
 
-class PromoCheckoutContainer extends React.PureComponent {
+class PromoCheckout extends React.PureComponent {
   constructor() {
     super();
     this.state = {
@@ -102,13 +102,15 @@ class PromoCheckoutContainer extends React.PureComponent {
                           <div
                             className="select-btn"
                             style={{
-                              display: selected.id != pack.id ? 'block' : 'none',
+                              display:
+                                selected.id !== pack.id ? 'block' : 'none',
                             }}
                           />
                           <div
                             className="select-btn-selected"
                             style={{
-                              display: selected.id == pack.id ? 'block' : 'none',
+                              display:
+                                selected.id === pack.id ? 'block' : 'none',
                             }}
                           />
                         </div>
@@ -152,11 +154,11 @@ class PromoCheckoutContainer extends React.PureComponent {
               <div className="chk-rgt">
                 <div className="chkfrm-top">
                   <div className="sldrtxt" id="fades">
-                    <p style={{ opacity: 0.0959537 }}>
+                    <p>
                       <img src="/static/promo/desktop/images/eye.png" alt="" />{' '}
                       13 others are viewing this offer right now!
                     </p>
-                    <p style={{ display: 'none' }}>
+                    <p>
                       <img src="/static/promo/desktop/images/eye.png" alt="" />{' '}
                       25 people purchased this in the last hour
                     </p>
@@ -198,7 +200,7 @@ class PromoCheckoutContainer extends React.PureComponent {
   }
 }
 
-PromoCheckoutContainer = withRouter(PromoCheckoutContainer);
+const PromoCheckoutWithRouter = withRouter(PromoCheckout);
 
 const mapStateToProps = reduxState => {
   const {
@@ -232,8 +234,8 @@ const mapStateToProps = reduxState => {
   };
 };
 
-PromoCheckoutContainer = connect(mapStateToProps, { ...OrderActions })(
-  PromoCheckoutContainer,
+const PromoCheckoutContainer = connect(mapStateToProps, { ...OrderActions })(
+  PromoCheckoutWithRouter,
 );
 
 export { PromoCheckoutContainer };
