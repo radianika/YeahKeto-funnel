@@ -25,6 +25,12 @@
   border-color: #0fff48;
 }
 
+.fv-form-pure .fv-has-success .fv-control-feedback,
+.fv-form-pure .fv-has-success .fv-help-block,
+.fv-form-pure .fv-has-success select {
+  border-color: #0fff48;
+}
+
 .frm-elem-cvv.fv-has-feedback .fv-control-feedback,
 .frmElemts.fv-has-feedback .fv-control-feedback {
   /*display: none !important;*/
