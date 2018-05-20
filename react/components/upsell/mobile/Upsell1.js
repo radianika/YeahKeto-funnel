@@ -73,7 +73,7 @@ class Upsell1 extends React.PureComponent {
         />
         <div className="clearall" />
         <SatisfactionBox onUpgrade={this.scrollToTop} />
-        <UpsellFooter orderId={orderId} />
+        <UpsellFooter nextUrl="/promo/mobile/upsell-2" orderId={orderId} />
       </React.Fragment>
     );
   }

@@ -70,7 +70,7 @@ class Upsell3 extends React.PureComponent {
           <Coupon onUpgrade={this.upgrade} />
           <SatisfactionBox />
         </div>
-        <UpsellFooter orderId={orderId} />
+        <UpsellFooter nextUrl="/promo/mobile/thankyou" orderId={orderId} />
       </React.Fragment>
     );
   }

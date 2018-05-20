@@ -6,6 +6,7 @@ import compression from 'compression';
 import useragent from 'express-useragent';
 import expressSession from 'express-session';
 import connectRedis from 'connect-redis';
+import querystring from 'querystring';
 import { post } from './api-helpers';
 import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
@@ -93,11 +94,12 @@ const getSessionId = async (req, res) => {
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-const redirectToPromo = (orderId, res) => {
+const redirectToPromo = (orderId, req, res) => {
   if (!orderId) {
-    res.redirect(`/promo/`);
+    const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
+    res.redirect(`/promo/${requestAgent}?${querystring.stringify(req.query)}`);
   }
-}
+};
 
 app.prepare().then(() => {
   server.get('/cart', async (req, res) => {
@@ -121,9 +123,9 @@ app.prepare().then(() => {
     const sessionId = await getSessionId(req, res);
     // console.log(sessionId)
     const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
-    
+
     if (requestAgent !== req.params.useragent) {
-      res.redirect(`/promo/${requestAgent}`);
+      res.redirect(`/promo/${requestAgent}?${querystring.stringify(req.query)}`);
     }
     if (requestAgent === 'desktop') {
       return app.render(req, res, '/promo-desktop', { requestAgent, sessionId });
@@ -136,7 +138,7 @@ app.prepare().then(() => {
   server.get('/promo/desktop/checkout', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
-    redirectToPromo(orderId, res);
+    redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-desktop-checkout', {
       orderId,
       sessionId,
@@ -146,7 +148,7 @@ app.prepare().then(() => {
   server.get('/promo/desktop/upsell-1', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
-    redirectToPromo(orderId, res);
+    redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-desktop-upsell', {
       upsell: 1,
       orderId,
@@ -157,7 +159,7 @@ app.prepare().then(() => {
   server.get('/promo/desktop/upsell-2', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
-    redirectToPromo(orderId, res);
+    redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-desktop-upsell', {
       upsell: 2,
       orderId,
@@ -168,7 +170,7 @@ app.prepare().then(() => {
   server.get('/promo/desktop/upsell-3', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
-    redirectToPromo(orderId, res);
+    redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-desktop-upsell', {
       upsell: 3,
       orderId,
@@ -179,7 +181,7 @@ app.prepare().then(() => {
   server.get('/promo/desktop/thankyou', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
-    redirectToPromo(orderId, res);
+    redirectToPromo(orderId, req, res);
     return app.render(req, res, '/thankyou-page', {
       orderId,
       sessionId,
@@ -198,7 +200,7 @@ app.prepare().then(() => {
   server.get('/promo/mobile/select-package', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
-    redirectToPromo(orderId, res);
+    redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-mobile-select-package', {
       sessionId,
       orderId,
@@ -208,7 +210,7 @@ app.prepare().then(() => {
   server.get('/promo/mobile/confirm', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
-    redirectToPromo(orderId, res);
+    redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-mobile-confirm', {
       sessionId,
       orderId,
@@ -219,7 +221,7 @@ app.prepare().then(() => {
   server.get('/promo/mobile/upsell-1', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
-    redirectToPromo(orderId, res);
+    redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-mobile-upsell', {
       upsell: 1,
       orderId,
@@ -230,7 +232,7 @@ app.prepare().then(() => {
   server.get('/promo/mobile/upsell-2', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
-    redirectToPromo(orderId, res);
+    redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-mobile-upsell', {
       upsell: 2,
       orderId,
@@ -241,7 +243,7 @@ app.prepare().then(() => {
   server.get('/promo/mobile/upsell-3', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
-    redirectToPromo(orderId, res);
+    redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-mobile-upsell', {
       upsell: 3,
       orderId,
@@ -252,7 +254,7 @@ app.prepare().then(() => {
   server.get('/promo/mobile/thankyou', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
-    redirectToPromo(orderId, res);
+    redirectToPromo(orderId, req, res);
     return app.render(req, res, '/thankyou-page', {
       orderId,
       sessionId,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Footer } from 'react/components/common';
+import { getQueryString } from 'helpers';
 import Link from 'next/link';
 
 class FooterPromo extends React.PureComponent {
@@ -36,7 +37,7 @@ class FooterPromo extends React.PureComponent {
       <footer ref={this.footerRef}>
         {this.props.isMobile && (
           <div id="cta" ref={this.ctaRef} style={this.state.ctaStyle}>
-            <Link href="/promo/mobile/shipping" prefetch>
+            <Link href={`/promo/mobile/shipping?${getQueryString()}`} prefetch>
               <a className="shipping_redirect">
                 <i className="btn pulse sprite3 sprite-ship-btn" />
               </a>
