@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { PromoSession } from 'react/components/common';
-import { upsell2Packs } from 'helpers';
+import { upsell2Packs, getQueryString } from 'helpers';
 import { Carousel } from './Carousel';
 import { SatisfactionBox } from './SatisfactionBox';
 import { Shortage } from '../Shortage';
@@ -17,7 +17,6 @@ class Upsell2 extends React.PureComponent {
     });
   };
   render() {
-    const { orderId } = this.props.url.query;
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage2" />
@@ -104,7 +103,7 @@ class Upsell2 extends React.PureComponent {
           />
           <SatisfactionBox onUpgrade={this.scrollToTop} />
           <div className="clearall" />
-          <Link href={`/promo/desktop/upsell-3?orderId=${orderId}`}>
+          <Link href={`/promo/desktop/upsell-3?${getQueryString()}`}>
             <a href="#" className="nothank">
               No thank you. I’ll pass on this huge savings now and realize I
               will never have this opportunity again.

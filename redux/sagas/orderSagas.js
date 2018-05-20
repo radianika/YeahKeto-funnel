@@ -2,7 +2,7 @@ import { delay } from 'redux-saga';
 import { select, put, all, fork, takeLatest } from 'redux-saga/effects';
 import idx from 'idx';
 import { OrderActions } from 'redux/actions';
-import { post, get } from 'helpers';
+import { post, get, parseQuery, getQueryString } from 'helpers';
 import { getCookie } from 'react/components/common';
 
 const getSession = state => state.auth.sessionId;
@@ -35,23 +35,31 @@ function* submitLeadsForm(action) {
       sessionId = yield getCookie('ascbd_session');
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
-        return;
       }
     } else {
       sessionId = yield select(getSession);
     }
+    const queryString = getQueryString();
+    console.log(
+      JSON.stringify({
+        ...values,
+        shipping,
+        tracking_vars: parseQuery(queryString),
+      }),
+    );
     const apiResponse = yield post(
       '/v1/konnektive/lead',
       {
         ...values,
         shipping,
+        tracking_vars: parseQuery(queryString),
       },
       sessionId,
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const { lead } = apiResponse.response.data.data;
       yield put(OrderActions.submitLeadsFormSuccess({ lead }));
-      router.push(`${nextUrl}?orderId=${lead.orderId}`);
+      router.push(`${nextUrl}?${queryString}&orderId=${lead.orderId}`);
     }
   } catch (error) {
     console.log({ error });
@@ -130,12 +138,17 @@ function* placeOrder(action) {
         postalCode,
       },
     };
-    const apiResponse = yield post('/v1/konnektive/order', payload, sessionId);
+    const queryString = getQueryString();
+    const apiResponse = yield post(
+      '/v1/konnektive/order',
+      { ...payload, tracking_vars: parseQuery(queryString) },
+      sessionId,
+    );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order }));
       yield delay(2000);
-      router.push(`${nextUrl}?orderId=${order.orderId}`);
+      router.push(`${nextUrl}?${queryString}`);
     }
   } catch (error) {
     console.log({ error });
@@ -168,8 +181,8 @@ function* addUpsellToOrder(action) {
       const newOrder = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order: newOrder }));
       yield put(OrderActions.addUpsellToOrderSuccess());
-      yield delay(2000);
-      router.push(`${sendTo}?orderId=${order.orderId}`);
+      const queryString = getQueryString();
+      router.push(`${sendTo}?${queryString}`);
     }
   } catch (error) {
     console.log({ error });

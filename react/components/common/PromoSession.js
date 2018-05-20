@@ -22,7 +22,7 @@ export function getCookie(cname) {
   return '';
 }
 
-class PromoSession extends React.PureComponent {
+class PromoSessionComponent extends React.PureComponent {
   async componentDidMount() {
     const existingCookie = getCookie('ascbd_promo_session');
     if (!existingCookie) {
@@ -45,6 +45,7 @@ class PromoSession extends React.PureComponent {
         {
           pageType: this.props.pageType,
           sessionId: existingCookie,
+          requestUri: window.location.href,
         },
         this.props.sessionId,
       );
@@ -61,6 +62,6 @@ function mapStateToProps(state) {
   };
 }
 
-PromoSession = connect(mapStateToProps, {})(PromoSession);
+const PromoSession = connect(mapStateToProps, {})(PromoSessionComponent);
 
 export { PromoSession };

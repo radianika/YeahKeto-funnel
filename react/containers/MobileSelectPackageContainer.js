@@ -1,13 +1,12 @@
 import React from 'react';
 import { Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
-import { packages } from 'helpers';
+import { packages, getQueryString } from 'helpers';
 
 class MobileSelectPackageContainer extends React.PureComponent {
   selectPackage = pack => {
-    const { orderId } = this.props.url.query;
     this.props.router.push(
-      `/promo/mobile/confirm?orderId=${orderId}&productId=${pack.id}`,
+      `/promo/mobile/confirm?${getQueryString()}&productId=${pack.id}`,
     );
   };
 
@@ -62,6 +61,7 @@ class MobileSelectPackageContainer extends React.PureComponent {
                       <img
                         src="/static/promo/mobile/images/rd-strk.png"
                         className="rd-strk"
+                        alt=""
                       />
                       <p className="pkgcont-price">
                         {pack.price}

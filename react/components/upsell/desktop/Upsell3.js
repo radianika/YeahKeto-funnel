@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { PromoSession } from 'react/components/common';
+import { getQueryString } from 'helpers';
 import { Coupon } from './Coupon';
 import { SatisfactionBox } from './SatisfactionBox';
 
@@ -10,7 +11,6 @@ class Upsell3 extends React.PureComponent {
   };
 
   render() {
-    const { orderId } = this.props.url.query;
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage3" />
@@ -77,7 +77,7 @@ class Upsell3 extends React.PureComponent {
           <div className="clearall" />
           <SatisfactionBox onUpgrade={this.upgrade} />
           <div className="clearall" />
-          <Link href={`/promo/desktop/thankyou?orderId=${orderId}`}>
+          <Link href={`/promo/desktop/thankyou?${getQueryString()}`}>
             <a className="nothank">
               No thanks. I understand that this is my only opportunity to get
               access to this special offer, and I’m okay with missing out.

@@ -1,14 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
 import { Footer } from 'react/components/common';
+import { getQueryString } from 'helpers';
 
 class UpsellFooter extends React.PureComponent {
   render() {
-    const { orderId } = this.props;
+    const { nextUrl } = this.props;
     return (
       <React.Fragment>
         <div className="clearall" />
-        <Link href={`/promo/desktop/upsell-2?orderId=${orderId}`}>
+        <Link href={`${nextUrl}?${getQueryString()}`}>
           <a className="nothank">
             No thanks. I understand that this is my only opportunity to get
             access to this special offer, and I’m okay with missing out.
