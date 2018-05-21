@@ -49,7 +49,7 @@ class Upsell21 extends React.PureComponent {
                 height="33"
                 alt=""
                 className="arrow-left"
-              />> $97.00{' '}
+              />$97.00{' '}
               <img
                 src="images/arrow-right.png"
                 width="77"
