@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { PromoSession } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
-class Upsell2 extends React.PureComponent {
+class Upsell21 extends React.PureComponent {
   upgrade = productId => {
-    this.props.upgrade(217, '/promo/desktop/thankyou');
+    this.props.upgrade(215, '/promo/desktop/thankyou');
   };
 
   scrollToTop = () => {
@@ -19,31 +19,31 @@ class Upsell2 extends React.PureComponent {
       <React.Fragment>
         <PromoSession pageType="upsellPage2" />
         <div className="upsell-strip">
-          <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
+          <h3>WAIT! YOU QUALIFY FOR A LIMITED TIME DISCOUNT</h3>
           <p>
-            87% Customers Added The{' '}
-            <strong>CBD Pain Relief Warming Balm</strong> To Their Order!{' '}
+            Add 1 Bottle Of <strong>CBD Pain Relief Warming Balm</strong> To
+            Your Order Today!{' '}
           </p>
         </div>
         <div className="up-mid-box-right">
           <img
-            src="/static/assets/images/upsell2/balm3-bottle.png"
+            src="/static/assets/images/upsell2/single-jar.png"
             alt=""
-            className="up-product-3"
+            className="up-product-4"
           />
           <img
             src="/static/assets/images/upsell2/up-arw1.png"
             style={{ position: 'absolute', left: '220px', top: '400px' }}
           />
-          <div className="up-rgt-content-opt3">
+          <div className="up-rgt-content-opt2">
             <p className="up-txt1">Get Instant Pain Relief</p>
             <p className="with-txt">with</p>
             <p className="up-txt2">CBD Warming Balm</p>
-            <div className="price-box pricebox3">
+            <div className="price-box">
               <p className="price-box-txt1">
-                Buy 2 Jars + <span>Get 1 Free</span>
+                Buy 1 Jar Of CBD Pain Relief Balm
               </p>
-              <p className="price-box-txt2">Save 60% Today</p>
+              <p className="price-box-txt2">Save 30% Today</p>
               <p className="price-box-txt3">
                 <img
                   src="/static/assets/images/upsell2/arrow-left.png"
@@ -52,14 +52,9 @@ class Upsell2 extends React.PureComponent {
                   width="77"
                   height="33"
                 />
-                <span className="old-price">
-                  <img src="/static/assets/images/upsell2/price-cut.png" />$130/<sup >
-                    ea
-                                                                                </sup>
-                </span>{' '}
-                $87/<sup>ea</sup>{' '}
+                $97.00{' '}
                 <img
-                  src="/static/assets/images/upsell2/arrow-right.png"
+                  src="images/arrow-right.png"
                   alt=""
                   className="arrow-right"
                   width="77"
@@ -77,7 +72,7 @@ class Upsell2 extends React.PureComponent {
                   height="71"
                 />
               </a>
-              <Link href={`/promo/desktop/upsell-2-1?${getQueryString()}`}>
+              <Link href={`/promo/desktop/thankyou?${getQueryString()}`}>
                 <p className="thanks-txt">
                   <a href="#">
                     <img
@@ -140,7 +135,7 @@ class Upsell2 extends React.PureComponent {
               height="71"
             />
           </a>
-          <Link href={`/promo/desktop/upsell-2-1?${getQueryString()}`}>
+          <Link href={`/promo/desktop/thankyou?${getQueryString()}`}>
             <p className="thanks-txt">
               <a href="#">
                 <img
@@ -160,4 +155,4 @@ class Upsell2 extends React.PureComponent {
   }
 }
 
-export { Upsell2 };
+export { Upsell21 };
