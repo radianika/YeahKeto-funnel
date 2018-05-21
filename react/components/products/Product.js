@@ -118,9 +118,9 @@ class Product extends PureComponent {
     };
   }
 
-  sliderClick(e) {
+  sliderClick = e => {
     this.setState({ slider: { translate3d: e } });
-  }
+  };
 
   render() {
     const active_product = products[this.props.product];
@@ -161,7 +161,7 @@ class Product extends PureComponent {
           <div className="container">
             <Slider
               type={type}
-              // sliderClick={this.sliderClick.bind()}
+              sliderClick={this.sliderClick}
               translate3d={translate3d}
             />
 
