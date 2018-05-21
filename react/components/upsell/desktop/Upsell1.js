@@ -7,7 +7,7 @@ import { SatisfactionBox } from './SatisfactionBox';
 
 class Upsell1Component extends React.PureComponent {
   upgrade = () => {
-    this.props.upgrade(213, '/promo/desktop/upsell-1-1');
+    this.props.upgrade(213, '/promo/desktop/upsell-2');
   };
   skipUpsell = () => {
     this.props.router.push(`/promo/desktop/upsell-1-1?${getQueryString()}`);
@@ -25,11 +25,16 @@ class Upsell1Component extends React.PureComponent {
         <div className="upsell-strip">
           <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
           <p>
-            93% Customers Added The <strong>Maximum Strength CBD Capsules</strong> To Their Order!{' '}
+            93% Customers Added The{' '}
+            <strong>Maximum Strength CBD Capsules</strong> To Their Order!{' '}
           </p>
         </div>
         <div className="up-mid-box-right">
-          <img src="/static/assets/images/up1-bottle.png" alt="" className="up-product" />
+          <img
+            src="/static/assets/images/up1-bottle.png"
+            alt=""
+            className="up-product"
+          />
           <img
             alt=""
             src="/static/assets/images/up-arw1.png"
@@ -94,7 +99,10 @@ class Upsell1Component extends React.PureComponent {
             </div>
           </div>
         </div>
-        <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.scrollToTop} />
+        <SatisfactionBox
+          onSkip={this.skipUpsell}
+          onUpgrade={this.scrollToTop}
+        />
       </React.Fragment>
     );
   }
