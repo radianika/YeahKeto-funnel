@@ -27,7 +27,7 @@ class Upsell21 extends React.PureComponent {
         </div>
         <div className="up-mid-box-right">
           <img
-            src="/static/assets/images/1/single-jar.png"
+            src="/static/assets/images/upsell2/single-jar.png"
             alt=""
             className="up-product-4"
           />
