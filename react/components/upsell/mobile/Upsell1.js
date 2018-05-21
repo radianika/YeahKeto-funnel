@@ -12,12 +12,6 @@ class Upsell1Component extends React.PureComponent {
   skipUpsell = () => {
     this.props.router.push(`/promo/mobile/upsell-1-1?${getQueryString()}`);
   };
-  scrollToTop = () => {
-    window.scroll({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
   render() {
     return (
       <React.Fragment>
@@ -94,10 +88,7 @@ class Upsell1Component extends React.PureComponent {
             </p>
           </div>
         </div>
-        <SatisfactionBox
-          onSkip={this.skipUpsell}
-          onUpgrade={this.scrollToTop}
-        />
+        <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
         <div id="footer">
           <div className="container">
             <div className="ftr-txt">

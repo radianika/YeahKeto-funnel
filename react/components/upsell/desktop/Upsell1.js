@@ -99,10 +99,7 @@ class Upsell1Component extends React.PureComponent {
             </div>
           </div>
         </div>
-        <SatisfactionBox
-          onSkip={this.skipUpsell}
-          onUpgrade={this.scrollToTop}
-        />
+        <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
       </React.Fragment>
     );
   }
