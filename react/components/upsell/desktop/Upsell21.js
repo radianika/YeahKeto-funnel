@@ -54,7 +54,7 @@ class Upsell21 extends React.PureComponent {
                 />
                 $97.00{' '}
                 <img
-                  src="images/arrow-right.png"
+                  src="/static/assets/images/arrow-right.png"
                   alt=""
                   className="arrow-right"
                   width="77"

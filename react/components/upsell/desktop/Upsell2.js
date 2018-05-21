@@ -59,7 +59,7 @@ class Upsell2 extends React.PureComponent {
                 </span>{' '}
                 $87/<sup>ea</sup>{' '}
                 <img
-                  src="/static/assets/images/upsell2/arrow-right.png"
+                  src="/static/assets/images/arrow-right.png"
                   alt=""
                   className="arrow-right"
                   width="77"
