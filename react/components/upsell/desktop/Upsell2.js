@@ -19,31 +19,31 @@ class Upsell2 extends React.PureComponent {
       <React.Fragment>
         <PromoSession pageType="upsellPage2" />
         <div className="upsell-strip">
-          <h3>WAIT! YOU QUALIFY FOR A LIMITED TIME DISCOUNT</h3>
+          <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
           <p>
-            Add 1 Bottle Of <strong>CBD Pain Relief Warming Balm</strong> To
-            Your Order Today!{' '}
+            87% Customers Added The{' '}
+            <strong>CBD Pain Relief Warming Balm</strong> To Their Order!{' '}
           </p>
         </div>
         <div className="up-mid-box-right">
           <img
-            src="/static/assets/images/upsell2/single-jar.png"
+            src="/static/assets/images/upsell2/balm3-bottle.png"
             alt=""
-            className="up-product-4"
+            className="up-product-3"
           />
           <img
             src="/static/assets/images/upsell2/up-arw1.png"
             style={{ position: 'absolute', left: '220px', top: '400px' }}
           />
-          <div className="up-rgt-content-opt2">
+          <div className="up-rgt-content-opt3">
             <p className="up-txt1">Get Instant Pain Relief</p>
             <p className="with-txt">with</p>
             <p className="up-txt2">CBD Warming Balm</p>
-            <div className="price-box">
+            <div className="price-box pricebox3">
               <p className="price-box-txt1">
-                Buy 1 Jar Of CBD Pain Relief Balm
+                Buy 2 Jars + <span>Get 1 Free</span>
               </p>
-              <p className="price-box-txt2">Save 30% Today</p>
+              <p className="price-box-txt2">Save 60% Today</p>
               <p className="price-box-txt3">
                 <img
                   src="/static/assets/images/upsell2/arrow-left.png"
@@ -52,9 +52,14 @@ class Upsell2 extends React.PureComponent {
                   width="77"
                   height="33"
                 />
-                $97.00{' '}
+                <span className="old-price">
+                  <img src="/static/assets/images/upsell2/price-cut.png" />$130/<sup >
+                    ea
+                                                                                </sup>
+                </span>{' '}
+                $87/<sup>ea</sup>{' '}
                 <img
-                  src="images/arrow-right.png"
+                  src="/static/assets/images/upsell2/arrow-right.png"
                   alt=""
                   className="arrow-right"
                   width="77"
