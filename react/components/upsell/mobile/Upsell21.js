@@ -7,9 +7,9 @@ import { Shortage } from '../Shortage';
 import { UpsellFooter } from '../UpsellFooter';
 import Link from 'next/link';
 
-class Upsell2 extends React.PureComponent {
+class Upsell21 extends React.PureComponent {
   upgrade = productId => {
-    this.props.upgrade(productId, '/promo/mobile/thankyou');
+    this.props.upgrade(215, '/promo/mobile/thankyou');
   };
   scrollToTop = () => {
     window.scroll({
@@ -23,10 +23,10 @@ class Upsell2 extends React.PureComponent {
       <React.Fragment>
         <PromoSession pageType="upsellPage2" />
         <div className="up-strip">
-          <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
+          <h3>YOU QUALIFY FOR A LIMITED TIME DISCOUNT</h3>
           <p>
-            87% Customers Added The<br />
-            <strong>CBD Pain Relief Warming Balm</strong> To Their Order!
+            Add 1 Bottle Of<br />
+            <strong>CBD Pain Relief Warming Balm</strong> To Your Order Today!
           </p>
         </div>
 
@@ -35,31 +35,23 @@ class Upsell2 extends React.PureComponent {
           <p className="with-txt">with</p>
           <p className="up-txt2">CBD Warming Balm</p>
           <img
-            src="/static/assets/images/upsell2-mobile/up-prod3.jpg"
+            src="/static/assets/images/upsell2-mobile/up-prod4.jpg"
             className="up-prod"
           />
           <div className="clearall" />
           <div className="price-box">
-            <p className="price-box-txt1">
-              Buy 2 Jars + <span>Get 1 Free</span>
-            </p>
-            <p className="price-box-txt2">Save 60% Today</p>
+            <p className="price-box-txt1">Buy 1 Jar Of CBD Pain Relief Balm</p>
+            <p className="price-box-txt2">Save 30% Today</p>
             <p className="price-box-txt3">
               <img
-                src="/static/assets/images/upsell2-mobile/arrow-left.png"
+                src="images/arrow-left.png"
                 width="77"
                 height="33"
                 alt=""
                 className="arrow-left"
-              />
-              <span className="old-price">
-                <img src="/static/assets/images/upsell2-mobile/price-cut.png" />$130/<sup >
-                  ea
-                                                                                     </sup>
-              </span>{' '}
-              $87/<sup>ea</sup>{' '}
+              />> $97.00{' '}
               <img
-                src="/static/assets/images/upsell2-mobile/arrow-right.png"
+                src="images/arrow-right.png"
                 width="77"
                 height="33"
                 alt=""
@@ -161,4 +153,4 @@ class Upsell2 extends React.PureComponent {
   }
 }
 
-export { Upsell2 };
+export { Upsell21 };

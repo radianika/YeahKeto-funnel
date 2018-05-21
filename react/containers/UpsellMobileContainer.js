@@ -6,7 +6,7 @@ import {
   Upsell1,
   Upsell11,
   Upsell2,
-  Upsell3,
+  Upsell21,
 } from 'react/components/upsell/mobile';
 import { Spinner, SuccessModal } from 'react/components/common';
 
@@ -32,7 +32,9 @@ class UpsellMobileContainerComponent extends React.PureComponent {
           <Upsell11 upgrade={this.upgrade} {...this.props} />
         )}
         {upsell === 2 && <Upsell2 upgrade={this.upgrade} {...this.props} />}
-        {upsell === 3 && <Upsell3 upgrade={this.upgrade} {...this.props} />}
+        {upsell === '2-1' && (
+          <Upsell21 upgrade={this.upgrade} {...this.props} />
+        )}
         {this.props.submitStatus === 'submitting' && <Spinner />}
       </div>
     );

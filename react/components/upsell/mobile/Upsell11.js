@@ -10,7 +10,7 @@ class Upsell11Component extends React.PureComponent {
     this.props.upgrade(212, '/promo/mobile/upsell-2');
   };
   skipUpsell = () => {
-    this.props.router.push(`/promo/mobile/upsell-1-1?${getQueryString()}`);
+    this.props.router.push(`/promo/mobile/upsell-2?${getQueryString()}`);
   };
   render() {
     return (
