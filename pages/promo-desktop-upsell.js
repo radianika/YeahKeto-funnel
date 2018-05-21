@@ -29,7 +29,7 @@ class SelectPackage extends React.PureComponent {
             href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700"
             rel="stylesheet"
           />
-          <link href="/static/desktop/css/style.css" rel="stylesheet" />
+          <link href="/static/desktop/css/checkout.css" rel="stylesheet" />
         </Head>
         <UpsellDesktopContainer {...props} />
       </React.Fragment>
