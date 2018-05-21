@@ -1,14 +1,16 @@
 import React from 'react';
-import { PromoSession } from 'react/components/common';
-import { upsell1Packs } from 'helpers';
-import { Carousel } from './Carousel';
+import { PromoSession, Footer } from 'react/components/common';
+import { withRouter } from 'next/router';
+import Link from 'next/link';
+import { getQueryString } from 'helpers';
 import { SatisfactionBox } from './SatisfactionBox';
-import { Shortage } from '../Shortage';
-import { UpsellFooter } from '../UpsellFooter';
 
-class Upsell1 extends React.PureComponent {
-  upgrade = productId => {
-    this.props.upgrade(productId, '/promo/mobile/upsell-2');
+class Upsell1Component extends React.PureComponent {
+  upgrade = () => {
+    this.props.upgrade(213, '/promo/mobile/upsell-2');
+  };
+  skipUpsell = () => {
+    this.props.router.push(`/promo/mobile/upsell-1-1?${getQueryString()}`);
   };
   scrollToTop = () => {
     window.scroll({
@@ -17,66 +19,99 @@ class Upsell1 extends React.PureComponent {
     });
   };
   render() {
-    const { orderId } = this.props.url.query;
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage1" />
-        <div className="redbar">
+        <div className="up-strip">
+          <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
           <p>
-            Before you go!<br />
-            Know someone who prefers capsules?
+            93% Customers Added The<br />
+            <strong>Maximum Strength CBD Capsules</strong> To Their Order!
           </p>
         </div>
-        <div className="sec1 dsplay">
-          <p className="s1txt1">
-            We get it, not everyone loves sublingual delivery. Although it
-            offers the fastest absorption, the taste or feeling of the oil may
-            not be for them.<br />
-            <br />
-            Our <span>CBD Capsules</span> are equally effective, very easy to
-            swallow and leave no taste in your mouth. Know someone who is
-            struggling with aches, pains, poor sleep or brain fog? Our CBD
-            Capsules make a loving gift at only $77 per container.
-          </p>
+        <div className="upsell-box">
+          <p className="up-txt1">Amplify Your Results</p>
+          <p className="with-txt">with</p>
+          <p className="up-txt2">Maximum Strength CBD Capsules</p>
+          <img
+            src="/static/assets/images/up1-bottle.png"
+            className="up-prod"
+            alt=""
+          />
+          <div className="clearall" />
+          <div className="price-box">
+            <p className="price-box-txt1">
+              Buy 2 Bottles + <span>Get 1 Free</span>
+            </p>
+            <p className="price-box-txt2">Save 60% Today</p>
+            <p className="price-box-txt3">
+              <img
+                src="/static/assets/images/arrow-left-upsell.png"
+                width="77"
+                height="33"
+                alt=""
+                className="arrow-left"
+              />
+              <span className="old-price">
+                <img src="/static/assets/images/price-cut.png" alt="" />$120/<sup >
+                  ea
+                                                                             </sup>
+              </span>{' '}
+              $77/<sup>ea</sup>{' '}
+              <img
+                src="/static/assets/images/arrow-right.png"
+                width="77"
+                height="33"
+                alt=""
+                className="arrow-right"
+              />
+            </p>
+          </div>
+
+          <div className="bnt-sec">
+            <a href="javascript:void(0)" onClick={this.upgrade}>
+              <img
+                src="/static/assets/images/ord-btn.png"
+                alt=""
+                width="370"
+                height="71"
+                className="ord-btn pulse"
+              />
+            </a>
+            <p className="thanks-txt">
+              <Link href={`/promo/mobile/upsell-1-1?${getQueryString()}`}>
+                <a>
+                  <img
+                    src="/static/assets/images/cut-icon.png"
+                    width="15"
+                    height="15"
+                    alt=""
+                    className="cut-icon"
+                  />{' '}
+                  No, I don't want better results.
+                </a>
+              </Link>
+            </p>
+          </div>
         </div>
-        <Carousel
-          upsells={upsell1Packs}
-          onUpgrade={this.upgrade}
-          title="Special Deal for New Customers Only"
+        <SatisfactionBox
+          onSkip={this.skipUpsell}
+          onUpgrade={this.scrollToTop}
         />
-        <div className="clearall" />
-        <SatisfactionBox onUpgrade={this.scrollToTop} />
-        <p className="s1txt3">
-          <span>Dear Friend…</span>
-          <br />
-          <br />
-          First of all, we want to thank you for your order of CBD Oil and
-          welcome you to our family of happy customers.<br />
-          <br />
-          There has been a lot of media buzz about the incredible results people
-          are achieving with our CBD products.<br />
-          <br />
-          So many people are catching on to the effectiveness of natural
-          solutions to common ailments. And that applies especially to our PURE
-          CBD. Unlike prescription medications, PURE CBD comes with no
-          undesirable side effects.<br />
-          <br />
-          All you’ll experience is less aches and pains, better sleep quality,
-          and marked improvements in memory recall and cognitive brain
-          functions.
-        </p>
-        <Shortage />
-        <Carousel
-          upsells={upsell1Packs}
-          onUpgrade={this.upgrade}
-          title="Special Deal for New Customers Only"
-        />
-        <div className="clearall" />
-        <SatisfactionBox onUpgrade={this.scrollToTop} />
-        <UpsellFooter nextUrl="/promo/mobile/upsell-2" orderId={orderId} />
+        <div id="footer">
+          <div className="container">
+            <div className="ftr-txt">
+              <Footer noLogo>
+                <span />
+              </Footer>
+            </div>
+          </div>
+        </div>
       </React.Fragment>
     );
   }
 }
+
+const Upsell1 = withRouter(Upsell1Component);
 
 export { Upsell1 };

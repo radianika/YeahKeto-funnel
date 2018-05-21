@@ -51,7 +51,6 @@ class SuccessModal extends React.PureComponent {
         isOpen={this.state.modalIsOpen}
         style={customStyles}
         contentLabel="Example Modal"
-        className="fancybox-slide--current"
       >
         <div className="animated-modal text-center p-5 fancybox-content success-modal">
           <h2>Success!</h2>
