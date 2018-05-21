@@ -2,7 +2,12 @@ import React from 'react';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
-import { Upsell1, Upsell2, Upsell3 } from 'react/components/upsell/mobile';
+import {
+  Upsell1,
+  Upsell11,
+  Upsell2,
+  Upsell3,
+} from 'react/components/upsell/mobile';
 import { Spinner, SuccessModal } from 'react/components/common';
 
 class UpsellMobileContainerComponent extends React.PureComponent {
@@ -16,15 +21,16 @@ class UpsellMobileContainerComponent extends React.PureComponent {
   render() {
     const { upsell } = this.props.url.query;
     return (
-      <div className="contentWrap">
+      <div id="container">
         <SuccessModal
           visible={this.props.submitStatus === 'success'}
           message="Order updated successfully."
         />
-        <div className="header position">
-          <img src="/static/mobile/images/logo.png" alt="" className="logo" />
-        </div>
+        <img src="/static/mobile/images/logo.png" alt="" className="logo" />
         {upsell === 1 && <Upsell1 upgrade={this.upgrade} {...this.props} />}
+        {upsell === '1-1' && (
+          <Upsell11 upgrade={this.upgrade} {...this.props} />
+        )}
         {upsell === 2 && <Upsell2 upgrade={this.upgrade} {...this.props} />}
         {upsell === 3 && <Upsell3 upgrade={this.upgrade} {...this.props} />}
         {this.props.submitStatus === 'submitting' && <Spinner />}

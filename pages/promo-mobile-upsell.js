@@ -28,8 +28,8 @@ class SelectPackage extends React.PureComponent {
             href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700"
             rel="stylesheet"
           />
-          <link href="/static/mobile/css/style.css" rel="stylesheet" />
-          <link rel="stylesheet" type="text/css" href="/static/assets/css/mb-style.css" />
+          <link href="/static/mobile/css/upsell.css" rel="stylesheet" />
+          {/* <link rel="stylesheet" type="text/css" href="/static/assets/css/mb-style.css" /> */}
         </Head>
         <UpsellMobileContainer {...props} />
       </React.Fragment>

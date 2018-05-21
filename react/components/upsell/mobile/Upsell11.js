@@ -5,28 +5,22 @@ import Link from 'next/link';
 import { getQueryString } from 'helpers';
 import { SatisfactionBox } from './SatisfactionBox';
 
-class Upsell1Component extends React.PureComponent {
+class Upsell11Component extends React.PureComponent {
   upgrade = () => {
-    this.props.upgrade(213, '/promo/mobile/upsell-2');
+    this.props.upgrade(212, '/promo/mobile/upsell-2');
   };
   skipUpsell = () => {
     this.props.router.push(`/promo/mobile/upsell-1-1?${getQueryString()}`);
-  };
-  scrollToTop = () => {
-    window.scroll({
-      top: 0,
-      behavior: 'smooth',
-    });
   };
   render() {
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage1" />
         <div className="up-strip">
-          <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
+          <h3>YOU QUALIFY FOR A LIMITED TIME DISCOUNT</h3>
           <p>
-            93% Customers Added The<br />
-            <strong>Maximum Strength CBD Capsules</strong> To Their Order!
+            Add 1 Bottle Of <br />
+            <strong>Maximum Strength CBD Capsules</strong> To Your Order Today!
           </p>
         </div>
         <div className="upsell-box">
@@ -34,16 +28,14 @@ class Upsell1Component extends React.PureComponent {
           <p className="with-txt">with</p>
           <p className="up-txt2">Maximum Strength CBD Capsules</p>
           <img
-            src="/static/assets/images/up1-bottle.png"
+            src="/static/assets/images/up-prod-2.jpg"
             className="up-prod"
             alt=""
           />
           <div className="clearall" />
           <div className="price-box">
-            <p className="price-box-txt1">
-              Buy 2 Bottles + <span>Get 1 Free</span>
-            </p>
-            <p className="price-box-txt2">Save 60% Today</p>
+            <p className="price-box-txt1">Buy 1 Bottle Of CBD Capsules</p>
+            <p className="price-box-txt2">Save 30% Today</p>
             <p className="price-box-txt3">
               <img
                 src="/static/assets/images/arrow-left-upsell.png"
@@ -52,12 +44,7 @@ class Upsell1Component extends React.PureComponent {
                 alt=""
                 className="arrow-left"
               />
-              <span className="old-price">
-                <img src="/static/assets/images/price-cut.png" alt="" />$120/<sup >
-                  ea
-                                                                             </sup>
-              </span>{' '}
-              $77/<sup>ea</sup>{' '}
+              $87.00{' '}
               <img
                 src="/static/assets/images/arrow-right.png"
                 width="77"
@@ -79,7 +66,7 @@ class Upsell1Component extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <Link href={`/promo/mobile/upsell-1-1?${getQueryString()}`}>
+              <Link href={`/promo/mobile/upsell-2?${getQueryString()}`}>
                 <a>
                   <img
                     src="/static/assets/images/cut-icon.png"
@@ -94,10 +81,7 @@ class Upsell1Component extends React.PureComponent {
             </p>
           </div>
         </div>
-        <SatisfactionBox
-          onSkip={this.skipUpsell}
-          onUpgrade={this.scrollToTop}
-        />
+        <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
         <div id="footer">
           <div className="container">
             <div className="ftr-txt">
@@ -112,6 +96,6 @@ class Upsell1Component extends React.PureComponent {
   }
 }
 
-const Upsell1 = withRouter(Upsell1Component);
+const Upsell11 = withRouter(Upsell11Component);
 
-export { Upsell1 };
+export { Upsell11 };

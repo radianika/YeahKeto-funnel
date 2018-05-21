@@ -240,6 +240,17 @@ app.prepare().then(() => {
     });
   });
 
+  server.get('/promo/mobile/upsell-1-1', async (req, res) => {
+    const sessionId = await getSessionId(req, res);
+    const orderId = req.query.orderId;
+    redirectToPromo(orderId, req, res);
+    return app.render(req, res, '/promo-mobile-upsell', {
+      upsell: '1-1',
+      orderId,
+      sessionId,
+    });
+  });
+
   server.get('/promo/mobile/upsell-2', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
