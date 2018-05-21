@@ -634,6 +634,17 @@ Styles for animated modal
 
 .fancybox-content {
   width: 253px;
+  padding: 24px;
+  transform: translateY(0);
+  opacity: 1;
+  transition-duration: 0.3s;
+}
+
+.fancybox-content > h2,
+.fancybox-content > p {
+  transform: translateY(0);
+  opacity: 1;
+  transition-duration: 0.3s;
 }
 
 .success-modal {
@@ -647,6 +658,7 @@ Styles for animated modal
 .ReactModal__Content--after-open {
   opacity: 1;
   transition: opacity 150ms;
+  background: transparent !important;
 }
 
 .ReactModal__Content--before-close {
