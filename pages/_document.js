@@ -13,23 +13,10 @@ export default class MyDocument extends Document {
             type="image/x-icon"
             href="/static/favicon.ico"
           />
-          <script
-            type="text/javascript"
-            src="/static/assets/js/libs/jquery-1.10.1.min.js"
-          />
-          <script
-            type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"
-          />
           <link
             rel="stylesheet"
             type="text/css"
             href="/static/assets/css/common.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css"
           />
           <script type="text/javascript" src="/static/assets/js/segment.js" />
         </Head>
