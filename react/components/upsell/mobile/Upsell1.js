@@ -12,12 +12,6 @@ class Upsell1Component extends React.PureComponent {
   skipUpsell = () => {
     this.props.router.push(`/promo/mobile/upsell-1-1?${getQueryString()}`);
   };
-  scrollToTop = () => {
-    window.scroll({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
   render() {
     return (
       <React.Fragment>
@@ -25,7 +19,7 @@ class Upsell1Component extends React.PureComponent {
         <div className="up-strip">
           <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
           <p>
-            93% Customers Added The<br />
+            93% of Customers Added The<br />
             <strong>Maximum Strength CBD Capsules</strong> To Their Order!
           </p>
         </div>
@@ -94,10 +88,7 @@ class Upsell1Component extends React.PureComponent {
             </p>
           </div>
         </div>
-        <SatisfactionBox
-          onSkip={this.skipUpsell}
-          onUpgrade={this.scrollToTop}
-        />
+        <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
         <div id="footer">
           <div className="container">
             <div className="ftr-txt">

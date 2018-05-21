@@ -25,7 +25,7 @@ class Upsell1Component extends React.PureComponent {
         <div className="upsell-strip">
           <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
           <p>
-            93% Customers Added The{' '}
+            93% of Customers Added The{' '}
             <strong>Maximum Strength CBD Capsules</strong> To Their Order!{' '}
           </p>
         </div>
@@ -99,10 +99,7 @@ class Upsell1Component extends React.PureComponent {
             </div>
           </div>
         </div>
-        <SatisfactionBox
-          onSkip={this.skipUpsell}
-          onUpgrade={this.scrollToTop}
-        />
+        <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
       </React.Fragment>
     );
   }
