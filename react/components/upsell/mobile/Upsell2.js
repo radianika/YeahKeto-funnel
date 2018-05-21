@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 class Upsell2 extends React.PureComponent {
   upgrade = productId => {
-    this.props.upgrade(productId, '/promo/mobile/thankyou');
+    this.props.upgrade(217, '/promo/mobile/thankyou');
   };
   scrollToTop = () => {
     window.scroll({
