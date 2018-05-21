@@ -31,7 +31,7 @@ const SatisfactionBox = props => (
       </p>
     </div>
     <div className="bnt-sec">
-      <a href="upsell-2.php">
+      <a href="javascript:void(0)" onClick={props.onUpgrade}>
         <img
           src="/static/assets/images/ord-btn.png"
           alt=""
