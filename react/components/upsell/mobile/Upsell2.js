@@ -1,5 +1,5 @@
 import React from 'react';
-import { PromoSession } from 'react/components/common';
+import { PromoSession, Footer } from 'react/components/common';
 import { getQueryString } from 'helpers';
 import { Carousel } from './Carousel';
 import { SatisfactionBox } from './SatisfactionBox';
@@ -154,6 +154,15 @@ class Upsell2 extends React.PureComponent {
                 </a>
               </Link>
             </p>
+          </div>
+        </div>
+        <div id="footer">
+          <div className="container">
+            <div className="ftr-txt">
+              <Footer noLogo>
+                <span />
+              </Footer>
+            </div>
           </div>
         </div>
       </React.Fragment>
