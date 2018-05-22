@@ -24,12 +24,11 @@ class UpsellMobileContainerComponent extends React.PureComponent {
       <div id="container">
         {upsell === 1 && (
           <iframe
+            title="cbd"
             src="https://trk.starlightgroup.io/aff_l?offer_id=1"
-            scrolling="no"
             frameBorder="0"
             width="1"
             height="1"
-            title="cbd"
             style={{ position: 'absolute' }}
           />
         )}
