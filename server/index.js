@@ -205,7 +205,6 @@ app.prepare().then(() => {
     return app.render(req, res, '/thankyou-page', {
       orderId,
       sessionId,
-      offerId,
       isPromo: true,
       device: 'desktop',
     });
