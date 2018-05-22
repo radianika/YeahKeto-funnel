@@ -29,7 +29,6 @@ class UpsellMobileContainerComponent extends React.PureComponent {
             frameBorder="0"
             width="1"
             height="1"
-            alt=""
             style={{ position: 'absolute' }}
           />
         )}
