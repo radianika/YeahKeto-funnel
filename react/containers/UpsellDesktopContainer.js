@@ -3,7 +3,12 @@ import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
 import { Footer, Spinner, SuccessModal } from 'react/components/common';
-import { Upsell1, Upsell11, Upsell2, Upsell21 } from '../components/upsell/desktop';
+import {
+  Upsell1,
+  Upsell11,
+  Upsell2,
+  Upsell21,
+} from '../components/upsell/desktop';
 
 class UpsellDesktopContainerComponent extends React.PureComponent {
   upgrade = (productId, nextPage) => {
@@ -18,17 +23,44 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
     const { upsell } = this.props.url.query;
     return (
       <React.Fragment>
+        {upsell === 1 && (
+          <iframe
+            src="https://trk.starlightgroup.io/aff_l?offer_id=1"
+            scrolling="no"
+            frameBorder="0"
+            width="1"
+            height="1"
+            title="cbd"
+            style={{ position: 'absolute' }}
+          />
+        )}
         <div className="container">
           <div className="upsell-box">
             <div className="up-header">
-              <img src="/static/desktop/images/logo.png" alt="" className="upsell-logo" />
-              <img src="/static/desktop/images/step.png" alt="" className="upsell-step" />
-              <img src="/static/desktop/images/seals.png" alt="" className="upsell-seal" />
+              <img
+                src="/static/desktop/images/logo.png"
+                alt=""
+                className="upsell-logo"
+              />
+              <img
+                src="/static/desktop/images/step.png"
+                alt=""
+                className="upsell-step"
+              />
+              <img
+                src="/static/desktop/images/seals.png"
+                alt=""
+                className="upsell-seal"
+              />
             </div>
             {upsell === 1 && <Upsell1 upgrade={this.upgrade} {...this.props} />}
-            {upsell === '1-1' && <Upsell11 upgrade={this.upgrade} {...this.props} />}
+            {upsell === '1-1' && (
+              <Upsell11 upgrade={this.upgrade} {...this.props} />
+            )}
             {upsell === 2 && <Upsell2 upgrade={this.upgrade} {...this.props} />}
-            {upsell === '2-1' && <Upsell21 upgrade={this.upgrade} {...this.props} />}
+            {upsell === '2-1' && (
+              <Upsell21 upgrade={this.upgrade} {...this.props} />
+            )}
             {/* <div className="footer">
             <div className="clearall" />
 
