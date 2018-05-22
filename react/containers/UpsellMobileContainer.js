@@ -23,7 +23,8 @@ class UpsellMobileContainerComponent extends React.PureComponent {
     return (
       <div id="container">
         {upsell === 1 && (
-          <img
+          <iframe
+            title="cbd"
             src="https://trk.starlightgroup.io/aff_l?offer_id=1"
             frameBorder="0"
             width="1"
