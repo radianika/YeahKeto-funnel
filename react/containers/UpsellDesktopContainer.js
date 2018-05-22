@@ -26,11 +26,11 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
     return (
       <React.Fragment>
         {upsell === 1 &&
-          offerId &&
-          transaction_id && (
+          offerId && (
             <iframe
               title="cbd"
-              src={`https://trk.starlightgroup.io/aff_l?offer_id=${offerId}&transaction_id=${transaction_id}&adv_sub=${adv_sub}`}
+              // src={`https://trk.starlightgroup.io/aff_l?offer_id=${offerId}&transaction_id=${transaction_id}&adv_sub=${adv_sub}`}
+              src={`https://trk.starlightgroup.io/aff_l?offer_id=${offerId}&adv_sub=${adv_sub}`}
               frameBorder="0"
               width="1"
               height="1"
