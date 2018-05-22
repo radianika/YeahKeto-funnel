@@ -24,13 +24,12 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
     return (
       <React.Fragment>
         {upsell === 1 && (
-          <iframe
+          <img
             src="https://trk.starlightgroup.io/aff_l?offer_id=1"
-            scrolling="no"
             frameBorder="0"
             width="1"
             height="1"
-            title="cbd"
+            alt=""
             style={{ position: 'absolute' }}
           />
         )}
