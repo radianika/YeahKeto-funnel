@@ -23,7 +23,7 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
     const { upsell } = this.props.url.query;
     return (
       <React.Fragment>
-        {upsell === 1 && (
+        {/* {upsell === 1 && (
           <iframe
             title="cbd"
             src="https://trk.starlightgroup.io/aff_l?offer_id=1"
@@ -32,7 +32,7 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
             height="1"
             style={{ position: 'absolute' }}
           />
-        )}
+        )} */}
         <div className="container">
           <div className="upsell-box">
             <div className="up-header">

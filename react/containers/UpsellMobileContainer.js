@@ -22,7 +22,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
     const { upsell } = this.props.url.query;
     return (
       <div id="container">
-        {upsell === 1 && (
+        {/* {upsell === 1 && (
           <iframe
             title="cbd"
             src="https://trk.starlightgroup.io/aff_l?offer_id=1"
@@ -31,7 +31,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
             height="1"
             style={{ position: 'absolute' }}
           />
-        )}
+        )} */}
         <SuccessModal
           visible={this.props.submitStatus === 'success'}
           message="Order updated successfully."
