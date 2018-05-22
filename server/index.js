@@ -60,7 +60,7 @@ server.use((req, res, cb) => {
   res.set('Referrer-Policy', 'strict-origin');
 
   if (req.session) {
-    res.set('ABCBDSESSID', req.sessionID);
+    // res.set('ABCBDSESSID', req.sessionID);
 
     if (!req.session.ip) {
       req.session.ip = security.getIp(req); // eslint-disable-line no-param-reassign
