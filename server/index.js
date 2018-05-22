@@ -148,10 +148,16 @@ app.prepare().then(() => {
   server.get('/promo/desktop/upsell-1', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
+    const offerId = req.query.sourceValue5;
+    const transaction_id = req.query.sourceValue3;
+    const adv_sub = req.query.sourceValue2;
     redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-desktop-upsell', {
       upsell: 1,
       orderId,
+      offerId,
+      transaction_id,
+      adv_sub,
       sessionId,
     });
   });
@@ -159,10 +165,17 @@ app.prepare().then(() => {
   server.get('/promo/desktop/upsell-1-1', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
+    const offerId = req.query.sourceValue5;
+    const transaction_id = req.query.sourceValue3;
+    const adv_sub = req.query.sourceValue2;
+
     redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-desktop-upsell', {
       upsell: '1-1',
       orderId,
+      offerId,
+      transaction_id,
+      adv_sub,
       sessionId,
     });
   });
@@ -170,21 +183,17 @@ app.prepare().then(() => {
   server.get('/promo/desktop/upsell-2', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
+    const offerId = req.query.sourceValue5;
+    const transaction_id = req.query.sourceValue3;
+    const adv_sub = req.query.sourceValue2;
+
     redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-desktop-upsell', {
       upsell: 2,
       orderId,
-      sessionId,
-    });
-  });
-
-  server.get('/promo/desktop/upsell-3', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/promo-desktop-upsell', {
-      upsell: 3,
-      orderId,
+      offerId,
+      transaction_id,
+      adv_sub,
       sessionId,
     });
   });
@@ -196,6 +205,7 @@ app.prepare().then(() => {
     return app.render(req, res, '/thankyou-page', {
       orderId,
       sessionId,
+      offerId,
       isPromo: true,
       device: 'desktop',
     });
@@ -232,10 +242,17 @@ app.prepare().then(() => {
   server.get('/promo/mobile/upsell-1', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
+    const offerId = req.query.sourceValue5;
+    const transaction_id = req.query.sourceValue3;
+    const adv_sub = req.query.sourceValue2;
+
     redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-mobile-upsell', {
       upsell: 1,
+      offerId,
       orderId,
+      transaction_id,
+      adv_sub,
       sessionId,
     });
   });
@@ -243,10 +260,16 @@ app.prepare().then(() => {
   server.get('/promo/mobile/upsell-1-1', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
+    const offerId = req.query.sourceValue5;
+    const transaction_id = req.query.sourceValue3;
+    const adv_sub = req.query.sourceValue2;
+
     redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-mobile-upsell', {
       upsell: '1-1',
       orderId,
+      transaction_id,
+      adv_sub,
       sessionId,
     });
   });
@@ -254,21 +277,17 @@ app.prepare().then(() => {
   server.get('/promo/mobile/upsell-2', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
+    const offerId = req.query.sourceValue5;
+    const transaction_id = req.query.sourceValue3;
+    const adv_sub = req.query.sourceValue2;
+
     redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-mobile-upsell', {
       upsell: 2,
       orderId,
-      sessionId,
-    });
-  });
-
-  server.get('/promo/mobile/upsell-3', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/promo-mobile-upsell', {
-      upsell: 3,
-      orderId,
+      offerId,
+      transaction_id,
+      adv_sub,
       sessionId,
     });
   });
@@ -276,10 +295,17 @@ app.prepare().then(() => {
   server.get('/promo/desktop/upsell-2-1', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
+    const offerId = req.query.sourceValue5;
+    const transaction_id = req.query.sourceValue3;
+    const adv_sub = req.query.sourceValue2;
+
     redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-desktop-upsell', {
       upsell: '2-1',
       orderId,
+      offerId,
+      transaction_id,
+      adv_sub,
       sessionId,
     });
   });
@@ -287,10 +313,17 @@ app.prepare().then(() => {
   server.get('/promo/mobile/upsell-2-1', async (req, res) => {
     const sessionId = await getSessionId(req, res);
     const orderId = req.query.orderId;
+    const offerId = req.query.sourceValue5;
+    const transaction_id = req.query.sourceValue3;
+    const adv_sub = req.query.sourceValue2;
+
     redirectToPromo(orderId, req, res);
     return app.render(req, res, '/promo-mobile-upsell', {
       upsell: '2-1',
       orderId,
+      offerId,
+      transaction_id,
+      adv_sub,
       sessionId,
     });
   });
