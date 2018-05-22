@@ -60,10 +60,9 @@ server.use((req, res, cb) => {
   res.set('Referrer-Policy', 'strict-origin');
 
   if (req.session) {
-    console.log('req.url :', req.url);
     // set key only for page requests
     // ignore for static calls and HMR calls in dev
-    if (req.url.indexOf('/static/') === -1 || req.url.indexOf('on-demand-entries-ping')) {
+    if ((req.url.indexOf('/static/') === -1) && (req.url.indexOf('on-demand-entries-ping') === -1)) {
       res.set('ABCBDSESSID', req.sessionID);
     }
 
