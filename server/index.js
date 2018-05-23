@@ -58,21 +58,24 @@ server.use((req, res, cb) => {
   res.set('X-XSS-Protection', 1);
   res.set('X-Frame-Options', 'SAMEORIGIN');
   res.set('Referrer-Policy', 'strict-origin');
+  try {
+    if (req.session) {
+      // set key only for page requests
+      // ignore for static calls and HMR calls in dev
+      if ((req.url.indexOf('/static/') === -1) && (req.url.indexOf('on-demand-entries-ping') === -1)) {
+        res.set('ABCBDSESSID', req.sessionID);
+      }
 
-  if (req.session) {
-    // set key only for page requests
-    // ignore for static calls and HMR calls in dev
-    if ((req.url.indexOf('/static/') === -1) && (req.url.indexOf('on-demand-entries-ping') === -1)) {
-      res.set('ABCBDSESSID', req.sessionID);
-    }
+      if (!req.session.ip) {
+        req.session.ip = security.getIp(req); // eslint-disable-line no-param-reassign
+      }
 
-    if (!req.session.ip) {
-      req.session.ip = security.getIp(req); // eslint-disable-line no-param-reassign
-    }
-
-    if (!req.session.userAgent) {
-      req.session.userAgent = req.get('User-Agent'); // eslint-disable-line no-param-reassign
-    }
+      if (!req.session.userAgent) {
+        req.session.userAgent = req.get('User-Agent'); // eslint-disable-line no-param-reassign
+      }
+    } 
+  } catch (e) {
+    console.log('e :', e);
   }
   return cb();
 });
