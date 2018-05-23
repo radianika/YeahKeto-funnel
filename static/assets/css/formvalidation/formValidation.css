@@ -25,6 +25,21 @@
   display: block;
 }
 
+/* show text error and add margins */
+.fv-has-error {
+  margin-bottom: 6px;
+}
+.fv-has-error small {
+  font-size: 12px;
+  margin-top: 80px;
+}
+.sec1crt-frmlft .form-content .pure-control-group.frmelements.fv-has-feedback {
+  margin-top: 10px;
+}
+.frmelements.short1.mob-sort.frm-elem-cvv {
+  margin-top: 10px;
+}
+
 /* Hide the clear icon for field using placeholder attribute on IE10/11 */
 
 .fv-form [placeholder]::-ms-clear {
@@ -69,7 +84,7 @@
   right: 15px;
 }
 
-.fv-form-bootstrap4 .form-group.row .form-check~.fv-control-feedback {
+.fv-form-bootstrap4 .form-group.row .form-check ~ .fv-control-feedback {
   top: -7px;
   /* labelHeight/2 - iconHeight/2 */
 }
@@ -82,27 +97,29 @@
 
 /* Stacked form */
 
-.fv-form-bootstrap4:not(.form-inline) label~.fv-control-feedback {
+.fv-form-bootstrap4:not(.form-inline) label ~ .fv-control-feedback {
   top: 32px;
 }
 
 /* Without label */
 
-.fv-form-bootstrap4:not(.form-inline) label.sr-only~.fv-control-feedback {
+.fv-form-bootstrap4:not(.form-inline) label.sr-only ~ .fv-control-feedback {
   top: -7px;
   /* labelHeight/2 - iconHeight/2 */
 }
 
-.fv-form-bootstrap4:not(.form-inline) .form-check~.fv-control-feedback {
+.fv-form-bootstrap4:not(.form-inline) .form-check ~ .fv-control-feedback {
   top: 25px;
   /* labelHeight + checkboxHeight/2 - iconHeight/2 */
 }
 
-.fv-form-bootstrap4 .has-success label,.fv-form-bootstrap4 .has-success .fv-control-feedback {
+.fv-form-bootstrap4 .has-success label,
+.fv-form-bootstrap4 .has-success .fv-control-feedback {
   color: #5cb85c;
 }
 
-.fv-form-bootstrap4 .has-warning label,.fv-form-bootstrap4 .has-warning .fv-control-feedback {
+.fv-form-bootstrap4 .has-warning label,
+.fv-form-bootstrap4 .has-warning .fv-control-feedback {
   color: #f0ad4e;
 }
 
@@ -130,7 +147,10 @@
   right: 0;
 }
 
-.fv-form-foundation5.fv-form-horizontal [type="checkbox"]~.fv-control-feedback,.fv-form-foundation5.fv-form-horizontal [type="radio"]~.fv-control-feedback {
+.fv-form-foundation5.fv-form-horizontal
+  [type="checkbox"]
+  ~ .fv-control-feedback,
+.fv-form-foundation5.fv-form-horizontal [type="radio"] ~ .fv-control-feedback {
   top: -8px;
   /* labelHeight/2 - iconHeight/2 */
 }
@@ -142,7 +162,8 @@
   /* Same as height of label */
 }
 
-.fv-form-foundation5 [type="checkbox"]~.fv-control-feedback,.fv-form-foundation5 [type="radio"]~.fv-control-feedback {
+.fv-form-foundation5 [type="checkbox"] ~ .fv-control-feedback,
+.fv-form-foundation5 [type="radio"] ~ .fv-control-feedback {
   top: 15px;
 }
 
@@ -153,8 +174,9 @@
   /* Same as $alert-color, .error */
 }
 
-.fv-form-foundation5 .fv-has-success label,.fv-form-foundation5 .fv-has-success .fv-control-feedback {
-  color: #43AC6A;
+.fv-form-foundation5 .fv-has-success label,
+.fv-form-foundation5 .fv-has-success .fv-control-feedback {
+  color: #43ac6a;
   /* Same as $success-color */
 }
 
@@ -173,7 +195,8 @@
   line-height: 39px;
 }
 
-.fv-form-foundation [type="checkbox"]~.fv-control-feedback,.fv-form-foundation [type="radio"]~.fv-control-feedback {
+.fv-form-foundation [type="checkbox"] ~ .fv-control-feedback,
+.fv-form-foundation [type="radio"] ~ .fv-control-feedback {
   top: -7px;
   /* labelHeight/2 - iconHeight/2 */
 }
@@ -184,19 +207,25 @@
 
 /* Stacked form */
 
-.fv-form-foundation label .fv-control-feedback,.fv-form-foundation fieldset [type="checkbox"]~.fv-control-feedback,.fv-form-foundation fieldset [type="radio"]~.fv-control-feedback {
+.fv-form-foundation label .fv-control-feedback,
+.fv-form-foundation fieldset [type="checkbox"] ~ .fv-control-feedback,
+.fv-form-foundation fieldset [type="radio"] ~ .fv-control-feedback {
   top: 25px;
   /* Same as height of label */
 }
 
 /* Color */
 
-.fv-form-foundation .fv-has-error label,.fv-form-foundation .fv-has-error fieldset legend,.fv-form-foundation .fv-has-error .fv-control-feedback {
+.fv-form-foundation .fv-has-error label,
+.fv-form-foundation .fv-has-error fieldset legend,
+.fv-form-foundation .fv-has-error .fv-control-feedback {
   color: #ec5840;
   /* Same as .alert */
 }
 
-.fv-form-foundation .fv-has-success label,.fv-form-foundation .fv-has-success fieldset legend,.fv-form-foundation .fv-has-success .fv-control-feedback {
+.fv-form-foundation .fv-has-success label,
+.fv-form-foundation .fv-has-success fieldset legend,
+.fv-form-foundation .fv-has-success .fv-control-feedback {
   color: #3adb76;
   /* Same as .success */
 }
@@ -220,25 +249,30 @@
 
 /* Horizontal form */
 
-.fv-form-pure.pure-form-aligned [type="checkbox"]~.fv-control-feedback,.fv-form-pure.pure-form-aligned [type="radio"]~.fv-control-feedback {
+.fv-form-pure.pure-form-aligned [type="checkbox"] ~ .fv-control-feedback,
+.fv-form-pure.pure-form-aligned [type="radio"] ~ .fv-control-feedback {
   top: -9px;
   /* labelHeight/2 - iconHeight/2 */
 }
 
 .fv-form-pure.pure-form-aligned .fv-help-block {
-  margin-top: 5px;
-  margin-left: 180px;
+  /*margin-top: 5px;*/
+  /*margin-left: 180px;*/
 }
 
 /* Stacked form */
 
-.fv-form-pure .fv-has-error label,.fv-form-pure .fv-has-error .fv-help-block,.fv-form-pure .fv-has-error .fv-control-feedback {
-  color: #CA3C3C;
+.fv-form-pure .fv-has-error label,
+.fv-form-pure .fv-has-error .fv-help-block,
+.fv-form-pure .fv-has-error .fv-control-feedback {
+  color: #ca3c3c;
   /* Same as .button-error */
 }
 
-.fv-form-pure .fv-has-success label,.fv-form-pure .fv-has-success .fv-help-block,.fv-form-pure .fv-has-success .fv-control-feedback {
-  color: #1CB841;
+.fv-form-pure .fv-has-success label,
+.fv-form-pure .fv-has-success .fv-help-block,
+.fv-form-pure .fv-has-success .fv-control-feedback {
+  color: #1cb841;
   /* Same as .button-success */
 }
 
@@ -265,24 +299,29 @@
   top: 0;
 }
 
-.fv-form-uikit.uk-form-horizontal [type="checkbox"]~.fv-control-feedback,.fv-form-uikit.uk-form-horizontal [type="radio"]~.fv-control-feedback {
+.fv-form-uikit.uk-form-horizontal [type="checkbox"] ~ .fv-control-feedback,
+.fv-form-uikit.uk-form-horizontal [type="radio"] ~ .fv-control-feedback {
   top: -7px;
 }
 
 /* Without labels */
 
-.fv-form-uikit label.fv-sr-only~.fv-control-feedback {
+.fv-form-uikit label.fv-sr-only ~ .fv-control-feedback {
   top: -7px !important;
 }
 
 /* Stacked form */
 
-.fv-form-uikit .fv-has-error label,.fv-form-uikit .fv-has-error .uk-form-label,.fv-form-uikit .fv-has-error .fv-control-feedback {
-  color: #D85030;
+.fv-form-uikit .fv-has-error label,
+.fv-form-uikit .fv-has-error .uk-form-label,
+.fv-form-uikit .fv-has-error .fv-control-feedback {
+  color: #d85030;
   /* Same as .uk-form-danger */
 }
 
-.fv-form-uikit .fv-has-success label,.fv-form-uikit .fv-has-success .uk-form-label,.fv-form-uikit .fv-has-success .fv-control-feedback {
-  color: #659F13;
+.fv-form-uikit .fv-has-success label,
+.fv-form-uikit .fv-has-success .uk-form-label,
+.fv-form-uikit .fv-has-success .fv-control-feedback {
+  color: #659f13;
   /* Same as .uk-form-success */
 }
