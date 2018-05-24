@@ -362,7 +362,7 @@ const MobileConfirmContainerPage = reduxForm({
 })(withRouter(MobileConfirmContainerComponent));
 
 function mapStateToProps(reduxState, ownProps) {
-  const { productId } = ownProps.url.query;
+  const { productId } = ownProps.query;
   const pack = packages.find(p => String(p.id) === String(productId));
   const {
     orderId,

@@ -21,7 +21,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
   render() {
     const {
       upsell, offerId, transaction_id, adv_sub,
-    } = this.props.url.query;
+    } = this.props.query;
     return (
       <div id="container">
         {upsell === 1 &&

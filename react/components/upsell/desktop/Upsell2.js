@@ -77,7 +77,7 @@ class Upsell2 extends React.PureComponent {
                   height="71"
                 />
               </a>
-              <Link href={`/promo/desktop/upsell-2-1?${getQueryString()}`}>
+              <Link as={`/promo/desktop/upsell-2-1?${getQueryString()}`}>
                 <p className="thanks-txt">
                   <a href="#">
                     <img
@@ -140,7 +140,7 @@ class Upsell2 extends React.PureComponent {
               height="71"
             />
           </a>
-          <Link href={`/promo/desktop/upsell-2-1?${getQueryString()}`}>
+          <Link as={`/promo/desktop/upsell-2-1?${getQueryString()}`}>
             <p className="thanks-txt">
               <a href="#">
                 <img

@@ -1,17 +1,16 @@
 import React from 'react';
 import Head from 'next/head';
+import { connect } from 'react-redux';
 import { UpsellMobileContainer } from 'react/containers';
-import { withReduxSaga } from 'redux/store';
 import { AuthActions, OrderActions } from 'redux/actions';
 
 class SelectPackage extends React.PureComponent {
-  static async getInitialProps({
-    req, store, isServer, query,
-  }) {
+  static async getInitialProps(props) {
+    const {
+      store, isServer, query, req,
+    } = props.ctx;
     if (isServer) {
-      store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
-      );
+      store.dispatch(AuthActions.setUniqueSessionId({ sessionId: query.sessionId }));
 
       if (query.orderId) {
         store.dispatch(
@@ -49,4 +48,4 @@ class SelectPackage extends React.PureComponent {
   }
 }
 
-export default withReduxSaga(SelectPackage);
+export default connect()(SelectPackage);

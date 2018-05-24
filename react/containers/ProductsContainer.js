@@ -4,8 +4,7 @@ import { Product } from 'react/components/products';
 
 class ProductsContainer extends React.PureComponent {
   render() {
-    const { product } = this.props.url.query;
-    console.log(product);
+    const { product } = this.props.query;
     return (
       <React.Fragment>
         <Header />

@@ -9,7 +9,7 @@ class UpsellFooter extends React.PureComponent {
     return (
       <React.Fragment>
         <div className="clearall" />
-        <Link href={`${nextUrl}?${getQueryString()}`}>
+        <Link as={`${nextUrl}?${getQueryString()}`}>
           <a className="nothank">
             No thanks. I understand that this is my only opportunity to get
             access to this special offer, and I’m okay with missing out.

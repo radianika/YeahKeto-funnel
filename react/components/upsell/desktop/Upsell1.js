@@ -83,7 +83,7 @@ class Upsell1Component extends React.PureComponent {
                 />
               </a>
               <p className="thanks-txt">
-                <Link href={`/promo/desktop/upsell-1-1?${getQueryString()}`}>
+                <Link as={`/promo/desktop/upsell-1-1?${getQueryString()}`}>
                   <a href="">
                     <img
                       src="/static/assets/images/cut-icon.png"

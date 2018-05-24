@@ -9,15 +9,15 @@
     "idx"
   ],
   "presets": [
-    "next/babel",
     [
-      "env",
+      "@babel/preset-env",
       {
         "targets": {
           "node": "current"
         }
       }
     ],
-    "stage-0"
+    "next/babel",
+    "@babel/stage-0"
   ]
 }

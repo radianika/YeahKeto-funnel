@@ -77,7 +77,7 @@ class Upsell3 extends React.PureComponent {
           <div className="clearall" />
           <SatisfactionBox onUpgrade={this.upgrade} />
           <div className="clearall" />
-          <Link href={`/promo/desktop/thankyou?${getQueryString()}`}>
+          <Link as={`/promo/desktop/thankyou?${getQueryString()}`}>
             <a className="nothank">
               No thanks. I understand that this is my only opportunity to get
               access to this special offer, and I’m okay with missing out.

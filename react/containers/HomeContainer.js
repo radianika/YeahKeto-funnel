@@ -180,7 +180,7 @@ class HomeContainer extends PureComponent {
                   Hemp Oil may help reduce pains &amp; aches while improving
                   mood patterns &amp; relaxation.
                 </p>
-                <Link href="/hemp-oil">
+                <Link href="" as="/hemp-oil">
                   <a href="#">
                     <img
                       src="/static/assets/images/btn.png"
@@ -205,7 +205,7 @@ class HomeContainer extends PureComponent {
                   Hemp Capsules may help support joint health &amp; may promote
                   better sleep quality.
                 </p>
-                <Link href="/hemp-capsule">
+                <Link href="" as="/hemp-capsule">
                   <a href="#">
                     <img
                       src="/static/assets/images/btn.png"
@@ -230,7 +230,7 @@ class HomeContainer extends PureComponent {
                   Warming balm may help support relief from problems like
                   soreness, inflammation, and irritated skin.
                 </p>
-                <Link href="/warming_balm">
+                <Link href="" as="/warming_balm">
                   <a href="#">
                     <img
                       src="/static/assets/images/btn.png"
