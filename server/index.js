@@ -27,7 +27,10 @@ const port = PORT ? parseInt(PORT, 10) : 3000;
 
 const server = express();
 
-server.use(morgan('combined'));
+server.use(morgan('combined', {
+  skip: function (req, res) { return res.statusCode < 400 }
+}));
+
 server.use(cookieParser());
 server.use(useragent.express());
 if (!dev) {
