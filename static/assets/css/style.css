@@ -1933,7 +1933,9 @@ table.tbl2 {
   font-family: "Source Sans Pro", sans-serif;
   outline: none;
 }
-
+input.ft-input:invalid {
+  box-shadow: none;
+}
 .frmelements select {
   background: url(/static/assets/images/arrow-input.png) no-repeat center right;
 }
