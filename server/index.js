@@ -29,7 +29,7 @@ const server = express();
 server.use(cookieParser());
 server.use(useragent.express());
 if (!dev) {
-  Raven.config('https://e6aa73711d444a9781a446201eb6df90@sentry.io/281178', {
+  Raven.config('https://30b971029d594608bb765ea6e46298f0@sentry.io/1207214', {
     maxBreadcrumbs: 10,
     sendTimeout: 5,
   }).install();
@@ -159,7 +159,7 @@ app.prepare().then(() => {
         return app.render(req, res, '/promo-mobile', { requestAgent, sessionId });
       }
     } catch (error) {
-      Raven.captureException(e);
+      Raven.captureException(error);
     }
   });
 
