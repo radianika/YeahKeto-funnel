@@ -54,9 +54,11 @@ function* submitLeadsForm(action) {
       yield put(OrderActions.submitLeadsFormSuccess({ lead }));
       router.push(`${nextUrl}?${queryString}&orderId=${lead.orderId}`);
     } else {
+      console.error(apiResponse);
       yield put(OrderActions.submitLeadsFormFailure());
     }
   } catch (error) {
+    console.error(error);
     yield put(OrderActions.submitLeadsFormFailure({ error }));
   }
 }
@@ -80,9 +82,11 @@ function* getOrderDetails(action) {
       const order = apiResponse.response.data.data.data[0];
       yield put(OrderActions.getOrderDetailsSuccess({ order }));
     } else {
+      console.error(apiResponse);
       yield put(OrderActions.getOrderDetailsFailure());
     }
   } catch (error) {
+    console.error(error);
     yield put(OrderActions.getOrderDetailsFailure({ error }));
   }
 }
@@ -146,9 +150,11 @@ function* placeOrder(action) {
       yield delay(2000);
       router.push(`${nextUrl}?${queryString}`);
     } else {
+      console.error(apiResponse);
       yield put(OrderActions.placeOrderFailure());
     }
   } catch (error) {
+    console.error(error);
     yield put(OrderActions.placeOrderFailure({ error }));
   }
 }
@@ -181,9 +187,11 @@ function* addUpsellToOrder(action) {
       const queryString = getQueryString();
       router.push(`${sendTo}?${queryString}`);
     } else {
+      console.error(apiResponse);
       yield put(OrderActions.addUpsellToOrderFailure({ error }));
     }
   } catch (error) {
+    console.error(error);
     yield put(OrderActions.addUpsellToOrderFailure({ error }));
   }
 }
