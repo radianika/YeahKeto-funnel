@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Raven from 'raven';
 
 require('dotenv').config();
 
@@ -13,7 +14,7 @@ export function post(location, body) {
       return { error: null, response };
     })
     .catch(error => {
-      console.log(error);
+      Raven.captureException(error);
       if (error.response) {
         return { error: error.response };
       }
@@ -33,6 +34,7 @@ export function put(location, body) {
       return { error: null, response };
     })
     .catch(error => {
+      Raven.captureException(error);
       if (error.response) {
         return { error: error.response };
       }
@@ -52,6 +54,7 @@ export function get(location) {
       return { error: null, response };
     })
     .catch(error => {
+      Raven.captureException(error);
       if (error.response) {
         return { error: error.response };
       }

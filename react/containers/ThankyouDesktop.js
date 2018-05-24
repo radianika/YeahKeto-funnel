@@ -141,56 +141,77 @@ class ThankyouDesktopComponent extends React.PureComponent {
               <div className="sh-heading">Shipping Info</div>
               <ul className="user-info">
                 <li>
-                  <span>First Name:</span> {order.firstName}
+                  <span>First Name:</span>
+                  <p className="user-info__value"> {order.firstName} </p>
                 </li>
                 <li>
-                  <span>Last Name:</span> {order.lastName}
+                  <span>Last Name:</span>
+                  <p className="user-info__value"> {order.lastName} </p>
                 </li>
                 <li>
-                  <span>Address:</span> {order.address1} <br /> {order.address2}
+                  <span>Address:</span>
+                  <p className="user-info__value">
+                    {' '}
+                    {order.address1} <br /> {order.address2}{' '}
+                  </p>
                 </li>
                 <li>
-                  <span>City:</span> {order.city}
+                  <span>City:</span>
+                  <p className="user-info__value"> {order.city} </p>
                 </li>
                 <li>
-                  <span>State:</span> {order.state}
+                  <span>State:</span>
+                  <p className="user-info__value"> {order.state} </p>
                 </li>
                 <li>
-                  <span>Zip Code:</span> {order.postalCode}
+                  <span>Zip Code:</span>
+                  <p className="user-info__value"> {order.postalCode} </p>
                 </li>
                 <li>
-                  <span>Phone:</span> {order.phoneNumber}
+                  <span>Phone:</span>
+                  <p className="user-info__value"> {order.phoneNumber} </p>
                 </li>
                 <li>
-                  <span>Email:</span> {order.emailAddress}
+                  <span>Email:</span>
+                  <p className="user-info__value"> {order.emailAddress} </p>
                 </li>
               </ul>
               <div className="sh-heading">Billing Info</div>
               <ul className="user-info">
                 <li>
-                  <span>First Name:</span> {order.shipFirstName}
+                  <span>First Name:</span>
+                  <p className="user-info__value"> {order.shipFirstName} </p>
                 </li>
                 <li>
-                  <span>Last Name:</span> {order.shipLastName}
+                  <span>Last Name:</span>
+                  <p className="user-info__value"> {order.shipLastName} </p>
                 </li>
                 <li>
-                  <span>Address:</span> {order.shipAddress1} <br />{' '}
-                  {order.shipAddress2}
+                  <span>Address:</span>
+                  <p className="user-info__value">
+                    {' '}
+                    {order.shipAddress1} <br /> {order.shipAddress2}
+                  </p>
                 </li>
                 <li>
-                  <span>City:</span> {order.shipCity}
+                  <span>City:</span>
+                  <p className="user-info__value"> {order.shipCity} </p>
                 </li>
                 <li>
-                  <span>State:</span> {order.shipState}
+                  <span>State:</span>
+                  <p className="user-info__value"> {order.shipState} </p>
                 </li>
                 <li>
-                  <span>Zip Code:</span> {order.shipPostalCode}
+                  <span>Zip Code:</span>
+                  <p className="user-info__value"> {order.shipPostalCode} </p>
                 </li>
                 <li>
-                  <span>Phone:</span> {order.phoneNumber}
+                  <span>Phone:</span>
+                  <p className="user-info__value"> {order.phoneNumber} </p>
                 </li>
                 <li>
-                  <span>Email:</span> {order.emailAddress}
+                  <span>Email:</span>
+                  <p className="user-info__value"> {order.emailAddress} </p>
                 </li>
               </ul>
             </div>
