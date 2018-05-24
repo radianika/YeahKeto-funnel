@@ -258,7 +258,7 @@ app.prepare().then(() => {
     }
   });
 
-  server.get('/promo/mobile/shipping', async (req, res) => {
+  server.get('/promo/mobile/promo-mobile-shipping', async (req, res) => {
     try {
       const sessionId = await getSessionId(req, res);
       return app.render(req, res, '/promo-mobile-shipping', {
