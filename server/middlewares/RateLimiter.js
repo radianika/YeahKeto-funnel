@@ -46,5 +46,6 @@ export default (req, res, next) => {
     });
   } catch (error) {
     Raven.captureException(error);
+    console.error(error);
   }
 };

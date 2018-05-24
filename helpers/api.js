@@ -11,7 +11,7 @@ export function post(location, body, sessionId) {
       return { error: null, response };
     })
     .catch(error => {
-      console.log(error);
+      console.error(error);
       if (error.response) {
         return { error: error.response };
       }
