@@ -1,5 +1,6 @@
 import RedisClient from 'ioredis';
 import winston from 'winston';
+import Raven from 'raven';
 
 import config from './server-config';
 
@@ -18,15 +19,15 @@ redis.on('connect', () => {
   });
 });
 
-redis.on('error', () => {
+redis.on('error', e => {
   winston.error('redis:error', {
     host,
     port,
     type: 'redis:error',
     env: config.ENV,
   });
-
-  process.exit(1);
+  Raven.captureException(e);
+  // process.exit(1);
   // app requires the redis to run
   // failing to run redis will result in app crash
 });

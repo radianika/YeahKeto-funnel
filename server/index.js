@@ -7,6 +7,7 @@ import useragent from 'express-useragent';
 import expressSession from 'express-session';
 import connectRedis from 'connect-redis';
 import querystring from 'querystring';
+import Raven from 'raven';
 import { post } from './api-helpers';
 import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
@@ -28,6 +29,10 @@ const server = express();
 server.use(cookieParser());
 server.use(useragent.express());
 if (!dev) {
+  Raven.config('https://e6aa73711d444a9781a446201eb6df90@sentry.io/281178', {
+    maxBreadcrumbs: 10,
+    sendTimeout: 5,
+  }).install();
   server.use(compression());
 }
 
@@ -62,7 +67,7 @@ server.use((req, res, cb) => {
     if (req.session) {
       // set key only for page requests
       // ignore for static calls and HMR calls in dev
-      if ((req.url.indexOf('/static/') === -1) && (req.url.indexOf('on-demand-entries-ping') === -1)) {
+      if (req.url.indexOf('/static/') === -1 && req.url.indexOf('on-demand-entries-ping') === -1) {
         res.set('ABCBDSESSID', req.sessionID);
       }
 
@@ -73,38 +78,46 @@ server.use((req, res, cb) => {
       if (!req.session.userAgent) {
         req.session.userAgent = req.get('User-Agent'); // eslint-disable-line no-param-reassign
       }
-    } 
+    }
   } catch (e) {
-    console.log('e :', e);
+    Raven.captureException(e);
   }
   return cb();
 });
 
 const getSessionId = async (req, res) => {
-  const { cookies } = req;
-  let token = idx(cookies, _ => _.ascbd_session);
-  if (!token || token === 'undefined') {
-    const sessionResponse = await post('/v1/auth', {
-      username: 'larby@starlightgroup.io',
-      password: 'P@ssw0rd',
-    });
-    if (idx(sessionResponse, _ => _.response.data)) {
-      token = sessionResponse.response.data.data.token;
-      res.cookie('ascbd_session', token, { maxAge: 3600000 });
+  try {
+    const { cookies } = req;
+    let token = idx(cookies, _ => _.ascbd_session);
+    if (!token || token === 'undefined') {
+      const sessionResponse = await post('/v1/auth', {
+        username: 'larby@starlightgroup.io',
+        password: 'P@ssw0rd',
+      });
+      if (idx(sessionResponse, _ => _.response.data)) {
+        token = sessionResponse.response.data.data.token;
+        res.cookie('ascbd_session', token, { maxAge: 3600000 });
+      }
     }
+    return {
+      id: token,
+    };
+  } catch (error) {
+    Raven.captureException(error);
   }
-  return {
-    id: token,
-  };
 };
 
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const redirectToPromo = (orderId, req, res) => {
-  if (!orderId) {
-    const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
-    res.redirect(`/promo/${requestAgent}?${querystring.stringify(req.query)}`);
+  try {
+    if (!orderId) {
+      const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
+      res.redirect(`/promo/${requestAgent}?${querystring.stringify(req.query)}`);
+    }
+  } catch (error) {
+    Raven.captureException(error);
   }
 };
 
@@ -115,262 +128,343 @@ app.prepare().then(() => {
   });
 
   server.get('/thankyou?', async (req, res) => {
-    const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
-    const orderId = req.query.orderId;
+    try {
+      const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
+      const { orderId } = req.query;
 
-    const sessionId = await getSessionId(req, res);
-    return app.render(req, res, '/thankyou-page', {
-      orderId,
-      sessionId,
-      device: requestAgent,
-    });
+      const sessionId = await getSessionId(req, res);
+      return app.render(req, res, '/thankyou-page', {
+        orderId,
+        sessionId,
+        device: requestAgent,
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/:useragent?', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    // console.log(sessionId)
-    const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
+    try {
+      const sessionId = await getSessionId(req, res);
+      // console.log(sessionId)
+      const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
 
-    if (requestAgent !== req.params.useragent) {
-      res.redirect(`/promo/${requestAgent}?${querystring.stringify(req.query)}`);
-    }
-    if (requestAgent === 'desktop') {
-      return app.render(req, res, '/promo-desktop', { requestAgent, sessionId });
-    }
-    if (requestAgent === 'mobile') {
-      return app.render(req, res, '/promo-mobile', { requestAgent, sessionId });
+      if (requestAgent !== req.params.useragent) {
+        res.redirect(`/promo/${requestAgent}?${querystring.stringify(req.query)}`);
+      }
+      if (requestAgent === 'desktop') {
+        return app.render(req, res, '/promo-desktop', { requestAgent, sessionId });
+      }
+      if (requestAgent === 'mobile') {
+        return app.render(req, res, '/promo-mobile', { requestAgent, sessionId });
+      }
+    } catch (error) {
+      Raven.captureException(e);
     }
   });
 
   server.get('/promo/desktop/checkout', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/promo-desktop-checkout', {
-      orderId,
-      sessionId,
-    });
+    try {
+      const sessionId = await getSessionId(req, res);
+      const { orderId } = req.query;
+      redirectToPromo(orderId, req, res);
+      return app.render(req, res, '/promo-desktop-checkout', {
+        orderId,
+        sessionId,
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/desktop/upsell-1', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    const offerId = req.query.sourceValue5;
-    const transaction_id = req.query.sourceValue3;
-    const adv_sub = req.query.sourceValue2;
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/promo-desktop-upsell', {
-      upsell: 1,
-      orderId,
-      offerId,
-      transaction_id,
-      adv_sub,
-      sessionId,
-    });
+    try {
+      const sessionId = await getSessionId(req, res);
+      const { orderId } = req.query;
+      const offerId = req.query.sourceValue5;
+      const transaction_id = req.query.sourceValue3;
+      const adv_sub = req.query.sourceValue2;
+      redirectToPromo(orderId, req, res);
+      return app.render(req, res, '/promo-desktop-upsell', {
+        upsell: 1,
+        orderId,
+        offerId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/desktop/upsell-1-1', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    const offerId = req.query.sourceValue5;
-    const transaction_id = req.query.sourceValue3;
-    const adv_sub = req.query.sourceValue2;
+    try {
+      const sessionId = await getSessionId(req, res);
+      const { orderId } = req.query;
+      const offerId = req.query.sourceValue5;
+      const transaction_id = req.query.sourceValue3;
+      const adv_sub = req.query.sourceValue2;
 
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/promo-desktop-upsell', {
-      upsell: '1-1',
-      orderId,
-      offerId,
-      transaction_id,
-      adv_sub,
-      sessionId,
-    });
+      redirectToPromo(orderId, req, res);
+      return app.render(req, res, '/promo-desktop-upsell', {
+        upsell: '1-1',
+        orderId,
+        offerId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/desktop/upsell-2', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    const offerId = req.query.sourceValue5;
-    const transaction_id = req.query.sourceValue3;
-    const adv_sub = req.query.sourceValue2;
+    try {
+      const sessionId = await getSessionId(req, res);
+      const { orderId } = req.query;
+      const offerId = req.query.sourceValue5;
+      const transaction_id = req.query.sourceValue3;
+      const adv_sub = req.query.sourceValue2;
 
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/promo-desktop-upsell', {
-      upsell: 2,
-      orderId,
-      offerId,
-      transaction_id,
-      adv_sub,
-      sessionId,
-    });
+      redirectToPromo(orderId, req, res);
+      return app.render(req, res, '/promo-desktop-upsell', {
+        upsell: 2,
+        orderId,
+        offerId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/desktop/thankyou', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/thankyou-page', {
-      orderId,
-      sessionId,
-      isPromo: true,
-      device: 'desktop',
-    });
+    try {
+      const sessionId = await getSessionId(req, res);
+      const { orderId } = req.query;
+      redirectToPromo(orderId, req, res);
+      return app.render(req, res, '/thankyou-page', {
+        orderId,
+        sessionId,
+        isPromo: true,
+        device: 'desktop',
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/mobile/shipping', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    return app.render(req, res, '/promo-mobile-shipping', {
-      sessionId,
-    });
+    try {
+      const sessionId = await getSessionId(req, res);
+      return app.render(req, res, '/promo-mobile-shipping', {
+        sessionId,
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/mobile/select-package', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/promo-mobile-select-package', {
-      sessionId,
-      orderId,
-    });
+    try {
+      const sessionId = await getSessionId(req, res);
+      const { orderId } = req.query;
+      redirectToPromo(orderId, req, res);
+      return app.render(req, res, '/promo-mobile-select-package', {
+        sessionId,
+        orderId,
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/mobile/confirm', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/promo-mobile-confirm', {
-      sessionId,
-      orderId,
-      productId: req.query.productId,
-    });
+    try {
+      const sessionId = await getSessionId(req, res);
+      const { orderId } = req.query;
+      redirectToPromo(orderId, req, res);
+      return app.render(req, res, '/promo-mobile-confirm', {
+        sessionId,
+        orderId,
+        productId: req.query.productId,
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/mobile/upsell-1', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    const offerId = req.query.sourceValue5;
-    const transaction_id = req.query.sourceValue3;
-    const adv_sub = req.query.sourceValue2;
+    try {
+      const sessionId = await getSessionId(req, res);
+      const { orderId } = req.query;
+      const offerId = req.query.sourceValue5;
+      const transaction_id = req.query.sourceValue3;
+      const adv_sub = req.query.sourceValue2;
 
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/promo-mobile-upsell', {
-      upsell: 1,
-      offerId,
-      orderId,
-      transaction_id,
-      adv_sub,
-      sessionId,
-    });
+      redirectToPromo(orderId, req, res);
+      return app.render(req, res, '/promo-mobile-upsell', {
+        upsell: 1,
+        offerId,
+        orderId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/mobile/upsell-1-1', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    const offerId = req.query.sourceValue5;
-    const transaction_id = req.query.sourceValue3;
-    const adv_sub = req.query.sourceValue2;
+    try {
+      const sessionId = await getSessionId(req, res);
+      const { orderId } = req.query;
+      const transaction_id = req.query.sourceValue3;
+      const adv_sub = req.query.sourceValue2;
 
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/promo-mobile-upsell', {
-      upsell: '1-1',
-      orderId,
-      transaction_id,
-      adv_sub,
-      sessionId,
-    });
+      redirectToPromo(orderId, req, res);
+      return app.render(req, res, '/promo-mobile-upsell', {
+        upsell: '1-1',
+        orderId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/mobile/upsell-2', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    const offerId = req.query.sourceValue5;
-    const transaction_id = req.query.sourceValue3;
-    const adv_sub = req.query.sourceValue2;
+    try {
+      const sessionId = await getSessionId(req, res);
+      const { orderId } = req.query;
+      const offerId = req.query.sourceValue5;
+      const transaction_id = req.query.sourceValue3;
+      const adv_sub = req.query.sourceValue2;
 
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/promo-mobile-upsell', {
-      upsell: 2,
-      orderId,
-      offerId,
-      transaction_id,
-      adv_sub,
-      sessionId,
-    });
+      redirectToPromo(orderId, req, res);
+      return app.render(req, res, '/promo-mobile-upsell', {
+        upsell: 2,
+        orderId,
+        offerId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/desktop/upsell-2-1', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    const offerId = req.query.sourceValue5;
-    const transaction_id = req.query.sourceValue3;
-    const adv_sub = req.query.sourceValue2;
+    try {
+      const sessionId = await getSessionId(req, res);
+      const { orderId } = req.query;
+      const offerId = req.query.sourceValue5;
+      const transaction_id = req.query.sourceValue3;
+      const adv_sub = req.query.sourceValue2;
 
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/promo-desktop-upsell', {
-      upsell: '2-1',
-      orderId,
-      offerId,
-      transaction_id,
-      adv_sub,
-      sessionId,
-    });
+      redirectToPromo(orderId, req, res);
+      return app.render(req, res, '/promo-desktop-upsell', {
+        upsell: '2-1',
+        orderId,
+        offerId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/mobile/upsell-2-1', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    const offerId = req.query.sourceValue5;
-    const transaction_id = req.query.sourceValue3;
-    const adv_sub = req.query.sourceValue2;
+    try {
+      const sessionId = await getSessionId(req, res);
+      const { orderId } = req.query;
+      const offerId = req.query.sourceValue5;
+      const transaction_id = req.query.sourceValue3;
+      const adv_sub = req.query.sourceValue2;
 
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/promo-mobile-upsell', {
-      upsell: '2-1',
-      orderId,
-      offerId,
-      transaction_id,
-      adv_sub,
-      sessionId,
-    });
+      redirectToPromo(orderId, req, res);
+      return app.render(req, res, '/promo-mobile-upsell', {
+        upsell: '2-1',
+        orderId,
+        offerId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/promo/mobile/thankyou', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    const orderId = req.query.orderId;
-    redirectToPromo(orderId, req, res);
-    return app.render(req, res, '/thankyou-page', {
-      orderId,
-      sessionId,
-      isPromo: true,
-      device: 'mobile',
-    });
+    try {
+      const sessionId = await getSessionId(req, res);
+      const { orderId } = req.query;
+      redirectToPromo(orderId, req, res);
+      return app.render(req, res, '/thankyou-page', {
+        orderId,
+        sessionId,
+        isPromo: true,
+        device: 'mobile',
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/hemp-oil', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    return app.render(req, res, '/products', {
-      sessionId,
-      product: 'hemp-oil',
-    });
+    try {
+      const sessionId = await getSessionId(req, res);
+      return app.render(req, res, '/products', {
+        sessionId,
+        product: 'hemp-oil',
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/hemp-capsule', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    return app.render(req, res, '/products', {
-      sessionId,
-      product: 'hemp-capsule',
-    });
+    try {
+      const sessionId = await getSessionId(req, res);
+      return app.render(req, res, '/products', {
+        sessionId,
+        product: 'hemp-capsule',
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
   server.get('/warming_balm', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    return app.render(req, res, '/products', {
-      sessionId,
-      product: 'warming_balm',
-    });
+    try {
+      const sessionId = await getSessionId(req, res);
+      return app.render(req, res, '/products', {
+        sessionId,
+        product: 'warming_balm',
+      });
+    } catch (error) {
+      Raven.captureException(error);
+    }
   });
 
-  server.get('*', (req, res) => handle(req, res));
+  server.get('*', (req, res) => {
+    try {
+      return handle(req, res);
+    } catch (error) {
+      Raven.captureException(error);
+    }
+  });
   server.listen(port, err => {
     if (err) throw err;
     console.log(`> Ready on ${port}`);
