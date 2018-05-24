@@ -40,13 +40,6 @@ function* submitLeadsForm(action) {
       sessionId = yield select(getSession);
     }
     const queryString = getQueryString();
-    console.log(
-      JSON.stringify({
-        ...values,
-        shipping,
-        tracking_vars: parseQuery(queryString),
-      }),
-    );
     const apiResponse = yield post(
       '/v1/konnektive/lead',
       {
