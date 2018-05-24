@@ -158,7 +158,7 @@ class ContactUs extends React.Component {
   render() {
     const { error } = this.state;
     const { phoneNumber } = this.state.contact;
-    // console.log(error)
+    // console.error(error)
 
     return (
       <div>
