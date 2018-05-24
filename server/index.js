@@ -13,6 +13,7 @@ import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
 import redis from './redis-config';
+import morgan from 'morgan';
 
 require('dotenv').config();
 
@@ -25,6 +26,10 @@ require('dotenv').config();
 const port = PORT ? parseInt(PORT, 10) : 3000;
 
 const server = express();
+
+server.use(morgan('combined', {
+  skip: function (req, res) { return res.statusCode < 400 }
+}));
 
 server.use(cookieParser());
 server.use(useragent.express());
