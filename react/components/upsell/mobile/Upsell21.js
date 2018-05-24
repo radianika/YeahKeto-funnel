@@ -40,14 +40,14 @@ class Upsell21 extends React.PureComponent {
             <p className="price-box-txt2">Save 30% Today</p>
             <p className="price-box-txt3">
               <img
-                src="../../../../static/assets/images/upsell2-mobile/arrow-left.png"
+                src="/static/assets/images/upsell2-mobile/arrow-left.png"
                 width="77"
                 height="33"
                 alt=""
                 className="arrow-left"
               />$97.00{' '}
               <img
-                src="../../../../static/assets/images/upsell2-mobile/arrow-right.png"
+                src="/static/assets/images/upsell2-mobile/arrow-right.png"
                 width="77"
                 height="33"
                 alt=""
