@@ -11,7 +11,9 @@ const getOrder = state => state.order.order;
 function* submitLeadsForm(action) {
   yield put(OrderActions.submitLeadsFormRequest());
   try {
-    const { values, nextUrl, router } = action.payload;
+    const {
+      values, nextUrl, router, headers,
+    } = action.payload;
     const {
       firstName,
       lastName,
@@ -48,6 +50,7 @@ function* submitLeadsForm(action) {
         tracking_vars: parseQuery(queryString),
       },
       sessionId,
+      headers,
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const { lead } = apiResponse.response.data.data;
@@ -66,7 +69,7 @@ function* submitLeadsForm(action) {
 function* getOrderDetails(action) {
   yield put(OrderActions.getOrderDetailsRequest());
   try {
-    const { orderId } = action.payload;
+    const { orderId, headers } = action.payload;
     let sessionId = '';
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
@@ -77,7 +80,11 @@ function* getOrderDetails(action) {
     } else {
       sessionId = yield select(getSession);
     }
-    const apiResponse = yield get(`/v1/konnektive/order/${orderId}`, sessionId);
+    const apiResponse = yield get(
+      `/v1/konnektive/order/${orderId}`,
+      sessionId,
+      headers,
+    );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data.data[0];
       yield put(OrderActions.getOrderDetailsSuccess({ order }));
@@ -95,7 +102,7 @@ function* placeOrder(action) {
   yield put(OrderActions.placeOrderRequest());
   try {
     const {
-      values, pack, router, nextUrl,
+      values, pack, router, nextUrl, headers,
     } = action.payload;
     let sessionId = '';
     if (typeof window !== 'undefined') {
@@ -143,6 +150,7 @@ function* placeOrder(action) {
       '/v1/konnektive/order',
       { ...payload, tracking_vars: parseQuery(queryString) },
       sessionId,
+      headers,
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data;
@@ -162,7 +170,9 @@ function* placeOrder(action) {
 function* addUpsellToOrder(action) {
   yield put(OrderActions.addUpsellToOrderRequest());
   try {
-    const { productId, sendTo, router } = action.payload;
+    const {
+      productId, sendTo, router, headers,
+    } = action.payload;
     let sessionId = '';
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
@@ -179,7 +189,12 @@ function* addUpsellToOrder(action) {
       productId,
       productQty: 1,
     };
-    const apiResponse = yield post('/v1/konnektive/upsale', payload, sessionId);
+    const apiResponse = yield post(
+      '/v1/konnektive/upsale',
+      payload,
+      sessionId,
+      headers,
+    );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const newOrder = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order: newOrder }));

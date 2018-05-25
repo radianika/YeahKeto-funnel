@@ -5,10 +5,21 @@ import { withReduxSaga } from 'redux/store';
 import { AuthActions, OrderActions } from 'redux/actions';
 
 class SelectPackage extends React.PureComponent {
-  static async getInitialProps({ store, isServer, query }) {
+  static async getInitialProps({
+    req, store, isServer, query,
+  }) {
     if (isServer) {
-      store.dispatch(AuthActions.setUniqueSessionId({ sessionId: query.sessionId }));
-      store.dispatch(OrderActions.getOrderDetails({ orderId: query.orderId }));
+      store.dispatch(
+        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
+      );
+      store.dispatch(
+        OrderActions.getOrderDetails({
+          orderId: query.orderId,
+          headers: {
+            'x-ascbd-req-origin': req.get('host'),
+          },
+        }),
+      );
     }
   }
 
@@ -27,7 +38,10 @@ class SelectPackage extends React.PureComponent {
             href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700"
             rel="stylesheet"
           />
-          <link href="/static/assets/css/promo/desktop/upsell2.css" rel="stylesheet" />
+          <link
+            href="/static/assets/css/promo/desktop/upsell2.css"
+            rel="stylesheet"
+          />
           <link href="/static/desktop/css/checkout.css" rel="stylesheet" />
         </Head>
         <UpsellDesktopContainer {...props} />
