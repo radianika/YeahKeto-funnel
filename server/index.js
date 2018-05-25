@@ -13,6 +13,7 @@ import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
 import redis from './redis-config';
+import morgan from 'morgan';
 
 require('dotenv').config();
 
@@ -25,6 +26,10 @@ require('dotenv').config();
 const port = PORT ? parseInt(PORT, 10) : 3000;
 
 const server = express();
+
+server.use(morgan('combined', {
+  skip: function (req, res) { return res.statusCode < 400 }
+}));
 
 server.use(cookieParser());
 server.use(useragent.express());
@@ -81,6 +86,7 @@ server.use((req, res, cb) => {
     }
   } catch (e) {
     Raven.captureException(e);
+    console.error(e);
   }
   return cb();
 });
@@ -104,6 +110,7 @@ const getSessionId = async (req, res) => {
     };
   } catch (error) {
     Raven.captureException(error);
+    console.error(error);
   }
 };
 
@@ -118,6 +125,7 @@ const redirectToPromo = (orderId, req, res) => {
     }
   } catch (error) {
     Raven.captureException(error);
+    console.error(error);
   }
 };
 
@@ -140,6 +148,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -160,6 +169,7 @@ app.prepare().then(() => {
       }
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -174,6 +184,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -195,6 +206,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -217,6 +229,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -239,6 +252,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -255,6 +269,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -266,6 +281,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -280,6 +296,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -295,6 +312,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -317,6 +335,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -337,6 +356,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -359,6 +379,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -381,6 +402,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -403,6 +425,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -419,6 +442,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -431,6 +455,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -443,6 +468,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -455,6 +481,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
 
@@ -463,6 +490,7 @@ app.prepare().then(() => {
       return handle(req, res);
     } catch (error) {
       Raven.captureException(error);
+      console.error(error);
     }
   });
   server.listen(port, err => {

@@ -27,6 +27,7 @@ redis.on('error', e => {
     env: config.ENV,
   });
   Raven.captureException(e);
+  console.log(e);
   // process.exit(1);
   // app requires the redis to run
   // failing to run redis will result in app crash
