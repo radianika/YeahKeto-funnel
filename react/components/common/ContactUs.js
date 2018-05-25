@@ -22,11 +22,11 @@ class ContactUs extends React.Component {
     const { name, value } = e.target;
 
     let val = value;
-    if (name == 'phoneNumber') {
+    if (name === 'phoneNumber') {
       val = normalizePhone(value);
     }
 
-    this.setState((ps, pp) => ({
+    this.setState(ps => ({
       contact: {
         ...ps.contact,
         [name]: val,
@@ -35,14 +35,14 @@ class ContactUs extends React.Component {
   };
 
   _validateName = e => {
-    const { name, value } = e.target;
-    let hasError = false,
-      message;
+    const { value } = e.target;
+    let message = '';
+    let hasError = false;
     if (!value) {
       hasError = true;
       message = 'The first name is required.';
     }
-    this.setState((ps, pp) => ({
+    this.setState(ps => ({
       error: {
         ...ps.error,
         nameHasError: hasError,
@@ -52,9 +52,9 @@ class ContactUs extends React.Component {
   };
 
   _validateEmail = e => {
-    const { name, value } = e.target;
-    let message = '',
-      hasError = false;
+    const { value } = e.target;
+    let message = '';
+    let hasError = false;
 
     if (!value) {
       message = 'The email address is required.';
@@ -64,7 +64,7 @@ class ContactUs extends React.Component {
       hasError = true;
     }
 
-    this.setState((ps, pp) => ({
+    this.setState(ps => ({
       error: {
         ...ps.error,
         emailHasError: hasError,
@@ -74,22 +74,22 @@ class ContactUs extends React.Component {
   };
 
   _validatePhone = e => {
-    const { name, value } = e.target;
-    let message = '',
-      hasError = false;
+    const { value } = e.target;
+    let message = '';
+    let hasError = false;
 
     // console.log(validator.isMobilePhone(value, 'en-US'))
 
     if (!value) {
       hasError = true;
       message = 'Please enter your phone number.';
-    } else if (value.length != 14) {
+    } else if (value.length !== 14) {
       hasError = true;
       message =
         'Not a valid 10-digit US phone number (must not include spaces or special characters).';
     }
 
-    this.setState((ps, pp) => ({
+    this.setState(ps => ({
       error: {
         ...ps.error,
         phoneHasError: hasError,
@@ -117,7 +117,7 @@ class ContactUs extends React.Component {
     if (!phoneNumber) {
       error.phoneHasError = true;
       error.phoneNumber = 'Please enter your phone number.';
-    } else if (phoneNumber.length != 14) {
+    } else if (phoneNumber.length !== 14) {
       error.phoneHasError = true;
       error.phoneNumber =
         'Not a valid 10-digit US phone number (must not include spaces or special characters).';
@@ -139,7 +139,7 @@ class ContactUs extends React.Component {
       phoneHasError === false
     ) {
       this.setState({ submitting: 'submitting' }, async () => {
-        const apiResponse = await post('/v1/contact-us', {
+        await post('/v1/contact-us', {
           name,
           email,
           phone: phoneNumber,
@@ -207,7 +207,7 @@ class ContactUs extends React.Component {
                 </li>
                 <li>
                   <span>Phone</span>
-                  <p>1-844-260-1422</p>
+                  <p>1-888-601-6014</p>
                 </li>
               </ul>
             </div>

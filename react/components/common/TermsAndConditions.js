@@ -24,14 +24,14 @@ export const TermsAndConditions = () => (
       This product should be used only as directed on the label. It should not
       be used if you are pregnant or nursing. Consult with a physician before
       use if you have a serious medical condition or use prescription
-      medications. A Doctor's advice should be sought before using this and any
-      supplemental dietary product. All trademarks and copyrights are property
-      of their respective owners and are not affiliated with nor do they endorse
-      this product. These statements have not been evaluated by the FDA. This
-      product is not intended to diagnose, treat, cure or prevent any disease.
-      Individual weight loss results will vary. By using this site, you agree to
-      follow the Privacy Policy and all Terms &amp; Conditions printed on this
-      site. Void Where Prohibited by Law.
+      medications. A Doctor&#39;s advice should be sought before using this and
+      any supplemental dietary product. All trademarks and copyrights are
+      property of their respective owners and are not affiliated with nor do
+      they endorse this product. These statements have not been evaluated by the
+      FDA. This product is not intended to diagnose, treat, cure or prevent any
+      disease. Individual weight loss results will vary. By using this site, you
+      agree to follow the Privacy Policy and all Terms &amp; Conditions printed
+      on this site. Void Where Prohibited by Law.
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
@@ -43,13 +43,13 @@ export const TermsAndConditions = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
-      <b>Toll Free Customer Service phone:</b> 1-844-260-1422
+      <b>Toll Free Customer Service phone:</b> 1-888-601-6014
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
       <b>
-        All charges on your bank statement will read: "
-        AmericanScience8442601422"
+        All charges on your bank statement will read:
+        &quot;AmericanScience8886016014&quot;
       </b>
     </p>
     <p className="normal">&nbsp;</p>
@@ -106,7 +106,7 @@ export const TermsAndConditions = () => (
     <p className="normal b">Shipping</p>
     <p className="normal">
       To initiate a return, please email us at
-      support&#64;americansciencecbd.com or contact us by phone (844) 260-1422
+      support&#64;americansciencecbd.com or contact us by phone (888) 601-6014
       24/7/365 to request a return merchandise authorization number. We require
       an RMA # received from customer support to accompany your return.All
       returned merchandise should be sent to us at PO Box 9005, Seal Beach, CA,
@@ -150,18 +150,19 @@ export const TermsAndConditions = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
-      This Terms of Service ("TOS") is a legally binding agreement made by and
-      between American Science ("we" or "us") and you, personally and, if
-      applicable, on behalf of the entity for whom you are using this web site
-      (collectively, "you"). This TOS governs your use of the website
-      ("Website") and the services we offer on the Website ("Services"), so
-      please read it carefully. BY ACCESSING OR USING ANY PART OF THE WEBSITE,
-      YOU AGREE THAT YOU HAVE READ, UNDERSTAND AND AGREE TO BE BOUND BY THIS
-      TOS. IF YOU DO NOT AGREE TO BE SO BOUND, DO NOT ACCESS OR USE THE WEBSITE.
-      INTERNET TECHNOLOGY AND THE APPLICABLE LAWS, RULES, AND REGULATIONS CHANGE
-      FREQUENTLY. ACCORDINGLY, WE RESERVE THE RIGHT TO MAKE CHANGES TO THIS TOS
-      AT ANY TIME. YOUR CONTINUED USE OF THE WEBSITE CONSTITUTES ASSENT TO ANY
-      NEW OR MODIFIED PROVISION OF THIS TOS THAT MAY BE POSTED ON THE WEB SITE.
+      This Terms of Service (&quot;TOS&quot;) is a legally binding agreement
+      made by and between American Science (&quot;we&quot; or &quot;us&quot;)
+      and you, personally and, if applicable, on behalf of the entity for whom
+      you are using this web site (collectively, &quot;you&quot;). This TOS
+      governs your use of the website (&quot;Website&quot;) and the services we
+      offer on the Website (&quot;Services&quot;), so please read it carefully.
+      BY ACCESSING OR USING ANY PART OF THE WEBSITE, YOU AGREE THAT YOU HAVE
+      READ, UNDERSTAND AND AGREE TO BE BOUND BY THIS TOS. IF YOU DO NOT AGREE TO
+      BE SO BOUND, DO NOT ACCESS OR USE THE WEBSITE. INTERNET TECHNOLOGY AND THE
+      APPLICABLE LAWS, RULES, AND REGULATIONS CHANGE FREQUENTLY. ACCORDINGLY, WE
+      RESERVE THE RIGHT TO MAKE CHANGES TO THIS TOS AT ANY TIME. YOUR CONTINUED
+      USE OF THE WEBSITE CONSTITUTES ASSENT TO ANY NEW OR MODIFIED PROVISION OF
+      THIS TOS THAT MAY BE POSTED ON THE WEB SITE.
     </p>
     <p className="normal">&nbsp;</p>
     <p className="list">1. Using the Web Site.</p>
@@ -208,22 +209,22 @@ export const TermsAndConditions = () => (
       limitation, through the use of viruses, cancel bots, Trojan horses,
       harmful code, flood pings, denial of service attacks, packet or IP
       spoofing, forged routing or electronic mail address information or similar
-      methods or technology; (iv) attempt to use another user's account,
+      methods or technology; (iv) attempt to use another user&#39;s account,
       impersonate another person or entity, misrepresent your affiliation with a
       person or entity, including (without limitation) the Website or create or
       use a false identity; (v) attempt to obtain unauthorized access to the
       Website or portions of the Webdsite that are restricted from general
-      access; (vi) engage, directly or indirectly, in transmission of "spam,"
-      chain letters, junk mail or any other type of unsolicited solicitation;
-      (vii) collect, manually or through an automatic process, information about
-      other users without their express consent or other information relating to
-      the Web Site or the Services; (viii) use any meta tags or any other
-      "hidden text" utilizing the product name, trademarks, or product names;
-      (ix) advertise, offer to sell, or sell any goods or services, except as
-      expressly permitted by the Website; (x) engage in any activity that
-      interferes with any third party's ability to use or enjoy the Website or
-      Services; or (xi) assist any third party in engaging in any activity
-      prohibited by this TOS.
+      access; (vi) engage, directly or indirectly, in transmission of
+      &quot;spam,&quot; chain letters, junk mail or any other type of
+      unsolicited solicitation; (vii) collect, manually or through an automatic
+      process, information about other users without their express consent or
+      other information relating to the Web Site or the Services; (viii) use any
+      meta tags or any other &quot;hidden text&quot; utilizing the product name,
+      trademarks, or product names; (ix) advertise, offer to sell, or sell any
+      goods or services, except as expressly permitted by the Website; (x)
+      engage in any activity that interferes with any third party&#39;s ability
+      to use or enjoy the Website or Services; or (xi) assist any third party in
+      engaging in any activity prohibited by this TOS.
     </p>
     <p className="normal">&nbsp;</p>
     <p className="sub-list">
@@ -277,9 +278,9 @@ export const TermsAndConditions = () => (
     <p className="list">4. Sales Tax.</p>
     <p className="normal">&nbsp;</p>
     <p className="list">
-      If you purchase any products available on the Website ("Products"), you
-      will be responsible for paying any applicable sales tax indicated on the
-      Website.
+      If you purchase any products available on the Website
+      (&quot;Products&quot;), you will be responsible for paying any applicable
+      sales tax indicated on the Website.
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">&nbsp;</p>
@@ -327,9 +328,9 @@ export const TermsAndConditions = () => (
       that are owned and operated by third parties. We do not control the
       information, products or services available on these third party websites.
       The inclusion of any link does not imply our endorsement of the applicable
-      website or any association with the website's operators. Because we have
-      no control over such websites and resources, you agree that we are not
-      responsible or liable for the availability or the operation of such
+      website or any association with the website&#39;s operators. Because we
+      have no control over such websites and resources, you agree that we are
+      not responsible or liable for the availability or the operation of such
       external websites, for any material located on or available from any such
       websites or for the protection of your data privacy by third parties. Any
       dealings with, or participation in promotions offered by, advertisers on
@@ -380,8 +381,8 @@ export const TermsAndConditions = () => (
       affiliates, and their directors, officers, agents, members, shareholders,
       co-branders or other partners, employees, and Ad Partners harmless from
       any liabilities, losses, actions, damages, claims or demands, including
-      reasonable attorneys' fees, costs and expenses, made by any third party
-      directly or indirectly relating to or arising out of (a) content you
+      reasonable attorneys&#39; fees, costs and expenses, made by any third
+      party directly or indirectly relating to or arising out of (a) content you
       provide to the Website or otherwise transmit or obtain through the
       Service, (b) your use of the Service, (c) your connection to the Service,
       (d) your violation of this Agreement, (e) your violation of any rights of
@@ -397,15 +398,15 @@ export const TermsAndConditions = () => (
     <p className="normal">&nbsp;</p>
     <p className="sub-list">
       (a) DISCLAIMER OF WARRANTIES. WE PROVIDE THE WEBSITE, THE PRODUCTS, AND
-      SERVICES ON AN "AS IS" AND "AS AVAILABLE" BASIS. WE DO NOT REPRESENT OR
-      WARRANT THAT THE PRODUCTS, THE WEBSITE, THE SERVICES, ITS USE, ANY
-      INFORMATION ON IT: (I) WILL BE UNINTERRUPTED OR SECURE, (II) WILL BE FREE
-      OF DEFECTS, INACCURACIES OR ERRORS, (III) WILL MEET YOUR REQUIREMENTS, OR
-      (IV) WILL OPERATE IN THE CONFIGURATION OR WITH OTHER HARDWARE OR SOFTWARE
-      YOU USE. WE MAKE NO WARRANTIES OTHER THAN THOSE MADE EXPRESSLY IN THIS
-      TOS, AND HEREBY DISCLAIM ANY AND ALL IMPLIED WARRANTIES, INCLUDING WITHOUT
-      LIMITATION, WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE,
-      MERCHANTABILITY AND NON-INFRINGEMENT.
+      SERVICES ON AN &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; BASIS. WE DO
+      NOT REPRESENT OR WARRANT THAT THE PRODUCTS, THE WEBSITE, THE SERVICES, ITS
+      USE, ANY INFORMATION ON IT: (I) WILL BE UNINTERRUPTED OR SECURE, (II) WILL
+      BE FREE OF DEFECTS, INACCURACIES OR ERRORS, (III) WILL MEET YOUR
+      REQUIREMENTS, OR (IV) WILL OPERATE IN THE CONFIGURATION OR WITH OTHER
+      HARDWARE OR SOFTWARE YOU USE. WE MAKE NO WARRANTIES OTHER THAN THOSE MADE
+      EXPRESSLY IN THIS TOS, AND HEREBY DISCLAIM ANY AND ALL IMPLIED WARRANTIES,
+      INCLUDING WITHOUT LIMITATION, WARRANTIES OF FITNESS FOR A PARTICULAR
+      PURPOSE, MERCHANTABILITY AND NON-INFRINGEMENT.
     </p>
     <p className="normal">&nbsp;</p>
     <p className="sub-list">
@@ -489,16 +490,16 @@ export const TermsAndConditions = () => (
       formation, performance or alleged breach) or your use of the Website will
       be exclusively resolved under confidential binding arbitration held in WY
       before and in accordance with the Rules of the American Arbitration
-      Association. The arbitrator's award will be binding and may be entered as
-      a judgment in any court of competent jurisdiction. To the fullest extent
-      permitted by applicable law, no arbitration under this TOS will be joined
-      to an arbitration involving any other party subject to this TOS, whether
-      through class arbitration proceedings or otherwise. Notwithstanding the
-      foregoing, we will have the right to seek injunctive or other equitable
-      relief in state or federal court located in our home state to enforce this
-      TOS or prevent an infringement of a third party's rights. In the event
-      equitable relief is sought, each party hereby irrevocably submits to the
-      personal jurisdiction of such court.
+      Association. The arbitrator&#39;s award will be binding and may be entered
+      as a judgment in any court of competent jurisdiction. To the fullest
+      extent permitted by applicable law, no arbitration under this TOS will be
+      joined to an arbitration involving any other party subject to this TOS,
+      whether through class arbitration proceedings or otherwise.
+      Notwithstanding the foregoing, we will have the right to seek injunctive
+      or other equitable relief in state or federal court located in our home
+      state to enforce this TOS or prevent an infringement of a third
+      party&#39;s rights. In the event equitable relief is sought, each party
+      hereby irrevocably submits to the personal jurisdiction of such court.
     </p>
     <p className="normal">&nbsp;</p>
     <p className="list">15. Waiver of Class Action Rights.</p>
@@ -590,7 +591,7 @@ export const TermsAndConditions = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="text-center">
-      <b>Toll Free Customer Service phone:</b> 1-844-260-1422
+      <b>Toll Free Customer Service phone:</b> 1-888-601-6014
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">&nbsp;</p>
