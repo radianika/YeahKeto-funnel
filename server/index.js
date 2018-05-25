@@ -8,12 +8,12 @@ import expressSession from 'express-session';
 import connectRedis from 'connect-redis';
 import querystring from 'querystring';
 import Raven from 'raven';
+import morgan from 'morgan';
 import { post } from './api-helpers';
 import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
 import redis from './redis-config';
-import morgan from 'morgan';
 
 require('dotenv').config();
 
@@ -90,7 +90,7 @@ server.use((req, res, cb) => {
     }
   } catch (error) {
     Raven.captureException(error);
-    console.error('Exception Occurred in ReactApp', (error.stack || error));
+    console.error('Exception Occurred in ReactApp', error.stack || error);
   }
   return cb();
 });
@@ -100,11 +100,18 @@ const getSessionId = async (req, res) => {
     const { cookies } = req;
     let token = idx(cookies, _ => _.ascbd_session);
     if (!token || token === 'undefined') {
-      const sessionResponse = await post('/v1/auth', {
-        username: 'larby@starlightgroup.io',
-        password: 'P@ssw0rd',
-      });
+      const sessionResponse = await post(
+        '/v1/auth',
+        {
+          username: 'larby@starlightgroup.io',
+          password: 'P@ssw0rd',
+        },
+        {
+          'x-ascbd-req-origin': req.get('host'),
+        },
+      );
       if (idx(sessionResponse, _ => _.response.data)) {
+        // eslint-disable-next-line
         token = sessionResponse.response.data.data.token;
         res.cookie('ascbd_session', token, { maxAge: 3600000 });
       }
@@ -114,7 +121,7 @@ const getSessionId = async (req, res) => {
     };
   } catch (error) {
     Raven.captureException(error);
-    console.error('Exception Occurred in ReactApp', (error.stack || error));
+    console.error('Exception Occurred in ReactApp', error.stack || error);
   }
 };
 
@@ -129,7 +136,7 @@ const redirectToPromo = (orderId, req, res) => {
     }
   } catch (error) {
     Raven.captureException(error);
-    console.error('Exception Occurred in ReactApp', (error.stack || error));
+    console.error('Exception Occurred in ReactApp', error.stack || error);
   }
 };
 
@@ -152,7 +159,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -173,7 +180,7 @@ app.prepare().then(() => {
       }
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -188,7 +195,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -210,7 +217,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -233,7 +240,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -256,7 +263,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -273,7 +280,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -285,7 +292,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -300,7 +307,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -316,7 +323,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -339,7 +346,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -360,7 +367,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -383,7 +390,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -406,7 +413,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -429,7 +436,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -446,7 +453,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -459,7 +466,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -472,7 +479,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -485,7 +492,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
 
@@ -494,7 +501,7 @@ app.prepare().then(() => {
       return handle(req, res);
     } catch (error) {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
     }
   });
   server.listen(port, err => {
