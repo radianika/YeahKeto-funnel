@@ -27,9 +27,13 @@ const port = PORT ? parseInt(PORT, 10) : 3000;
 
 const server = express();
 
-server.use(morgan('combined', {
-  skip: function (req, res) { return res.statusCode < 400 }
-}));
+server.use(
+  morgan('combined', {
+    skip(req, res) {
+      return res.statusCode < 400;
+    },
+  }),
+);
 
 server.use(cookieParser());
 server.use(useragent.express());
@@ -84,9 +88,9 @@ server.use((req, res, cb) => {
         req.session.userAgent = req.get('User-Agent'); // eslint-disable-line no-param-reassign
       }
     }
-  } catch (e) {
-    Raven.captureException(e);
-    console.error(e);
+  } catch (error) {
+    Raven.captureException(error);
+    console.error('Exception Occurred in ReactApp', (error.stack || error));
   }
   return cb();
 });
@@ -110,7 +114,7 @@ const getSessionId = async (req, res) => {
     };
   } catch (error) {
     Raven.captureException(error);
-    console.error(error);
+    console.error('Exception Occurred in ReactApp', (error.stack || error));
   }
 };
 
@@ -125,7 +129,7 @@ const redirectToPromo = (orderId, req, res) => {
     }
   } catch (error) {
     Raven.captureException(error);
-    console.error(error);
+    console.error('Exception Occurred in ReactApp', (error.stack || error));
   }
 };
 
@@ -148,7 +152,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -169,7 +173,7 @@ app.prepare().then(() => {
       }
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -184,7 +188,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -206,7 +210,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -229,7 +233,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -252,7 +256,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -269,7 +273,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -281,7 +285,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -296,7 +300,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -312,7 +316,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -335,7 +339,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -356,7 +360,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -379,7 +383,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -402,7 +406,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -425,7 +429,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -442,7 +446,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -455,7 +459,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -468,7 +472,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -481,7 +485,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -490,7 +494,7 @@ app.prepare().then(() => {
       return handle(req, res);
     } catch (error) {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
   server.listen(port, err => {

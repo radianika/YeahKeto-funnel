@@ -15,7 +15,7 @@ export function post(location, body) {
     })
     .catch(error => {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
       if (error.response) {
         return { error: error.response };
       }
@@ -36,7 +36,7 @@ export function put(location, body) {
     })
     .catch(error => {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
       if (error.response) {
         return { error: error.response };
       }
@@ -57,7 +57,7 @@ export function get(location) {
     })
     .catch(error => {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
       if (error.response) {
         return { error: error.response };
       }
