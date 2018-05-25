@@ -13,7 +13,7 @@ class Promo extends React.PureComponent {
         AuthActions.setUniqueSessionId({
           sessionId: query.sessionId,
           headers: {
-            'x-ascbd-req-origin': req.headers.origin,
+            'x-ascbd-req-origin': req.get('host'),
           },
         }),
       );

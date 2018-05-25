@@ -17,7 +17,7 @@ class Promo extends React.PureComponent {
         OrderActions.getOrderDetails({
           orderId: query.orderId,
           headers: {
-            'x-ascbd-req-origin': req.headers.origin,
+            'x-ascbd-req-origin': req.get('host'),
           },
         }),
       );

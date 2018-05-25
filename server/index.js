@@ -107,7 +107,7 @@ const getSessionId = async (req, res) => {
           password: 'P@ssw0rd',
         },
         {
-          'x-ascbd-req-origin': req.headers.origin,
+          'x-ascbd-req-origin': req.get('host'),
         },
       );
       if (idx(sessionResponse, _ => _.response.data)) {
