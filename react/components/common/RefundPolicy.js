@@ -34,7 +34,7 @@ export const RefundPolicy = () => (
       <p className="normal mtop1 b">Shipping</p>
       <p className="normal">
         To initiate a return, please email us at
-        support&#64;americansciencecbd.com or contact us by phone (844) 260-1422
+        support&#64;americansciencecbd.com or contact us by phone (888) 601-6014
         24/7/365 to request a return merchandise authorization number. We
         require an RMA # received from customer support to accompany your
         return.All returned merchandise should be sent to us at PO Box 9005,
