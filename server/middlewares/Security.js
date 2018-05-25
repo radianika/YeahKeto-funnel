@@ -19,7 +19,7 @@ function getIp(req) {
     return req.connection.remoteAddress;
   } catch (error) {
     Raven.captureException(error);
-    console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+    console.error('Exception Occurred in ReactApp', (error.stack || error));
   }
 }
 

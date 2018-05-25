@@ -90,7 +90,7 @@ server.use((req, res, cb) => {
     }
   } catch (error) {
     Raven.captureException(error);
-    console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+    console.error('Exception Occurred in ReactApp', (error.stack || error));
   }
   return cb();
 });
@@ -114,7 +114,7 @@ const getSessionId = async (req, res) => {
     };
   } catch (error) {
     Raven.captureException(error);
-    console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+    console.error('Exception Occurred in ReactApp', (error.stack || error));
   }
 };
 
@@ -129,7 +129,7 @@ const redirectToPromo = (orderId, req, res) => {
     }
   } catch (error) {
     Raven.captureException(error);
-    console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+    console.error('Exception Occurred in ReactApp', (error.stack || error));
   }
 };
 
@@ -152,7 +152,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -173,7 +173,7 @@ app.prepare().then(() => {
       }
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -188,7 +188,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -210,7 +210,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -233,7 +233,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -256,7 +256,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -273,7 +273,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -285,7 +285,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -300,7 +300,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -316,7 +316,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -339,7 +339,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -360,7 +360,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -383,7 +383,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -406,7 +406,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -429,7 +429,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -446,7 +446,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -459,7 +459,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -472,7 +472,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -485,7 +485,7 @@ app.prepare().then(() => {
       });
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
 
@@ -494,7 +494,7 @@ app.prepare().then(() => {
       return handle(req, res);
     } catch (error) {
       Raven.captureException(error);
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
     }
   });
   server.listen(port, err => {

@@ -11,7 +11,7 @@ export function post(location, body, sessionId) {
       return { error: null, response };
     })
     .catch(error => {
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
       if (error.response) {
         return { error: error.response };
       }
@@ -31,7 +31,7 @@ export function put(location, body, sessionId) {
       return { error: null, response };
     })
     .catch(error => {
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
       if (error.response) {
         return { error: error.response };
       }
@@ -51,7 +51,7 @@ export function get(location, sessionId) {
       return { error: null, response };
     })
     .catch(error => {
-      console.error(`Exception Occurred in ReactApp - ${JSON.stringify(error)}`);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
       if (error.response) {
         return { error: error.response };
       }
