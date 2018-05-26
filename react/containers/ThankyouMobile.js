@@ -50,141 +50,149 @@ class ThankyouMobileComponent extends React.PureComponent {
           <li>1-888-888-8888</li>
           <li>support@americanscience.com</li>
         </ul>
-        <div className="ty-box">
-          <div className="ord-p1">
-            <p className="tp-heading">Order Receipt</p>
-          </div>
-          <div className="ty-left">
-            <div className="opt-top">
-              <p className="order-top">
-                Order Placed:{' '}
-                <span>{moment().format('dddd, MMM DD, YYYY')}</span>
-                <br />
-                Order Number: <span>{order.clientOrderId}</span>
-                <br />
-                Estimated Delivery Date:{' '}
-                <span>
-                  {moment()
-                    .add(4, 'days')
-                    .format('dddd, MMM DD, YYYY')}
-                </span>
-              </p>
+        {order && (
+          <div className="ty-box">
+            <div className="ord-p1">
+              <p className="tp-heading">Order Receipt</p>
             </div>
-            <div className="itemordered-heading">Items Ordered</div>
-            {Object.values(order.items).map(item => (
-              // const originalProduct = this.getOriginalProduct(item);
-              <div key={item.productId} className="prod-row">
-                <div className="prod-data ty">
-                  <div className="prod-shoot">
-                    <img src={getTyProductImage(item)} alt="" />
+            <div className="ty-left">
+              <div className="opt-top">
+                <p className="order-top">
+                  Order Placed:{' '}
+                  <span>{moment().format('dddd, MMM DD, YYYY')}</span>
+                  <br />
+                  Order Number: <span>{order.clientOrderId}</span>
+                  <br />
+                  Estimated Delivery Date:{' '}
+                  <span>
+                    {moment()
+                      .add(4, 'days')
+                      .format('dddd, MMM DD, YYYY')}
+                  </span>
+                </p>
+              </div>
+              <div className="itemordered-heading">Items Ordered</div>
+              {Object.keys(order.items).map(key => {
+                const item = order.items[key];
+                return (
+                  // const originalProduct = this.getOriginalProduct(item);
+                  <div key={item.productId} className="prod-row">
+                    <div className="prod-data ty">
+                      <div className="prod-shoot">
+                        <img src={getTyProductImage(item)} alt="" />
+                      </div>
+                      <p className="prod-name">
+                        American Science CBD
+                        <br />
+                        {getTyProductName(item)}
+                        <br />
+                        <span>
+                          {isPromo ? getTyProductQuantity(item) : item.qty}{' '}
+                          {getTyProductContainer(item)}
+                        </span>
+                      </p>
+                    </div>
+                    <div className="prod-price">${item.price}</div>
                   </div>
-                  <p className="prod-name">
-                    American Science CBD
-                    <br />
-                    {getTyProductName(item)}
-                    <br />
-                    <span>
-                      {isPromo ? getTyProductQuantity(item) : item.qty}{' '}
-                      {getTyProductContainer(item)}
-                    </span>
-                  </p>
+                );
+              })}
+              <div className="summry-table">
+                <div className="row pack-name">
+                  Sub Total: <span>${order.price}</span>
                 </div>
-                <div className="prod-price">${item.price}</div>
-              </div>
-            ))}
-            <div className="summry-table">
-              <div className="row pack-name">
-                Sub Total: <span>${order.price}</span>
-              </div>
 
-              <div className="row shipping">
-                Shipping &amp; handling:<span>FREE</span>
-              </div>
+                <div className="row shipping">
+                  Shipping &amp; handling:<span>FREE</span>
+                </div>
 
-              <div className="row total-price">
-                Total: <span>${order.totalAmount}</span>
+                <div className="row total-price">
+                  Total: <span>${order.totalAmount}</span>
+                </div>
               </div>
             </div>
+            <div className="ty-rgt">
+              <div className="sh-heading">Shipping Info</div>
+              <ul className="user-info">
+                <li>
+                  <span>First Name:</span>
+                  <p className="user-info__value-mb"> {order.firstName} </p>
+                </li>
+                <li>
+                  <span>Last Name:</span>
+                  <p className="user-info__value-mb"> {order.lastName} </p>
+                </li>
+                <li>
+                  <span>Address:</span>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {order.address1} <br /> {order.address2}{' '}
+                  </p>
+                </li>
+                <li>
+                  <span>City:</span>
+                  <p className="user-info__value-mb"> {order.city} </p>
+                </li>
+                <li>
+                  <span>State:</span>
+                  <p className="user-info__value-mb"> {order.state} </p>
+                </li>
+                <li>
+                  <span>Zip Code:</span>
+                  <p className="user-info__value-mb"> {order.postalCode} </p>
+                </li>
+                <li>
+                  <span>Phone:</span>
+                  <p className="user-info__value-mb"> {order.phoneNumber} </p>
+                </li>
+                <li>
+                  <span>Email:</span>
+                  <p className="user-info__value-mb"> {order.emailAddress} </p>
+                </li>
+              </ul>
+              <div className="sh-heading">Billing Info</div>
+              <ul className="user-info">
+                <li>
+                  <span>First Name:</span>
+                  <p className="user-info__value-mb"> {order.shipFirstName} </p>
+                </li>
+                <li>
+                  <span>Last Name:</span>
+                  <p className="user-info__value-mb"> {order.shipLastName} </p>
+                </li>
+                <li>
+                  <span>Address:</span>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {order.shipAddress1} <br /> {order.shipAddress2}{' '}
+                  </p>
+                </li>
+                <li>
+                  <span>City:</span>
+                  <p className="user-info__value-mb"> {order.shipCity} </p>
+                </li>
+                <li>
+                  <span>State:</span>
+                  <p className="user-info__value-mb"> {order.shipState} </p>
+                </li>
+                <li>
+                  <span>Zip Code:</span>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {order.shipPostalCode}{' '}
+                  </p>
+                </li>
+                <li>
+                  <span>Phone:</span>
+                  <p className="user-info__value-mb"> {order.phoneNumber} </p>
+                </li>
+                <li>
+                  <span>Email:</span>
+                  <p className="user-info__value-mb"> {order.emailAddress} </p>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="ty-rgt">
-            <div className="sh-heading">Shipping Info</div>
-            <ul className="user-info">
-              <li>
-                <span>First Name:</span>
-                <p className="user-info__value-mb"> {order.firstName} </p>
-              </li>
-              <li>
-                <span>Last Name:</span>
-                <p className="user-info__value-mb"> {order.lastName} </p>
-              </li>
-              <li>
-                <span>Address:</span>
-                <p className="user-info__value-mb">
-                  {' '}
-                  {order.address1} <br /> {order.address2}{' '}
-                </p>
-              </li>
-              <li>
-                <span>City:</span>
-                <p className="user-info__value-mb"> {order.city} </p>
-              </li>
-              <li>
-                <span>State:</span>
-                <p className="user-info__value-mb"> {order.state} </p>
-              </li>
-              <li>
-                <span>Zip Code:</span>
-                <p className="user-info__value-mb"> {order.postalCode} </p>
-              </li>
-              <li>
-                <span>Phone:</span>
-                <p className="user-info__value-mb"> {order.phoneNumber} </p>
-              </li>
-              <li>
-                <span>Email:</span>
-                <p className="user-info__value-mb"> {order.emailAddress} </p>
-              </li>
-            </ul>
-            <div className="sh-heading">Billing Info</div>
-            <ul className="user-info">
-              <li>
-                <span>First Name:</span>
-                <p className="user-info__value-mb"> {order.shipFirstName} </p>
-              </li>
-              <li>
-                <span>Last Name:</span>
-                <p className="user-info__value-mb"> {order.shipLastName} </p>
-              </li>
-              <li>
-                <span>Address:</span>
-                <p className="user-info__value-mb">
-                  {' '}
-                  {order.shipAddress1} <br /> {order.shipAddress2}{' '}
-                </p>
-              </li>
-              <li>
-                <span>City:</span>
-                <p className="user-info__value-mb"> {order.shipCity} </p>
-              </li>
-              <li>
-                <span>State:</span>
-                <p className="user-info__value-mb"> {order.shipState} </p>
-              </li>
-              <li>
-                <span>Zip Code:</span>
-                <p className="user-info__value-mb"> {order.shipPostalCode} </p>
-              </li>
-              <li>
-                <span>Phone:</span>
-                <p className="user-info__value-mb"> {order.phoneNumber} </p>
-              </li>
-              <li>
-                <span>Email:</span>
-                <p className="user-info__value-mb"> {order.emailAddress} </p>
-              </li>
-            </ul>
-          </div>
-        </div>
+        )}
       </div>
     );
   }

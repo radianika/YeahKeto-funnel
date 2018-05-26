@@ -12,14 +12,17 @@ class SelectPackage extends React.PureComponent {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
-      store.dispatch(
-        OrderActions.getOrderDetails({
-          orderId: query.orderId,
-          headers: {
-            'x-ascbd-req-origin': req.get('host'),
-          },
-        }),
-      );
+
+      if (query.orderId) {
+        store.dispatch(
+          OrderActions.getOrderDetails({
+            orderId: query.orderId,
+            headers: {
+              'x-ascbd-req-origin': req.get('host'),
+            },
+          }),
+        );
+      }
     }
   }
   render() {
