@@ -1,4 +1,3 @@
-import { delay } from 'redux-saga';
 import { select, put, all, fork, takeLatest } from 'redux-saga/effects';
 import idx from 'idx';
 import { OrderActions } from 'redux/actions';
@@ -57,11 +56,9 @@ function* submitLeadsForm(action) {
       yield put(OrderActions.submitLeadsFormSuccess({ lead }));
       router.push(`${nextUrl}?${queryString}&orderId=${lead.orderId}`);
     } else {
-      console.error('Exception Occurred in ReactApp', apiResponse);
       yield put(OrderActions.submitLeadsFormFailure());
     }
   } catch (error) {
-    console.error('Exception Occurred in ReactApp', error.stack || error);
     yield put(OrderActions.submitLeadsFormFailure({ error }));
   }
 }
@@ -89,11 +86,9 @@ function* getOrderDetails(action) {
       const order = apiResponse.response.data.data.data[0];
       yield put(OrderActions.getOrderDetailsSuccess({ order }));
     } else {
-      console.error('Exception Occurred in ReactApp', apiResponse);
       yield put(OrderActions.getOrderDetailsFailure());
     }
   } catch (error) {
-    console.error('Exception Occurred in ReactApp', error.stack || error);
     yield put(OrderActions.getOrderDetailsFailure({ error }));
   }
 }
@@ -155,14 +150,11 @@ function* placeOrder(action) {
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order }));
-      yield delay(2000);
       router.push(`${nextUrl}?${queryString}`);
     } else {
-      console.error('Exception Occurred in ReactApp', apiResponse);
       yield put(OrderActions.placeOrderFailure());
     }
   } catch (error) {
-    console.error('Exception Occurred in ReactApp', error.stack || error);
     yield put(OrderActions.placeOrderFailure({ error }));
   }
 }
@@ -202,11 +194,9 @@ function* addUpsellToOrder(action) {
       const queryString = getQueryString();
       router.push(`${sendTo}?${queryString}`);
     } else {
-      console.error('Exception Occurred in ReactApp', apiResponse);
       yield put(OrderActions.addUpsellToOrderFailure());
     }
   } catch (error) {
-    console.error('Exception Occurred in ReactApp', error.stack || error);
     yield put(OrderActions.addUpsellToOrderFailure({ error }));
   }
 }
