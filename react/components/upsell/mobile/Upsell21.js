@@ -1,24 +1,15 @@
 import React from 'react';
 import { PromoSession, Footer } from 'react/components/common';
 import { getQueryString } from 'helpers';
-import { Carousel } from './Carousel';
-import { SatisfactionBox } from './SatisfactionBox';
-import { Shortage } from '../Shortage';
-import { UpsellFooter } from '../UpsellFooter';
-import Link from 'next/link';
 
 class Upsell21 extends React.PureComponent {
-  upgrade = productId => {
+  upgrade = () => {
     this.props.upgrade(215, '/promo/mobile/thankyou');
   };
-  scrollToTop = () => {
-    window.scroll({
-      top: 0,
-      behavior: 'smooth',
-    });
+  skipUpsell = () => {
+    window.location.assign(`/promo/mobile/thankyou?${getQueryString()}`);
   };
   render() {
-    const { orderId } = this.props.query;
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage2" />
@@ -71,7 +62,7 @@ class Upsell21 extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <a href={`/promo/mobile/thankyou?${getQueryString()}`}>
+              <a href="javascript:void(0)" onClick={this.skipUpsell}>
                 <img
                   src="/static/assets/images/cut-icon.png"
                   width="15"
@@ -131,7 +122,7 @@ class Upsell21 extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <a href={`/promo/mobile/thankyou?${getQueryString()}`}>
+              <a href="javascript:void(0)" onClick={this.skipUpsell}>
                 <img
                   src="/static/assets/images/cut-icon.png"
                   width="15"

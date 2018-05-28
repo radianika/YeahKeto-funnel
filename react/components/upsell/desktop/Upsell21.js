@@ -7,12 +7,8 @@ class Upsell21 extends React.PureComponent {
   upgrade = productId => {
     this.props.upgrade(215, '/promo/desktop/thankyou');
   };
-
-  scrollToTop = () => {
-    window.scroll({
-      top: 0,
-      behavior: 'smooth',
-    });
+  skipUpsell = () => {
+    window.location.assign(`/promo/desktop/thankyou?${getQueryString()}`);
   };
   render() {
     return (
@@ -73,7 +69,7 @@ class Upsell21 extends React.PureComponent {
                 />
               </a>
               <p className="thanks-txt">
-                <a href={`/promo/desktop/thankyou?${getQueryString()}`}>
+                <a href="javascript:void(0)" onClick={this.skipUpsell}>
                   <img
                     src="/static/assets/images/upsell2/cut-icon.png"
                     alt=""
@@ -134,7 +130,7 @@ class Upsell21 extends React.PureComponent {
             />
           </a>
           <p className="thanks-txt">
-            <a href={`/promo/desktop/thankyou?${getQueryString()}`}>
+            <a href="javascript:void(0)" onClick={this.skipUpsell}>
               <img
                 src="/static/assets/images/upsell2/cut-icon.png"
                 alt=""
