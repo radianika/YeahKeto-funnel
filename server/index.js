@@ -190,7 +190,7 @@ app.prepare().then(() => {
           orderId,
           sessionId,
         });
-      })
+      });
     }
     catch (error) {
       Raven.captureException(error);
