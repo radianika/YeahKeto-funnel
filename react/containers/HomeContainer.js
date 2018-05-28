@@ -123,7 +123,7 @@ class HomeContainer extends PureComponent {
               <p className="comn-txt">
                 American Science products are made with hemp extract derived
                 using CO2 extraction, which filters out the high-causing
-                compound called TCH from the hemp extract.
+                compound called THC from the hemp extract.
               </p>
             </li>
             <li>
