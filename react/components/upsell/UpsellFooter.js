@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { Footer } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
@@ -9,15 +8,13 @@ class UpsellFooter extends React.PureComponent {
     return (
       <React.Fragment>
         <div className="clearall" />
-        <Link as={`${nextUrl}?${getQueryString()}`}>
-          <a className="nothank">
-            No thanks. I understand that this is my only opportunity to get
-            access to this special offer, and I’m okay with missing out.
-            Instead, if I’m blown away by the results I get using CBD HEMP OIL,
-            like so many thousands of folks before me, I’ll just re-order at
-            $149 per bottle in the future. I’ll pass on this chance forever.
-          </a>
-        </Link>
+        <a href={`${nextUrl}?${getQueryString()}`} className="nothank">
+          No thanks. I understand that this is my only opportunity to get access
+          to this special offer, and I’m okay with missing out. Instead, if I’m
+          blown away by the results I get using CBD HEMP OIL, like so many
+          thousands of folks before me, I’ll just re-order at $149 per bottle in
+          the future. I’ll pass on this chance forever.
+        </a>
         <div className="clearall" />
         {/* <img
           src="/static/mobile/images/secure-logos.png"

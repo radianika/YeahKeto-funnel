@@ -72,20 +72,18 @@ class Upsell21 extends React.PureComponent {
                   height="71"
                 />
               </a>
-              <Link as={`/promo/desktop/thankyou?${getQueryString()}`}>
-                <p className="thanks-txt">
-                  <a href="#">
-                    <img
-                      src="/static/assets/images/upsell2/cut-icon.png"
-                      alt=""
-                      className="cut-icon"
-                      width="15"
-                      height="15"
-                    />{' '}
-                    No, I don't want better results.
-                  </a>
-                </p>
-              </Link>
+              <p className="thanks-txt">
+                <a href={`/promo/desktop/thankyou?${getQueryString()}`}>
+                  <img
+                    src="/static/assets/images/upsell2/cut-icon.png"
+                    alt=""
+                    className="cut-icon"
+                    width="15"
+                    height="15"
+                  />{' '}
+                  No, I don't want better results.
+                </a>
+              </p>
             </div>
           </div>
         </div>
@@ -135,20 +133,18 @@ class Upsell21 extends React.PureComponent {
               height="71"
             />
           </a>
-          <Link as={`/promo/desktop/thankyou?${getQueryString()}`}>
-            <p className="thanks-txt">
-              <a href="#">
-                <img
-                  src="/static/assets/images/upsell2/cut-icon.png"
-                  alt=""
-                  className="cut-icon"
-                  width="15"
-                  height="15"
-                />{' '}
-                No, I don't want better results.
-              </a>
-            </p>
-          </Link>
+          <p className="thanks-txt">
+            <a href={`/promo/desktop/thankyou?${getQueryString()}`}>
+              <img
+                src="/static/assets/images/upsell2/cut-icon.png"
+                alt=""
+                className="cut-icon"
+                width="15"
+                height="15"
+              />{' '}
+              No, I don't want better results.
+            </a>
+          </p>
         </div>
       </React.Fragment>
     );

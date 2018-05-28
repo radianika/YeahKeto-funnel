@@ -71,18 +71,16 @@ class Upsell21 extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <Link as={`/promo/mobile/thankyou?${getQueryString()}`}>
-                <a>
-                  <img
-                    src="/static/assets/images/cut-icon.png"
-                    width="15"
-                    height="15"
-                    alt=""
-                    className="cut-icon"
-                  />{' '}
-                  No, I don't want better results.
-                </a>
-              </Link>
+              <a href={`/promo/mobile/thankyou?${getQueryString()}`}>
+                <img
+                  src="/static/assets/images/cut-icon.png"
+                  width="15"
+                  height="15"
+                  alt=""
+                  className="cut-icon"
+                />{' '}
+                No, I don't want better results.
+              </a>
             </p>
           </div>
 
@@ -133,18 +131,16 @@ class Upsell21 extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <Link as={`/promo/mobile/thankyou?${getQueryString()}`}>
-                <a>
-                  <img
-                    src="/static/assets/images/cut-icon.png"
-                    width="15"
-                    height="15"
-                    alt=""
-                    className="cut-icon"
-                  />{' '}
-                  No, I don't want better results.
-                </a>
-              </Link>
+              <a href={`/promo/mobile/thankyou?${getQueryString()}`}>
+                <img
+                  src="/static/assets/images/cut-icon.png"
+                  width="15"
+                  height="15"
+                  alt=""
+                  className="cut-icon"
+                />{' '}
+                No, I don't want better results.
+              </a>
             </p>
           </div>
         </div>

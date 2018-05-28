@@ -1,7 +1,6 @@
 import React from 'react';
 import { Footer } from 'react/components/common';
 import { getQueryString } from 'helpers';
-import Link from 'next/link';
 
 class FooterPromo extends React.PureComponent {
   constructor() {
@@ -37,11 +36,12 @@ class FooterPromo extends React.PureComponent {
       <footer ref={this.footerRef}>
         {this.props.isMobile && (
           <div id="cta" ref={this.ctaRef} style={this.state.ctaStyle}>
-            <Link as={`/promo/mobile/shipping?${getQueryString()}`}>
-              <a className="shipping_redirect">
-                <i className="btn pulse sprite3 sprite-ship-btn" />
-              </a>
-            </Link>
+            <a
+              href={`/promo/mobile/shipping?${getQueryString()}`}
+              className="shipping_redirect"
+            >
+              <i className="btn pulse sprite3 sprite-ship-btn" />
+            </a>
           </div>
         )}
         <p className="clearall" />

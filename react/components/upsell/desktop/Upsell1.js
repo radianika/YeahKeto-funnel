@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { PromoSession } from 'react/components/common';
 import { withRouter } from 'next/router';
 import { getQueryString } from 'helpers';
@@ -10,7 +9,7 @@ class Upsell1Component extends React.PureComponent {
     this.props.upgrade(213, '/promo/desktop/upsell-2');
   };
   skipUpsell = () => {
-    this.props.router.push(`/promo/desktop/upsell-1-1?${getQueryString()}`);
+    window.location.assign(`/promo/desktop/upsell-1-1?${getQueryString()}`);
   };
   scrollToTop = () => {
     window.scroll({
@@ -83,18 +82,16 @@ class Upsell1Component extends React.PureComponent {
                 />
               </a>
               <p className="thanks-txt">
-                <Link as={`/promo/desktop/upsell-1-1?${getQueryString()}`}>
-                  <a href="">
-                    <img
-                      src="/static/assets/images/cut-icon.png"
-                      alt=""
-                      className="cut-icon"
-                      width="15"
-                      height="15"
-                    />{' '}
-                    No, I don't want better results.
-                  </a>
-                </Link>
+                <a href={`/promo/desktop/upsell-1-1?${getQueryString()}`}>
+                  <img
+                    src="/static/assets/images/cut-icon.png"
+                    alt=""
+                    className="cut-icon"
+                    width="15"
+                    height="15"
+                  />{' '}
+                  No, I don&apos;t want better results.
+                </a>
               </p>
             </div>
           </div>

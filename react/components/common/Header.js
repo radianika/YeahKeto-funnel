@@ -1,17 +1,23 @@
 import React, { PureComponent } from 'react';
 import { ActiveLink } from 'react/components/common';
 import Head from 'next/head';
+import { withRouter } from 'next/router';
 
-const Menu = () => (
+const Menu = withRouter(props => (
   <React.Fragment>
     <li>
       <ActiveLink href="/">Home</ActiveLink>
     </li>
     <li>
-      <ActiveLink href="/hemp-oil">Products</ActiveLink>
+      <a
+        href="/hemp-oil"
+        className={props.router.pathname === '/products' ? 'active' : ''}
+      >
+        Products
+      </a>
     </li>
     <li>
-      <ActiveLink href="/faqs">FAQ's</ActiveLink>
+      <ActiveLink href="/faqs">FAQ&apos;s</ActiveLink>
     </li>
     <li>
       <ActiveLink href="/cart">Cart</ActiveLink>
@@ -20,7 +26,7 @@ const Menu = () => (
       <ActiveLink href="/contact">Contact</ActiveLink>
     </li>
   </React.Fragment>
-);
+));
 
 class Header extends PureComponent {
   constructor(props) {

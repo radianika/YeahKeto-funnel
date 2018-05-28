@@ -5,7 +5,7 @@ import { packages, getQueryString } from 'helpers';
 
 class MobileSelectPackageContainer extends React.PureComponent {
   selectPackage = pack => {
-    this.props.router.push(
+    window.location.assign(
       `/promo/mobile/confirm?${getQueryString()}&productId=${pack.id}`,
     );
   };

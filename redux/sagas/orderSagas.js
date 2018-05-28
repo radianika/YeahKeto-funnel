@@ -54,7 +54,9 @@ function* submitLeadsForm(action) {
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const { lead } = apiResponse.response.data.data;
       yield put(OrderActions.submitLeadsFormSuccess({ lead }));
-      router.push(`${nextUrl}?${queryString}&orderId=${lead.orderId}`);
+      window.location.assign(
+        `${nextUrl}?${queryString}&orderId=${lead.orderId}`,
+      );
     } else {
       yield put(OrderActions.submitLeadsFormFailure());
     }
@@ -150,7 +152,7 @@ function* placeOrder(action) {
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order }));
-      router.push(`${nextUrl}?${queryString}`);
+      window.location.assign(`${nextUrl}?${queryString}`);
     } else {
       yield put(OrderActions.placeOrderFailure());
     }
@@ -192,7 +194,7 @@ function* addUpsellToOrder(action) {
       yield put(OrderActions.placeOrderSuccess({ order: newOrder }));
       yield put(OrderActions.addUpsellToOrderSuccess());
       const queryString = getQueryString();
-      router.push(`${sendTo}?${queryString}`);
+      window.location.assign(`${sendTo}?${queryString}`);
     } else {
       yield put(OrderActions.addUpsellToOrderFailure());
     }
