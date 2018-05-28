@@ -5,19 +5,19 @@ import creditCartType from 'credit-card-type';
 import {
   TextField,
   CVVField,
-  SelectField,
+  // SelectField,
   // SameAddressCheckField, TODO: Some time later this might be used
-  AddressField,
+  // AddressField,
   Spinner,
   SuccessModal,
   Modal,
   CardExpiryField,
 } from 'react/components/common';
 import {
-  stateslist,
+  // stateslist,
   billingFormValidator,
   normalizePhone,
-  normalizePostalCode,
+  // normalizePostalCode,
   normalizeCardNumber,
   normalizeSecurityCode,
 } from 'helpers';
@@ -55,7 +55,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
 
   render() {
     const { active_cc_type, show_cvv_modal } = this.state;
-    const { same } = this.props.currentValues;
+    // const { same } = this.props.currentValues;
 
     return (
       <div className="chkfrm-mid">
@@ -107,7 +107,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
           */}
           <div className="clearfix" />
           <div id="billingDiv" style={{ display: 'none' }} />
-          {same !== 'Yes' && (
+          {/* {same !== 'Yes' && (
             <React.Fragment>
               <Field
                 component={TextField}
@@ -168,7 +168,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
                 placeholder="Example: email@somewhere.com"
               />
             </React.Fragment>
-          )}
+          )} */}
           <Field
             component={TextField}
             name="cardNumber"
