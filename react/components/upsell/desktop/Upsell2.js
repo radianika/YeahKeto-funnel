@@ -55,7 +55,7 @@ class Upsell2 extends React.PureComponent {
                 <span className="old-price">
                   <img src="/static/assets/images/upsell2/price-cut.png" />$130/<sup >
                     ea
-                                                                                </sup>
+                  </sup>
                 </span>{' '}
                 $87/<sup>ea</sup>{' '}
                 <img
@@ -77,20 +77,18 @@ class Upsell2 extends React.PureComponent {
                   height="71"
                 />
               </a>
-              <Link href={`/promo/desktop/upsell-2-1?${getQueryString()}`}>
-                <p className="thanks-txt">
-                  <a href="#">
-                    <img
-                      src="/static/assets/images/upsell2/cut-icon.png"
-                      alt=""
-                      className="cut-icon"
-                      width="15"
-                      height="15"
-                    />{' '}
-                    No, I don't want better results.
-                  </a>
-                </p>
-              </Link>
+              <p className="thanks-txt">
+                <a href={`/promo/desktop/upsell-2-1?${getQueryString()}`}>
+                  <img
+                    src="/static/assets/images/upsell2/cut-icon.png"
+                    alt=""
+                    className="cut-icon"
+                    width="15"
+                    height="15"
+                  />{' '}
+                  No, I don't want better results.
+                </a>
+              </p>
             </div>
           </div>
         </div>
@@ -140,20 +138,18 @@ class Upsell2 extends React.PureComponent {
               height="71"
             />
           </a>
-          <Link href={`/promo/desktop/upsell-2-1?${getQueryString()}`}>
-            <p className="thanks-txt">
-              <a href="#">
-                <img
-                  src="/static/assets/images/upsell2/cut-icon.png"
-                  alt=""
-                  className="cut-icon"
-                  width="15"
-                  height="15"
-                />{' '}
-                No, I don't want better results.
-              </a>
-            </p>
-          </Link>
+          <p className="thanks-txt">
+            <a href={`/promo/desktop/upsell-2-1?${getQueryString()}`}>
+              <img
+                src="/static/assets/images/upsell2/cut-icon.png"
+                alt=""
+                className="cut-icon"
+                width="15"
+                height="15"
+              />{' '}
+              No, I don't want better results.
+            </a>
+          </p>
         </div>
       </React.Fragment>
     );

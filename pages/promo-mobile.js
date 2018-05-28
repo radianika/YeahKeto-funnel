@@ -1,13 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
+import { connect } from 'react-redux';
 import { PromoMobileContainer } from 'react/containers';
-import { withReduxSaga } from 'redux/store';
 import { AuthActions } from 'redux/actions';
 import { PromoSession, Spinner } from 'react/components/common';
 import Router from 'next/router';
 
 class Promo extends React.PureComponent {
-  static async getInitialProps({ store, isServer, query }) {
+  static async getInitialProps(props) {
+    const { store, isServer, query } = props.ctx;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
@@ -67,4 +68,4 @@ class Promo extends React.PureComponent {
   }
 }
 
-export default withReduxSaga(Promo);
+export default connect()(Promo);

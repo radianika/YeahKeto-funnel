@@ -77,16 +77,16 @@ class Upsell3 extends React.PureComponent {
           <div className="clearall" />
           <SatisfactionBox onUpgrade={this.upgrade} />
           <div className="clearall" />
-          <Link href={`/promo/desktop/thankyou?${getQueryString()}`}>
-            <a className="nothank">
-              No thanks. I understand that this is my only opportunity to get
-              access to this special offer, and I’m okay with missing out.
-              Instead, if I’m blown away by the results I get using CBD HEMP
-              OIL, like so many thousands of folks before me, I’ll just re-order
-              at $149 per bottle in the future. I’ll pass on this chance
-              forever.
-            </a>
-          </Link>
+          <a
+            href={`/promo/desktop/thankyou?${getQueryString()}`}
+            className="nothank"
+          >
+            No thanks. I understand that this is my only opportunity to get
+            access to this special offer, and I’m okay with missing out.
+            Instead, if I’m blown away by the results I get using CBD HEMP OIL,
+            like so many thousands of folks before me, I’ll just re-order at
+            $149 per bottle in the future. I’ll pass on this chance forever.
+          </a>
           <div className="clearall" />
           {/* <img
             src="/static/mobile/v2/images/secure-logos.png"

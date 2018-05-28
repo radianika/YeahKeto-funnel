@@ -1,13 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
+import { connect } from 'react-redux';
 import { MobileShippingContainer } from 'react/containers';
 import { AuthActions } from 'redux/actions';
-import { withReduxSaga } from 'redux/store';
 
 class Promo extends React.PureComponent {
-  static async getInitialProps({
-    req, store, isServer, query,
-  }) {
+  static async getInitialProps(props) {
+    const {
+      store, isServer, query, req,
+    } = props.ctx;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({
@@ -29,26 +30,10 @@ class Promo extends React.PureComponent {
             name="description"
             content="Premium Quality Hemp Extract Products, Organic and Natural"
           />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/fonts/font-hind.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/fonts/font-awesome.min.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/promo/mobile/index.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/mb-style.css"
-          />
+          <link rel="stylesheet" type="text/css" href="/static/assets/fonts/font-hind.css" />
+          <link rel="stylesheet" type="text/css" href="/static/assets/fonts/font-awesome.min.css" />
+          <link rel="stylesheet" type="text/css" href="/static/assets/css/promo/mobile/index.css" />
+          <link rel="stylesheet" type="text/css" href="/static/assets/css/mb-style.css" />
           <link
             rel="stylesheet"
             type="text/css"
@@ -61,4 +46,4 @@ class Promo extends React.PureComponent {
   }
 }
 
-export default withReduxSaga(Promo);
+export default connect()(Promo);
