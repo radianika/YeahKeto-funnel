@@ -40,7 +40,7 @@ class PromoSessionComponent extends React.PureComponent {
       );
       setCookie('ascbd_promo_session', ascbd_promo_session);
     } else {
-      post(
+      await post(
         '/v1/konnektive/session',
         {
           pageType: this.props.pageType,
