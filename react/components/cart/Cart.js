@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
-import { Spinner } from 'react/components/common';
+import { Modal, Spinner } from 'react/components/common';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
 import { ChooseProductsForm } from './ChooseProductsForm';
@@ -18,7 +18,6 @@ class Cart extends PureComponent {
 
   submit = values => {
     if (this.isProductsEmpty()) {
-      console.log('empty');
       this.setState({ showEmptyError: true });
       return;
     }
@@ -106,7 +105,12 @@ class Cart extends PureComponent {
                 </tr>
               </tbody>
             </table>
-            {showEmptyError && <div>Please select at least one product</div>}
+            {showEmptyError && (
+              <Modal onClose={() => this.setState({ showEmptyError: false })}>
+                No Product Error
+                <div>Please select at least one product</div>
+              </Modal>
+            )}
             <div className="clearall">
               <div className="sec1crt-frm" id="select_cart_form">
                 <div className="confidence">
