@@ -5,19 +5,15 @@ import creditCartType from 'credit-card-type';
 import {
   TextField,
   CVVField,
-  SelectField,
   // SameAddressCheckField, TODO: Some time later this might be used
-  AddressField,
   Spinner,
   SuccessModal,
   Modal,
   CardExpiryField,
 } from 'react/components/common';
 import {
-  stateslist,
   billingFormValidator,
   normalizePhone,
-  normalizePostalCode,
   normalizeCardNumber,
   normalizeSecurityCode,
 } from 'helpers';
@@ -41,10 +37,8 @@ class PromoCheckoutPaymentFormClass extends React.Component {
   _checkCardType(cc) {
     if (!cc) return;
 
-    // let value = '4222222222222222';
     const value = cc.toString().replace(/\s/g, '');
     const cc_type = creditCartType(value);
-    // console.log(cc, cc_type)
 
     if (cc_type && cc_type[0] && value.length > 3) {
       this.setState({ active_cc_type: cc_type[0].type });
@@ -55,7 +49,6 @@ class PromoCheckoutPaymentFormClass extends React.Component {
 
   render() {
     const { active_cc_type, show_cvv_modal } = this.state;
-    const { same } = this.props.currentValues;
 
     return (
       <div className="chkfrm-mid">
@@ -107,68 +100,6 @@ class PromoCheckoutPaymentFormClass extends React.Component {
           */}
           <div className="clearfix" />
           <div id="billingDiv" style={{ display: 'none' }} />
-          {same !== 'Yes' && (
-            <React.Fragment>
-              <Field
-                component={TextField}
-                name="firstName"
-                label="First Name"
-                placeholder="First Name"
-              />
-              <Field
-                component={TextField}
-                name="lastName"
-                label="Last Name"
-                placeholder="Last Name"
-              />
-              <Field
-                component={AddressField}
-                name="address"
-                label="Address 1"
-                placeholder="Street and number, P.O. box, c/o."
-                changeField={this.props.change}
-              />
-              <Field
-                component={TextField}
-                name="address2"
-                label="Address 2"
-                placeholder="Apartment, suite, unit, building, floor, etc."
-              />
-              <Field
-                component={TextField}
-                name="city"
-                label="City"
-                placeholder="Your City"
-              />
-              <Field
-                component={SelectField}
-                name="state"
-                label="State"
-                placeholder="State"
-                options={stateslist}
-              />
-              <Field
-                component={TextField}
-                name="postalCode"
-                label="Zip Code"
-                placeholder="Zip Code"
-                normalize={normalizePostalCode}
-              />
-              <Field
-                component={TextField}
-                name="phoneNumber"
-                label="Phone"
-                placeholder="Example: (123) 555-6789"
-                normalize={normalizePhone}
-              />
-              <Field
-                component={TextField}
-                name="email"
-                label="Email"
-                placeholder="Example: email@somewhere.com"
-              />
-            </React.Fragment>
-          )}
           <Field
             component={TextField}
             name="cardNumber"
