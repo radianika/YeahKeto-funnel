@@ -66,7 +66,7 @@ class Upsell11Component extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <a href={`/promo/mobile/upsell-2?${getQueryString()}`}>
+              <a href="javascript:void(0)" onClick={this.skipUpsell}>
                 <img
                   src="/static/assets/images/cut-icon.png"
                   width="15"

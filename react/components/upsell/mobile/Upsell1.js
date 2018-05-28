@@ -73,7 +73,7 @@ class Upsell1Component extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <a href={`/promo/mobile/upsell-1-1?${getQueryString()}`}>
+              <a href="javascript:void(0)" onClick={this.skipUpsell}>
                 <img
                   src="/static/assets/images/cut-icon.png"
                   width="15"
@@ -81,7 +81,7 @@ class Upsell1Component extends React.PureComponent {
                   alt=""
                   className="cut-icon"
                 />{' '}
-                No, I don't want better results.
+                No, I don&apos;t want better results.
               </a>
             </p>
           </div>
