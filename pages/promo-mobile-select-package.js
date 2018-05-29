@@ -1,16 +1,27 @@
 import React from 'react';
 import Head from 'next/head';
+import { connect } from 'react-redux';
 import { MobileSelectPackageContainer } from 'react/containers';
-import { withReduxSaga } from 'redux/store';
 import { AuthActions, OrderActions } from 'redux/actions';
 
 class SelectPackage extends React.PureComponent {
-  static async getInitialProps({ store, isServer, query }) {
+  static async getInitialProps(props) {
+    const {
+      store, isServer, query, req,
+    } = props.ctx;
     if (isServer) {
-      store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
-      );
-      store.dispatch(OrderActions.getOrderDetails({ orderId: query.orderId }));
+      store.dispatch(AuthActions.setUniqueSessionId({ sessionId: query.sessionId }));
+
+      if (query.orderId) {
+        store.dispatch(
+          OrderActions.getOrderDetails({
+            orderId: query.orderId,
+            headers: {
+              'x-ascbd-req-origin': req.get('host'),
+            },
+          }),
+        );
+      }
     }
   }
   render() {
@@ -23,26 +34,10 @@ class SelectPackage extends React.PureComponent {
             name="description"
             content="Premium Quality Hemp Extract Products, Organic and Natural"
           />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/fonts/font-hind.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/promo/mobile/index.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/mb-style.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/mb-sprites-style.css"
-          />
+          <link rel="stylesheet" type="text/css" href="/static/assets/fonts/font-hind.css" />
+          <link rel="stylesheet" type="text/css" href="/static/assets/css/promo/mobile/index.css" />
+          <link rel="stylesheet" type="text/css" href="/static/assets/css/mb-style.css" />
+          <link rel="stylesheet" type="text/css" href="/static/assets/css/mb-sprites-style.css" />
         </Head>
         <MobileSelectPackageContainer {...this.props} />
       </React.Fragment>
@@ -50,4 +45,4 @@ class SelectPackage extends React.PureComponent {
   }
 }
 
-export default withReduxSaga(SelectPackage);
+export default connect()(SelectPackage);

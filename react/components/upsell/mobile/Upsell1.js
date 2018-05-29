@@ -10,7 +10,7 @@ class Upsell1Component extends React.PureComponent {
     this.props.upgrade(213, '/promo/mobile/upsell-2');
   };
   skipUpsell = () => {
-    this.props.router.push(`/promo/mobile/upsell-1-1?${getQueryString()}`);
+    window.location.assign(`/promo/mobile/upsell-1-1?${getQueryString()}`);
   };
   render() {
     return (
@@ -49,7 +49,7 @@ class Upsell1Component extends React.PureComponent {
               <span className="old-price">
                 <img src="/static/assets/images/price-cut.png" alt="" />$120/<sup >
                   ea
-                                                                             </sup>
+                </sup>
               </span>{' '}
               $77/<sup>ea</sup>{' '}
               <img
@@ -73,18 +73,16 @@ class Upsell1Component extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <Link href={`/promo/mobile/upsell-1-1?${getQueryString()}`}>
-                <a>
-                  <img
-                    src="/static/assets/images/cut-icon.png"
-                    width="15"
-                    height="15"
-                    alt=""
-                    className="cut-icon"
-                  />{' '}
-                  No, I don't want better results.
-                </a>
-              </Link>
+              <a href="javascript:void(0)" onClick={this.skipUpsell}>
+                <img
+                  src="/static/assets/images/cut-icon.png"
+                  width="15"
+                  height="15"
+                  alt=""
+                  className="cut-icon"
+                />{' '}
+                No, I don&apos;t want better results.
+              </a>
             </p>
           </div>
         </div>

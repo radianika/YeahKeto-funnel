@@ -1,23 +1,34 @@
 import React from 'react';
 import Head from 'next/head';
+import { connect } from 'react-redux';
 import { PromoSession } from 'react/components/common';
 import { ThankyouDesktop, ThankyouMobile } from 'react/containers';
-import { withReduxSaga } from 'redux/store';
 import { AuthActions, OrderActions } from 'redux/actions';
 
 class Thankyou extends React.PureComponent {
-  static async getInitialProps({ store, isServer, query }) {
+  static async getInitialProps(props) {
+    const {
+      store, isServer, query, req,
+    } = props.ctx;
     if (isServer) {
-      store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
-      );
-      store.dispatch(OrderActions.getOrderDetails({ orderId: query.orderId }));
+      store.dispatch(AuthActions.setUniqueSessionId({ sessionId: query.sessionId }));
+
+      if (query.orderId) {
+        store.dispatch(
+          OrderActions.getOrderDetails({
+            orderId: query.orderId,
+            headers: {
+              'x-ascbd-req-origin': req.get('host'),
+            },
+          }),
+        );
+      }
     }
   }
 
   render() {
     const { props } = this;
-    const { device, isPromo } = props.url.query;
+    const { device, isPromo } = props.query;
     return (
       <React.Fragment>
         <Head>
@@ -26,22 +37,12 @@ class Thankyou extends React.PureComponent {
             name="description"
             content="Premium Quality Hemp Extract Products, Organic and Natural"
           />
-          {device === 'mobile' && (
-            <meta name="viewport" content="width=640, user-scalable=0" />
-          )}
+          {device === 'mobile' && <meta name="viewport" content="width=640, user-scalable=0" />}
           {device === 'desktop' && (
-            <link
-              rel="stylesheet"
-              type="text/css"
-              href="/static/desktop/css/style.css"
-            />
+            <link rel="stylesheet" type="text/css" href="/static/desktop/css/style.css" />
           )}
           {device === 'mobile' && (
-            <link
-              rel="stylesheet"
-              type="text/css"
-              href="/static/mobile/css/style.css"
-            />
+            <link rel="stylesheet" type="text/css" href="/static/mobile/css/style.css" />
           )}
         </Head>
         <PromoSession pageType="thankyouPage" />
@@ -52,4 +53,4 @@ class Thankyou extends React.PureComponent {
   }
 }
 
-export default withReduxSaga(Thankyou);
+export default connect()(Thankyou);

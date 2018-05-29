@@ -5,17 +5,17 @@ require('dotenv').config();
 
 const { API_BASE_URL } = process.env;
 
-export function post(location, body) {
+export function post(location, body, headers) {
   console.log(`post ${API_BASE_URL}${location}`);
   return axios
-    .post(`${API_BASE_URL}${location}`, body)
+    .post(`${API_BASE_URL}${location}`, body, headers)
     .then(response => {
       console.log({ response });
       return { error: null, response };
     })
     .catch(error => {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
       if (error.response) {
         return { error: error.response };
       }
@@ -26,17 +26,17 @@ export function post(location, body) {
     });
 }
 
-export function put(location, body) {
+export function put(location, body, headers) {
   console.log(`put ${API_BASE_URL}${location}`);
   return axios
-    .put(`${API_BASE_URL}${location}`, body)
+    .put(`${API_BASE_URL}${location}`, body, headers)
     .then(response => {
       console.log({ response });
       return { error: null, response };
     })
     .catch(error => {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
       if (error.response) {
         return { error: error.response };
       }
@@ -47,17 +47,17 @@ export function put(location, body) {
     });
 }
 
-export function get(location) {
+export function get(location, headers) {
   console.log(`get ${API_BASE_URL}${location}`);
   return axios
-    .get(`${API_BASE_URL}${location}`)
+    .get(`${API_BASE_URL}${location}`, headers)
     .then(response => {
       console.log({ response });
       return { error: null, response };
     })
     .catch(error => {
       Raven.captureException(error);
-      console.error(error);
+      console.error('Exception Occurred in ReactApp', (error.stack || error));
       if (error.response) {
         return { error: error.response };
       }

@@ -1,17 +1,28 @@
 import React from 'react';
 import Head from 'next/head';
+import { connect } from 'react-redux';
 import { PromoCheckoutContainer } from 'react/containers';
-import { withReduxSaga } from 'redux/store';
 import { AuthActions, OrderActions } from 'redux/actions';
 import { PromoSession } from 'react/components/common';
 
 class Promo extends React.PureComponent {
-  static async getInitialProps({ store, isServer, query }) {
+  static async getInitialProps(props) {
+    const { store, isServer, query, req } = props.ctx;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
-      store.dispatch(OrderActions.getOrderDetails({ orderId: query.orderId }));
+
+      if (query.orderId) {
+        store.dispatch(
+          OrderActions.getOrderDetails({
+            orderId: query.orderId,
+            headers: {
+              'x-ascbd-req-origin': req.get('host'),
+            },
+          }),
+        );
+      }
     }
   }
 
@@ -53,4 +64,4 @@ class Promo extends React.PureComponent {
   }
 }
 
-export default withReduxSaga(Promo);
+export default connect()(Promo);

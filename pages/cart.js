@@ -1,16 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
+import { connect } from 'react-redux';
 import { CartContainer } from 'react/containers';
-import { withReduxSaga } from 'redux/store';
 import { AuthActions } from 'redux/actions';
 
 class Cart extends React.PureComponent {
-  static async getInitialProps({ store, isServer, query }) {
-    if (isServer) {
-      store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
-      );
-    }
+  static async getInitialProps(props) {
+    const { query } = props.ctx;
+    return query;
   }
   render() {
     return (
@@ -64,4 +61,4 @@ class Cart extends React.PureComponent {
   }
 }
 
-export default withReduxSaga(Cart);
+export default connect()(Cart);

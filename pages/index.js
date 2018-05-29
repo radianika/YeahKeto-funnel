@@ -1,9 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import { HomeContainer } from 'react/containers';
-import { withReduxSaga } from 'redux/store';
 
-class Index extends React.PureComponent {
+class Index extends React.Component {
   render() {
     return (
       <React.Fragment>
@@ -41,4 +40,4 @@ class Index extends React.PureComponent {
   }
 }
 
-export default withReduxSaga(Index);
+export default Index;

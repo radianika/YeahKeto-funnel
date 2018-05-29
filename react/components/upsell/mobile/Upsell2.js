@@ -11,14 +11,11 @@ class Upsell2 extends React.PureComponent {
   upgrade = productId => {
     this.props.upgrade(217, '/promo/mobile/thankyou');
   };
-  scrollToTop = () => {
-    window.scroll({
-      top: 0,
-      behavior: 'smooth',
-    });
+  skipUpsell = () => {
+    window.location.assign(`/promo/mobile/upsell-2-1?${getQueryString()}`);
   };
   render() {
-    const { orderId } = this.props.url.query;
+    const { orderId } = this.props.query;
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage2" />
@@ -55,7 +52,7 @@ class Upsell2 extends React.PureComponent {
               <span className="old-price">
                 <img src="/static/assets/images/upsell2-mobile/price-cut.png" />$130/<sup >
                   ea
-                                                                                     </sup>
+                </sup>
               </span>{' '}
               $87/<sup>ea</sup>{' '}
               <img
@@ -79,18 +76,16 @@ class Upsell2 extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <Link href={`/promo/mobile/upsell-2-1?${getQueryString()}`}>
-                <a>
-                  <img
-                    src="/static/assets/images/cut-icon.png"
-                    width="15"
-                    height="15"
-                    alt=""
-                    className="cut-icon"
-                  />{' '}
-                  No, I don't want better results.
-                </a>
-              </Link>
+              <a href="javascript:void(0)" onClick={this.skipUpsell}>
+                <img
+                  src="/static/assets/images/cut-icon.png"
+                  width="15"
+                  height="15"
+                  alt=""
+                  className="cut-icon"
+                />{' '}
+                No, I don't want better results.
+              </a>
             </p>
           </div>
 
@@ -141,18 +136,16 @@ class Upsell2 extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <Link href={`/promo/mobile/upsell-2-1?${getQueryString()}`}>
-                <a>
-                  <img
-                    src="/static/assets/images/cut-icon.png"
-                    width="15"
-                    height="15"
-                    alt=""
-                    className="cut-icon"
-                  />{' '}
-                  No, I don't want better results.
-                </a>
-              </Link>
+              <a href="javascript:void(0)" onClick={this.skipUpsell}>
+                <img
+                  src="/static/assets/images/cut-icon.png"
+                  width="15"
+                  height="15"
+                  alt=""
+                  className="cut-icon"
+                />{' '}
+                No, I don't want better results.
+              </a>
             </p>
           </div>
         </div>

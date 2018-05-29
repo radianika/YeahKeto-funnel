@@ -1,17 +1,13 @@
 import React from 'react';
 import { PromoSession, Footer } from 'react/components/common';
 import { getQueryString } from 'helpers';
-import Link from 'next/link';
 
 class Upsell21 extends React.PureComponent {
   upgrade = () => {
     this.props.upgrade(215, '/promo/mobile/thankyou');
   };
-  scrollToTop = () => {
-    window.scroll({
-      top: 0,
-      behavior: 'smooth',
-    });
+  skipUpsell = () => {
+    window.location.assign(`/promo/mobile/thankyou?${getQueryString()}`);
   };
   render() {
     return (
@@ -67,18 +63,16 @@ class Upsell21 extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <Link href={`/promo/mobile/thankyou?${getQueryString()}`}>
-                <a>
-                  <img
-                    src="/static/assets/images/cut-icon.png"
-                    width="15"
-                    height="15"
-                    alt=""
-                    className="cut-icon"
-                  />{' '}
-                  No, I don&apos;t want better results.
-                </a>
-              </Link>
+              <a href="javascript:void(0)" onClick={this.skipUpsell}>
+                <img
+                  src="/static/assets/images/cut-icon.png"
+                  width="15"
+                  height="15"
+                  alt=""
+                  className="cut-icon"
+                />{' '}
+                No, I don&apos;t want better results.
+              </a>
             </p>
           </div>
 
@@ -138,18 +132,16 @@ class Upsell21 extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <Link href={`/promo/mobile/thankyou?${getQueryString()}`}>
-                <a>
-                  <img
-                    src="/static/assets/images/cut-icon.png"
-                    width="15"
-                    height="15"
-                    alt=""
-                    className="cut-icon"
-                  />{' '}
-                  No, I don&apos;t want better results.
-                </a>
-              </Link>
+              <a href="javascript:void(0)" onClick={this.skipUpsell}>
+                <img
+                  src="/static/assets/images/cut-icon.png"
+                  width="15"
+                  height="15"
+                  alt=""
+                  className="cut-icon"
+                />{' '}
+                No, I don&apos;t want better results.
+              </a>
             </p>
           </div>
         </div>

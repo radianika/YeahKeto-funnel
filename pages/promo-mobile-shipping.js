@@ -1,13 +1,23 @@
 import React from 'react';
 import Head from 'next/head';
+import { connect } from 'react-redux';
 import { MobileShippingContainer } from 'react/containers';
 import { AuthActions } from 'redux/actions';
-import { withReduxSaga } from 'redux/store';
 
 class Promo extends React.PureComponent {
-  static async getInitialProps({ store, isServer, query }) {
+  static async getInitialProps(props) {
+    const {
+      store, isServer, query, req,
+    } = props.ctx;
     if (isServer) {
-      store.dispatch(AuthActions.setUniqueSessionId({ sessionId: query.sessionId }));
+      store.dispatch(
+        AuthActions.setUniqueSessionId({
+          sessionId: query.sessionId,
+          headers: {
+            'x-ascbd-req-origin': req.get('host'),
+          },
+        }),
+      );
     }
   }
   render() {
@@ -36,4 +46,4 @@ class Promo extends React.PureComponent {
   }
 }
 
-export default withReduxSaga(Promo);
+export default connect()(Promo);

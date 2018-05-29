@@ -72,15 +72,13 @@ class HomeContainer extends PureComponent {
                 is enriched with over 80 cannabinoids that offer a wide range of
                 therapeutic health benefits.{' '}
               </p>
-              <Link href="/hemp-oil">
-                <a href="#">
-                  <img
-                    src="/static/assets/images/btn.png"
-                    alt=""
-                    className="bnr-btn"
-                  />
-                </a>
-              </Link>
+              <a href="/hemp-oil">
+                <img
+                  src="/static/assets/images/btn.png"
+                  alt=""
+                  className="bnr-btn"
+                />
+              </a>
             </div>
             <div className="bnr-rgt for-desk for-tab">
               <img src="/static/assets/images/bnr-prd.png" alt="" />
@@ -123,7 +121,7 @@ class HomeContainer extends PureComponent {
               <p className="comn-txt">
                 American Science products are made with hemp extract derived
                 using CO2 extraction, which filters out the high-causing
-                compound called TCH from the hemp extract.
+                compound called THC from the hemp extract.
               </p>
             </li>
             <li>
@@ -147,15 +145,9 @@ class HomeContainer extends PureComponent {
               (CBD) that help with quicker absorption, faster action, and
               excellent results!
             </p>
-            <Link href="/hemp-oil">
-              <a href="">
-                <img
-                  src="/static/assets/images/btn.png"
-                  alt=""
-                  className="btn"
-                />
-              </a>
-            </Link>
+            <a href="/hemp-oil">
+              <img src="/static/assets/images/btn.png" alt="" className="btn" />
+            </a>
           </div>
         </div>
         <Frame sec="sec2">
@@ -180,15 +172,13 @@ class HomeContainer extends PureComponent {
                   Hemp Oil may help reduce pains &amp; aches while improving
                   mood patterns &amp; relaxation.
                 </p>
-                <Link href="/hemp-oil">
-                  <a href="#">
-                    <img
-                      src="/static/assets/images/btn.png"
-                      alt=""
-                      className="btn"
-                    />
-                  </a>
-                </Link>
+                <a href="/hemp-oil">
+                  <img
+                    src="/static/assets/images/btn.png"
+                    alt=""
+                    className="btn"
+                  />
+                </a>
               </div>
             </li>
             <li>
@@ -205,15 +195,13 @@ class HomeContainer extends PureComponent {
                   Hemp Capsules may help support joint health &amp; may promote
                   better sleep quality.
                 </p>
-                <Link href="/hemp-capsule">
-                  <a href="#">
-                    <img
-                      src="/static/assets/images/btn.png"
-                      alt=""
-                      className="btn"
-                    />
-                  </a>
-                </Link>
+                <a href="/hemp-capsule">
+                  <img
+                    src="/static/assets/images/btn.png"
+                    alt=""
+                    className="btn"
+                  />
+                </a>
               </div>
             </li>
             <li>
@@ -230,15 +218,13 @@ class HomeContainer extends PureComponent {
                   Warming balm may help support relief from problems like
                   soreness, inflammation, and irritated skin.
                 </p>
-                <Link href="/warming_balm">
-                  <a href="#">
-                    <img
-                      src="/static/assets/images/btn.png"
-                      alt=""
-                      className="btn"
-                    />
-                  </a>
-                </Link>
+                <a href="/warming_balm">
+                  <img
+                    src="/static/assets/images/btn.png"
+                    alt=""
+                    className="btn"
+                  />
+                </a>
               </div>
             </li>
           </ul>
