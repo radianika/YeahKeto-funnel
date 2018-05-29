@@ -361,14 +361,17 @@ class CartForm extends React.PureComponent {
               </p>
               <div className="clearall" />
               <div className="frmelements btn-element">
-                <span onClick={this.props.submit}>
+                <button
+                  className="btn-payment-send"
+                  onSubmit={props.handleSubmit}
+                >
                   <img
                     alt="btn"
                     src="/static/assets/images/btn.png"
                     className="button-crt"
                     id="cart_submit"
                   />
-                </span>
+                </button>
               </div>
               <center>
                 <img
