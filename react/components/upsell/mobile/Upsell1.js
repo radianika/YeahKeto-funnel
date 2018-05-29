@@ -46,9 +46,8 @@ class Upsell1Component extends React.PureComponent {
                 className="arrow-left"
               />
               <span className="old-price">
-                <img src="/static/assets/images/price-cut.png" alt="" />$120/<sup >
-                  ea
-                                                                             </sup>
+                <img src="/static/assets/images/price-cut.png" alt="" />$120/
+                <sup>ea</sup>
               </span>{' '}
               $77/<sup>ea</sup>{' '}
               <img
