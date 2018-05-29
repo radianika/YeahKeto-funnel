@@ -10,7 +10,9 @@ class SelectPackage extends React.PureComponent {
       store, isServer, query, req,
     } = props.ctx;
     if (isServer) {
-      store.dispatch(AuthActions.setUniqueSessionId({ sessionId: query.sessionId }));
+      store.dispatch(
+        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
+      );
 
       if (query.orderId) {
         store.dispatch(

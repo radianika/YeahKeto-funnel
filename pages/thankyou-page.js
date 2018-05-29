@@ -11,7 +11,9 @@ class Thankyou extends React.PureComponent {
       store, isServer, query, req,
     } = props.ctx;
     if (isServer) {
-      store.dispatch(AuthActions.setUniqueSessionId({ sessionId: query.sessionId }));
+      store.dispatch(
+        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
+      );
 
       if (query.orderId) {
         store.dispatch(
@@ -37,12 +39,22 @@ class Thankyou extends React.PureComponent {
             name="description"
             content="Premium Quality Hemp Extract Products, Organic and Natural"
           />
-          {device === 'mobile' && <meta name="viewport" content="width=640, user-scalable=0" />}
+          {device === 'mobile' && (
+            <meta name="viewport" content="width=640, user-scalable=0" />
+          )}
           {device === 'desktop' && (
-            <link rel="stylesheet" type="text/css" href="/static/desktop/css/style.css" />
+            <link
+              rel="stylesheet"
+              type="text/css"
+              href="/static/desktop/css/style.css"
+            />
           )}
           {device === 'mobile' && (
-            <link rel="stylesheet" type="text/css" href="/static/mobile/css/style.css" />
+            <link
+              rel="stylesheet"
+              type="text/css"
+              href="/static/mobile/css/style.css"
+            />
           )}
         </Head>
         <PromoSession pageType="thankyouPage" />

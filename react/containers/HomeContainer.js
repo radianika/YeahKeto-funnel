@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import Link from 'next/link';
 import { Header, Footer } from 'react/components/common';
 
 const Strip = () => (
@@ -80,7 +79,7 @@ class HomeContainer extends PureComponent {
                 />
               </a>
             </div>
-            <div className="bnr-rgt for-desk for-tab">
+            <div className="bnr-rgt for-desk for-tab mob-hide">
               <img src="/static/assets/images/bnr-prd.png" alt="" />
             </div>
           </div>

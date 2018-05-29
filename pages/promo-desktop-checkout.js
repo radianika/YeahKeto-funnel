@@ -7,7 +7,9 @@ import { PromoSession } from 'react/components/common';
 
 class Promo extends React.PureComponent {
   static async getInitialProps(props) {
-    const { store, isServer, query, req } = props.ctx;
+    const {
+      store, isServer, query, req,
+    } = props.ctx;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),

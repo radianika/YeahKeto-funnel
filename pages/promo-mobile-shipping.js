@@ -30,10 +30,26 @@ class Promo extends React.PureComponent {
             name="description"
             content="Premium Quality Hemp Extract Products, Organic and Natural"
           />
-          <link rel="stylesheet" type="text/css" href="/static/assets/fonts/font-hind.css" />
-          <link rel="stylesheet" type="text/css" href="/static/assets/fonts/font-awesome.min.css" />
-          <link rel="stylesheet" type="text/css" href="/static/assets/css/promo/mobile/index.css" />
-          <link rel="stylesheet" type="text/css" href="/static/assets/css/mb-style.css" />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/fonts/font-hind.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/fonts/font-awesome.min.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/css/promo/mobile/index.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/css/mb-style.css"
+          />
           <link
             rel="stylesheet"
             type="text/css"
