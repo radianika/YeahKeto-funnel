@@ -15,7 +15,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
     return (
       <form
         id="form-contact"
-        onSubmit={props.handleSubmit}
+        onChange={props.handleSubmit}
         className="pure-form pure-form-aligned fv-form fv-form-pure"
       >
         <button
