@@ -28,7 +28,7 @@ const TextField = props => {
           {props.icon && (
             <div className="icon-box">
               <center>
-                <img src={props.icon} />
+                <img src={props.icon} alt="" />
               </center>
             </div>
           )}
