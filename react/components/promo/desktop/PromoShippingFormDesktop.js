@@ -8,10 +8,27 @@ import {
 } from 'helpers';
 import { TextField, SelectField, AddressField } from 'react/components/common';
 import { connect } from 'react-redux';
+import { Modal } from 'react/components/common/Modal';
 
 class PromoShippingFormDesktopComponent extends React.PureComponent {
+  constructor() {
+    super();
+    this.state = {
+      modal: false,
+    };
+  }
+
+  toggleModal = () => this.setState(prevState => ({ modal: !prevState.modal }));
+
+  showErrorModal = () => {
+    if (!this.props.valid) {
+      this.toggleModal();
+    }
+  };
+
   render() {
     const { props } = this;
+    console.log(props.valid);
     return (
       <form
         id="form-contact"
@@ -101,13 +118,21 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         />
         <div className="clearall" />
         <button
-          onClick={this.submitShippingForm}
+          onClick={this.showErrorModal}
           className="submit pulse sprite5 sprite-submit"
         />
         <div className="clearall" />
         <div>
           <i className="s1logos sprite3 sprite-s1logos" />
         </div>
+        {this.state.modal && (
+          <Modal onClose={this.toggleModal} onCloseBtn={this.toggleModal}>
+            <React.Fragment>Alert</React.Fragment>
+            <div style={{ padding: 20, textAlign: 'center' }}>
+              <h2>Please fill in all the details to continue</h2>
+            </div>
+          </Modal>
+        )}
       </form>
     );
   }
