@@ -19,17 +19,17 @@ class ThankyouDesktopComponent extends React.PureComponent {
           <div className="header position">
             <img
               src="/static/desktop/images/logo.png"
-              alt=""
+              alt="logo"
               className="logo"
             />
             <img
               src="/static/desktop/images/step2.png"
-              alt=""
+              alt="step-2"
               className="step"
             />
             <img
               src="/static/desktop/images/seals.png"
-              alt=""
+              alt="seals"
               className="seals"
             />
           </div>
@@ -107,7 +107,7 @@ class ThankyouDesktopComponent extends React.PureComponent {
                 <div key={item.productId} className="prod-row">
                   <div className="prod-data ty">
                     <div className="prod-shoot">
-                      <img src={getTyProductImage(item)} alt="" />
+                      <img src={getTyProductImage(item)} alt="prod-shoot" />
                     </div>
                     <p className="prod-name">
                       American Science CBD

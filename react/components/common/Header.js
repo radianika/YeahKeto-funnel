@@ -17,7 +17,7 @@ const Menu = withRouter(props => (
       </a>
     </li>
     <li>
-      <ActiveLink href="/faqs">FAQ&apos;s</ActiveLink>
+      <ActiveLink href="/faqs">FAQ`s</ActiveLink>
     </li>
     <li>
       <ActiveLink href="/cart">Cart</ActiveLink>

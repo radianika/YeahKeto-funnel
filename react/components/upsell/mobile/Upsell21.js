@@ -28,7 +28,7 @@ class Upsell21 extends React.PureComponent {
           <img
             src="/static/assets/images/upsell2-mobile/up-prod4.jpg"
             className="up-prod"
-            alt=""
+            alt="upsell-prod"
           />
           <div className="clearall" />
           <div className="price-box">
@@ -39,14 +39,14 @@ class Upsell21 extends React.PureComponent {
                 src="/static/assets/images/upsell2-mobile/arrow-left.png"
                 width="77"
                 height="33"
-                alt=""
+                alt="arrow-left"
                 className="arrow-left"
               />$97.00{' '}
               <img
                 src="/static/assets/images/upsell2-mobile/arrow-right.png"
                 width="77"
                 height="33"
-                alt=""
+                alt="arrow-right"
                 className="arrow-right"
               />
             </p>
@@ -56,7 +56,7 @@ class Upsell21 extends React.PureComponent {
             <a href="javascript:void(0)" onClick={this.upgrade}>
               <img
                 src="/static/assets/images/ord-btn.png"
-                alt=""
+                alt="order-btn"
                 width="370"
                 height="71"
                 className="ord-btn pulse"
@@ -68,10 +68,10 @@ class Upsell21 extends React.PureComponent {
                   src="/static/assets/images/cut-icon.png"
                   width="15"
                   height="15"
-                  alt=""
+                  alt="cut-icon"
                   className="cut-icon"
-                />{' '}
-                No, I don&apos;t want better results.
+                />
+                {"No, I don't want better results."}
               </a>
             </p>
           </div>
@@ -85,7 +85,7 @@ class Upsell21 extends React.PureComponent {
           <div className="up-bottom-box">
             <img
               src="/static/assets/images/upsell2-mobile/up1-img1.png"
-              alt=""
+              alt="upsell-img-1"
             />
             <p className="box-txt1">FULL SPECTRUM FORMULA</p>
             <p className="box-txt2">
@@ -98,7 +98,7 @@ class Upsell21 extends React.PureComponent {
           <div className="up-bottom-box">
             <img
               src="/static/assets/images/upsell2-mobile/up2-img2.png"
-              alt=""
+              alt="upsell-2-img-2"
             />
             <p className="box-txt1">OFFERS ANTIOXIDANT SUPPORT</p>
             <p className="box-txt2">
@@ -111,12 +111,12 @@ class Upsell21 extends React.PureComponent {
           <div className="up-bottom-box">
             <img
               src="/static/assets/images/upsell2-mobile/up2-img3.png"
-              alt=""
+              alt="upsell-2-img-3"
             />
             <p className="box-txt1">INSTANTLY RELIEVES CHRONIC PAIN</p>
             <p className="box-txt2">
               Melt away muscle fatigue, pain, swelling, and discomfort with
-              American Science CBD WARMING BALM&apos;S deep, penetrating warmth
+              American Science CBD WARMING {"BALM'S"} deep, penetrating warmth
               providing FAST relief that will amaze you.
             </p>
           </div>
@@ -125,7 +125,7 @@ class Upsell21 extends React.PureComponent {
             <a href="javascript:void(0)" onClick={this.upgrade}>
               <img
                 src="/static/assets/images/ord-btn.png"
-                alt=""
+                alt="order-btn"
                 width="370"
                 height="71"
                 className="ord-btn pulse"
@@ -137,10 +137,10 @@ class Upsell21 extends React.PureComponent {
                   src="/static/assets/images/cut-icon.png"
                   width="15"
                   height="15"
-                  alt=""
+                  alt="cut-icon"
                   className="cut-icon"
-                />{' '}
-                No, I don&apos;t want better results.
+                />
+                {"No, I don't want better results."}
               </a>
             </p>
           </div>

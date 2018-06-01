@@ -78,8 +78,8 @@ class Upsell1Component extends React.PureComponent {
                   height="15"
                   alt=""
                   className="cut-icon"
-                />{' '}
-                No, I don&apos;t want better results.
+                />
+                {"No, I don't want better results."}
               </a>
             </p>
           </div>

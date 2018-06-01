@@ -46,17 +46,17 @@ class PromoCheckout extends React.PureComponent {
               <div className="chktop">
                 <img
                   src="/static/promo/desktop/images/ck-logo.png"
-                  alt=""
+                  alt="ck-logo"
                   className="ck-logo"
                 />
                 <img
                   src="/static/promo/desktop/images/chktop.png"
-                  alt=""
+                  alt="chktop"
                   className="chktop-img"
                 />
                 <img
                   src="/static/promo/desktop/images/ck-seal.png"
-                  alt=""
+                  alt="ck-seal"
                   className="ck-ab"
                 />
               </div>
@@ -85,7 +85,7 @@ class PromoCheckout extends React.PureComponent {
                             src={`/static/promo/desktop/images/${
                               pack.desktopImg
                             }`}
-                            alt=""
+                            alt="pkg-btl"
                             className="pkg-btl"
                           />
                         </div>
@@ -129,7 +129,7 @@ class PromoCheckout extends React.PureComponent {
                     </p>{' '}
                     <img
                       src="/static/promo/desktop/images/smryimg.png"
-                      alt=""
+                      alt="smry-img"
                       className="smryimg"
                     />{' '}
                   </div>

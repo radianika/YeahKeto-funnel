@@ -31,11 +31,11 @@ class Upsell1Component extends React.PureComponent {
         <div className="up-mid-box-right">
           <img
             src="/static/assets/images/up1-bottle.png"
-            alt=""
+            alt="upsell-1-bottle"
             className="up-product"
           />
           <img
-            alt=""
+            alt="upsell-arrow-1"
             src="/static/assets/images/up-arw1.png"
             style={{ position: 'absolute', left: '260px', top: '400px' }}
           />
@@ -51,20 +51,23 @@ class Upsell1Component extends React.PureComponent {
               <p className="price-box-txt3">
                 <img
                   src="/static/assets/images/arrow-left-upsell.png"
-                  alt=""
+                  alt="arrow-left-upsell"
                   className="arrow-left"
                   width="77"
                   height="33"
                 />
                 <span className="old-price">
-                  <img src="/static/assets/images/price-cut.png" alt="" />
+                  <img
+                    src="/static/assets/images/price-cut.png"
+                    alt="price-cut"
+                  />
                   $120/
                   <sup>ea</sup>
                 </span>{' '}
                 $77/<sup>ea</sup>{' '}
                 <img
                   src="/static/assets/images/arrow-right.png"
-                  alt=""
+                  alt="arrow-right"
                   className="arrow-right"
                   width="77"
                   height="33"
@@ -75,7 +78,7 @@ class Upsell1Component extends React.PureComponent {
               <a href="javascript:void(0)" onClick={this.upgrade}>
                 <img
                   src="/static/assets/images/ord-btn.png"
-                  alt=""
+                  alt="order-btn"
                   className="ord-btn pulse"
                   width="370"
                   height="71"
@@ -85,7 +88,7 @@ class Upsell1Component extends React.PureComponent {
                 <a href="javascript:void(0)" onClick={this.skipUpsell}>
                   <img
                     src="/static/assets/images/cut-icon.png"
-                    alt=""
+                    alt="cut-icon"
                     className="cut-icon"
                     width="15"
                     height="15"
