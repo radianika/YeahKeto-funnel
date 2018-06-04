@@ -1,24 +1,23 @@
 import React, { PureComponent } from 'react';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
-import { Modal, Spinner } from 'react/components/common';
 import { connect } from 'react-redux';
-import { OrderActions } from 'redux/actions';
 import { ChooseProductsForm } from './ChooseProductsForm';
 import { CartFormContainer } from './CartForm';
+import { Spinner } from '../common';
+import { OrderActions } from '../../../redux/actions';
 
 class Cart extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       products: {},
-      showEmptyError: false,
     };
   }
 
   submit = values => {
     if (this.isProductsEmpty()) {
-      this.setState({ showEmptyError: true });
+      window.scrollTo(0, 0);
       return;
     }
     const { products } = this.state;
@@ -43,7 +42,7 @@ class Cart extends PureComponent {
       quantity,
       label: `product${index + 1}_`,
     };
-    this.setState({ products, showEmptyError: false });
+    this.setState({ products });
   };
 
   isProductsEmpty = () => {
@@ -55,7 +54,6 @@ class Cart extends PureComponent {
   };
 
   render() {
-    const { showEmptyError } = this.state;
     return (
       <React.Fragment>
         <Head>
@@ -105,12 +103,6 @@ class Cart extends PureComponent {
                 </tr>
               </tbody>
             </table>
-            {showEmptyError && (
-              <Modal onClose={() => this.setState({ showEmptyError: false })}>
-                No Product Error
-                <div>Please select at least one product</div>
-              </Modal>
-            )}
             <div className="clearall">
               <div className="sec1crt-frm" id="select_cart_form">
                 <div className="confidence">
