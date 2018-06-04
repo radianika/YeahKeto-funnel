@@ -13,32 +13,12 @@ import {
   AddressField,
   Spinner,
   SuccessModal,
-  Modal,
 } from 'react/components/common';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
 import { OrderActions } from 'redux/actions';
 
 class MobileShippingContainerComponent extends React.PureComponent {
-  state = {
-    modal: false,
-  };
-
-  onSubmit = e => {
-    if (!this.props.valid) {
-      this.toggleModal();
-    }
-    this.props.handleSubmit(values => {
-      this.props.submitLeadsForm({
-        values,
-        router: this.props.router,
-        nextUrl: '/promo/mobile/select-package',
-      });
-    })(e);
-  };
-
-  toggleModal = () => this.setState(prevState => ({ modal: !prevState.modal }));
-
   render() {
     return (
       <div className="mobile-body">
@@ -190,14 +170,6 @@ class MobileShippingContainerComponent extends React.PureComponent {
           visible={this.props.submitStatus === 'success'}
           message="Information captured successfully."
         />
-        {this.state.modal && (
-          <Modal onClose={this.toggleModal} onCloseBtn={this.toggleModal}>
-            <React.Fragment>Alert</React.Fragment>
-            <div style={{ padding: 20, textAlign: 'center' }}>
-              <h2>Please fill in all the details to continue</h2>
-            </div>
-          </Modal>
-        )}
       </div>
     );
   }
