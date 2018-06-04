@@ -11,12 +11,9 @@ import { connect } from 'react-redux';
 import { Modal } from 'react/components/common/Modal';
 
 class PromoShippingFormDesktopComponent extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      modal: false,
-    };
-  }
+  state = {
+    modal: false,
+  };
 
   toggleModal = () => this.setState(prevState => ({ modal: !prevState.modal }));
 
@@ -28,7 +25,6 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
 
   render() {
     const { props } = this;
-    console.log(props.valid);
     return (
       <form
         id="form-contact"

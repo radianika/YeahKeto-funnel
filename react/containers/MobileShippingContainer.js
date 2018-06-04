@@ -20,12 +20,9 @@ import { withRouter } from 'next/router';
 import { OrderActions } from 'redux/actions';
 
 class MobileShippingContainerComponent extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      modal: false,
-    };
-  }
+  state = {
+    modal: false,
+  };
 
   onSubmit = e => {
     if (!this.props.valid) {
