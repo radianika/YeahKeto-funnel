@@ -191,8 +191,7 @@ app.prepare().then(() => {
           sessionId,
         });
       });
-    }
-    catch (error) {
+    } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
     }
@@ -462,6 +461,16 @@ app.prepare().then(() => {
           device: 'mobile',
         });
       });
+    } catch (error) {
+      Raven.captureException(error);
+      console.error('Exception Occurred in ReactApp', error.stack || error);
+    }
+  });
+
+  server.get('/promo/:useragent/*', async (req, res) => {
+    try {
+      const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
+      res.redirect(`/promo/${requestAgent}`);
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);

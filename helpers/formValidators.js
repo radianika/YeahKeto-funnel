@@ -6,39 +6,39 @@ import idx from 'idx';
 const shippingFormValidator = values => {
   const errors = {};
   if (!values.firstName || !values.firstName.trim()) {
-    errors.firstName = 'The first name is required.';
+    errors.firstName = 'Please enter your first name.';
   }
   if (!values.lastName || !values.lastName.trim()) {
-    errors.lastName = 'The last name is required.';
+    errors.lastName = 'Please enter your last name.';
   }
   if (!values.address || !values.address.trim()) {
-    errors.address = 'The address is required';
+    errors.address = 'Please enter your address.';
   } else if (values.address && values.address.trim().length > 100) {
-    errors.address = 'The address must be less than 100 characters long.';
+    errors.address = 'The address should be less than 100 characters long.';
   }
   if (!values.city || !values.city.trim()) {
-    errors.city = 'The city is required';
+    errors.city = 'Please enter your city.';
   } else if (values.city && values.city.trim().length > 50) {
-    errors.city = 'The city must be less than 50 characters long.';
+    errors.city = 'The city should be less than 50 characters long.';
   }
   if (!values.state || !values.state.trim() || values.state === 'State') {
-    errors.state = 'The state is required';
+    errors.state = 'Please enter your state.';
   }
   if (!values.postalCode || !values.postalCode.trim()) {
-    errors.postalCode = 'The zip code is required';
+    errors.postalCode = 'Please enter your zip code.';
   } else if (values.postalCode && values.postalCode.trim().length !== 5) {
-    errors.postalCode = 'The zip code must be 5 characters long.';
+    errors.postalCode = 'The zip code should be 5 characters long.';
   }
   if (!values.phoneNumber || !values.phoneNumber.trim()) {
-    errors.phoneNumber = 'Please enter your phone number';
+    errors.phoneNumber = 'Please enter your phone number.';
   } else if (values.phoneNumber && values.phoneNumber.length !== 14) {
     errors.phoneNumber =
-      'Not a valid 10-digit US phone number (must not include spaces or special characters).';
+      'Please enter a valid 10-digit US phone number (must not include spaces or special characters).';
   }
   if (!values.email || !values.email.trim()) {
-    errors.email = 'The email address is required';
+    errors.email = 'Please enter your email address.';
   } else if (values.email && !validator.isEmail(values.email)) {
-    errors.email = 'The value is not a valid email address';
+    errors.email = 'Please enter a valid email address.';
   }
 
   return errors;
@@ -48,17 +48,17 @@ const shippingFormValidator = values => {
 const billingFormValidator = values => {
   const errors = shippingFormValidator(values);
   if (!values.cardExpiry) {
-    errors.cardExpiry = 'Card details are required';
+    errors.cardExpiry = 'Please enter your card details.';
   } else if (
     !idx(values, _ => _.cardExpiry.cardMonth) ||
     !idx(values, _ => _.cardExpiry.cardMonth).trim()
   ) {
-    errors.cardExpiry = 'Expiry month is required';
+    errors.cardExpiry = 'Please enter Expiry month.';
   } else if (
     !idx(values, _ => _.cardExpiry.cardYear) ||
     !idx(values, _ => _.cardExpiry.cardYear).trim()
   ) {
-    errors.cardExpiry = 'Year is required';
+    errors.cardExpiry = 'Please enter Expiry year.';
   } else {
     const { cardMonth, cardYear } = values.cardExpiry;
     const currentMonth = moment().month();
@@ -68,7 +68,7 @@ const billingFormValidator = values => {
     }
   }
   if (!values.cardNumber) {
-    errors.cardNumber = 'Card number is required';
+    errors.cardNumber = 'Please enter your Card Number.';
   } else if (values.cardNumber) {
     const value = values.cardNumber.replace(/\s/g, '');
     const cardTypes = creditCartType(value);
@@ -77,12 +77,12 @@ const billingFormValidator = values => {
       [length] = cardTypes[0].lengths;
     }
     if (value.length !== length) {
-      errors.cardNumber = `Card number should be ${length} digits`;
+      errors.cardNumber = `Card number should be ${length} digits.`;
     }
   }
 
   if (!values.cardSecurityCode || !values.cardSecurityCode.trim()) {
-    errors.cardSecurityCode = 'Security Code is required';
+    errors.cardSecurityCode = 'Please enter your Security Code.';
   } else if (values.cardSecurityCode) {
     let length = 3;
     if (values.cardNumber) {
@@ -92,7 +92,7 @@ const billingFormValidator = values => {
         length = cardTypes[0].code.size;
       }
       if (values.cardSecurityCode.length !== length) {
-        errors.cardSecurityCode = `Security code should be ${length} digits`;
+        errors.cardSecurityCode = `Security code should be ${length} digits.`;
       }
     }
   }
@@ -105,10 +105,10 @@ const billingFormValidator = values => {
 const cardFormValidator = values => {
   const errors = {};
   if (!(values.cardMonth && (values.cardMonth || values.cardMonth.trim()))) {
-    errors.cardMonth = 'Expiry month is required';
+    errors.cardMonth = 'Please enter Expiry month.';
   }
   if (!(values.cardYear && (values.cardYear || values.cardYear.trim()))) {
-    errors.cardYear = 'Year is required';
+    errors.cardYear = 'Please enter Expiry Year.';
   }
   const { cardMonth, cardYear } = values;
   const currentMonth = moment().month();
@@ -119,7 +119,7 @@ const cardFormValidator = values => {
     errors.cardYear = 'Card has expired.';
   }
   if (!values.cardNumber) {
-    errors.cardNumber = 'Card number is required';
+    errors.cardNumber = 'Please enter your Card Number.';
   } else if (values.cardNumber) {
     const value = values.cardNumber.replace(/\s/g, '');
     const cardTypes = creditCartType(value);
@@ -128,12 +128,12 @@ const cardFormValidator = values => {
       [length] = cardTypes[0].lengths;
     }
     if (value.length !== length) {
-      errors.cardNumber = `Card number should be ${length} digits`;
+      errors.cardNumber = `Card number should be ${length} digits.`;
     }
   }
 
   if (!values.cardSecurityCode || !values.cardSecurityCode.trim()) {
-    errors.cardSecurityCode = 'Security Code is required';
+    errors.cardSecurityCode = 'Please enter your Security Code.';
   } else if (values.cardSecurityCode) {
     let length = 3;
     if (values.cardNumber) {
@@ -143,7 +143,7 @@ const cardFormValidator = values => {
         length = cardTypes[0].code.size;
       }
       if (values.cardSecurityCode.length !== length) {
-        errors.cardSecurityCode = `Security code should be ${length} digits`;
+        errors.cardSecurityCode = `Security code should be ${length} digits.`;
       }
     }
   }
