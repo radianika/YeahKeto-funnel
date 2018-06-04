@@ -183,8 +183,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         name="firstName"
                         label="First Name"
                         placeholder="First Name"
-                        autocorrect="off"
-                        autocomplete="given-name"
+                        autoCorrect="off"
+                        autoComplete="given-name"
                       />
                       <Field
                         containerClass="frmelmnts3"
@@ -192,8 +192,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         name="lastName"
                         label="Last Name"
                         placeholder="Last Name"
-                        autocorrect="off"
-                        autocomplete="family-name"
+                        autoCorrect="off"
+                        autoComplete="family-name"
                       />
                       <div className="clearfix" />
                       <Field
@@ -203,8 +203,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         label="Address Line 1"
                         placeholder="Street and number, P.O. box, c/o."
                         changeField={this.props.change}
-                        autocorrect="off"
-                        autocomplete="address-line1"
+                        autoCorrect="off"
+                        autoComplete="address-line1"
                       />
                       <Field
                         containerClass="frmelmnts2"
@@ -212,8 +212,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         name="address2"
                         label="Adress Line 2"
                         placeholder="Apartment, suite, unit, building, floor, etc."
-                        autocorrect="off"
-                        autocomplete="address-line2"
+                        autoCorrect="off"
+                        autoComplete="address-line2"
                       />
                       <div className="clearfix" />
                       <Field
@@ -222,8 +222,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         name="city"
                         label="City"
                         placeholder="Your City"
-                        autocorrect="off"
-                        autocomplete="address-level2"
+                        autoCorrect="off"
+                        autoComplete="address-level2"
                       />
                       <div className="clearfix" />
                       <Field
@@ -233,9 +233,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         label="Zip Code"
                         placeholder="Zip Code"
                         normalize={normalizePostalCode}
-                        inputmode="numeric"
-                        autocorrect="off"
-                        autocomplete="postal-code"
+                        inputMode="numeric"
+                        autoCorrect="off"
+                        autoComplete="postal-code"
                       />
                       <Field
                         containerClass="frmelmnts3"
@@ -254,8 +254,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         placeholder="Example: (123) 555-6789"
                         normalize={normalizePhone}
                         type="tel"
-                        autocorrect="off"
-                        autocomplete="tel"
+                        autoCorrect="off"
+                        autoComplete="tel"
                       />
                       <Field
                         containerClass="frmelmnts3"
@@ -264,9 +264,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         label="Email"
                         placeholder="Example: email@somewhere.com"
                         type="email"
-                        autocapitalize="off"
-                        autocorrect="off"
-                        autocomplete="email"
+                        autoCapitalize="off"
+                        autoCorrect="off"
+                        autoComplete="email"
                       />
                     </div>
                   )}
@@ -282,7 +282,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                       placeholder="•••• •••• •••• ••••"
                       label="Card No"
                       normalize={normalizeCardNumber}
-                      inputmode="numeric"
+                      inputMode="numeric"
                       autoComplete="cc-number"
                       autoCorrect="off"
                     />
