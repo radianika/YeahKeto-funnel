@@ -666,3 +666,27 @@ Styles for animated modal
 }
 
 /* modal style ends */
+
+.fancybox-close-small {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: #555;
+  cursor: pointer;
+  height: 44px;
+  margin: 0;
+  padding: 6px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 44px;
+  z-index: 10;
+}
+
+.fancybox-close-small svg {
+  fill: transparent;
+  opacity: 0.8;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  transition: stroke 0.1s;
+}

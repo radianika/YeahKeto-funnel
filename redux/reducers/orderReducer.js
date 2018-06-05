@@ -4,6 +4,7 @@ import { OrderActions } from 'redux/actions';
 const initialState = ip.freeze({
   submitLeadsFormStatus: null,
   placeOrderStatus: null,
+  placeOrderError: null,
   addUpsellToOrderStatus: null,
   lead: null,
   order: null,
@@ -32,6 +33,7 @@ export default function (state = initialState, action) {
       return ip.setIn(state, ['order'], action.payload.order);
 
     case OrderActions.PLACE_ORDER_FAILURE:
+      state = ip.setIn(state, ['placeOrderError'], action.payload.error);
       return ip.setIn(state, ['placeOrderStatus'], 'failure');
 
     case OrderActions.ADD_UPSELL_TO_ORDER_REQUEST:
