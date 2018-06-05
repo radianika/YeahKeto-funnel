@@ -77,7 +77,7 @@ class SuccessModal extends React.PureComponent {
             {this.props.title && (
               <div>
                 Tip: you may try another card or call{' '}
-                <a href="tel:+18558807233">(855) 880-7233</a>.
+                <a href="tel:+18886016014">(888) 601-6014</a>
               </div>
             )}
           </p>
