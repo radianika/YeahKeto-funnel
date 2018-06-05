@@ -25,8 +25,18 @@ class PromoCheckoutPaymentFormClass extends React.Component {
     this.state = {
       active_cc_type: '',
       show_cvv_modal: false,
+      showErrorModal: false,
     };
     this._toggleCVVModal = this._toggleCVVModal.bind(this);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (
+      this.props.submitStatus === 'submitting' &&
+      newProps.submitStatus === 'failure'
+    ) {
+      this.setState({ showErrorModal: true });
+    }
   }
 
   _toggleCVVModal(e) {
@@ -127,6 +137,13 @@ class PromoCheckoutPaymentFormClass extends React.Component {
           visible={this.props.submitStatus === 'success'}
           message="Your order has been placed successfully."
         />
+        <SuccessModal
+          style={{ width: 423 }}
+          title="Problem with your order"
+          visible={this.state.showErrorModal}
+          onClose={() => this.setState({ showErrorModal: false })}
+          message={this.props.submitFailure}
+        />
       </div>
     );
   }
@@ -170,6 +187,7 @@ function mapStateToProps(reduxState) {
       same: selector(reduxState, 'same'),
     },
     submitStatus: reduxState.order.placeOrderStatus,
+    submitFailure: reduxState.order.placeOrderError,
   };
 }
 

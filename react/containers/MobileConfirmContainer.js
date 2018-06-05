@@ -28,8 +28,18 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     this.state = {
       isSame: true,
       summaryOpen: false,
+      showErrorModal: false,
     };
     this.toggleSummary = this.toggleSummary.bind(this);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (
+      this.props.submitStatus === 'submitting' &&
+      newProps.submitStatus === 'failure'
+    ) {
+      this.setState({ showErrorModal: true });
+    }
   }
 
   getPrice() {
@@ -367,6 +377,13 @@ class MobileConfirmContainerComponent extends React.PureComponent {
           visible={this.props.submitStatus === 'success'}
           message="Your order has been placed successfully."
         />
+        <SuccessModal
+          style={{ width: '80%' }}
+          title="Problem with your order"
+          visible={this.state.showErrorModal}
+          onClose={() => this.setState({ showErrorModal: false })}
+          message={this.props.submitFailure}
+        />
       </div>
     );
   }
@@ -408,6 +425,7 @@ function mapStateToProps(reduxState, ownProps) {
     },
     pack,
     submitStatus: reduxState.order.placeOrderStatus,
+    submitFailure: reduxState.order.placeOrderError,
   };
 }
 
