@@ -146,13 +146,13 @@ const getTyProductContainer = product => {
 
 const getTyProductName = product => {
   if (product.name.toLowerCase().indexOf('balm') >= 0) {
-    return 'CBD Oil 500mg 1 oz';
+    return 'CBD Warming Balm 50mg';
   }
   if (product.name.toLowerCase().indexOf('oil') >= 0) {
-    return 'CBD Capsules 300 mg';
+    return 'CBD Oil 500mg 1 oz';
   }
   if (product.name.toLowerCase().indexOf('capsule') >= 0) {
-    return 'CBD Warming Balm 50mg';
+    return 'CBD Capsules 300 mg';
   }
   const titleString = 'american science cbd';
   const titleIndex = product.name.toLowerCase().indexOf(titleString);

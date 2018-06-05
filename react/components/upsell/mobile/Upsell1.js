@@ -1,7 +1,6 @@
 import React from 'react';
 import { PromoSession, Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
-import Link from 'next/link';
 import { getQueryString } from 'helpers';
 import { SatisfactionBox } from './SatisfactionBox';
 
@@ -47,9 +46,8 @@ class Upsell1Component extends React.PureComponent {
                 className="arrow-left"
               />
               <span className="old-price">
-                <img src="/static/assets/images/price-cut.png" alt="" />$120/<sup >
-                  ea
-                </sup>
+                <img src="/static/assets/images/price-cut.png" alt="" />$120/
+                <sup>ea</sup>
               </span>{' '}
               $77/<sup>ea</sup>{' '}
               <img
@@ -80,8 +78,8 @@ class Upsell1Component extends React.PureComponent {
                   height="15"
                   alt=""
                   className="cut-icon"
-                />{' '}
-                No, I don&apos;t want better results.
+                />
+                {"No, I don't want better results."}
               </a>
             </p>
           </div>

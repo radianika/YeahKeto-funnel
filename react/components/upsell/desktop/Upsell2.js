@@ -23,11 +23,11 @@ class Upsell2 extends React.PureComponent {
         <div className="up-mid-box-right">
           <img
             src="/static/assets/images/upsell2/balm3-bottle.png"
-            alt=""
+            alt="balm-3-bottle"
             className="up-product-3"
           />
           <img
-            alt=""
+            alt="upsell-arrow-1"
             src="/static/assets/images/upsell2/up-arw1.png"
             style={{ position: 'absolute', left: '220px', top: '400px' }}
           />
@@ -43,21 +43,21 @@ class Upsell2 extends React.PureComponent {
               <p className="price-box-txt3">
                 <img
                   src="/static/assets/images/upsell2/arrow-left.png"
-                  alt=""
+                  alt="arrow-left"
                   className="arrow-left"
                   width="77"
                   height="33"
                 />
                 <span className="old-price">
                   <img
-                    alt=""
+                    alt="price-cut"
                     src="/static/assets/images/upsell2/price-cut.png"
                   />$130/<sup>ea</sup>
                 </span>{' '}
                 $87/<sup>ea</sup>{' '}
                 <img
                   src="/static/assets/images/arrow-right.png"
-                  alt=""
+                  alt="arrow-right"
                   className="arrow-right"
                   width="77"
                   height="33"
@@ -68,7 +68,7 @@ class Upsell2 extends React.PureComponent {
               <a href="javascript:void(0)" onClick={this.upgrade}>
                 <img
                   src="/static/assets/images/upsell2/ord-btn.png"
-                  alt=""
+                  alt="order-btn"
                   className="ord-btn pulse"
                   width="370"
                   height="71"
@@ -78,7 +78,7 @@ class Upsell2 extends React.PureComponent {
                 <a href="javascript:void(0)" onClick={this.skipUpsell}>
                   <img
                     src="/static/assets/images/upsell2/cut-icon.png"
-                    alt=""
+                    alt="cut-icon"
                     className="cut-icon"
                     width="15"
                     height="15"
@@ -106,7 +106,10 @@ class Upsell2 extends React.PureComponent {
         </div>
 
         <div className="up-bottom-box" style={{ height: '410px' }}>
-          <img alt="" src="/static/assets/images/upsell2/up-bx2-bg.jpg" />
+          <img
+            alt="upsell-bx-2-bg"
+            src="/static/assets/images/upsell2/up-bx2-bg.jpg"
+          />
           <p className="box-txt1">OFFERS ANTIOXIDANT SUPPORT</p>
           <p className="box-txt2">
             CBD Warming Balm works at a cellular level to combat free radical
@@ -116,7 +119,10 @@ class Upsell2 extends React.PureComponent {
         </div>
 
         <div className="up-bottom-box" style={{ height: '410px' }}>
-          <img alt="" src="/static/assets/images/upsell2/pain-releaf.jpg" />
+          <img
+            alt="pain-releaf"
+            src="/static/assets/images/upsell2/pain-releaf.jpg"
+          />
           <p className="box-txt1">INSTANTLY RELIEVES Chronic Pain</p>
           <p className="box-txt2">
             Melt away muscle fatigue, pain, swelling, and discomfort with
@@ -129,7 +135,7 @@ class Upsell2 extends React.PureComponent {
           <a href="javascript:void(0)" onClick={this.upgrade}>
             <img
               src="/static/assets/images/upsell2/ord-btn.png"
-              alt=""
+              alt="order-btn"
               className="ord-btn pulse"
               width="370"
               height="71"
@@ -139,7 +145,7 @@ class Upsell2 extends React.PureComponent {
             <a href="javascript:void(0)" onClick={this.skipUpsell}>
               <img
                 src="/static/assets/images/upsell2/cut-icon.png"
-                alt=""
+                alt="cut-icon"
                 className="cut-icon"
                 width="15"
                 height="15"

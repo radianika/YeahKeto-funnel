@@ -84,7 +84,7 @@ class Footer extends PureComponent {
                     directed on the label. It should not be used if you are
                     pregnant or nursing. Consult with a physician before use if
                     you have a serious medical condition or use prescription
-                    medications. A Doctor&apos;s advice should be sought before
+                    medications. A {"Doctor's"} advice should be sought before
                     using this and any supplemental dietary product. All
                     trademarks and copyrights are property of their respective
                     owners and are not affiliated with nor do they endorse this

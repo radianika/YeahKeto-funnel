@@ -1359,18 +1359,12 @@ p.sub-list-content {
 }
 
 @media only screen and (max-width: 767px) {
-  .for-tab {
-    display: none;
-  }
-
-  .for-desk {
-    display: none;
-  }
-
   .for-mob {
     display: block;
   }
-
+  .mob-hide {
+    display: none;
+  }
   .container {
     width: 100%;
     padding: 0 10px;
@@ -1990,7 +1984,11 @@ input.ft-input:invalid {
   vertical-align: middle;
   margin-right: 5px;
 }
-
+.btn-payment-send {
+  background: transparent;
+  border: 0;
+  float: left;
+}
 .cards {
   margin: 20px 0;
   float: left;

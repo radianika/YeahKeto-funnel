@@ -1,7 +1,6 @@
 import React from 'react';
 import { PromoSession, Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
-import Link from 'next/link';
 import { getQueryString } from 'helpers';
 import { SatisfactionBox } from './SatisfactionBox';
 
@@ -30,7 +29,7 @@ class Upsell11Component extends React.PureComponent {
           <img
             src="/static/assets/images/up-prod-2.jpg"
             className="up-prod"
-            alt=""
+            alt="upsell-prod-2"
           />
           <div className="clearall" />
           <div className="price-box">
@@ -41,7 +40,7 @@ class Upsell11Component extends React.PureComponent {
                 src="/static/assets/images/arrow-left-upsell.png"
                 width="77"
                 height="33"
-                alt=""
+                alt="arrow-left-upsell"
                 className="arrow-left"
               />
               $87.00{' '}
@@ -49,7 +48,7 @@ class Upsell11Component extends React.PureComponent {
                 src="/static/assets/images/arrow-right.png"
                 width="77"
                 height="33"
-                alt=""
+                alt="arrow-right"
                 className="arrow-right"
               />
             </p>
@@ -59,7 +58,7 @@ class Upsell11Component extends React.PureComponent {
             <a href="javascript:void(0)" onClick={this.upgrade}>
               <img
                 src="/static/assets/images/ord-btn.png"
-                alt=""
+                alt="order-btn"
                 width="370"
                 height="71"
                 className="ord-btn pulse"
@@ -71,10 +70,10 @@ class Upsell11Component extends React.PureComponent {
                   src="/static/assets/images/cut-icon.png"
                   width="15"
                   height="15"
-                  alt=""
+                  alt="cut-icon"
                   className="cut-icon"
-                />{' '}
-                No, I don't want better results.
+                />
+                {"No, I don't want better results."}
               </a>
             </p>
           </div>

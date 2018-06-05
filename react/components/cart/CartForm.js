@@ -36,7 +36,7 @@ class CartForm extends React.PureComponent {
     super();
     this.state = {
       isSame: true,
-      tncAgreed: true,
+      tncAgreed: false,
       show_cvv_modal: false,
     };
   }
@@ -349,6 +349,7 @@ class CartForm extends React.PureComponent {
                   className="chkbx-chk"
                   checked={this.state.tncAgreed}
                   type="checkbox"
+                  required="true"
                   onChange={() =>
                     this.setState({ tncAgreed: !this.state.tncAgreed })
                   }
@@ -360,14 +361,17 @@ class CartForm extends React.PureComponent {
               </p>
               <div className="clearall" />
               <div className="frmelements btn-element">
-                <span onClick={props.handleSubmit}>
+                <button
+                  className="btn-payment-send"
+                  onSubmit={props.handleSubmit}
+                >
                   <img
                     alt="btn"
                     src="/static/assets/images/btn.png"
                     className="button-crt"
                     id="cart_submit"
                   />
-                </span>
+                </button>
               </div>
               <center>
                 <img
