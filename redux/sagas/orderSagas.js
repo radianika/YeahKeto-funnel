@@ -10,9 +10,7 @@ const getOrder = state => state.order.order;
 function* submitLeadsForm(action) {
   yield put(OrderActions.submitLeadsFormRequest());
   try {
-    const {
-      values, nextUrl, router, headers,
-    } = action.payload;
+    const { values, nextUrl, headers } = action.payload;
     const {
       firstName,
       lastName,
@@ -99,7 +97,7 @@ function* placeOrder(action) {
   yield put(OrderActions.placeOrderRequest());
   try {
     const {
-      values, pack, router, nextUrl, headers,
+      values, pack, nextUrl, headers,
     } = action.payload;
     let sessionId = '';
     if (typeof window !== 'undefined') {
@@ -154,7 +152,11 @@ function* placeOrder(action) {
       yield put(OrderActions.placeOrderSuccess({ order }));
       window.location.assign(`${nextUrl}?${queryString}`);
     } else {
-      yield put(OrderActions.placeOrderFailure());
+      yield put(
+        OrderActions.placeOrderFailure({
+          error: apiResponse.response.data.message,
+        }),
+      );
     }
   } catch (error) {
     yield put(OrderActions.placeOrderFailure({ error }));
@@ -164,9 +166,7 @@ function* placeOrder(action) {
 function* addUpsellToOrder(action) {
   yield put(OrderActions.addUpsellToOrderRequest());
   try {
-    const {
-      productId, sendTo, router, headers,
-    } = action.payload;
+    const { productId, sendTo, headers } = action.payload;
     let sessionId = '';
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
