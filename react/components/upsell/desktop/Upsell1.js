@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { PromoSession } from 'react/components/common';
 import { withRouter } from 'next/router';
 import { getQueryString } from 'helpers';
@@ -10,7 +9,7 @@ class Upsell1Component extends React.PureComponent {
     this.props.upgrade(213, '/promo/desktop/upsell-2');
   };
   skipUpsell = () => {
-    this.props.router.push(`/promo/desktop/upsell-1-1?${getQueryString()}`);
+    window.location.assign(`/promo/desktop/upsell-1-1?${getQueryString()}`);
   };
   scrollToTop = () => {
     window.scroll({
@@ -32,11 +31,11 @@ class Upsell1Component extends React.PureComponent {
         <div className="up-mid-box-right">
           <img
             src="/static/assets/images/up1-bottle.png"
-            alt=""
+            alt="upsell-1-bottle"
             className="up-product"
           />
           <img
-            alt=""
+            alt="upsell-arrow-1"
             src="/static/assets/images/up-arw1.png"
             style={{ position: 'absolute', left: '260px', top: '400px' }}
           />
@@ -52,20 +51,23 @@ class Upsell1Component extends React.PureComponent {
               <p className="price-box-txt3">
                 <img
                   src="/static/assets/images/arrow-left-upsell.png"
-                  alt=""
+                  alt="arrow-left-upsell"
                   className="arrow-left"
                   width="77"
                   height="33"
                 />
                 <span className="old-price">
-                  <img src="/static/assets/images/price-cut.png" alt="" />
+                  <img
+                    src="/static/assets/images/price-cut.png"
+                    alt="price-cut"
+                  />
                   $120/
                   <sup>ea</sup>
                 </span>{' '}
                 $77/<sup>ea</sup>{' '}
                 <img
                   src="/static/assets/images/arrow-right.png"
-                  alt=""
+                  alt="arrow-right"
                   className="arrow-right"
                   width="77"
                   height="33"
@@ -76,25 +78,23 @@ class Upsell1Component extends React.PureComponent {
               <a href="javascript:void(0)" onClick={this.upgrade}>
                 <img
                   src="/static/assets/images/ord-btn.png"
-                  alt=""
+                  alt="order-btn"
                   className="ord-btn pulse"
                   width="370"
                   height="71"
                 />
               </a>
               <p className="thanks-txt">
-                <Link href={`/promo/desktop/upsell-1-1?${getQueryString()}`}>
-                  <a href="">
-                    <img
-                      src="/static/assets/images/cut-icon.png"
-                      alt=""
-                      className="cut-icon"
-                      width="15"
-                      height="15"
-                    />{' '}
-                    No, I don't want better results.
-                  </a>
-                </Link>
+                <a href="javascript:void(0)" onClick={this.skipUpsell}>
+                  <img
+                    src="/static/assets/images/cut-icon.png"
+                    alt="cut-icon"
+                    className="cut-icon"
+                    width="15"
+                    height="15"
+                  />{' '}
+                  No, I don&apos;t want better results.
+                </a>
               </p>
             </div>
           </div>

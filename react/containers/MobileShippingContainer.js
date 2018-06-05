@@ -58,6 +58,8 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       name="firstName"
                       label="First Name*"
                       placeholder="First Name"
+                      autoCorrect="off"
+                      autoComplete="given-name"
                     />
                     <Field
                       containerClass="frmelmnts3"
@@ -65,22 +67,28 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       name="lastName"
                       label="Last Name*"
                       placeholder="Last Name*"
+                      autoCorrect="off"
+                      autoComplete="family-name"
                     />
                     <div className="clearfix" />
                     <Field
                       containerClass="frmelmnts2"
                       component={AddressField}
                       name="address"
-                      label="Adress Line 1*"
+                      label="Address Line 1*"
                       placeholder="Street and number, P.O. box, c/o."
                       changeField={this.props.change}
+                      autoCorrect="off"
+                      autoComplete="address-line1"
                     />
                     <Field
                       containerClass="frmelmnts2"
                       component={TextField}
                       name="address2"
-                      label="Adress Line 2"
+                      label="Address Line 2"
                       placeholder="Apartment, suite, unit, building, floor, etc."
+                      autoCorrect="off"
+                      autoComplete="address-line2"
                     />
                     <div className="clearfix" />
                     <Field
@@ -89,6 +97,8 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       name="city"
                       label="City*"
                       placeholder="Your City"
+                      autoCorrect="off"
+                      autoComplete="address-level2"
                     />
                     <div className="clearfix" />
                     <Field
@@ -98,7 +108,9 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       label="Zip Code*"
                       placeholder="Zip Code"
                       normalize={normalizePostalCode}
-                      type="tel"
+                      inputMode="numeric"
+                      autoCorrect="off"
+                      autoComplete="postal-code"
                     />
                     <Field
                       inputStyle={{ width: '99%' }}
@@ -118,6 +130,8 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       placeholder="Example: (123) 555-6789"
                       normalize={normalizePhone}
                       type="tel"
+                      autoCorrect="off"
+                      autoComplete="tel"
                     />
                     <Field
                       containerClass="frmelmnts3"
@@ -126,6 +140,9 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       label="Email*"
                       placeholder="Example: email@somewhere.com"
                       type="email"
+                      autoCapitalize="off"
+                      autoCorrect="off"
+                      autoComplete="email"
                     />
                   </div>
                   <div className="clearfix" />

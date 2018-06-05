@@ -278,15 +278,13 @@ class RecommendedProducts extends PureComponent {
                   <p className="prd-txt4 comn-txt">
                     {recommendedProduct.description}
                   </p>
-                  <Link href={recommendedProduct.link}>
-                    <a>
-                      <img
-                        src="/static/assets/images/btn.png"
-                        className="btn"
-                        alt=""
-                      />
-                    </a>
-                  </Link>
+                  <a href={recommendedProduct.link}>
+                    <img
+                      src="/static/assets/images/btn.png"
+                      className="btn"
+                      alt=""
+                    />
+                  </a>
                 </div>
               </li>
             );

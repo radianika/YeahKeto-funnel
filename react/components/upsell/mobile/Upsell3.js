@@ -9,7 +9,7 @@ class Upsell3 extends React.PureComponent {
     this.props.upgrade(214, '/promo/mobile/thankyou');
   };
   render() {
-    const { orderId } = this.props.url.query;
+    const { orderId } = this.props.query;
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage3" />

@@ -76,7 +76,7 @@ class Faq extends React.PureComponent {
                 Our cannabidiol is extracted from hemp, which is its most
                 abundant component. A major benefit of CBD is that it offers
                 numerous benefits and is safe to consume without causing the
-                &apos;high&apos; effect.
+                {"'high'"} effect.
               </p>
             </SingleCollapsible>
             <SingleCollapsible

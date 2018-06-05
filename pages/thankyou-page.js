@@ -1,14 +1,15 @@
 import React from 'react';
 import Head from 'next/head';
+import { connect } from 'react-redux';
 import { PromoSession } from 'react/components/common';
 import { ThankyouDesktop, ThankyouMobile } from 'react/containers';
-import { withReduxSaga } from 'redux/store';
 import { AuthActions, OrderActions } from 'redux/actions';
 
 class Thankyou extends React.PureComponent {
-  static async getInitialProps({
-    req, store, isServer, query,
-  }) {
+  static async getInitialProps(props) {
+    const {
+      store, isServer, query, req,
+    } = props.ctx;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
@@ -29,7 +30,7 @@ class Thankyou extends React.PureComponent {
 
   render() {
     const { props } = this;
-    const { device, isPromo } = props.url.query;
+    const { device, isPromo } = props.query;
     return (
       <React.Fragment>
         <Head>
@@ -64,4 +65,4 @@ class Thankyou extends React.PureComponent {
   }
 }
 
-export default withReduxSaga(Thankyou);
+export default connect()(Thankyou);

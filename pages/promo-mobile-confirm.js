@@ -1,14 +1,15 @@
 import React from 'react';
 import Head from 'next/head';
 import { MobileConfirmContainer } from 'react/containers';
-import { withReduxSaga } from 'redux/store';
+import { connect } from 'react-redux';
 import { AuthActions, OrderActions } from 'redux/actions';
 import { PromoSession } from 'react/components/common';
 
 class Confirm extends React.PureComponent {
-  static async getInitialProps({
-    req, store, isServer, query,
-  }) {
+  static async getInitialProps(props) {
+    const {
+      store, isServer, query, req,
+    } = props.ctx;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
@@ -70,4 +71,4 @@ class Confirm extends React.PureComponent {
   }
 }
 
-export default withReduxSaga(Confirm);
+export default connect()(Confirm);

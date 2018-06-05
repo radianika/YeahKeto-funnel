@@ -1,24 +1,15 @@
 import React from 'react';
 import { PromoSession, Footer } from 'react/components/common';
 import { getQueryString } from 'helpers';
-import { Carousel } from './Carousel';
-import { SatisfactionBox } from './SatisfactionBox';
-import { Shortage } from '../Shortage';
-import { UpsellFooter } from '../UpsellFooter';
-import Link from 'next/link';
 
 class Upsell21 extends React.PureComponent {
-  upgrade = productId => {
+  upgrade = () => {
     this.props.upgrade(215, '/promo/mobile/thankyou');
   };
-  scrollToTop = () => {
-    window.scroll({
-      top: 0,
-      behavior: 'smooth',
-    });
+  skipUpsell = () => {
+    window.location.assign(`/promo/mobile/thankyou?${getQueryString()}`);
   };
   render() {
-    const { orderId } = this.props.url.query;
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage2" />
@@ -37,6 +28,7 @@ class Upsell21 extends React.PureComponent {
           <img
             src="/static/assets/images/upsell2-mobile/up-prod4.jpg"
             className="up-prod"
+            alt="upsell-prod"
           />
           <div className="clearall" />
           <div className="price-box">
@@ -44,17 +36,17 @@ class Upsell21 extends React.PureComponent {
             <p className="price-box-txt2">Save 30% Today</p>
             <p className="price-box-txt3">
               <img
-                src="images/arrow-left.png"
+                src="/static/assets/images/upsell2-mobile/arrow-left.png"
                 width="77"
                 height="33"
-                alt=""
+                alt="arrow-left"
                 className="arrow-left"
               />$97.00{' '}
               <img
-                src="images/arrow-right.png"
+                src="/static/assets/images/upsell2-mobile/arrow-right.png"
                 width="77"
                 height="33"
-                alt=""
+                alt="arrow-right"
                 className="arrow-right"
               />
             </p>
@@ -64,25 +56,23 @@ class Upsell21 extends React.PureComponent {
             <a href="javascript:void(0)" onClick={this.upgrade}>
               <img
                 src="/static/assets/images/ord-btn.png"
-                alt=""
+                alt="order-btn"
                 width="370"
                 height="71"
                 className="ord-btn pulse"
               />
             </a>
             <p className="thanks-txt">
-              <Link href={`/promo/mobile/thankyou?${getQueryString()}`}>
-                <a>
-                  <img
-                    src="/static/assets/images/cut-icon.png"
-                    width="15"
-                    height="15"
-                    alt=""
-                    className="cut-icon"
-                  />{' '}
-                  No, I don't want better results.
-                </a>
-              </Link>
+              <a href="javascript:void(0)" onClick={this.skipUpsell}>
+                <img
+                  src="/static/assets/images/cut-icon.png"
+                  width="15"
+                  height="15"
+                  alt="cut-icon"
+                  className="cut-icon"
+                />
+                {"No, I don't want better results."}
+              </a>
             </p>
           </div>
 
@@ -93,7 +83,10 @@ class Upsell21 extends React.PureComponent {
           <div className="clearall" />
 
           <div className="up-bottom-box">
-            <img src="/static/assets/images/upsell2-mobile/up1-img1.png" />
+            <img
+              src="/static/assets/images/upsell2-mobile/up1-img1.png"
+              alt="upsell-img-1"
+            />
             <p className="box-txt1">FULL SPECTRUM FORMULA</p>
             <p className="box-txt2">
               CBD Warming Balm is INFUSED with highly a concentrated CBD which
@@ -103,7 +96,10 @@ class Upsell21 extends React.PureComponent {
           </div>
 
           <div className="up-bottom-box">
-            <img src="/static/assets/images/upsell2-mobile/up2-img2.png" />
+            <img
+              src="/static/assets/images/upsell2-mobile/up2-img2.png"
+              alt="upsell-2-img-2"
+            />
             <p className="box-txt1">OFFERS ANTIOXIDANT SUPPORT</p>
             <p className="box-txt2">
               CBD Warming Balm works at a cellular level to combat free radical
@@ -113,11 +109,14 @@ class Upsell21 extends React.PureComponent {
           </div>
 
           <div className="up-bottom-box">
-            <img src="/static/assets/images/upsell2-mobile/up2-img3.png" />
+            <img
+              src="/static/assets/images/upsell2-mobile/up2-img3.png"
+              alt="upsell-2-img-3"
+            />
             <p className="box-txt1">INSTANTLY RELIEVES CHRONIC PAIN</p>
             <p className="box-txt2">
               Melt away muscle fatigue, pain, swelling, and discomfort with
-              American Science CBD WARMING BALM'S deep, penetrating warmth
+              American Science CBD WARMING {"BALM'S"} deep, penetrating warmth
               providing FAST relief that will amaze you.
             </p>
           </div>
@@ -126,25 +125,23 @@ class Upsell21 extends React.PureComponent {
             <a href="javascript:void(0)" onClick={this.upgrade}>
               <img
                 src="/static/assets/images/ord-btn.png"
-                alt=""
+                alt="order-btn"
                 width="370"
                 height="71"
                 className="ord-btn pulse"
               />
             </a>
             <p className="thanks-txt">
-              <Link href={`/promo/mobile/thankyou?${getQueryString()}`}>
-                <a>
-                  <img
-                    src="/static/assets/images/cut-icon.png"
-                    width="15"
-                    height="15"
-                    alt=""
-                    className="cut-icon"
-                  />{' '}
-                  No, I don't want better results.
-                </a>
-              </Link>
+              <a href="javascript:void(0)" onClick={this.skipUpsell}>
+                <img
+                  src="/static/assets/images/cut-icon.png"
+                  width="15"
+                  height="15"
+                  alt="cut-icon"
+                  className="cut-icon"
+                />
+                {"No, I don't want better results."}
+              </a>
             </p>
           </div>
         </div>

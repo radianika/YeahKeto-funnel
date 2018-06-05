@@ -183,6 +183,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         name="firstName"
                         label="First Name"
                         placeholder="First Name"
+                        autoCorrect="off"
+                        autoComplete="given-name"
                       />
                       <Field
                         containerClass="frmelmnts3"
@@ -190,6 +192,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         name="lastName"
                         label="Last Name"
                         placeholder="Last Name"
+                        autoCorrect="off"
+                        autoComplete="family-name"
                       />
                       <div className="clearfix" />
                       <Field
@@ -199,13 +203,17 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         label="Address Line 1"
                         placeholder="Street and number, P.O. box, c/o."
                         changeField={this.props.change}
+                        autoCorrect="off"
+                        autoComplete="address-line1"
                       />
                       <Field
                         containerClass="frmelmnts2"
                         component={TextField}
                         name="address2"
-                        label="Adress Line 2"
+                        label="Address Line 2"
                         placeholder="Apartment, suite, unit, building, floor, etc."
+                        autoCorrect="off"
+                        autoComplete="address-line2"
                       />
                       <div className="clearfix" />
                       <Field
@@ -214,6 +222,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         name="city"
                         label="City"
                         placeholder="Your City"
+                        autoCorrect="off"
+                        autoComplete="address-level2"
                       />
                       <div className="clearfix" />
                       <Field
@@ -223,6 +233,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         label="Zip Code"
                         placeholder="Zip Code"
                         normalize={normalizePostalCode}
+                        inputMode="numeric"
+                        autoCorrect="off"
+                        autoComplete="postal-code"
                       />
                       <Field
                         containerClass="frmelmnts3"
@@ -241,6 +254,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         placeholder="Example: (123) 555-6789"
                         normalize={normalizePhone}
                         type="tel"
+                        autoCorrect="off"
+                        autoComplete="tel"
                       />
                       <Field
                         containerClass="frmelmnts3"
@@ -249,6 +264,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         label="Email"
                         placeholder="Example: email@somewhere.com"
                         type="email"
+                        autoCapitalize="off"
+                        autoCorrect="off"
+                        autoComplete="email"
                       />
                     </div>
                   )}
@@ -263,10 +281,10 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                       className="creditcard"
                       placeholder="•••• •••• •••• ••••"
                       label="Card No"
-                      type="tel"
+                      normalize={normalizeCardNumber}
+                      inputMode="numeric"
                       autoComplete="cc-number"
                       autoCorrect="off"
-                      normalize={normalizeCardNumber}
                     />
                     <div className="clearfix" />
                     <Field
@@ -289,11 +307,10 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                             </label>
                             <input
                               {...props.input}
-                              inputMode="numeric"
                               className="short"
+                              inputMode="numeric"
                               autoCorrect="off"
                               autoComplete="cc-csc"
-                              type="tel"
                             />
                             <img
                               src="/static/promo/mobile/images/cvv.png"
@@ -362,7 +379,7 @@ const MobileConfirmContainerPage = reduxForm({
 })(withRouter(MobileConfirmContainerComponent));
 
 function mapStateToProps(reduxState, ownProps) {
-  const { productId } = ownProps.url.query;
+  const { productId } = ownProps.query;
   const pack = packages.find(p => String(p.id) === String(productId));
   const {
     orderId,

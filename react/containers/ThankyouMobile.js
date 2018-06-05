@@ -16,7 +16,11 @@ class ThankyouMobileComponent extends React.PureComponent {
     return (
       <div className="contentWrap">
         <div className="header position">
-          <img src="/static/mobile/images/logo.png" alt="" className="logo" />
+          <img
+            src="/static/mobile/images/logo.png"
+            alt="logo"
+            className="logo"
+          />
         </div>
         <div className="thank-mid">
           <p className="thank-txt1">Congratulations! </p>
@@ -79,7 +83,7 @@ class ThankyouMobileComponent extends React.PureComponent {
                   <div key={item.productId} className="prod-row">
                     <div className="prod-data ty">
                       <div className="prod-shoot">
-                        <img src={getTyProductImage(item)} alt="" />
+                        <img src={getTyProductImage(item)} alt="prod-shoot" />
                       </div>
                       <p className="prod-name">
                         American Science CBD

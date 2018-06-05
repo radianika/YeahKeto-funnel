@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { ProductsContainer } from 'react/containers';
-import { withReduxSaga } from 'redux/store';
+import { connect } from 'react-redux';
 
 class Products extends React.PureComponent {
   render() {
@@ -72,4 +72,4 @@ class Products extends React.PureComponent {
   }
 }
 
-export default withReduxSaga(Products);
+export default connect()(Products);

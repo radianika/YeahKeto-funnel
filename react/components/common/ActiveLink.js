@@ -1,7 +1,9 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 
-const Link = ({ children, router, href }) => {
+const Link = ({
+  children, router, href, as,
+}) => {
   const className = router.pathname === href ? 'active' : '';
 
   const handleClick = e => {
@@ -10,7 +12,7 @@ const Link = ({ children, router, href }) => {
   };
 
   return (
-    <a href={href} onClick={handleClick} className={className}>
+    <a href={href} as={as} onClick={handleClick} className={className}>
       {children}
     </a>
   );

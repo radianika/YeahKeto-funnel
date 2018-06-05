@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { PromoSession } from 'react/components/common';
 import { withRouter } from 'next/router';
 import { getQueryString } from 'helpers';
@@ -10,7 +9,7 @@ class Upsell11Component extends React.PureComponent {
     this.props.upgrade(212, '/promo/desktop/upsell-2');
   };
   skipUpsell = () => {
-    this.props.router.push(`/promo/desktop/upsell-2?${getQueryString()}`);
+    window.location.assign(`/promo/desktop/upsell-2?${getQueryString()}`);
   };
   scrollToTop = () => {
     window.scroll({
@@ -32,11 +31,11 @@ class Upsell11Component extends React.PureComponent {
         <div className="up-mid-box-right">
           <img
             src="/static/assets/images/capsule-single-botle.png"
-            alt=""
+            alt="capsule-single-bottle"
             className="up-product-2"
           />
           <img
-            alt=""
+            alt="up-arrow-1"
             src="/static/assets/images/up-arw1.png"
             style={{ position: 'absolute', left: '260px', top: '400px' }}
           />
@@ -50,7 +49,7 @@ class Upsell11Component extends React.PureComponent {
               <p className="price-box-txt3">
                 <img
                   src="/static/assets/images/arrow-left-upsell.png"
-                  alt=""
+                  alt="arrow-left-upsell"
                   className="arrow-left"
                   width="77"
                   height="33"
@@ -58,7 +57,7 @@ class Upsell11Component extends React.PureComponent {
                 $87.00{' '}
                 <img
                   src="/static/assets/images/arrow-right.png"
-                  alt=""
+                  alt="arrow-right"
                   className="arrow-right"
                   width="77"
                   height="33"
@@ -69,25 +68,23 @@ class Upsell11Component extends React.PureComponent {
               <a href="javascript:void(0)" onClick={this.upgrade}>
                 <img
                   src="/static/assets/images/ord-btn.png"
-                  alt=""
+                  alt="order-btn"
                   className="ord-btn pulse"
                   width="370"
                   height="71"
                 />
               </a>
               <p className="thanks-txt">
-                <Link href={`/promo/desktop/upsell-2?${getQueryString()}`}>
-                  <a href="">
-                    <img
-                      src="/static/assets/images/cut-icon.png"
-                      alt=""
-                      className="cut-icon"
-                      width="15"
-                      height="15"
-                    />{' '}
-                    No, I don't want better results.
-                  </a>
-                </Link>
+                <a href="javascript:void(0)" onClick={this.skipUpsell}>
+                  <img
+                    src="/static/assets/images/cut-icon.png"
+                    alt="cut-icon"
+                    className="cut-icon"
+                    width="15"
+                    height="15"
+                  />
+                  {"No, I don't want better results."}
+                </a>
               </p>
             </div>
           </div>
