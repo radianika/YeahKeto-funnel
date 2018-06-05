@@ -75,7 +75,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       containerClass="frmelmnts2"
                       component={AddressField}
                       name="address"
-                      label="Adress Line 1*"
+                      label="Address Line 1*"
                       placeholder="Street and number, P.O. box, c/o."
                       changeField={this.props.change}
                       autoCorrect="off"
@@ -85,7 +85,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       containerClass="frmelmnts2"
                       component={TextField}
                       name="address2"
-                      label="Adress Line 2"
+                      label="Address Line 2"
                       placeholder="Apartment, suite, unit, building, floor, etc."
                       autoCorrect="off"
                       autoComplete="address-line2"
