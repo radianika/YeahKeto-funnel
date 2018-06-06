@@ -67,7 +67,7 @@ function* submitLeadsForm(action) {
 function* getOrderDetails(action) {
   yield put(OrderActions.getOrderDetailsRequest());
   try {
-    const { orderId, headers } = action.payload;
+    const { headers } = action.payload;
     let sessionId = '';
     let kSessionId = '';
 
@@ -87,7 +87,7 @@ function* getOrderDetails(action) {
       'k-session-id': kSessionId,
     });
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
-      const order = apiResponse.response.data.data.data[0];
+      const order = apiResponse.response.data.data;
       yield put(OrderActions.getOrderDetailsSuccess({ order }));
     } else {
       yield put(OrderActions.getOrderDetailsFailure());
@@ -148,7 +148,7 @@ function* placeOrder(action) {
         postalCode,
       },
     };
-    const queryString = getQueryString();
+    const queryString = `&orderId=${orderId}`;
     const apiResponse = yield post(
       '/v1/konnektive/order',
       { ...payload, tracking_vars: parseQuery(queryString) },
