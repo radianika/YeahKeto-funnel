@@ -70,7 +70,7 @@ class SelectPackage extends React.PureComponent {
             href="/static/assets/css/mb-sprites-style.css"
           />
         </Head>
-        {this.props.order && <MobileSelectPackageContainer {...this.props} />}
+        <MobileSelectPackageContainer {...this.props} />
       </React.Fragment>
     );
   }

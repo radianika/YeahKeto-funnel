@@ -14,17 +14,6 @@ class Thankyou extends React.PureComponent {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
-
-      // if (query.orderId) {
-      //   store.dispatch(
-      //     OrderActions.getOrderDetails({
-      //       orderId: query.orderId,
-      //       headers: {
-      //         'x-ascbd-req-origin': req.get('host'),
-      //       },
-      //     }),
-      //   );
-      // }
     }
   }
 

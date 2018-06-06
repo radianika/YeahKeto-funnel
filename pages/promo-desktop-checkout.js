@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { PromoCheckoutContainer } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
 import { PromoSession } from 'react/components/common';
+import idx from 'idx';
 
 class Promo extends React.PureComponent {
   static async getInitialProps(props) {
@@ -14,17 +15,6 @@ class Promo extends React.PureComponent {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
-
-      // if (query.orderId) {
-      //   store.dispatch(
-      //     OrderActions.getOrderDetails({
-      //       orderId: query.orderId,
-      //       headers: {
-      //         'x-ascbd-req-origin': req.get('host'),
-      //       },
-      //     }),
-      //   );
-      // }
     }
   }
 
@@ -72,14 +62,14 @@ class Promo extends React.PureComponent {
           />
         </Head>
         <PromoSession pageType="checkoutPage" />
-        {this.props.order && <PromoCheckoutContainer />}
+        <PromoCheckoutContainer />
       </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = reduxState => ({
-  order: reduxState.order.order,
+  order: idx(reduxState, _ => _.order.order),
 });
 
 export default connect(mapStateToProps, { ...OrderActions })(Promo);

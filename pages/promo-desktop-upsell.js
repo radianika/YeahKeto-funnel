@@ -13,17 +13,6 @@ class SelectPackage extends React.PureComponent {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
-
-      // if (query.orderId) {
-      //   store.dispatch(
-      //     OrderActions.getOrderDetails({
-      //       orderId: query.orderId,
-      //       headers: {
-      //         "x-ascbd-req-origin": req.get("host")
-      //       }
-      //     })
-      //   );
-      // }
     }
   }
 
@@ -60,7 +49,7 @@ class SelectPackage extends React.PureComponent {
           />
           <link href="/static/desktop/css/checkout.css" rel="stylesheet" />
         </Head>
-        {this.props.order && <UpsellDesktopContainer {...props} />}
+        <UpsellDesktopContainer {...props} />
       </React.Fragment>
     );
   }

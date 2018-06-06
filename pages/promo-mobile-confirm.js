@@ -78,7 +78,7 @@ class Confirm extends React.PureComponent {
           />
         </Head>
         <PromoSession pageType="checkoutPage" />
-        {this.props.order && <MobileConfirmContainer {...props} />}
+        <MobileConfirmContainer {...props} />
       </React.Fragment>
     );
   }
