@@ -55,9 +55,7 @@ function* submitLeadsForm(action) {
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const { lead } = apiResponse.response.data.data;
       yield put(OrderActions.submitLeadsFormSuccess({ lead }));
-      window.location.assign(
-        `${nextUrl}?${queryString}&orderId=${lead.orderId}`,
-      );
+      window.location.assign(`${nextUrl}?${queryString}`);
     } else {
       yield put(OrderActions.submitLeadsFormFailure());
     }
@@ -84,11 +82,10 @@ function* getOrderDetails(action) {
     } else {
       sessionId = yield select(getSession);
     }
-    const apiResponse = yield get(
-      `/v1/konnektive/order/${orderId}`,
-      sessionId,
-      { ...headers, 'k-session-id': kSessionId },
-    );
+    const apiResponse = yield get('/v1/konnektive/order/', sessionId, {
+      ...headers,
+      'k-session-id': kSessionId,
+    });
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data.data[0];
       yield put(OrderActions.getOrderDetailsSuccess({ order }));

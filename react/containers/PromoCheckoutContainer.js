@@ -17,6 +17,7 @@ class PromoCheckout extends React.PureComponent {
 
   submitBillingForm = values => {
     if (values.same === 'Yes') {
+      values.orderId = this.props.order.orderId;
       values.address = this.props.initialValues.address;
       values.address2 = this.props.initialValues.address2;
       values.city = this.props.initialValues.city;

@@ -185,12 +185,12 @@ app.prepare().then(() => {
     try {
       const sessionId = await getSessionId(req, res);
       const { orderId } = req.query;
-      redirectToPromo(orderId, req, res, () => {
+      // redirectToPromo(orderId, req, res, () => {
         app.render(req, res, '/promo-desktop-checkout', {
           orderId,
           sessionId,
         });
-      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);

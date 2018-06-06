@@ -19,15 +19,15 @@ class Promo extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { query } = this.props;
-    if (query.orderId) {
-      this.props.getOrderDetails({
-        orderId: query.orderId,
-        headers: {
-          'x-ascbd-req-origin': window.location.hostname,
-        },
-      });
-    }
+    // const { query } = this.props;
+    // if (query.orderId) {
+    this.props.getOrderDetails({
+      // orderId: query.orderId,
+      headers: {
+        'x-ascbd-req-origin': window.location.hostname,
+      },
+    });
+    // }
   }
 
   render() {
