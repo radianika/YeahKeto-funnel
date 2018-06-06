@@ -19,9 +19,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
     });
   };
   render() {
-    const {
-      upsell, offerId, transaction_id, adv_sub,
-    } = this.props.query;
+    const { upsell, offerId, adv_sub } = this.props.query;
     return (
       <div id="container">
         {upsell === 1 &&
@@ -40,7 +38,9 @@ class UpsellMobileContainerComponent extends React.PureComponent {
           visible={this.props.submitStatus === 'success'}
           message="Order updated successfully."
         />
-        <img src="/static/mobile/images/logo.png" alt="" className="logo" />
+        <a href="/">
+          <img src="/static/mobile/images/logo.png" alt="" className="logo" />
+        </a>
         {upsell === 1 && <Upsell1 upgrade={this.upgrade} {...this.props} />}
         {upsell === '1-1' && (
           <Upsell11 upgrade={this.upgrade} {...this.props} />

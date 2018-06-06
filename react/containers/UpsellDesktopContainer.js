@@ -20,9 +20,7 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
   };
 
   render() {
-    const {
-      upsell, offerId, transaction_id, adv_sub,
-    } = this.props.query;
+    const { upsell, offerId, adv_sub } = this.props.query;
     return (
       <React.Fragment>
         {upsell === 1 &&
@@ -40,11 +38,13 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
         <div className="container">
           <div className="upsell-box">
             <div className="up-header">
-              <img
-                src="/static/desktop/images/logo.png"
-                alt=""
-                className="upsell-logo"
-              />
+              <a href="/">
+                <img
+                  src="/static/desktop/images/logo.png"
+                  alt=""
+                  className="upsell-logo"
+                />
+              </a>
               <img
                 src="/static/desktop/images/step.png"
                 alt=""
