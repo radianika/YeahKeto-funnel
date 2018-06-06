@@ -15,16 +15,28 @@ class Promo extends React.PureComponent {
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
 
-      if (query.orderId) {
-        store.dispatch(
-          OrderActions.getOrderDetails({
-            orderId: query.orderId,
-            headers: {
-              'x-ascbd-req-origin': req.get('host'),
-            },
-          }),
-        );
-      }
+      // if (query.orderId) {
+      //   store.dispatch(
+      //     OrderActions.getOrderDetails({
+      //       orderId: query.orderId,
+      //       headers: {
+      //         'x-ascbd-req-origin': req.get('host'),
+      //       },
+      //     }),
+      //   );
+      // }
+    }
+  }
+
+  componentDidMount() {
+    const { query } = this.props;
+    if (query.orderId) {
+      this.props.getOrderDetails({
+        orderId: query.orderId,
+        headers: {
+          'x-ascbd-req-origin': window.location.hostname,
+        },
+      });
     }
   }
 
@@ -60,10 +72,14 @@ class Promo extends React.PureComponent {
           />
         </Head>
         <PromoSession pageType="checkoutPage" />
-        <PromoCheckoutContainer />
+        {this.props.order && <PromoCheckoutContainer />}
       </React.Fragment>
     );
   }
 }
 
-export default connect()(Promo);
+const mapStateToProps = reduxState => ({
+  order: reduxState.order.order,
+});
+
+export default connect(mapStateToProps, { ...OrderActions })(Promo);

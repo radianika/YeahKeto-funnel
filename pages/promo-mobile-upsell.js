@@ -14,18 +14,31 @@ class SelectPackage extends React.PureComponent {
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
 
-      if (query.orderId) {
-        store.dispatch(
-          OrderActions.getOrderDetails({
-            orderId: query.orderId,
-            headers: {
-              'x-ascbd-req-origin': req.get('host'),
-            },
-          }),
-        );
-      }
+      // if (query.orderId) {
+      //   store.dispatch(
+      //     OrderActions.getOrderDetails({
+      //       orderId: query.orderId,
+      //       headers: {
+      //         'x-ascbd-req-origin': req.get('host'),
+      //       },
+      //     }),
+      //   );
+      // }
     }
   }
+
+  componentDidMount() {
+    const { query } = this.props;
+    if (query.orderId) {
+      this.props.getOrderDetails({
+        orderId: query.orderId,
+        headers: {
+          'x-ascbd-req-origin': window.location.hostname,
+        },
+      });
+    }
+  }
+
   render() {
     const { props } = this;
     return (
@@ -44,10 +57,14 @@ class SelectPackage extends React.PureComponent {
           <link href="/static/mobile/css/upsell.css" rel="stylesheet" />
           {/* <link rel="stylesheet" type="text/css" href="/static/assets/css/mb-style.css" /> */}
         </Head>
-        <UpsellMobileContainer {...props} />
+        {this.props.order && <UpsellMobileContainer {...props} />}
       </React.Fragment>
     );
   }
 }
 
-export default connect()(SelectPackage);
+const mapStateToProps = reduxState => ({
+  order: reduxState.order.order,
+});
+
+export default connect(mapStateToProps, { ...OrderActions })(SelectPackage);

@@ -14,18 +14,31 @@ class SelectPackage extends React.PureComponent {
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
 
-      if (query.orderId) {
-        store.dispatch(
-          OrderActions.getOrderDetails({
-            orderId: query.orderId,
-            headers: {
-              'x-ascbd-req-origin': req.get('host'),
-            },
-          }),
-        );
-      }
+      // if (query.orderId) {
+      //   store.dispatch(
+      //     OrderActions.getOrderDetails({
+      //       orderId: query.orderId,
+      //       headers: {
+      //         "x-ascbd-req-origin": req.get("host")
+      //       }
+      //     })
+      //   );
+      // }
     }
   }
+
+  componentDidMount() {
+    const { query } = this.props;
+    if (query.orderId) {
+      this.props.getOrderDetails({
+        orderId: query.orderId,
+        headers: {
+          'x-ascbd-req-origin': window.location.hostname,
+        },
+      });
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -57,10 +70,14 @@ class SelectPackage extends React.PureComponent {
             href="/static/assets/css/mb-sprites-style.css"
           />
         </Head>
-        <MobileSelectPackageContainer {...this.props} />
+        {this.props.order && <MobileSelectPackageContainer {...this.props} />}
       </React.Fragment>
     );
   }
 }
 
-export default connect()(SelectPackage);
+const mapStateToProps = reduxState => ({
+  order: reduxState.order.order,
+});
+
+export default connect(mapStateToProps, { ...OrderActions })(SelectPackage);

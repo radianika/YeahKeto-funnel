@@ -30,8 +30,11 @@ function* submitLeadsForm(action) {
       postalCode,
     };
     let sessionId = '';
+    let kSessionId = '';
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
+      kSessionId = yield getCookie('ascbd_promo_session');
+
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
       }
@@ -47,7 +50,7 @@ function* submitLeadsForm(action) {
         tracking_vars: parseQuery(queryString),
       },
       sessionId,
-      headers,
+      { ...headers, 'k-session-id': kSessionId },
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const { lead } = apiResponse.response.data.data;
@@ -68,8 +71,12 @@ function* getOrderDetails(action) {
   try {
     const { orderId, headers } = action.payload;
     let sessionId = '';
+    let kSessionId = '';
+
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
+      kSessionId = yield getCookie('ascbd_promo_session');
+
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
         return;
@@ -80,7 +87,7 @@ function* getOrderDetails(action) {
     const apiResponse = yield get(
       `/v1/konnektive/order/${orderId}`,
       sessionId,
-      headers,
+      { ...headers, 'k-session-id': kSessionId },
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data.data[0];
@@ -100,8 +107,12 @@ function* placeOrder(action) {
       values, pack, nextUrl, headers,
     } = action.payload;
     let sessionId = '';
+    let kSessionId = '';
+
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
+      kSessionId = yield getCookie('ascbd_promo_session');
+
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
         return;
@@ -145,7 +156,7 @@ function* placeOrder(action) {
       '/v1/konnektive/order',
       { ...payload, tracking_vars: parseQuery(queryString) },
       sessionId,
-      headers,
+      { ...headers, 'k-session-id': kSessionId },
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data;
@@ -168,8 +179,12 @@ function* addUpsellToOrder(action) {
   try {
     const { productId, sendTo, headers } = action.payload;
     let sessionId = '';
+    let kSessionId = '';
+
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
+      kSessionId = yield getCookie('ascbd_promo_session');
+
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
         return;
@@ -187,7 +202,7 @@ function* addUpsellToOrder(action) {
       '/v1/konnektive/upsale',
       payload,
       sessionId,
-      headers,
+      { ...headers, 'k-session-id': kSessionId },
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const newOrder = apiResponse.response.data.data;
