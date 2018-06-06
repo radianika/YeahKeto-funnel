@@ -67,7 +67,7 @@ function* submitLeadsForm(action) {
 function* getOrderDetails(action) {
   yield put(OrderActions.getOrderDetailsRequest());
   try {
-    const { headers } = action.payload;
+    const { headers, orderId } = action.payload;
     let sessionId = '';
     let kSessionId = '';
 
@@ -82,7 +82,10 @@ function* getOrderDetails(action) {
     } else {
       sessionId = yield select(getSession);
     }
-    const apiResponse = yield get('/v1/konnektive/order/', sessionId, {
+    const url = orderId
+      ? `/v1/konnektive/order/${orderId}`
+      : '/v1/konnektive/order/';
+    const apiResponse = yield get(url, sessionId, {
       ...headers,
       'k-session-id': kSessionId,
     });
