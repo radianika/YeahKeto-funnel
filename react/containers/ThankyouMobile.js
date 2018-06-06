@@ -16,11 +16,13 @@ class ThankyouMobileComponent extends React.PureComponent {
     return (
       <div className="contentWrap">
         <div className="header position">
-          <img
-            src="/static/mobile/images/logo.png"
-            alt="logo"
-            className="logo"
-          />
+          <a href="/">
+            <img
+              src="/static/mobile/images/logo.png"
+              alt="logo"
+              className="logo"
+            />
+          </a>
         </div>
         <div className="thank-mid">
           <p className="thank-txt1">Congratulations! </p>

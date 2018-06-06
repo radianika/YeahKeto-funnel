@@ -17,11 +17,13 @@ class ThankyouDesktopComponent extends React.PureComponent {
       <div className="container">
         <div className="contentWrap shadow">
           <div className="header position">
-            <img
-              src="/static/desktop/images/logo.png"
-              alt="logo"
-              className="logo"
-            />
+            <a href="/">
+              <img
+                src="/static/desktop/images/logo.png"
+                alt="logo"
+                className="logo"
+              />
+            </a>
             <img
               src="/static/desktop/images/step2.png"
               alt="step-2"
