@@ -22,22 +22,7 @@ class Confirm extends React.PureComponent {
         'x-ascbd-req-origin': window.location.hostname,
       },
     });
-    this.interval = setInterval(this.getOrderDetailsCall, 1000);
   }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
-  getOrderDetailsCall = () => {
-    if (this.props.getOrderDetailsStatus === 'failure') {
-      this.props.getOrderDetails({
-        headers: {
-          'x-ascbd-req-origin': window.location.hostname,
-        },
-      });
-    }
-  };
 
   render() {
     const { props } = this;
