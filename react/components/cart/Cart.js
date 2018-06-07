@@ -26,7 +26,7 @@ class Cart extends PureComponent {
       orderPayload[`${item.label}id`] = item.product.id;
       orderPayload[`${item.label}qty`] = item.quantity;
     });
-    values.order = { ...values.order, ...orderPayload };
+    values.order = { ...values.order, ...orderPayload, process_sync: true };
     this.props.submitLeadsForm({
       values,
       nextUrl: '/thankyou',
