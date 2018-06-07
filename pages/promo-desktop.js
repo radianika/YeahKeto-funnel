@@ -2,19 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Head from 'next/head';
 import { PromoDesktopContainer } from 'react/containers';
-import { AuthActions } from 'redux/actions';
-import { PromoSession } from 'react/components/common';
 
 class Promo extends React.PureComponent {
-  static async getInitialProps(props) {
-    const { store, isServer, query } = props.ctx;
-    if (isServer) {
-      store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
-      );
-    }
-  }
-
   render() {
     return (
       <React.Fragment>
@@ -57,7 +46,6 @@ class Promo extends React.PureComponent {
           />
           <script src="https://fast.wistia.net/assets/external/E-v1.js" async />
         </Head>
-        <PromoSession pageType="leadPage" />
         <PromoDesktopContainer />
       </React.Fragment>
     );
