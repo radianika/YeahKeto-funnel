@@ -14,18 +14,31 @@ class SelectPackage extends React.PureComponent {
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
 
-      if (query.orderId) {
-        store.dispatch(
-          OrderActions.getOrderDetails({
-            orderId: query.orderId,
-            headers: {
-              'x-ascbd-req-origin': req.get('host'),
-            },
-          }),
-        );
-      }
+      // if (query.orderId) {
+      //   store.dispatch(
+      //     OrderActions.getOrderDetails({
+      //       orderId: query.orderId,
+      //       headers: {
+      //         'x-ascbd-req-origin': req.get('host'),
+      //       },
+      //     }),
+      //   );
+      // }
     }
   }
+
+  componentDidMount() {
+    const { query } = this.props;
+    if (query.orderId) {
+      this.props.getOrderDetails({
+        orderId: query.orderId,
+        headers: {
+          'x-ascbd-req-origin': window.location.hostname,
+        },
+      });
+    }
+  }
+
   render() {
     const { props } = this;
     return (
@@ -50,4 +63,8 @@ class SelectPackage extends React.PureComponent {
   }
 }
 
-export default connect()(SelectPackage);
+const mapStateToProps = reduxState => ({
+  order: reduxState.order.order,
+});
+
+export default connect(mapStateToProps, { ...OrderActions })(SelectPackage);

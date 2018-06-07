@@ -15,6 +15,11 @@ export const submitLeadsFormFailure = createAction(SUBMIT_LEADS_FORM_FAILURE);
 export const GET_ORDER_DETAILS = 'GET_ORDER_DETAILS';
 export const getOrderDetails = createAction(GET_ORDER_DETAILS);
 
+export const GET_ORDER_DETAILS_ON_CHECKOUT = 'GET_ORDER_DETAILS_ON_CHECKOUT';
+export const getOrderDetailsOnCheckout = createAction(
+  GET_ORDER_DETAILS_ON_CHECKOUT,
+);
+
 export const GET_ORDER_DETAILS_REQUEST = 'GET_ORDER_DETAILS_REQUEST';
 export const getOrderDetailsRequest = createAction(GET_ORDER_DETAILS_REQUEST);
 

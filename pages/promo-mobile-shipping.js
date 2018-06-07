@@ -20,6 +20,7 @@ class Promo extends React.PureComponent {
       );
     }
   }
+
   render() {
     return (
       <React.Fragment>

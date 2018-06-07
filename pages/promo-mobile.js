@@ -2,20 +2,11 @@ import React from 'react';
 import Head from 'next/head';
 import { connect } from 'react-redux';
 import { PromoMobileContainer } from 'react/containers';
-import { AuthActions } from 'redux/actions';
 import { PromoSession, Spinner } from 'react/components/common';
+import { createNewSession } from 'redux/actions/authActions';
 import Router from 'next/router';
 
 class Promo extends React.PureComponent {
-  static async getInitialProps(props) {
-    const { store, isServer, query } = props.ctx;
-    if (isServer) {
-      store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
-      );
-    }
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -24,6 +15,7 @@ class Promo extends React.PureComponent {
   }
 
   componentDidMount() {
+    this.props.createNewSession();
     Router.onRouteChangeStart = () => {
       this.setState({ showSpinner: true });
     };
@@ -60,7 +52,7 @@ class Promo extends React.PureComponent {
             href="/static/assets/css/mb-sprites-style.css"
           />
         </Head>
-        <PromoSession pageType="leadPage" />
+        {this.props.sessionId && <PromoSession pageType="leadPage" />}
         <PromoMobileContainer />
         {this.state.showSpinner && <Spinner />}
       </React.Fragment>
@@ -68,4 +60,10 @@ class Promo extends React.PureComponent {
   }
 }
 
-export default connect()(Promo);
+function mapStateToProps(state) {
+  return {
+    sessionId: state.auth.sessionId,
+  };
+}
+
+export default connect(mapStateToProps, { createNewSession })(Promo);

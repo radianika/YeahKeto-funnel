@@ -14,17 +14,18 @@ class Thankyou extends React.PureComponent {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
+    }
+  }
 
-      if (query.orderId) {
-        store.dispatch(
-          OrderActions.getOrderDetails({
-            orderId: query.orderId,
-            headers: {
-              'x-ascbd-req-origin': req.get('host'),
-            },
-          }),
-        );
-      }
+  componentDidMount() {
+    const { query } = this.props;
+    if (query.orderId) {
+      this.props.getOrderDetails({
+        orderId: query.orderId,
+        headers: {
+          'x-ascbd-req-origin': window.location.hostname,
+        },
+      });
     }
   }
 
@@ -58,11 +59,17 @@ class Thankyou extends React.PureComponent {
           )}
         </Head>
         <PromoSession pageType="thankyouPage" />
-        {device === 'desktop' && <ThankyouDesktop isPromo={isPromo} />}
-        {device === 'mobile' && <ThankyouMobile isPromo={isPromo} />}
+        {device === 'desktop' &&
+          this.props.order && <ThankyouDesktop isPromo={isPromo} />}
+        {device === 'mobile' &&
+          this.props.order && <ThankyouMobile isPromo={isPromo} />}
       </React.Fragment>
     );
   }
 }
 
-export default connect()(Thankyou);
+const mapStateToProps = reduxState => ({
+  order: reduxState.order.order,
+});
+
+export default connect(mapStateToProps, { ...OrderActions })(Thankyou);

@@ -2,9 +2,10 @@ import React, { PureComponent } from 'react';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
+import { createNewSession } from 'redux/actions/authActions';
 import { ChooseProductsForm } from './ChooseProductsForm';
 import { CartFormContainer } from './CartForm';
-import { Spinner } from '../common';
+import { Spinner, PromoSession } from '../common';
 import { OrderActions } from '../../../redux/actions';
 
 class Cart extends PureComponent {
@@ -13,6 +14,10 @@ class Cart extends PureComponent {
     this.state = {
       products: {},
     };
+  }
+
+  componentDidMount() {
+    this.props.createNewSession();
   }
 
   submit = values => {
@@ -27,8 +32,10 @@ class Cart extends PureComponent {
       orderPayload[`${item.label}qty`] = item.quantity;
     });
     values.order = { ...values.order, ...orderPayload };
+    values.process_sync = 'true';
     this.props.submitLeadsForm({
       values,
+      cart: true,
       nextUrl: '/thankyou',
       router: this.props.router,
     });
@@ -118,6 +125,7 @@ class Cart extends PureComponent {
             </div>
           </div>
         </div>
+        {this.props.sessionId && <PromoSession pageType="leadPage" />}
         {this.props.submitStatus === 'submitting' && <Spinner />}
       </React.Fragment>
     );
@@ -130,8 +138,9 @@ function mapStateToProps(state) {
     submitStatus: state.order.submitLeadsFormStatus,
   };
 }
-const CartPage = connect(mapStateToProps, { ...OrderActions })(
-  withRouter(Cart),
-);
+const CartPage = connect(mapStateToProps, {
+  ...OrderActions,
+  createNewSession,
+})(withRouter(Cart));
 
 export { CartPage };

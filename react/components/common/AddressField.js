@@ -20,17 +20,19 @@ class AddressField extends React.PureComponent {
 
   fillInAddress = () => {
     const place = this.autocomplete.getPlace();
-    let city = place.address_components.find(
-      c => c.types.indexOf('locality') >= 0,
-    );
+    let city =
+      place.address_components &&
+      place.address_components.find(c => c.types.indexOf('locality') >= 0);
     city = idx(city, _ => _.long_name);
-    let state = place.address_components.find(
-      c => c.types.indexOf('administrative_area_level_1') >= 0,
-    );
+    let state =
+      place.address_components &&
+      place.address_components.find(
+        c => c.types.indexOf('administrative_area_level_1') >= 0,
+      );
     state = idx(state, _ => _.short_name);
-    let postalCode = place.address_components.find(
-      c => c.types.indexOf('postal_code') >= 0,
-    );
+    let postalCode =
+      place.address_components &&
+      place.address_components.find(c => c.types.indexOf('postal_code') >= 0);
     postalCode = idx(postalCode, _ => _.short_name);
     setImmediate(() => {
       this.props.changeField(
@@ -44,6 +46,7 @@ class AddressField extends React.PureComponent {
   };
 
   initialiseAutoComplete = () => {
+    const { google } = window;
     this.autocomplete = new google.maps.places.Autocomplete(
       this.autocompleteRef.current,
       {
@@ -53,12 +56,8 @@ class AddressField extends React.PureComponent {
     this.autocomplete.addListener('place_changed', this.fillInAddress);
   };
 
-  geolocate = prefix => {
-    if (prefix) {
-      scopePrefix = prefix;
-    } else {
-      scopePrefix = '';
-    }
+  geolocate = () => {
+    const { google } = window;
     if (window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(position => {
         const geolocation = {
@@ -101,7 +100,7 @@ class AddressField extends React.PureComponent {
             <div className="field">
               <div className="icon-box">
                 <center>
-                  <img src={props.icon} />
+                  <img src={props.icon} alt="" />
                 </center>
               </div>
               <input

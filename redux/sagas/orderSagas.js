@@ -10,7 +10,9 @@ const getOrder = state => state.order.order;
 function* submitLeadsForm(action) {
   yield put(OrderActions.submitLeadsFormRequest());
   try {
-    const { values, nextUrl, headers } = action.payload;
+    const {
+      values, nextUrl, headers, cart,
+    } = action.payload;
     const {
       firstName,
       lastName,
@@ -30,8 +32,11 @@ function* submitLeadsForm(action) {
       postalCode,
     };
     let sessionId = '';
+    let kSessionId = '';
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
+      kSessionId = yield getCookie('ascbd_promo_session');
+
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
       }
@@ -47,14 +52,15 @@ function* submitLeadsForm(action) {
         tracking_vars: parseQuery(queryString),
       },
       sessionId,
-      headers,
+      { ...headers, 'k-session-id': kSessionId },
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const { lead } = apiResponse.response.data.data;
+      const newQueryString = cart
+        ? `&orderId=${lead.orderId}${queryString}`
+        : queryString;
       yield put(OrderActions.submitLeadsFormSuccess({ lead }));
-      window.location.assign(
-        `${nextUrl}?${queryString}&orderId=${lead.orderId}`,
-      );
+      window.location.assign(`${nextUrl}?${newQueryString}`);
     } else {
       yield put(OrderActions.submitLeadsFormFailure());
     }
@@ -66,10 +72,14 @@ function* submitLeadsForm(action) {
 function* getOrderDetails(action) {
   yield put(OrderActions.getOrderDetailsRequest());
   try {
-    const { orderId, headers } = action.payload;
+    const { headers, orderId } = action.payload;
     let sessionId = '';
+    let kSessionId = '';
+
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
+      kSessionId = yield getCookie('ascbd_promo_session');
+
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
         return;
@@ -77,15 +87,24 @@ function* getOrderDetails(action) {
     } else {
       sessionId = yield select(getSession);
     }
-    const apiResponse = yield get(
-      `/v1/konnektive/order/${orderId}`,
-      sessionId,
-      headers,
-    );
+    const url = orderId
+      ? `/v1/konnektive/order/${orderId}`
+      : '/v1/konnektive/order/';
+    const apiResponse = yield get(url, sessionId, {
+      ...headers,
+      'k-session-id': kSessionId,
+    });
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data.data[0];
       yield put(OrderActions.getOrderDetailsSuccess({ order }));
     } else {
+      yield put(
+        OrderActions.getOrderDetails({
+          headers: {
+            'x-ascbd-req-origin': window.location.hostname,
+          },
+        }),
+      );
       yield put(OrderActions.getOrderDetailsFailure());
     }
   } catch (error) {
@@ -100,8 +119,12 @@ function* placeOrder(action) {
       values, pack, nextUrl, headers,
     } = action.payload;
     let sessionId = '';
+    let kSessionId = '';
+
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
+      kSessionId = yield getCookie('ascbd_promo_session');
+
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
         return;
@@ -140,12 +163,12 @@ function* placeOrder(action) {
         postalCode,
       },
     };
-    const queryString = getQueryString();
+    const queryString = `&orderId=${orderId}&${getQueryString()}`;
     const apiResponse = yield post(
       '/v1/konnektive/order',
       { ...payload, tracking_vars: parseQuery(queryString) },
       sessionId,
-      headers,
+      { ...headers, 'k-session-id': kSessionId },
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data;
@@ -168,8 +191,12 @@ function* addUpsellToOrder(action) {
   try {
     const { productId, sendTo, headers } = action.payload;
     let sessionId = '';
+    let kSessionId = '';
+
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
+      kSessionId = yield getCookie('ascbd_promo_session');
+
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
         return;
@@ -187,7 +214,7 @@ function* addUpsellToOrder(action) {
       '/v1/konnektive/upsale',
       payload,
       sessionId,
-      headers,
+      { ...headers, 'k-session-id': kSessionId },
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const newOrder = apiResponse.response.data.data;

@@ -157,38 +157,40 @@ const PromoCheckoutPaymentFormComponent = reduxForm({
 const selector = formValueSelector('BillingForm');
 
 function mapStateToProps(reduxState) {
-  const {
-    orderId,
-    firstName,
-    lastName,
-    address1,
-    address2,
-    city,
-    state,
-    postalCode,
-    phoneNumber,
-    emailAddress,
-  } = reduxState.order.order;
-  return {
-    initialValues: {
-      same: 'Yes',
+  if (reduxState.order.order) {
+    const {
       orderId,
       firstName,
       lastName,
-      address: address1,
+      address1,
       address2,
       city,
       state,
       postalCode,
-      phoneNumber: normalizePhone(phoneNumber),
-      email: emailAddress,
-    },
-    currentValues: {
-      same: selector(reduxState, 'same'),
-    },
-    submitStatus: reduxState.order.placeOrderStatus,
-    submitFailure: reduxState.order.placeOrderError,
-  };
+      phoneNumber,
+      emailAddress,
+    } = reduxState.order.order;
+    return {
+      initialValues: {
+        same: 'Yes',
+        orderId,
+        firstName,
+        lastName,
+        address: address1,
+        address2,
+        city,
+        state,
+        postalCode,
+        phoneNumber: normalizePhone(phoneNumber),
+        email: emailAddress,
+      },
+      currentValues: {
+        same: selector(reduxState, 'same'),
+      },
+      submitStatus: reduxState.order.placeOrderStatus,
+      submitFailure: reduxState.order.placeOrderError,
+    };
+  }
 }
 
 const PromoCheckoutPaymentForm = connect(mapStateToProps)(

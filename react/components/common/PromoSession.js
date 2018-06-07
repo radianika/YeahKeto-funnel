@@ -25,7 +25,7 @@ export function getCookie(cname) {
 class PromoSessionComponent extends React.PureComponent {
   async componentDidMount() {
     const existingCookie = getCookie('ascbd_promo_session');
-    if (!existingCookie) {
+    if (!existingCookie || this.props.pageType === 'leadPage') {
       const apiResponse = await post(
         '/v1/konnektive/session',
         {
