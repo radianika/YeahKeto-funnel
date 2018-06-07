@@ -24,7 +24,8 @@ export default function (state = initialState, action) {
       return ip.setIn(state, ['submitLeadsFormStatus'], 'failure');
 
     case OrderActions.GET_ORDER_DETAILS_SUCCESS:
-      return ip.setIn(state, ['order'], action.payload.order);
+      state = ip.setIn(state, ['order'], action.payload.order);
+      return ip.setIn(state, ['getOrderDetailsStatus'], 'success');
 
     case OrderActions.GET_ORDER_DETAILS_FAILURE:
       return ip.setIn(state, ['getOrderDetailsStatus'], 'failure');

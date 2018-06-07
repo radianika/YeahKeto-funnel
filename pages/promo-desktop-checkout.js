@@ -36,6 +36,8 @@ class Promo extends React.PureComponent {
           'x-ascbd-req-origin': window.location.hostname,
         },
       });
+    } else if (this.props.getOrderDetailsStatus === 'success') {
+      clearInterval(this.interval);
     }
   };
 
