@@ -26,7 +26,7 @@ class Promo extends React.PureComponent {
 
   getOrderDetailsCall = () => {
     if (!this.props.order) {
-      this.props.getOrderDetailsOnCheckout({
+      this.props.getOrderDetails({
         headers: {
           'x-ascbd-req-origin': window.location.hostname,
         },

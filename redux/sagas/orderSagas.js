@@ -64,43 +64,6 @@ function* submitLeadsForm(action) {
   }
 }
 
-function* getOrderDetailsOnCheckout(action) {
-  yield put(OrderActions.getOrderDetailsRequest());
-  try {
-    const { headers, orderId } = action.payload;
-    let sessionId = '';
-    let kSessionId = '';
-
-    if (typeof window !== 'undefined') {
-      sessionId = yield getCookie('ascbd_session');
-      kSessionId = yield getCookie('ascbd_promo_session');
-
-      if (!sessionId || !sessionId.length) {
-        window.location.href = window.location.href;
-        return;
-      }
-    } else {
-      sessionId = yield select(getSession);
-    }
-    const url = orderId
-      ? `/v1/konnektive/order/${orderId}`
-      : '/v1/konnektive/order/';
-
-    const apiResponse = yield get(url, sessionId, {
-      ...headers,
-      'k-session-id': kSessionId,
-    });
-    if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
-      const order = apiResponse.response.data.data;
-      yield put(OrderActions.getOrderDetailsSuccess({ order }));
-    } else {
-      yield put(OrderActions.getOrderDetailsFailure());
-    }
-  } catch (error) {
-    yield put(OrderActions.getOrderDetailsFailure({ error }));
-  }
-}
-
 function* getOrderDetails(action) {
   yield put(OrderActions.getOrderDetailsRequest());
   try {
@@ -258,13 +221,6 @@ function* addUpsellToOrder(action) {
 export default function* OrderSagas() {
   yield all([
     fork(takeLatest, OrderActions.SUBMIT_LEADS_FORM, submitLeadsForm),
-  ]);
-  yield all([
-    fork(
-      takeLatest,
-      OrderActions.GET_ORDER_DETAILS_ON_CHECKOUT,
-      getOrderDetailsOnCheckout,
-    ),
   ]);
   yield all([
     fork(takeLatest, OrderActions.GET_ORDER_DETAILS, getOrderDetails),
