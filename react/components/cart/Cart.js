@@ -35,6 +35,7 @@ class Cart extends PureComponent {
     values.process_sync = 'true';
     this.props.submitLeadsForm({
       values,
+      cart: true,
       nextUrl: '/thankyou',
       router: this.props.router,
     });
