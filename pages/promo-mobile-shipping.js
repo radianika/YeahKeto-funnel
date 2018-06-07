@@ -6,9 +6,7 @@ import { AuthActions } from 'redux/actions';
 
 class Promo extends React.PureComponent {
   static async getInitialProps(props) {
-    const {
-      store, isServer, query, req,
-    } = props.ctx;
+    const { store, isServer, query } = props.ctx;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({
@@ -20,6 +18,7 @@ class Promo extends React.PureComponent {
       );
     }
   }
+
   render() {
     return (
       <React.Fragment>
