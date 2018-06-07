@@ -98,23 +98,9 @@ server.use((req, res, cb) => {
 const getSessionId = async (req, res) => {
   try {
     const { cookies } = req;
-    let token = idx(cookies, _ => _.ascbd_session);
+    const token = idx(cookies, _ => _.ascbd_session);
     if (!token || token === 'undefined') {
-      const sessionResponse = await post(
-        '/v1/auth',
-        {
-          username: 'larby@starlightgroup.io',
-          password: 'P@ssw0rd',
-        },
-        {
-          'x-ascbd-req-origin': req.get('host'),
-        },
-      );
-      if (idx(sessionResponse, _ => _.response.data)) {
-        // eslint-disable-next-line
-        token = sessionResponse.response.data.data.token;
-        res.cookie('ascbd_session', token, { maxAge: 3600000 });
-      }
+      res.redirect('/promo');
     }
     return {
       id: token,
@@ -138,10 +124,25 @@ const redirectToPromo = (orderId, req, res, next) => {
 };
 
 app.prepare().then(() => {
-  server.get('/cart', async (req, res) => {
-    const sessionId = await getSessionId(req, res);
-    return app.render(req, res, '/cart', { sessionId });
+  server.get('/start-session', async (req, res) => {
+    const sessionResponse = await post(
+      '/v1/auth',
+      {
+        username: 'larby@starlightgroup.io',
+        password: 'P@ssw0rd',
+      },
+      {
+        'x-ascbd-req-origin': req.get('host'),
+      },
+    );
+    if (idx(sessionResponse, _ => _.response.data)) {
+      // eslint-disable-next-line
+      const token = sessionResponse.response.data.data.token;
+      res.cookie('ascbd_session', token, { maxAge: 3600000 });
+      res.status(200).send({ token });
+    }
   });
+  server.get('/cart', async (req, res) => app.render(req, res, '/cart'));
 
   server.get('/thankyou?', async (req, res) => {
     try {
@@ -162,18 +163,16 @@ app.prepare().then(() => {
 
   server.get('/promo/:useragent?', async (req, res) => {
     try {
-      const sessionId = await getSessionId(req, res);
-      // console.log(sessionId)
       const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
 
       if (requestAgent !== req.params.useragent) {
         res.redirect(`/promo/${requestAgent}?${querystring.stringify(req.query)}`);
       }
       if (requestAgent === 'desktop') {
-        return app.render(req, res, '/promo-desktop', { requestAgent, sessionId });
+        return app.render(req, res, '/promo-desktop', { requestAgent });
       }
       if (requestAgent === 'mobile') {
-        return app.render(req, res, '/promo-mobile', { requestAgent, sessionId });
+        return app.render(req, res, '/promo-mobile', { requestAgent });
       }
     } catch (error) {
       Raven.captureException(error);
@@ -479,9 +478,7 @@ app.prepare().then(() => {
 
   server.get('/hemp-oil', async (req, res) => {
     try {
-      const sessionId = await getSessionId(req, res);
       return app.render(req, res, '/products', {
-        sessionId,
         product: 'hemp-oil',
       });
     } catch (error) {
@@ -492,9 +489,7 @@ app.prepare().then(() => {
 
   server.get('/hemp-capsule', async (req, res) => {
     try {
-      const sessionId = await getSessionId(req, res);
       return app.render(req, res, '/products', {
-        sessionId,
         product: 'hemp-capsule',
       });
     } catch (error) {
@@ -505,9 +500,7 @@ app.prepare().then(() => {
 
   server.get('/warming_balm', async (req, res) => {
     try {
-      const sessionId = await getSessionId(req, res);
       return app.render(req, res, '/products', {
-        sessionId,
         product: 'warming_balm',
       });
     } catch (error) {
