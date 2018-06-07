@@ -31,13 +31,18 @@ class FooterPromo extends React.PureComponent {
       };
     }
   }
+  gotoShipping = () => {
+    window.location.assign(`/promo/mobile/shipping?${getQueryString()}`);
+  };
+
   render() {
     return (
       <footer ref={this.footerRef}>
         {this.props.isMobile && (
           <div id="cta" ref={this.ctaRef} style={this.state.ctaStyle}>
             <a
-              href={`/promo/mobile/shipping?${getQueryString()}`}
+              href="javascript:void(0)"
+              onClick={this.gotoShipping}
               className="shipping_redirect"
             >
               <i className="btn pulse sprite3 sprite-ship-btn" />
