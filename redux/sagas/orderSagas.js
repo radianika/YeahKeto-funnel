@@ -93,7 +93,13 @@ function* getOrderDetails(action) {
       const order = apiResponse.response.data.data.data[0];
       yield put(OrderActions.getOrderDetailsSuccess({ order }));
     } else {
-      yield put(OrderActions.getOrderDetails());
+      yield put(
+        OrderActions.getOrderDetails({
+          headers: {
+            'x-ascbd-req-origin': window.location.hostname,
+          },
+        }),
+      );
       yield put(OrderActions.getOrderDetailsFailure());
     }
   } catch (error) {
