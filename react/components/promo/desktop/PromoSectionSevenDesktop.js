@@ -1,4 +1,5 @@
 import React from 'react';
+import LazyLoad from 'react-lazyload';
 
 class PromoSectionSevenDesktop extends React.PureComponent {
   render() {
@@ -29,11 +30,13 @@ class PromoSectionSevenDesktop extends React.PureComponent {
           </ul>
           <div className="clearall" />
           {/* <i className="s7bottle sprite4 sprite-s7-bottle" /> */}
-          <img
-            src="/static/promo/desktop/images/s7-bottle.png"
-            className="s7bottle"
-            alt=""
-          />
+          <LazyLoad height={484} offset={75}>
+            <img
+              src="/static/promo/desktop/images/s7-bottle.png"
+              className="s7bottle"
+              alt=""
+            />
+          </LazyLoad>
           <i className="s7-photos sprite4 sprite-s7-photos" />
           <a
             href="javascript:void(0)"
