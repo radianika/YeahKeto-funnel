@@ -4,29 +4,26 @@ import { MobileConfirmContainer } from 'react/containers';
 import { connect } from 'react-redux';
 import { AuthActions, OrderActions } from 'redux/actions';
 import { PromoSession } from 'react/components/common';
+import idx from 'idx';
 
 class Confirm extends React.PureComponent {
   static async getInitialProps(props) {
-    const {
-      store, isServer, query, req,
-    } = props.ctx;
+    const { store, isServer, query } = props.ctx;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
-
-      if (query.orderId) {
-        store.dispatch(
-          OrderActions.getOrderDetails({
-            orderId: query.orderId,
-            headers: {
-              'x-ascbd-req-origin': req.get('host'),
-            },
-          }),
-        );
-      }
     }
   }
+
+  async componentDidMount() {
+    this.props.getOrderDetails({
+      headers: {
+        'x-ascbd-req-origin': window.location.hostname,
+      },
+    });
+  }
+
   render() {
     const { props } = this;
     return (
@@ -71,4 +68,9 @@ class Confirm extends React.PureComponent {
   }
 }
 
-export default connect()(Confirm);
+const mapStateToProps = reduxState => ({
+  order: reduxState.order.order,
+  getOrderDetailsStatus: idx(reduxState, _ => _.order.getOrderDetailsStatus),
+});
+
+export default connect(mapStateToProps, { ...OrderActions })(Confirm);

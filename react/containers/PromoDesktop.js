@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import { connect } from 'react-redux';
 import {
   PromoStrip,
   PromoSectionOneDesktop,
@@ -10,9 +11,14 @@ import {
   PromoSectionSixDesktop,
   PromoSectionSevenDesktop,
 } from 'react/components/promo/desktop';
+import { createNewSession } from 'redux/actions/authActions';
 import { FooterPromo } from 'react/components/promo';
+import { PromoSession } from 'react/components/common';
 
-class PromoDesktopContainer extends React.PureComponent {
+class PromoDesktop extends React.PureComponent {
+  componentDidMount() {
+    this.props.createNewSession();
+  }
   render() {
     return (
       <React.Fragment>
@@ -40,9 +46,20 @@ class PromoDesktopContainer extends React.PureComponent {
         <PromoSectionSevenDesktop />
         <div style={{ clear: 'both' }} />
         <FooterPromo />
+        {this.props.sessionId && <PromoSession pageType="leadPage" />}
       </React.Fragment>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    sessionId: state.auth.sessionId,
+  };
+}
+
+const PromoDesktopContainer = connect(mapStateToProps, { createNewSession })(
+  PromoDesktop,
+);
 
 export { PromoDesktopContainer };

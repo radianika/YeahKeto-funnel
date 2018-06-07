@@ -17,6 +17,7 @@ class PromoCheckout extends React.PureComponent {
 
   submitBillingForm = values => {
     if (values.same === 'Yes') {
+      values.orderId = this.props.order.orderId;
       values.address = this.props.initialValues.address;
       values.address2 = this.props.initialValues.address2;
       values.city = this.props.initialValues.city;
@@ -37,7 +38,10 @@ class PromoCheckout extends React.PureComponent {
 
   render() {
     const { selected } = this.state;
-    const shippingDate = moment(this.props.order.dateCreated).add(5, 'day');
+    const shippingDate =
+      this.props.order && this.props.order.dateCreated
+        ? moment(this.props.order.dateCreated).add(5, 'day')
+        : moment();
     return (
       <React.Fragment>
         <div className="secone">
@@ -203,35 +207,37 @@ class PromoCheckout extends React.PureComponent {
 const PromoCheckoutWithRouter = withRouter(PromoCheckout);
 
 const mapStateToProps = reduxState => {
-  const {
-    orderId,
-    firstName,
-    lastName,
-    address1,
-    address2,
-    city,
-    state,
-    postalCode,
-    phoneNumber,
-    emailAddress,
-  } = reduxState.order.order;
-  const initialValues = {
-    same: 'Yes',
-    orderId,
-    firstName,
-    lastName,
-    address: address1,
-    address2,
-    city,
-    state,
-    postalCode,
-    phoneNumber: normalizePhone(phoneNumber),
-    email: emailAddress,
-  };
-  return {
-    order: reduxState.order.order,
-    initialValues,
-  };
+  if (reduxState.order.order) {
+    const {
+      orderId,
+      firstName,
+      lastName,
+      address1,
+      address2,
+      city,
+      state,
+      postalCode,
+      phoneNumber,
+      emailAddress,
+    } = reduxState.order.order;
+    const initialValues = {
+      same: 'Yes',
+      orderId,
+      firstName,
+      lastName,
+      address: address1,
+      address2,
+      city,
+      state,
+      postalCode,
+      phoneNumber: normalizePhone(phoneNumber),
+      email: emailAddress,
+    };
+    return {
+      order: reduxState.order.order,
+      initialValues,
+    };
+  }
 };
 
 const PromoCheckoutContainer = connect(mapStateToProps, { ...OrderActions })(

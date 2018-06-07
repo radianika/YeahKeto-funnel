@@ -6,26 +6,14 @@ import { AuthActions, OrderActions } from 'redux/actions';
 
 class SelectPackage extends React.PureComponent {
   static async getInitialProps(props) {
-    const {
-      store, isServer, query, req,
-    } = props.ctx;
+    const { store, isServer, query } = props.ctx;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
-
-      if (query.orderId) {
-        store.dispatch(
-          OrderActions.getOrderDetails({
-            orderId: query.orderId,
-            headers: {
-              'x-ascbd-req-origin': req.get('host'),
-            },
-          }),
-        );
-      }
     }
   }
+
   render() {
     return (
       <React.Fragment>
@@ -63,4 +51,8 @@ class SelectPackage extends React.PureComponent {
   }
 }
 
-export default connect()(SelectPackage);
+const mapStateToProps = reduxState => ({
+  order: reduxState.order.order,
+});
+
+export default connect(mapStateToProps, { ...OrderActions })(SelectPackage);
