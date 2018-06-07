@@ -16,6 +16,11 @@ class Confirm extends React.PureComponent {
   }
 
   async componentDidMount() {
+    this.props.getOrderDetails({
+      headers: {
+        'x-ascbd-req-origin': window.location.hostname,
+      },
+    });
     this.interval = setInterval(this.getOrderDetailsCall, 1000);
   }
 
@@ -24,7 +29,7 @@ class Confirm extends React.PureComponent {
   }
 
   getOrderDetailsCall = () => {
-    if (!this.props.order) {
+    if (this.props.getOrderDetailsStatus === 'failure') {
       this.props.getOrderDetails({
         headers: {
           'x-ascbd-req-origin': window.location.hostname,
