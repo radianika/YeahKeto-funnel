@@ -124,7 +124,7 @@ class Cart extends PureComponent {
             </div>
           </div>
         </div>
-        {this.props.sessionId && <PromoSession />}
+        {this.props.sessionId && <PromoSession pageType="leadPage" />}
         {this.props.submitStatus === 'submitting' && <Spinner />}
       </React.Fragment>
     );
