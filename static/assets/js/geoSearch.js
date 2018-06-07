@@ -1,5 +1,4 @@
-let placeSearch,
-  autocomplete;
+let autocomplete;
 const componentForm = {
   city: 'locality',
   state: 'administrative_area_level_1',
