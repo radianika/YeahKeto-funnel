@@ -79,6 +79,7 @@ class Promo extends React.PureComponent {
 
 const mapStateToProps = reduxState => ({
   order: idx(reduxState, _ => _.order.order),
+  getOrderDetailsStatus: idx(reduxState, _ => _.order.getOrderDetailsStatus),
 });
 
 export default connect(mapStateToProps, { ...OrderActions })(Promo);

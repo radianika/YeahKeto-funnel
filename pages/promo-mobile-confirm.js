@@ -4,6 +4,7 @@ import { MobileConfirmContainer } from 'react/containers';
 import { connect } from 'react-redux';
 import { AuthActions, OrderActions } from 'redux/actions';
 import { PromoSession } from 'react/components/common';
+import idx from 'idx';
 
 class Confirm extends React.PureComponent {
   static async getInitialProps(props) {
@@ -84,6 +85,7 @@ class Confirm extends React.PureComponent {
 
 const mapStateToProps = reduxState => ({
   order: reduxState.order.order,
+  getOrderDetailsStatus: idx(reduxState, _ => _.order.getOrderDetailsStatus),
 });
 
 export default connect(mapStateToProps, { ...OrderActions })(Confirm);

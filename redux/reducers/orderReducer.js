@@ -8,6 +8,7 @@ const initialState = ip.freeze({
   addUpsellToOrderStatus: null,
   lead: null,
   order: null,
+  getOrderDetailsStatus: null,
 });
 
 export default function (state = initialState, action) {
