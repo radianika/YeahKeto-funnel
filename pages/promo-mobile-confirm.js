@@ -7,9 +7,7 @@ import { PromoSession } from 'react/components/common';
 
 class Confirm extends React.PureComponent {
   static async getInitialProps(props) {
-    const {
-      store, isServer, query, req,
-    } = props.ctx;
+    const { store, isServer, query } = props.ctx;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
@@ -17,13 +15,23 @@ class Confirm extends React.PureComponent {
     }
   }
 
-  componentDidMount() {
-    this.props.getOrderDetailsOnCheckout({
-      headers: {
-        'x-ascbd-req-origin': window.location.hostname,
-      },
-    });
+  async componentDidMount() {
+    this.interval = setInterval(this.getOrderDetailsCall, 1000);
   }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  getOrderDetailsCall = () => {
+    if (!this.props.order) {
+      this.props.getOrderDetailsOnCheckout({
+        headers: {
+          'x-ascbd-req-origin': window.location.hostname,
+        },
+      });
+    }
+  };
 
   render() {
     const { props } = this;

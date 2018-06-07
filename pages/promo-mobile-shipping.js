@@ -6,7 +6,9 @@ import { AuthActions } from 'redux/actions';
 
 class Promo extends React.PureComponent {
   static async getInitialProps(props) {
-    const { store, isServer, query } = props.ctx;
+    const {
+      store, isServer, query, req,
+    } = props.ctx;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({
