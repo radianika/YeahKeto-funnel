@@ -302,12 +302,12 @@ app.prepare().then(() => {
     try {
       const sessionId = await getSessionId(req, res);
       const { orderId } = req.query;
-      redirectToPromo(orderId, req, res, () => {
+      // redirectToPromo(orderId, req, res, () => {
         app.render(req, res, '/promo-mobile-select-package', {
           sessionId,
           orderId,
         });
-      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -318,13 +318,13 @@ app.prepare().then(() => {
     try {
       const sessionId = await getSessionId(req, res);
       const { orderId } = req.query;
-      redirectToPromo(orderId, req, res, () => {
+      // redirectToPromo(orderId, req, res, () => {
         app.render(req, res, '/promo-mobile-confirm', {
           sessionId,
           orderId,
           productId: req.query.productId,
         });
-      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
