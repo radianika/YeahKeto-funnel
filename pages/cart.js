@@ -2,7 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 import { connect } from 'react-redux';
 import { CartContainer } from 'react/containers';
-import { AuthActions } from 'redux/actions';
 
 class Cart extends React.PureComponent {
   static async getInitialProps(props) {
