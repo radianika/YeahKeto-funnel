@@ -44,6 +44,37 @@ const shippingFormValidator = values => {
   return errors;
 };
 
+const isValidCreditCard = (type, cardNumber) => {
+  let re;
+  if (type === 'visa') {
+    re = /^4\d{3}-?\d{4}-?\d{4}-?\d{4}$/;
+  } else if (type === 'master-card') {
+    re = /^5[1-5]\d{2}-?\d{4}-?\d{4}-?\d{4}$/;
+  } else if (type === 'american-express') {
+    re = /^3[4,7]\d{13}$/;
+  }
+  if (!re) {
+    return false;
+  }
+  if (!re.test(cardNumber)) {
+    return false;
+  }
+
+  let checkSum = 0;
+  for (let i = (2 - (cardNumber.length % 2)); i <= cardNumber.length; i += 2) {
+    checkSum += parseInt(cardNumber.charAt(i - 1), 10);
+  }
+  for (let i = (cardNumber.length % 2) + 1; i < cardNumber.length; i += 2) {
+    const digit = parseInt(cardNumber.charAt(i - 1), 10) * 2;
+    if (digit < 10) {
+      checkSum += digit;
+    } else {
+      checkSum += (digit - 9);
+    }
+  }
+  return (checkSum % 10) === 0;
+};
+
 // this validator is used in promo pages
 const billingFormValidator = values => {
   const errors = shippingFormValidator(values);
@@ -78,6 +109,13 @@ const billingFormValidator = values => {
     }
     if (value.length !== length) {
       errors.cardNumber = `Card number should be ${length} digits.`;
+    }
+    if (value.length > 3 && !cardTypes.length) {
+      errors.cardNumber = 'Card type is not supported';
+    }
+    if (value.length === length && cardTypes.length &&
+      !isValidCreditCard(cardTypes[0].type, value)) {
+      errors.cardNumber = 'Please enter valid card';
     }
   }
 
