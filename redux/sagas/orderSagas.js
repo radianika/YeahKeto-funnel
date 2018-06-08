@@ -163,7 +163,9 @@ function* placeOrder(action) {
         postalCode,
       },
     };
-    const queryString = `&orderId=${orderId}${getQueryString()}`;
+    const queryString = `&orderId=${orderId}${
+      getQueryString().startsWith('&') ? '' : '&'
+    }${getQueryString()}`;
     const apiResponse = yield post(
       '/v1/konnektive/order',
       { ...payload, tracking_vars: parseQuery(queryString) },
