@@ -20,7 +20,7 @@ const CustomerCare = () => (
     <p className="list">
       American Science CBD<br />
       Corporate: American Science CBD<br />
-      Returns: PO Box 9005, Seal Beach, CA 90740-9005
+      Returns: 6525 Gunpark Drive Ste 370-347, Boulder, CO 80301
     </p>
     <p className="normal">&nbsp;</p>
   </div>
