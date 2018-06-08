@@ -5,7 +5,6 @@ import { post, get, parseQuery, getQueryString } from 'helpers';
 import { getCookie } from 'react/components/common';
 
 const getSession = state => state.auth.sessionId;
-const getOrder = state => state.order.order;
 
 function* submitLeadsForm(action) {
   yield put(OrderActions.submitLeadsFormRequest());
@@ -163,7 +162,9 @@ function* placeOrder(action) {
         postalCode,
       },
     };
-    const queryString = `&orderId=${orderId}&${getQueryString()}`;
+    const queryString = `&orderId=${orderId}${
+      getQueryString().startsWith('&') ? '' : '&'
+    }${getQueryString()}`;
     const apiResponse = yield post(
       '/v1/konnektive/order',
       { ...payload, tracking_vars: parseQuery(queryString) },
@@ -204,9 +205,9 @@ function* addUpsellToOrder(action) {
     } else {
       sessionId = yield select(getSession);
     }
-    const order = yield select(getOrder);
+    const { orderId } = parseQuery(window.location.search);
     const payload = {
-      orderId: order.orderId,
+      orderId,
       productId,
       productQty: 1,
     };
@@ -214,7 +215,10 @@ function* addUpsellToOrder(action) {
       '/v1/konnektive/upsale',
       payload,
       sessionId,
-      { ...headers, 'k-session-id': kSessionId },
+      {
+        ...headers,
+        'k-session-id': kSessionId,
+      },
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const newOrder = apiResponse.response.data.data;

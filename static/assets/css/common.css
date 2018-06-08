@@ -690,3 +690,11 @@ Styles for animated modal
   stroke-width: 1.5;
   transition: stroke 0.1s;
 }
+
+.display-none {
+  display: none;
+}
+
+.clear-both {
+  clear: both;
+}

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import LazyLoad from 'react-lazyload';
 import { Modal } from './Modal';
 import { CustomerCare } from './CustomerCare';
 import { PrivacyPolicy } from './PrivacyPolicy';
@@ -59,16 +60,22 @@ class Footer extends PureComponent {
                     <React.Fragment>
                       <div className="cards">
                         <span className="card-amex">
-                          <img src="/static/amex-card.png" alt="Amex" />
+                          <LazyLoad height={45} offset={75}>
+                            <img src="/static/amex-card.png" alt="Amex" />
+                          </LazyLoad>
                         </span>
                         <span className="card-visa">
-                          <img src="/static/visa-card.png" alt="Visa" />
+                          <LazyLoad height={45} offset={75}>
+                            <img src="/static/visa-card.png" alt="Visa" />
+                          </LazyLoad>
                         </span>
                         <span className="card-mastercard">
-                          <img
-                            src="/static/mastercard-card.png"
-                            alt="Mastercard"
-                          />
+                          <LazyLoad height={45} offset={75}>
+                            <img
+                              src="/static/mastercard-card.png"
+                              alt="Mastercard"
+                            />
+                          </LazyLoad>
                         </span>
                       </div>
                     </React.Fragment>
