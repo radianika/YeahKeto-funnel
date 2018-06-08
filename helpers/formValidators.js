@@ -3,7 +3,7 @@ import moment from 'moment';
 import creditCartType from 'credit-card-type';
 import idx from 'idx';
 
-const testCardNumbers = ['1333 3333 3333 3333', '0000 0000 0000 0000'];
+const testCardNumbers = ['1333 3333 3333 3333'];
 
 const shippingFormValidator = values => {
   const errors = {};
