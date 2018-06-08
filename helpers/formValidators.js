@@ -106,10 +106,7 @@ const billingFormValidator = values => {
   }
   if (!values.cardNumber) {
     errors.cardNumber = 'Please enter your Card Number.';
-  } else if (values.cardNumber) {
-    if (testCardNumbers.includes(values.cardNumber)) {
-      return;
-    }
+  } else if (values.cardNumber && !testCardNumbers.includes(values.cardNumber)) {
     const value = values.cardNumber.replace(/\s/g, '');
     const cardTypes = creditCartType(value);
     let length = 16;
