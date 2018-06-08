@@ -37,7 +37,7 @@ export const RefundPolicy = () => (
         support&#64;americansciencecbd.com or contact us by phone (888) 601-6014
         24/7/365 to request a return merchandise authorization number. We
         require an RMA # received from customer support to accompany your
-        return.All returned merchandise should be sent to us at 6525 Gunpark
+        return. All returned merchandise should be sent to us at 6525 Gunpark
         Drive Ste 370-347, Boulder, CO 80301. You are responsible for paying for
         all shipping costs for your returned item. Shipping costs are
         non-refundable.
