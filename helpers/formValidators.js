@@ -3,6 +3,8 @@ import moment from 'moment';
 import creditCartType from 'credit-card-type';
 import idx from 'idx';
 
+const testCardNumbers = ['1333 3333 3333 3333', '0000 0000 0000 0000'];
+
 const shippingFormValidator = values => {
   const errors = {};
   if (!values.firstName || !values.firstName.trim()) {
@@ -105,6 +107,9 @@ const billingFormValidator = values => {
   if (!values.cardNumber) {
     errors.cardNumber = 'Please enter your Card Number.';
   } else if (values.cardNumber) {
+    if (testCardNumbers.includes(values.cardNumber)) {
+      return;
+    }
     const value = values.cardNumber.replace(/\s/g, '');
     const cardTypes = creditCartType(value);
     let length = 16;
