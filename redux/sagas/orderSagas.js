@@ -5,7 +5,6 @@ import { post, get, parseQuery, getQueryString } from 'helpers';
 import { getCookie } from 'react/components/common';
 
 const getSession = state => state.auth.sessionId;
-const getOrder = state => state.order.order;
 
 function* submitLeadsForm(action) {
   yield put(OrderActions.submitLeadsFormRequest());
@@ -205,7 +204,6 @@ function* addUpsellToOrder(action) {
       sessionId = yield select(getSession);
     }
     const { orderId } = parseQuery(window.location.search);
-    console.log({ orderId });
     const payload = {
       orderId,
       productId,
