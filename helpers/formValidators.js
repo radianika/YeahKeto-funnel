@@ -61,10 +61,14 @@ const isValidCreditCard = (type, cardNumber) => {
   }
 
   let checkSum = 0;
-  for (let i = (2 - (cardNumber.length % 2)); i <= cardNumber.length; i += 2) {
+  const start = (2 - (cardNumber.length % 2));
+
+  // Add even digits in even length strings or odd digits in odd length strings.
+  for (let i = start; i <= cardNumber.length; i += 2) {
     checkSum += parseInt(cardNumber.charAt(i - 1), 10);
   }
-  for (let i = (cardNumber.length % 2) + 1; i < cardNumber.length; i += 2) {
+  // Analyze odd digits in even length strings or even digits in odd length strings.
+  for (let i = start + 1; i < cardNumber.length; i += 2) {
     const digit = parseInt(cardNumber.charAt(i - 1), 10) * 2;
     if (digit < 10) {
       checkSum += digit;
