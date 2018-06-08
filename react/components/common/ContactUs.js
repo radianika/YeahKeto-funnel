@@ -189,10 +189,10 @@ class ContactUs extends React.Component {
                 <li>
                   <span className="mtop1">American Science CBD</span>
                   <p>
-                    Corporate: 835 Woodbine Road, Highland Park, Illinois, 60035
+                    Corporate: 6525 Gunpark Drive Ste 370-347, Boulder, CO 80301
                   </p>
                   <p className="mtop1">
-                    Returns: PO Box 9005, Seal Beach, CA 90740-9005
+                    Returns: 6525 Gunpark Drive Ste 370-347, Boulder, CO 80301
                   </p>
                 </li>
                 <li>
