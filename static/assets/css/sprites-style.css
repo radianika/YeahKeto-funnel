@@ -90,12 +90,6 @@
   background-position: -664px -31px;
 }
 
-.sprite-cvv2-location {
-  width: 276px;
-  height: 183px;
-  background-position: -362px -163px;
-}
-
 .sprite2 {
   background-image: url(../sprites/spritesheet2.png);
   background-repeat: no-repeat;
@@ -180,12 +174,6 @@
   width: 300px;
   height: 198px;
   background-position: -461px -213px;
-}
-
-.sprite-red-cut {
-  width: 57px;
-  height: 10px;
-  background-position: -191px -213px;
 }
 
 .sprite-s1asseen {
