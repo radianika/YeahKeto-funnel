@@ -88,7 +88,7 @@ const parseOrderPostData = (values, pack) => {
   const SubAffiliateID = getParameterByName('sourceValue2');
   const shippingLocalStorageData = JSON.parse(localStorage.getItem('parsedShipping'));
 
-  const postData = {
+  let postData = {
     "BillingAddress": {
       "FirstName": shippingLocalStorageData.ShippingAddress.FirstName,
       "LastName": shippingLocalStorageData.ShippingAddress.LastName,
