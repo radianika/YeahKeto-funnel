@@ -15,9 +15,7 @@ const getSession = state => state.auth.sessionId;
 function* submitLeadsForm(action) {
   yield put(OrderActions.submitLeadsFormRequest());
   try {
-    const {
-      values, nextUrl, headers, cart,
-    } = action.payload;
+    const { values, nextUrl, headers } = action.payload;
 
     const parsedShipping = parseLeadPostData(values);
     let sessionId = '';
@@ -38,12 +36,8 @@ function* submitLeadsForm(action) {
       { ...headers },
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
-      const { lead } = apiResponse.response.data.data;
-      const newQueryString = cart
-        ? `&orderId=${lead.orderId}${queryString}`
-        : queryString;
-      yield put(OrderActions.submitLeadsFormSuccess({ lead }));
-      window.location.assign(`${nextUrl}?${newQueryString}`);
+      yield put(OrderActions.submitLeadsFormSuccess());
+      window.location.assign(`${nextUrl}?${queryString}`);
     } else {
       yield put(OrderActions.submitLeadsFormFailure());
     }
@@ -81,13 +75,6 @@ function* getOrderDetails(action) {
       const order = apiResponse.response.data.data.data[0];
       yield put(OrderActions.getOrderDetailsSuccess({ order }));
     } else {
-      yield put(
-        OrderActions.getOrderDetails({
-          headers: {
-            'x-ascbd-req-origin': window.location.hostname,
-          },
-        }),
-      );
       yield put(OrderActions.getOrderDetailsFailure());
     }
   } catch (error) {
