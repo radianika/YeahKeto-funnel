@@ -7,6 +7,7 @@ import {
   parseQuery,
   getQueryString,
   parseLeadPostData,
+  parseOrderPostData,
 } from 'helpers';
 import { getCookie } from 'react/components/common';
 
@@ -16,6 +17,7 @@ function* submitLeadsForm(action) {
   yield put(OrderActions.submitLeadsFormRequest());
   try {
     const { values, nextUrl, headers } = action.payload;
+    const { localStorage } = window;
 
     const parsedShipping = parseLeadPostData(values);
     let sessionId = '';
@@ -28,6 +30,8 @@ function* submitLeadsForm(action) {
     } else {
       sessionId = yield select(getSession);
     }
+
+    localStorage.setItem('parsedShipping', JSON.stringify(parsedShipping));
     const queryString = getQueryString();
     const apiResponse = yield post(
       '/v1/response/lead',
@@ -35,6 +39,7 @@ function* submitLeadsForm(action) {
       sessionId,
       { ...headers },
     );
+
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       yield put(OrderActions.submitLeadsFormSuccess());
       window.location.assign(`${nextUrl}?${queryString}`);
@@ -102,43 +107,15 @@ function* placeOrder(action) {
     } else {
       sessionId = yield select(getSession);
     }
-    const {
-      orderId,
-      cardExpiry,
-      cardNumber,
-      cardSecurityCode,
-      firstName,
-      lastName,
-      address,
-      address2,
-      city,
-      state,
-      postalCode,
-    } = values;
-    const payload = {
-      orderId,
-      cardNumber,
-      cardMonth: cardExpiry.cardMonth,
-      cardYear: cardExpiry.cardYear,
-      cardSecurityCode,
-      product1_id: pack.id,
-      product1_qty: 1,
-      shipping: {
-        firstName,
-        lastName,
-        address,
-        address2,
-        city,
-        state,
-        postalCode,
-      },
-    };
+    const { orderId } = values;
+
+    const parsedOrder = parseOrderPostData(values, pack);
     const queryString = `&orderId=${orderId}${
       getQueryString().startsWith('&') || !getQueryString().length ? '' : '&'
     }${getQueryString()}`;
     const apiResponse = yield post(
       '/v1/konnektive/order',
-      { ...payload, tracking_vars: parseQuery(queryString) },
+      parsedOrder,
       sessionId,
       { ...headers, 'k-session-id': kSessionId },
     );
