@@ -8,31 +8,59 @@ const getParameterByName = (name, url) => {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+const getMFD = () => {
+  let mfd = [];
+  var keyMap = [
+    {
+      name: 'AffId',
+      value: getParameterByName('affId')
+    },
+    {
+      name: 'TransactionID',
+      value: getParameterByName('sourceValue3')
+    },
+    {
+      name: 'AffSource',
+      value: getParameterByName('sourceValue4')
+    },
+    {
+      name: 'OfferID',
+      value: getParameterByName('sourceValue5')
+    },
+    {
+      name: 'utm_source',
+      value: getParameterByName('utm_source')
+    },
+    {
+      name: 'utm_medium',
+      value: getParameterByName('utm_medium')
+    },
+    {
+      name: 'utm_campaign',
+      value: getParameterByName('utm_campaign')
+    },
+    {
+      name: 'utm_term',
+      value: getParameterByName('utm_term')
+    },
+    {
+      name: 'utm_content',
+      value: getParameterByName('utm_content')
+    }
+  ];
+
+  mfd = keyMap.filter(key => {
+    return !!key.value
+  });
+
+  return mfd;
+}
+
 const parseLeadPostData = (values) => {
   const AffiliateID = getParameterByName('sourceValue1');
   const SubAffiliateID = getParameterByName('sourceValue2');
-  const TransactionID = getParameterByName('sourceValue3');
-  const source = getParameterByName('sourceValue4');
-  const OfferID = getParameterByName('sourceValue5');
-  const utm_source = getParameterByName('utm_source');
-  const utm_medium = getParameterByName('utm_medium');
-  const utm_campaign = getParameterByName('utm_campaign');
-  const utm_term = getParameterByName('utm_term');
-  const utm_content = getParameterByName('utm_content');
-  
-  const tracking_vars = Object.assign({},
-    AffiliateID ? { AffiliateID } : null,
-    SubAffiliateID ? { SubAffiliateID } : null,
-    TransactionID ? { TransactionID } : null,
-    OfferID ? { OfferID } : null,
-    utm_source ? { utm_source } : null,
-    utm_medium ? { utm_medium } : null,
-    utm_campaign ? { utm_campaign } : null,
-    utm_term ? { utm_term } : null,
-    utm_content ? { utm_content } : null
-  );
 
-  const postData = {
+  let postData = {
     "Email": values.Email,
     "Phone": values.Phone,
     "ShippingAddress": {
@@ -43,36 +71,23 @@ const parseLeadPostData = (values) => {
       "City": values.City,
       "State": values.State,
       "ZipCode": values.ZipCode
-    }
+    },
+    "MFD": getMFD()
   }
+
+  postData = Object.assign(postData,
+    AffiliateID ? { AffiliateID } : null,
+    SubAffiliateID ? { SubAffiliateID } : null
+  );
+
   return postData;
 };
 
 const parseOrderPostData = (values, pack) => {
   const AffiliateID = getParameterByName('sourceValue1');
   const SubAffiliateID = getParameterByName('sourceValue2');
-  const TransactionID = getParameterByName('sourceValue3');
-  const source = getParameterByName('sourceValue4');
-  const OfferID = getParameterByName('sourceValue5');
-  const utm_source = getParameterByName('utm_source');
-  const utm_medium = getParameterByName('utm_medium');
-  const utm_campaign = getParameterByName('utm_campaign');
-  const utm_term = getParameterByName('utm_term');
-  const utm_content = getParameterByName('utm_content');
-  
-  const tracking_vars = Object.assign({},
-    AffiliateID ? { AffiliateID } : null,
-    SubAffiliateID ? { SubAffiliateID } : null,
-    TransactionID ? { TransactionID } : null,
-    OfferID ? { OfferID } : null,
-    utm_source ? { utm_source } : null,
-    utm_medium ? { utm_medium } : null,
-    utm_campaign ? { utm_campaign } : null,
-    utm_term ? { utm_term } : null,
-    utm_content ? { utm_content } : null
-  );
-
   const shippingLocalStorageData = JSON.parse(localStorage.getItem('parsedShipping'));
+
   const postData = {
     "BillingAddress": {
       "FirstName": shippingLocalStorageData.ShippingAddress.FirstName,
@@ -92,8 +107,15 @@ const parseOrderPostData = (values, pack) => {
       "ProductGroups": [{
         ProductGroupKey: pack.id
       }]
-    }
+    },
+    "MFD": getMFD()
   }
+
+  postData = Object.assign(postData,
+    AffiliateID ? { AffiliateID } : null,
+    SubAffiliateID ? { SubAffiliateID } : null
+  );
+
   return postData;
 };
 
