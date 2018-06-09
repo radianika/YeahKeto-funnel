@@ -1,7 +1,13 @@
 import { select, put, all, fork, takeLatest } from 'redux-saga/effects';
 import idx from 'idx';
 import { OrderActions } from 'redux/actions';
-import { post, get, parseQuery, getQueryString } from 'helpers';
+import {
+  post,
+  get,
+  parseQuery,
+  getQueryString,
+  parseLeadPostData,
+} from 'helpers';
 import { getCookie } from 'react/components/common';
 
 const getSession = state => state.auth.sessionId;
@@ -12,29 +18,11 @@ function* submitLeadsForm(action) {
     const {
       values, nextUrl, headers, cart,
     } = action.payload;
-    const {
-      firstName,
-      lastName,
-      address,
-      address2,
-      city,
-      state,
-      postalCode,
-    } = values;
-    const shipping = values.shipping || {
-      firstName,
-      lastName,
-      address,
-      address2,
-      city,
-      state,
-      postalCode,
-    };
+
+    const parsedShipping = parseLeadPostData(values);
     let sessionId = '';
-    let kSessionId = '';
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
-      kSessionId = yield getCookie('ascbd_promo_session');
 
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
@@ -44,14 +32,10 @@ function* submitLeadsForm(action) {
     }
     const queryString = getQueryString();
     const apiResponse = yield post(
-      '/v1/konnektive/lead',
-      {
-        ...values,
-        shipping,
-        tracking_vars: parseQuery(queryString),
-      },
+      '/v1/response/lead',
+      parsedShipping,
       sessionId,
-      { ...headers, 'k-session-id': kSessionId },
+      { ...headers },
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const { lead } = apiResponse.response.data.data;
