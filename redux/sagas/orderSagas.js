@@ -163,7 +163,7 @@ function* placeOrder(action) {
       },
     };
     const queryString = `&orderId=${orderId}${
-      getQueryString().startsWith('&') ? '' : '&'
+      getQueryString().startsWith('&') || !getQueryString().length ? '' : '&'
     }${getQueryString()}`;
     const apiResponse = yield post(
       '/v1/konnektive/order',
