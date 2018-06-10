@@ -10,6 +10,7 @@ import {
   normalizePostalCode,
   normalizeCardNumber,
   normalizeSecurityCode,
+  getParameterByName,
 } from 'helpers';
 import {
   Footer,
@@ -50,18 +51,22 @@ class MobileConfirmContainerComponent extends React.PureComponent {
   }
 
   confirmOrder = values => {
+    const { localStorage } = window;
+    const customerData = JSON.parse(localStorage.getItem('parsedShipping'));
     if (this.state.isSame) {
-      values.address = this.props.initialValues.address;
-      values.address2 = this.props.initialValues.address2;
-      values.city = this.props.initialValues.city;
-      values.email = this.props.initialValues.email;
-      values.firstName = this.props.initialValues.firstName;
-      values.lastName = this.props.initialValues.lastName;
-      values.phoneNumber = this.props.initialValues.phoneNumber;
-      values.postalCode = this.props.initialValues.postalCode;
-      values.state = this.props.initialValues.state;
+      values.Email = customerData.Email;
+      values.Phone = customerData.Phone;
+      values.Address1 = customerData.ShippingAddress.Address1;
+      values.Address2 = customerData.ShippingAddress.Address2;
+      values.City = customerData.ShippingAddress.City;
+      values.FirstName = customerData.ShippingAddress.FirstName;
+      values.LastName = customerData.ShippingAddress.LastName;
+      values.ZipCode = customerData.ShippingAddress.ZipCode;
+      values.State = customerData.ShippingAddress.State;
     }
-    const { pack, router } = this.props;
+
+    const { router } = this.props;
+    const pack = { id: getParameterByName('productId') };
     this.props.placeOrder({
       values,
       pack,
@@ -429,6 +434,8 @@ function mapStateToProps(reduxState, ownProps) {
       submitFailure: reduxState.order.placeOrderError,
     };
   }
+
+  return {};
 }
 
 const MobileConfirmContainer = connect(mapStateToProps, {

@@ -6,6 +6,21 @@ import { ThankyouDesktop, ThankyouMobile } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
 
 class Thankyou extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [],
+    };
+  }
+
+  componentDidMount() {
+    const { localStorage } = window;
+    // eslint-disable-next-line
+    this.setState({
+      items: JSON.parse(localStorage.getItem('upsell1')),
+    });
+  }
+
   static async getInitialProps(props) {
     const { store, isServer, query } = props.ctx;
     if (isServer) {
@@ -18,6 +33,7 @@ class Thankyou extends React.PureComponent {
   render() {
     const { props } = this;
     const { device, isPromo } = props.query;
+
     return (
       <React.Fragment>
         <Head>
@@ -46,9 +62,13 @@ class Thankyou extends React.PureComponent {
         </Head>
         <PromoSession pageType="thankyouPage" />
         {device === 'desktop' &&
-          this.props.order && <ThankyouDesktop isPromo={isPromo} />}
+          this.state.items.length && (
+            <ThankyouDesktop isPromo={isPromo} items={this.state.items} />
+          )}
         {device === 'mobile' &&
-          this.props.order && <ThankyouMobile isPromo={isPromo} />}
+          this.state.items.length && (
+            <ThankyouMobile isPromo={isPromo} items={this.state.items} />
+          )}
       </React.Fragment>
     );
   }

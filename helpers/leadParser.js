@@ -133,4 +133,4 @@ const parseOrderPostData = (values, pack) => {
   return postData;
 };
 
-export { parseLeadPostData, parseOrderPostData };
+export { getParameterByName, parseLeadPostData, parseOrderPostData };

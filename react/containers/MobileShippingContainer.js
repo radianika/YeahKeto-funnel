@@ -55,7 +55,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                     <Field
                       containerClass="frmelmnts1"
                       component={TextField}
-                      name="firstName"
+                      name="FirstName"
                       label="First Name*"
                       placeholder="First Name"
                       autoCorrect="off"
@@ -64,7 +64,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                     <Field
                       containerClass="frmelmnts3"
                       component={TextField}
-                      name="lastName"
+                      name="LastName"
                       label="Last Name*"
                       placeholder="Last Name*"
                       autoCorrect="off"
@@ -74,7 +74,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                     <Field
                       containerClass="frmelmnts2"
                       component={AddressField}
-                      name="address"
+                      name="Address1"
                       label="Address Line 1*"
                       placeholder="Street and number, P.O. box, c/o."
                       changeField={this.props.change}
@@ -84,7 +84,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                     <Field
                       containerClass="frmelmnts2"
                       component={TextField}
-                      name="address2"
+                      name="Address2"
                       label="Address Line 2"
                       placeholder="Apartment, suite, unit, building, floor, etc."
                       autoCorrect="off"
@@ -94,7 +94,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                     <Field
                       containerClass="frmelmnts2"
                       component={TextField}
-                      name="city"
+                      name="City"
                       label="City*"
                       placeholder="Your City"
                       autoCorrect="off"
@@ -104,7 +104,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                     <Field
                       containerClass="frmelmnts1"
                       component={TextField}
-                      name="postalCode"
+                      name="ZipCode"
                       label="Zip Code*"
                       placeholder="Zip Code"
                       normalize={normalizePostalCode}
@@ -116,7 +116,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       inputStyle={{ width: '99%' }}
                       containerClass="frmelmnts3"
                       component={SelectField}
-                      name="state"
+                      name="State"
                       label="State*"
                       placeholder="Select State"
                       options={stateslist}
@@ -125,7 +125,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                     <Field
                       containerClass="frmelmnts1"
                       component={TextField}
-                      name="phoneNumber"
+                      name="Phone"
                       label="Phone Number*"
                       placeholder="Example: (123) 555-6789"
                       normalize={normalizePhone}
@@ -136,7 +136,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                     <Field
                       containerClass="frmelmnts3"
                       component={TextField}
-                      name="email"
+                      name="Email"
                       label="Email*"
                       placeholder="Example: email@somewhere.com"
                       type="email"

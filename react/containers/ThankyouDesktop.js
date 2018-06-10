@@ -10,9 +10,15 @@ import {
 import { OrderActions } from 'redux/actions';
 import moment from 'moment';
 
-class ThankyouDesktopComponent extends React.PureComponent {
+class ThankyouDesktopComponent extends React.Component {
   render() {
-    const { order, isPromo } = this.props;
+    const { isPromo, items } = this.props;
+    let CustomerInfo = {};
+    if (items.length) {
+      // eslint-disable-next-line
+      CustomerInfo = items[0].CustomerInfo;
+    }
+
     return (
       <div className="container">
         <div className="contentWrap shadow">
@@ -93,7 +99,7 @@ class ThankyouDesktopComponent extends React.PureComponent {
                   Order Placed:{' '}
                   <span>{moment().format('dddd, MMM DD, YYYY')}</span>
                   <br />
-                  Order Number: <span>{order.clientOrderId}</span>
+                  Order Number: <span>{400563}</span>
                   <br />
                   Estimated Delivery Date:{' '}
                   <span>
@@ -104,21 +110,26 @@ class ThankyouDesktopComponent extends React.PureComponent {
                 </p>
               </div>
               <div className="itemordered-heading">Items Ordered</div>
-              {Object.values(order.items).map(item => (
+              {Object.values(items).map(item => (
                 // const originalProduct = this.getOriginalProduct(item);
                 <div key={item.productId} className="prod-row">
                   <div className="prod-data ty">
                     <div className="prod-shoot">
-                      <img src={getTyProductImage(item)} alt="prod-shoot" />
+                      <img
+                        src={getTyProductImage(item.OrderInfo.Products[0])}
+                        alt="prod-shoot"
+                      />
                     </div>
                     <p className="prod-name">
                       American Science CBD
                       <br />
-                      {getTyProductName(item)}
+                      {getTyProductName(item.OrderInfo.Products[0])}
                       <br />
                       <span>
-                        {isPromo ? getTyProductQuantity(item) : item.qty}{' '}
-                        {getTyProductContainer(item)}
+                        {isPromo
+                          ? getTyProductQuantity(item.OrderInfo.Products[0])
+                          : item.qty}{' '}
+                        {getTyProductContainer(item.OrderInfo.Products[0])}
                       </span>
                     </p>
                   </div>
@@ -127,7 +138,7 @@ class ThankyouDesktopComponent extends React.PureComponent {
               ))}
               <div className="summry-table">
                 <div className="row pack-name">
-                  Sub Total: <span>${order.price}</span>
+                  Sub Total: <span>${2000}</span>
                 </div>
 
                 <div className="row shipping">
@@ -135,7 +146,7 @@ class ThankyouDesktopComponent extends React.PureComponent {
                 </div>
 
                 <div className="row total-price">
-                  Total: <span>${order.totalAmount}</span>
+                  Total: <span>${3000}</span>
                 </div>
               </div>
             </div>
@@ -144,78 +155,42 @@ class ThankyouDesktopComponent extends React.PureComponent {
               <ul className="user-info">
                 <li>
                   <span>First Name:</span>
-                  <p className="user-info__value"> {order.firstName} </p>
+                  <p className="user-info__value"> {CustomerInfo.FirstName} </p>
                 </li>
                 <li>
                   <span>Last Name:</span>
-                  <p className="user-info__value"> {order.lastName} </p>
+                  <p className="user-info__value"> {CustomerInfo.LastName} </p>
                 </li>
                 <li>
                   <span>Address:</span>
                   <p className="user-info__value">
                     {' '}
-                    {order.address1} <br /> {order.address2}{' '}
+                    {CustomerInfo.BillingAddress} <br />{' '}
+                    {CustomerInfo.BillingAddress}{' '}
                   </p>
                 </li>
                 <li>
                   <span>City:</span>
-                  <p className="user-info__value"> {order.city} </p>
+                  <p className="user-info__value"> {CustomerInfo.City} </p>
                 </li>
                 <li>
                   <span>State:</span>
-                  <p className="user-info__value"> {order.state} </p>
+                  <p className="user-info__value"> {CustomerInfo.State} </p>
                 </li>
                 <li>
                   <span>Zip Code:</span>
-                  <p className="user-info__value"> {order.postalCode} </p>
+                  <p className="user-info__value"> {CustomerInfo.Zipcode} </p>
                 </li>
                 <li>
                   <span>Phone:</span>
-                  <p className="user-info__value"> {order.phoneNumber} </p>
+                  <p className="user-info__value"> {CustomerInfo.Phone} </p>
                 </li>
                 <li>
                   <span>Email:</span>
-                  <p className="user-info__value"> {order.emailAddress} </p>
+                  <p className="user-info__value"> {CustomerInfo.Email} </p>
                 </li>
               </ul>
               <div className="sh-heading">Billing Info</div>
-              <ul className="user-info">
-                <li>
-                  <span>First Name:</span>
-                  <p className="user-info__value"> {order.shipFirstName} </p>
-                </li>
-                <li>
-                  <span>Last Name:</span>
-                  <p className="user-info__value"> {order.shipLastName} </p>
-                </li>
-                <li>
-                  <span>Address:</span>
-                  <p className="user-info__value">
-                    {' '}
-                    {order.shipAddress1} <br /> {order.shipAddress2}
-                  </p>
-                </li>
-                <li>
-                  <span>City:</span>
-                  <p className="user-info__value"> {order.shipCity} </p>
-                </li>
-                <li>
-                  <span>State:</span>
-                  <p className="user-info__value"> {order.shipState} </p>
-                </li>
-                <li>
-                  <span>Zip Code:</span>
-                  <p className="user-info__value"> {order.shipPostalCode} </p>
-                </li>
-                <li>
-                  <span>Phone:</span>
-                  <p className="user-info__value"> {order.phoneNumber} </p>
-                </li>
-                <li>
-                  <span>Email:</span>
-                  <p className="user-info__value"> {order.emailAddress} </p>
-                </li>
-              </ul>
             </div>
           </div>
         </div>

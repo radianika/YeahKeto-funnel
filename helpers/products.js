@@ -121,49 +121,49 @@ const tyProductImages = {
 };
 
 const getTyProductImage = product => {
-  if (product.name.toLowerCase().indexOf('balm') >= 0) {
+  if (product.ProductName.toLowerCase().indexOf('balm') >= 0) {
     return tyProductImages.balm;
   }
-  if (product.name.toLowerCase().indexOf('oil') >= 0) {
+  if (product.ProductName.toLowerCase().indexOf('oil') >= 0) {
     return tyProductImages.oil;
   }
-  if (product.name.toLowerCase().indexOf('capsule') >= 0) {
+  if (product.ProductName.toLowerCase().indexOf('capsule') >= 0) {
     return tyProductImages.capsule;
   }
 };
 
 const getTyProductContainer = product => {
-  if (product.name.toLowerCase().indexOf('balm') >= 0) {
+  if (product.ProductName.toLowerCase().indexOf('balm') >= 0) {
     return 'Jars';
   }
-  if (product.name.toLowerCase().indexOf('oil') >= 0) {
+  if (product.ProductName.toLowerCase().indexOf('oil') >= 0) {
     return 'Bottles';
   }
-  if (product.name.toLowerCase().indexOf('capsule') >= 0) {
+  if (product.ProductName.toLowerCase().indexOf('capsule') >= 0) {
     return 'Bottles';
   }
 };
 
 const getTyProductName = product => {
-  if (product.name.toLowerCase().indexOf('balm') >= 0) {
+  if (product.ProductName.toLowerCase().indexOf('balm') >= 0) {
     return 'CBD Warming Balm 50mg';
   }
-  if (product.name.toLowerCase().indexOf('oil') >= 0) {
+  if (product.ProductName.toLowerCase().indexOf('oil') >= 0) {
     return 'CBD Oil 500mg 1 oz';
   }
-  if (product.name.toLowerCase().indexOf('capsule') >= 0) {
+  if (product.ProductName.toLowerCase().indexOf('capsule') >= 0) {
     return 'CBD Capsules 300 mg';
   }
   const titleString = 'american science cbd';
-  const titleIndex = product.name.toLowerCase().indexOf(titleString);
-  const productName = product.name.substring(titleIndex + titleString.length);
+  const titleIndex = product.ProductName.toLowerCase().indexOf(titleString);
+  const productName = product.ProductName.substring(titleIndex + titleString.length);
   return productName;
 };
 
 const getTyProductQuantity = product => {
   const titleString = 'american science cbd';
-  const titleIndex = product.name.toLowerCase().indexOf(titleString);
-  const productQuantity = product.name.substring(0, titleIndex);
+  const titleIndex = product.ProductName.toLowerCase().indexOf(titleString);
+  const productQuantity = product.ProductName.substring(0, titleIndex);
   return productQuantity;
 };
 
