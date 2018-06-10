@@ -7,25 +7,11 @@ import { AuthActions, OrderActions } from 'redux/actions';
 
 class Thankyou extends React.PureComponent {
   static async getInitialProps(props) {
-    const {
-      store, isServer, query, req,
-    } = props.ctx;
+    const { store, isServer, query } = props.ctx;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
-    }
-  }
-
-  componentDidMount() {
-    const { query } = this.props;
-    if (query.orderId) {
-      this.props.getOrderDetails({
-        orderId: query.orderId,
-        headers: {
-          'x-ascbd-req-origin': window.location.hostname,
-        },
-      });
     }
   }
 
