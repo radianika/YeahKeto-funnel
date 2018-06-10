@@ -16,14 +16,6 @@ class Promo extends React.PureComponent {
     }
   }
 
-  componentDidMount() {
-    this.props.getOrderDetails({
-      headers: {
-        'x-ascbd-req-origin': window.location.hostname,
-      },
-    });
-  }
-
   render() {
     return (
       <React.Fragment>
