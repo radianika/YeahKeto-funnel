@@ -114,12 +114,14 @@ function* placeOrder(action) {
       getQueryString().startsWith('&') || !getQueryString().length ? '' : '&'
     }${getQueryString()}`;
     const apiResponse = yield post(
-      '/v1/konnektive/order',
+      '/v1/response/order',
       parsedOrder,
       sessionId,
       { ...headers, 'k-session-id': kSessionId },
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
+      const { localStorage } = window;
+      localStorage.removeItem('parsedShipping');
       const order = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order }));
       window.location.assign(`${nextUrl}?${queryString}`);

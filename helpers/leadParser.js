@@ -88,6 +88,16 @@ const parseOrderPostData = (values, pack) => {
   const SubAffiliateID = getParameterByName('sourceValue2');
   const shippingLocalStorageData = JSON.parse(localStorage.getItem('parsedShipping'));
 
+  const packIdMap = {
+    '210': '35404d48-489b-4390-a099-f0b9a27faca5',
+    '209': '75c92745-62cb-4360-83a5-35b26b1b7e0e',
+    '208': 'b5a06b4c-df89-4381-8a79-f594349d22ae',
+    '213': 'd9d05acc-66a8-40bc-a344-d119d75e7dd0',
+    '212': '4db523ed-baf0-4bf7-90d3-3b4b847445aa',
+    '217': '6917e892-e169-4f94-8f54-3aac2e9ab547',
+    '215': '0041249f-9f8b-41c5-a137-ad4ce8133cf6'
+  }
+
   let postData = {
     "BillingAddress": {
       "FirstName": shippingLocalStorageData.ShippingAddress.FirstName,
@@ -105,8 +115,12 @@ const parseOrderPostData = (values, pack) => {
       "NameOnCard": `${shippingLocalStorageData.ShippingAddress.FirstName}${shippingLocalStorageData.ShippingAddress.LastName}`,
       "CVV": values.cardSecurityCode,
       "ProductGroups": [{
-        ProductGroupKey: pack.id
+        ProductGroupKey: packIdMap[pack.id] || null
       }]
+    },
+    "customer": {
+      "Email": shippingLocalStorageData.Email,
+      "Phone": shippingLocalStorageData.Phone
     },
     "MFD": getMFD()
   }
