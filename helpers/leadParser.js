@@ -20,14 +20,6 @@ const getMFD = () => {
       value: getParameterByName('sourceValue3')
     },
     {
-      name: 'AffiliateID',
-      value: getParameterByName('sourceValue1')
-    },
-    {
-      name: 'SubAffiliateID',
-      value: getParameterByName('sourceValue2')
-    },
-    {
       name: 'AffSource',
       value: getParameterByName('sourceValue4')
     },
