@@ -72,7 +72,11 @@ class PromoCheckout extends React.PureComponent {
                   <div key={pack.id} className="pkg">
                     <a
                       href="javascript:void(0);"
-                      className={pack.id === this.state.selected.id && 'picked'}
+                      className={
+                        pack && pack.id === this.state.selected.id
+                          ? 'picked'
+                          : ''
+                      }
                       onClick={() => {
                         this.setState({ selected: pack });
                       }}
@@ -238,6 +242,7 @@ const mapStateToProps = reduxState => {
       initialValues,
     };
   }
+  return {};
 };
 
 const PromoCheckoutContainer = connect(mapStateToProps, { ...OrderActions })(

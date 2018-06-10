@@ -113,10 +113,8 @@ function* placeOrder(action) {
     } else {
       sessionId = yield select(getSession);
     }
-    const { orderId } = values;
-
     const parsedOrder = parseOrderPostData(values, pack);
-    const queryString = `&orderId=${orderId}${
+    const queryString = `${
       getQueryString().startsWith('&') || !getQueryString().length ? '' : '&'
     }${getQueryString()}`;
     const apiResponse = yield post(

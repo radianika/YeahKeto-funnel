@@ -107,7 +107,7 @@ class ThankyouDesktopComponent extends React.Component {
                   <br />
                   Order Number:{' '}
                   <span>
-                    {items[0].OrderInfo && items[0].OrderInfo.TransactionID}
+                    {items[0].OrderInfo && items[0].OrderInfo.CustomerID}
                   </span>
                   <br />
                   Estimated Delivery Date:{' '}
@@ -121,7 +121,7 @@ class ThankyouDesktopComponent extends React.Component {
               <div className="itemordered-heading">Items Ordered</div>
               {Object.values(items).map(item => (
                 // const originalProduct = this.getOriginalProduct(item);
-                <div key={item.productId} className="prod-row">
+                <div key={item.OrderInfo.CustomerID} className="prod-row">
                   <div className="prod-data ty">
                     <div className="prod-shoot">
                       <img
