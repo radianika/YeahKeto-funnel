@@ -10,6 +10,7 @@ class Thankyou extends React.PureComponent {
     super(props);
     this.state = {
       items: [],
+      shippingDetails: {},
     };
   }
 
@@ -18,6 +19,7 @@ class Thankyou extends React.PureComponent {
     // eslint-disable-next-line
     this.setState({
       items: JSON.parse(localStorage.getItem('upsell1')),
+      shippingDetails: JSON.parse(localStorage.getItem('parsedShipping')),
     });
   }
 
@@ -63,11 +65,19 @@ class Thankyou extends React.PureComponent {
         <PromoSession pageType="thankyouPage" />
         {device === 'desktop' &&
           this.state.items.length && (
-            <ThankyouDesktop isPromo={isPromo} items={this.state.items} />
+            <ThankyouDesktop
+              isPromo={isPromo}
+              items={this.state.items}
+              shippingDetails={this.state.shippingDetails}
+            />
           )}
         {device === 'mobile' &&
           this.state.items.length && (
-            <ThankyouMobile isPromo={isPromo} items={this.state.items} />
+            <ThankyouMobile
+              isPromo={isPromo}
+              items={this.state.items}
+              shippingDetails={this.state.shippingDetails}
+            />
           )}
       </React.Fragment>
     );

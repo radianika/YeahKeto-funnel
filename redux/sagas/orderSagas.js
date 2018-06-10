@@ -127,7 +127,6 @@ function* placeOrder(action) {
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const { localStorage } = window;
-      localStorage.removeItem('parsedShipping');
       const order = apiResponse.response.data.data;
       localStorage.setItem('upsell1', JSON.stringify([order]));
       yield put(OrderActions.placeOrderSuccess({ order }));

@@ -12,12 +12,18 @@ import moment from 'moment';
 
 class ThankyouDesktopComponent extends React.Component {
   render() {
-    const { isPromo, items } = this.props;
+    const { isPromo, items, shippingDetails } = this.props;
     let CustomerInfo = {};
     if (items.length) {
       // eslint-disable-next-line
       CustomerInfo = items[0].CustomerInfo;
     }
+
+    const total = items.reduce(
+      (accumulator, currentValue) =>
+        accumulator + currentValue.OrderInfo.TotalAmount,
+      0,
+    );
 
     return (
       <div className="container">
@@ -99,7 +105,10 @@ class ThankyouDesktopComponent extends React.Component {
                   Order Placed:{' '}
                   <span>{moment().format('dddd, MMM DD, YYYY')}</span>
                   <br />
-                  Order Number: <span>{400563}</span>
+                  Order Number:{' '}
+                  <span>
+                    {items[0].OrderInfo && items[0].OrderInfo.TransactionID}
+                  </span>
                   <br />
                   Estimated Delivery Date:{' '}
                   <span>
@@ -133,12 +142,14 @@ class ThankyouDesktopComponent extends React.Component {
                       </span>
                     </p>
                   </div>
-                  <div className="prod-price">${item.price}</div>
+                  <div className="prod-price">
+                    ${item.OrderInfo.TotalAmount}
+                  </div>
                 </div>
               ))}
               <div className="summry-table">
                 <div className="row pack-name">
-                  Sub Total: <span>${2000}</span>
+                  Sub Total: <span>${total}</span>
                 </div>
 
                 <div className="row shipping">
@@ -146,7 +157,7 @@ class ThankyouDesktopComponent extends React.Component {
                 </div>
 
                 <div className="row total-price">
-                  Total: <span>${3000}</span>
+                  Total: <span>${total}</span>
                 </div>
               </div>
             </div>
@@ -165,21 +176,30 @@ class ThankyouDesktopComponent extends React.Component {
                   <span>Address:</span>
                   <p className="user-info__value">
                     {' '}
-                    {CustomerInfo.BillingAddress} <br />{' '}
-                    {CustomerInfo.BillingAddress}{' '}
+                    {shippingDetails.ShippingAddress.Address1} <br />{' '}
+                    {shippingDetails.ShippingAddress.Address2}{' '}
                   </p>
                 </li>
                 <li>
                   <span>City:</span>
-                  <p className="user-info__value"> {CustomerInfo.City} </p>
+                  <p className="user-info__value">
+                    {' '}
+                    {shippingDetails.ShippingAddress.City}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>State:</span>
-                  <p className="user-info__value"> {CustomerInfo.State} </p>
+                  <p className="user-info__value">
+                    {' '}
+                    {shippingDetails.ShippingAddress.State}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>Zip Code:</span>
-                  <p className="user-info__value"> {CustomerInfo.Zipcode} </p>
+                  <p className="user-info__value">
+                    {' '}
+                    {shippingDetails.ShippingAddress.ZipCode}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>Phone:</span>
@@ -191,6 +211,59 @@ class ThankyouDesktopComponent extends React.Component {
                 </li>
               </ul>
               <div className="sh-heading">Billing Info</div>
+              <ul className="user-info">
+                <li>
+                  <span>First Name:</span>
+                  <p className="user-info__value">
+                    {' '}
+                    {shippingDetails.ShippingAddress.FirstName}{' '}
+                  </p>
+                </li>
+                <li>
+                  <span>Last Name:</span>
+                  <p className="user-info__value">
+                    {' '}
+                    {shippingDetails.ShippingAddress.LastName}{' '}
+                  </p>
+                </li>
+                <li>
+                  <span>Address:</span>
+                  <p className="user-info__value">
+                    {' '}
+                    {shippingDetails.ShippingAddress.Address1} <br />{' '}
+                    {shippingDetails.ShippingAddress.Address2}
+                  </p>
+                </li>
+                <li>
+                  <span>City:</span>
+                  <p className="user-info__value">
+                    {' '}
+                    {shippingDetails.ShippingAddress.City}{' '}
+                  </p>
+                </li>
+                <li>
+                  <span>State:</span>
+                  <p className="user-info__value">
+                    {' '}
+                    {shippingDetails.ShippingAddress.State}{' '}
+                  </p>
+                </li>
+                <li>
+                  <span>Zip Code:</span>
+                  <p className="user-info__value">
+                    {' '}
+                    {shippingDetails.ShippingAddress.ZipCode}{' '}
+                  </p>
+                </li>
+                <li>
+                  <span>Phone:</span>
+                  <p className="user-info__value"> {shippingDetails.Phone} </p>
+                </li>
+                <li>
+                  <span>Email:</span>
+                  <p className="user-info__value"> {shippingDetails.Email} </p>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
