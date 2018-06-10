@@ -4,7 +4,6 @@ import { OrderActions } from 'redux/actions';
 import {
   post,
   get,
-  parseQuery,
   getQueryString,
   parseLeadPostData,
   parseOrderPostData,
@@ -12,6 +11,16 @@ import {
 import { getCookie } from 'react/components/common';
 
 const getSession = state => state.auth.sessionId;
+
+const packIdMap = {
+  210: '35404d48-489b-4390-a099-f0b9a27faca5',
+  209: '75c92745-62cb-4360-83a5-35b26b1b7e0e',
+  208: 'b5a06b4c-df89-4381-8a79-f594349d22ae',
+  213: 'd9d05acc-66a8-40bc-a344-d119d75e7dd0',
+  212: '4db523ed-baf0-4bf7-90d3-3b4b847445aa',
+  217: '6917e892-e169-4f94-8f54-3aac2e9ab547',
+  215: '0041249f-9f8b-41c5-a137-ad4ce8133cf6',
+};
 
 function* submitLeadsForm(action) {
   yield put(OrderActions.submitLeadsFormRequest());
@@ -70,8 +79,8 @@ function* getOrderDetails(action) {
       sessionId = yield select(getSession);
     }
     const url = orderId
-      ? `/v1/konnektive/order/${orderId}`
-      : '/v1/konnektive/order/';
+      ? `/v1/response/order/${orderId}`
+      : '/v1/response/order/';
     const apiResponse = yield get(url, sessionId, {
       ...headers,
       'k-session-id': kSessionId,
@@ -123,6 +132,7 @@ function* placeOrder(action) {
       const { localStorage } = window;
       localStorage.removeItem('parsedShipping');
       const order = apiResponse.response.data.data;
+      localStorage.setItem('upsell1', JSON.stringify(order));
       yield put(OrderActions.placeOrderSuccess({ order }));
       window.location.assign(`${nextUrl}?${queryString}`);
     } else {
@@ -140,9 +150,12 @@ function* placeOrder(action) {
 function* addUpsellToOrder(action) {
   yield put(OrderActions.addUpsellToOrderRequest());
   try {
-    const { productId, sendTo, headers } = action.payload;
+    const { sendTo, headers } = action.payload;
     let sessionId = '';
     let kSessionId = '';
+    const { localStorage } = window;
+
+    const upsell1 = JSON.parse(localStorage.getItem('upsell1'));
 
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
@@ -155,21 +168,20 @@ function* addUpsellToOrder(action) {
     } else {
       sessionId = yield select(getSession);
     }
-    const { orderId } = parseQuery(window.location.search);
+
     const payload = {
-      orderId,
-      productId,
-      productQty: 1,
+      CustomerID: upsell1.OrderInfo.CustomerID,
+      ProductGroups: [
+        {
+          ProductGroupKey: packIdMap[action.payload.productId],
+        },
+      ],
     };
-    const apiResponse = yield post(
-      '/v1/konnektive/upsale',
-      payload,
-      sessionId,
-      {
-        ...headers,
-        'k-session-id': kSessionId,
-      },
-    );
+
+    const apiResponse = yield post('/v1/response/upsale', payload, sessionId, {
+      ...headers,
+      'k-session-id': kSessionId,
+    });
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const newOrder = apiResponse.response.data.data;
       yield put(OrderActions.placeOrderSuccess({ order: newOrder }));
