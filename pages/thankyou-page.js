@@ -29,19 +29,27 @@ class Thankyou extends React.PureComponent {
     if (getParameterByName('cart')) {
       const items = JSON.parse(localStorage.getItem('upsell1'));
       const newItem = [];
+      const { Products } = items[0].OrderInfo;
 
-      items[0].OrderInfo.Products.forEach((item, index) => {
-        const newObj = {
-          CustomerInfo: items[0].CustomerInfo,
-          OrderInfo: items[0].OrderInfo,
-        };
+      Products.forEach((item, index) => {
+        const newObj = Object.assign(
+          {},
+          {
+            CustomerInfo: items[0].CustomerInfo,
+            OrderInfo: items[0].OrderInfo,
+          },
+        );
 
-        newObj.OrderInfo.Products = [item];
-        newObj.OrderInfo.TransactionID = index;
-
-        newItem.push(newObj);
+        const newObj2 = Object.assign(newObj, {
+          OrderInfo: {
+            Products: new Array(item),
+            TransactionID: index,
+            SubTotalAmount: item.ProductAmount,
+            TotalAmount: item.ProductAmount,
+          },
+        });
+        newItem.push(newObj2);
       });
-
       return newItem;
     }
     return JSON.parse(localStorage.getItem('upsell1'));
