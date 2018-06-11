@@ -7,40 +7,40 @@ const testCardNumbers = ['1333 3333 3333 3333'];
 
 const shippingFormValidator = values => {
   const errors = {};
-  if (!values.firstName || !values.firstName.trim()) {
-    errors.firstName = 'Please enter your first name.';
+  if (!values.FirstName || !values.FirstName.trim()) {
+    errors.FirstName = 'Please enter your first name.';
   }
-  if (!values.lastName || !values.lastName.trim()) {
-    errors.lastName = 'Please enter your last name.';
+  if (!values.LastName || !values.LastName.trim()) {
+    errors.LastName = 'Please enter your last name.';
   }
-  if (!values.address || !values.address.trim()) {
-    errors.address = 'Please enter your address.';
-  } else if (values.address && values.address.trim().length > 100) {
-    errors.address = 'The address should be less than 100 characters long.';
+  if (!values.Address1 || !values.Address1.trim()) {
+    errors.Address1 = 'Please enter your address.';
+  } else if (values.Address1 && values.Address1.trim().length > 100) {
+    errors.Address1 = 'The address should be less than 100 characters long.';
   }
-  if (!values.city || !values.city.trim()) {
-    errors.city = 'Please enter your city.';
-  } else if (values.city && values.city.trim().length > 50) {
-    errors.city = 'The city should be less than 50 characters long.';
+  if (!values.City || !values.City.trim()) {
+    errors.City = 'Please enter your city.';
+  } else if (values.City && values.City.trim().length > 50) {
+    errors.City = 'The city should be less than 50 characters long.';
   }
-  if (!values.state || !values.state.trim() || values.state === 'State') {
-    errors.state = 'Please enter your state.';
+  if (!values.State || !values.State.trim() || values.State === 'State') {
+    errors.State = 'Please enter your state.';
   }
-  if (!values.postalCode || !values.postalCode.trim()) {
-    errors.postalCode = 'Please enter your zip code.';
-  } else if (values.postalCode && values.postalCode.trim().length !== 5) {
-    errors.postalCode = 'The zip code should be 5 characters long.';
+  if (!values.ZipCode || !values.ZipCode.trim()) {
+    errors.ZipCode = 'Please enter your zip code.';
+  } else if (values.ZipCode && values.ZipCode.trim().length !== 5) {
+    errors.ZipCode = 'The zip code should be 5 characters long.';
   }
-  if (!values.phoneNumber || !values.phoneNumber.trim()) {
-    errors.phoneNumber = 'Please enter your phone number.';
-  } else if (values.phoneNumber && values.phoneNumber.length !== 14) {
-    errors.phoneNumber =
+  if (!values.Phone || !values.Phone.trim()) {
+    errors.Phone = 'Please enter your phone number.';
+  } else if (values.Phone && values.Phone.length !== 14) {
+    errors.Phone =
       'Please enter a valid 10-digit US phone number (must not include spaces or special characters).';
   }
-  if (!values.email || !values.email.trim()) {
-    errors.email = 'Please enter your email address.';
-  } else if (values.email && !validator.isEmail(values.email)) {
-    errors.email = 'Please enter a valid email address.';
+  if (!values.Email || !values.Email.trim()) {
+    errors.Email = 'Please enter your email address.';
+  } else if (values.Email && !validator.isEmail(values.Email)) {
+    errors.Email = 'Please enter a valid email address.';
   }
 
   return errors;
