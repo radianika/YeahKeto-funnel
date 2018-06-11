@@ -16,14 +16,6 @@ class Confirm extends React.PureComponent {
     }
   }
 
-  async componentDidMount() {
-    this.props.getOrderDetails({
-      headers: {
-        'x-ascbd-req-origin': window.location.hostname,
-      },
-    });
-  }
-
   render() {
     const { props } = this;
     return (

@@ -30,8 +30,17 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       isSame: true,
       summaryOpen: false,
       showErrorModal: false,
+      pack: {},
     };
     this.toggleSummary = this.toggleSummary.bind(this);
+  }
+
+  componentDidMount() {
+    const { localStorage } = window;
+    // eslint-disable-next-line
+    this.setState({
+      pack: JSON.parse(localStorage.getItem('pack')),
+    });
   }
 
   componentWillReceiveProps(newProps) {
@@ -44,10 +53,10 @@ class MobileConfirmContainerComponent extends React.PureComponent {
   }
 
   getPrice() {
-    if (this.props.pack.packagePrice) {
-      return this.props.pack.packagePrice;
+    if (this.state.pack.packagePrice) {
+      return this.state.pack.packagePrice;
     }
-    return this.props.pack.price;
+    return this.state.pack.price;
   }
 
   confirmOrder = values => {
@@ -80,7 +89,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
   }
 
   renderSummary() {
-    const { pack } = this.props;
+    const { pack } = this.state;
 
     if (this.state.summaryOpen) {
       return (
@@ -101,7 +110,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                 <ul className="rgtlist1">
                   <li>
                     <span>american science</span>
-                    <br /> {pack.title}
+                    <br /> {pack.title.props.children[0]}
                   </li>
                 </ul>
                 <ul className="rgtlist2">
