@@ -62,11 +62,9 @@ function* getOrderDetails(action) {
   try {
     const { headers, orderId } = action.payload;
     let sessionId = '';
-    let kSessionId = '';
 
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
-      kSessionId = yield getCookie('ascbd_promo_session');
 
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
@@ -80,7 +78,6 @@ function* getOrderDetails(action) {
       : '/v1/response/order/';
     const apiResponse = yield get(url, sessionId, {
       ...headers,
-      'k-session-id': kSessionId,
     });
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data.data[0];
@@ -100,11 +97,9 @@ function* placeOrder(action) {
       values, pack, nextUrl, headers,
     } = action.payload;
     let sessionId = '';
-    let kSessionId = '';
 
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
-      kSessionId = yield getCookie('ascbd_promo_session');
 
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
@@ -122,7 +117,7 @@ function* placeOrder(action) {
       '/v1/response/order',
       parsedOrder,
       sessionId,
-      { ...headers, 'k-session-id': kSessionId },
+      { ...headers },
     );
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const { localStorage } = window;
@@ -147,7 +142,6 @@ function* addUpsellToOrder(action) {
   try {
     const { sendTo, headers } = action.payload;
     let sessionId = '';
-    let kSessionId = '';
     const { localStorage } = window;
 
     let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
@@ -155,7 +149,6 @@ function* addUpsellToOrder(action) {
 
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
-      kSessionId = yield getCookie('ascbd_promo_session');
 
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
@@ -176,7 +169,6 @@ function* addUpsellToOrder(action) {
 
     const apiResponse = yield post('/v1/response/upsale', payload, sessionId, {
       ...headers,
-      'k-session-id': kSessionId,
     });
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const newOrder = apiResponse.response.data.data;
