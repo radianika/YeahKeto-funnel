@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { PromoSession } from 'react/components/common';
 import { ThankyouDesktop, ThankyouMobile } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
+import { getParameterByName } from 'helpers';
 
 class Thankyou extends React.PureComponent {
   constructor(props) {
@@ -18,10 +19,33 @@ class Thankyou extends React.PureComponent {
     const { localStorage } = window;
     // eslint-disable-next-line
     this.setState({
-      items: JSON.parse(localStorage.getItem('upsell1')),
+      items: this.getItem(),
       shippingDetails: JSON.parse(localStorage.getItem('parsedShipping')),
     });
   }
+
+  getItem = () => {
+    const { localStorage } = window;
+    if (getParameterByName('cart')) {
+      const items = JSON.parse(localStorage.getItem('upsell1'));
+      const newItem = [];
+
+      items[0].OrderInfo.Products.forEach((item, index) => {
+        const newObj = {
+          CustomerInfo: items[0].CustomerInfo,
+          OrderInfo: items[0].OrderInfo,
+        };
+
+        newObj.OrderInfo.Products = [item];
+        newObj.OrderInfo.TransactionID = index;
+
+        newItem.push(newObj);
+      });
+
+      return newItem;
+    }
+    return JSON.parse(localStorage.getItem('upsell1'));
+  };
 
   static async getInitialProps(props) {
     const { store, isServer, query } = props.ctx;

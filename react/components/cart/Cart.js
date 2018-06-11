@@ -33,6 +33,8 @@ class Cart extends PureComponent {
     });
     values.order = { ...values.order, ...orderPayload };
     values.process_sync = 'true';
+    const valuesCopy = values;
+    valuesCopy.cart = true;
     this.props.submitLeadsForm({
       values,
       cart: true,
@@ -41,7 +43,7 @@ class Cart extends PureComponent {
     });
 
     this.props.placeOrder({
-      values,
+      values: valuesCopy,
       pack: this.state.selected,
       router: this.props.router,
       nextUrl: 'thankyou',

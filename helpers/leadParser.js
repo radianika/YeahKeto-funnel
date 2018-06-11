@@ -91,6 +91,7 @@ const parseOrderPostData = (values, pack) => {
     Email: '',
     Phone: ''
   };
+  let customProductMap = [];
 
   let cardDetails = {
     cardExpiry: {
@@ -101,7 +102,29 @@ const parseOrderPostData = (values, pack) => {
     cardSecurityCode: ''
   };
 
-  if (values.Address1) {
+  const oldToNewProductMapping = {
+    152: 'b5a06b4c-df89-4381-8a79-f594349d22ae',
+    157: '93a738a2-0349-48ef-89db-5043499a2c53',
+    175: 'dd3faa6a-22d9-47c5-853b-3afa9065e6b5'
+  }
+
+  const oldToNewProductToProductMapping = {
+    152: '21340',
+    157: '21349',
+    175: '21350'
+  }
+
+  const packIdMap = {
+    '210': '35404d48-489b-4390-a099-f0b9a27faca5',
+    '209': '75c92745-62cb-4360-83a5-35b26b1b7e0e',
+    '208': 'b5a06b4c-df89-4381-8a79-f594349d22ae',
+    '213': 'd9d05acc-66a8-40bc-a344-d119d75e7dd0',
+    '212': '4db523ed-baf0-4bf7-90d3-3b4b847445aa',
+    '217': '6917e892-e169-4f94-8f54-3aac2e9ab547',
+    '215': '0041249f-9f8b-41c5-a137-ad4ce8133cf6'
+  }
+
+  if (values.order) {
     shippingLocalStorageData.ShippingAddress = values;
     shippingLocalStorageData.Email = values.Email;
     shippingLocalStorageData.Phone = values.Phone;
@@ -118,14 +141,38 @@ const parseOrderPostData = (values, pack) => {
 
   pack = pack || {id: 210};
 
-  const packIdMap = {
-    '210': '35404d48-489b-4390-a099-f0b9a27faca5',
-    '209': '75c92745-62cb-4360-83a5-35b26b1b7e0e',
-    '208': 'b5a06b4c-df89-4381-8a79-f594349d22ae',
-    '213': 'd9d05acc-66a8-40bc-a344-d119d75e7dd0',
-    '212': '4db523ed-baf0-4bf7-90d3-3b4b847445aa',
-    '217': '6917e892-e169-4f94-8f54-3aac2e9ab547',
-    '215': '0041249f-9f8b-41c5-a137-ad4ce8133cf6'
+  if (values.order) {
+    Object.keys(values.order).forEach(key => {
+      if (key === 'product1_id') {
+        customProductMap.push({
+          ProductGroupKey: oldToNewProductMapping[values.order[key]],
+          CustomProducts: [{
+            ProductID: oldToNewProductToProductMapping[values.order[key]],
+            Quantity: values.order['product1_qty']
+          }]
+        });
+      } else if (key === 'product2_id') {
+        customProductMap.push({
+          ProductGroupKey: oldToNewProductMapping[values.order[key]],
+          CustomProducts: [{
+            ProductID: oldToNewProductToProductMapping[values.order[key]],
+            Quantity: values.order['product2_qty']
+          }]
+        });
+      } else if (key === 'product3_id') {
+        customProductMap.push({
+          ProductGroupKey: oldToNewProductMapping[values.order[key]],
+          CustomProducts: [{
+            ProductID: oldToNewProductToProductMapping[values.order[key]],
+            Quantity: values.order['product3_qty']
+          }]
+        });
+      }
+    })
+  } else {
+    customProductMap.push({
+      ProductGroupKey: packIdMap[pack.id] || null
+    });
   }
 
   let postData = {
@@ -144,9 +191,7 @@ const parseOrderPostData = (values, pack) => {
       "CCNumber": cardDetails.cardNumber,
       "CVV": cardDetails.cardSecurityCode,
       "NameOnCard": `${shippingLocalStorageData.ShippingAddress.FirstName}${shippingLocalStorageData.ShippingAddress.LastName}`,
-      "ProductGroups": [{
-        ProductGroupKey: packIdMap[pack.id] || null
-      }]
+      "ProductGroups": customProductMap
     },
     "customer": {
       "Email": shippingLocalStorageData.Email,
