@@ -26,7 +26,7 @@ class Thankyou extends React.PureComponent {
 
   getItem = () => {
     const { localStorage } = window;
-    if (getParameterByName('cart')) {
+    if (getParameterByName('cart') === !undefined) {
       const items = JSON.parse(localStorage.getItem('upsell1'));
       const newItem = [];
       const { Products } = items[0].OrderInfo;
