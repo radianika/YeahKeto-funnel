@@ -50,46 +50,13 @@ function* submitLeadsForm(action) {
   );
 
   if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
-    yield put(OrderActions.submitLeadsFormSuccess());
     if (!nextUrl) {
       return;
     }
+    yield put(OrderActions.submitLeadsFormSuccess());
     window.location.assign(`${nextUrl}?${queryString}`);
   } else {
     yield put(OrderActions.submitLeadsFormFailure());
-  }
-}
-
-function* getOrderDetails(action) {
-  yield put(OrderActions.getOrderDetailsRequest());
-  try {
-    const { headers, orderId } = action.payload;
-    let sessionId = '';
-
-    if (typeof window !== 'undefined') {
-      sessionId = yield getCookie('ascbd_session');
-
-      if (!sessionId || !sessionId.length) {
-        window.location.href = window.location.href;
-        return;
-      }
-    } else {
-      sessionId = yield select(getSession);
-    }
-    const url = orderId
-      ? `/v1/response/order/${orderId}`
-      : '/v1/response/order/';
-    const apiResponse = yield get(url, sessionId, {
-      ...headers,
-    });
-    if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
-      const order = apiResponse.response.data.data.data[0];
-      yield put(OrderActions.getOrderDetailsSuccess({ order }));
-    } else {
-      yield put(OrderActions.getOrderDetailsFailure());
-    }
-  } catch (error) {
-    yield put(OrderActions.getOrderDetailsFailure({ error }));
   }
 }
 
@@ -126,6 +93,9 @@ function* placeOrder(action) {
       const { localStorage } = window;
       const order = apiResponse.response.data.data;
       localStorage.setItem('upsell1', JSON.stringify([order]));
+      if (values.cart) {
+        yield put(OrderActions.submitLeadsFormSuccess());
+      }
       yield put(OrderActions.placeOrderSuccess({ order }));
       window.location.assign(`${nextUrl}?${queryString}&cart=${values.cart}`);
     } else {
@@ -189,6 +159,39 @@ function* addUpsellToOrder(action) {
     }
   } catch (error) {
     yield put(OrderActions.addUpsellToOrderFailure({ error }));
+  }
+}
+
+function* getOrderDetails(action) {
+  yield put(OrderActions.getOrderDetailsRequest());
+  try {
+    const { headers, orderId } = action.payload;
+    let sessionId = '';
+
+    if (typeof window !== 'undefined') {
+      sessionId = yield getCookie('ascbd_session');
+
+      if (!sessionId || !sessionId.length) {
+        window.location.href = window.location.href;
+        return;
+      }
+    } else {
+      sessionId = yield select(getSession);
+    }
+    const url = orderId
+      ? `/v1/response/order/${orderId}`
+      : '/v1/response/order/';
+    const apiResponse = yield get(url, sessionId, {
+      ...headers,
+    });
+    if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
+      const order = apiResponse.response.data.data.data[0];
+      yield put(OrderActions.getOrderDetailsSuccess({ order }));
+    } else {
+      yield put(OrderActions.getOrderDetailsFailure());
+    }
+  } catch (error) {
+    yield put(OrderActions.getOrderDetailsFailure({ error }));
   }
 }
 

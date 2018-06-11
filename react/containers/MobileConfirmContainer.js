@@ -412,32 +412,9 @@ const MobileConfirmContainerPage = reduxForm({
 function mapStateToProps(reduxState, ownProps) {
   const { productId } = ownProps.query;
   const pack = packages.find(p => String(p.id) === String(productId));
-  if (reduxState.order.order) {
-    const {
-      orderId,
-      firstName,
-      lastName,
-      address1,
-      address2,
-      city,
-      state,
-      postalCode,
-      phoneNumber,
-      emailAddress,
-    } = reduxState.order.order;
+  if (reduxState.order) {
     return {
-      initialValues: {
-        orderId,
-        firstName,
-        lastName,
-        address: address1,
-        address2,
-        city,
-        state,
-        postalCode,
-        phoneNumber: normalizePhone(phoneNumber),
-        email: emailAddress,
-      },
+      initialValues: {},
       pack,
       submitStatus: reduxState.order.placeOrderStatus,
       submitFailure: reduxState.order.placeOrderError,
