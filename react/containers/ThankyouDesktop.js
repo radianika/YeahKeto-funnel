@@ -121,7 +121,7 @@ class ThankyouDesktopComponent extends React.Component {
               <div className="itemordered-heading">Items Ordered</div>
               {Object.values(items).map(item => (
                 // const originalProduct = this.getOriginalProduct(item);
-                <div key={item.OrderInfo.CustomerID} className="prod-row">
+                <div key={item.OrderInfo.TransactionID} className="prod-row">
                   <div className="prod-data ty">
                     <div className="prod-shoot">
                       <img

@@ -12,7 +12,19 @@ import moment from 'moment';
 
 class ThankyouMobileComponent extends React.PureComponent {
   render() {
-    const { order, isPromo } = this.props;
+    const { isPromo, items, shippingDetails } = this.props;
+    let CustomerInfo = {};
+    if (items.length) {
+      // eslint-disable-next-line
+      CustomerInfo = items[0].CustomerInfo;
+    }
+
+    const total = items.reduce(
+      (accumulator, currentValue) =>
+        accumulator + currentValue.OrderInfo.TotalAmount,
+      0,
+    );
+
     return (
       <div className="contentWrap">
         <div className="header position">
@@ -56,7 +68,7 @@ class ThankyouMobileComponent extends React.PureComponent {
           <li>1-888-888-8888</li>
           <li>support@americanscience.com</li>
         </ul>
-        {order && (
+        {items.length && (
           <div className="ty-box">
             <div className="ord-p1">
               <p className="tp-heading">Order Receipt</p>
@@ -67,7 +79,10 @@ class ThankyouMobileComponent extends React.PureComponent {
                   Order Placed:{' '}
                   <span>{moment().format('dddd, MMM DD, YYYY')}</span>
                   <br />
-                  Order Number: <span>{order.clientOrderId}</span>
+                  Order Number:{' '}
+                  <span>
+                    {items[0].OrderInfo && items[0].OrderInfo.CustomerID}
+                  </span>
                   <br />
                   Estimated Delivery Date:{' '}
                   <span>
@@ -78,33 +93,38 @@ class ThankyouMobileComponent extends React.PureComponent {
                 </p>
               </div>
               <div className="itemordered-heading">Items Ordered</div>
-              {Object.keys(order.items).map(key => {
-                const item = order.items[key];
-                return (
-                  // const originalProduct = this.getOriginalProduct(item);
-                  <div key={item.productId} className="prod-row">
-                    <div className="prod-data ty">
-                      <div className="prod-shoot">
-                        <img src={getTyProductImage(item)} alt="prod-shoot" />
-                      </div>
-                      <p className="prod-name">
-                        American Science CBD
-                        <br />
-                        {getTyProductName(item)}
-                        <br />
-                        <span>
-                          {isPromo ? getTyProductQuantity(item) : item.qty}{' '}
-                          {getTyProductContainer(item)}
-                        </span>
-                      </p>
+              {Object.values(items).map(item => (
+                // const item = order.items[key];
+                // const originalProduct = this.getOriginalProduct(item);
+                <div key={item.OrderInfo.TransactionID} className="prod-row">
+                  <div className="prod-data ty">
+                    <div className="prod-shoot">
+                      <img
+                        src={getTyProductImage(item.OrderInfo.Products[0])}
+                        alt="prod-shoot"
+                      />
                     </div>
-                    <div className="prod-price">${item.price}</div>
+                    <p className="prod-name">
+                      American Science CBD
+                      <br />
+                      {getTyProductName(item.OrderInfo.Products[0])}
+                      <br />
+                      <span>
+                        {isPromo
+                          ? getTyProductQuantity(item.OrderInfo.Products[0])
+                          : item.qty}{' '}
+                        {getTyProductContainer(item.OrderInfo.Products[0])}
+                      </span>
+                    </p>
                   </div>
-                );
-              })}
+                  <div className="prod-price">
+                    ${item.OrderInfo.TotalAmount}
+                  </div>
+                </div>
+              ))}
               <div className="summry-table">
                 <div className="row pack-name">
-                  Sub Total: <span>${order.price}</span>
+                  Sub Total: <span>${total}</span>
                 </div>
 
                 <div className="row shipping">
@@ -112,7 +132,7 @@ class ThankyouMobileComponent extends React.PureComponent {
                 </div>
 
                 <div className="row total-price">
-                  Total: <span>${order.totalAmount}</span>
+                  Total: <span>${total}</span>
                 </div>
               </div>
             </div>
@@ -121,79 +141,120 @@ class ThankyouMobileComponent extends React.PureComponent {
               <ul className="user-info">
                 <li>
                   <span>First Name:</span>
-                  <p className="user-info__value-mb"> {order.firstName} </p>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {CustomerInfo.FirstName}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>Last Name:</span>
-                  <p className="user-info__value-mb"> {order.lastName} </p>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {CustomerInfo.LastName}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>Address:</span>
                   <p className="user-info__value-mb">
                     {' '}
-                    {order.address1} <br /> {order.address2}{' '}
+                    {shippingDetails.ShippingAddress.Address1} <br />{' '}
+                    {shippingDetails.ShippingAddress.Address2}{' '}
                   </p>
                 </li>
                 <li>
                   <span>City:</span>
-                  <p className="user-info__value-mb"> {order.city} </p>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {shippingDetails.ShippingAddress.City}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>State:</span>
-                  <p className="user-info__value-mb"> {order.state} </p>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {shippingDetails.ShippingAddress.State}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>Zip Code:</span>
-                  <p className="user-info__value-mb"> {order.postalCode} </p>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {shippingDetails.ShippingAddress.ZipCode}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>Phone:</span>
-                  <p className="user-info__value-mb"> {order.phoneNumber} </p>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {shippingDetails.Phone}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>Email:</span>
-                  <p className="user-info__value-mb"> {order.emailAddress} </p>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {shippingDetails.Email}{' '}
+                  </p>
                 </li>
               </ul>
               <div className="sh-heading">Billing Info</div>
               <ul className="user-info">
                 <li>
                   <span>First Name:</span>
-                  <p className="user-info__value-mb"> {order.shipFirstName} </p>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {shippingDetails.ShippingAddress.FirstName}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>Last Name:</span>
-                  <p className="user-info__value-mb"> {order.shipLastName} </p>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {shippingDetails.ShippingAddress.LastName}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>Address:</span>
                   <p className="user-info__value-mb">
                     {' '}
-                    {order.shipAddress1} <br /> {order.shipAddress2}{' '}
+                    {shippingDetails.ShippingAddress.Address1} <br />{' '}
+                    {shippingDetails.ShippingAddress.Address2}
                   </p>
                 </li>
                 <li>
                   <span>City:</span>
-                  <p className="user-info__value-mb"> {order.shipCity} </p>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {shippingDetails.ShippingAddress.City}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>State:</span>
-                  <p className="user-info__value-mb"> {order.shipState} </p>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {shippingDetails.ShippingAddress.State}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>Zip Code:</span>
                   <p className="user-info__value-mb">
                     {' '}
-                    {order.shipPostalCode}{' '}
+                    {shippingDetails.ShippingAddress.ZipCode}{' '}
                   </p>
                 </li>
                 <li>
                   <span>Phone:</span>
-                  <p className="user-info__value-mb"> {order.phoneNumber} </p>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {shippingDetails.Phone}{' '}
+                  </p>
                 </li>
                 <li>
                   <span>Email:</span>
-                  <p className="user-info__value-mb"> {order.emailAddress} </p>
+                  <p className="user-info__value-mb">
+                    {' '}
+                    {shippingDetails.Email}{' '}
+                  </p>
                 </li>
               </ul>
             </div>
