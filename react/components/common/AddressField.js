@@ -36,12 +36,12 @@ class AddressField extends React.PureComponent {
     postalCode = idx(postalCode, _ => _.short_name);
     setImmediate(() => {
       this.props.changeField(
-        'address',
+        'Address1',
         this.autocompleteRef.current.value.split(',')[0],
       );
-      this.props.changeField('city', city);
-      this.props.changeField('state', state);
-      this.props.changeField('postalCode', postalCode);
+      this.props.changeField('City', city);
+      this.props.changeField('State', state);
+      this.props.changeField('ZipCode', postalCode);
     });
   };
 
