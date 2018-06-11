@@ -86,7 +86,37 @@ const parseLeadPostData = (values) => {
 const parseOrderPostData = (values, pack) => {
   const AffiliateID = getParameterByName('sourceValue1');
   const SubAffiliateID = getParameterByName('sourceValue2');
-  const shippingLocalStorageData = JSON.parse(localStorage.getItem('parsedShipping'));
+  let shippingLocalStorageData = {
+    ShippingAddress: {},
+    Email: '',
+    Phone: ''
+  };
+
+  let cardDetails = {
+    cardExpiry: {
+      cardMonth: '',
+      cardYear: ''
+    },
+    cardNumber: '',
+    cardSecurityCode: ''
+  };
+
+  if (values.Address1) {
+    shippingLocalStorageData.ShippingAddress = values;
+    shippingLocalStorageData.Email = values.Email;
+    shippingLocalStorageData.Phone = values.Phone;
+    cardDetails.cardExpiry.cardMonth = values.order.cardMonth;
+    cardDetails.cardExpiry.cardYear = values.order.cardYear;
+    cardDetails.cardNumber = values.order.cardNumber;
+    cardDetails.cardSecurityCode = values.order.cardSecurityCode;
+  } else {
+    shippingLocalStorageData = JSON.parse(localStorage.getItem('parsedShipping'));
+    cardDetails.cardExpiry = values.cardExpiry;
+    cardDetails.cardNumber = values.cardNumber;
+    cardDetails.cardSecurityCode = values.cardSecurityCode;
+  }
+
+  pack = pack || {id: 210};
 
   const packIdMap = {
     '210': '35404d48-489b-4390-a099-f0b9a27faca5',
@@ -109,11 +139,11 @@ const parseOrderPostData = (values, pack) => {
       "ZipCode": shippingLocalStorageData.ShippingAddress.ZipCode
     },
     "PaymentInformation": {
-      "ExpMonth": values.cardExpiry.cardMonth,
-      "ExpYear": values.cardExpiry.cardYear,
-      "CCNumber": values.cardNumber,
+      "ExpMonth": cardDetails.cardExpiry.cardMonth,
+      "ExpYear": cardDetails.cardExpiry.cardYear,
+      "CCNumber": cardDetails.cardNumber,
+      "CVV": cardDetails.cardSecurityCode,
       "NameOnCard": `${shippingLocalStorageData.ShippingAddress.FirstName}${shippingLocalStorageData.ShippingAddress.LastName}`,
-      "CVV": values.cardSecurityCode,
       "ProductGroups": [{
         ProductGroupKey: packIdMap[pack.id] || null
       }]

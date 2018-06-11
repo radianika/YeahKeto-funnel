@@ -51,6 +51,9 @@ function* submitLeadsForm(action) {
 
   if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
     yield put(OrderActions.submitLeadsFormSuccess());
+    if (!nextUrl) {
+      return;
+    }
     window.location.assign(`${nextUrl}?${queryString}`);
   } else {
     yield put(OrderActions.submitLeadsFormFailure());

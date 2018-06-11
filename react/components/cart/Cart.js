@@ -36,8 +36,15 @@ class Cart extends PureComponent {
     this.props.submitLeadsForm({
       values,
       cart: true,
-      nextUrl: '/thankyou',
+      nextUrl: '',
       router: this.props.router,
+    });
+
+    this.props.placeOrder({
+      values,
+      pack: this.state.selected,
+      router: this.props.router,
+      nextUrl: 'thankyou',
     });
   };
 
