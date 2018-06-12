@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { PromoSession } from 'react/components/common';
 import { ThankyouDesktop, ThankyouMobile } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
-import { getParameterByName } from 'helpers';
 
 class Thankyou extends React.PureComponent {
   constructor(props) {
@@ -26,7 +25,7 @@ class Thankyou extends React.PureComponent {
 
   getItem = () => {
     const { localStorage } = window;
-    if (getParameterByName('cart') === !undefined) {
+    if (JSON.parse(localStorage.getItem('cartthankyou'))) {
       const items = JSON.parse(localStorage.getItem('upsell1'));
       const newItem = [];
       const { Products } = items[0].OrderInfo;

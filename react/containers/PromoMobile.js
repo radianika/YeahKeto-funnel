@@ -11,6 +11,11 @@ import {
 import { FooterPromo } from 'react/components/promo';
 
 class PromoMobileContainer extends React.PureComponent {
+  componentDidMount() {
+    const { localStorage } = window;
+    localStorage.clear();
+  }
+
   render() {
     return (
       <div id="container">

@@ -17,7 +17,9 @@ class Cart extends PureComponent {
   }
 
   componentDidMount() {
+    const { localStorage } = window;
     this.props.createNewSession();
+    localStorage.clear();
   }
 
   submit = values => {

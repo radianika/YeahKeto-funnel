@@ -94,10 +94,11 @@ function* placeOrder(action) {
       const order = apiResponse.response.data.data;
       localStorage.setItem('upsell1', JSON.stringify([order]));
       if (values.cart) {
+        localStorage.setItem('cartthankyou', true);
         yield put(OrderActions.submitLeadsFormSuccess());
       }
       yield put(OrderActions.placeOrderSuccess({ order }));
-      window.location.assign(`${nextUrl}?${queryString}&cart=${values.cart}`);
+      window.location.assign(`${nextUrl}?${queryString}`);
     } else {
       yield put(
         OrderActions.placeOrderFailure({
