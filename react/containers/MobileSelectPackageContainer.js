@@ -5,9 +5,11 @@ import { packages, getQueryString } from 'helpers';
 
 class MobileSelectPackageContainer extends React.PureComponent {
   selectPackage = pack => {
+    const { localStorage } = window;
     window.location.assign(
       `/promo/mobile/confirm?${getQueryString()}&productId=${pack.id}`,
     );
+    localStorage.setItem('pack', JSON.stringify(pack));
   };
 
   render() {

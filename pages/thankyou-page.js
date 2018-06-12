@@ -6,10 +6,57 @@ import { ThankyouDesktop, ThankyouMobile } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
 
 class Thankyou extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [],
+      shippingDetails: {},
+    };
+  }
+
+  componentDidMount() {
+    const { localStorage } = window;
+    // eslint-disable-next-line
+    this.setState({
+      items: this.getItem(),
+      shippingDetails: JSON.parse(localStorage.getItem('parsedShipping')),
+    });
+  }
+
+  getItem = () => {
+    const { localStorage } = window;
+    if (JSON.parse(localStorage.getItem('cartthankyou'))) {
+      const items = JSON.parse(localStorage.getItem('upsell1'));
+      const newItem = [];
+      const { Products } = items[0].OrderInfo;
+
+      Products.forEach((item, index) => {
+        const newObj = Object.assign(
+          {},
+          {
+            CustomerInfo: items[0].CustomerInfo,
+            OrderInfo: items[0].OrderInfo,
+          },
+        );
+
+        const newObj2 = Object.assign(newObj, {
+          OrderInfo: {
+            Products: new Array(item),
+            TransactionID: index,
+            SubTotalAmount: item.ProductAmount * item.Quantity,
+            TotalAmount: item.ProductAmount * item.Quantity,
+            CustomerID: items[0].OrderInfo.CustomerID,
+          },
+        });
+        newItem.push(newObj2);
+      });
+      return newItem;
+    }
+    return JSON.parse(localStorage.getItem('upsell1'));
+  };
+
   static async getInitialProps(props) {
-    const {
-      store, isServer, query, req,
-    } = props.ctx;
+    const { store, isServer, query } = props.ctx;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
@@ -17,21 +64,10 @@ class Thankyou extends React.PureComponent {
     }
   }
 
-  componentDidMount() {
-    const { query } = this.props;
-    if (query.orderId) {
-      this.props.getOrderDetails({
-        orderId: query.orderId,
-        headers: {
-          'x-ascbd-req-origin': window.location.hostname,
-        },
-      });
-    }
-  }
-
   render() {
     const { props } = this;
     const { device, isPromo } = props.query;
+
     return (
       <React.Fragment>
         <Head>
@@ -60,9 +96,21 @@ class Thankyou extends React.PureComponent {
         </Head>
         <PromoSession pageType="thankyouPage" />
         {device === 'desktop' &&
-          this.props.order && <ThankyouDesktop isPromo={isPromo} />}
+          this.state.items.length && (
+            <ThankyouDesktop
+              isPromo={isPromo}
+              items={this.state.items}
+              shippingDetails={this.state.shippingDetails}
+            />
+          )}
         {device === 'mobile' &&
-          this.props.order && <ThankyouMobile isPromo={isPromo} />}
+          this.state.items.length && (
+            <ThankyouMobile
+              isPromo={isPromo}
+              items={this.state.items}
+              shippingDetails={this.state.shippingDetails}
+            />
+          )}
       </React.Fragment>
     );
   }

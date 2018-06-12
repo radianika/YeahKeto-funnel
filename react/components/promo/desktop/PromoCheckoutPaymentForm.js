@@ -13,7 +13,6 @@ import {
 } from 'react/components/common';
 import {
   billingFormValidator,
-  normalizePhone,
   normalizeCardNumber,
   normalizeSecurityCode,
 } from 'helpers';
@@ -157,32 +156,10 @@ const PromoCheckoutPaymentFormComponent = reduxForm({
 const selector = formValueSelector('BillingForm');
 
 function mapStateToProps(reduxState) {
-  if (reduxState.order.order) {
-    const {
-      orderId,
-      firstName,
-      lastName,
-      address1,
-      address2,
-      city,
-      state,
-      postalCode,
-      phoneNumber,
-      emailAddress,
-    } = reduxState.order.order;
+  if (reduxState.order) {
     return {
       initialValues: {
         same: 'Yes',
-        orderId,
-        firstName,
-        lastName,
-        address: address1,
-        address2,
-        city,
-        state,
-        postalCode,
-        phoneNumber: normalizePhone(phoneNumber),
-        email: emailAddress,
       },
       currentValues: {
         same: selector(reduxState, 'same'),
@@ -191,6 +168,7 @@ function mapStateToProps(reduxState) {
       submitFailure: reduxState.order.placeOrderError,
     };
   }
+  return {};
 }
 
 const PromoCheckoutPaymentForm = connect(mapStateToProps)(

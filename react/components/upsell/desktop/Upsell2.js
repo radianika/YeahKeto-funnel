@@ -52,9 +52,9 @@ class Upsell2 extends React.PureComponent {
                   <img
                     alt="price-cut"
                     src="/static/assets/images/upsell2/price-cut.png"
-                  />$130/<sup>ea</sup>
+                  />130/<sup>ea</sup>
                 </span>{' '}
-                $87/<sup>ea</sup>{' '}
+                87/<sup>ea</sup>{' '}
                 <img
                   src="/static/assets/images/arrow-right.png"
                   alt="arrow-right"

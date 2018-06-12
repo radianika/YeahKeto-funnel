@@ -17,7 +17,9 @@ class Cart extends PureComponent {
   }
 
   componentDidMount() {
+    const { localStorage } = window;
     this.props.createNewSession();
+    localStorage.clear();
   }
 
   submit = values => {
@@ -33,11 +35,20 @@ class Cart extends PureComponent {
     });
     values.order = { ...values.order, ...orderPayload };
     values.process_sync = 'true';
+    const valuesCopy = values;
+    valuesCopy.cart = true;
     this.props.submitLeadsForm({
       values,
       cart: true,
-      nextUrl: '/thankyou',
+      nextUrl: '',
       router: this.props.router,
+    });
+
+    this.props.placeOrder({
+      values: valuesCopy,
+      pack: this.state.selected,
+      router: this.props.router,
+      nextUrl: 'thankyou',
     });
   };
 
