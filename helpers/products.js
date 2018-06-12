@@ -63,7 +63,7 @@ const products = {
       'Supports mental clarity & agility with higher focus & concentration',
       'Improves information retention & memory recall',
     ],
-    price: 87.0,
+    price: 97.0,
     ingredients: `
                       Ingredient List: Grapeseed Oil,
                       Beeswax, Cocoa Butter, Menthol
