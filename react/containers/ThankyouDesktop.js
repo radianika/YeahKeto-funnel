@@ -137,7 +137,7 @@ class ThankyouDesktopComponent extends React.Component {
                       <span>
                         {isPromo
                           ? getTyProductQuantity(item.OrderInfo.Products[0])
-                          : item.qty}{' '}
+                          : item.OrderInfo.Products[0].Quantity}{' '}
                         {getTyProductContainer(item.OrderInfo.Products[0])}
                       </span>
                     </p>
