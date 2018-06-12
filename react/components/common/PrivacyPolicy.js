@@ -260,7 +260,7 @@ export const PrivacyPolicy = () => (
       from all Company emails, email customer service with subject line
       "UNSUBSCRIBE EMAILS" and submit the e-mail address that you desire to be
       removed from our database at support&#64;americansciencecbd.com, or
-      contact us at 1-888-262-9731, Monday to Friday, 08:00 AM – 07:00 PM PST,
+      contact us at 1-888-601-6014, Monday to Friday, 08:00 AM – 07:00 PM PST,
       Closed on holidays Company's unsubscribe process impacts only the future
       delivery of electronic mailings disseminated by Company on its own behalf.
     </p>
