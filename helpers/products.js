@@ -37,7 +37,7 @@ const products = {
       'Free from THC, harmful chemicals, pesticides, and synthetics',
       'Made from hemp extract that is organically grown & extracted in the USA',
     ],
-    price: 77.0,
+    price: 87.0,
     ingredients: 'Ingredients: Hemp Powder, CBD Isolate, Vegetable Capsule',
     supplement: {
       image: '/static/assets/images/cbd-capsule-label.jpg',
@@ -63,7 +63,7 @@ const products = {
       'Supports mental clarity & agility with higher focus & concentration',
       'Improves information retention & memory recall',
     ],
-    price: 87.0,
+    price: 97.0,
     ingredients: `
                       Ingredient List: Grapeseed Oil,
                       Beeswax, Cocoa Butter, Menthol
