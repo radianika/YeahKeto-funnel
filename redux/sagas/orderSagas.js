@@ -89,7 +89,10 @@ function* placeOrder(action) {
       sessionId,
       { ...headers },
     );
-    if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
+    if (
+      idx(apiResponse, _ => _.response.data.message) === 'Success' &&
+      idx(apiResponse, _ => _.response.data.code) !== 500
+    ) {
       const { localStorage } = window;
       const order = apiResponse.response.data.data;
       localStorage.setItem('upsell1', JSON.stringify([order]));
