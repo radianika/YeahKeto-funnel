@@ -45,6 +45,7 @@ class Thankyou extends React.PureComponent {
             TransactionID: index,
             SubTotalAmount: item.ProductAmount * item.Quantity,
             TotalAmount: item.ProductAmount * item.Quantity,
+            CustomerID: items[0].OrderInfo.CustomerID,
           },
         });
         newItem.push(newObj2);
