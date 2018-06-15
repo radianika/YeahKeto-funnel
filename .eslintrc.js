@@ -21,7 +21,7 @@ module.exports = {
     'react/jsx-indent': [2, 2],
     'react/jsx-indent-props': [2, 2],
     'global-require': 1,
-    'import/prefer-default-export': 1,
+    'import/prefer-default-export': 0,
     'class-methods-use-this': 1,
     'jsx-a11y/no-autofocus': 0,
     'jsx-a11y/anchor-is-valid': 0,

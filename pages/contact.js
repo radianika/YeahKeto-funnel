@@ -61,9 +61,9 @@ class Contact extends React.PureComponent {
             href="/static/assets/css/style.css"
           />
           <link
-              rel="stylesheet"
-              type="text/css"
-              href="/static/assets/css/formvalidation/formValidation.min.css"
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/css/formvalidation/formValidation.min.css"
           />
         </Head>
         <ContactContainer />
