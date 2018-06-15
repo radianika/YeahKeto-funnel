@@ -8,6 +8,12 @@ import {
 
 const getSession = state => state.auth.sessionId;
 
+/**
+ * @description createNewSession
+ * @namespace sessionSaga
+ * @param  {} action payload: sessionId
+ *
+ */
 function* createNewSession() {
   try {
     const existingSession = yield select(getSession);

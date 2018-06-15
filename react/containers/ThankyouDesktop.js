@@ -10,6 +10,11 @@ import {
 import { OrderActions } from 'redux/actions';
 import moment from 'moment';
 
+/**
+ * @class ThankyouDesktopComponent
+ * @extends {React.Component}
+ * @description Common Thankyou page between promo flow and cart flow on desktop
+ */
 class ThankyouDesktopComponent extends React.Component {
   render() {
     const { isPromo, items, shippingDetails } = this.props;

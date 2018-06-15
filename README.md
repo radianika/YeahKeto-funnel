@@ -16,3 +16,10 @@
 
 localhost:3001
 localhost:3001/promo
+
+## Docs 
+
+`yarn generate-docs` command to generate docs(static html files) in your local machine reading JSdocs
+open /out/index.html to access JSDoc documentation
+
+

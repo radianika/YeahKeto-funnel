@@ -8,6 +8,7 @@
     "dev": "nodemon --watch server server --exec babel-node",
     "build": "babel server -d dist && next build",
     "start": "NODE_ENV=production node ./dist/index.js",
+    "generate-docs": "./node_modules/.bin/jsdoc react/* redux/* server/* helpers/* -r",
     "postinstall": "yarn build",
     "precommit": "lint-staged"
   },
@@ -120,6 +121,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
     "husky": "0.14.3",
+    "jsdoc": "3.5.5",
     "lint-staged": "7.0.4",
     "nodemon": "1.17.3",
     "prettier": "1.12.1",

@@ -2,6 +2,11 @@ import React from 'react';
 import { PromoSession, Footer } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
+/**
+ * @class Upsell2
+ * @extends {React.PureComponent}
+ * @description Mobile component rendered after Upsell1 pages
+ */
 class Upsell2 extends React.PureComponent {
   upgrade = () => {
     this.props.upgrade(217, '/promo/mobile/thankyou');

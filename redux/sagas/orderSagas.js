@@ -22,6 +22,11 @@ const packIdMap = {
   215: '0041249f-9f8b-41c5-a137-ad4ce8133cf6',
 };
 
+/**
+ * submitLeadsForm: calls a post leads api which internally calls the CRM api
+ * @namespace orderSaga
+ * @param  {} action
+ */
 function* submitLeadsForm(action) {
   yield put(OrderActions.submitLeadsFormRequest());
 
@@ -60,6 +65,11 @@ function* submitLeadsForm(action) {
   }
 }
 
+/**
+ * placeOrder: calls the api which internally calls the placeOrder call to CRM api
+ * @namespace orderSaga
+ * @param  {} action
+ */
 function* placeOrder(action) {
   yield put(OrderActions.placeOrderRequest());
   try {
@@ -114,6 +124,11 @@ function* placeOrder(action) {
   }
 }
 
+/**
+ * addUpsellToOrder calls the upsale api which internally calls the upsell api of CRM
+ * @namespace orderSaga
+ * @param  {} action
+ */
 function* addUpsellToOrder(action) {
   yield put(OrderActions.addUpsellToOrderRequest());
   try {
@@ -166,6 +181,12 @@ function* addUpsellToOrder(action) {
   }
 }
 
+/**
+ * getOrderDetails
+ * @namespace orderSaga
+ * @param  {} action
+ * @yields {} orderDetails
+ */
 function* getOrderDetails(action) {
   yield put(OrderActions.getOrderDetailsRequest());
   try {

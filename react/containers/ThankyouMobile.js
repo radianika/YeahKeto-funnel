@@ -10,6 +10,11 @@ import {
 import { OrderActions } from 'redux/actions';
 import moment from 'moment';
 
+/**
+ * @class ThankyouMobileComponent
+ * @extends {React.PureComponent}
+ * @description Common Thankyou page between promo flow and cart flow on mobile
+ */
 class ThankyouMobileComponent extends React.PureComponent {
   render() {
     const { isPromo, items, shippingDetails } = this.props;

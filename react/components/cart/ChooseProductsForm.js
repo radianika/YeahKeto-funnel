@@ -1,7 +1,17 @@
 import React, { PureComponent } from 'react';
 import { products, getTyProductImage } from 'helpers';
 
+/**
+ * @class
+ * @description renders products for the user to select
+ * @extends {PureComponent}
+ */
 class ChooseProductsForm extends PureComponent {
+  /**
+   * @memberof ChooseProductsForm
+   * @function
+   * @description calculate total of prices of the products in the cart
+   */
   getTotal = () => {
     const { cart } = this.props;
     let total = 0;
@@ -10,6 +20,12 @@ class ChooseProductsForm extends PureComponent {
     });
     return total.toFixed(2);
   };
+
+  /**
+   * @memberof ChooseProductsForm
+   * @function
+   * @description calculates price for the selected quantity of a product
+   */
   getSubTotal = product => {
     const { cart } = this.props;
     const productId = product.id;
@@ -20,6 +36,12 @@ class ChooseProductsForm extends PureComponent {
     }
     return (0).toFixed(2);
   };
+
+  /**
+   * @memberof ChooseProductsForm
+   * @function
+   * @description updates the cart
+   */
   selectProduct = (e, product, index) => {
     this.props.update({
       index,

@@ -3,6 +3,11 @@ import validator from 'validator';
 import { post, normalizePhone } from 'helpers';
 import { Modal, Spinner } from 'react/components/common';
 
+/**
+ * @class ContactUs
+ * @extends {React.Component}
+ * @description Contact Us form with validation
+ */
 class ContactUs extends React.Component {
   constructor(props) {
     super(props);

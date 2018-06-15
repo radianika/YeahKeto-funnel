@@ -5,6 +5,15 @@ require('dotenv').config();
 
 const { API_BASE_URL } = process.env;
 
+/**
+ * a common wrapper makes an axios POST call to the api
+ * @export
+ * @namespace api-helpers
+ * @param {*} location
+ * @param {*} body
+ * @param {*} headers
+ * @returns {}
+ */
 export function post(location, body, headers) {
   console.log(`post ${API_BASE_URL}${location}`);
   return axios
@@ -26,6 +35,15 @@ export function post(location, body, headers) {
     });
 }
 
+/**
+ * a common wrapper makes an axios PUT call to the api
+ * @export
+ * @namespace api-helpers
+ * @param {*} location
+ * @param {*} body
+ * @param {*} headers
+ * @returns {}
+ */
 export function put(location, body, headers) {
   console.log(`put ${API_BASE_URL}${location}`);
   return axios
@@ -47,6 +65,14 @@ export function put(location, body, headers) {
     });
 }
 
+/**
+ * a common wrapper makes an axios GET call to the api
+ * @export
+ * @namespace api-helpers
+ * @param {*} location
+ * @param {*} headers
+ * @returns {}
+ */
 export function get(location, headers) {
   console.log(`get ${API_BASE_URL}${location}`);
   return axios

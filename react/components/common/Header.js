@@ -28,6 +28,11 @@ const Menu = withRouter(props => (
   </React.Fragment>
 ));
 
+/**
+ * @class Header
+ * @extends {PureComponent}
+ * @description Header Component made of common component ActiveLink
+ */
 class Header extends PureComponent {
   constructor(props) {
     super(props);

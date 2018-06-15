@@ -1,6 +1,12 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 
+/**
+ * @param  {Array} children components
+ * @param  {Object} router next/router object
+ * @param  {string} href
+ * @param  {sting} as
+ */
 const Link = ({
   children, router, href, as,
 }) => {

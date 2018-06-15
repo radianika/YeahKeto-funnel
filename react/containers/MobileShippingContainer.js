@@ -18,6 +18,11 @@ import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
 import { OrderActions } from 'redux/actions';
 
+/**
+ * @class MobileShippingContainerComponent
+ * @extends {React.PureComponent}
+ * @description Container Component for Shipping Form on Mobile
+ */
 class MobileShippingContainerComponent extends React.PureComponent {
   onSubmit = e => {
     this.props.handleSubmit(values => {
