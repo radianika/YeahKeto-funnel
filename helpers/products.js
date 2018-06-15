@@ -37,7 +37,7 @@ const products = {
       'Free from THC, harmful chemicals, pesticides, and synthetics',
       'Made from hemp extract that is organically grown & extracted in the USA',
     ],
-    price: 77.0,
+    price: 87.0,
     ingredients: 'Ingredients: Hemp Powder, CBD Isolate, Vegetable Capsule',
     supplement: {
       image: '/static/assets/images/cbd-capsule-label.jpg',
@@ -63,7 +63,7 @@ const products = {
       'Supports mental clarity & agility with higher focus & concentration',
       'Improves information retention & memory recall',
     ],
-    price: 87.0,
+    price: 97.0,
     ingredients: `
                       Ingredient List: Grapeseed Oil,
                       Beeswax, Cocoa Butter, Menthol
@@ -121,49 +121,53 @@ const tyProductImages = {
 };
 
 const getTyProductImage = product => {
-  if (product.name.toLowerCase().indexOf('balm') >= 0) {
+  const name = product.ProductName || product.name;
+  if (name.toLowerCase().indexOf('balm') >= 0) {
     return tyProductImages.balm;
   }
-  if (product.name.toLowerCase().indexOf('oil') >= 0) {
+  if (name.toLowerCase().indexOf('oil') >= 0) {
     return tyProductImages.oil;
   }
-  if (product.name.toLowerCase().indexOf('capsule') >= 0) {
+  if (name.toLowerCase().indexOf('capsule') >= 0) {
     return tyProductImages.capsule;
   }
 };
 
 const getTyProductContainer = product => {
-  if (product.name.toLowerCase().indexOf('balm') >= 0) {
+  const name = product.ProductName || product.name;
+  if (name.toLowerCase().indexOf('balm') >= 0) {
     return 'Jars';
   }
-  if (product.name.toLowerCase().indexOf('oil') >= 0) {
+  if (name.toLowerCase().indexOf('oil') >= 0) {
     return 'Bottles';
   }
-  if (product.name.toLowerCase().indexOf('capsule') >= 0) {
+  if (name.toLowerCase().indexOf('capsule') >= 0) {
     return 'Bottles';
   }
 };
 
 const getTyProductName = product => {
-  if (product.name.toLowerCase().indexOf('balm') >= 0) {
+  const name = product.ProductName || product.name;
+  if (name.toLowerCase().indexOf('balm') >= 0) {
     return 'CBD Warming Balm 50mg';
   }
-  if (product.name.toLowerCase().indexOf('oil') >= 0) {
+  if (name.toLowerCase().indexOf('oil') >= 0) {
     return 'CBD Oil 500mg 1 oz';
   }
-  if (product.name.toLowerCase().indexOf('capsule') >= 0) {
+  if (name.toLowerCase().indexOf('capsule') >= 0) {
     return 'CBD Capsules 300 mg';
   }
   const titleString = 'american science cbd';
-  const titleIndex = product.name.toLowerCase().indexOf(titleString);
-  const productName = product.name.substring(titleIndex + titleString.length);
+  const titleIndex = name.toLowerCase().indexOf(titleString);
+  const productName = name.substring(titleIndex + titleString.length);
   return productName;
 };
 
 const getTyProductQuantity = product => {
+  const name = product.ProductName || product.name;
   const titleString = 'american science cbd';
-  const titleIndex = product.name.toLowerCase().indexOf(titleString);
-  const productQuantity = product.name.substring(0, titleIndex);
+  const titleIndex = name.toLowerCase().indexOf(titleString);
+  const productQuantity = name.substring(0, titleIndex);
   return productQuantity;
 };
 

@@ -43,59 +43,59 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         </div>
         <Field
           component={TextField}
-          name="firstName"
+          name="FirstName"
           label="First Name*:"
           placeholder="First name"
         />
         <Field
           component={TextField}
-          name="lastName"
+          name="LastName"
           label="Last Name*:"
           placeholder="Last name"
         />
         <Field
           component={AddressField}
-          name="address"
+          name="Address1"
           label="Address Line 1*:"
           placeholder="Street and number, P.O. box, c/o."
           changeField={this.props.change}
         />
         <Field
           component={TextField}
-          name="address2"
+          name="Address2"
           label="Address Line 2:"
           placeholder="Apartment, suite, unit, building, floor, etc."
         />
         <Field
           component={TextField}
-          name="city"
+          name="City"
           label="City*:"
           placeholder="Your City"
         />
         <Field
           component={SelectField}
-          name="state"
+          name="State"
           label="State*:"
           placeholder="State"
           options={stateslist}
         />
         <Field
           component={TextField}
-          name="postalCode"
+          name="ZipCode"
           label="Zip Code*:"
           placeholder="Zip Code"
           normalize={normalizePostalCode}
         />
         <Field
           component={TextField}
-          name="phoneNumber"
+          name="Phone"
           label="Phone*:"
           placeholder="Example: (123) 555-6789"
           normalize={normalizePhone}
         />
         <Field
           component={TextField}
-          name="email"
+          name="Email"
           label="Email*:"
           placeholder="Example: email@somewhere.com"
         />

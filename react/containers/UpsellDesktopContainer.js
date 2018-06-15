@@ -16,6 +16,7 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
       productId,
       sendTo: nextPage,
       router: this.props.router,
+      order: this.props.order,
     });
   };
 
@@ -125,6 +126,7 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
 
 function mapStateToProps(state) {
   return {
+    order: state.order,
     submitStatus: state.order.addUpsellToOrderStatus,
   };
 }
