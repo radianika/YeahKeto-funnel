@@ -91,7 +91,7 @@ class ThankyouDesktopComponent extends React.Component {
               you with the same.
             </p>
             <ul className="green-list">
-              <li>1-888-888-8888</li>
+              <li>1-888-601-6014</li>
               <li>support@americanscience.com</li>
             </ul>
           </div>
