@@ -19,11 +19,11 @@ export default class MyDocument extends Document {
             href="/static/assets/css/common.css"
           />
 
-          <script type="text/javascript" src="/static/assets/js/segment.js" />
           <script
             type="text/javascript"
             src="/static/assets/js/googleTagLoader.js"
           />
+          <script type="text/javascript" src="/static/assets/js/segment.js" />
         </Head>
         <body>
           <noscript
