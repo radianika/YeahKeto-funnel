@@ -23,7 +23,6 @@ export default class MyDocument extends Document {
             type="text/javascript"
             src="/static/assets/js/googleTagLoader.js"
           />
-          <script type="text/javascript" src="/static/assets/js/segment.js" />
         </Head>
         <body>
           <noscript
