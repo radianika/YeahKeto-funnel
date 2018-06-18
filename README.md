@@ -19,8 +19,7 @@ localhost:3001/promo
 
 ## Docs 
 
-`yarn generate-docs` command to generate docs(static html files) in your local machine reading JSdocs
-open /out/index.html to access JSDoc documentation
-
-Please see http://usejsdoc.org/ for reference. 
+* open '/out/index.html' in browser to access JSDoc documentation for the frontend app.
+* `yarn generate-docs` command to re-generate docs in your local machine. '/out' folder contains the html and css files are generated. These files use the comments written in the sourcecode and present all of them in one presentable place. 
+* Please see http://usejsdoc.org/, for all the available tags we can use while writing JSdocs. 
 
