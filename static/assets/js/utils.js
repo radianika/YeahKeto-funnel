@@ -1148,7 +1148,7 @@ window.utilsInstance = (function () {
 
   function ravenStart() {
     if (typeof Raven !== 'undefined' && window.location.hostname === 'americansciencecbd.com') {
-      Raven.config('https://e6aa73711d444a9781a446201eb6df90@sentry.io/281178').install();
+      Raven.config('https://30b971029d594608bb765ea6e46298f0@sentry.io/1207214').install()
     }
   }
 

@@ -56,7 +56,7 @@ class CartForm extends React.PureComponent {
   getMonthOptions = () => {
     const monthOptions = {};
     [...Array(12).keys()].forEach(v => {
-      monthOptions[v] = months[v];
+      monthOptions[v+1] = months[v];
     });
     return monthOptions;
   };
