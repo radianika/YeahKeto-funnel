@@ -45,7 +45,7 @@ function* submitLeadsForm(action) {
   localStorage.setItem('parsedShipping', JSON.stringify(parsedShipping));
   const queryString = getQueryString();
   const apiResponse = yield post(
-    '/v1/response/lead',
+    '/v1/response/customers',
     parseLeadData,
     sessionId,
     { ...headers },
