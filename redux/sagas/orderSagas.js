@@ -28,7 +28,9 @@ function* submitLeadsForm(action) {
   const { values, nextUrl, headers } = action.payload;
   const { localStorage } = window;
 
-  const parsedShipping = parseLeadPostData(values);
+  const parsedShipping = parseLeadPostData(values).postData;
+  const { parseLeadData } = parseLeadPostData(values);
+
   let sessionId = '';
   if (typeof window !== 'undefined') {
     sessionId = yield getCookie('ascbd_session');
@@ -44,7 +46,7 @@ function* submitLeadsForm(action) {
   const queryString = getQueryString();
   const apiResponse = yield post(
     '/v1/response/lead',
-    parsedShipping,
+    parseLeadData,
     sessionId,
     { ...headers },
   );
