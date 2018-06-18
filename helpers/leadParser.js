@@ -75,12 +75,33 @@ const parseLeadPostData = (values) => {
     "MFD": getMFD()
   }
 
+  let parseLeadData = {
+    "Email": values.Email,
+    "Phone": values.Phone,
+    "FirstName": values.FirstName,
+    "LastName": values.LastName,
+    "Address1": values.Address1,
+    "Address2": values.Address2,
+    "City": values.City,
+    "State": values.State,
+    "ZipCode": values.ZipCode,
+    "MFD": getMFD()
+  }
+
   postData = Object.assign(postData,
     AffiliateID ? { AffiliateID } : null,
     SubAffiliateID ? { SubAffiliateID } : null
   );
 
-  return postData;
+  parseLeadData = Object.assign(parseLeadData,
+    AffiliateID ? { AffiliateID } : null,
+    SubAffiliateID ? { SubAffiliateID } : null
+  );
+
+  return {
+    postData,
+    parseLeadData
+  }
 };
 
 const parseOrderPostData = (values, pack) => {
