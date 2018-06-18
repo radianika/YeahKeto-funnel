@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: react/components/upsell/desktop/Upsell11.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: react/components/upsell/desktop/Upsell11.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { PromoSession } from 'react/components/common';
+import { withRouter } from 'next/router';
+import { getQueryString } from 'helpers';
+import { SatisfactionBox } from './SatisfactionBox';
+
+/**
+ * @class Upsell11Component
+ * @extends {React.PureComponent}
+ * @description Desktop Component rendered after Upsell1 page
+ */
+class Upsell11Component extends React.PureComponent {
+  upgrade = () => {
+    this.props.upgrade(212, '/promo/desktop/upsell-2');
+  };
+  skipUpsell = () => {
+    window.location.assign(`/promo/desktop/upsell-2?${getQueryString()}`);
+  };
+  scrollToTop = () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+  render() {
+    return (
+      &lt;React.Fragment>
+        &lt;PromoSession pageType="upsellPage1" />
+        &lt;div className="upsell-strip">
+          &lt;h3>WAIT! YOU QUALIFY FOR A LIMITED TIME DISCOUNT&lt;/h3>
+          &lt;p>
+            Add 1 Bottle Of &lt;strong>Maximum Strength CBD Capsules&lt;/strong> To
+            Your Order Today!{' '}
+          &lt;/p>
+        &lt;/div>
+        &lt;div className="up-mid-box-right">
+          &lt;img
+            src="/static/assets/images/capsule-single-botle.png"
+            alt="capsule-single-bottle"
+            className="up-product-2"
+          />
+          &lt;img
+            alt="up-arrow-1"
+            src="/static/assets/images/up-arw1.png"
+            style={{ position: 'absolute', left: '260px', top: '400px' }}
+          />
+          &lt;div className="up-rgt-content">
+            &lt;p className="up-txt1">Amplify Your Results&lt;/p>
+            &lt;p className="with-txt">with&lt;/p>
+            &lt;p className="up-txt2">Maximum Strength CBD Capsules&lt;/p>
+            &lt;div className="price-box">
+              &lt;p className="price-box-txt1">Buy 1 Bottle Of CBD Capsules &lt;/p>
+              &lt;p className="price-box-txt2">Save 30% Today&lt;/p>
+              &lt;p className="price-box-txt3">
+                &lt;img
+                  src="/static/assets/images/arrow-left-upsell.png"
+                  alt="arrow-left-upsell"
+                  className="arrow-left"
+                  width="77"
+                  height="33"
+                />
+                87.00{' '}
+                &lt;img
+                  src="/static/assets/images/arrow-right.png"
+                  alt="arrow-right"
+                  className="arrow-right"
+                  width="77"
+                  height="33"
+                />
+              &lt;/p>
+            &lt;/div>
+            &lt;div className="bnt-sec">
+              &lt;a href="javascript:void(0)" onClick={this.upgrade}>
+                &lt;img
+                  src="/static/assets/images/ord-btn.png"
+                  alt="order-btn"
+                  className="ord-btn pulse"
+                  width="370"
+                  height="71"
+                />
+              &lt;/a>
+              &lt;p className="thanks-txt">
+                &lt;a href="javascript:void(0)" onClick={this.skipUpsell}>
+                  &lt;img
+                    src="/static/assets/images/cut-icon.png"
+                    alt="cut-icon"
+                    className="cut-icon"
+                    width="15"
+                    height="15"
+                  />
+                  {"No, I don't want better results."}
+                &lt;/a>
+              &lt;/p>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+        &lt;SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
+      &lt;/React.Fragment>
+    );
+  }
+}
+
+const Upsell11 = withRouter(Upsell11Component);
+
+export { Upsell11 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddressField.html">AddressField</a></li><li><a href="CardExpiryField.html">CardExpiryField</a></li><li><a href="Cart.html">Cart</a></li><li><a href="CartContainer.html">CartContainer</a></li><li><a href="CartForm.html">CartForm</a></li><li><a href="ChooseProductsForm.html">ChooseProductsForm</a></li><li><a href="ContactUs.html">ContactUs</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Header.html">Header</a></li><li><a href="MobileCardExpiryField.html">MobileCardExpiryField</a></li><li><a href="MobileConfirmContainerComponent.html">MobileConfirmContainerComponent</a></li><li><a href="MobileSelectPackageContainer.html">MobileSelectPackageContainer</a></li><li><a href="MobileShippingContainerComponent.html">MobileShippingContainerComponent</a></li><li><a href="Modal.html">Modal</a></li><li><a href="PromoCheckoutPaymentFormClass.html">PromoCheckoutPaymentFormClass</a></li><li><a href="PromoDesktop.html">PromoDesktop</a></li><li><a href="PromoMobileContainer.html">PromoMobileContainer</a></li><li><a href="ThankyouDesktopComponent.html">ThankyouDesktopComponent</a></li><li><a href="ThankyouMobileComponent.html">ThankyouMobileComponent</a></li><li><a href="Upsell1Component.html">Upsell1Component</a></li><li><a href="Upsell2.html">Upsell2</a></li><li><a href="Upsell11Component.html">Upsell11Component</a></li><li><a href="Upsell21.html">Upsell21</a></li><li><a href="UpsellDesktopContainerComponent.html">UpsellDesktopContainerComponent</a></li><li><a href="UpsellMobileContainerComponent.html">UpsellMobileContainerComponent</a></li></ul><h3>Namespaces</h3><ul><li><a href="api-helpers.html">api-helpers</a></li><li><a href="helpers.html">helpers</a></li><li><a href="orderSaga.html">orderSaga</a></li><li><a href="server-middleware.html">server-middleware</a></li><li><a href="sessionSaga.html">sessionSaga</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getSessionId">getSessionId</a></li><li><a href="global.html#Link">Link</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Jun 18 2018 13:49:45 GMT+0530 (IST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: react/containers/MobileSelectPackageContainer.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: react/containers/MobileSelectPackageContainer.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { Footer } from 'react/components/common';
+import { withRouter } from 'next/router';
+import { packages, getQueryString } from 'helpers';
+
+/**
+ * @class MobileSelectPackageContainer
+ * @extends {React.PureComponent}
+ * @description selection of packages, comes before shipping page on mobile
+ */
+class MobileSelectPackageContainer extends React.PureComponent {
+  selectPackage = pack => {
+    const { localStorage } = window;
+    window.location.assign(
+      `/promo/mobile/confirm?${getQueryString()}&amp;productId=${pack.id}`,
+    );
+    localStorage.setItem('pack', JSON.stringify(pack));
+  };
+
+  render() {
+    return (
+      &lt;div id="container">
+        &lt;div className="spng-hd">
+          &lt;div className="spng-hd2">
+            &lt;img
+              src="/static/promo/mobile/images/ck-top.jpg"
+              alt=""
+              className="sping-logo"
+            />
+            &lt;p className="clearall" />
+            &lt;p className="trial-toptxt1">
+              Select Your Package TODAY &amp;amp; SAVE MORE!
+            &lt;/p>
+          &lt;/div>
+        &lt;/div>
+        {packages.map(pack => (
+          &lt;React.Fragment key={pack.id}>
+            &lt;div
+              className="link-container-3"
+              style={{ cursor: 'pointer', marginBottom: '20px !important' }}
+              onClick={() => this.selectPackage(pack)}
+            >
+              &lt;div className="select-box1">
+                &lt;div className="slt-box-hd">
+                  &lt;img
+                    src="/static/promo/mobile/images/select-btn.png"
+                    alt=""
+                    className="select-btn"
+                  />
+                  &lt;p className="slt-box-hd-txt">{pack.title}&lt;/p>
+                &lt;/div>
+                &lt;div className="box-mid">
+                  &lt;div className="box-mid-left">
+                    &lt;img
+                      src={`/static/promo/mobile/images/${pack.img}`}
+                      alt=""
+                      className="product-box1"
+                    />
+                  &lt;/div>
+                  &lt;div className="box-mid-right">
+                    &lt;div className="pkgtype-hdbox">
+                      &lt;p className="pkgtype-hding">{pack.msg}&lt;/p>
+                    &lt;/div>
+                    &lt;div className="box-mid-right-box">
+                      &lt;p className="box-mid-left-txt1">
+                        REGULAR PRICE {pack.regularPrice}
+                      &lt;/p>
+                      &lt;img
+                        src="/static/promo/mobile/images/rd-strk.png"
+                        className="rd-strk"
+                        alt=""
+                      />
+                      &lt;p className="pkgcont-price">
+                        {pack.price}
+                        &lt;span>/ea&lt;/span>
+                      &lt;/p>
+                    &lt;/div>
+                    &lt;img
+                      src="/static/promo/mobile/images/ship-icon.png"
+                      alt=""
+                      className="ship-icon"
+                    />
+                  &lt;/div>
+                &lt;/div>
+              &lt;/div>
+            &lt;/div>
+            &lt;div style={{ clear: 'both' }} />
+          &lt;/React.Fragment>
+        ))}
+        &lt;div className="clearboth" />
+        &lt;div className="legal">
+          &lt;div className="ftr-txt">
+            &lt;Footer promo />
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    );
+  }
+}
+
+// eslint-disable-next-line
+MobileSelectPackageContainer = withRouter(MobileSelectPackageContainer);
+
+export { MobileSelectPackageContainer };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddressField.html">AddressField</a></li><li><a href="CardExpiryField.html">CardExpiryField</a></li><li><a href="Cart.html">Cart</a></li><li><a href="CartContainer.html">CartContainer</a></li><li><a href="CartForm.html">CartForm</a></li><li><a href="ChooseProductsForm.html">ChooseProductsForm</a></li><li><a href="ContactUs.html">ContactUs</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Header.html">Header</a></li><li><a href="MobileCardExpiryField.html">MobileCardExpiryField</a></li><li><a href="MobileConfirmContainerComponent.html">MobileConfirmContainerComponent</a></li><li><a href="MobileSelectPackageContainer.html">MobileSelectPackageContainer</a></li><li><a href="MobileShippingContainerComponent.html">MobileShippingContainerComponent</a></li><li><a href="Modal.html">Modal</a></li><li><a href="PromoCheckoutPaymentFormClass.html">PromoCheckoutPaymentFormClass</a></li><li><a href="PromoDesktop.html">PromoDesktop</a></li><li><a href="PromoMobileContainer.html">PromoMobileContainer</a></li><li><a href="ThankyouDesktopComponent.html">ThankyouDesktopComponent</a></li><li><a href="ThankyouMobileComponent.html">ThankyouMobileComponent</a></li><li><a href="Upsell1Component.html">Upsell1Component</a></li><li><a href="Upsell2.html">Upsell2</a></li><li><a href="Upsell11Component.html">Upsell11Component</a></li><li><a href="Upsell21.html">Upsell21</a></li><li><a href="UpsellDesktopContainerComponent.html">UpsellDesktopContainerComponent</a></li><li><a href="UpsellMobileContainerComponent.html">UpsellMobileContainerComponent</a></li></ul><h3>Namespaces</h3><ul><li><a href="api-helpers.html">api-helpers</a></li><li><a href="helpers.html">helpers</a></li><li><a href="orderSaga.html">orderSaga</a></li><li><a href="server-middleware.html">server-middleware</a></li><li><a href="sessionSaga.html">sessionSaga</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getSessionId">getSessionId</a></li><li><a href="global.html#Link">Link</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Jun 18 2018 13:49:45 GMT+0530 (IST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -13,5 +13,3 @@ dist/
 .next/
 .env
 .idea
-
-out/

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: react/containers/PromoDesktop.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: react/containers/PromoDesktop.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import moment from 'moment';
+import { connect } from 'react-redux';
+import {
+  PromoStrip,
+  PromoSectionOneDesktop,
+  PromoSectionTwoDesktop,
+  PromoSectionThreeDesktop,
+  PromoSectionFourDesktop,
+  PromoSectionFiveDesktop,
+  PromoSectionSixDesktop,
+  PromoSectionSevenDesktop,
+} from 'react/components/promo/desktop';
+import { createNewSession } from 'redux/actions/authActions';
+import { FooterPromo } from 'react/components/promo';
+import { PromoSession } from 'react/components/common';
+
+/**
+ * @class PromoDesktop
+ * @extends {React.PureComponent}
+ * @description First page in promo flow for desktop
+ */
+class PromoDesktop extends React.PureComponent {
+  componentDidMount() {
+    const { localStorage } = window;
+    this.props.createNewSession();
+    localStorage.clear();
+  }
+  render() {
+    return (
+      &lt;React.Fragment>
+        &lt;h1 style={{ display: 'none' }}>American Science CBD&lt;/h1>
+        &lt;div className="topbar">
+          &lt;div className="container">
+            &lt;p className="topbartxt">
+              &lt;span>WARNING:&lt;/span> Due to extremely high media demand, there is
+              limited supply of &lt;span>CBD Oil&lt;/span> in stock as of{' '}
+              &lt;span>{moment().format('dddd, ll')}&lt;/span>
+            &lt;/p>
+          &lt;/div>
+        &lt;/div>
+        &lt;PromoSectionOneDesktop />
+        &lt;PromoSectionTwoDesktop />
+        &lt;PromoStrip />
+        &lt;PromoSectionThreeDesktop />
+        &lt;PromoStrip />
+        &lt;PromoSectionFourDesktop />
+        &lt;PromoStrip />
+        &lt;PromoSectionFiveDesktop />
+        &lt;PromoStrip />
+        &lt;PromoSectionSixDesktop />
+        &lt;PromoStrip />
+        &lt;PromoSectionSevenDesktop />
+        &lt;div style={{ clear: 'both' }} />
+        &lt;FooterPromo />
+        {this.props.sessionId &amp;&amp; &lt;PromoSession pageType="leadPage" />}
+      &lt;/React.Fragment>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    sessionId: state.auth.sessionId,
+  };
+}
+
+const PromoDesktopContainer = connect(mapStateToProps, { createNewSession })(
+  PromoDesktop,
+);
+
+export { PromoDesktopContainer };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddressField.html">AddressField</a></li><li><a href="CardExpiryField.html">CardExpiryField</a></li><li><a href="Cart.html">Cart</a></li><li><a href="CartContainer.html">CartContainer</a></li><li><a href="CartForm.html">CartForm</a></li><li><a href="ChooseProductsForm.html">ChooseProductsForm</a></li><li><a href="ContactUs.html">ContactUs</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Header.html">Header</a></li><li><a href="MobileCardExpiryField.html">MobileCardExpiryField</a></li><li><a href="MobileConfirmContainerComponent.html">MobileConfirmContainerComponent</a></li><li><a href="MobileSelectPackageContainer.html">MobileSelectPackageContainer</a></li><li><a href="MobileShippingContainerComponent.html">MobileShippingContainerComponent</a></li><li><a href="Modal.html">Modal</a></li><li><a href="PromoCheckoutPaymentFormClass.html">PromoCheckoutPaymentFormClass</a></li><li><a href="PromoDesktop.html">PromoDesktop</a></li><li><a href="PromoMobileContainer.html">PromoMobileContainer</a></li><li><a href="ThankyouDesktopComponent.html">ThankyouDesktopComponent</a></li><li><a href="ThankyouMobileComponent.html">ThankyouMobileComponent</a></li><li><a href="Upsell1Component.html">Upsell1Component</a></li><li><a href="Upsell2.html">Upsell2</a></li><li><a href="Upsell11Component.html">Upsell11Component</a></li><li><a href="Upsell21.html">Upsell21</a></li><li><a href="UpsellDesktopContainerComponent.html">UpsellDesktopContainerComponent</a></li><li><a href="UpsellMobileContainerComponent.html">UpsellMobileContainerComponent</a></li></ul><h3>Namespaces</h3><ul><li><a href="api-helpers.html">api-helpers</a></li><li><a href="helpers.html">helpers</a></li><li><a href="orderSaga.html">orderSaga</a></li><li><a href="server-middleware.html">server-middleware</a></li><li><a href="sessionSaga.html">sessionSaga</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getSessionId">getSessionId</a></li><li><a href="global.html#Link">Link</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Jun 18 2018 13:49:45 GMT+0530 (IST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

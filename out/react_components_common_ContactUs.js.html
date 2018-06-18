@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: react/components/common/ContactUs.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: react/components/common/ContactUs.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import validator from 'validator';
+import { post, normalizePhone } from 'helpers';
+import { Modal, Spinner } from 'react/components/common';
+
+/**
+ * @class ContactUs
+ * @extends {React.Component}
+ * @description Contact Us form with validation
+ */
+class ContactUs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contact: {
+        question: '',
+        name: '',
+        email: '',
+        phoneNumber: '',
+      },
+      error: {},
+      submitting: null,
+    };
+  }
+
+  _handleChange = e => {
+    const { name, value } = e.target;
+
+    let val = value;
+    if (name === 'phoneNumber') {
+      val = normalizePhone(value);
+    }
+
+    this.setState(ps => ({
+      contact: {
+        ...ps.contact,
+        [name]: val,
+      },
+    }));
+  };
+
+  _validateName = e => {
+    const { value } = e.target;
+    let message = '';
+    let hasError = false;
+    if (!value) {
+      hasError = true;
+      message = 'The first name is required.';
+    }
+    this.setState(ps => ({
+      error: {
+        ...ps.error,
+        nameHasError: hasError,
+        name: message,
+      },
+    }));
+  };
+
+  _validateEmail = e => {
+    const { value } = e.target;
+    let message = '';
+    let hasError = false;
+
+    if (!value) {
+      message = 'The email address is required.';
+      hasError = true;
+    } else if (!validator.isEmail(value)) {
+      message = 'The value is not a valid email address.';
+      hasError = true;
+    }
+
+    this.setState(ps => ({
+      error: {
+        ...ps.error,
+        emailHasError: hasError,
+        email: message,
+      },
+    }));
+  };
+
+  _validatePhone = e => {
+    const { value } = e.target;
+    let message = '';
+    let hasError = false;
+
+    // console.log(validator.isMobilePhone(value, 'en-US'))
+
+    if (!value) {
+      hasError = true;
+      message = 'Please enter your phone number.';
+    } else if (value.length !== 14) {
+      hasError = true;
+      message =
+        'Not a valid 10-digit US phone number (must not include spaces or special characters).';
+    }
+
+    this.setState(ps => ({
+      error: {
+        ...ps.error,
+        phoneHasError: hasError,
+        phoneNumber: message,
+      },
+    }));
+  };
+
+  _validateState = () => {
+    const { name, email, phoneNumber } = this.state.contact;
+    const error = {};
+
+    if (!name) {
+      error.nameHasError = true;
+      error.name = 'The first name is required.';
+    }
+    if (!email) {
+      error.emailHasError = true;
+      error.email = 'The email address is required.';
+    } else if (validator.isEmail(email)) {
+      error.emailHasError = true;
+      error.email = 'The value is not a valid email address.';
+    }
+
+    if (!phoneNumber) {
+      error.phoneHasError = true;
+      error.phoneNumber = 'Please enter your phone number.';
+    } else if (phoneNumber.length !== 14) {
+      error.phoneHasError = true;
+      error.phoneNumber =
+        'Not a valid 10-digit US phone number (must not include spaces or special characters).';
+    }
+
+    return error;
+  };
+
+  _submitForm = () => {
+    const { nameHasError, emailHasError, phoneHasError } = this.state.error;
+
+    const {
+      name, email, phoneNumber, question,
+    } = this.state.contact;
+
+    if (
+      nameHasError === false &amp;&amp;
+      emailHasError === false &amp;&amp;
+      phoneHasError === false
+    ) {
+      this.setState({ submitting: 'submitting' }, async () => {
+        await post('/v1/contact-us', {
+          name,
+          email,
+          phone: phoneNumber,
+          question,
+        });
+        this.setState({ submitting: 'success', contact: {} });
+      });
+    } else {
+      const error = this._validateState();
+      this.setState({ error });
+    }
+  };
+
+  _closeModal = () => this.setState({ submitting: null });
+
+  render() {
+    const { error } = this.state;
+    const { phoneNumber } = this.state.contact;
+    // console.error(error)
+
+    return (
+      &lt;div>
+        &lt;div className="inner-bg">
+          &lt;div className="container">
+            &lt;div className="inner-txt">
+              &lt;span>contact us&lt;/span>
+              &lt;p className="comn-txt">
+                Get in touch with American Science to source the best-quality of
+                hemp extract dietary supplements on the market.
+              &lt;/p>
+            &lt;/div>
+            &lt;img
+              src="/static/assets/images/bnr-prd.png"
+              alt=""
+              className="inner-prd for-desk"
+            />
+          &lt;/div>
+        &lt;/div>
+        &lt;div className="container">
+          &lt;div className="cont-inner">
+            &lt;div className="cont-inner-lft">
+              &lt;p className="comn-txt">
+                You can reach out to us via email or give us a call. Information
+                about our location and business hours is provided below.{' '}
+              &lt;/p>
+              &lt;ul className="cont-list">
+                &lt;li>
+                  &lt;span className="mtop1">American Science CBD&lt;/span>
+                  &lt;p>
+                    Corporate: 6525 Gunpark Drive Ste 370-347, Boulder, CO 80301
+                  &lt;/p>
+                  &lt;p className="mtop1">
+                    Returns: 6525 Gunpark Drive Ste 370-347, Boulder, CO 80301
+                  &lt;/p>
+                &lt;/li>
+                &lt;li>
+                  &lt;span>Hour of Operation&lt;/span>
+                  &lt;p>
+                    Mon-Fri Open 24 Hrs (PST)&lt;br />Sat-Sun Open 24 Hrs (PST)
+                  &lt;/p>
+                &lt;/li>
+                &lt;li>
+                  &lt;span>Email&lt;/span>
+                  &lt;a href="#">support@americansciencecbd.com&lt;/a>
+                &lt;/li>
+                &lt;li>
+                  &lt;span>Phone&lt;/span>
+                  &lt;p>1-888-601-6014&lt;/p>
+                &lt;/li>
+              &lt;/ul>
+            &lt;/div>
+            &lt;div className="cont-inner-rgt">
+              &lt;p className="frm-hdg-txt">Send us A Message&lt;/p>
+              &lt;div className="frm-container">
+                &lt;form id="contact_main" className="fv-form fv-form-pure">
+                  &lt;div
+                    className={`frmelements pure-control-group fv-has-feedback
+                                    ${
+                                      error.nameHasError === false
+                                        ? ' fv-has-success'
+                                        : ''
+                                    }
+                                    ${
+                                      error.nameHasError === true
+                                        ? ' fv-has-error'
+                                        : ''
+                                    }`}
+                  >
+                    &lt;label>
+                      Name&lt;span>*&lt;/span>
+                    &lt;/label>
+                    &lt;div className="field">
+                      &lt;div className="icon-box">
+                        &lt;center>
+                          &lt;img
+                            src="/static/assets/images/frmicon1.png"
+                            alt=""
+                          />
+                        &lt;/center>
+                      &lt;/div>
+                      &lt;input
+                        type="text"
+                        name="name"
+                        className="ft-input"
+                        required
+                        autoComplete="off"
+                        placeholder="First name"
+                        data-fv-field="name"
+                        onChange={this._handleChange}
+                        onBlur={this._validateName}
+                      />
+                      &lt;i
+                        className="fv-control-feedback"
+                        data-fv-icon-for="name"
+                      />
+                    &lt;/div>
+                    {error.name &amp;&amp; (
+                      &lt;small
+                        className="fv-help-block"
+                        data-fv-validator="notEmpty"
+                        data-fv-for="name"
+                        data-fv-result="NOT_VALIDATED"
+                      >
+                        {error.name}
+                      &lt;/small>
+                    )}
+                  &lt;/div>
+                  &lt;div
+                    className={`frmelements pure-control-group fv-has-feedback
+                                    ${
+                                      error.emailHasError === false
+                                        ? ' fv-has-success'
+                                        : ''
+                                    }
+                                    ${
+                                      error.emailHasError === true
+                                        ? ' fv-has-error'
+                                        : ''
+                                    }`}
+                  >
+                    &lt;label>
+                      Email &lt;span>*&lt;/span>{' '}
+                    &lt;/label>
+                    &lt;div className="field">
+                      &lt;div className="icon-box">
+                        &lt;center>
+                          &lt;img
+                            src="/static/assets/images/frmicon3.png"
+                            alt=""
+                          />
+                        &lt;/center>
+                      &lt;/div>
+                      &lt;input
+                        name="email"
+                        type="text"
+                        placeholder="Example: email@somewhere.com"
+                        className="ft-input"
+                        required
+                        autoComplete="off"
+                        data-fv-field="email"
+                        onChange={this._handleChange}
+                        onBlur={this._validateEmail}
+                      />
+                      &lt;i
+                        className="fv-control-feedback"
+                        data-fv-icon-for="email"
+                      />
+                    &lt;/div>
+                    {error.email &amp;&amp; (
+                      &lt;small
+                        className="fv-help-block"
+                        data-fv-validator="emailAddress"
+                        data-fv-for="email"
+                        data-fv-result="NOT_VALIDATED"
+                      >
+                        {error.email}
+                      &lt;/small>
+                    )}
+                  &lt;/div>
+                  &lt;div
+                    className={`frmelements pure-control-group fv-has-feedback
+                                    ${
+                                      error.phoneHasError === false
+                                        ? ' fv-has-success'
+                                        : ''
+                                    }
+                                    ${
+                                      error.phoneHasError === true
+                                        ? ' fv-has-error'
+                                        : ''
+                                    }`}
+                  >
+                    &lt;label>
+                      Phone Number &lt;span>*&lt;/span>
+                    &lt;/label>
+                    &lt;div className="field">
+                      &lt;div className="icon-box">
+                        &lt;center>
+                          &lt;img
+                            src="/static/assets/images/frmicon4.png"
+                            alt=""
+                          />
+                        &lt;/center>
+                      &lt;/div>
+                      &lt;input
+                        type="text"
+                        name="phoneNumber"
+                        id="phone_number"
+                        placeholder="Example: (123) 555-6789"
+                        className="ft-input"
+                        required
+                        autoComplete="off"
+                        data-fv-field="phoneNumber"
+                        maxLength="14"
+                        value={phoneNumber}
+                        onChange={this._handleChange}
+                        onBlur={this._validatePhone}
+                      />
+                      &lt;i
+                        className="fv-control-feedback"
+                        data-fv-icon-for="phoneNumber"
+                      />
+                    &lt;/div>
+                    {error.phoneNumber &amp;&amp; (
+                      &lt;small
+                        className="fv-help-block"
+                        data-fv-validator="callback"
+                        data-fv-for="phoneNumber"
+                        data-fv-result="NOT_VALIDATED"
+                      >
+                        {error.phoneNumber}
+                      &lt;/small>
+                    )}
+                  &lt;/div>
+                  &lt;div className="frmelements pure-control-group">
+                    &lt;label>
+                      My Question &lt;span />
+                    &lt;/label>
+                    &lt;div className="field no-icon comment-box">
+                      &lt;textarea
+                        name="question"
+                        id=""
+                        placeholder="Comment"
+                        onChange={this._handleChange}
+                      />
+                    &lt;/div>
+                  &lt;/div>
+                  &lt;div
+                    className="frmelements btn-element"
+                    onClick={this._submitForm}
+                  >
+                    &lt;img
+                      src="/static/assets/images/submit-btn.png"
+                      className="button-crt"
+                      id="contact_submit"
+                      alt=""
+                    />
+                  &lt;/div>
+                &lt;/form>
+                {this.state.submitting === 'success' &amp;&amp; (
+                  &lt;Modal onClose={this._closeModal}>
+                    Submission successful!
+                    &lt;div className="modal-body">
+                      &lt;p>
+                        We have received your message successfully.&lt;br />Thank
+                        you.
+                      &lt;/p>
+                      &lt;br />
+                      &lt;br />
+                    &lt;/div>
+                  &lt;/Modal>
+                )}
+                {this.state.submitting === 'submitting' &amp;&amp; &lt;Spinner />}
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    );
+  }
+}
+
+export default ContactUs;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddressField.html">AddressField</a></li><li><a href="CardExpiryField.html">CardExpiryField</a></li><li><a href="Cart.html">Cart</a></li><li><a href="CartContainer.html">CartContainer</a></li><li><a href="CartForm.html">CartForm</a></li><li><a href="ChooseProductsForm.html">ChooseProductsForm</a></li><li><a href="ContactUs.html">ContactUs</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Header.html">Header</a></li><li><a href="MobileCardExpiryField.html">MobileCardExpiryField</a></li><li><a href="MobileConfirmContainerComponent.html">MobileConfirmContainerComponent</a></li><li><a href="MobileSelectPackageContainer.html">MobileSelectPackageContainer</a></li><li><a href="MobileShippingContainerComponent.html">MobileShippingContainerComponent</a></li><li><a href="Modal.html">Modal</a></li><li><a href="PromoCheckoutPaymentFormClass.html">PromoCheckoutPaymentFormClass</a></li><li><a href="PromoDesktop.html">PromoDesktop</a></li><li><a href="PromoMobileContainer.html">PromoMobileContainer</a></li><li><a href="ThankyouDesktopComponent.html">ThankyouDesktopComponent</a></li><li><a href="ThankyouMobileComponent.html">ThankyouMobileComponent</a></li><li><a href="Upsell1Component.html">Upsell1Component</a></li><li><a href="Upsell2.html">Upsell2</a></li><li><a href="Upsell11Component.html">Upsell11Component</a></li><li><a href="Upsell21.html">Upsell21</a></li><li><a href="UpsellDesktopContainerComponent.html">UpsellDesktopContainerComponent</a></li><li><a href="UpsellMobileContainerComponent.html">UpsellMobileContainerComponent</a></li></ul><h3>Namespaces</h3><ul><li><a href="api-helpers.html">api-helpers</a></li><li><a href="helpers.html">helpers</a></li><li><a href="orderSaga.html">orderSaga</a></li><li><a href="server-middleware.html">server-middleware</a></li><li><a href="sessionSaga.html">sessionSaga</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getSessionId">getSessionId</a></li><li><a href="global.html#Link">Link</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Jun 18 2018 13:49:45 GMT+0530 (IST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

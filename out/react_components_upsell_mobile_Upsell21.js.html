@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: react/components/upsell/mobile/Upsell21.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: react/components/upsell/mobile/Upsell21.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+import { PromoSession, Footer } from 'react/components/common';
+import { getQueryString } from 'helpers';
+
+/**
+ * @class Upsell21
+ * @extends {React.PureComponent}
+ * @description Mobile Component rendered after Upsell2 page
+ */
+class Upsell21 extends React.PureComponent {
+  upgrade = () => {
+    this.props.upgrade(215, '/promo/mobile/thankyou');
+  };
+  skipUpsell = () => {
+    window.location.assign(`/promo/mobile/thankyou?${getQueryString()}`);
+  };
+  render() {
+    return (
+      &lt;React.Fragment>
+        &lt;PromoSession pageType="upsellPage2" />
+        &lt;div className="up-strip">
+          &lt;h3>YOU QUALIFY FOR A LIMITED TIME DISCOUNT&lt;/h3>
+          &lt;p>
+            Add 1 Bottle Of&lt;br />
+            &lt;strong>CBD Pain Relief Warming Balm&lt;/strong> To Your Order Today!
+          &lt;/p>
+        &lt;/div>
+
+        &lt;div className="upsell-box">
+          &lt;p className="up-txt1">GET INSTANT PAIN RELIEF&lt;/p>
+          &lt;p className="with-txt">with&lt;/p>
+          &lt;p className="up-txt2">CBD Warming Balm&lt;/p>
+          &lt;img
+            src="/static/assets/images/upsell2-mobile/up-prod4.jpg"
+            className="up-prod"
+            alt="upsell-prod"
+          />
+          &lt;div className="clearall" />
+          &lt;div className="price-box">
+            &lt;p className="price-box-txt1">Buy 1 Jar Of CBD Pain Relief Balm&lt;/p>
+            &lt;p className="price-box-txt2">Save 30% Today&lt;/p>
+            &lt;p className="price-box-txt3">
+              &lt;img
+                src="/static/assets/images/upsell2-mobile/arrow-left.png"
+                width="77"
+                height="33"
+                alt="arrow-left"
+                className="arrow-left"
+              />97.00{' '}
+              &lt;img
+                src="/static/assets/images/upsell2-mobile/arrow-right.png"
+                width="77"
+                height="33"
+                alt="arrow-right"
+                className="arrow-right"
+              />
+            &lt;/p>
+          &lt;/div>
+
+          &lt;div className="bnt-sec">
+            &lt;a href="javascript:void(0)" onClick={this.upgrade}>
+              &lt;img
+                src="/static/assets/images/ord-btn.png"
+                alt="order-btn"
+                width="370"
+                height="71"
+                className="ord-btn pulse"
+              />
+            &lt;/a>
+            &lt;p className="thanks-txt">
+              &lt;a href="javascript:void(0)" onClick={this.skipUpsell}>
+                &lt;img
+                  src="/static/assets/images/cut-icon.png"
+                  width="15"
+                  height="15"
+                  alt="cut-icon"
+                  className="cut-icon"
+                />
+                {"No, I don't want better results."}
+              &lt;/a>
+            &lt;/p>
+          &lt;/div>
+
+          &lt;div className="up-strip" style={{ 'margin-top': '50px' }}>
+            &lt;h4>BENEFITS OF CBD WARMING BALM INCLUDE ...&lt;/h4>
+          &lt;/div>
+
+          &lt;div className="clearall" />
+
+          &lt;div className="up-bottom-box">
+            &lt;img
+              src="/static/assets/images/upsell2-mobile/up1-img1.png"
+              alt="upsell-img-1"
+            />
+            &lt;p className="box-txt1">FULL SPECTRUM FORMULA&lt;/p>
+            &lt;p className="box-txt2">
+              CBD Warming Balm is INFUSED with highly a concentrated CBD which
+              is known for its medicinal properties and yields a more effective
+              solution than any balm in the world.
+            &lt;/p>
+          &lt;/div>
+
+          &lt;div className="up-bottom-box">
+            &lt;img
+              src="/static/assets/images/upsell2-mobile/up2-img2.png"
+              alt="upsell-2-img-2"
+            />
+            &lt;p className="box-txt1">OFFERS ANTIOXIDANT SUPPORT&lt;/p>
+            &lt;p className="box-txt2">
+              CBD Warming Balm works at a cellular level to combat free radical
+              damage, boost overall immunity, and provides healing as well as
+              aromatherapy benefits.
+            &lt;/p>
+          &lt;/div>
+
+          &lt;div className="up-bottom-box">
+            &lt;img
+              src="/static/assets/images/upsell2-mobile/up2-img3.png"
+              alt="upsell-2-img-3"
+            />
+            &lt;p className="box-txt1">INSTANTLY RELIEVES CHRONIC PAIN&lt;/p>
+            &lt;p className="box-txt2">
+              Melt away muscle fatigue, pain, swelling, and discomfort with
+              American Science CBD WARMING {"BALM'S"} deep, penetrating warmth
+              providing FAST relief that will amaze you.
+            &lt;/p>
+          &lt;/div>
+
+          &lt;div className="bnt-sec">
+            &lt;a href="javascript:void(0)" onClick={this.upgrade}>
+              &lt;img
+                src="/static/assets/images/ord-btn.png"
+                alt="order-btn"
+                width="370"
+                height="71"
+                className="ord-btn pulse"
+              />
+            &lt;/a>
+            &lt;p className="thanks-txt">
+              &lt;a href="javascript:void(0)" onClick={this.skipUpsell}>
+                &lt;img
+                  src="/static/assets/images/cut-icon.png"
+                  width="15"
+                  height="15"
+                  alt="cut-icon"
+                  className="cut-icon"
+                />
+                {"No, I don't want better results."}
+              &lt;/a>
+            &lt;/p>
+          &lt;/div>
+        &lt;/div>
+        &lt;div id="footer">
+          &lt;div className="container">
+            &lt;div className="ftr-txt">
+              &lt;Footer noLogo>
+                &lt;span />
+              &lt;/Footer>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+      &lt;/React.Fragment>
+    );
+  }
+}
+
+export { Upsell21 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddressField.html">AddressField</a></li><li><a href="CardExpiryField.html">CardExpiryField</a></li><li><a href="Cart.html">Cart</a></li><li><a href="CartContainer.html">CartContainer</a></li><li><a href="CartForm.html">CartForm</a></li><li><a href="ChooseProductsForm.html">ChooseProductsForm</a></li><li><a href="ContactUs.html">ContactUs</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Header.html">Header</a></li><li><a href="MobileCardExpiryField.html">MobileCardExpiryField</a></li><li><a href="MobileConfirmContainerComponent.html">MobileConfirmContainerComponent</a></li><li><a href="MobileSelectPackageContainer.html">MobileSelectPackageContainer</a></li><li><a href="MobileShippingContainerComponent.html">MobileShippingContainerComponent</a></li><li><a href="Modal.html">Modal</a></li><li><a href="PromoCheckoutPaymentFormClass.html">PromoCheckoutPaymentFormClass</a></li><li><a href="PromoDesktop.html">PromoDesktop</a></li><li><a href="PromoMobileContainer.html">PromoMobileContainer</a></li><li><a href="ThankyouDesktopComponent.html">ThankyouDesktopComponent</a></li><li><a href="ThankyouMobileComponent.html">ThankyouMobileComponent</a></li><li><a href="Upsell1Component.html">Upsell1Component</a></li><li><a href="Upsell2.html">Upsell2</a></li><li><a href="Upsell11Component.html">Upsell11Component</a></li><li><a href="Upsell21.html">Upsell21</a></li><li><a href="UpsellDesktopContainerComponent.html">UpsellDesktopContainerComponent</a></li><li><a href="UpsellMobileContainerComponent.html">UpsellMobileContainerComponent</a></li></ul><h3>Namespaces</h3><ul><li><a href="api-helpers.html">api-helpers</a></li><li><a href="helpers.html">helpers</a></li><li><a href="orderSaga.html">orderSaga</a></li><li><a href="server-middleware.html">server-middleware</a></li><li><a href="sessionSaga.html">sessionSaga</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getSessionId">getSessionId</a></li><li><a href="global.html#Link">Link</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Jun 18 2018 13:49:45 GMT+0530 (IST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

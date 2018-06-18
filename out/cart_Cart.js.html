@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: cart/Cart.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: cart/Cart.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { PureComponent } from 'react';
+import Head from 'next/head';
+import { withRouter } from 'next/router';
+import { connect } from 'react-redux';
+import { createNewSession } from 'redux/actions/authActions';
+import { ChooseProductsForm } from './ChooseProductsForm';
+import { CartFormContainer } from './CartForm';
+import { Spinner, PromoSession } from '../common';
+import { OrderActions } from '../../../redux/actions';
+
+/**
+ *
+ * Cart Component for both mobile and desktop
+ * @class Cart
+ * @extends {PureComponent}
+ */
+class Cart extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: {},
+    };
+  }
+
+  /**
+   *
+   *
+   * @memberof Cart
+   */
+  componentDidMount() {
+    const { localStorage } = window;
+    this.props.createNewSession();
+    localStorage.clear();
+  }
+
+  /**
+   *
+   *
+   * @memberof Cart
+   */
+  submit = values => {
+    if (this.isProductsEmpty()) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    const { products } = this.state;
+    const orderPayload = {};
+    Object.values(products).forEach(item => {
+      orderPayload[`${item.label}id`] = item.product.id;
+      orderPayload[`${item.label}qty`] = item.quantity;
+    });
+    values.order = { ...values.order, ...orderPayload };
+    values.process_sync = 'true';
+    const valuesCopy = values;
+    valuesCopy.cart = true;
+    this.props.submitLeadsForm({
+      values,
+      cart: true,
+      nextUrl: '',
+      router: this.props.router,
+    });
+
+    this.props.placeOrder({
+      values: valuesCopy,
+      pack: this.state.selected,
+      router: this.props.router,
+      nextUrl: 'thankyou',
+    });
+  };
+
+  /**
+   *
+   *
+   * @memberof Cart
+   */
+  updateProducts = details => {
+    const { index, product, quantity } = details;
+    const products = { ...this.state.products };
+    products[product.id] = {
+      product,
+      quantity,
+      label: `product${index + 1}_`,
+    };
+    this.setState({ products });
+  };
+
+  /**
+   *
+   *
+   * @memberof Cart
+   */
+  isProductsEmpty = () => {
+    const { products } = this.state;
+    const productSelected =
+      Object.values(products).filter(product => product.quantity > 0).length >
+      0;
+    return !productSelected;
+  };
+
+  /**
+   *
+   *
+   * @returns jsx
+   * @memberof Cart
+   */
+  render() {
+    return (
+      &lt;React.Fragment>
+        &lt;Head>
+          &lt;script type="text/javascript" src="/static/assets/js/geoSearch.js" />
+        &lt;/Head>
+        &lt;div className="inner-bg">
+          &lt;div className="container">
+            &lt;div className="inner-txt">
+              &lt;span>CART&lt;/span>
+              &lt;p className="comn-txt">
+                Congratulations! You&amp;#8217;re one step closer to better health.{' '}
+                &lt;br className="for-desk" />Use our secure checkout to complete
+                your order.
+              &lt;/p>
+            &lt;/div>
+            &lt;img
+              src="/static/assets/images/bnr-prd.png"
+              alt=""
+              className="inner-prd for-desk"
+            />
+          &lt;/div>
+        &lt;/div>
+        &lt;div className="container">
+          &lt;div className="sec1-cartin">
+            &lt;table
+              border="0"
+              cellSpacing="0"
+              cellPadding="0"
+              width="100%"
+              className="tbl1"
+            >
+              &lt;tbody>
+                &lt;tr>
+                  &lt;td className="row1" style={{ paddingLeft: '8%' }}>
+                    Product
+                  &lt;/td>
+                  &lt;td className="row1 c2">QTY.&lt;/td>
+                  &lt;td className="row1 c3">Price&lt;/td>
+                &lt;/tr>
+                &lt;tr>
+                  &lt;td colSpan="3">
+                    &lt;ChooseProductsForm
+                      update={this.updateProducts}
+                      cart={this.state.products}
+                    />
+                  &lt;/td>
+                &lt;/tr>
+              &lt;/tbody>
+            &lt;/table>
+            &lt;div className="clearall">
+              &lt;div className="sec1crt-frm" id="select_cart_form">
+                &lt;div className="confidence">
+                  &lt;p className="txtconfi">Shop With Confidence&lt;/p>
+                  &lt;img
+                    alt=""
+                    src="/static/assets/images/confidence.jpg"
+                    className="confi-img"
+                  />
+                &lt;/div>
+                &lt;CartFormContainer onSubmit={this.submit} />
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/div>
+        {this.props.sessionId &amp;&amp; &lt;PromoSession pageType="leadPage" />}
+        {this.props.submitStatus === 'submitting' &amp;&amp; &lt;Spinner />}
+      &lt;/React.Fragment>
+    );
+  }
+}
+
+/**
+ *
+ *
+ * @param {*} state
+ * @returns state
+ */
+function mapStateToProps(state) {
+  return {
+    sessionId: state.auth.sessionId,
+    submitStatus: state.order.submitLeadsFormStatus,
+  };
+}
+
+const CartPage = connect(mapStateToProps, {
+  ...OrderActions,
+  createNewSession,
+})(withRouter(Cart));
+
+export { CartPage };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Cart.html">Cart</a></li><li><a href="CartForm.html">CartForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Link">Link</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Jun 14 2018 23:53:55 GMT+0530 (IST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
