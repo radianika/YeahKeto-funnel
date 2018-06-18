@@ -22,4 +22,5 @@ localhost:3001/promo
 `yarn generate-docs` command to generate docs(static html files) in your local machine reading JSdocs
 open /out/index.html to access JSDoc documentation
 
+Please see http://usejsdoc.org/ for reference. 
 
