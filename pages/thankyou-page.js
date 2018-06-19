@@ -28,7 +28,7 @@ class Thankyou extends React.PureComponent {
   componentDidMount() {
     const { localStorage } = window;
     if (this.props.query.isPromo) {
-      this.sendTransactionDetails(localStorage);
+      this.sendTransactionDetails();
     }
     const items = this.getItem();
     // eslint-disable-next-line
@@ -70,7 +70,8 @@ class Thankyou extends React.PureComponent {
     return JSON.parse(localStorage.getItem('upsell1'));
   };
 
-  sendTransactionDetails = localStorage => {
+  sendTransactionDetails = () => {
+    const { localStorage } = window;
     const items = JSON.parse(localStorage.getItem('upsell1'));
     const id = items[0].OrderInfo.TransactionID;
     const revenue = items.reduce(
