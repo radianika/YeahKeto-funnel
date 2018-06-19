@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
+import axios from 'axios';
+import moment from 'moment';
 import { OrderActions } from 'redux/actions';
 import { Spinner, SuccessModal } from 'react/components/common';
 import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
@@ -21,12 +23,31 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
     }
   };
 
+  postActionTracker = () => {
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      name: 'rushmyorder_form',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type:
+          this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+        origin: 'PromoLeadPages',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+  };
+
   submitShippingForm = values => {
     this.props.submitLeadsForm({
       values,
       router: this.props.router,
       nextUrl: '/promo/desktop/checkout',
     });
+    this.postActionTracker();
   };
 
   render() {

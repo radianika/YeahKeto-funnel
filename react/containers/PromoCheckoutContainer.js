@@ -1,11 +1,12 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import moment from 'moment';
 import { Footer } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
 import { PromoCheckoutPaymentForm } from 'react/components/promo/desktop';
 import { packages, normalizePhone } from 'helpers';
-import moment from 'moment';
 
 class PromoCheckout extends React.PureComponent {
   constructor() {
@@ -15,6 +16,24 @@ class PromoCheckout extends React.PureComponent {
     };
   }
 
+  postActionTracker = () => {
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      name: 'rushmyorder_page',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type:
+          this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+        origin: 'CheckoutPage',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+  };
+
   submitBillingForm = values => {
     this.props.placeOrder({
       values,
@@ -22,6 +41,7 @@ class PromoCheckout extends React.PureComponent {
       router: this.props.router,
       nextUrl: '/promo/desktop/upsell-1',
     });
+    this.postActionTracker();
   };
 
   render() {
