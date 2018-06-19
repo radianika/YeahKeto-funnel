@@ -28,7 +28,11 @@ class Thankyou extends React.PureComponent {
   componentDidMount() {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    if (this.props.query.isPromo && abtastyParams.requestAgent === 'desktop') {
+    if (
+      this.props.query.isPromo &&
+      abtastyParams &&
+      abtastyParams.requestAgent === 'desktop'
+    ) {
       this.sendTransactionDetails();
     }
     const items = this.getItem();
@@ -81,7 +85,7 @@ class Thankyou extends React.PureComponent {
     );
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
-      name: 'complete_order',
+      name: 'order-confirmation-2',
       id,
       revenue,
       shipping: '0',
