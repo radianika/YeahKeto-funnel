@@ -10,7 +10,6 @@ import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 class PromoSectionOneDesktopComponent extends React.PureComponent {
   getImageVariation = () => {
     const { variationId } = this.props;
-    console.log({ variationId });
     switch (variationId) {
       case '404689':
         return '/static/promo/desktop/images/section1.jpg';
