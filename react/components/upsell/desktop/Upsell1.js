@@ -16,8 +16,7 @@ class Upsell1Component extends React.PureComponent {
       type: 'CLICK',
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
-        device_type:
-          abtastyParams.requestAgent === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+        device_type: 'DESKTOP',
         origin: 'Upsell1',
         timestamp: moment().format(),
         ip: abtastyParams.ip,

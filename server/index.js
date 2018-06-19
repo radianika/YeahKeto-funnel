@@ -127,11 +127,10 @@ const getVisitorId = async (req, res) => {
     const { cookies } = req;
     let visitorId = idx(cookies, _ => _.asc_visitor_id);
     if (visitorId && visitorId !== 'undefined') {
-      return visitorId;
+      return { visitorId, isNew: false };
     }
     visitorId = await generateAbtastyVisitorId();
-    res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
-    return visitorId;
+    return { visitorId, isNew: true };
   } catch (error) {
     Raven.captureException(error);
     console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -194,7 +193,10 @@ app.prepare().then(() => {
         );
       }
       if (requestAgent === 'desktop') {
-        const visitorId = await getVisitorId(req, res);
+        const { visitorId, isNew } = await getVisitorId(req, res);
+        if (isNew) {
+          res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
+        }
         const variationId = await getVariationForVisitor(visitorId);
         return app.render(req, res, '/promo-desktop', {
           requestAgent,
