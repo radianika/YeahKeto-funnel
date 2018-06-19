@@ -9,7 +9,14 @@ import connectRedis from 'connect-redis';
 import querystring from 'querystring';
 import Raven from 'raven';
 import morgan from 'morgan';
-import { post } from './api-helpers';
+import axios from 'axios';
+import bodyParser from 'body-parser';
+import {
+  post,
+  postToAbtasty,
+  generateAbtastyVisitorId,
+  getVariationForVisitor,
+} from './api-helpers';
 import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
@@ -36,6 +43,7 @@ server.use(
 );
 
 server.use(cookieParser());
+server.use(bodyParser.json());
 server.use(useragent.express());
 if (!dev) {
   Raven.config('https://30b971029d594608bb765ea6e46298f0@sentry.io/1207214', {
@@ -76,7 +84,10 @@ server.use((req, res, cb) => {
     if (req.session) {
       // set key only for page requests
       // ignore for static calls and HMR calls in dev
-      if (req.url.indexOf('/static/') === -1 && req.url.indexOf('on-demand-entries-ping') === -1) {
+      if (
+        req.url.indexOf('/static/') === -1 &&
+        req.url.indexOf('on-demand-entries-ping') === -1
+      ) {
         res.set('ABCBDSESSID', req.sessionID);
       }
 
@@ -111,19 +122,30 @@ const getSessionId = async (req, res) => {
   }
 };
 
-const app = next({ dev });
-const handle = app.getRequestHandler();
-
-const redirectToPromo = (orderId, req, res, next) => {
-  if (!orderId) {
-    const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
-    res.redirect(`/promo/${requestAgent}?${querystring.stringify(req.query)}`);
-  } else {
-    next();
+const getVisitorId = async (req, res) => {
+  try {
+    const { cookies } = req;
+    let visitorId = idx(cookies, _ => _.asc_visitor_id);
+    if (visitorId && visitorId !== 'undefined') {
+      return { visitorId, isNew: false };
+    }
+    visitorId = await generateAbtastyVisitorId();
+    return { visitorId, isNew: true };
+  } catch (error) {
+    Raven.captureException(error);
+    console.error('Exception Occurred in ReactApp', error.stack || error);
   }
 };
 
+const app = next({ dev });
+const handle = app.getRequestHandler();
+
 app.prepare().then(() => {
+  server.post('/abtasty', async (req, res) => {
+    const response = await postToAbtasty(req.body.action, req.body);
+    res.status(200).send(response);
+  });
+
   server.get('/start-session', async (req, res) => {
     const sessionResponse = await post(
       '/v1/auth',
@@ -166,10 +188,22 @@ app.prepare().then(() => {
       const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
 
       if (requestAgent !== req.params.useragent) {
-        res.redirect(`/promo/${requestAgent}?${querystring.stringify(req.query)}`);
+        res.redirect(
+          `/promo/${requestAgent}?${querystring.stringify(req.query)}`,
+        );
       }
       if (requestAgent === 'desktop') {
-        return app.render(req, res, '/promo-desktop', { requestAgent });
+        const { visitorId, isNew } = await getVisitorId(req, res);
+        if (isNew) {
+          res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
+        }
+        const variationId = await getVariationForVisitor(visitorId);
+        return app.render(req, res, '/promo-desktop', {
+          requestAgent,
+          visitorId,
+          variationId,
+          device: requestAgent,
+        });
       }
       if (requestAgent === 'mobile') {
         return app.render(req, res, '/promo-mobile', { requestAgent });
@@ -185,10 +219,10 @@ app.prepare().then(() => {
       const sessionId = await getSessionId(req, res);
       const { orderId } = req.query;
       // redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/promo-desktop-checkout', {
-          orderId,
-          sessionId,
-        });
+      app.render(req, res, '/promo-desktop-checkout', {
+        orderId,
+        sessionId,
+      });
       // });
     } catch (error) {
       Raven.captureException(error);
@@ -203,16 +237,16 @@ app.prepare().then(() => {
       const offerId = req.query.sourceValue5;
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
-      //redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/promo-desktop-upsell', {
-          upsell: 1,
-          orderId,
-          offerId,
-          transaction_id,
-          adv_sub,
-          sessionId,
-        });
-      //});
+      // redirectToPromo(orderId, req, res, () => {
+      app.render(req, res, '/promo-desktop-upsell', {
+        upsell: 1,
+        orderId,
+        offerId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -227,16 +261,16 @@ app.prepare().then(() => {
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
 
-      //redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/promo-desktop-upsell', {
-          upsell: '1-1',
-          orderId,
-          offerId,
-          transaction_id,
-          adv_sub,
-          sessionId,
-        });
-      //});
+      // redirectToPromo(orderId, req, res, () => {
+      app.render(req, res, '/promo-desktop-upsell', {
+        upsell: '1-1',
+        orderId,
+        offerId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -251,16 +285,16 @@ app.prepare().then(() => {
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
 
-      //redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/promo-desktop-upsell', {
-          upsell: 2,
-          orderId,
-          offerId,
-          transaction_id,
-          adv_sub,
-          sessionId,
-        });
-      //});
+      // redirectToPromo(orderId, req, res, () => {
+      app.render(req, res, '/promo-desktop-upsell', {
+        upsell: 2,
+        orderId,
+        offerId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -271,14 +305,14 @@ app.prepare().then(() => {
     try {
       const sessionId = await getSessionId(req, res);
       const { orderId } = req.query;
-      //redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/thankyou-page', {
-          orderId,
-          sessionId,
-          isPromo: true,
-          device: 'desktop',
-        });
-      //});
+      // redirectToPromo(orderId, req, res, () => {
+      app.render(req, res, '/thankyou-page', {
+        orderId,
+        sessionId,
+        isPromo: true,
+        device: 'desktop',
+      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -302,10 +336,10 @@ app.prepare().then(() => {
       const sessionId = await getSessionId(req, res);
       const { orderId } = req.query;
       // redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/promo-mobile-select-package', {
-          sessionId,
-          orderId,
-        });
+      app.render(req, res, '/promo-mobile-select-package', {
+        sessionId,
+        orderId,
+      });
       // });
     } catch (error) {
       Raven.captureException(error);
@@ -318,11 +352,11 @@ app.prepare().then(() => {
       const sessionId = await getSessionId(req, res);
       const { orderId } = req.query;
       // redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/promo-mobile-confirm', {
-          sessionId,
-          orderId,
-          productId: req.query.productId,
-        });
+      app.render(req, res, '/promo-mobile-confirm', {
+        sessionId,
+        orderId,
+        productId: req.query.productId,
+      });
       // });
     } catch (error) {
       Raven.captureException(error);
@@ -338,16 +372,16 @@ app.prepare().then(() => {
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
 
-      //redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/promo-mobile-upsell', {
-          upsell: 1,
-          offerId,
-          orderId,
-          transaction_id,
-          adv_sub,
-          sessionId,
-        });
-      //});
+      // redirectToPromo(orderId, req, res, () => {
+      app.render(req, res, '/promo-mobile-upsell', {
+        upsell: 1,
+        offerId,
+        orderId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -361,15 +395,15 @@ app.prepare().then(() => {
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
 
-      //redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/promo-mobile-upsell', {
-          upsell: '1-1',
-          orderId,
-          transaction_id,
-          adv_sub,
-          sessionId,
-        });
-      //});
+      // redirectToPromo(orderId, req, res, () => {
+      app.render(req, res, '/promo-mobile-upsell', {
+        upsell: '1-1',
+        orderId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -384,16 +418,16 @@ app.prepare().then(() => {
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
 
-      //redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/promo-mobile-upsell', {
-          upsell: 2,
-          orderId,
-          offerId,
-          transaction_id,
-          adv_sub,
-          sessionId,
-        });
-      //});
+      // redirectToPromo(orderId, req, res, () => {
+      app.render(req, res, '/promo-mobile-upsell', {
+        upsell: 2,
+        orderId,
+        offerId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -408,16 +442,16 @@ app.prepare().then(() => {
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
 
-      //redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/promo-desktop-upsell', {
-          upsell: '2-1',
-          orderId,
-          offerId,
-          transaction_id,
-          adv_sub,
-          sessionId,
-        });
-      //});
+      // redirectToPromo(orderId, req, res, () => {
+      app.render(req, res, '/promo-desktop-upsell', {
+        upsell: '2-1',
+        orderId,
+        offerId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -432,16 +466,16 @@ app.prepare().then(() => {
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
 
-      //redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/promo-mobile-upsell', {
-          upsell: '2-1',
-          orderId,
-          offerId,
-          transaction_id,
-          adv_sub,
-          sessionId,
-        });
-      //});
+      // redirectToPromo(orderId, req, res, () => {
+      app.render(req, res, '/promo-mobile-upsell', {
+        upsell: '2-1',
+        orderId,
+        offerId,
+        transaction_id,
+        adv_sub,
+        sessionId,
+      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -452,14 +486,14 @@ app.prepare().then(() => {
     try {
       const sessionId = await getSessionId(req, res);
       const { orderId } = req.query;
-      //redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/thankyou-page', {
-          orderId,
-          sessionId,
-          isPromo: true,
-          device: 'mobile',
-        });
-      //});
+      // redirectToPromo(orderId, req, res, () => {
+      app.render(req, res, '/thankyou-page', {
+        orderId,
+        sessionId,
+        isPromo: true,
+        device: 'mobile',
+      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);

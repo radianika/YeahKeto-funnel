@@ -21,6 +21,7 @@ class PromoDesktop extends React.PureComponent {
     this.props.createNewSession();
     localStorage.clear();
   }
+
   render() {
     return (
       <React.Fragment>
