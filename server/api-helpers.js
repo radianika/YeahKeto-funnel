@@ -15,7 +15,7 @@ export function post(location, body, headers) {
     })
     .catch(error => {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
       if (error.response) {
         return { error: error.response };
       }
@@ -36,7 +36,7 @@ export function put(location, body, headers) {
     })
     .catch(error => {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
       if (error.response) {
         return { error: error.response };
       }
@@ -57,7 +57,7 @@ export function get(location, headers) {
     })
     .catch(error => {
       Raven.captureException(error);
-      console.error('Exception Occurred in ReactApp', (error.stack || error));
+      console.error('Exception Occurred in ReactApp', error.stack || error);
       if (error.response) {
         return { error: error.response };
       }
@@ -70,24 +70,21 @@ export function get(location, headers) {
 
 export function postToTransactionApi(action, body) {
   const url = `${ABTASTY_BASE_URL}/${action}`;
-  console.log("action", url, body, ABTASTY_API_KEY);
   return axios
     .post(url, body, {
-      headers: { "x-api-key": ABTASTY_API_KEY }
+      headers: { 'x-api-key': ABTASTY_API_KEY },
     })
-    .then(response => {
-      return { error: null, response };
-    })
+    .then(response => ({ error: null, response }))
     .catch(error => {
       console.error(
-        "Exception Occurred in ReactApp ABTASTY call",
-        error.stack || error
+        'Exception Occurred in ReactApp ABTASTY call',
+        error.stack || error,
       );
       if (error.response) {
         return { error: error.response };
       }
       if (error.request) {
-        return { error: "No response from ABTASTY server" };
+        return { error: 'No response from ABTASTY server' };
       }
       return error.message;
     });

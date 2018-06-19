@@ -27,17 +27,7 @@
       "./node_modules/.bin/eslint --fix",
       "git add"
     ],
-    "react/**/*.jsx": [
-      "prettier --write",
-      "./node_modules/.bin/eslint --fix",
-      "git add"
-    ],
-    "redux/**/*.jsx": [
-      "prettier --write",
-      "./node_modules/.bin/eslint --fix",
-      "git add"
-    ],
-    "pages/**/*.jsx": [
+    "server/**/*.js": [
       "prettier --write",
       "./node_modules/.bin/eslint --fix",
       "git add"

@@ -16,9 +16,10 @@ class Thankyou extends React.PureComponent {
   }
 
   sendTransactionDetails = localStorage => {
+    console.log(localStorage);
     const body = {
       name: 'complete_order',
-      id: '123',
+      id: localStorage,
       revenue: '123',
       shipping: '123',
       tracking_data: {
