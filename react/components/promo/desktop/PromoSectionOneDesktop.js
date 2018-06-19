@@ -6,6 +6,21 @@ import { Spinner, SuccessModal } from 'react/components/common';
 import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
 class PromoSectionOneDesktopComponent extends React.PureComponent {
+  getImageVariation = () => {
+    const { variationId } = this.props;
+    console.log({ variationId });
+    switch (variationId) {
+      case '404215':
+        return '/static/promo/desktop/images/section1.jpg';
+      case '404216':
+        return '/static/promo/desktop/v1/section1.jpg';
+      case '404217':
+        return '/static/promo/desktop/v2/section1.jpg';
+      default:
+        return '/static/promo/desktop/images/section1.jpg';
+    }
+  };
+
   submitShippingForm = values => {
     this.props.submitLeadsForm({
       values,
@@ -16,7 +31,12 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
 
   render() {
     return (
-      <div className="section1 dsplay">
+      <div
+        className="section1 dsplay"
+        style={{
+          background: `url(${this.getImageVariation()}) center top no-repeat`,
+        }}
+      >
         <h2 style={{ display: 'none' }}>American Science CBD</h2>
         <div className="container">
           <div className="s1lft position">
@@ -77,6 +97,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     submitStatus: state.order.submitLeadsFormStatus,
+    variationId: state.auth.abtastyParams.variationId,
   };
 }
 
