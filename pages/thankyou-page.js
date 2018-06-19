@@ -77,6 +77,7 @@ class Thankyou extends React.PureComponent {
       (agg, val) => agg + val.OrderInfo.TotalAmount,
       0,
     );
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
       name: 'complete_order',
       id,
@@ -85,10 +86,10 @@ class Thankyou extends React.PureComponent {
       tracking_data: {
         device_type:
           this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
-        ip: '87.200.72.165',
+        ip: abtastyParams.ip,
         origin: 'ThankyouPage',
         timestamp: moment().format(),
-        visitor_id: 'ba0u0ckaai1g00b7br60',
+        visitor_id: abtastyParams.visitorId,
       },
     };
     axios.post('/abtasty', { ...body, action: 'transaction_event' });

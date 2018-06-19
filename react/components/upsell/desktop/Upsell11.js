@@ -8,16 +8,18 @@ import { SatisfactionBox } from './SatisfactionBox';
 
 class Upsell11Component extends React.PureComponent {
   postActionTracker = yes => {
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
       name: yes ? 'upsell11_yes' : 'upsell11_no',
       type: 'CLICK',
       tracking_data: {
-        visitor_id: 'ba0u0ckaai1g00b7br60',
+        visitor_id: abtastyParams.visitorId,
         device_type:
           this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
         origin: 'Upsell11',
         timestamp: moment().format(),
-        ip: '87.200.72.165',
+        ip: abtastyParams.ip,
       },
     };
     axios.post('/abtasty', { ...body, action: 'action_tracking_event' });

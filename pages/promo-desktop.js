@@ -27,6 +27,14 @@ class Promo extends React.PureComponent {
     }
   }
 
+  componentDidMount() {
+    const { localStorage } = window;
+    localStorage.setItem(
+      'abtastyParams',
+      JSON.stringify(this.props.abtastyParams),
+    );
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -75,4 +83,8 @@ class Promo extends React.PureComponent {
   }
 }
 
-export default connect(null, { ...AuthActions })(Promo);
+const mapStateToProps = state => ({
+  abtastyParams: state.auth.abtastyParams,
+});
+
+export default connect(mapStateToProps, { ...AuthActions })(Promo);
