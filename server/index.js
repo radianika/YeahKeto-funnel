@@ -170,7 +170,8 @@ app.prepare().then(() => {
   });
 
   server.post('/abtasty', async req => {
-    postToTransactionApi(req.body.action, req.body);
+    await postToTransactionApi(req.body.action, req.body);
+    res.status(200).send({ response });
   });
 
   server.get('/start-session', async (req, res) => {

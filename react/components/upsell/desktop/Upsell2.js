@@ -1,12 +1,33 @@
 import React from 'react';
+import axios from 'axios';
+import moment from 'moment';
 import { PromoSession } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
 class Upsell2 extends React.PureComponent {
+  postActionTracker = yes => {
+    const body = {
+      name: yes ? 'upsell2_yes' : 'upsell2_no',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: 'ba0u0ckaai1g00b7br60',
+        device_type:
+          this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+        origin: 'Upsell2',
+        timestamp: moment().format(),
+        ip: '87.200.72.165',
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+  };
+
   upgrade = () => {
+    this.postActionTracker('yes');
     this.props.upgrade(217, '/promo/desktop/thankyou');
   };
+
   skipUpsell = () => {
+    this.postActionTracker();
     window.location.assign(`/promo/desktop/upsell-2-1?${getQueryString()}`);
   };
   render() {
