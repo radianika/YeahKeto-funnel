@@ -125,7 +125,7 @@ const redirectToPromo = (orderId, req, res, next) => {
 };
 
 app.prepare().then(() => {
-  server.get('/start-session', async (req, res) => {
+  server.get('/get-version', async (req, res) => {
     /*
       http://beta-developers.abtasty.com/#introduction
         1.) Generate a unique visitor ID
@@ -138,6 +138,7 @@ app.prepare().then(() => {
           {'campaign_id': '306329', 'visitor_id': response.data.id},
           {headers: {'x-api-key': 'AIzaSyAuUU2Xfu_Yhi67LMiDRk9-IYcKAkP4Big'}}
         ).then((versionResponse) => {
+          res.status(200).send({ versionData: versionResponse.data });
           console.log(versionResponse.data);
         })
         .catch(err => {
@@ -147,7 +148,8 @@ app.prepare().then(() => {
       .catch((err) => {
         console.error(err);
       })
-
+  })
+  server.get('/start-session', async (req, res) => {
     const sessionResponse = await post(
       '/v1/auth',
       {
