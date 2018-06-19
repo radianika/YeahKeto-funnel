@@ -36,7 +36,7 @@ const packages = [
   {
     id: 208,
     title: <React.Fragment>BUY 1 BOTTLE</React.Fragment>,
-    name: 'BUY 1s BOTTLE + GET 1 FREE',
+    name: 'BUY 1 BOTTLE',
     img: 'product-box3.png',
     desktopImg: 'pkg3-img.png',
     msg: 'SIMPLER PACKAGE',
