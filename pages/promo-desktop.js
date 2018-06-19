@@ -36,7 +36,7 @@ class Promo extends React.PureComponent {
       JSON.stringify(this.props.abtastyParams),
     );
     const body = {
-      campaign_id: '306329',
+      campaign_id: '306753',
       variation_id: this.props.abtastyParams.variationId,
       tracking_data: {
         device_type:

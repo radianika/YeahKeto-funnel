@@ -92,7 +92,7 @@ export async function getVariationForVisitor(visitor_id) {
   try {
     const response = await axios.post(
       `${ABTASTY_BASE_URL}/allocate`,
-      { campaign_id: '306329', visitor_id },
+      { campaign_id: '306753', visitor_id },
       {
         headers: {
           'x-api-key': ABTASTY_API_KEY,

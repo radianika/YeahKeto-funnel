@@ -12,11 +12,11 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
     const { variationId } = this.props;
     console.log({ variationId });
     switch (variationId) {
-      case '404215':
+      case '404689':
         return '/static/promo/desktop/images/section1.jpg';
-      case '404216':
+      case '404690':
         return '/static/promo/desktop/v1/section1.jpg';
-      case '404217':
+      case '404691':
         return '/static/promo/desktop/v2/section1.jpg';
       default:
         return '/static/promo/desktop/images/section1.jpg';
