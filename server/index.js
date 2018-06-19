@@ -11,7 +11,12 @@ import Raven from 'raven';
 import morgan from 'morgan';
 import axios from 'axios';
 import bodyParser from 'body-parser';
-import { post, postToTransactionApi } from './api-helpers';
+import {
+  post,
+  postToTransactionApi,
+  generateAbtastyVisitorId,
+  getVariationForVisitor,
+} from './api-helpers';
 import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
@@ -117,58 +122,26 @@ const getSessionId = async (req, res) => {
   }
 };
 
-const app = next({ dev });
-const handle = app.getRequestHandler();
-
-const redirectToPromo = (orderId, req, res, next) => {
-  if (!orderId) {
-    const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
-    res.redirect(`/promo/${requestAgent}?${querystring.stringify(req.query)}`);
-  } else {
-    next();
+const getVisitorId = async (req, res) => {
+  try {
+    const { cookies } = req;
+    let visitorId = idx(cookies, _ => _.asc_visitor_id);
+    if (visitorId && visitorId !== 'undefined') {
+      return visitorId;
+    }
+    visitorId = await generateAbtastyVisitorId();
+    res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
+    return visitorId;
+  } catch (error) {
+    Raven.captureException(error);
+    console.error('Exception Occurred in ReactApp', error.stack || error);
   }
 };
 
+const app = next({ dev });
+const handle = app.getRequestHandler();
+
 app.prepare().then(() => {
-  server.get('/get-version', async (req, res) => {
-    /*
-      http://beta-developers.abtasty.com/#introduction
-        1.) Generate a unique visitor ID
-        2.) Allocate a visitor to a variation
-    */
-    const baseUrl = 'https://beta-serverside.abtasty.com/v1/';
-
-    axios
-      .post(
-        `${baseUrl}visitor`,
-        {},
-        { headers: { 'x-api-key': 'AIzaSyAuUU2Xfu_Yhi67LMiDRk9-IYcKAkP4Big' } },
-      )
-      .then(response => {
-        console.log(response);
-        axios
-          .post(
-            `${baseUrl}allocate`,
-            { campaign_id: '306329', visitor_id: response.data.id },
-            {
-              headers: {
-                'x-api-key': 'AIzaSyAuUU2Xfu_Yhi67LMiDRk9-IYcKAkP4Big',
-              },
-            },
-          )
-          .then(versionResponse => {
-            res.status(200).send({ versionData: versionResponse.data });
-            console.log(versionResponse.data);
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  });
-
   server.post('/abtasty', async req => {
     await postToTransactionApi(req.body.action, req.body);
     res.status(200).send({ response });
@@ -221,7 +194,13 @@ app.prepare().then(() => {
         );
       }
       if (requestAgent === 'desktop') {
-        return app.render(req, res, '/promo-desktop', { requestAgent });
+        const visitorId = await getVisitorId(req, res);
+        const variationId = await getVariationForVisitor(visitorId);
+        return app.render(req, res, '/promo-desktop', {
+          requestAgent,
+          visitorId,
+          variationId,
+        });
       }
       if (requestAgent === 'mobile') {
         return app.render(req, res, '/promo-mobile', { requestAgent });

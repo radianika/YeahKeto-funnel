@@ -5,3 +5,6 @@ export const setUniqueSessionId = createAction(SET_UNIQUE_SESSION_ID);
 
 export const CREATE_NEW_SESSION = 'AUTH/CREATE_NEW_SESSION';
 export const createNewSession = createAction(CREATE_NEW_SESSION);
+
+export const SET_ABTASTY_PARAMS = 'AUTH/SET_ABTASTY_PARAMS';
+export const setAbtastyParams = createAction(SET_ABTASTY_PARAMS);
