@@ -9,13 +9,13 @@ import connectRedis from 'connect-redis';
 import querystring from 'querystring';
 import Raven from 'raven';
 import morgan from 'morgan';
+import axios from 'axios';
+import bodyParser from 'body-parser';
 import { post, postToTransactionApi } from './api-helpers';
 import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
 import redis from './redis-config';
-import axios from 'axios';
-import bodyParser from 'body-parser';
 
 require('dotenv').config();
 
