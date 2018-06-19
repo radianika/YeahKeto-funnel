@@ -3,12 +3,15 @@ import { AuthActions } from 'redux/actions';
 
 const initialState = ip.freeze({
   sessionId: null,
+  abtastyParams: null,
 });
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case AuthActions.SET_UNIQUE_SESSION_ID:
       return ip.setIn(state, ['sessionId'], action.payload.sessionId.id);
+    case AuthActions.SET_ABTASTY_PARAMS:
+      return ip.setIn(state, ['abtastyParams'], action.payload);
     default:
       return state;
   }

@@ -71,6 +71,4 @@ export function get(location, sessionId, headers) {
     });
 }
 
-// export function setAuthHeaders(authToken) {
-//   axios.defaults.headers.common.Authorization = `JWT ${authToken}`;
-// }
+

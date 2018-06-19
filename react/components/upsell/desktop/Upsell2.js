@@ -1,11 +1,34 @@
 import React from 'react';
+import axios from 'axios';
+import moment from 'moment';
 import { PromoSession } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
 class Upsell2 extends React.PureComponent {
+  postActionTracker = () => {
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      name: 'upsell2-balm',
+      value_string: 'upsell2',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type:
+          abtastyParams.requestAgent === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+        origin: 'Upsell2',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+  };
+
   upgrade = () => {
+    this.postActionTracker('yes');
     this.props.upgrade(217, '/promo/desktop/thankyou');
   };
+
   skipUpsell = () => {
     window.location.assign(`/promo/desktop/upsell-2-1?${getQueryString()}`);
   };
