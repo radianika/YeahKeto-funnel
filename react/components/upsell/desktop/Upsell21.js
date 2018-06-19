@@ -5,11 +5,12 @@ import { PromoSession } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
 class Upsell21 extends React.PureComponent {
-  postActionTracker = yes => {
+  postActionTracker = () => {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
-      name: yes ? 'upsell21_yes' : 'upsell21_no',
+      name: 'upsell2-balm',
+      value_string: 'upsell2-1',
       type: 'CLICK',
       tracking_data: {
         visitor_id: abtastyParams.visitorId,

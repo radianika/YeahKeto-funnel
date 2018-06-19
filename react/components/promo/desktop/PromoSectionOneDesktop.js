@@ -10,7 +10,6 @@ import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 class PromoSectionOneDesktopComponent extends React.PureComponent {
   getImageVariation = () => {
     const { variationId } = this.props;
-    console.log({ variationId });
     switch (variationId) {
       case '404689':
         return '/static/promo/desktop/images/section1.jpg';
@@ -27,7 +26,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
-      name: 'rush-my-order',
+      name: 'order-confirmation-1',
       value_string: 'rushmyorder_form',
       type: 'CLICK',
       tracking_data: {

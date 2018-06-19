@@ -7,11 +7,12 @@ import { getQueryString } from 'helpers';
 import { SatisfactionBox } from './SatisfactionBox';
 
 class Upsell1Component extends React.PureComponent {
-  postActionTracker = yes => {
+  postActionTracker = () => {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
-      name: yes ? 'upsell1_yes' : 'upsell1_no',
+      name: 'upsell1-capsules',
+      value_string: 'upsell1',
       type: 'CLICK',
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
@@ -31,7 +32,6 @@ class Upsell1Component extends React.PureComponent {
   };
 
   skipUpsell = () => {
-    this.postActionTracker();
     window.location.assign(`/promo/desktop/upsell-1-1?${getQueryString()}`);
   };
 

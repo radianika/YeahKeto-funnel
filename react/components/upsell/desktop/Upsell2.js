@@ -5,11 +5,12 @@ import { PromoSession } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
 class Upsell2 extends React.PureComponent {
-  postActionTracker = yes => {
+  postActionTracker = () => {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
-      name: yes ? 'upsell2_yes' : 'upsell2_no',
+      name: 'upsell2-balm',
+      value_string: 'upsell2',
       type: 'CLICK',
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
@@ -29,7 +30,6 @@ class Upsell2 extends React.PureComponent {
   };
 
   skipUpsell = () => {
-    this.postActionTracker();
     window.location.assign(`/promo/desktop/upsell-2-1?${getQueryString()}`);
   };
   render() {

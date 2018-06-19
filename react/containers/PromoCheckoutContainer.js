@@ -19,8 +19,10 @@ class PromoCheckout extends React.PureComponent {
   postActionTracker = () => {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const value_string = this.state.selected.name;
     const body = {
-      name: 'rushmyorder_page',
+      name: 'rush-my-order-checkout-page',
+      value_string,
       type: 'CLICK',
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
@@ -35,13 +37,13 @@ class PromoCheckout extends React.PureComponent {
   };
 
   submitBillingForm = values => {
+    this.postActionTracker();
     this.props.placeOrder({
       values,
       pack: this.state.selected,
       router: this.props.router,
       nextUrl: '/promo/desktop/upsell-1',
     });
-    this.postActionTracker();
   };
 
   render() {
