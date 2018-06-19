@@ -14,6 +14,7 @@ import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
 import redis from './redis-config';
+import axios from 'axios';
 
 require('dotenv').config();
 
@@ -124,6 +125,32 @@ const redirectToPromo = (orderId, req, res, next) => {
 };
 
 app.prepare().then(() => {
+  server.get('/get-version', async (req, res) => {
+    /*
+      http://beta-developers.abtasty.com/#introduction
+        1.) Generate a unique visitor ID
+        2.) Allocate a visitor to a variation
+    */
+    const baseUrl = 'https://beta-serverside.abtasty.com/v1/';
+
+    axios.post(`${baseUrl}visitor`, {}, {headers: {'x-api-key': 'AIzaSyAuUU2Xfu_Yhi67LMiDRk9-IYcKAkP4Big'}})
+      .then((response) => {
+        console.log(response);
+        axios.post(`${baseUrl}allocate`,
+          {'campaign_id': '306329', 'visitor_id': response.data.id},
+          {headers: {'x-api-key': 'AIzaSyAuUU2Xfu_Yhi67LMiDRk9-IYcKAkP4Big'}}
+        ).then((versionResponse) => {
+          res.status(200).send({ versionData: versionResponse.data });
+          console.log(versionResponse.data);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  })
   server.get('/start-session', async (req, res) => {
     const sessionResponse = await post(
       '/v1/auth',
