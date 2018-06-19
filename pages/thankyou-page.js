@@ -5,6 +5,7 @@ import { PromoSession } from 'react/components/common';
 import { ThankyouDesktop, ThankyouMobile } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
 import axios from 'axios';
+import moment from 'moment';
 
 class Thankyou extends React.PureComponent {
   constructor(props) {
@@ -15,23 +16,14 @@ class Thankyou extends React.PureComponent {
     };
   }
 
-  sendTransactionDetails = localStorage => {
-    console.log(localStorage);
-    const body = {
-      name: 'complete_order',
-      id: localStorage,
-      revenue: '123',
-      shipping: '123',
-      tracking_data: {
-        device_type: 'DESKTOP',
-        ip: '87.200.72.165',
-        origin: 'https://www.mywebsite.com/order-confirmation.php',
-        timestamp: '2018-02-12T17:29:02Z',
-        visitor_id: 'ba0u0ckaai1g00b7br60',
-      },
-    };
-    axios.post('/abtasty', { ...body, action: 'transaction_event' });
-  };
+  static async getInitialProps(props) {
+    const { store, isServer, query } = props.ctx;
+    if (isServer) {
+      store.dispatch(
+        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
+      );
+    }
+  }
 
   componentDidMount() {
     const { localStorage } = window;
@@ -78,14 +70,29 @@ class Thankyou extends React.PureComponent {
     return JSON.parse(localStorage.getItem('upsell1'));
   };
 
-  static async getInitialProps(props) {
-    const { store, isServer, query } = props.ctx;
-    if (isServer) {
-      store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
-      );
-    }
-  }
+  sendTransactionDetails = localStorage => {
+    const items = JSON.parse(localStorage.getItem('upsell1'));
+    const id = items[0].OrderInfo.TransactionID;
+    const revenue = items.reduce(
+      (agg, val) => agg + val.OrderInfo.TotalAmount,
+      0,
+    );
+    const body = {
+      name: 'complete_order',
+      id,
+      revenue,
+      shipping: '0',
+      tracking_data: {
+        device_type:
+          this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+        ip: '87.200.72.165',
+        origin: 'ThankyouPage',
+        timestamp: moment().format(),
+        visitor_id: 'ba0u0ckaai1g00b7br60',
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'transaction_event' });
+  };
 
   render() {
     const { props } = this;

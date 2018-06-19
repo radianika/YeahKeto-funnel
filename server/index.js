@@ -15,6 +15,7 @@ import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
 import redis from './redis-config';
 import axios from 'axios';
+import bodyParser from 'body-parser';
 
 require('dotenv').config();
 
@@ -37,6 +38,7 @@ server.use(
 );
 
 server.use(cookieParser());
+server.use(bodyParser.json());
 server.use(useragent.express());
 if (!dev) {
   Raven.config('https://30b971029d594608bb765ea6e46298f0@sentry.io/1207214', {
