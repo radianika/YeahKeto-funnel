@@ -60,26 +60,16 @@ export function get(location, headers) {
     });
 }
 
-export function postToTransactionApi(action, body) {
-  const url = `${ABTASTY_BASE_URL}/${action}`;
-  return axios
-    .post(url, body, {
+export async function postToAbtasty(action, body) {
+  try {
+    const url = `${ABTASTY_BASE_URL}/${action}`;
+    const response = await axios.post(url, body, {
       headers: { 'x-api-key': ABTASTY_API_KEY },
-    })
-    .then(response => ({ error: null, response }))
-    .catch(error => {
-      console.error(
-        'Exception Occurred in ReactApp ABTASTY call',
-        error.stack || error,
-      );
-      if (error.response) {
-        return { error: error.response };
-      }
-      if (error.request) {
-        return { error: 'No response from ABTASTY server' };
-      }
-      return error.message;
     });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function generateAbtastyVisitorId() {

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Head from 'next/head';
+import moment from 'moment';
+import axios from 'axios';
 import { PromoDesktopContainer } from 'react/containers';
 import { AuthActions } from 'redux/actions';
 
@@ -33,6 +35,19 @@ class Promo extends React.PureComponent {
       'abtastyParams',
       JSON.stringify(this.props.abtastyParams),
     );
+    const body = {
+      campaign_id: '306329',
+      variation_id: this.props.abtastyParams.variationId,
+      tracking_data: {
+        device_type:
+          this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+        ip: this.props.abtastyParams.ip,
+        origin: 'Promo Desktop',
+        timestamp: moment().format(),
+        visitor_id: this.props.abtastyParams.visitorId,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'campaign_activated_event' });
   }
 
   render() {

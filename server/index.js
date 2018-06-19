@@ -13,7 +13,7 @@ import axios from 'axios';
 import bodyParser from 'body-parser';
 import {
   post,
-  postToTransactionApi,
+  postToAbtasty,
   generateAbtastyVisitorId,
   getVariationForVisitor,
 } from './api-helpers';
@@ -142,9 +142,9 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-  server.post('/abtasty', async req => {
-    await postToTransactionApi(req.body.action, req.body);
-    res.status(200).send({ response });
+  server.post('/abtasty', async (req, res) => {
+    const response = await postToAbtasty(req.body.action, req.body);
+    res.status(200).send(response);
   });
 
   server.get('/start-session', async (req, res) => {
@@ -200,6 +200,7 @@ app.prepare().then(() => {
           requestAgent,
           visitorId,
           variationId,
+          device: requestAgent,
         });
       }
       if (requestAgent === 'mobile') {
