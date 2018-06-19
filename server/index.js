@@ -9,7 +9,7 @@ import connectRedis from 'connect-redis';
 import querystring from 'querystring';
 import Raven from 'raven';
 import morgan from 'morgan';
-import { post } from './api-helpers';
+import { post, postToTransactionApi } from "./api-helpers";
 import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
@@ -150,7 +150,12 @@ app.prepare().then(() => {
       .catch((err) => {
         console.error(err);
       })
-  })
+  })  
+
+  server.post("/abtasty", async (req) => {
+    postToTransactionApi(req.body.action, req.body);
+  });
+
   server.get('/start-session', async (req, res) => {
     const sessionResponse = await post(
       '/v1/auth',

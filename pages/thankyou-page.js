@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { PromoSession } from 'react/components/common';
 import { ThankyouDesktop, ThankyouMobile } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
-import { postToTransactionApi } from 'helpers';
+import axios from 'axios';
 
 class Thankyou extends React.PureComponent {
   constructor(props) {
@@ -29,7 +29,7 @@ class Thankyou extends React.PureComponent {
         visitor_id: 'ba0u0ckaai1g00b7br60',
       },
     };
-    postToTransactionApi('transaction_event', body);
+    axios.post('/abtasty', { ...body, action: 'transaction_event' });
   };
 
   componentDidMount() {

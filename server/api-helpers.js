@@ -3,7 +3,7 @@ import Raven from 'raven';
 
 require('dotenv').config();
 
-const { API_BASE_URL } = process.env;
+const { API_BASE_URL, ABTASTY_BASE_URL, ABTASTY_API_KEY } = process.env;
 
 export function post(location, body, headers) {
   console.log(`post ${API_BASE_URL}${location}`);
@@ -68,6 +68,27 @@ export function get(location, headers) {
     });
 }
 
-// export function setAuthHeaders(authToken) {
-//   axios.defaults.headers.common.Authorization = `JWT ${authToken}`;
-// }
+export function postToTransactionApi(action, body) {
+  const url = `${ABTASTY_BASE_URL}/${action}`;
+  console.log("action", url, body, ABTASTY_API_KEY);
+  return axios
+    .post(url, body, {
+      headers: { "x-api-key": ABTASTY_API_KEY }
+    })
+    .then(response => {
+      return { error: null, response };
+    })
+    .catch(error => {
+      console.error(
+        "Exception Occurred in ReactApp ABTASTY call",
+        error.stack || error
+      );
+      if (error.response) {
+        return { error: error.response };
+      }
+      if (error.request) {
+        return { error: "No response from ABTASTY server" };
+      }
+      return error.message;
+    });
+}
