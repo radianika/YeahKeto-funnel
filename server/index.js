@@ -126,13 +126,28 @@ const redirectToPromo = (orderId, req, res, next) => {
 
 app.prepare().then(() => {
   server.get('/start-session', async (req, res) => {
+    /*
+      http://beta-developers.abtasty.com/#introduction
+        1.) Generate a unique visitor ID
+        2.) Allocate a visitor to a variation
+    */
     axios.post('https://beta-serverside.abtasty.com/v1/visitor', {}, {headers: {'x-api-key': 'AIzaSyAuUU2Xfu_Yhi67LMiDRk9-IYcKAkP4Big'}})
-      .then((data) => {
-        console.log(data);
+      .then((response) => {
+        console.log(response);
+        axios.post('https://beta-serverside.abtasty.com/v1/allocate',
+          {'campaign_id': '306329', 'visitor_id': response.data.id},
+          {headers: {'x-api-key': 'AIzaSyAuUU2Xfu_Yhi67LMiDRk9-IYcKAkP4Big'}}
+        ).then((versionResponse) => {
+          console.log(versionResponse.data);
+        })
+        .catch(err => {
+          console.log(err);
+        })
       })
       .catch((err) => {
         console.error(err);
       })
+
     const sessionResponse = await post(
       '/v1/auth',
       {
