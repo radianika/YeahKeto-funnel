@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { PromoSession } from 'react/components/common';
 import { ThankyouDesktop, ThankyouMobile } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
+import { postToTransactionApi } from 'helpers';
 
 class Thankyou extends React.PureComponent {
   constructor(props) {
@@ -14,11 +15,32 @@ class Thankyou extends React.PureComponent {
     };
   }
 
+  sendTransactionDetails = localStorage => {
+    const body = {
+      name: 'complete_order',
+      id: '123',
+      revenue: '123',
+      shipping: '123',
+      tracking_data: {
+        device_type: 'DESKTOP',
+        ip: '87.200.72.165',
+        origin: 'https://www.mywebsite.com/order-confirmation.php',
+        timestamp: '2018-02-12T17:29:02Z',
+        visitor_id: 'ba0u0ckaai1g00b7br60',
+      },
+    };
+    postToTransactionApi('transaction_event', body);
+  };
+
   componentDidMount() {
     const { localStorage } = window;
+    if (this.props.query.isPromo) {
+      this.sendTransactionDetails(localStorage);
+    }
+    const items = this.getItem();
     // eslint-disable-next-line
     this.setState({
-      items: this.getItem(),
+      items,
       shippingDetails: JSON.parse(localStorage.getItem('parsedShipping')),
     });
   }

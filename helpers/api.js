@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 const { API_BASE_URL } = process.env;
+const { ABTASTY_BASE_URL } = process.env;
+const { ABTASTY_API_KEY } = process.env;
 
 export function post(location, body, sessionId, headers) {
   headers = headers || {};
@@ -71,6 +73,24 @@ export function get(location, sessionId, headers) {
     });
 }
 
-// export function setAuthHeaders(authToken) {
-//   axios.defaults.headers.common.Authorization = `JWT ${authToken}`;
-// }
+export function postToTransactionApi(action, body) {
+  const url = `${ABTASTY_BASE_URL}/${action}`;
+  console.log("action", url, body, ABTASTY_API_KEY);
+  return axios
+    .post(url, body, {
+      headers: { 'x-api-key': ABTASTY_API_KEY },
+    })
+    .then(response => {
+      return { error: null, response };
+    })
+    .catch(error => {
+      console.error('Exception Occurred in ReactApp ABTASTY call', error.stack || error);
+      if (error.response) {
+        return { error: error.response };
+      }
+      if (error.request) {
+        return { error: 'No response from ABTASTY server' };
+      }
+      return error.message;
+    });
+}
