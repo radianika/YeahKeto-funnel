@@ -32,7 +32,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
         device_type:
-          this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+          abtastyParams.requestAgent === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
         origin: 'PromoLeadPages',
         timestamp: moment().format(),
         ip: abtastyParams.ip,
@@ -42,12 +42,12 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
   };
 
   submitShippingForm = values => {
+    this.postActionTracker();
     this.props.submitLeadsForm({
       values,
       router: this.props.router,
       nextUrl: '/promo/desktop/checkout',
     });
-    this.postActionTracker();
   };
 
   render() {

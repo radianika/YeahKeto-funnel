@@ -16,7 +16,7 @@ class Upsell11Component extends React.PureComponent {
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
         device_type:
-          this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+          abtastyParams.requestAgent === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
         origin: 'Upsell11',
         timestamp: moment().format(),
         ip: abtastyParams.ip,
