@@ -12,10 +12,7 @@ function* createNewSession() {
   try {
     // make abtasty call first, then session call
     const existingSession = yield select(getSession);
-    const { localStorage } = window;
     if (!existingSession) {
-      const versionResponse = yield axios.get('/get-version');
-      localStorage.setItem('abtVersion', JSON.stringify(versionResponse.data));
       const apiResponse = yield call(axios.get, '/start-session');
       if (idx(apiResponse, _ => _.data.token)) {
         const { token } = apiResponse.data;

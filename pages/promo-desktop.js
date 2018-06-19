@@ -2,8 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Head from 'next/head';
 import { PromoDesktopContainer } from 'react/containers';
+import { AuthActions } from 'redux/actions';
 
 class Promo extends React.PureComponent {
+  static getInitialProps({
+    ctx: {
+      store,
+      isServer,
+      query: { visitorId, variationId, requestAgent },
+      req: {
+        session: { ip },
+      },
+    },
+  }) {
+    if (isServer) {
+      store.dispatch(
+        AuthActions.setAbtastyParams({
+          visitorId,
+          variationId,
+          requestAgent,
+          ip,
+        }),
+      );
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -52,4 +75,4 @@ class Promo extends React.PureComponent {
   }
 }
 
-export default connect()(Promo);
+export default connect(null, { ...AuthActions })(Promo);
