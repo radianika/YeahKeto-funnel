@@ -131,10 +131,12 @@ app.prepare().then(() => {
         1.) Generate a unique visitor ID
         2.) Allocate a visitor to a variation
     */
-    axios.post('https://beta-serverside.abtasty.com/v1/visitor', {}, {headers: {'x-api-key': 'AIzaSyAuUU2Xfu_Yhi67LMiDRk9-IYcKAkP4Big'}})
+    const baseUrl = 'https://beta-serverside.abtasty.com/v1/';
+
+    axios.post(`${baseUrl}visitor`, {}, {headers: {'x-api-key': 'AIzaSyAuUU2Xfu_Yhi67LMiDRk9-IYcKAkP4Big'}})
       .then((response) => {
         console.log(response);
-        axios.post('https://beta-serverside.abtasty.com/v1/allocate',
+        axios.post(`${baseUrl}allocate`,
           {'campaign_id': '306329', 'visitor_id': response.data.id},
           {headers: {'x-api-key': 'AIzaSyAuUU2Xfu_Yhi67LMiDRk9-IYcKAkP4Big'}}
         ).then((versionResponse) => {
