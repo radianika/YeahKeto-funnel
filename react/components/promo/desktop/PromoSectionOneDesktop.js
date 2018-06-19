@@ -27,7 +27,8 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
-      name: 'rushmyorder_form',
+      name: 'rush-my-order',
+      value_string: 'rushmyorder_form',
       type: 'CLICK',
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
