@@ -78,7 +78,7 @@ class Thankyou extends React.PureComponent {
   sendTransactionDetails = () => {
     const { localStorage } = window;
     const items = JSON.parse(localStorage.getItem('upsell1'));
-    const id = items[0].OrderInfo.CustomerID;
+    const id = items[0].OrderInfo.CustomerID.toString();
     const revenue = items.reduce(
       (agg, val) => agg + val.OrderInfo.TotalAmount,
       0,
