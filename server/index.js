@@ -14,6 +14,7 @@ import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
 import redis from './redis-config';
+import axios from 'axios';
 
 require('dotenv').config();
 
@@ -125,6 +126,13 @@ const redirectToPromo = (orderId, req, res, next) => {
 
 app.prepare().then(() => {
   server.get('/start-session', async (req, res) => {
+    axios.post('https://beta-serverside.abtasty.com/v1/visitor', {}, {headers: {'x-api-key': 'AIzaSyAuUU2Xfu_Yhi67LMiDRk9-IYcKAkP4Big'}})
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
     const sessionResponse = await post(
       '/v1/auth',
       {
