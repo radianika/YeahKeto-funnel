@@ -21,6 +21,7 @@ class PromoCheckout extends React.PureComponent {
       pack: this.state.selected,
       router: this.props.router,
       nextUrl: '/promo/desktop/upsell-1',
+      isDesktop: true,
     });
   };
 
