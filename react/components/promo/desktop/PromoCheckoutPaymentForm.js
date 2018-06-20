@@ -17,6 +17,10 @@ import {
   normalizeSecurityCode,
 } from 'helpers';
 
+/**
+ * @class PromoCheckoutPaymentFormClass
+ * @extends {React.Component}
+ */
 class PromoCheckoutPaymentFormClass extends React.Component {
   constructor(props) {
     super(props);
@@ -43,6 +47,11 @@ class PromoCheckoutPaymentFormClass extends React.Component {
     this.setState({ show_cvv_modal: !this.state.show_cvv_modal });
   }
 
+  /**
+   * @param {*} cc credit card number
+   * @memberof PromoCheckoutPaymentFormClass
+   * @description check creditcard type using package "credit-card-type"
+   */
   _checkCardType(cc) {
     if (!cc) return;
 

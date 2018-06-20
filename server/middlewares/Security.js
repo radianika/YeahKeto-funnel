@@ -5,6 +5,12 @@ import xss from 'xss';
 import config from '../server-config';
 import Raven from 'raven';
 
+/**
+ * Middleware to protect react server from xss attacks
+ * @function
+ * @namespace server-middleware
+ * @param  {} req
+ */
 function getIp(req) {
   try {
     // https://support.cloudflare.com/hc/en-us/articles/200170986-How-does-CloudFlare-handle-HTTP-Request-headers-
@@ -19,7 +25,7 @@ function getIp(req) {
     return req.connection.remoteAddress;
   } catch (error) {
     Raven.captureException(error);
-    console.error('Exception Occurred in ReactApp', (error.stack || error));
+    console.error('Exception Occurred in ReactApp', error.stack || error);
   }
 }
 

@@ -1,5 +1,10 @@
 import React, { PureComponent } from 'react';
 
+/**
+ * @class Modal
+ * @extends {PureComponent}
+ * @description popup modal: closes which clicked outside
+ */
 class Modal extends PureComponent {
   render() {
     return (

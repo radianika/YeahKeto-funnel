@@ -3,6 +3,11 @@ import { Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
 import { packages, getQueryString } from 'helpers';
 
+/**
+ * @class MobileSelectPackageContainer
+ * @extends {React.PureComponent}
+ * @description selection of packages, comes before shipping page on mobile
+ */
 class MobileSelectPackageContainer extends React.PureComponent {
   selectPackage = pack => {
     const { localStorage } = window;

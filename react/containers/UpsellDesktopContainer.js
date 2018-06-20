@@ -10,6 +10,12 @@ import {
   Upsell21,
 } from '../components/upsell/desktop';
 
+/**
+ * @class UpsellDesktopContainerComponent
+ * @extends {React.PureComponent}
+ * @description Desktop container components for Upsells : Renders the Upsell pages according to the stage <br />
+ * Also renders iframe for tracking variables
+ */
 class UpsellDesktopContainerComponent extends React.PureComponent {
   upgrade = (productId, nextPage) => {
     this.props.addUpsellToOrder({

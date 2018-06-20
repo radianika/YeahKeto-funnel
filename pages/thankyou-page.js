@@ -35,6 +35,7 @@ class Thankyou extends React.PureComponent {
     ) {
       this.sendTransactionDetails();
     }
+    this.postVisitEvent();
     const items = this.getItem();
     // eslint-disable-next-line
     this.setState({
@@ -73,6 +74,21 @@ class Thankyou extends React.PureComponent {
       return newItem;
     }
     return JSON.parse(localStorage.getItem('upsell1'));
+  };
+
+  postVisitEvent = () => {
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: window.location.href,
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'visit_event' });
   };
 
   sendTransactionDetails = () => {

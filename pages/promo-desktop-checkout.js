@@ -1,5 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
+import moment from 'moment';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { PromoCheckoutContainer } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
@@ -15,6 +17,25 @@ class Promo extends React.PureComponent {
       );
     }
   }
+
+  componentDidMount() {
+    this.postVisitEvent();
+  }
+
+  postVisitEvent = () => {
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: window.location.href,
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'visit_event' });
+  };
 
   render() {
     return (

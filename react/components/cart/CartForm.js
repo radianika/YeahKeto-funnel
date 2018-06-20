@@ -31,9 +31,15 @@ const months = [
   'December',
 ];
 
+/**
+ * @class
+ * @description Form Component with shipping and card details
+ * @extends {React.PureComponent}
+ */
 class CartForm extends React.PureComponent {
   constructor() {
     super();
+
     this.state = {
       isSame: true,
       tncAgreed: false,
@@ -41,14 +47,25 @@ class CartForm extends React.PureComponent {
     };
   }
 
+  /**
+   * @memberof CartForm
+   * @description generates a mapping of month numbers : month names
+   * @function getMonthOptions
+   * @returns {Array} array of month numbers : month names
+   */
   getMonthOptions = () => {
     const monthOptions = {};
     [...Array(12).keys()].forEach(v => {
-      monthOptions[v+1] = months[v];
+      monthOptions[v + 1] = months[v];
     });
     return monthOptions;
   };
 
+  /**
+   * @memberof CartForm
+   * @function getYearOptions
+   * @returns {Array} array of next 6 months
+   */
   getYearOptions = () => {
     const yearOptions = {};
     [18, 19, 20, 21, 22, 23, 24].forEach(v => {
@@ -57,11 +74,20 @@ class CartForm extends React.PureComponent {
     return yearOptions;
   };
 
+  /**
+   * @memberof CartForm
+   * @function
+   * @description toggles the mondal show state
+   */
   _toggleCVVModal = e => {
     e.preventDefault();
     this.setState({ show_cvv_modal: !this.state.show_cvv_modal });
   };
 
+  /**
+   * @memberof CartForm
+   * @returns {} jsx
+   */
   render() {
     const { props } = this;
     return (
