@@ -126,8 +126,8 @@ function* placeOrder(action) {
       idx(apiResponse, _ => _.response.data.code) !== 500
     ) {
       const { localStorage } = window;
-      const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
       if (action.payload.isDesktop) {
+        const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
         postActionTracker(abtastyParams, action.payload.pack.name);
       }
       const order = apiResponse.response.data.data;
