@@ -199,6 +199,13 @@ app.prepare().then(() => {
   server.get('/promo/:useragent?', async (req, res) => {
     try {
       const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
+      const { visitorId, isNew } = await getVisitorId(req, res);
+
+      if (requestAgent === 'desktop') {
+        if (isNew) {
+          res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
+        }
+      }
 
       if (requestAgent !== req.params.useragent) {
         res.redirect(
@@ -206,10 +213,6 @@ app.prepare().then(() => {
         );
       }
       if (requestAgent === 'desktop') {
-        const { visitorId, isNew } = await getVisitorId(req, res);
-        if (isNew) {
-          res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
-        }
         const variationId = await getVariationForVisitor(visitorId);
         return app.render(req, res, '/promo-desktop', {
           requestAgent,
