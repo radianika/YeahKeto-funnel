@@ -16,6 +16,7 @@ const getSession = state => state.auth.sessionId;
  */
 function* createNewSession() {
   try {
+    // make abtasty call first, then session call
     const existingSession = yield select(getSession);
     if (!existingSession) {
       const apiResponse = yield call(axios.get, '/start-session');

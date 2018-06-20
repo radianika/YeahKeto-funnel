@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import moment from 'moment';
 import { PromoSession } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
@@ -8,12 +10,35 @@ import { getQueryString } from 'helpers';
  * @description Desktop Component rendered after Upsell2 page
  */
 class Upsell21 extends React.PureComponent {
+  postActionTracker = () => {
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      name: 'upsell2-balm',
+      value_string: 'upsell2-1',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type:
+          abtastyParams.requestAgent === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+        origin: 'Upsell21',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+  };
+
   upgrade = () => {
+    this.postActionTracker('yes');
     this.props.upgrade(215, '/promo/desktop/thankyou');
   };
+
   skipUpsell = () => {
+    this.postActionTracker();
     window.location.assign(`/promo/desktop/thankyou?${getQueryString()}`);
   };
+
   render() {
     return (
       <React.Fragment>

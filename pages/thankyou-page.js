@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { PromoSession } from 'react/components/common';
 import { ThankyouDesktop, ThankyouMobile } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
+import axios from 'axios';
+import moment from 'moment';
 
 class Thankyou extends React.PureComponent {
   constructor(props) {
@@ -14,11 +16,29 @@ class Thankyou extends React.PureComponent {
     };
   }
 
+  static async getInitialProps(props) {
+    const { store, isServer, query } = props.ctx;
+    if (isServer) {
+      store.dispatch(
+        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
+      );
+    }
+  }
+
   componentDidMount() {
     const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    if (
+      this.props.query.isPromo &&
+      abtastyParams &&
+      abtastyParams.requestAgent === 'desktop'
+    ) {
+      this.sendTransactionDetails();
+    }
+    const items = this.getItem();
     // eslint-disable-next-line
     this.setState({
-      items: this.getItem(),
+      items,
       shippingDetails: JSON.parse(localStorage.getItem('parsedShipping')),
     });
   }
@@ -55,14 +75,31 @@ class Thankyou extends React.PureComponent {
     return JSON.parse(localStorage.getItem('upsell1'));
   };
 
-  static async getInitialProps(props) {
-    const { store, isServer, query } = props.ctx;
-    if (isServer) {
-      store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
-      );
-    }
-  }
+  sendTransactionDetails = () => {
+    const { localStorage } = window;
+    const items = JSON.parse(localStorage.getItem('upsell1'));
+    const id = items[0].OrderInfo.CustomerID.toString();
+    const revenue = items.reduce(
+      (agg, val) => agg + val.OrderInfo.TotalAmount,
+      0,
+    );
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      name: 'order-confirmation-2',
+      id,
+      revenue,
+      shipping: '0',
+      tracking_data: {
+        device_type:
+          this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+        ip: abtastyParams.ip,
+        origin: 'ThankyouPage',
+        timestamp: moment().format(),
+        visitor_id: abtastyParams.visitorId,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'transaction_event' });
+  };
 
   render() {
     const { props } = this;
