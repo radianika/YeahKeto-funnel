@@ -30,6 +30,11 @@ class Promo extends React.PureComponent {
   }
 
   componentDidMount() {
+    this.postCampaignActivatedEvent();
+    this.postVisitEvent();
+  }
+
+  postCampaignActivatedEvent = () => {
     const { localStorage } = window;
     localStorage.setItem(
       'abtastyParams',
@@ -47,8 +52,26 @@ class Promo extends React.PureComponent {
         visitor_id: this.props.abtastyParams.visitorId,
       },
     };
-    axios.post('/abtasty', { ...body, action: 'campaign_activated_event' });
-  }
+    axios.post('/abtasty', {
+      ...body,
+      action: 'campaign_activated_event',
+    });
+  };
+
+  postVisitEvent = () => {
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: window.location.href,
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'visit_event' });
+  };
 
   render() {
     return (

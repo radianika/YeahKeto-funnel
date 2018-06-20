@@ -5,6 +5,25 @@ import { PromoSession } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
 class Upsell21 extends React.PureComponent {
+  componentDidMount() {
+    this.postVisitEvent();
+  }
+
+  postVisitEvent = () => {
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: window.location.href,
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'visit_event' });
+  };
+
   postActionTracker = () => {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
