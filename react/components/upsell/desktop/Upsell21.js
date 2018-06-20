@@ -54,7 +54,6 @@ class Upsell21 extends React.PureComponent {
   };
 
   skipUpsell = () => {
-    this.postActionTracker();
     window.location.assign(`/promo/desktop/thankyou?${getQueryString()}`);
   };
 
