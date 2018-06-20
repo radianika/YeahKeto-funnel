@@ -129,7 +129,11 @@ class PromoCheckoutPaymentFormClass extends React.Component {
             cvvClick={this._toggleCVVModal}
           />
           <div className="clearall" />
-          <button onClick={this.submitForm} className="chk-submit pulse" />
+          <button
+            id="checkout-submit-desktop"
+            onClick={this.submitForm}
+            className="chk-submit pulse"
+          />
         </form>
         {this.props.submitStatus === 'submitting' && <Spinner />}
         <SuccessModal

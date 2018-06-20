@@ -46,7 +46,11 @@ class Coupon extends React.PureComponent {
             This offer is promotional and will not last. Act now to enjoy this
             discount!
           </p>
-          <a href="javascript:void(0)" onClick={this.props.onUpgrade}>
+          <a
+            id="coupon-upgrade-mobile"
+            href="javascript:void(0)"
+            onClick={this.props.onUpgrade}
+          >
             <img
               src="/static/mobile/images/button.png"
               className="button"

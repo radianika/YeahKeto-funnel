@@ -31,7 +31,11 @@ const SatisfactionBox = props => (
       </p>
     </div>
     <div className="bnt-sec">
-      <a href="javascript:void(0)" onClick={props.onUpgrade}>
+      <a
+        id="skip-pulse-satisfaction-box-mobile"
+        href="javascript:void(0)"
+        onClick={props.onUpgrade}
+      >
         <img
           src="/static/assets/images/ord-btn.png"
           alt=""
@@ -41,7 +45,11 @@ const SatisfactionBox = props => (
         />
       </a>
       <p className="thanks-txt">
-        <a href="javascript:void(0)" onClick={props.onSkip}>
+        <a
+          id="skip-pulse-satisfaction-box-mobile"
+          href="javascript:void(0)"
+          onClick={props.onSkip}
+        >
           <img
             src="/static/assets/images/cut-icon.png"
             width="15"

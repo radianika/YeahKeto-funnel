@@ -17,7 +17,11 @@ class PromoStrip extends React.PureComponent {
           <p className="striptxt2">
             Limited Time Offer - Get Free Bottles On Select Packages
           </p>
-          <a href="javascript:void(0)" onClick={this.scrollToTop}>
+          <a
+            id="promo-strip-scroll-desktop"
+            href="javascript:void(0)"
+            onClick={this.scrollToTop}
+          >
             {' '}
             <i className="stripbtn pulse sprite5 sprite-submit" />
           </a>

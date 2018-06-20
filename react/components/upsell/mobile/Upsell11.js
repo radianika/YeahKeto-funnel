@@ -55,7 +55,11 @@ class Upsell11Component extends React.PureComponent {
           </div>
 
           <div className="bnt-sec">
-            <a href="javascript:void(0)" onClick={this.upgrade}>
+            <a
+              id="order-pulse-upsell11-mobile"
+              href="javascript:void(0)"
+              onClick={this.upgrade}
+            >
               <img
                 src="/static/assets/images/ord-btn.png"
                 alt="order-btn"
@@ -65,7 +69,11 @@ class Upsell11Component extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <a href="javascript:void(0)" onClick={this.skipUpsell}>
+              <a
+                id="skip-pulse-upsell11-mobile"
+                href="javascript:void(0)"
+                onClick={this.skipUpsell}
+              >
                 <img
                   src="/static/assets/images/cut-icon.png"
                   width="15"
