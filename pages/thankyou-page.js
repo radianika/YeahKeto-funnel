@@ -34,8 +34,8 @@ class Thankyou extends React.PureComponent {
       abtastyParams.requestAgent === 'desktop'
     ) {
       this.sendTransactionDetails();
+      this.postVisitEvent();
     }
-    this.postVisitEvent();
     const items = this.getItem();
     // eslint-disable-next-line
     this.setState({
