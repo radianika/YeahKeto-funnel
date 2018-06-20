@@ -56,6 +56,6 @@ export default (req, res, next) => {
     });
   } catch (error) {
     Raven.captureException(error);
-    console.error('Exception Occurred in ReactApp', (error.stack || error));
+    console.error('Exception Occurred in ReactApp', error.stack || error);
   }
 };

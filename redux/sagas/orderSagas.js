@@ -1,5 +1,7 @@
 import { select, put, all, fork, takeLatest } from 'redux-saga/effects';
 import idx from 'idx';
+import axios from 'axios';
+import moment from 'moment';
 import { OrderActions } from 'redux/actions';
 import {
   post,
@@ -67,6 +69,24 @@ function* submitLeadsForm(action) {
   }
 }
 
+const postActionTracker = (abtastyParams, selectedName) => {
+  const value_string = selectedName;
+  const body = {
+    name: 'rush-my-order-checkout-page',
+    value_string,
+    type: 'CLICK',
+    tracking_data: {
+      visitor_id: abtastyParams.visitorId,
+      device_type:
+        abtastyParams.requestAgent === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+      origin: 'CheckoutPage',
+      timestamp: moment().format(),
+      ip: abtastyParams.ip,
+    },
+  };
+  axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+};
+
 /**
  * placeOrder: calls the api which internally calls the placeOrder call to CRM api
  * @namespace orderSaga
@@ -106,6 +126,8 @@ function* placeOrder(action) {
       idx(apiResponse, _ => _.response.data.code) !== 500
     ) {
       const { localStorage } = window;
+      const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+      postActionTracker(abtastyParams, action.payload.pack.name);
       const order = apiResponse.response.data.data;
       localStorage.setItem('upsell1', JSON.stringify([order]));
       if (values.cart) {

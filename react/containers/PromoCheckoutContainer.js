@@ -1,12 +1,11 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import moment from 'moment';
 import { Footer } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
 import { PromoCheckoutPaymentForm } from 'react/components/promo/desktop';
-import { packages, normalizePhone } from 'helpers';
+import { packages } from 'helpers';
 
 class PromoCheckout extends React.PureComponent {
   constructor() {
@@ -16,28 +15,7 @@ class PromoCheckout extends React.PureComponent {
     };
   }
 
-  postActionTracker = () => {
-    const { localStorage } = window;
-    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const value_string = this.state.selected.name;
-    const body = {
-      name: 'rush-my-order-checkout-page',
-      value_string,
-      type: 'CLICK',
-      tracking_data: {
-        visitor_id: abtastyParams.visitorId,
-        device_type:
-          abtastyParams.requestAgent === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
-        origin: 'CheckoutPage',
-        timestamp: moment().format(),
-        ip: abtastyParams.ip,
-      },
-    };
-    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
-  };
-
   submitBillingForm = values => {
-    this.postActionTracker();
     this.props.placeOrder({
       values,
       pack: this.state.selected,
@@ -221,36 +199,8 @@ class PromoCheckout extends React.PureComponent {
 const PromoCheckoutWithRouter = withRouter(PromoCheckout);
 
 const mapStateToProps = reduxState => {
-  if (reduxState.order.order) {
-    const {
-      orderId,
-      firstName,
-      lastName,
-      address1,
-      address2,
-      city,
-      state,
-      postalCode,
-      phoneNumber,
-      emailAddress,
-    } = reduxState.order.order;
-    const initialValues = {
-      same: 'Yes',
-      orderId,
-      firstName,
-      lastName,
-      address: address1,
-      address2,
-      city,
-      state,
-      postalCode,
-      phoneNumber: normalizePhone(phoneNumber),
-      email: emailAddress,
-    };
-    return {
-      order: reduxState.order.order,
-      initialValues,
-    };
+  if (reduxState.order) {
+    return { placeOrderStatus: reduxState.order.placeOrderStatus };
   }
   return {};
 };
