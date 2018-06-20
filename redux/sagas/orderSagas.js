@@ -127,7 +127,9 @@ function* placeOrder(action) {
     ) {
       const { localStorage } = window;
       const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-      postActionTracker(abtastyParams, action.payload.pack.name);
+      if (action.payload.isDesktop) {
+        postActionTracker(abtastyParams, action.payload.pack.name);
+      }
       const order = apiResponse.response.data.data;
       localStorage.setItem('upsell1', JSON.stringify([order]));
       if (values.cart) {
