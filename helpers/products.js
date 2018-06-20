@@ -11,7 +11,7 @@ const products = {
       'Free from THC, harmful chemicals, pesticides, and synthetics',
       'Made from hemp extract that is organically grown & extracted in the USA',
     ],
-    price: 69.0,
+    price: 79.0,
     ingredients: 'Ingredients: Hemp Seed Oil, Ethanol, Full Spectrum CBD',
     supplement: {
       image: '/static/assets/images/cbd-oil-label.jpg',
