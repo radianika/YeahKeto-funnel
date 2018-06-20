@@ -1,4 +1,4 @@
-import { select, put, all, fork, takeLatest } from 'redux-saga/effects';
+import { select, put, all, fork, takeLatest, call } from 'redux-saga/effects';
 import idx from 'idx';
 import axios from 'axios';
 import moment from 'moment';
@@ -69,7 +69,7 @@ function* submitLeadsForm(action) {
   }
 }
 
-const postActionTracker = (abtastyParams, selectedName) => {
+const postActionTracker = async (abtastyParams, selectedName) => {
   const value_string = selectedName;
   const body = {
     name: 'rush-my-order-checkout-page',
@@ -84,7 +84,7 @@ const postActionTracker = (abtastyParams, selectedName) => {
       ip: abtastyParams.ip,
     },
   };
-  axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+  await axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
 };
 
 /**
@@ -126,9 +126,9 @@ function* placeOrder(action) {
       idx(apiResponse, _ => _.response.data.code) !== 500
     ) {
       const { localStorage } = window;
-      if (action.payload.isDesktop) {
-        const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-        postActionTracker(abtastyParams, action.payload.pack.name);
+      const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+      if (abtastyParams) {
+        yield call(postActionTracker, abtastyParams, action.payload.pack.name);
       }
       const order = apiResponse.response.data.data;
       localStorage.setItem('upsell1', JSON.stringify([order]));
