@@ -58,7 +58,11 @@ class Upsell21 extends React.PureComponent {
           </div>
 
           <div className="bnt-sec">
-            <a href="javascript:void(0)" onClick={this.upgrade}>
+            <a
+              id="order-pulse-upsell21-mobile-1"
+              href="javascript:void(0)"
+              onClick={this.upgrade}
+            >
               <img
                 src="/static/assets/images/ord-btn.png"
                 alt="order-btn"
@@ -68,7 +72,11 @@ class Upsell21 extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <a href="javascript:void(0)" onClick={this.skipUpsell}>
+              <a
+                id="skip-pulse-upsell21-mobile-1"
+                href="javascript:void(0)"
+                onClick={this.skipUpsell}
+              >
                 <img
                   src="/static/assets/images/cut-icon.png"
                   width="15"
@@ -127,7 +135,11 @@ class Upsell21 extends React.PureComponent {
           </div>
 
           <div className="bnt-sec">
-            <a href="javascript:void(0)" onClick={this.upgrade}>
+            <a
+              id="order-pulse-upsell21-mobile-2"
+              href="javascript:void(0)"
+              onClick={this.upgrade}
+            >
               <img
                 src="/static/assets/images/ord-btn.png"
                 alt="order-btn"
@@ -137,7 +149,11 @@ class Upsell21 extends React.PureComponent {
               />
             </a>
             <p className="thanks-txt">
-              <a href="javascript:void(0)" onClick={this.skipUpsell}>
+              <a
+                id="skip-pulse-upsell21-mobile-2"
+                href="javascript:void(0)"
+                onClick={this.skipUpsell}
+              >
                 <img
                   src="/static/assets/images/cut-icon.png"
                   width="15"

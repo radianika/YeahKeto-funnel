@@ -101,7 +101,10 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
               </p>
             </div>
             <div className="frm" id="topfrm">
-              <PromoShippingFormDesktop onSubmit={this.submitShippingForm} />
+              <PromoShippingFormDesktop
+                id="promo-section1-submit-desktop"
+                onSubmit={this.submitShippingForm}
+              />
             </div>
           </div>
         </div>

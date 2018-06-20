@@ -60,6 +60,7 @@ class PromoCheckout extends React.PureComponent {
                 {packages.map(pack => (
                   <div key={pack.id} className="pkg">
                     <a
+                      id={`select-package-${pack.id}`}
                       href="javascript:void(0);"
                       className={
                         pack && pack.id === this.state.selected.id

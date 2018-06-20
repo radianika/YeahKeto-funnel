@@ -11,7 +11,10 @@ class PromoSprite extends React.PureComponent {
           <p className="striptxt2">
             Limited Time Offer - Get Free Bottles On Select Packages
           </p>
-          <a href="javascript:bookmarkscroll.scrollTo('topfrm')">
+          <a
+            id="promo-sprite-scroll-desktop"
+            href="javascript:bookmarkscroll.scrollTo('topfrm')"
+          >
             {' '}
             <i className="stripbtn pulse sprite5 sprite-submit" />
           </a>
