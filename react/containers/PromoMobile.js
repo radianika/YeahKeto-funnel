@@ -10,6 +10,11 @@ import {
 } from 'react/components/promo/mobile';
 import { FooterPromo } from 'react/components/promo';
 
+/**
+ * @class PromoMobileContainer
+ * @extends {React.PureComponent}
+ * @description First page on promo flow on mobile
+ */
 class PromoMobileContainer extends React.PureComponent {
   componentDidMount() {
     const { localStorage } = window;

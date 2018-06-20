@@ -23,6 +23,11 @@ import {
 } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
 
+/**
+ * @class MobileConfirmContainerComponent
+ * @extends {React.PureComponent}
+ * @description This is the equivalant of PromoCheckoutContainer on Mobile
+ */
 class MobileConfirmContainerComponent extends React.PureComponent {
   constructor() {
     super();

@@ -6,6 +6,16 @@ import redis from '../redis-config';
 const limitRequestsInterval = 60 * 1000; // 60 seconds
 const limitRequestsNumber = 1000;
 
+/**
+ * Middleware for limiting the rate of requests. <br />
+ * Currently we limit the number of requests from 1000.
+ * Ratelimiter keeps the count of requests from a particular IP inside redis
+ * and throws an error if the limit has been crossed
+ * @namespace server-middleware
+ * @param  {} req
+ * @param  {} res
+ * @param  {function()} next callback function
+ */
 export default (req, res, next) => {
   try {
     const id = security.getIp(req);
@@ -46,6 +56,6 @@ export default (req, res, next) => {
     });
   } catch (error) {
     Raven.captureException(error);
-    console.error('Exception Occurred in ReactApp', (error.stack || error));
+    console.error('Exception Occurred in ReactApp', error.stack || error);
   }
 };

@@ -1,6 +1,16 @@
 import React from 'react';
 
+/**
+ * @class CardExpiryField
+ * @extends {React.PureComponent}
+ * @description Card Expiry field used in desktop version ( Expiry month and year) <br />
+ * Different from mobile because of UI and validation differences
+ */
 class CardExpiryField extends React.PureComponent {
+  /**
+   * @memberof CardExpiryField
+   * @function
+   */
   onBlur = () => {
     this.props.input.onBlur({
       cardYear: this.props.input.value.cardYear,
