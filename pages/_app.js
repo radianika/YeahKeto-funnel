@@ -6,6 +6,11 @@ import withReduxSaga from 'next-redux-saga';
 
 import { configureStore } from 'redux/store';
 
+/**
+ * @description basic nextjs componnet to wrap with redux store providers
+ * @class AscbdApp
+ * @extends {App}
+ */
 class AscbdApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};

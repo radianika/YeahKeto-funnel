@@ -34,6 +34,9 @@ const port = PORT ? parseInt(PORT, 10) : 3000;
 
 const server = express();
 
+// Express Middlewares
+
+// for logging express req and res
 server.use(
   morgan('combined', {
     skip(req, res) {
@@ -45,6 +48,8 @@ server.use(
 server.use(cookieParser());
 server.use(bodyParser.json());
 server.use(useragent.express());
+
+// configure remote logging
 if (!dev) {
   Raven.config('https://30b971029d594608bb765ea6e46298f0@sentry.io/1207214', {
     maxBreadcrumbs: 10,
@@ -55,6 +60,7 @@ if (!dev) {
 
 const RedisSessionStore = connectRedis(expressSession);
 
+// initialize redis store to be used by Ratelimiter
 server.use(
   expressSession({
     key: 'ABCBDSESSID',
@@ -75,6 +81,7 @@ server.use(
 
 server.use('/*', rateLimiter);
 
+// Security.js for protecting agains xss attacks
 server.use((req, res, cb) => {
   res.set('X-Powered-By', 'American Science CBD');
   res.set('X-XSS-Protection', 1);
@@ -106,6 +113,12 @@ server.use((req, res, cb) => {
   return cb();
 });
 
+/**
+ * get sessionId from cookies
+ * @param  {} req
+ * @param  {} res
+ * @return {Object} id : token
+ */
 const getSessionId = async (req, res) => {
   try {
     const { cookies } = req;

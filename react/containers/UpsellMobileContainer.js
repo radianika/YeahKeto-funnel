@@ -10,6 +10,12 @@ import {
 } from 'react/components/upsell/mobile';
 import { Spinner, SuccessModal } from 'react/components/common';
 
+/**
+ * @class UpsellMobileContainerComponent
+ * @extends {React.PureComponent}
+ * @description Mobile container components for Upsells : Renders the Upsell pages according to the stage <br />
+ * Also renders iframe for tracking variables
+ */
 class UpsellMobileContainerComponent extends React.PureComponent {
   upgrade = (productId, nextPage) => {
     this.props.addUpsellToOrder({

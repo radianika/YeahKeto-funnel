@@ -4,6 +4,11 @@ import moment from 'moment';
 import { PromoSession } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
+/**
+ * @class Upsell2
+ * @extends {React.PureComponent}
+ * @description Desktop component rendered after Upsell1 pages
+ */
 class Upsell2 extends React.PureComponent {
   componentDidMount() {
     this.postVisitEvent();

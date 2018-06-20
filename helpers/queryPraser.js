@@ -1,3 +1,9 @@
+/**
+ * maps queryString into query : value pairs
+ * @function parseQuery
+ * @namespace helpers
+ * @param {} queryString
+ */
 const parseQuery = queryString => {
   const query = {};
   const pairs = queryString.split('&');
@@ -8,6 +14,11 @@ const parseQuery = queryString => {
   return query;
 };
 
+/**
+ * @function getQueryString
+ * @namespace helpers
+ * @description extracts query string from current window location
+ */
 const getQueryString = () => {
   if (typeof window !== 'undefined') {
     return window.location.search.substring(1);

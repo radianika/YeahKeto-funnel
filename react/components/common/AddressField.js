@@ -1,12 +1,22 @@
 import React from 'react';
 import idx from 'idx';
 
+/**
+ * @class AddressField
+ * @extends {React.PureComponent}
+ * @description AddressField with dropdown populated with geoplaces and autocomplete
+ */
 class AddressField extends React.PureComponent {
   constructor() {
     super();
     this.autocompleteRef = React.createRef();
   }
 
+  /**
+   * @memberof AddressField
+   * @function
+   * @description initialise geoplaces script and add eventHandlers
+   */
   componentDidMount() {
     const placesScript = document.createElement('script');
     placesScript.src =
@@ -18,6 +28,11 @@ class AddressField extends React.PureComponent {
     document.body.appendChild(placesScript);
   }
 
+  /**
+   * @memberof AddressField
+   * @function
+   * @description changes the value of the address fields inside redux form state
+   */
   fillInAddress = () => {
     const place = this.autocomplete.getPlace();
     let city =
@@ -45,6 +60,10 @@ class AddressField extends React.PureComponent {
     });
   };
 
+  /**
+   * @memberof AddressField
+   * @function
+   */
   initialiseAutoComplete = () => {
     const { google } = window;
     this.autocomplete = new google.maps.places.Autocomplete(
@@ -56,6 +75,11 @@ class AddressField extends React.PureComponent {
     this.autocomplete.addListener('place_changed', this.fillInAddress);
   };
 
+  /**
+   * @memberof AddressField
+   * @function
+   * @description trigger geo location
+   */
   geolocate = () => {
     const { google } = window;
     if (window.navigator.geolocation) {

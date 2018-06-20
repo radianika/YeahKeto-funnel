@@ -15,6 +15,11 @@ import { createNewSession } from 'redux/actions/authActions';
 import { FooterPromo } from 'react/components/promo';
 import { PromoSession } from 'react/components/common';
 
+/**
+ * @class PromoDesktop
+ * @extends {React.PureComponent}
+ * @description First page in promo flow for desktop
+ */
 class PromoDesktop extends React.PureComponent {
   componentDidMount() {
     const { localStorage } = window;

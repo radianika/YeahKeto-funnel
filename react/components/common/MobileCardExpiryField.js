@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * @class MobileCardExpiryField
+ * @extends {React.PureComponent}
+ * @description Card Expiry field used in mobile version ( Expiry month and year) <br />
+ * Different from desktop because of UI and validation differences
+ */
 class MobileCardExpiryField extends React.PureComponent {
   onBlur = () => {
     this.props.input.onBlur({

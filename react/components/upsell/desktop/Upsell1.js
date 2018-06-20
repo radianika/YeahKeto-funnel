@@ -6,6 +6,11 @@ import { withRouter } from 'next/router';
 import { getQueryString } from 'helpers';
 import { SatisfactionBox } from './SatisfactionBox';
 
+/**
+ * @class Upsell1Component
+ * @extends {React.PureComponent}
+ * @description Desktop component rendered after checkout page <br />
+ */
 class Upsell1Component extends React.PureComponent {
   componentDidMount() {
     this.postVisitEvent();

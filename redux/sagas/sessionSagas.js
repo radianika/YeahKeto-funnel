@@ -8,6 +8,12 @@ import {
 
 const getSession = state => state.auth.sessionId;
 
+/**
+ * @description createNewSession
+ * @namespace sessionSaga
+ * @param  {} action payload: sessionId
+ *
+ */
 function* createNewSession() {
   try {
     // make abtasty call first, then session call

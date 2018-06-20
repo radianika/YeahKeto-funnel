@@ -5,6 +5,11 @@ import { CustomerCare } from './CustomerCare';
 import { PrivacyPolicy } from './PrivacyPolicy';
 import { TermsAndConditions } from './TermsAndConditions';
 
+/**
+ * @class Footer
+ * @extends {PureComponent}
+ * @description website footer
+ */
 class Footer extends PureComponent {
   constructor(props) {
     super(props);

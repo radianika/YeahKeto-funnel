@@ -8,6 +8,12 @@ import { CartFormContainer } from './CartForm';
 import { Spinner, PromoSession } from '../common';
 import { OrderActions } from '../../../redux/actions';
 
+/**
+ * @class
+ * @description Cart Component for both mobile and desktop <br />
+ * Renders ChooseProductsForm and CartFormContainer
+ * @extends {PureComponent}
+ */
 class Cart extends PureComponent {
   constructor(props) {
     super(props);
@@ -16,12 +22,22 @@ class Cart extends PureComponent {
     };
   }
 
+  /**
+   * @memberof Cart
+   * @function
+   * @description call create session saga and start clear local storage
+   */
   componentDidMount() {
     const { localStorage } = window;
     this.props.createNewSession();
     localStorage.clear();
   }
 
+  /**
+   * @memberof Cart
+   * @function
+   * @description calls two sagas: submitLeadsForm and placeOrder
+   */
   submit = values => {
     if (this.isProductsEmpty()) {
       window.scrollTo(0, 0);
@@ -52,6 +68,11 @@ class Cart extends PureComponent {
     });
   };
 
+  /**
+   * @memberof Cart
+   * @function
+   * @description updates products or quantities in the cart
+   */
   updateProducts = details => {
     const { index, product, quantity } = details;
     const products = { ...this.state.products };
@@ -63,6 +84,11 @@ class Cart extends PureComponent {
     this.setState({ products });
   };
 
+  /**
+   * @memberof Cart
+   * @function
+   * @returns {boolean} true if cart is empty
+   */
   isProductsEmpty = () => {
     const { products } = this.state;
     const productSelected =
@@ -149,6 +175,7 @@ function mapStateToProps(state) {
     submitStatus: state.order.submitLeadsFormStatus,
   };
 }
+
 const CartPage = connect(mapStateToProps, {
   ...OrderActions,
   createNewSession,

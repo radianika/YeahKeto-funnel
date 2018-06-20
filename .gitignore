@@ -14,3 +14,5 @@ dist/
 .env
 .idea
 .vscode/
+
+out/
