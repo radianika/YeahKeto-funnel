@@ -135,4 +135,4 @@ const UpsellDesktopContainer = connect(mapStateToProps, { ...OrderActions })(
   withRouter(UpsellDesktopContainerComponent),
 );
 
-export { UpsellDesktopContainer };
+export default UpsellDesktopContainer;

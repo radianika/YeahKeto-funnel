@@ -15,4 +15,4 @@ class ContactContainer extends React.Component {
   }
 }
 
-export { ContactContainer };
+export default ContactContainer;

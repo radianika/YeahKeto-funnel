@@ -65,4 +65,4 @@ const UpsellMobileContainer = connect(mapStateToProps, { ...OrderActions })(
   withRouter(UpsellMobileContainerComponent),
 );
 
-export { UpsellMobileContainer };
+export default UpsellMobileContainer;

@@ -282,4 +282,4 @@ const ThankyouDesktop = connect(mapStateToProps, { ...OrderActions })(
   withRouter(ThankyouDesktopComponent),
 );
 
-export { ThankyouDesktop };
+export default ThankyouDesktop;

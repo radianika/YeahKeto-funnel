@@ -15,4 +15,4 @@ class ProductsContainer extends React.PureComponent {
   }
 }
 
-export { ProductsContainer };
+export default ProductsContainer;

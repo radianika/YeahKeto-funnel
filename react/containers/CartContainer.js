@@ -14,4 +14,4 @@ class CartContainer extends React.PureComponent {
   }
 }
 
-export { CartContainer };
+export default CartContainer;

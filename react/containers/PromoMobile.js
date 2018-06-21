@@ -33,4 +33,4 @@ class PromoMobileContainer extends React.PureComponent {
   }
 }
 
-export { PromoMobileContainer };
+export default PromoMobileContainer;

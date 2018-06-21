@@ -237,4 +237,4 @@ const PromoCheckoutContainer = connect(mapStateToProps, { ...OrderActions })(
   PromoCheckoutWithRouter,
 );
 
-export { PromoCheckoutContainer };
+export default PromoCheckoutContainer;

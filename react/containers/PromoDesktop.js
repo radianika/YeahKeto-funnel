@@ -64,4 +64,4 @@ const PromoDesktopContainer = connect(mapStateToProps, { createNewSession })(
   PromoDesktop,
 );
 
-export { PromoDesktopContainer };
+export default PromoDesktopContainer;

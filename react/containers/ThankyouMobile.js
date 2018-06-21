@@ -275,4 +275,4 @@ const ThankyouMobile = connect(mapStateToProps, { ...OrderActions })(
   withRouter(ThankyouMobileComponent),
 );
 
-export { ThankyouMobile };
+export default ThankyouMobile;

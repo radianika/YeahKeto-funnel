@@ -234,4 +234,4 @@ class HomeContainer extends PureComponent {
   }
 }
 
-export { HomeContainer };
+export default HomeContainer;
