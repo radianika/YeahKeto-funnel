@@ -112,7 +112,11 @@ class Upsell2 extends React.PureComponent {
               </p>
             </div>
             <div className="bnt-sec">
-              <a href="javascript:void(0)" onClick={this.upgrade}>
+              <a
+                id="order-pulse-upsell2-desktop-1"
+                href="javascript:void(0)"
+                onClick={this.upgrade}
+              >
                 <img
                   src="/static/assets/images/upsell2/ord-btn.png"
                   alt="order-btn"
@@ -122,7 +126,11 @@ class Upsell2 extends React.PureComponent {
                 />
               </a>
               <p className="thanks-txt">
-                <a href="javascript:void(0)" onClick={this.skipUpsell}>
+                <a
+                  id="skip-pulse-upsell2-desktop-1"
+                  href="javascript:void(0)"
+                  onClick={this.skipUpsell}
+                >
                   <img
                     src="/static/assets/images/upsell2/cut-icon.png"
                     alt="cut-icon"
@@ -179,7 +187,11 @@ class Upsell2 extends React.PureComponent {
         </div>
 
         <div className="bnt-sec">
-          <a href="javascript:void(0)" onClick={this.upgrade}>
+          <a
+            id="order-pulse-upsell2-desktop-2"
+            href="javascript:void(0)"
+            onClick={this.upgrade}
+          >
             <img
               src="/static/assets/images/upsell2/ord-btn.png"
               alt="order-btn"
@@ -189,7 +201,11 @@ class Upsell2 extends React.PureComponent {
             />
           </a>
           <p className="thanks-txt">
-            <a href="javascript:void(0)" onClick={this.skipUpsell}>
+            <a
+              id="skip-pulse-upsell2-desktop-2"
+              href="javascript:void(0)"
+              onClick={this.skipUpsell}
+            >
               <img
                 src="/static/assets/images/upsell2/cut-icon.png"
                 alt="cut-icon"

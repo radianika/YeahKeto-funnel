@@ -19,6 +19,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         className="pure-form pure-form-aligned fv-form fv-form-pure"
       >
         <button
+          id={props.id}
           type="submit"
           className="fv-hidden-submit"
           style={{ display: 'none', width: '0px', height: '0px' }}

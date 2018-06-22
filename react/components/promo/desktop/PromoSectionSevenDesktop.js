@@ -39,6 +39,7 @@ class PromoSectionSevenDesktop extends React.PureComponent {
           </LazyLoad>
           <i className="s7-photos sprite4 sprite-s7-photos" />
           <a
+            id="promo-section7-scroll-desktop"
             href="javascript:void(0)"
             onClick={() => {
               window.scroll({ top: 0, behavior: 'smooth' });
