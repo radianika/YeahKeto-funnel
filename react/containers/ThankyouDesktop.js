@@ -5,7 +5,6 @@ import {
   getTyProductImage,
   getTyProductContainer,
   getTyProductName,
-  getTyProductQuantity,
 } from 'helpers';
 import { OrderActions } from 'redux/actions';
 import moment from 'moment';
@@ -17,7 +16,7 @@ import moment from 'moment';
  */
 class ThankyouDesktopComponent extends React.Component {
   render() {
-    const { isPromo, items, shippingDetails } = this.props;
+    const { items, shippingDetails } = this.props;
     let CustomerInfo = {};
     if (items.length) {
       // eslint-disable-next-line
@@ -140,9 +139,7 @@ class ThankyouDesktopComponent extends React.Component {
                       {getTyProductName(item.OrderInfo.Products[0])}
                       <br />
                       <span>
-                        {isPromo
-                          ? getTyProductQuantity(item.OrderInfo.Products[0])
-                          : item.OrderInfo.Products[0].Quantity}{' '}
+                        {item.OrderInfo.Products[0].Quantity}{' '}
                         {getTyProductContainer(item.OrderInfo.Products[0])}
                       </span>
                     </p>
