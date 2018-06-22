@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import {
   getTyProductImage,
   getTyProductName,
-  getTyProductQuantity,
   getTyProductContainer,
 } from 'helpers';
 import { OrderActions } from 'redux/actions';
@@ -17,7 +16,7 @@ import moment from 'moment';
  */
 class ThankyouMobileComponent extends React.PureComponent {
   render() {
-    const { isPromo, items, shippingDetails } = this.props;
+    const { items, shippingDetails } = this.props;
     let CustomerInfo = {};
     if (items.length) {
       // eslint-disable-next-line
@@ -115,9 +114,7 @@ class ThankyouMobileComponent extends React.PureComponent {
                       {getTyProductName(item.OrderInfo.Products[0])}
                       <br />
                       <span>
-                        {isPromo
-                          ? getTyProductQuantity(item.OrderInfo.Products[0])
-                          : item.OrderInfo.Products[0].Quantity}{' '}
+                        {item.OrderInfo.Products[0].Quantity}{' '}
                         {getTyProductContainer(item.OrderInfo.Products[0])}
                       </span>
                     </p>

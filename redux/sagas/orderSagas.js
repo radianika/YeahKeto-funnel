@@ -15,13 +15,76 @@ import { getCookie } from 'react/components/common';
 const getSession = state => state.auth.sessionId;
 
 const packIdMap = {
-  210: '35404d48-489b-4390-a099-f0b9a27faca5',
-  209: '75c92745-62cb-4360-83a5-35b26b1b7e0e',
-  208: 'b5a06b4c-df89-4381-8a79-f594349d22ae',
-  213: 'd9d05acc-66a8-40bc-a344-d119d75e7dd0',
-  212: '4db523ed-baf0-4bf7-90d3-3b4b847445aa',
-  217: '6917e892-e169-4f94-8f54-3aac2e9ab547',
-  215: '0041249f-9f8b-41c5-a137-ad4ce8133cf6',
+  210: {
+    ProductGroupKey: 'b5a06b4c-df89-4381-8a79-f594349d22ae',
+    CustomProducts: [
+      {
+        ProductID: 21340,
+        Quantity: 5,
+        Amount: 49,
+      },
+    ],
+  },
+  209: {
+    ProductGroupKey: 'b5a06b4c-df89-4381-8a79-f594349d22ae',
+    CustomProducts: [
+      {
+        ProductID: 21340,
+        Quantity: 3,
+        Amount: 59,
+      },
+    ],
+  },
+  208: {
+    ProductGroupKey: 'b5a06b4c-df89-4381-8a79-f594349d22ae',
+    CustomProducts: [
+      {
+        ProductID: 21340,
+        Quantity: 1,
+        Amount: 79,
+      },
+    ],
+  },
+  213: {
+    ProductGroupKey: '4db523ed-baf0-4bf7-90d3-3b4b847445aa',
+    CustomProducts: [
+      {
+        ProductID: 21347,
+        Quantity: 3,
+        Amount: 77,
+      },
+    ],
+  },
+  212: {
+    ProductGroupKey: '4db523ed-baf0-4bf7-90d3-3b4b847445aa',
+    CustomProducts: [
+      {
+        ProductID: 21347,
+        Quantity: 1,
+        Amount: 87,
+      },
+    ],
+  },
+  217: {
+    ProductGroupKey: '0041249f-9f8b-41c5-a137-ad4ce8133cf6',
+    CustomProducts: [
+      {
+        ProductID: 21348,
+        Quantity: 3,
+        Amount: 87,
+      },
+    ],
+  },
+  215: {
+    ProductGroupKey: '0041249f-9f8b-41c5-a137-ad4ce8133cf6',
+    CustomProducts: [
+      {
+        ProductID: 21348,
+        Quantity: 1,
+        Amount: 97,
+      },
+    ],
+  },
 };
 
 /**
@@ -55,7 +118,9 @@ function* submitLeadsForm(action) {
     '/v1/response/customers',
     parseLeadData,
     sessionId,
-    { ...headers },
+    {
+      ...headers,
+    },
   );
 
   if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
@@ -178,11 +243,7 @@ function* addUpsellToOrder(action) {
 
     const payload = {
       CustomerID: upsell1.OrderInfo.CustomerID,
-      ProductGroups: [
-        {
-          ProductGroupKey: packIdMap[action.payload.productId],
-        },
-      ],
+      ProductGroups: [packIdMap[action.payload.productId]],
     };
 
     const apiResponse = yield post('/v1/response/upsale', payload, sessionId, {
