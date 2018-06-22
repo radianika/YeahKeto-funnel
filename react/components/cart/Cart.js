@@ -46,8 +46,10 @@ class Cart extends PureComponent {
     const { products } = this.state;
     const orderPayload = {};
     Object.values(products).forEach(item => {
-      orderPayload[`${item.label}id`] = item.product.id;
-      orderPayload[`${item.label}qty`] = item.quantity;
+      if (item.quantity > 0) {
+        orderPayload[`${item.label}id`] = item.product.id;
+        orderPayload[`${item.label}qty`] = item.quantity;
+      }
     });
     values.order = { ...values.order, ...orderPayload };
     values.process_sync = 'true';
