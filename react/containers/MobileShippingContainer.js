@@ -153,6 +153,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                   <div className="clearfix" />
                   <div className="shpbtm">
                     <a
+                      id="promo-shipping-form-submit-mobile"
                       href="javascript:void(0)"
                       className="button"
                       onClick={this.onSubmit}
