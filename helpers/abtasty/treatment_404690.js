@@ -16,4 +16,6 @@ const treatment_404690 = {
 	}
 }
 
-export default treatment_404690;
+export {
+	treatment_404690
+};

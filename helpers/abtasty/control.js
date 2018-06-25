@@ -16,4 +16,6 @@ const control = {
 	}
 }
 
-export default control;
+export {
+	control
+};
