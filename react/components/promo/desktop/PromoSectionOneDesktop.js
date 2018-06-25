@@ -5,7 +5,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { OrderActions } from 'redux/actions';
 import { Spinner, SuccessModal } from 'react/components/common';
-import { splitTestingAllVariations } from 'helpers/abtasty';
+import { getVariationValue } from 'helpers/abtasty';
 import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
 class PromoSectionOneDesktopComponent extends React.PureComponent {
@@ -39,15 +39,15 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
 
   render() {
     const { variationId } = this.props;
-    const currentConfig = splitTestingAllVariations[variationId];
+    // To be stored in redux now
+    const campaignId = 306753;
+    const currentConfig = getVariationValue(campaignId, variationId, 'promo');
 
     return (
       <div
         className="section1 dsplay"
         style={{
-          background: `url(${
-            currentConfig.promo.section1Img
-          }) center top no-repeat`,
+          background: `url(${currentConfig.section1Img}) center top no-repeat`,
         }}
       >
         <h2 style={{ display: 'none' }}>American Science CBD</h2>

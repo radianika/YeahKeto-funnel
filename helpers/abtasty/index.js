@@ -1,15 +1,25 @@
 import { control } from './control';
-import { treatment_404689 } from './treatment_404689';
-import { treatment_404690 } from './treatment_404690';
-import { treatment_404691 } from './treatment_404691';
+import { campaign_306753 } from './campaign_306753';
 
+// splitTestingAllVariations format = {{individual campaign}, {individual campaign}, {individual campaign}};
 const splitTestingAllVariations = {
-	control: control,
-	404689: treatment_404689,
-	404690: treatment_404690,
-	404691: treatment_404691,
-}
+	306753: campaign_306753
+};
+
+const getVariationValue = (campaignId, varId, page) => {
+	const variations = splitTestingAllVariations[campaignId];
+
+  let varVal = '';
+  if (!varId) {
+    varVal = variations.control[page];
+  } else if (!variations[varId][page]) {
+    varVal = variations.control[page];
+  } else {
+    varVal = variations[varId][page];
+  }
+  return varVal;
+};
 
 export {
-	splitTestingAllVariations
+	getVariationValue
 }
