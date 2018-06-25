@@ -1,4 +1,3 @@
-import { control } from './control';
 import { campaign_306753 } from './campaign_306753';
 
 // splitTestingAllVariations format = {{individual campaign}, {individual campaign}, {individual campaign}};
