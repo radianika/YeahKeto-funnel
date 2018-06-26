@@ -9,14 +9,14 @@ const splitTestingAllVariations = {
 	306753: campaign_306753
 };
 
-const getVariationValue = (campaignId, varId, page) => {
+const getVariationValue = (campaignId, varId, page = 'promo') => {
 	// check if all the required params are passed else return default config
 	if (Object.keys(splitTestingAllVariations).includes(''+campaignId) &&
 		Object.keys(splitTestingAllVariations[campaignId]).includes(''+varId) &&
 		Object.keys(splitTestingAllVariations[campaignId][varId]).includes(''+page)) {
 		return splitTestingAllVariations[campaignId][varId][page];
 	}
-	return defaultConfig;
+	return defaultConfig[page];
 };
 
 export {
