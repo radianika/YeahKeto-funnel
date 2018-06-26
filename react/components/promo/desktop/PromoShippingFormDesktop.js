@@ -102,6 +102,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         />
         <div className="clearall" />
         <button
+          id="promo-shipping-form-submit-desktop"
           onClick={this.showErrorModal}
           className="submit pulse sprite5 sprite-submit"
         />

@@ -83,6 +83,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
           className="pure-form pure-form-aligned fv-form fv-form-pure"
         >
           <button
+            id="promo-checkout-payment-form-submit"
             type="submit"
             className="fv-hidden-submit"
             style={{ display: 'none', height: 0, width: 0 }}
