@@ -203,4 +203,4 @@ const MobileShippingContainer = connect(mapStateToProps, { ...OrderActions })(
   })(withRouter(MobileShippingContainerComponent)),
 );
 
-export { MobileShippingContainer };
+export default MobileShippingContainer;

@@ -101,4 +101,4 @@ class MobileSelectPackageContainer extends React.PureComponent {
 // eslint-disable-next-line
 MobileSelectPackageContainer = withRouter(MobileSelectPackageContainer);
 
-export { MobileSelectPackageContainer };
+export default MobileSelectPackageContainer;

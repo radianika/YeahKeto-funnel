@@ -433,4 +433,4 @@ const MobileConfirmContainer = connect(mapStateToProps, {
   ...OrderActions,
 })(MobileConfirmContainerPage);
 
-export { MobileConfirmContainer };
+export default MobileConfirmContainer;
