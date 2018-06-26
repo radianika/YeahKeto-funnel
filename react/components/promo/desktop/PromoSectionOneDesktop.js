@@ -5,23 +5,10 @@ import axios from 'axios';
 import moment from 'moment';
 import { OrderActions } from 'redux/actions';
 import { Spinner, SuccessModal } from 'react/components/common';
+import { getVariationValue } from 'helpers/abtasty';
 import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
 class PromoSectionOneDesktopComponent extends React.PureComponent {
-  getImageVariation = () => {
-    const { variationId } = this.props;
-    switch (variationId) {
-      case '404689':
-        return '/static/promo/desktop/images/section1.jpg';
-      case '404690':
-        return '/static/promo/desktop/v1/section1.jpg';
-      case '404691':
-        return '/static/promo/desktop/v2/section1.jpg';
-      default:
-        return '/static/promo/desktop/images/section1.jpg';
-    }
-  };
-
   postActionTracker = () => {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
@@ -51,11 +38,16 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
   };
 
   render() {
+    const { variationId } = this.props;
+    // To be stored in redux now
+    const campaignId = 306753;
+    const currentConfig = getVariationValue(campaignId, variationId, 'promo');
+
     return (
       <div
         className="section1 dsplay"
         style={{
-          background: `url(${this.getImageVariation()}) center top no-repeat`,
+          background: `url(${currentConfig.section1Img}) center top no-repeat`,
         }}
       >
         <h2 style={{ display: 'none' }}>American Science CBD</h2>
