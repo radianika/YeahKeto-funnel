@@ -5,18 +5,10 @@ const splitTestingAllVariations = {
 	306753: campaign_306753
 };
 
-const getVariationValue = (campaignId, varId, page) => {
+const getVariationValue = (campaignId = 306753, varId = 'control', page = 'promo') => {
 	const variations = splitTestingAllVariations[campaignId];
 
-  let varVal = '';
-  if (!varId) {
-    varVal = variations.control[page];
-  } else if (!variations[varId][page]) {
-    varVal = variations.control[page];
-  } else {
-    varVal = variations[varId][page];
-  }
-  return varVal;
+  return variations[varId][page];
 };
 
 export {
