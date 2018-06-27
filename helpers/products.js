@@ -1,7 +1,7 @@
 const products = {
   'hemp-oil': {
     type: 'oil',
-    title: 'CBD HEMP OIL 500 mg',
+    title: 'CBD Oil 500 mg',
     sub_title: 'Pure Cannabidiol complex',
     header: 'AMERICAN SCIENCE',
     description:
@@ -90,7 +90,7 @@ const products = {
 
 const recommendedProducts = {
   'hemp-oil': {
-    title: 'CBD HEMP OIL 500 mg',
+    title: 'CBD Oil 500 mg',
     sub_title: 'PURE CANNABIDIOL COMPLEX',
     description:
       'Hemp oil may help reduce pains & aches while improving mood patterns & relaxation.',

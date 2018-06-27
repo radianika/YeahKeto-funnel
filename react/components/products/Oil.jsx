@@ -5,7 +5,7 @@ class OilSlider extends React.PureComponent {
     return (
       <React.Fragment>
         <p className="prd-sec1-txt1">American science</p>
-        <p className="prd-sec1-txt2">CBD hemp oil</p>
+        <p className="prd-sec1-txt2">CBD Oil</p>
         <p className="prd-sec-1txt3">Pure Cannabidiol complex</p>
         <p className="comn-txt prd-sec1-txt5">
           Formulated with high-potency 500MG Hemp Extract, American
@@ -90,7 +90,7 @@ class OilSquare extends React.PureComponent {
     return (
       <React.Fragment>
         <p className="prd-txt1">American Science</p>
-        <p className="prd-txt2">CBD hemp Oil</p>
+        <p className="prd-txt2">CBD Oil</p>
         <p className="prd-txt3">Pure Cannabidiol complex</p>
         <p className="prd-txt4 comn-txt">
           Hemp oil may help reduce pains &amp; aches while improving mood

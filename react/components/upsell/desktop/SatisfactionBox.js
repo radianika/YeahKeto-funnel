@@ -12,8 +12,8 @@ const SatisfactionBox = props => (
       <img src="/static/assets/images/full-spect.jpg" alt="" />
       <p className="box-txt1">FULL SPECTRUM FORMULA</p>
       <p className="box-txt2">
-        CBD Hemp Oil Capsules contains a high potency blend of 300mg - Full
-        Spectrum Cannabinoids to offer maximum therapeutic benefits.
+        CBD Oil Capsules contains a high potency blend of 300mg - Full Spectrum
+        Cannabinoids to offer maximum therapeutic benefits.
       </p>
     </div>
     <div className="up-bottom-box">
@@ -28,8 +28,8 @@ const SatisfactionBox = props => (
       <img src="/static/assets/images/anti-oxident.jpg" alt="" />
       <p className="box-txt1">OFFERS ANTIOXIDANT SUPPORT</p>
       <p className="box-txt2">
-        CBD Hemp Oil Capsules work at a cellular level to combat free radical
-        damage and boost overall immunity.{' '}
+        CBD Oil Capsules work at a cellular level to combat free radical damage
+        and boost overall immunity.{' '}
       </p>
     </div>
     <div className="bnt-sec">
