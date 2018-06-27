@@ -11,7 +11,7 @@ class PromoSectionSixDesktop extends React.PureComponent {
           </p>{' '}
           <i className="s5hdimg sprite4 sprite-s5hd" />
           <p className="s5-txt1 bdfont">
-            Find out how <strong>American Science Hemp Oil&#39;s</strong>{' '}
+            Find out how <strong>American Science CBD Oil&#39;s</strong>{' '}
             therapeutic benefits have helped people enjoy a healthier and fuller
             lifestyle.{' '}
           </p>

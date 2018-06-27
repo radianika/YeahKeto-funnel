@@ -165,11 +165,11 @@ class HomeContainer extends PureComponent {
               />
               <div className="prd-details">
                 <p className="prd-txt1">American Science</p>
-                <p className="prd-txt2">CBD hemp oil</p>
+                <p className="prd-txt2">CBD Oil</p>
                 <p className="prd-txt3">Pure Cannabidiol complex</p>
                 <p className="prd-txt4 comn-txt">
-                  Hemp Oil may help reduce pains &amp; aches while improving
-                  mood patterns &amp; relaxation.
+                  CBD oil may help reduce pains &amp; aches while improving mood
+                  patterns &amp; relaxation.
                 </p>
                 <a href="/hemp-oil">
                   <img
