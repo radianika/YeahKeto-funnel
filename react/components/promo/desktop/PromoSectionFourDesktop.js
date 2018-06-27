@@ -57,7 +57,7 @@ class PromoSectionFourDesktop extends React.PureComponent {
           <div className="s4-img-bg sprite4 sprite-s4-bg1">
             <p className="s4-img-bg-txt1">
               <span>FULL SPECTRUM </span>
-              <br />CBD Oil{' '}
+              <br />CBD OIL{' '}
             </p>
             <p className="s4-img-bg-txt2">
               All-Natural, Organic &amp; High Potency Cannabidiol Blend

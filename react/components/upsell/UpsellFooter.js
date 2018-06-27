@@ -11,7 +11,7 @@ class UpsellFooter extends React.PureComponent {
         <a href={`${nextUrl}?${getQueryString()}`} className="nothank">
           No thanks. I understand that this is my only opportunity to get access
           to this special offer, and I’m okay with missing out. Instead, if I’m
-          blown away by the results I get using CBD Oil, like so many thousands
+          blown away by the results I get using CBD OIL, like so many thousands
           of folks before me, I’ll just re-order at $149 per bottle in the
           future. I’ll pass on this chance forever.
         </a>
