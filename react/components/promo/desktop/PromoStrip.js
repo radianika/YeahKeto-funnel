@@ -18,7 +18,7 @@ class PromoStrip extends React.PureComponent {
             Limited Time Offer - Get Free Bottles On Select Packages
           </p>
           <a
-            id="promo-strip-scroll-desktop"
+            id={this.props.tagID}
             href="javascript:void(0)"
             onClick={this.scrollToTop}
           >

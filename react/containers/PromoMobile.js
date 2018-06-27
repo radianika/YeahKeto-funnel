@@ -32,7 +32,10 @@ class PromoMobileContainer extends React.PureComponent {
         <PromoSectionSixMobile />
         <PromoSectionSevenMobile />
         <div style={{ clear: 'both' }} />
-        <FooterPromo isMobile />
+        <FooterPromo
+          isMobile
+          tagID="promo-shipping-form-submit-mobile-footer"
+        />
       </div>
     );
   }

@@ -42,18 +42,18 @@ class PromoDesktop extends React.PureComponent {
         </div>
         <PromoSectionOneDesktop />
         <PromoSectionTwoDesktop />
-        <PromoStrip />
+        <PromoStrip tagID="promo-strip-scroll-desktop-1" />
         <PromoSectionThreeDesktop />
-        <PromoStrip />
+        <PromoStrip tagID="promo-strip-scroll-desktop-2" />
         <PromoSectionFourDesktop />
-        <PromoStrip />
+        <PromoStrip tagID="promo-strip-scroll-desktop-3" />
         <PromoSectionFiveDesktop />
-        <PromoStrip />
+        <PromoStrip tagID="promo-strip-scroll-desktop-4" />
         <PromoSectionSixDesktop />
-        <PromoStrip />
+        <PromoStrip tagID="promo-strip-scroll-desktop-5" />
         <PromoSectionSevenDesktop />
         <div style={{ clear: 'both' }} />
-        <FooterPromo />
+        <FooterPromo tagID="promo-shipping-form-submit-desktop-footer" />
         {this.props.sessionId && <PromoSession pageType="leadPage" />}
       </React.Fragment>
     );

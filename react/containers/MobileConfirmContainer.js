@@ -372,6 +372,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                 className="button"
               >
                 <img
+                  id="checkout-submit-mobile"
                   src="/static/promo/mobile/images/conf-btn.png"
                   alt=""
                   className="ship-btn pulse"
