@@ -113,6 +113,10 @@ class Promo extends React.PureComponent {
             type="text/css"
             href="/static/assets/css/sprites-style.css"
           />
+          <script
+            src="https://cdn.useproof.com/proof.js?acc=Der7ihJpySMVVqyPFbHeXzJjwYm2"
+            async
+          />
           <script src="https://fast.wistia.net/assets/external/E-v1.js" async />
         </Head>
         <PromoDesktopContainer />
