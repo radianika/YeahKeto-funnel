@@ -51,6 +51,10 @@ class Promo extends React.PureComponent {
             type="text/css"
             href="/static/assets/css/mb-sprites-style.css"
           />
+          <script
+            src="https://cdn.useproof.com/proof.js?acc=Der7ihJpySMVVqyPFbHeXzJjwYm2"
+            async
+          />
         </Head>
         {this.props.sessionId && <PromoSession pageType="leadPage" />}
         <PromoMobileContainer />
