@@ -126,8 +126,8 @@ class Faq extends React.PureComponent {
             >
               <p className="txt1">
                 The CBD in our products comes from industrial hemp that is legal
-                in all 50 states. CBD is a natural component of the hemp plant
-                and is therefore legal to be used as a food supplement.
+                in all 50 states. CBD is a natural component of the cannabis
+                leaf and is therefore legal to be used as a food supplement.
               </p>
             </SingleCollapsible>
             <SingleCollapsible
