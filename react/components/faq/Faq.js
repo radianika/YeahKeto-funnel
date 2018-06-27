@@ -56,16 +56,16 @@ class Faq extends React.PureComponent {
             <SingleCollapsible trigger="Why Choose American Science?" index={0}>
               <p className="txt1">
                 Receive a wide range of therapeutic and health benefits by
-                purchasing the hemp extract dietary supplements American Science
-                offers. The supplements we offer are infused with hemp extract
-                enriched with over 80 cannabinoids.
+                purchasing the Cannabidiol extract dietary supplements American
+                Science offers. The supplements we offer are infused with
+                Cannabidiol extract enriched with over 80 cannabinoids.
               </p>
               <br />
               <p className="txt1">
                 You can also avoid the hassle people typically have to deal with
                 when buying CBD or medical marijuana. You don’t need a
                 prescription, don’t need to import it, or be part of a domestic
-                hemp program.
+                Cannabidiol program.
               </p>
             </SingleCollapsible>
             <SingleCollapsible
@@ -73,9 +73,10 @@ class Faq extends React.PureComponent {
               index={1}
             >
               <p className="txt1">
-                Our cannabidiol is extracted from hemp, which is its most
-                abundant component. A major benefit of CBD is that it offers
-                numerous benefits and is safe to consume without causing the
+                Our cannabidiol is extracted from Cannabis leaf, which is its
+                most abundant component. A major benefit of CBD is that it
+                offers numerous benefits and is safe to consume without causing
+                the
                 {"'high'"} effect.
               </p>
             </SingleCollapsible>

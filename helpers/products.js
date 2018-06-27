@@ -5,14 +5,14 @@ const products = {
     sub_title: 'Pure Cannabidiol complex',
     header: 'AMERICAN SCIENCE',
     description:
-      'Formulated with high-potency 500MG Hemp Extract, American Science’s CBD Oil is rich in a wide range of cannabinoids (CBD) that have been proven to support mood patterns, joint health, and mental clarity.',
+      'Formulated with high-potency 500MG Cannabidiol Extract, American Science’s CBD Oil is rich in a wide range of cannabinoids (CBD) that have been proven to support mood patterns, joint health, and mental clarity.',
     bullets: [
       'Available in an easy-to-take tincture ⁄ herbal drops form',
       'Free from THC, harmful chemicals, pesticides, and synthetics',
-      'Made from hemp extract that is organically grown & extracted in the USA',
+      'Made from Cannabidiol extract that is organically grown & extracted in the USA',
     ],
     price: 79.0,
-    ingredients: 'Ingredients: Hemp Seed Oil, Ethanol, Full Spectrum CBD',
+    ingredients: 'Ingredients: Cannabis Seed Oil, Ethanol, Full Spectrum CBD',
     supplement: {
       image: '/static/assets/images/cbd-oil-label.jpg',
       how_to_use: {
@@ -27,22 +27,22 @@ const products = {
   },
   'hemp-capsule': {
     type: 'cap',
-    title: 'CBD HEMP CAPSULES 300 mg',
+    title: 'CBD CAPSULES 300 mg',
     sub_title: 'Pure Cannabidiol complex',
     header: 'AMERICAN SCIENCE',
     description:
-      "Formulated with high-potency 300MG Hemp Extract, American Science's Hemp Capsule is rich in a wide range of cannabinoids (CBD) which has been proven to support mood patterns, joint health, and mental clarity.",
+      "Formulated with high-potency 300MG Cannabidiol Extract, American Science's Cannabidiol Capsule is rich in a wide range of cannabinoids (CBD) which has been proven to support mood patterns, joint health, and mental clarity.",
     bullets: [
       'Available in an easy-to-take capsule form',
       'Free from THC, harmful chemicals, pesticides, and synthetics',
-      'Made from hemp extract that is organically grown & extracted in the USA',
+      'Made from Cannabidiol extract that is organically grown & extracted in the USA',
     ],
     price: 87.0,
-    ingredients: 'Ingredients: Hemp Powder, CBD Isolate, Vegetable Capsule',
+    ingredients: 'Ingredients: Cannabis Powder, CBD Isolate, Vegetable Capsule',
     supplement: {
       image: '/static/assets/images/cbd-capsule-label.jpg',
       how_to_use: {
-        1: 'Take one capsule of American Science Hemp Capsule daily with a glass of water.',
+        1: 'Take one capsule of American Science CBD Capsule daily with a glass of water.',
         2: 'Follow a healthy lifestyle along with a balanced diet & regular exercise. ',
         3: 'Follow the supplementation & use daily for best results and maximum benefits.',
       },
@@ -73,7 +73,7 @@ const products = {
                       Ravensara Wild Essential Oil,
                       Rosemary Essential Oil, Fennel Sweet
                       Essential Oil, Cypress Essential Oil,
-                      15 % CBD Hemp Extract`,
+                      15 % CBD Cannabidiol Extract`,
     supplement: {
       image: '/static/assets/images/cbd-balm-label.jpg',
       how_to_use: {
@@ -98,9 +98,9 @@ const recommendedProducts = {
     image: '/static/assets/images/sec2-prd1.png',
   },
   'hemp-capsule': {
-    title: 'CBD HEMP CAPSULES 300 mg',
+    title: 'CBD CAPSULES 300 mg',
     sub_title: 'PURE CANNABIDIOL COMPLEX',
-    description: 'Hemp capsules may help support joint health & may promote better sleep quality.',
+    description: 'CBD capsules may help support joint health & may promote better sleep quality.',
     link: '/hemp-capsule',
     image: '/static/assets/images/sec2-prd2.png',
   },

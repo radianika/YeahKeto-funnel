@@ -145,7 +145,7 @@ class Product extends PureComponent {
             <div className="inner-txt">
               <span>our products</span>
               <p className="comn-txt">
-                Find out more about American Science&apos;s range of hemp
+                Find out more about American Science&apos;s range of Cannabidiol
                 extract enriched dietary supplements.{' '}
               </p>
             </div>
@@ -210,8 +210,8 @@ class Product extends PureComponent {
           <div className="container">
             <p className="comn-hdg">Supplement Facts &amp; Directions Of Use</p>
             <p className="comn-sub-hdg">
-              Find out what&apos;s inside our hemp supplements and how to use
-              them for best results.
+              Find out what&apos;s inside our Cannabidiol supplements and how to
+              use them for best results.
             </p>
             <img src="/static/assets/images/comn-hdg-img.png" alt="" />
             <div className="clearall" />

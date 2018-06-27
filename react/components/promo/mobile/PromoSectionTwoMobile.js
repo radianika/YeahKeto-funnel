@@ -20,7 +20,7 @@ class PromoSectionTwoMobile extends React.PureComponent {
           {/* Cannabidiol is a non-psychoactive component of Hemp that has been
           clinically proven to offer a wide range of therapeutic health
           benefits. <strong>American Science CBD Oil</strong> is formulated
-          with hemp extract that is organically grown & harvested in the USA and
+          with Cannabidiol extract that is organically grown & harvested in the USA and
           is patented (under Patent #6,630,507) to support nutritional health of
           aging bodies. */}
           Cannabidiol, part of a family of molecules called cannabinoids, is

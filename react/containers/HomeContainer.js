@@ -55,7 +55,7 @@ class HomeContainer extends PureComponent {
               <p className="bnr-txt1">
                 Dietary Health &amp; Wellness Supplements
               </p>
-              <span>Enriched With Hemp Extract</span>
+              <span>Enriched With Cannabidiol Extract</span>
               <img
                 src="/static/assets/images/bnr-img-btm.png"
                 alt=""
@@ -67,9 +67,9 @@ class HomeContainer extends PureComponent {
                 className="bnr-prd for-mob"
               />
               <p className="comn-txt for-desk for-tab">
-                American Science supplements are infused with hemp extract that
-                is enriched with over 80 cannabinoids that offer a wide range of
-                therapeutic health benefits.{' '}
+                American Science supplements are infused with Cannabidiol
+                extract that is enriched with over 80 cannabinoids that offer a
+                wide range of therapeutic health benefits.{' '}
               </p>
               <a href="/hemp-oil">
                 <img
@@ -87,20 +87,23 @@ class HomeContainer extends PureComponent {
         <Strip />
         <Frame sec="sec1">
           <p className="comn-hdg">Welcome to American Science</p>
-          <p className="comn-sub-hdg">Premium Quality Hemp Extract Products</p>
+          <p className="comn-sub-hdg">
+            Premium Quality Cannabidiol Extract Products
+          </p>
           <img src="/static/assets/images/comn-hdg-img.png" alt="" />
           <p className="comn-txt">
-            American Science is a leading brand of hemp extract dietary
+            American Science is a leading brand of Cannabidiol extract dietary
             supplements that offer a wide range of physical, psychological and
             neurological therapeutic benefits. Our range of products includes
-            hemp enriched oil, hemp extract capsules, and a nootropic formula.
-            All our products are third-party tested to maintain uncompromising
-            hemp extract quality & purity standards.
+            Cannabidiol enriched oil, Cannabidiol extract capsules, and a
+            nootropic formula. All our products are third-party tested to
+            maintain uncompromising Cannabidiol extract quality & purity
+            standards.
             <br />
             <br />
             <strong className="comn-txt">
               Get ready to experience the benefits of safe & effective American
-              Science Hemp products & join the leading health & wellness
+              Science CBD products & join the leading health & wellness
               revolution.
             </strong>
           </p>
@@ -109,27 +112,27 @@ class HomeContainer extends PureComponent {
               <img src="/static/assets/images/sec1-list-img3.png" alt="" />
               <span>100% ORGANIC & NATURAL</span>
               <p className="comn-txt">
-                American Science products are formulated with hemp extract that
-                is organically grown and harvested in the USA to meet and exceed
-                industry standards.
+                American Science products are formulated with Cannabidiol
+                extract that is organically grown and harvested in the USA to
+                meet and exceed industry standards.
               </p>
             </li>
             <li>
               <img src="/static/assets/images/sec1-list-img2.png" alt="" />
               <span>ZERO THC GUARANTEE</span>
               <p className="comn-txt">
-                American Science products are made with hemp extract derived
-                using CO2 extraction, which filters out the high-causing
-                compound called THC from the hemp extract.
+                American Science products are made with Cannabidiol extract
+                derived using CO2 extraction, which filters out the high-causing
+                compound called THC from the Cannabidiol extract.
               </p>
             </li>
             <li>
               <img src="/static/assets/images/sec1-list-img1.png" alt="" />
               <span>MULTIPLE LIFESTYLE BENEFITS</span>
               <p className="comn-txt">
-                Hemp Extract supplements help reduce anxiety & stress, support
-                joint health to alleviate pain & aches and improve overall
-                cognitive function & health.
+                Cannabidiol Extract supplements help reduce anxiety & stress,
+                support joint health to alleviate pain & aches and improve
+                overall cognitive function & health.
               </p>
             </li>
           </ul>
@@ -140,9 +143,9 @@ class HomeContainer extends PureComponent {
               Experience Holistic Health & Wellness With American Science
             </span>
             <p className="comn-txt">
-              Our hemp enriched supplements include full spectrum cannabinoids
-              (CBD) that help with quicker absorption, faster action, and
-              excellent results!
+              Our Cannabidiol enriched supplements include full spectrum
+              cannabinoids (CBD) that help with quicker absorption, faster
+              action, and excellent results!
             </p>
             <a href="/hemp-oil">
               <img src="/static/assets/images/btn.png" alt="" className="btn" />
@@ -188,10 +191,10 @@ class HomeContainer extends PureComponent {
               />
               <div className="prd-details">
                 <p className="prd-txt1">American Science</p>
-                <p className="prd-txt2">CBD hemp capsules</p>
+                <p className="prd-txt2">CBD capsules</p>
                 <p className="prd-txt3">Pure Cannabidiol complex</p>
                 <p className="prd-txt4 comn-txt">
-                  Hemp Capsules may help support joint health &amp; may promote
+                  CBD Capsules may help support joint health &amp; may promote
                   better sleep quality.
                 </p>
                 <a href="/hemp-capsule">

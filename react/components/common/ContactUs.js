@@ -173,7 +173,7 @@ class ContactUs extends React.Component {
               <span>contact us</span>
               <p className="comn-txt">
                 Get in touch with American Science to source the best-quality of
-                hemp extract dietary supplements on the market.
+                Cannabidiol extract dietary supplements on the market.
               </p>
             </div>
             <img

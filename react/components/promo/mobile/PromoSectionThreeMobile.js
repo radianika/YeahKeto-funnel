@@ -15,8 +15,9 @@ class PromoSectionThreeMobile extends React.PureComponent {
           alt=""
         />
         <p className="s2-txt1">
-          <strong>American Science CBD oil</strong> is made with the purest hemp
-          extract at a certified facility to meet and exceed industry standards.{' '}
+          <strong>American Science CBD oil</strong> is made with the purest
+          Cannabidiol extract at a certified facility to meet and exceed
+          industry standards.{' '}
         </p>
         <p className="clearall" />
         <ul className="s3-list">
@@ -46,8 +47,8 @@ class PromoSectionThreeMobile extends React.PureComponent {
             <span>Organic </span>
             <b>, AMERICAN-MADE</b>
             <p className="s3-list-txt">
-              Derived from organic, Colorado grown hemp. Certified-free of any
-              synthetics, pesticides or herbicides.
+              Derived from organic, Colorado grown cannabis. Certified-free of
+              any synthetics, pesticides or herbicides.
             </p>
           </li>
           <li>
