@@ -39,8 +39,9 @@ class FooterPromo extends React.PureComponent {
     return (
       <footer ref={this.footerRef}>
         {this.props.isMobile && (
-          <div id="cta" ref={this.ctaRef} style={this.state.ctaStyle}>
+          <div ref={this.ctaRef} style={this.state.ctaStyle}>
             <a
+              id="cta"
               href="javascript:void(0)"
               onClick={this.gotoShipping}
               className="shipping_redirect"

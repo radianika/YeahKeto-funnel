@@ -40,7 +40,10 @@ class MobileSelectPackageContainer extends React.PureComponent {
               style={{ cursor: 'pointer', marginBottom: '20px !important' }}
               onClick={() => this.selectPackage(pack)}
             >
-              <div className="select-box1">
+              <div
+                id={`select-package-mobile-${pack.id}`}
+                className="select-box1"
+              >
                 <div className="slt-box-hd">
                   <img
                     src="/static/promo/mobile/images/select-btn.png"
