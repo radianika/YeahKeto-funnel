@@ -34,21 +34,21 @@ class PromoSectionFourDesktop extends React.PureComponent {
             <li>
               <i className="sprite4 sprite-s4-icon4" />
               <span>Boosts Cognitive Function </span>
-              <br />CBD oil supports optimal brain function, improving focus,
+              <br />CBD Oil supports optimal brain function, improving focus,
               mental clarity, and memory recall. It also helps slow down the
               age-related decline in cognitive health.{' '}
             </li>
             <li>
               <i className="sprite4 sprite-s4-icon5" />
               <span>Supports Joint Health </span>
-              <br />CBD oil lubricates the joints to support improved
+              <br />CBD Oil lubricates the joints to support improved
               flexibility and mobility. It also helps deliver essential
               cannabinoids to treat chronic aches and pains.{' '}
             </li>
             <li>
               <i className="sprite4 sprite-s4-icon6" />
               <span>Reduces Anxiety &amp; Stress </span>
-              <br />CBD oil has a positive impact on mood patterns and sleep
+              <br />CBD Oil has a positive impact on mood patterns and sleep
               cycles. This helps promote a feeling of calm and relaxation to
               combat stress and anxiety.
             </li>
