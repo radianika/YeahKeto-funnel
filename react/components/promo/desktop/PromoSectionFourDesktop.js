@@ -25,7 +25,7 @@ class PromoSectionFourDesktop extends React.PureComponent {
           </ul>
           <p className="clearall" aria-hidden="true" />
           <p className="s4-txt1 bdfont">
-            <strong>American Science CBD oil</strong> positively modulates the
+            <strong>American Science CBD Oil</strong> positively modulates the
             ECS system, improving mental clarity, sleep cycles, healthy
             inflammatory response, cognitive function &amp; more.{' '}
           </p>
