@@ -5,7 +5,7 @@ const products = {
     sub_title: 'Pure Cannabidiol complex',
     header: 'AMERICAN SCIENCE',
     description:
-      'Formulated with high-potency 500MG Hemp Extract, American Science’s CBD oil is rich in a wide range of cannabinoids (CBD) that have been proven to support mood patterns, joint health, and mental clarity.',
+      'Formulated with high-potency 500MG Hemp Extract, American Science’s CBD Oil is rich in a wide range of cannabinoids (CBD) that have been proven to support mood patterns, joint health, and mental clarity.',
     bullets: [
       'Available in an easy-to-take tincture ⁄ herbal drops form',
       'Free from THC, harmful chemicals, pesticides, and synthetics',
@@ -16,7 +16,7 @@ const products = {
     supplement: {
       image: '/static/assets/images/cbd-oil-label.jpg',
       how_to_use: {
-        1: 'Take 1 dropper full of the American Science CBD oil once a day.',
+        1: 'Take 1 dropper full of the American Science CBD Oil once a day.',
         2: 'Follow a healthy lifestyle along with a balanced diet & regular exercise.',
         3: 'Follow the supplementation & use daily for best results and maximum benefits.',
       },
