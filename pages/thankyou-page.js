@@ -124,7 +124,7 @@ class Thankyou extends React.PureComponent {
     return (
       <React.Fragment>
         <Head>
-          <title>American Science CBD Hemp Oil</title>
+          <title>American Science CBD Oil</title>
           <meta
             name="description"
             content="Premium Quality Hemp Extract Products, Organic and Natural"

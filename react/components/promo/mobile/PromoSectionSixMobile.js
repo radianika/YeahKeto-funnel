@@ -9,7 +9,7 @@ class PromoSectionSixMobile extends React.PureComponent {
           <br />Customer Testimonials From American Science Customers
         </p>
         <p className="s5-txt1">
-          Find out how <strong>American Science Hemp Oil&#39;s</strong>{' '}
+          Find out how <strong>American Science CBD Oil&#39;s</strong>{' '}
           therapeutic benefits have helped people enjoy a healthier and fuller
           lifestyle.{' '}
         </p>

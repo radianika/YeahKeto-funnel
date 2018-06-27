@@ -5,7 +5,7 @@ class PromoSectionThreeMobile extends React.PureComponent {
     return (
       <div id="section-three">
         <p className="s2-hd-txt">
-          <span>WHY AMERICAN SCIENCE HEMP OIL </span>
+          <span>WHY AMERICAN SCIENCE CBD OIL </span>
           <br />Triple Filtration Technology For High Potency
         </p>{' '}
         {/* <i className="s2-img sprite1 sprite-s3-img" /> */}
@@ -15,9 +15,8 @@ class PromoSectionThreeMobile extends React.PureComponent {
           alt=""
         />
         <p className="s2-txt1">
-          <strong>American Science Hemp Oil</strong> is made with the purest
-          hemp extract at a certified facility to meet and exceed industry
-          standards.{' '}
+          <strong>American Science CBD oil</strong> is made with the purest hemp
+          extract at a certified facility to meet and exceed industry standards.{' '}
         </p>
         <p className="clearall" />
         <ul className="s3-list">

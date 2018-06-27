@@ -25,7 +25,7 @@ class PromoSectionFourDesktop extends React.PureComponent {
           </ul>
           <p className="clearall" aria-hidden="true" />
           <p className="s4-txt1 bdfont">
-            <strong>American Science Hemp Oil</strong> positively modulates the
+            <strong>American Science CBD Oil</strong> positively modulates the
             ECS system, improving mental clarity, sleep cycles, healthy
             inflammatory response, cognitive function &amp; more.{' '}
           </p>
@@ -34,21 +34,21 @@ class PromoSectionFourDesktop extends React.PureComponent {
             <li>
               <i className="sprite4 sprite-s4-icon4" />
               <span>Boosts Cognitive Function </span>
-              <br />Hemp Oil supports optimal brain function, improving focus,
+              <br />CBD Oil supports optimal brain function, improving focus,
               mental clarity, and memory recall. It also helps slow down the
               age-related decline in cognitive health.{' '}
             </li>
             <li>
               <i className="sprite4 sprite-s4-icon5" />
               <span>Supports Joint Health </span>
-              <br />Hemp Oil lubricates the joints to support improved
+              <br />CBD Oil lubricates the joints to support improved
               flexibility and mobility. It also helps deliver essential
               cannabinoids to treat chronic aches and pains.{' '}
             </li>
             <li>
               <i className="sprite4 sprite-s4-icon6" />
               <span>Reduces Anxiety &amp; Stress </span>
-              <br />Hemp Oil has a positive impact on mood patterns and sleep
+              <br />CBD Oil has a positive impact on mood patterns and sleep
               cycles. This helps promote a feeling of calm and relaxation to
               combat stress and anxiety.
             </li>
@@ -57,7 +57,7 @@ class PromoSectionFourDesktop extends React.PureComponent {
           <div className="s4-img-bg sprite4 sprite-s4-bg1">
             <p className="s4-img-bg-txt1">
               <span>FULL SPECTRUM </span>
-              <br />CBD HEMP OIL{' '}
+              <br />CBD OIL{' '}
             </p>
             <p className="s4-img-bg-txt2">
               All-Natural, Organic &amp; High Potency Cannabidiol Blend
