@@ -6,12 +6,12 @@ class PromoSectionThreeDesktop extends React.PureComponent {
       <div className="section3">
         <div className="container">
           <p className="s3hding">
-            <span>Why American Science Hemp Oil </span>
+            <span>Why American Science CBD oil </span>
             <br /> Triple Filtration Technology For High Potency{' '}
           </p>{' '}
           <i className="s3hdimg sprite3 sprite-s2hd" />
           <p className="sec3txt bdfont">
-            <strong>American Science Hemp Oil</strong> is made with the purest
+            <strong>American Science CBD oil</strong> is made with the purest
             hemp extract at a certified facility to meet and exceed industry
             standards.{' '}
           </p>

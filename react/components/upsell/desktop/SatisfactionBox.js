@@ -20,7 +20,7 @@ const SatisfactionBox = props => (
       <img src="/static/assets/images/mental-health.jpg" alt="" />
       <p className="box-txt1">SUPPORTS MENTAL HEALTH </p>
       <p className="box-txt2">
-        The Hemp Oil Capsules help support overall cognitive health while also
+        The CBD oil Capsules help support overall cognitive health while also
         boosting focus, mental clarity, and memory recall.
       </p>
     </div>

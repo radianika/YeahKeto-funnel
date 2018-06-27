@@ -7,7 +7,7 @@ class PromoSectionTwoDesktop extends React.PureComponent {
       <div className="section2">
         <div className="container position">
           <p className="s2hding">
-            <span>American Science HEMP OIL </span>
+            <span>American Science CBD OIL </span>
             <br /> Enriched with Cannabidiol Extract (CBD){' '}
           </p>{' '}
           <i className="s2hdimg sprite3 sprite-s2hd" />

@@ -8,7 +8,7 @@ class OilSlider extends React.PureComponent {
         <p className="prd-sec1-txt2">CBD oil</p>
         <p className="prd-sec-1txt3">Pure Cannabidiol complex</p>
         <p className="comn-txt prd-sec1-txt5">
-          Formulated with high-potency 500MG Hemp Extract, American Science&#8217;s Hemp Oil is rich
+          Formulated with high-potency 500MG Hemp Extract, American Science&#8217;s CBD oil is rich
           in a wide range of cannabinoids (CBD) that have been proven to support mood patterns,
           joint health, and mental clarity.
         </p>
@@ -48,7 +48,7 @@ class OilHowToUse extends React.PureComponent {
           <span>
             Step<br />1
           </span>
-          <p>Take 1 dropper full of the American Science Hemp Oil once a day.</p>
+          <p>Take 1 dropper full of the American Science CBD oil once a day.</p>
         </li>
         <li>
           <span>
@@ -75,7 +75,7 @@ class OilSquare extends React.PureComponent {
         <p className="prd-txt2">CBD Oil</p>
         <p className="prd-txt3">Pure Cannabidiol complex</p>
         <p className="prd-txt4 comn-txt">
-          Hemp oil may help reduce pains &amp; aches while improving mood patterns &amp; relaxation.
+          CBD oil may help reduce pains &amp; aches while improving mood patterns &amp; relaxation.
         </p>
       </React.Fragment>
     );
