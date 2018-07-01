@@ -95,13 +95,18 @@ class Upsell2Treatment2 extends React.PureComponent {
               src="/static/assets/images/up1-btn.png"
               alt=""
               className="up-btn"
+              onClick={this.upgrade}
             />
             <img
               src="/static/assets/images/secure256.png"
               alt=""
               className="up-secur"
             />
-            <a href="javascript:void(0);" className="up-no-thanks">
+            <a
+              href="javascript:void(0);"
+              className="up-no-thanks"
+              onClick={this.skipUpsell}
+            >
               <img src="/static/assets/images/close-icon.png" />&nbsp;No, I
               don't want better results.
             </a>
