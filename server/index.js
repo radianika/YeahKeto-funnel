@@ -201,10 +201,8 @@ app.prepare().then(() => {
       const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
       const { visitorId, isNew } = await getVisitorId(req, res);
 
-      if (requestAgent === 'desktop') {
-        if (isNew) {
-          res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
-        }
+      if (isNew) {
+        res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
       }
 
       if (requestAgent !== req.params.useragent) {
@@ -391,8 +389,9 @@ app.prepare().then(() => {
       const offerId = req.query.sourceValue5;
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
-      const visitorId = 'visitorIdFromReduxStore';
-      const variationId = await getVariationForVisitor(visitorId, '308072');
+      const { visitorId } = await getVisitorId(req, res);
+      const campaignId = '308072';
+      const variationId = await getVariationForVisitor(visitorId, campaignId);
       console.log({ variationId, visitorId });
 
       app.render(req, res, '/promo-mobile-upsell', {
@@ -400,9 +399,11 @@ app.prepare().then(() => {
         offerId,
         orderId,
         transaction_id,
-        variationId,
         adv_sub,
         sessionId,
+        variationId,
+        campaignId,
+        visitorId,
       });
     } catch (error) {
       Raven.captureException(error);

@@ -6,29 +6,23 @@ import { AuthActions, OrderActions } from 'redux/actions';
 
 class SelectPackage extends React.PureComponent {
   static async getInitialProps(props) {
-    const { store, isServer, query } = props.ctx;
-    if (isServer) {
-      store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
-      );
-    }
-  }
-
-  static getInitialProps({
-    ctx: {
+    const {
       store,
       isServer,
-      query: { visitorId, variationId, requestAgent },
+      query: {
+        visitorId, variationId, campaignId, requestAgent, sessionId,
+      },
       req: {
         session: { ip },
       },
-    },
-  }) {
+    } = props.ctx;
     if (isServer) {
+      store.dispatch(AuthActions.setUniqueSessionId({ sessionId }));
       store.dispatch(
         AuthActions.setAbtastyParams({
           visitorId,
           variationId,
+          campaignId,
           requestAgent,
           ip,
         }),

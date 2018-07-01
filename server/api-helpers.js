@@ -115,6 +115,7 @@ export async function generateAbtastyVisitorId() {
 }
 
 export async function getVariationForVisitor(visitor_id, campaign_id) {
+  console.log({ visitor_id, campaign_id });
   try {
     const response = await axios.post(
       `${ABTASTY_BASE_URL}/allocate`,
