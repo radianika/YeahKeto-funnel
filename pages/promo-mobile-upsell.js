@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { UpsellMobileContainer } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
 
-class SelectPackage extends React.PureComponent {
+class PromoMobileUpsell extends React.PureComponent {
   static async getInitialProps(props) {
     const {
       store,
@@ -56,9 +56,8 @@ class SelectPackage extends React.PureComponent {
 
 const mapStateToProps = reduxState => ({
   order: reduxState.order.order,
-  abtastyParams: reduxState.auth.abtastyParams,
 });
 
 export default connect(mapStateToProps, { ...OrderActions, ...AuthActions })(
-  SelectPackage,
+  PromoMobileUpsell,
 );
