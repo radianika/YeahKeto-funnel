@@ -51,20 +51,26 @@ class UpsellMobileContainerComponent extends React.PureComponent {
           <React.Fragment>
             {this.props.abtastyParams.variationId === '406285' && (
               <React.Fragment>
-                <Upsell1Treatment2 upgrade={this.upgrade} {...this.props} />
-                {/* <a href="/">
-                  <img src="/static/mobile/images/logo.png" alt="" className="logo" />
+                <a href="/">
+                  <img
+                    src="/static/mobile/images/logo.png"
+                    alt=""
+                    className="logo"
+                  />
                 </a>
-                <Upsell1 upgrade={this.upgrade} {...this.props} /> */}
+                <Upsell1 upgrade={this.upgrade} {...this.props} />
               </React.Fragment>
             )}
             {this.props.abtastyParams.variationId === '406286' && (
               <React.Fragment>
-                <Upsell1Treatment2 upgrade={this.upgrade} {...this.props} />
-                {/* <a href="/">
-                  <img src="/static/mobile/images/logo.png" alt="" className="logo" />
+                <a href="/">
+                  <img
+                    src="/static/mobile/images/logo.png"
+                    alt=""
+                    className="logo"
+                  />
                 </a>
-                <Upsell1Treatment1 upgrade={this.upgrade} {...this.props} /> */}
+                <Upsell1Treatment1 upgrade={this.upgrade} {...this.props} />
               </React.Fragment>
             )}
             {this.props.abtastyParams.variationId === '406287' && (
