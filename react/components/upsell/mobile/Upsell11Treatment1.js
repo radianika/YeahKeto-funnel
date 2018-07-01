@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { PromoSession, Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
 import { getQueryString } from 'helpers';
@@ -9,7 +10,7 @@ import { SatisfactionBox } from './SatisfactionBox';
  * @extends {React.PureComponent}
  * @description Mobile Component rendered after Upsell1 page
  */
-class Upsell11Component extends React.PureComponent {
+class Upsell11Treatment1Component extends React.PureComponent {
   upgrade = () => {
     this.props.upgrade(212, '/promo/mobile/upsell-2');
   };
@@ -17,9 +18,15 @@ class Upsell11Component extends React.PureComponent {
     window.location.assign(`/promo/mobile/upsell-2?${getQueryString()}`);
   };
   render() {
-    console.info('Rendering Upsell11 Control');
+    console.info('Rendering Upsell11 Treatment 1');
     return (
       <React.Fragment>
+        <Head>
+          <link
+            href="/static/mobile/css/upsell-treatment1.css"
+            rel="stylesheet"
+          />
+        </Head>
         <PromoSession pageType="upsellPage1" />
         <div className="up-strip">
           <h3>YOU QUALIFY FOR A LIMITED TIME DISCOUNT</h3>
@@ -61,6 +68,9 @@ class Upsell11Component extends React.PureComponent {
           </div>
 
           <div className="bnt-sec">
+            <p className="offer-valid">
+              Offer Valid Till <span id="showdate"> 1st July 2018</span>
+            </p>
             <a
               id="order-pulse-upsell11-mobile"
               href="javascript:void(0)"
@@ -93,6 +103,40 @@ class Upsell11Component extends React.PureComponent {
           </div>
         </div>
         <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
+        <div className="bnt-sec">
+          <p className="offer-valid">
+            Offer Valid Till <span id="showdate"> 1st July 2018</span>
+          </p>
+          <a
+            id="order-pulse-upsell11-mobile"
+            href="javascript:void(0)"
+            onClick={this.upgrade}
+          >
+            <img
+              src="/static/assets/images/ord-btn.png"
+              alt="order-btn"
+              width="370"
+              height="71"
+              className="ord-btn pulse"
+            />
+          </a>
+          <p className="thanks-txt">
+            <a
+              id="skip-pulse-upsell11-mobile"
+              href="javascript:void(0)"
+              onClick={this.skipUpsell}
+            >
+              <img
+                src="/static/assets/images/cut-icon.png"
+                width="15"
+                height="15"
+                alt="cut-icon"
+                className="cut-icon"
+              />
+              {"No, I don't want better results."}
+            </a>
+          </p>
+        </div>
         <div id="footer">
           <div className="container">
             <div className="ftr-txt">
@@ -107,6 +151,6 @@ class Upsell11Component extends React.PureComponent {
   }
 }
 
-const Upsell11 = withRouter(Upsell11Component);
+const Upsell11Treatment1 = withRouter(Upsell11Treatment1Component);
 
-export { Upsell11 };
+export { Upsell11Treatment1 };
