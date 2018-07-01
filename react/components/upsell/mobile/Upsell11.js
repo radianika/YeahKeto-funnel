@@ -93,6 +93,37 @@ class Upsell11Component extends React.PureComponent {
           </div>
         </div>
         <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
+        <div className="bnt-sec">
+          <a
+            id="order-pulse-upsell11-mobile"
+            href="javascript:void(0)"
+            onClick={this.upgrade}
+          >
+            <img
+              src="/static/assets/images/ord-btn.png"
+              alt="order-btn"
+              width="370"
+              height="71"
+              className="ord-btn pulse"
+            />
+          </a>
+          <p className="thanks-txt">
+            <a
+              id="skip-pulse-upsell11-mobile"
+              href="javascript:void(0)"
+              onClick={this.skipUpsell}
+            >
+              <img
+                src="/static/assets/images/cut-icon.png"
+                width="15"
+                height="15"
+                alt="cut-icon"
+                className="cut-icon"
+              />
+              {"No, I don't want better results."}
+            </a>
+          </p>
+        </div>
         <div id="footer">
           <div className="container">
             <div className="ftr-txt">
