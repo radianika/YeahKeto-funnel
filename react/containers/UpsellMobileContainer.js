@@ -10,6 +10,8 @@ import {
   Upsell11Treatment1,
   Upsell11Treatment2,
   Upsell2,
+  Upsell2Treatment1,
+  Upsell2Treatment2,
   Upsell21,
 } from 'react/components/upsell/mobile';
 import { Spinner, SuccessModal } from 'react/components/common';
@@ -29,7 +31,6 @@ class UpsellMobileContainerComponent extends React.PureComponent {
     });
   };
   render() {
-    console.log(this.props);
     const { upsell, offerId, adv_sub } = this.props.query;
     return (
       <div id="container">
@@ -111,7 +112,37 @@ class UpsellMobileContainerComponent extends React.PureComponent {
             )}
           </React.Fragment>
         )}
-        {upsell === 2 && <Upsell2 upgrade={this.upgrade} {...this.props} />}
+        {upsell === 2 && (
+          <React.Fragment>
+            {this.props.abtastyParams.variationId === '406291' && (
+              <React.Fragment>
+                <a href="/">
+                  <img
+                    src="/static/mobile/images/logo.png"
+                    alt=""
+                    className="logo"
+                  />
+                </a>
+                <Upsell2 upgrade={this.upgrade} {...this.props} />
+              </React.Fragment>
+            )}
+            {this.props.abtastyParams.variationId === '406292' && (
+              <React.Fragment>
+                <a href="/">
+                  <img
+                    src="/static/mobile/images/logo.png"
+                    alt=""
+                    className="logo"
+                  />
+                </a>
+                <Upsell2Treatment1 upgrade={this.upgrade} {...this.props} />
+              </React.Fragment>
+            )}
+            {this.props.abtastyParams.variationId === '406293' && (
+              <Upsell2Treatment2 upgrade={this.upgrade} {...this.props} />
+            )}
+          </React.Fragment>
+        )}
         {upsell === '2-1' && (
           <Upsell21 upgrade={this.upgrade} {...this.props} />
         )}
