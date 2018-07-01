@@ -8,7 +8,9 @@ const defaultConfig = {
     section1Img: '/static/promo/desktop/images/section1.jpg',
   },
   upsell1: {},
-  upsell2: {},
+  upsell2: {
+    showBanners: false
+  },
   upsell11: {},
   upsell21: {}
 };

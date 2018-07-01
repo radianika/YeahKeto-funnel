@@ -444,7 +444,7 @@ app.prepare().then(() => {
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
 
-      const visitorId = 'visitorIdFromReduxStore';
+      const { visitorId } = await getVisitorId(req, res);
       const variationId = await getVariationForVisitor(visitorId, '308075');
 
       app.render(req, res, '/promo-mobile-upsell', {

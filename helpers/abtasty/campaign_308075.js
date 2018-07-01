@@ -13,7 +13,9 @@ const campaign_308075 = {
       section1Img: "/static/promo/desktop/v1/section1.jpg"
     },
     upsell1: {},
-    upsell2: {},
+    upsell2: {
+      showBanners: true
+    },
     upsell11: {},
     upsell21: {}
   },
