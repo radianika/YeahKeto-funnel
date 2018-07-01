@@ -213,7 +213,7 @@ app.prepare().then(() => {
         );
       }
       if (requestAgent === 'desktop') {
-        const variationId = await getVariationForVisitor(visitorId);
+        const variationId = await getVariationForVisitor(visitorId, '306753');
         return app.render(req, res, '/promo-desktop', {
           requestAgent,
           visitorId,
@@ -222,7 +222,11 @@ app.prepare().then(() => {
         });
       }
       if (requestAgent === 'mobile') {
-        return app.render(req, res, '/promo-mobile', { requestAgent });
+        return app.render(req, res, '/promo-mobile', {
+          requestAgent,
+          visitorId,
+          device: requestAgent,
+        });
       }
     } catch (error) {
       Raven.captureException(error);
@@ -387,17 +391,19 @@ app.prepare().then(() => {
       const offerId = req.query.sourceValue5;
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
+      const visitorId = 'visitorIdFromReduxStore';
+      const variationId = await getVariationForVisitor(visitorId, '308072');
+      console.log({ variationId, visitorId });
 
-      // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-mobile-upsell', {
         upsell: 1,
         offerId,
         orderId,
         transaction_id,
+        variationId,
         adv_sub,
         sessionId,
       });
-      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -411,15 +417,18 @@ app.prepare().then(() => {
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
 
-      // redirectToPromo(orderId, req, res, () => {
+      const visitorId = 'visitorIdFromReduxStore';
+      const variationId = await getVariationForVisitor(visitorId, '308073');
+
       app.render(req, res, '/promo-mobile-upsell', {
         upsell: '1-1',
         orderId,
+        visitorId,
+        variationId,
         transaction_id,
         adv_sub,
         sessionId,
       });
-      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -434,16 +443,19 @@ app.prepare().then(() => {
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
 
-      // redirectToPromo(orderId, req, res, () => {
+      const visitorId = 'visitorIdFromReduxStore';
+      const variationId = await getVariationForVisitor(visitorId, '308075');
+
       app.render(req, res, '/promo-mobile-upsell', {
         upsell: 2,
         orderId,
         offerId,
+        visitorId,
+        variationId,
         transaction_id,
         adv_sub,
         sessionId,
       });
-      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);

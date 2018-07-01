@@ -14,6 +14,28 @@ class SelectPackage extends React.PureComponent {
     }
   }
 
+  static getInitialProps({
+    ctx: {
+      store,
+      isServer,
+      query: { visitorId, variationId, requestAgent },
+      req: {
+        session: { ip },
+      },
+    },
+  }) {
+    if (isServer) {
+      store.dispatch(
+        AuthActions.setAbtastyParams({
+          visitorId,
+          variationId,
+          requestAgent,
+          ip,
+        }),
+      );
+    }
+  }
+
   render() {
     const { props } = this;
     return (
@@ -40,6 +62,9 @@ class SelectPackage extends React.PureComponent {
 
 const mapStateToProps = reduxState => ({
   order: reduxState.order.order,
+  abtastyParams: reduxState.auth.abtastyParams,
 });
 
-export default connect(mapStateToProps, { ...OrderActions })(SelectPackage);
+export default connect(mapStateToProps, { ...OrderActions, ...AuthActions })(
+  SelectPackage,
+);

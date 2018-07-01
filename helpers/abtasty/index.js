@@ -1,4 +1,6 @@
-import { campaign_306753 } from './campaign_306753';
+import { campaign_308072 } from './campaign_308072';
+import { campaign_308073 } from './campaign_308073';
+import { campaign_308075 } from './campaign_308075';
 import defaultConfig from './campaign_default';
 
 /*
@@ -6,7 +8,9 @@ import defaultConfig from './campaign_default';
 	{{individual campaign}, {individual campaign}, {individual campaign}};
 */
 const splitTestingAllVariations = {
-	306753: campaign_306753
+	308072: campaign_308072,
+	308073: campaign_308073,
+	308075: campaign_308075,
 };
 
 const getVariationValue = (campaignId, varId, page = 'promo') => {
