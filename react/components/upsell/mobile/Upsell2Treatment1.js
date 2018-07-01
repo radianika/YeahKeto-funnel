@@ -1,0 +1,194 @@
+import React from 'react';
+import { PromoSession, Footer } from 'react/components/common';
+import { getQueryString } from 'helpers';
+import Head from 'next/head';
+
+/**
+ * @class Upsell2
+ * @extends {React.PureComponent}
+ * @description Mobile component rendered after Upsell1 pages
+ */
+class Upsell2Treatment1 extends React.PureComponent {
+  upgrade = () => {
+    this.props.upgrade(217, '/promo/mobile/thankyou');
+  };
+  skipUpsell = () => {
+    window.location.assign(`/promo/mobile/upsell-2-1?${getQueryString()}`);
+  };
+  render() {
+    return (
+      <React.Fragment>
+        <Head>
+          <link
+            href="/static/mobile/css/upsell2-treatment1.css"
+            rel="stylesheet"
+          />
+        </Head>
+        <PromoSession pageType="upsellPage2" />
+        <div className="up-strip">
+          <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
+          <p>
+            87% Customers Added The<br />
+            <strong>CBD Pain Relief Warming Balm</strong> To Their Order!
+          </p>
+        </div>
+
+        <div className="upsell-box">
+          <p className="up-txt1">GET INSTANT PAIN RELIEF</p>
+          <p className="with-txt">with</p>
+          <p className="up-txt2">CBD Warming Balm</p>
+          <img
+            src="/static/assets/images/upsell2-mobile/up-prod3.jpg"
+            className="up-prod"
+          />
+          <div className="clearall" />
+          <div className="price-box">
+            <p className="price-box-txt1">
+              Buy 2 Jars + <span>Get 1 Free</span>
+            </p>
+            <p className="price-box-txt2">Save 60% Today</p>
+            <p className="price-box-txt3">
+              <img
+                src="/static/assets/images/arrow-left.png"
+                width="77"
+                height="33"
+                alt=""
+                className="arrow-left"
+              />
+              <span className="old-price">
+                <img src="/static/assets/images/price-cut.png" />$130/<sup>
+                  ea
+                </sup>
+              </span>{' '}
+              $87/<sup>ea</sup>{' '}
+              <img
+                src="images/arrow-right.png"
+                width="77"
+                height="33"
+                alt=""
+                className="arrow-right"
+              />
+            </p>
+          </div>
+
+          <div className="bnt-sec">
+            <p className="offer-valid">
+              Offer Valid Till <span id="showdate"> 1st July 2018</span>
+            </p>
+            <a
+              id="order-balm-upsell2-mobile-treatment1-1"
+              href="javascript:void(0)"
+              onClick={this.upgrade}
+            >
+              <img
+                src="/static/assets/images/ord-btn.png"
+                alt=""
+                width="370"
+                height="71"
+                className="ord-btn pulse"
+              />
+            </a>
+            <p className="thanks-txt">
+              <a
+                id="skip-balm-upsell2-mobile-treatment1-1"
+                href="javascript:void(0)"
+                onClick={this.skipUpsell}
+              >
+                <img
+                  src="/static/assets/images/cut-icon.png"
+                  width="15"
+                  height="15"
+                  alt=""
+                  className="cut-icon"
+                />{' '}
+                No, I don't want better results.
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div className="up-strip" style={{ 'margin-top': '50px' }}>
+          <h4>BENEFITS OF CBD WARMING BALM INCLUDE ...</h4>
+        </div>
+
+        <div className="clearall" />
+        <div className="up-bottom-box">
+          <img src="/static/assets/images/up1-img1.png" />
+          <p className="box-txt1">FULL SPECTRUM FORMULA</p>
+          <p className="box-txt2">
+            CBD Warming Balm is INFUSED with highly a concentrated CBD which is
+            known for its medicinal properties and yields a more effective
+            solution than any balm in the world.
+          </p>
+        </div>
+
+        <div className="up-bottom-box">
+          <img src="/static/assets/images/upsell2-mobile/up2-img2.png" />
+          <p className="box-txt1">OFFERS ANTIOXIDANT SUPPORT</p>
+          <p className="box-txt2">
+            CBD Warming Balm works at a cellular level to combat free radical
+            damage, boost overall immunity, and provides healing as well as
+            aromatherapy benefits.
+          </p>
+        </div>
+
+        <div className="up-bottom-box">
+          <img src="/static/assets/images/upsell2-mobile/up2-img3.png" />
+          <p className="box-txt1">INSTANTLY RELIEVES CHRONIC PAIN</p>
+          <p className="box-txt2">
+            Melt away muscle fatigue, pain, swelling, and discomfort with
+            American Science CBD WARMING BALM'S deep, penetrating warmth
+            providing FAST relief that will amaze you.
+          </p>
+        </div>
+
+        <div className="bnt-sec">
+          <p className="offer-valid">
+            Offer Valid Till <span id="showdate"> 1st July 2018</span>
+          </p>
+          <a
+            id="order-balm-upsell2-mobile-treatment1-2"
+            href="javascript:void(0)"
+            onClick={this.upgrade}
+          >
+            <img
+              src="/static/assets/images/ord-btn.png"
+              alt=""
+              width="370"
+              height="71"
+              className="ord-btn pulse"
+            />
+          </a>
+          <p className="thanks-txt">
+            <a
+              id="skip-balm-upsell2-mobile-treatment1-2"
+              href="javascript:void(0)"
+              onClick={this.skipUpsell}
+            >
+              <img
+                src="/static/assets/images/cut-icon.png"
+                width="15"
+                height="15"
+                alt=""
+                className="cut-icon"
+              />{' '}
+              No, I don't want better results.
+            </a>
+          </p>
+        </div>
+
+        <div id="footer">
+          <div className="container">
+            <div className="ftr-txt">
+              <Footer noLogo>
+                <span />
+              </Footer>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  }
+}
+
+export { Upsell2Treatment1 };
