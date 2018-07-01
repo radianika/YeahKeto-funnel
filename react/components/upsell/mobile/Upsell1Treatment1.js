@@ -1,15 +1,16 @@
 import React from 'react';
+import Head from 'next/head';
 import { PromoSession, Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
 import { getQueryString } from 'helpers';
 import { SatisfactionBox } from './SatisfactionBox';
 
 /**
- * @class Upsell1Component
+ * @class Upsell1Treatment1Component
  * @extends {React.PureComponent}
  * @description Mobile component rendered after checkout page <br />
  */
-class Upsell1Component extends React.PureComponent {
+class Upsell1Treatment1Component extends React.PureComponent {
   upgrade = () => {
     this.props.upgrade(213, '/promo/mobile/upsell-2');
   };
@@ -17,9 +18,15 @@ class Upsell1Component extends React.PureComponent {
     window.location.assign(`/promo/mobile/upsell-1-1?${getQueryString()}`);
   };
   render() {
-    console.info('Rendering Upsell Control');
+    console.info('Rendering Upsell Treatment 1');
     return (
       <React.Fragment>
+        <Head>
+          <link
+            href="/static/mobile/css/upsell-treatment1.css"
+            rel="stylesheet"
+          />
+        </Head>
         <PromoSession pageType="upsellPage1" />
         <div className="up-strip">
           <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
@@ -67,6 +74,9 @@ class Upsell1Component extends React.PureComponent {
           </div>
 
           <div className="bnt-sec">
+            <p className="offer-valid">
+              Offer Valid Till <span id="showdate"> 1st July 2018</span>
+            </p>
             <a
               id="order-pulse-upsell1-mobile"
               href="javascript:void(0)"
@@ -100,6 +110,9 @@ class Upsell1Component extends React.PureComponent {
         </div>
         <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
         <div className="bnt-sec">
+          <p className="offer-valid">
+            Offer Valid Till <span id="showdate"> 1st July 2018</span>
+          </p>
           <a
             id="skip-pulse-satisfaction-box-mobile"
             href="javascript:void(0)"
@@ -144,6 +157,6 @@ class Upsell1Component extends React.PureComponent {
   }
 }
 
-const Upsell1 = withRouter(Upsell1Component);
+const Upsell1Treatment1 = withRouter(Upsell1Treatment1Component);
 
-export { Upsell1 };
+export { Upsell1Treatment1 };
