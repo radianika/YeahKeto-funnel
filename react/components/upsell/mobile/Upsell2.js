@@ -1,31 +1,20 @@
 import React from 'react';
 import { PromoSession, Footer } from 'react/components/common';
 import { getQueryString } from 'helpers';
-import { getVariationValue } from 'helpers/abtasty';
-import { AuthActions } from 'redux/actions';
-import { connect } from 'react-redux';
 
 /**
  * @class Upsell2
  * @extends {React.PureComponent}
  * @description Mobile component rendered after Upsell1 pages
  */
-class Upsell2Mobile extends React.PureComponent {
+class Upsell2 extends React.PureComponent {
   upgrade = () => {
     this.props.upgrade(217, '/promo/mobile/thankyou');
   };
-
   skipUpsell = () => {
     window.location.assign(`/promo/mobile/upsell-2-1?${getQueryString()}`);
   };
-
   render() {
-    const { variationId } = this.props;
-    // To be stored in redux now
-    const campaignId = 308075;
-    const currentConfig = getVariationValue(campaignId, variationId, 'upsell2');
-    console.log({ currentConfig });
-    console.log(currentConfig.showBanners);
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage2" />
@@ -78,9 +67,6 @@ class Upsell2Mobile extends React.PureComponent {
           </div>
 
           <div className="bnt-sec">
-            <p className="offer-valid">
-              Offer Valid Till <span id="showdate"> 1st July 2018</span>
-            </p>
             <a
               id="order-pulse-upsell2-mobile-1"
               href="javascript:void(0)"
@@ -108,18 +94,6 @@ class Upsell2Mobile extends React.PureComponent {
                   className="cut-icon"
                 />
                 {"No, I don't want better results."}
-              </a>
-            </p>
-            <p className="thanks-txt">
-              <a href="upsell-1-1.php">
-                <img
-                  src="/static/assets/images/cut-icon.png"
-                  alt=""
-                  className="cut-icon"
-                  width="15"
-                  height="15"
-                />{' '}
-                No, I don't want better results.
               </a>
             </p>
           </div>
@@ -214,13 +188,4 @@ class Upsell2Mobile extends React.PureComponent {
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    variationId: state.auth.abtastyParams.variationId,
-  };
-}
-
-const Upsell2 = connect(mapStateToProps, { ...AuthActions })(Upsell2Mobile);
-
 export { Upsell2 };
