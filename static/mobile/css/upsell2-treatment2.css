@@ -100,7 +100,7 @@ END UTILITY*/
 
 .pop-coupon {
   float: left;
-  background: url(../images/up-coupon.png) no-repeat center top;
+  background: url(/static/assets/images/up-coupon.png) no-repeat center top;
   position: relative;
   background-size: 100%;
   width: 100%;

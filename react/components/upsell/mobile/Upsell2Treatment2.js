@@ -25,163 +25,94 @@ class Upsell2Treatment2 extends React.PureComponent {
           />
         </Head>
         <PromoSession pageType="upsellPage2" />
-        <div className="up-strip">
-          <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
-          <p>
-            87% Customers Added The<br />
-            <strong>CBD Pain Relief Warming Balm</strong> To Their Order!
-          </p>
+
+        <div className="upsell-top">
+          <div className="contentWrap">
+            <img
+              alt="logo"
+              src="/static/assets/images/logo.png"
+              className="up-logo"
+            />
+            <img
+              src="/static/assets/images/ups-step.png"
+              alt=""
+              className="up-step"
+            />
+          </div>
         </div>
 
-        <div className="upsell-box">
-          <p className="up-txt1">GET INSTANT PAIN RELIEF</p>
-          <p className="with-txt">with</p>
-          <p className="up-txt2">CBD Warming Balm</p>
-          <img
-            src="/static/assets/images/upsell2-mobile/up-prod3.jpg"
-            className="up-prod"
-            alt="up-prod"
-          />
-          <div className="clearall" />
-          <div className="price-box">
-            <p className="price-box-txt1">
-              Buy 2 Jars + <span>Get 1 Free</span>
+        <div className="up-mid1">
+          <div className="contentWrap">
+            <p className="up-txt1">WAIT! Your Order Is Not Complete</p>
+            <p className="up-txt2">
+              Get better results by adding on the <strong>CBD Capsules</strong>{' '}
+              to your order. Take advantage of our special offer-{' '}
+              <strong>Buy 2 Bottles &amp; Get 1 Bottle Free</strong>{' '}
             </p>
-            <p className="price-box-txt2">Save 60% Today</p>
-            <p className="price-box-txt3">
-              <img
-                src="/static/assets/images/upsell2-mobile/arrow-left.png"
-                width="77"
-                height="33"
-                alt="arrow-left"
-                className="arrow-left"
-              />
-              <span className="old-price">
-                <img
-                  src="/static/assets/images/upsell2-mobile/price-cut.png"
-                  alt="price-cut"
-                />130/<sup>ea</sup>
-              </span>{' '}
-              87/<sup>ea</sup>{' '}
-              <img
-                src="/static/assets/images/upsell2-mobile/arrow-right.png"
-                width="77"
-                height="33"
-                alt="arrow-right"
-                className="arrow-right"
-              />
-            </p>
-          </div>
 
-          <div className="bnt-sec">
-            <a
-              id="order-pulse-upsell2-mobile-1"
-              href="javascript:void(0)"
-              onClick={this.upgrade}
-            >
+            <div className="pop-coupon">
               <img
-                src="/static/assets/images/ord-btn.png"
-                alt="order-btn"
-                width="370"
-                height="71"
-                className="ord-btn pulse"
+                src="/static/assets/images/up2-combo.png"
+                style={{
+                  position: 'absolute',
+                  top: '135px',
+                  left: '20px',
+                  width: '270px',
+                }}
               />
-            </a>
-            <p className="thanks-txt">
-              <a
-                id="skip-pulse-upsell2-mobile-1"
-                href="javascript:void(0)"
-                onClick={this.skipUpsell}
-              >
+              <div className="up1-content">
                 <img
-                  src="/static/assets/images/cut-icon.png"
-                  width="15"
-                  height="15"
-                  alt="cut-icon"
-                  className="cut-icon"
+                  src="/static/assets/images/timer-icon.png"
+                  className="up-timer"
                 />
-                {"No, I don't want better results."}
-              </a>
+                <p className="prod-txt">
+                  Buy 2 Jar Of<br />
+                  <span>CBD Warming Balm</span>
+                </p>
+                <p className="prod-txt">+</p>
+                <p className="prod-txt">
+                  Get 1 Jar<br />
+                  <span>Absolutely Free</span>
+                </p>
+                <p className="price-txt">
+                  Today Only<br />
+                  <span>$130.00</span> $87.00/ea
+                </p>
+                <p className="shipping-txt">
+                  Plus we'll pay for the added shipping cost
+                </p>
+              </div>
+            </div>
+
+            <p className="up-txt3">
+              This amazing offer won't ever be made again, and as always, you're
+              backed by a rock-solid, <span>100% money-back-guarantee</span>.
+              Just click the coupon above or the <span>"Yes"</span> button below
+              now to stock up while you can!
             </p>
-          </div>
-
-          <div className="up-strip" style={{ 'margin-top': '50px' }}>
-            <h4>BENEFITS OF CBD WARMING BALM INCLUDE ...</h4>
-          </div>
-
-          <div className="clearall" />
-
-          <div className="up-bottom-box">
-            <img
-              src="/static/assets/images/upsell2-mobile/up1-img1.png"
-              alt="upsell-img"
+            <input
+              type="image"
+              src="/static/assets/images/up1-btn.png"
+              alt=""
+              className="up-btn"
             />
-            <p className="box-txt1">FULL SPECTRUM FORMULA</p>
-            <p className="box-txt2">
-              CBD Warming Balm is INFUSED with highly a concentrated CBD which
-              is known for its medicinal properties and yields a more effective
-              solution than any balm in the world.
-            </p>
-          </div>
-
-          <div className="up-bottom-box">
             <img
-              src="/static/assets/images/upsell2-mobile/up2-img2.png"
-              alt="upsell-2-img-2"
+              src="/static/assets/images/secure256.png"
+              alt=""
+              className="up-secur"
             />
-            <p className="box-txt1">OFFERS ANTIOXIDANT SUPPORT</p>
-            <p className="box-txt2">
-              CBD Warming Balm works at a cellular level to combat free radical
-              damage, boost overall immunity, and provides healing as well as
-              aromatherapy benefits.
-            </p>
-          </div>
-
-          <div className="up-bottom-box">
-            <img
-              src="/static/assets/images/upsell2-mobile/up2-img3.png"
-              alt="upsell-2-img-3"
-            />
-            <p className="box-txt1">INSTANTLY RELIEVES CHRONIC PAIN</p>
-            <p className="box-txt2">
-              Melt away muscle fatigue, pain, swelling, and discomfort with
-              American Science CBD WARMING BALM&apos;S deep, penetrating warmth
-              providing FAST relief that will amaze you.
-            </p>
-          </div>
-
-          <div className="bnt-sec">
-            <a
-              id="order-pulse-upsell2-mobile-2"
-              href="javascript:void(0)"
-              onClick={this.upgrade}
-            >
-              <img
-                src="/static/assets/images/ord-btn.png"
-                alt="order-btn"
-                width="370"
-                height="71"
-                className="ord-btn pulse"
-              />
+            <a href="javascript:void(0);" className="up-no-thanks">
+              <img src="/static/assets/images/close-icon.png" />&nbsp;No, I
+              don't want better results.
             </a>
-            <p className="thanks-txt">
-              <a
-                id="skip-pulse-upsell2-mobile-2"
-                href="javascript:void(0)"
-                onClick={this.skipUpsell}
-              >
-                <img
-                  src="/static/assets/images/cut-icon.png"
-                  width="15"
-                  height="15"
-                  alt="cut-icon"
-                  className="cut-icon"
-                />{' '}
-                No, I don&apos;t want better results.
-              </a>
-            </p>
+            <img
+              src="/static/assets/images/card-secure.png"
+              alt=""
+              className="card-secure"
+            />
           </div>
         </div>
+
         <div id="footer">
           <div className="container">
             <div className="ftr-txt">

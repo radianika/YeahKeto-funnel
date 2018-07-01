@@ -17,7 +17,6 @@ class Upsell1Treatment2Component extends React.PureComponent {
     window.location.assign(`/promo/mobile/upsell-1-1?${getQueryString()}`);
   };
   render() {
-    console.info('Rendering Upsell Treatment 2');
     return (
       <React.Fragment>
         <Head>
