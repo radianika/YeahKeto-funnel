@@ -10,7 +10,12 @@ class PromoMobileUpsell extends React.PureComponent {
       store,
       isServer,
       query: {
-        visitorId, variationId, campaignId, requestAgent, sessionId,
+        visitorId,
+        variationId,
+        campaignId,
+        requestAgent,
+        sessionId,
+        prev,
       },
       req: {
         session: { ip },
@@ -25,6 +30,7 @@ class PromoMobileUpsell extends React.PureComponent {
           campaignId,
           requestAgent,
           ip,
+          prev,
         }),
       );
     }

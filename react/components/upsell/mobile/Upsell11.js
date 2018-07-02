@@ -11,7 +11,7 @@ import { SatisfactionBox } from './SatisfactionBox';
  */
 class Upsell11Component extends React.PureComponent {
   upgrade = () => {
-    this.props.upgrade(212, '/promo/mobile/upsell-2');
+    this.props.upgrade(212, '/promo/mobile/upsell-2?&prev=upsell11');
   };
   skipUpsell = () => {
     window.location.assign(`/promo/mobile/upsell-2?${getQueryString()}`);

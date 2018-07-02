@@ -114,7 +114,9 @@ class UpsellMobileContainerComponent extends React.PureComponent {
         )}
         {upsell === 2 && (
           <React.Fragment>
-            {this.props.abtastyParams.variationId === '406291' && (
+            {((this.props.abtastyParams.prev &&
+              this.props.abtastyParams.prev.indexOf('upsell1-1') > -1) ||
+              this.props.abtastyParams.variationId === '406291') && (
               <React.Fragment>
                 <a href="/">
                   <img

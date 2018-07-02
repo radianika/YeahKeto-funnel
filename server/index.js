@@ -454,6 +454,7 @@ app.prepare().then(() => {
         orderId,
         offerId,
         visitorId,
+        prev: req.query.prev,
         variationId,
         transaction_id,
         adv_sub,
