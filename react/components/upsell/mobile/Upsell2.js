@@ -55,6 +55,7 @@ class Upsell2 extends React.PureComponent {
   };
 
   render() {
+    console.log('inside upsell2 Control');
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage2" />

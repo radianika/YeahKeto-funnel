@@ -65,6 +65,10 @@ class UpsellMobileContainerComponent extends React.PureComponent {
   render() {
     const { upsell, offerId, adv_sub } = this.props.query;
     const { abtastyParams } = this.props;
+    const isPrevUpsell11 =
+      this.props.abtastyParams.prev &&
+      this.props.abtastyParams.prev.indexOf('upsell11') > -1;
+    console.log('isPrevUpseell11 ', isPrevUpsell11);
     return (
       <div id="container">
         {upsell === 1 &&
@@ -171,9 +175,8 @@ class UpsellMobileContainerComponent extends React.PureComponent {
         )}
         {upsell === 2 && (
           <React.Fragment>
-            {((this.props.abtastyParams.prev &&
-              this.props.abtastyParams.prev.indexOf('upsell11') > -1) ||
-              this.props.abtastyParams.variationId === '406291') && (
+            {(this.props.abtastyParams.variationId === '406291' ||
+              isPrevUpsell11) && (
               <React.Fragment>
                 <a href="/">
                   <img
@@ -189,29 +192,31 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                 />
               </React.Fragment>
             )}
-            {this.props.abtastyParams.variationId === '406292' && (
-              <React.Fragment>
-                <a href="/">
-                  <img
-                    src="/static/mobile/images/logo.png"
-                    alt=""
-                    className="logo"
+            {this.props.abtastyParams.variationId === '406292' &&
+              !isPrevUpsell11 && (
+                <React.Fragment>
+                  <a href="/">
+                    <img
+                      src="/static/mobile/images/logo.png"
+                      alt=""
+                      className="logo"
+                    />
+                  </a>
+                  <Upsell2Treatment1
+                    upgrade={this.upgrade}
+                    {...this.props}
+                    abtastyParams={abtastyParams}
                   />
-                </a>
-                <Upsell2Treatment1
+                </React.Fragment>
+              )}
+            {this.props.abtastyParams.variationId === '406293' &&
+              !isPrevUpsell11 && (
+                <Upsell2Treatment2
                   upgrade={this.upgrade}
                   {...this.props}
                   abtastyParams={abtastyParams}
                 />
-              </React.Fragment>
-            )}
-            {this.props.abtastyParams.variationId === '406293' && (
-              <Upsell2Treatment2
-                upgrade={this.upgrade}
-                {...this.props}
-                abtastyParams={abtastyParams}
-              />
-            )}
+              )}
           </React.Fragment>
         )}
         {upsell === '2-1' && (

@@ -56,6 +56,7 @@ class Upsell2Treatment2 extends React.PureComponent {
   };
 
   render() {
+    console.log('inside upsell 2 Treatment 2');
     return (
       <React.Fragment>
         <Head>

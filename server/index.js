@@ -447,13 +447,16 @@ app.prepare().then(() => {
       const adv_sub = req.query.sourceValue2;
 
       const { visitorId } = await getVisitorId(req, res);
-      const variationId = await getVariationForVisitor(visitorId, '308075');
+      const campaignId = '308075';
+      const variationId = await getVariationForVisitor(visitorId, campaignId);
+      console.log({ variationId, campaignId });
 
       app.render(req, res, '/promo-mobile-upsell', {
         upsell: 2,
         orderId,
         offerId,
         visitorId,
+        campaignId,
         prev: req.query.prev,
         variationId,
         transaction_id,
