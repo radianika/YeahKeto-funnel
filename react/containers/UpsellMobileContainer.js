@@ -32,6 +32,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
   };
   render() {
     const { upsell, offerId, adv_sub } = this.props.query;
+    const { abtastyParams } = this.props;
     return (
       <div id="container">
         {upsell === 1 &&
@@ -61,7 +62,11 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                     className="logo"
                   />
                 </a>
-                <Upsell1 upgrade={this.upgrade} {...this.props} />
+                <Upsell1
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                />
               </React.Fragment>
             )}
             {this.props.abtastyParams.variationId === '406286' && (
@@ -73,11 +78,19 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                     className="logo"
                   />
                 </a>
-                <Upsell1Treatment1 upgrade={this.upgrade} {...this.props} />
+                <Upsell1Treatment1
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                />
               </React.Fragment>
             )}
             {this.props.abtastyParams.variationId === '406287' && (
-              <Upsell1Treatment2 upgrade={this.upgrade} {...this.props} />
+              <Upsell1Treatment2
+                upgrade={this.upgrade}
+                {...this.props}
+                abtastyParams={abtastyParams}
+              />
             )}
           </React.Fragment>
         )}
@@ -92,7 +105,11 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                     className="logo"
                   />
                 </a>
-                <Upsell11 upgrade={this.upgrade} {...this.props} />
+                <Upsell11
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                />
               </React.Fragment>
             )}
             {this.props.abtastyParams.variationId === '406289' && (
@@ -104,11 +121,19 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                     className="logo"
                   />
                 </a>
-                <Upsell11Treatment1 upgrade={this.upgrade} {...this.props} />
+                <Upsell11Treatment1
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                />
               </React.Fragment>
             )}
             {this.props.abtastyParams.variationId === '406290' && (
-              <Upsell11Treatment2 upgrade={this.upgrade} {...this.props} />
+              <Upsell11Treatment2
+                upgrade={this.upgrade}
+                {...this.props}
+                abtastyParams={abtastyParams}
+              />
             )}
           </React.Fragment>
         )}
@@ -125,7 +150,11 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                     className="logo"
                   />
                 </a>
-                <Upsell2 upgrade={this.upgrade} {...this.props} />
+                <Upsell2
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                />
               </React.Fragment>
             )}
             {this.props.abtastyParams.variationId === '406292' && (
@@ -137,16 +166,28 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                     className="logo"
                   />
                 </a>
-                <Upsell2Treatment1 upgrade={this.upgrade} {...this.props} />
+                <Upsell2Treatment1
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                />
               </React.Fragment>
             )}
             {this.props.abtastyParams.variationId === '406293' && (
-              <Upsell2Treatment2 upgrade={this.upgrade} {...this.props} />
+              <Upsell2Treatment2
+                upgrade={this.upgrade}
+                {...this.props}
+                abtastyParams={abtastyParams}
+              />
             )}
           </React.Fragment>
         )}
         {upsell === '2-1' && (
-          <Upsell21 upgrade={this.upgrade} {...this.props} />
+          <Upsell21
+            upgrade={this.upgrade}
+            {...this.props}
+            abtastyParams={abtastyParams}
+          />
         )}
         {this.props.submitStatus === 'submitting' && <Spinner />}
       </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
+import moment from 'moment';
+import axios from 'axios';
 import { PromoSession, Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
 import { getQueryString } from 'helpers';
@@ -10,12 +12,50 @@ import { getQueryString } from 'helpers';
  * @description Mobile component rendered after checkout page <br />
  */
 class Upsell1Treatment2Component extends React.PureComponent {
+  componentDidMount() {
+    this.postVisitEvent();
+  }
+
   upgrade = () => {
+    this.postActionTracker();
     this.props.upgrade(213, '/promo/mobile/upsell-2');
   };
+
   skipUpsell = () => {
     window.location.assign(`/promo/mobile/upsell-1-1?${getQueryString()}`);
   };
+
+  postActionTracker = () => {
+    const { abtastyParams } = this.props;
+    const body = {
+      name: 'upsell1-treatment2',
+      value_string: 'upsell1-treatment2',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'MOBILE',
+        origin: 'Upsell1Treatment2',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+  };
+
+  postVisitEvent = () => {
+    const { abtastyParams } = this.props;
+    const body = {
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: window.location.href,
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'visit_event' });
+  };
+
   render() {
     return (
       <React.Fragment>
