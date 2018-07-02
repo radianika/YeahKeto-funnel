@@ -5,8 +5,31 @@ import { PromoMobileContainer } from 'react/containers';
 import { PromoSession, Spinner } from 'react/components/common';
 import { createNewSession } from 'redux/actions/authActions';
 import Router from 'next/router';
+import { AuthActions } from 'redux/actions';
 
 class Promo extends React.PureComponent {
+  static getInitialProps({
+    ctx: {
+      store,
+      isServer,
+      query: { visitorId, variationId, requestAgent },
+      req: {
+        session: { ip },
+      },
+    },
+  }) {
+    if (isServer) {
+      store.dispatch(
+        AuthActions.setAbtastyParams({
+          visitorId,
+          variationId,
+          requestAgent,
+          ip,
+        }),
+      );
+    }
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +39,11 @@ class Promo extends React.PureComponent {
 
   componentDidMount() {
     this.props.createNewSession();
+    const { localStorage } = window;
+    localStorage.setItem(
+      'abtastyParams',
+      JSON.stringify(this.props.abtastyParams),
+    );
     Router.onRouteChangeStart = () => {
       this.setState({ showSpinner: true });
     };
@@ -67,6 +95,7 @@ class Promo extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     sessionId: state.auth.sessionId,
+    abtastyParams: state.auth.abtastyParams,
   };
 }
 

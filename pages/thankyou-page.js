@@ -28,12 +28,12 @@ class Thankyou extends React.PureComponent {
   componentDidMount() {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    if (
-      this.props.query.isPromo &&
-      abtastyParams &&
-      abtastyParams.requestAgent === 'desktop'
-    ) {
-      this.sendTransactionDetails();
+    if (this.props.query.isPromo) {
+      const transactionName =
+        abtastyParams && abtastyParams.requestAgent === 'desktop'
+          ? 'order-confirmation-2'
+          : 'order-confirmation-4';
+      this.sendTransactionDetails(transactionName);
       this.postVisitEvent();
     }
     const items = this.getItem();
@@ -91,7 +91,7 @@ class Thankyou extends React.PureComponent {
     axios.post('/abtasty', { ...body, action: 'visit_event' });
   };
 
-  sendTransactionDetails = () => {
+  sendTransactionDetails = name => {
     const { localStorage } = window;
     const items = JSON.parse(localStorage.getItem('upsell1'));
     const id = items[0].OrderInfo.CustomerID.toString();
@@ -101,17 +101,17 @@ class Thankyou extends React.PureComponent {
     );
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
-      name: 'order-confirmation-2',
+      name,
       id,
       revenue,
       shipping: '0',
       tracking_data: {
         device_type:
           this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
-        ip: abtastyParams.ip,
+        ip: abtastyParams ? abtastyParams.ip : '',
         origin: 'ThankyouPage',
         timestamp: moment().format(),
-        visitor_id: abtastyParams.visitorId,
+        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
       },
     };
     axios.post('/abtasty', { ...body, action: 'transaction_event' });
