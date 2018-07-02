@@ -22,7 +22,8 @@ const campaignIds = { 1: '308072', '1-1': '308073', 2: '308075' };
 /**
  * @class UpsellMobileContainerComponent
  * @extends {React.PureComponent}
- * @description Mobile container components for Upsells : Renders the Upsell pages according to the stage <br />
+ * @description Mobile container components for Upsells :
+ * Renders the Upsell pages according to the stage <br />
  * Also renders iframe for tracking variables
  */
 class UpsellMobileContainerComponent extends React.PureComponent {
@@ -33,22 +34,24 @@ class UpsellMobileContainerComponent extends React.PureComponent {
   postCampaignActivatedEvent = () => {
     const { upsell } = this.props.query;
     const campaignId = campaignIds[upsell.toString()];
-    const body = {
-      campaign_id: campaignId.toString(),
-      variation_id: this.props.abtastyParams.variationId,
-      tracking_data: {
-        device_type:
-          this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
-        ip: this.props.abtastyParams.ip,
-        origin: 'Promo Desktop',
-        timestamp: moment().format(),
-        visitor_id: this.props.abtastyParams.visitorId,
-      },
-    };
-    axios.post('/abtasty', {
-      ...body,
-      action: 'campaign_activated_event',
-    });
+    if (campaignId) {
+      const body = {
+        campaign_id: campaignId.toString(),
+        variation_id: this.props.abtastyParams.variationId,
+        tracking_data: {
+          device_type:
+            this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+          ip: this.props.abtastyParams.ip,
+          origin: 'Promo Desktop',
+          timestamp: moment().format(),
+          visitor_id: this.props.abtastyParams.visitorId,
+        },
+      };
+      axios.post('/abtasty', {
+        ...body,
+        action: 'campaign_activated_event',
+      });
+    }
   };
 
   upgrade = (productId, nextPage) => {
@@ -212,11 +215,20 @@ class UpsellMobileContainerComponent extends React.PureComponent {
           </React.Fragment>
         )}
         {upsell === '2-1' && (
-          <Upsell21
-            upgrade={this.upgrade}
-            {...this.props}
-            abtastyParams={abtastyParams}
-          />
+          <React.Fragment>
+            <a href="/">
+              <img
+                src="/static/mobile/images/logo.png"
+                alt=""
+                className="logo"
+              />
+            </a>
+            <Upsell21
+              upgrade={this.upgrade}
+              {...this.props}
+              abtastyParams={abtastyParams}
+            />
+          </React.Fragment>
         )}
         {this.props.submitStatus === 'submitting' && <Spinner />}
       </div>
