@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import moment from 'moment';
 import { OrderActions } from 'redux/actions';
 import {
   Upsell1,
@@ -16,6 +18,7 @@ import {
 } from 'react/components/upsell/mobile';
 import { Spinner, SuccessModal } from 'react/components/common';
 
+const campaignIds = { 1: '308072', '1-1': '308073', 2: '308075' };
 /**
  * @class UpsellMobileContainerComponent
  * @extends {React.PureComponent}
@@ -23,6 +26,31 @@ import { Spinner, SuccessModal } from 'react/components/common';
  * Also renders iframe for tracking variables
  */
 class UpsellMobileContainerComponent extends React.PureComponent {
+  componentDidMount() {
+    this.postCampaignActivatedEvent();
+  }
+
+  postCampaignActivatedEvent = () => {
+    const { upsell } = this.props.query;
+    const campaignId = campaignIds[upsell.toString()];
+    const body = {
+      campaign_id: campaignId.toString(),
+      variation_id: this.props.abtastyParams.variationId,
+      tracking_data: {
+        device_type:
+          this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+        ip: this.props.abtastyParams.ip,
+        origin: 'Promo Desktop',
+        timestamp: moment().format(),
+        visitor_id: this.props.abtastyParams.visitorId,
+      },
+    };
+    axios.post('/abtasty', {
+      ...body,
+      action: 'campaign_activated_event',
+    });
+  };
+
   upgrade = (productId, nextPage) => {
     this.props.addUpsellToOrder({
       productId,
@@ -30,6 +58,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
       router: this.props.router,
     });
   };
+
   render() {
     const { upsell, offerId, adv_sub } = this.props.query;
     const { abtastyParams } = this.props;
