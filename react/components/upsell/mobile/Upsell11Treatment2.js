@@ -21,23 +21,24 @@ class Upsell11Treatment2Component extends React.PureComponent {
       'order-confirmation-upsell-1-1',
       'Upsell11Treatment2',
     );
-    this.postActionTracker();
+    this.postActionTracker('upsell-1-1-yes', 'upsell-1-1-yes');
     this.props.upgrade(212, '/promo/mobile/upsell-2?&prev=upsell11');
   };
 
   skipUpsell = () => {
+    this.postActionTracker('upsell-1-1-no', 'upsell-1-1-no');
     window.location.assign(`/promo/mobile/upsell-2?${getQueryString()}`);
   };
 
-  postActionTracker = () => {
+  postActionTracker = (name, value_string) => {
     const { abtastyParams } = this.props;
     const body = {
-      name: 'upsell11-treatment2',
-      value_string: 'upsell2-treatment2',
+      name,
+      value_string,
       type: 'CLICK',
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
-        device_type: 'MOBILE',
+        device_type: 'MOBILE_PHONE',
         origin: 'Upsell2Treatment2',
         timestamp: moment().format(),
         ip: abtastyParams.ip,

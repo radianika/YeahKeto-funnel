@@ -156,6 +156,7 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   server.post('/abtasty', async (req, res) => {
     const response = await postToAbtasty(req.body.action, req.body);
+    console.log({ response });
     res.status(200).send(response);
   });
 

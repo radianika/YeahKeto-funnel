@@ -15,28 +15,29 @@ class Upsell2Treatment1 extends React.PureComponent {
     this.postVisitEvent();
   }
 
-  upgrade = () => {
+  upgrade = button => {
     this.props.sendTransactionDetails(
       'order-confirmation-upsell-2',
       'Upsell2Treatment1',
     );
-    this.postActionTracker();
+    this.postActionTracker('upsell-2-yes', `upsell-2-yes-${button}`);
     this.props.upgrade(217, '/promo/mobile/thankyou');
   };
 
-  skipUpsell = () => {
+  skipUpsell = button => {
+    this.postActionTracker('upsell-2-no', `upsell-2-no-${button}`);
     window.location.assign(`/promo/mobile/upsell-2-1?${getQueryString()}`);
   };
 
-  postActionTracker = () => {
+  postActionTracker = (name, value_string) => {
     const { abtastyParams } = this.props;
     const body = {
-      name: 'upsell2-treatment1',
-      value_string: 'upsell2-treatment1',
+      name,
+      value_string,
       type: 'CLICK',
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
-        device_type: 'MOBILE',
+        device_type: 'MOBILE_PHONE',
         origin: 'Upsell2Treatment1',
         timestamp: moment().format(),
         ip: abtastyParams.ip,
@@ -60,7 +61,6 @@ class Upsell2Treatment1 extends React.PureComponent {
   };
 
   render() {
-    console.log('inside upsell2 Treatment 1');
     return (
       <React.Fragment>
         <Head>
@@ -123,7 +123,7 @@ class Upsell2Treatment1 extends React.PureComponent {
             <a
               id="order-balm-upsell2-mobile-treatment1-1"
               href="javascript:void(0)"
-              onClick={this.upgrade}
+              onClick={() => this.upgrade('top')}
             >
               <img
                 src="/static/assets/images/ord-btn.png"
@@ -137,7 +137,7 @@ class Upsell2Treatment1 extends React.PureComponent {
               <a
                 id="skip-balm-upsell2-mobile-treatment1-1"
                 href="javascript:void(0)"
-                onClick={this.skipUpsell}
+                onClick={() => this.skipUpsell('top')}
               >
                 <img
                   src="/static/assets/images/cut-icon.png"
@@ -194,7 +194,7 @@ class Upsell2Treatment1 extends React.PureComponent {
           <a
             id="order-balm-upsell2-mobile-treatment1-2"
             href="javascript:void(0)"
-            onClick={this.upgrade}
+            onClick={() => this.upgrade('bottom')}
           >
             <img
               src="/static/assets/images/ord-btn.png"
@@ -208,7 +208,7 @@ class Upsell2Treatment1 extends React.PureComponent {
             <a
               id="skip-balm-upsell2-mobile-treatment1-2"
               href="javascript:void(0)"
-              onClick={this.skipUpsell}
+              onClick={() => this.skipUpsell('bottom')}
             >
               <img
                 src="/static/assets/images/cut-icon.png"

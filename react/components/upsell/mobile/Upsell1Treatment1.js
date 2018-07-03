@@ -29,23 +29,6 @@ class Upsell1Treatment1Component extends React.PureComponent {
     window.location.assign(`/promo/mobile/upsell-1-1?${getQueryString()}`);
   };
 
-  postActionTracker = () => {
-    const { abtastyParams } = this.props;
-    const body = {
-      name: 'upsell1-treatment1',
-      value_string: 'upsell1-treatment1',
-      type: 'CLICK',
-      tracking_data: {
-        visitor_id: abtastyParams.visitorId,
-        device_type: 'MOBILE',
-        origin: 'Upsell1Treatment1',
-        timestamp: moment().format(),
-        ip: abtastyParams.ip,
-      },
-    };
-    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
-  };
-
   postVisitEvent = () => {
     const { abtastyParams } = this.props;
     const body = {
@@ -61,7 +44,6 @@ class Upsell1Treatment1Component extends React.PureComponent {
   };
 
   render() {
-    console.info('Rendering Upsell Treatment 1');
     return (
       <React.Fragment>
         <Head>
