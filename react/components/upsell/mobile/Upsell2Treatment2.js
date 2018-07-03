@@ -137,6 +137,7 @@ class Upsell2Treatment2 extends React.PureComponent {
               now to stock up while you can!
             </p>
             <input
+              id="order-balm-upsell2-mobile-treatment2"
               type="image"
               src="/static/assets/images/up1-btn.png"
               alt=""
@@ -149,6 +150,7 @@ class Upsell2Treatment2 extends React.PureComponent {
               className="up-secur"
             />
             <a
+              id="skip-balm-upsell2-mobile-treatment2"
               href="javascript:void(0);"
               className="up-no-thanks"
               onClick={this.skipUpsell}
