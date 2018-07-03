@@ -62,13 +62,37 @@ class UpsellMobileContainerComponent extends React.PureComponent {
     });
   };
 
+  sendTransactionDetails = (name, origin) => {
+    const { localStorage } = window;
+    const items = JSON.parse(localStorage.getItem('upsell1'));
+    const id = items[0].OrderInfo.CustomerID.toString();
+    const revenue = items.reduce(
+      (agg, val) => agg + val.OrderInfo.TotalAmount,
+      0,
+    );
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      name,
+      id,
+      revenue,
+      shipping: '0',
+      tracking_data: {
+        device_type: 'MOBILE_PHONE',
+        ip: abtastyParams ? abtastyParams.ip : '',
+        origin,
+        timestamp: moment().format(),
+        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'transaction_event' });
+  };
+
   render() {
     const { upsell, offerId, adv_sub } = this.props.query;
     const { abtastyParams } = this.props;
     const isPrevUpsell11 =
       this.props.abtastyParams.prev &&
       this.props.abtastyParams.prev.indexOf('upsell11') > -1;
-    console.log('isPrevUpseell11 ', isPrevUpsell11);
     return (
       <div id="container">
         {upsell === 1 &&
@@ -102,6 +126,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                   upgrade={this.upgrade}
                   {...this.props}
                   abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
                 />
               </React.Fragment>
             )}
@@ -118,6 +143,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                   upgrade={this.upgrade}
                   {...this.props}
                   abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
                 />
               </React.Fragment>
             )}
@@ -126,6 +152,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                 upgrade={this.upgrade}
                 {...this.props}
                 abtastyParams={abtastyParams}
+                sendTransactionDetails={this.sendTransactionDetails}
               />
             )}
           </React.Fragment>
@@ -145,6 +172,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                   upgrade={this.upgrade}
                   {...this.props}
                   abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
                 />
               </React.Fragment>
             )}
@@ -161,6 +189,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                   upgrade={this.upgrade}
                   {...this.props}
                   abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
                 />
               </React.Fragment>
             )}
@@ -169,6 +198,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                 upgrade={this.upgrade}
                 {...this.props}
                 abtastyParams={abtastyParams}
+                sendTransactionDetails={this.sendTransactionDetails}
               />
             )}
           </React.Fragment>
@@ -189,6 +219,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                   upgrade={this.upgrade}
                   {...this.props}
                   abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
                 />
               </React.Fragment>
             )}
@@ -206,6 +237,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                     upgrade={this.upgrade}
                     {...this.props}
                     abtastyParams={abtastyParams}
+                    sendTransactionDetails={this.sendTransactionDetails}
                   />
                 </React.Fragment>
               )}
@@ -215,6 +247,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                   upgrade={this.upgrade}
                   {...this.props}
                   abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
                 />
               )}
           </React.Fragment>
@@ -232,6 +265,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
               upgrade={this.upgrade}
               {...this.props}
               abtastyParams={abtastyParams}
+              sendTransactionDetails={this.sendTransactionDetails}
             />
           </React.Fragment>
         )}

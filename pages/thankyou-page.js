@@ -28,12 +28,12 @@ class Thankyou extends React.PureComponent {
   componentDidMount() {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    if (this.props.query.isPromo) {
-      const transactionName =
-        abtastyParams && abtastyParams.requestAgent === 'desktop'
-          ? 'order-confirmation-2'
-          : 'order-confirmation-4';
-      this.sendTransactionDetails(transactionName);
+    if (
+      this.props.query.isPromo &&
+      abtastyParams &&
+      abtastyParams.requestAgent === 'desktop'
+    ) {
+      this.sendTransactionDetails();
       this.postVisitEvent();
     }
     const items = this.getItem();
@@ -91,7 +91,7 @@ class Thankyou extends React.PureComponent {
     axios.post('/abtasty', { ...body, action: 'visit_event' });
   };
 
-  sendTransactionDetails = name => {
+  sendTransactionDetails = () => {
     const { localStorage } = window;
     const items = JSON.parse(localStorage.getItem('upsell1'));
     const id = items[0].OrderInfo.CustomerID.toString();
@@ -101,7 +101,7 @@ class Thankyou extends React.PureComponent {
     );
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
-      name,
+      name: 'order-confirmation-2',
       id,
       revenue,
       shipping: '0',

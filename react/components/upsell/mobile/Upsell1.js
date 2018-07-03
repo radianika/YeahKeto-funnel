@@ -17,29 +17,12 @@ class Upsell1Component extends React.PureComponent {
   }
 
   upgrade = () => {
-    this.postActionTracker();
+    this.props.sendTransactionDetails('order-confirmation-upsell-1', 'Upsell1');
     this.props.upgrade(213, '/promo/mobile/upsell-2');
   };
 
   skipUpsell = () => {
     window.location.assign(`/promo/mobile/upsell-1-1?${getQueryString()}`);
-  };
-
-  postActionTracker = () => {
-    const { abtastyParams } = this.props;
-    const body = {
-      name: 'upsell1-control',
-      value_string: 'upsell1-control',
-      type: 'CLICK',
-      tracking_data: {
-        visitor_id: abtastyParams.visitorId,
-        device_type: 'MOBILE',
-        origin: 'Upsell1Control',
-        timestamp: moment().format(),
-        ip: abtastyParams.ip,
-      },
-    };
-    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
   };
 
   postVisitEvent = () => {
@@ -57,7 +40,6 @@ class Upsell1Component extends React.PureComponent {
   };
 
   render() {
-    console.info('Rendering Upsell Control');
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage1" />

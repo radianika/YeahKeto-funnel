@@ -18,7 +18,10 @@ class Upsell1Treatment1Component extends React.PureComponent {
   }
 
   upgrade = () => {
-    this.postActionTracker();
+    this.props.sendTransactionDetails(
+      'order-confirmation-upsell-1',
+      'Upsell1Treatment1',
+    );
     this.props.upgrade(213, '/promo/mobile/upsell-2');
   };
 
