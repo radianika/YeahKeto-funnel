@@ -39,7 +39,7 @@ class Upsell11Treatment2Component extends React.PureComponent {
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
         device_type: 'MOBILE_PHONE',
-        origin: 'Upsell2Treatment2',
+        origin: 'Upsell11Treatment2',
         timestamp: moment().format(),
         ip: abtastyParams.ip,
       },
