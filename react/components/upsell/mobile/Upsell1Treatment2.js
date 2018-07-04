@@ -102,7 +102,7 @@ class Upsell1Treatment2Component extends React.PureComponent {
                 </p>
                 <p className="price-txt">
                   Today Only<br />
-                  <span>$129.95</span> $77.00/ea
+                  <span>129.95</span> 77.00/ea
                 </p>
                 <p className="shipping-txt">
                   Plus we'll pay for the added shipping cost

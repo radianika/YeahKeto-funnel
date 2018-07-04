@@ -101,11 +101,11 @@ class Upsell2Treatment1 extends React.PureComponent {
                 className="arrow-left"
               />
               <span className="old-price">
-                <img src="/static/assets/images/price-cut.png" />$130/<sup>
+                <img src="/static/assets/images/price-cut.png" />130/<sup>
                   ea
                 </sup>
               </span>{' '}
-              $87/<sup>ea</sup>{' '}
+              87/<sup>ea</sup>{' '}
               <img
                 src="images/arrow-right.png"
                 width="77"
