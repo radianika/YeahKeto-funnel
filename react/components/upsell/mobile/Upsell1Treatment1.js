@@ -100,7 +100,8 @@ class Upsell1Treatment1Component extends React.PureComponent {
 
           <div className="bnt-sec">
             <p className="offer-valid">
-              Offer Valid Till <span id="showdate"> 1st July 2018</span>
+              Offer Valid Till{' '}
+              <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
             </p>
             <a
               id="order-pulse-upsell1-mobile"
@@ -136,7 +137,8 @@ class Upsell1Treatment1Component extends React.PureComponent {
         <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
         <div className="bnt-sec">
           <p className="offer-valid">
-            Offer Valid Till <span id="showdate"> 1st July 2018</span>
+            Offer Valid Till{' '}
+            <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
           </p>
           <a
             id="skip-pulse-satisfaction-box-mobile"

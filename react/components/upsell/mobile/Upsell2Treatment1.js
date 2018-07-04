@@ -118,7 +118,8 @@ class Upsell2Treatment1 extends React.PureComponent {
 
           <div className="bnt-sec">
             <p className="offer-valid">
-              Offer Valid Till <span id="showdate"> 1st July 2018</span>
+              Offer Valid Till{' '}
+              <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
             </p>
             <a
               id="order-balm-upsell2-mobile-treatment1-1"
@@ -189,7 +190,8 @@ class Upsell2Treatment1 extends React.PureComponent {
 
         <div className="bnt-sec">
           <p className="offer-valid">
-            Offer Valid Till <span id="showdate"> 1st July 2018</span>
+            Offer Valid Till{' '}
+            <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
           </p>
           <a
             id="order-balm-upsell2-mobile-treatment1-2"
