@@ -28,7 +28,12 @@ const campaignIds = { 1: '308072', '1-1': '308073', 2: '308075' };
  */
 class UpsellMobileContainerComponent extends React.PureComponent {
   componentDidMount() {
-    this.postCampaignActivatedEvent();
+    const isPrevUpsell11 =
+      this.props.abtastyParams.prev &&
+      this.props.abtastyParams.prev.indexOf('upsell11') > -1;
+    if (!isPrevUpsell11) {
+      this.postCampaignActivatedEvent();
+    }
   }
 
   postCampaignActivatedEvent = () => {
@@ -220,6 +225,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                   {...this.props}
                   abtastyParams={abtastyParams}
                   sendTransactionDetails={this.sendTransactionDetails}
+                  isPrevUpsell11={isPrevUpsell11}
                 />
               </React.Fragment>
             )}
