@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import moment from 'moment';
 import axios from 'axios';
 import { PromoSession, Footer } from 'react/components/common';
@@ -11,7 +12,7 @@ import { SatisfactionBox } from './SatisfactionBox';
  * @extends {React.PureComponent}
  * @description Mobile Component rendered after Upsell1 page
  */
-class Upsell11Component extends React.PureComponent {
+class Upsell11Treatment1Component extends React.PureComponent {
   componentDidMount() {
     this.postVisitEvent();
   }
@@ -19,7 +20,7 @@ class Upsell11Component extends React.PureComponent {
   upgrade = button => {
     this.props.sendTransactionDetails(
       'order-confirmation-upsell-1-1',
-      'Upsell11',
+      'Upsell11Treatment1',
     );
     this.postActionTracker('upsell-1-1-yes', `upsell-1-1-yes-${button}`);
     this.props.upgrade(212, '/promo/mobile/upsell-2?&prev=upsell11');
@@ -39,7 +40,7 @@ class Upsell11Component extends React.PureComponent {
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
         device_type: 'MOBILE_PHONE',
-        origin: 'Upsell11Control',
+        origin: 'Upsell11Treatment1',
         timestamp: moment().format(),
         ip: abtastyParams.ip,
       },
@@ -64,6 +65,12 @@ class Upsell11Component extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
+        <Head>
+          <link
+            href="/static/mobile/css/upsell-treatment1.css"
+            rel="stylesheet"
+          />
+        </Head>
         <PromoSession pageType="upsellPage1" />
         <div className="up-strip">
           <h3>YOU QUALIFY FOR A LIMITED TIME DISCOUNT</h3>
@@ -105,6 +112,10 @@ class Upsell11Component extends React.PureComponent {
           </div>
 
           <div className="bnt-sec">
+            <p className="offer-valid">
+              Offer Valid Till{' '}
+              <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
+            </p>
             <a
               id="cheaper-capsule-yes-top"
               href="javascript:void(0)"
@@ -138,6 +149,10 @@ class Upsell11Component extends React.PureComponent {
         </div>
         <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
         <div className="bnt-sec">
+          <p className="offer-valid">
+            Offer Valid Till{' '}
+            <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
+          </p>
           <a
             id="cheaper-capsule-yes-bottom"
             href="javascript:void(0)"
@@ -182,6 +197,6 @@ class Upsell11Component extends React.PureComponent {
   }
 }
 
-const Upsell11 = withRouter(Upsell11Component);
+const Upsell11Treatment1 = withRouter(Upsell11Treatment1Component);
 
-export { Upsell11 };
+export { Upsell11Treatment1 };

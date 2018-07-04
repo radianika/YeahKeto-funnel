@@ -3,19 +3,23 @@ import moment from 'moment';
 import axios from 'axios';
 import { PromoSession, Footer } from 'react/components/common';
 import { getQueryString } from 'helpers';
+import Head from 'next/head';
 
 /**
  * @class Upsell2
  * @extends {React.PureComponent}
  * @description Mobile component rendered after Upsell1 pages
  */
-class Upsell2 extends React.PureComponent {
+class Upsell2Treatment1 extends React.PureComponent {
   componentDidMount() {
     this.postVisitEvent();
   }
 
   upgrade = button => {
-    this.props.sendTransactionDetails('order-confirmation-upsell-2', 'Upsell2');
+    this.props.sendTransactionDetails(
+      'order-confirmation-upsell-2',
+      'Upsell2Treatment1',
+    );
     this.postActionTracker('upsell-2-yes', `upsell-2-yes-${button}`);
     this.props.upgrade(217, '/promo/mobile/thankyou');
   };
@@ -34,7 +38,7 @@ class Upsell2 extends React.PureComponent {
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
         device_type: 'MOBILE_PHONE',
-        origin: 'Upsell2Control',
+        origin: 'Upsell2Treatment1',
         timestamp: moment().format(),
         ip: abtastyParams.ip,
       },
@@ -59,6 +63,12 @@ class Upsell2 extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
+        <Head>
+          <link
+            href="/static/mobile/css/upsell2-treatment1.css"
+            rel="stylesheet"
+          />
+        </Head>
         <PromoSession pageType="upsellPage2" />
         <div className="up-strip">
           <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
@@ -75,7 +85,6 @@ class Upsell2 extends React.PureComponent {
           <img
             src="/static/assets/images/upsell2-mobile/up-prod3.jpg"
             className="up-prod"
-            alt="up-prod"
           />
           <div className="clearall" />
           <div className="price-box">
@@ -85,30 +94,33 @@ class Upsell2 extends React.PureComponent {
             <p className="price-box-txt2">Save 60% Today</p>
             <p className="price-box-txt3">
               <img
-                src="/static/assets/images/upsell2-mobile/arrow-left.png"
+                src="/static/assets/images/arrow-left.png"
                 width="77"
                 height="33"
-                alt="arrow-left"
+                alt=""
                 className="arrow-left"
               />
               <span className="old-price">
-                <img
-                  src="/static/assets/images/upsell2-mobile/price-cut.png"
-                  alt="price-cut"
-                />130/<sup>ea</sup>
+                <img src="/static/assets/images/price-cut.png" />130/<sup>
+                  ea
+                </sup>
               </span>{' '}
               87/<sup>ea</sup>{' '}
               <img
-                src="/static/assets/images/upsell2-mobile/arrow-right.png"
+                src="images/arrow-right.png"
                 width="77"
                 height="33"
-                alt="arrow-right"
+                alt=""
                 className="arrow-right"
               />
             </p>
           </div>
 
           <div className="bnt-sec">
+            <p className="offer-valid">
+              Offer Valid Till{' '}
+              <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
+            </p>
             <a
               id="balm-yes-top"
               href="javascript:void(0)"
@@ -116,7 +128,7 @@ class Upsell2 extends React.PureComponent {
             >
               <img
                 src="/static/assets/images/ord-btn.png"
-                alt="order-btn"
+                alt=""
                 width="370"
                 height="71"
                 className="ord-btn pulse"
@@ -132,91 +144,86 @@ class Upsell2 extends React.PureComponent {
                   src="/static/assets/images/cut-icon.png"
                   width="15"
                   height="15"
-                  alt="cut-icon"
-                  className="cut-icon"
-                />
-                {"No, I don't want better results."}
-              </a>
-            </p>
-          </div>
-
-          <div className="up-strip" style={{ 'margin-top': '50px' }}>
-            <h4>BENEFITS OF CBD WARMING BALM INCLUDE ...</h4>
-          </div>
-
-          <div className="clearall" />
-
-          <div className="up-bottom-box">
-            <img
-              src="/static/assets/images/upsell2-mobile/up1-img1.png"
-              alt="upsell-img"
-            />
-            <p className="box-txt1">FULL SPECTRUM FORMULA</p>
-            <p className="box-txt2">
-              CBD Warming Balm is INFUSED with highly a concentrated CBD which
-              is known for its medicinal properties and yields a more effective
-              solution than any balm in the world.
-            </p>
-          </div>
-
-          <div className="up-bottom-box">
-            <img
-              src="/static/assets/images/upsell2-mobile/up2-img2.png"
-              alt="upsell-2-img-2"
-            />
-            <p className="box-txt1">OFFERS ANTIOXIDANT SUPPORT</p>
-            <p className="box-txt2">
-              CBD Warming Balm works at a cellular level to combat free radical
-              damage, boost overall immunity, and provides healing as well as
-              aromatherapy benefits.
-            </p>
-          </div>
-
-          <div className="up-bottom-box">
-            <img
-              src="/static/assets/images/upsell2-mobile/up2-img3.png"
-              alt="upsell-2-img-3"
-            />
-            <p className="box-txt1">INSTANTLY RELIEVES CHRONIC PAIN</p>
-            <p className="box-txt2">
-              Melt away muscle fatigue, pain, swelling, and discomfort with
-              American Science CBD WARMING BALM&apos;S deep, penetrating warmth
-              providing FAST relief that will amaze you.
-            </p>
-          </div>
-
-          <div className="bnt-sec">
-            <a
-              id="balm-yes-bottom"
-              href="javascript:void(0)"
-              onClick={() => this.upgrade('bottom')}
-            >
-              <img
-                src="/static/assets/images/ord-btn.png"
-                alt="order-btn"
-                width="370"
-                height="71"
-                className="ord-btn pulse"
-              />
-            </a>
-            <p className="thanks-txt">
-              <a
-                id="balm-no-bottom"
-                href="javascript:void(0)"
-                onClick={() => this.skipUpsell('bottom')}
-              >
-                <img
-                  src="/static/assets/images/cut-icon.png"
-                  width="15"
-                  height="15"
-                  alt="cut-icon"
+                  alt=""
                   className="cut-icon"
                 />{' '}
-                No, I don&apos;t want better results.
+                No, I don't want better results.
               </a>
             </p>
           </div>
         </div>
+
+        <div className="up-strip" style={{ 'margin-top': '50px' }}>
+          <h4>BENEFITS OF CBD WARMING BALM INCLUDE ...</h4>
+        </div>
+
+        <div className="clearall" />
+        <div className="up-bottom-box">
+          <img src="/static/assets/images/up1-img1.png" />
+          <p className="box-txt1">FULL SPECTRUM FORMULA</p>
+          <p className="box-txt2">
+            CBD Warming Balm is INFUSED with highly a concentrated CBD which is
+            known for its medicinal properties and yields a more effective
+            solution than any balm in the world.
+          </p>
+        </div>
+
+        <div className="up-bottom-box">
+          <img src="/static/assets/images/upsell2-mobile/up2-img2.png" />
+          <p className="box-txt1">OFFERS ANTIOXIDANT SUPPORT</p>
+          <p className="box-txt2">
+            CBD Warming Balm works at a cellular level to combat free radical
+            damage, boost overall immunity, and provides healing as well as
+            aromatherapy benefits.
+          </p>
+        </div>
+
+        <div className="up-bottom-box">
+          <img src="/static/assets/images/upsell2-mobile/up2-img3.png" />
+          <p className="box-txt1">INSTANTLY RELIEVES CHRONIC PAIN</p>
+          <p className="box-txt2">
+            Melt away muscle fatigue, pain, swelling, and discomfort with
+            American Science CBD WARMING BALM'S deep, penetrating warmth
+            providing FAST relief that will amaze you.
+          </p>
+        </div>
+
+        <div className="bnt-sec">
+          <p className="offer-valid">
+            Offer Valid Till{' '}
+            <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
+          </p>
+          <a
+            id="balm-yes-bottom"
+            href="javascript:void(0)"
+            onClick={() => this.upgrade('bottom')}
+          >
+            <img
+              src="/static/assets/images/ord-btn.png"
+              alt=""
+              width="370"
+              height="71"
+              className="ord-btn pulse"
+            />
+          </a>
+          <p className="thanks-txt">
+            <a
+              id="balm-no-bottom"
+              href="javascript:void(0)"
+              onClick={() => this.skipUpsell('bottom')}
+            >
+              <img
+                src="/static/assets/images/cut-icon.png"
+                width="15"
+                height="15"
+                alt=""
+                className="cut-icon"
+              />{' '}
+              No, I don't want better results.
+            </a>
+          </p>
+        </div>
+
         <div id="footer">
           <div className="container">
             <div className="ftr-txt">
@@ -230,4 +237,5 @@ class Upsell2 extends React.PureComponent {
     );
   }
 }
-export { Upsell2 };
+
+export { Upsell2Treatment1 };

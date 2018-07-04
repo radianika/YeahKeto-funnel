@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment';
+import axios from 'axios';
 import { PromoSession, Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
 import { getQueryString } from 'helpers';
@@ -10,12 +12,33 @@ import { SatisfactionBox } from './SatisfactionBox';
  * @description Mobile component rendered after checkout page <br />
  */
 class Upsell1Component extends React.PureComponent {
+  componentDidMount() {
+    this.postVisitEvent();
+  }
+
   upgrade = () => {
+    this.props.sendTransactionDetails('order-confirmation-upsell-1', 'Upsell1');
     this.props.upgrade(213, '/promo/mobile/upsell-2');
   };
+
   skipUpsell = () => {
     window.location.assign(`/promo/mobile/upsell-1-1?${getQueryString()}`);
   };
+
+  postVisitEvent = () => {
+    const { abtastyParams } = this.props;
+    const body = {
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: window.location.href,
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'visit_event' });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -67,7 +90,7 @@ class Upsell1Component extends React.PureComponent {
 
           <div className="bnt-sec">
             <a
-              id="order-pulse-upsell1-mobile"
+              id="capsule-yes-top"
               href="javascript:void(0)"
               onClick={this.upgrade}
             >
@@ -81,7 +104,7 @@ class Upsell1Component extends React.PureComponent {
             </a>
             <p className="thanks-txt">
               <a
-                id="skip-pulse-upsell1-mobile"
+                id="capsule-no-top"
                 href="javascript:void(0)"
                 onClick={this.skipUpsell}
               >
@@ -98,6 +121,37 @@ class Upsell1Component extends React.PureComponent {
           </div>
         </div>
         <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
+        <div className="bnt-sec">
+          <a
+            id="capsule-yes-bottom"
+            href="javascript:void(0)"
+            onClick={this.upgrade}
+          >
+            <img
+              src="/static/assets/images/ord-btn.png"
+              alt=""
+              width="370"
+              height="71"
+              className="ord-btn pulse"
+            />
+          </a>
+          <p className="thanks-txt">
+            <a
+              id="capsule-no-bottom"
+              href="javascript:void(0)"
+              onClick={this.skipUpsell}
+            >
+              <img
+                src="/static/assets/images/cut-icon.png"
+                width="15"
+                height="15"
+                alt=""
+                className="cut-icon"
+              />{' '}
+              No, I don't want better results.
+            </a>
+          </p>
+        </div>
         <div id="footer">
           <div className="container">
             <div className="ftr-txt">
