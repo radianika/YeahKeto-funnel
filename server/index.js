@@ -449,7 +449,11 @@ app.prepare().then(() => {
 
       const { visitorId } = await getVisitorId(req, res);
       const campaignId = '308075';
-      const variationId = await getVariationForVisitor(visitorId, campaignId);
+      const { prev } = req.query;
+      let variationId = '';
+      if (prev !== 'upsell11') {
+        variationId = await getVariationForVisitor(visitorId, campaignId);
+      }
       console.log({ variationId, campaignId });
 
       app.render(req, res, '/promo-mobile-upsell', {
@@ -458,7 +462,7 @@ app.prepare().then(() => {
         offerId,
         visitorId,
         campaignId,
-        prev: req.query.prev,
+        prev,
         variationId,
         transaction_id,
         adv_sub,
