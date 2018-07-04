@@ -4,12 +4,34 @@ import { connect } from 'react-redux';
 import { UpsellMobileContainer } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
 
-class SelectPackage extends React.PureComponent {
+class PromoMobileUpsell extends React.PureComponent {
   static async getInitialProps(props) {
-    const { store, isServer, query } = props.ctx;
+    const {
+      store,
+      isServer,
+      query: {
+        visitorId,
+        variationId,
+        campaignId,
+        requestAgent,
+        sessionId,
+        prev,
+      },
+      req: {
+        session: { ip },
+      },
+    } = props.ctx;
     if (isServer) {
+      store.dispatch(AuthActions.setUniqueSessionId({ sessionId }));
       store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
+        AuthActions.setAbtastyParams({
+          visitorId,
+          variationId,
+          campaignId,
+          requestAgent,
+          ip,
+          prev,
+        }),
       );
     }
   }
@@ -42,4 +64,6 @@ const mapStateToProps = reduxState => ({
   order: reduxState.order.order,
 });
 
-export default connect(mapStateToProps, { ...OrderActions })(SelectPackage);
+export default connect(mapStateToProps, { ...OrderActions, ...AuthActions })(
+  PromoMobileUpsell,
+);

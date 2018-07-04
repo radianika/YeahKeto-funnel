@@ -1,23 +1,27 @@
 import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
+import Head from 'next/head';
 import { PromoSession, Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
 import { getQueryString } from 'helpers';
 import { SatisfactionBox } from './SatisfactionBox';
 
 /**
- * @class Upsell1Component
+ * @class Upsell1Treatment1Component
  * @extends {React.PureComponent}
  * @description Mobile component rendered after checkout page <br />
  */
-class Upsell1Component extends React.PureComponent {
+class Upsell1Treatment1Component extends React.PureComponent {
   componentDidMount() {
     this.postVisitEvent();
   }
 
   upgrade = () => {
-    this.props.sendTransactionDetails('order-confirmation-upsell-1', 'Upsell1');
+    this.props.sendTransactionDetails(
+      'order-confirmation-upsell-1',
+      'Upsell1Treatment1',
+    );
     this.props.upgrade(213, '/promo/mobile/upsell-2');
   };
 
@@ -42,6 +46,12 @@ class Upsell1Component extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
+        <Head>
+          <link
+            href="/static/mobile/css/upsell-treatment1.css"
+            rel="stylesheet"
+          />
+        </Head>
         <PromoSession pageType="upsellPage1" />
         <div className="up-strip">
           <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
@@ -89,6 +99,10 @@ class Upsell1Component extends React.PureComponent {
           </div>
 
           <div className="bnt-sec">
+            <p className="offer-valid">
+              Offer Valid Till{' '}
+              <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
+            </p>
             <a
               id="order-pulse-upsell1-mobile"
               href="javascript:void(0)"
@@ -122,6 +136,10 @@ class Upsell1Component extends React.PureComponent {
         </div>
         <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
         <div className="bnt-sec">
+          <p className="offer-valid">
+            Offer Valid Till{' '}
+            <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
+          </p>
           <a
             id="skip-pulse-satisfaction-box-mobile"
             href="javascript:void(0)"
@@ -166,6 +184,6 @@ class Upsell1Component extends React.PureComponent {
   }
 }
 
-const Upsell1 = withRouter(Upsell1Component);
+const Upsell1Treatment1 = withRouter(Upsell1Treatment1Component);
 
-export { Upsell1 };
+export { Upsell1Treatment1 };

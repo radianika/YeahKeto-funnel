@@ -30,37 +30,6 @@ const SatisfactionBox = props => (
         and boost overall immunity.{' '}
       </p>
     </div>
-    <div className="bnt-sec">
-      <a
-        id="skip-pulse-satisfaction-box-mobile"
-        href="javascript:void(0)"
-        onClick={props.onUpgrade}
-      >
-        <img
-          src="/static/assets/images/ord-btn.png"
-          alt=""
-          width="370"
-          height="71"
-          className="ord-btn pulse"
-        />
-      </a>
-      <p className="thanks-txt">
-        <a
-          id="skip-pulse-satisfaction-box-mobile"
-          href="javascript:void(0)"
-          onClick={props.onSkip}
-        >
-          <img
-            src="/static/assets/images/cut-icon.png"
-            width="15"
-            height="15"
-            alt=""
-            className="cut-icon"
-          />{' '}
-          No, I don't want better results.
-        </a>
-      </p>
-    </div>
   </React.Fragment>
 );
 

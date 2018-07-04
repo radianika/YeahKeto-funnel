@@ -108,10 +108,10 @@ class Thankyou extends React.PureComponent {
       tracking_data: {
         device_type:
           this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
-        ip: abtastyParams.ip,
+        ip: abtastyParams ? abtastyParams.ip : '',
         origin: 'ThankyouPage',
         timestamp: moment().format(),
-        visitor_id: abtastyParams.visitorId,
+        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
       },
     };
     axios.post('/abtasty', { ...body, action: 'transaction_event' });

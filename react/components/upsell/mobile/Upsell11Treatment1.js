@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import moment from 'moment';
 import axios from 'axios';
 import { PromoSession, Footer } from 'react/components/common';
@@ -7,22 +8,44 @@ import { getQueryString } from 'helpers';
 import { SatisfactionBox } from './SatisfactionBox';
 
 /**
- * @class Upsell1Component
+ * @class Upsell11Component
  * @extends {React.PureComponent}
- * @description Mobile component rendered after checkout page <br />
+ * @description Mobile Component rendered after Upsell1 page
  */
-class Upsell1Component extends React.PureComponent {
+class Upsell11Treatment1Component extends React.PureComponent {
   componentDidMount() {
     this.postVisitEvent();
   }
 
-  upgrade = () => {
-    this.props.sendTransactionDetails('order-confirmation-upsell-1', 'Upsell1');
-    this.props.upgrade(213, '/promo/mobile/upsell-2');
+  upgrade = button => {
+    this.props.sendTransactionDetails(
+      'order-confirmation-upsell-1-1',
+      'Upsell11Treatment1',
+    );
+    this.postActionTracker('upsell-1-1-yes', `upsell-1-1-yes-${button}`);
+    this.props.upgrade(212, '/promo/mobile/upsell-2?&prev=upsell11');
   };
 
-  skipUpsell = () => {
-    window.location.assign(`/promo/mobile/upsell-1-1?${getQueryString()}`);
+  skipUpsell = button => {
+    this.postActionTracker('upsell-1-1-no', `upsell-1-1-no-${button}`);
+    window.location.assign(`/promo/mobile/upsell-2?${getQueryString()}`);
+  };
+
+  postActionTracker = (name, value_string) => {
+    const { abtastyParams } = this.props;
+    const body = {
+      name,
+      value_string,
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'MOBILE_PHONE',
+        origin: 'Upsell11Treatment1',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
   };
 
   postVisitEvent = () => {
@@ -42,12 +65,18 @@ class Upsell1Component extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
+        <Head>
+          <link
+            href="/static/mobile/css/upsell-treatment1.css"
+            rel="stylesheet"
+          />
+        </Head>
         <PromoSession pageType="upsellPage1" />
         <div className="up-strip">
-          <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
+          <h3>YOU QUALIFY FOR A LIMITED TIME DISCOUNT</h3>
           <p>
-            93% of Customers Added The<br />
-            <strong>Maximum Strength CBD Capsules</strong> To Their Order!
+            Add 1 Bottle Of <br />
+            <strong>Maximum Strength CBD Capsules</strong> To Your Order Today!
           </p>
         </div>
         <div className="upsell-box">
@@ -55,48 +84,46 @@ class Upsell1Component extends React.PureComponent {
           <p className="with-txt">with</p>
           <p className="up-txt2">Maximum Strength CBD Capsules</p>
           <img
-            src="/static/assets/images/up1-bottle.png"
+            src="/static/assets/images/up-prod-2.jpg"
             className="up-prod"
-            alt=""
+            alt="upsell-prod-2"
           />
           <div className="clearall" />
           <div className="price-box">
-            <p className="price-box-txt1">
-              Buy 2 Bottles + <span>Get 1 Free</span>
-            </p>
-            <p className="price-box-txt2">Save 60% Today</p>
+            <p className="price-box-txt1">Buy 1 Bottle Of CBD Capsules</p>
+            <p className="price-box-txt2">Save 30% Today</p>
             <p className="price-box-txt3">
               <img
                 src="/static/assets/images/arrow-left-upsell.png"
                 width="77"
                 height="33"
-                alt=""
+                alt="arrow-left-upsell"
                 className="arrow-left"
               />
-              <span className="old-price">
-                <img src="/static/assets/images/price-cut.png" alt="" />120/
-                <sup>ea</sup>
-              </span>{' '}
-              77/<sup>ea</sup>{' '}
+              87.00{' '}
               <img
                 src="/static/assets/images/arrow-right.png"
                 width="77"
                 height="33"
-                alt=""
+                alt="arrow-right"
                 className="arrow-right"
               />
             </p>
           </div>
 
           <div className="bnt-sec">
+            <p className="offer-valid">
+              Offer Valid Till{' '}
+              <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
+            </p>
             <a
-              id="order-pulse-upsell1-mobile"
+              id="order-pulse-upsell11-mobile"
               href="javascript:void(0)"
-              onClick={this.upgrade}
+              onClick={() => this.upgrade('top')}
             >
               <img
                 src="/static/assets/images/ord-btn.png"
-                alt=""
+                alt="order-btn"
                 width="370"
                 height="71"
                 className="ord-btn pulse"
@@ -104,15 +131,15 @@ class Upsell1Component extends React.PureComponent {
             </a>
             <p className="thanks-txt">
               <a
-                id="skip-pulse-upsell1-mobile"
+                id="skip-pulse-upsell11-mobile"
                 href="javascript:void(0)"
-                onClick={this.skipUpsell}
+                onClick={() => this.skipUpsell('top')}
               >
                 <img
                   src="/static/assets/images/cut-icon.png"
                   width="15"
                   height="15"
-                  alt=""
+                  alt="cut-icon"
                   className="cut-icon"
                 />
                 {"No, I don't want better results."}
@@ -122,14 +149,18 @@ class Upsell1Component extends React.PureComponent {
         </div>
         <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
         <div className="bnt-sec">
+          <p className="offer-valid">
+            Offer Valid Till{' '}
+            <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
+          </p>
           <a
-            id="skip-pulse-satisfaction-box-mobile"
+            id="order-pulse-upsell11-mobile"
             href="javascript:void(0)"
-            onClick={this.upgrade}
+            onClick={() => this.upgrade('bottom')}
           >
             <img
               src="/static/assets/images/ord-btn.png"
-              alt=""
+              alt="order-btn"
               width="370"
               height="71"
               className="ord-btn pulse"
@@ -137,18 +168,18 @@ class Upsell1Component extends React.PureComponent {
           </a>
           <p className="thanks-txt">
             <a
-              id="skip-pulse-satisfaction-box-mobile"
+              id="skip-pulse-upsell11-mobile"
               href="javascript:void(0)"
-              onClick={this.skipUpsell}
+              onClick={() => this.skipUpsell('bottom')}
             >
               <img
                 src="/static/assets/images/cut-icon.png"
                 width="15"
                 height="15"
-                alt=""
+                alt="cut-icon"
                 className="cut-icon"
-              />{' '}
-              No, I don't want better results.
+              />
+              {"No, I don't want better results."}
             </a>
           </p>
         </div>
@@ -166,6 +197,6 @@ class Upsell1Component extends React.PureComponent {
   }
 }
 
-const Upsell1 = withRouter(Upsell1Component);
+const Upsell11Treatment1 = withRouter(Upsell11Treatment1Component);
 
-export { Upsell1 };
+export { Upsell11Treatment1 };
