@@ -61,7 +61,6 @@ class Upsell2Treatment2 extends React.PureComponent {
   };
 
   render() {
-    console.log('inside upsell 2 Treatment 2');
     return (
       <React.Fragment>
         <Head>
@@ -137,7 +136,7 @@ class Upsell2Treatment2 extends React.PureComponent {
               now to stock up while you can!
             </p>
             <input
-              id="order-balm-upsell2-mobile-treatment2"
+              id="balm-yes"
               type="image"
               src="/static/assets/images/up1-btn.png"
               alt=""
@@ -150,7 +149,7 @@ class Upsell2Treatment2 extends React.PureComponent {
               className="up-secur"
             />
             <a
-              id="skip-balm-upsell2-mobile-treatment2"
+              id="balm-no"
               href="javascript:void(0);"
               className="up-no-thanks"
               onClick={this.skipUpsell}

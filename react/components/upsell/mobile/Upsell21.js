@@ -82,7 +82,7 @@ class Upsell21 extends React.PureComponent {
 
           <div className="bnt-sec">
             <a
-              id="order-pulse-upsell21-mobile-1"
+              id="cheaper-balm-yes-top"
               href="javascript:void(0)"
               onClick={() => this.upgrade('top')}
             >
@@ -96,7 +96,7 @@ class Upsell21 extends React.PureComponent {
             </a>
             <p className="thanks-txt">
               <a
-                id="skip-pulse-upsell21-mobile-1"
+                id="cheaper-balm-no-top"
                 href="javascript:void(0)"
                 onClick={() => this.skipUpsell('top')}
               >
@@ -159,7 +159,7 @@ class Upsell21 extends React.PureComponent {
 
           <div className="bnt-sec">
             <a
-              id="order-pulse-upsell21-mobile-2"
+              id="cheaper-balm-yes-bottom"
               href="javascript:void(0)"
               onClick={() => this.upgrade('bottom')}
             >
@@ -173,7 +173,7 @@ class Upsell21 extends React.PureComponent {
             </a>
             <p className="thanks-txt">
               <a
-                id="skip-pulse-upsell21-mobile-2"
+                id="cheaper-balm-no-bottom"
                 href="javascript:void(0)"
                 onClick={() => this.skipUpsell('bottom')}
               >
