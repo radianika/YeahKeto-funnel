@@ -117,7 +117,7 @@ class Upsell11Treatment1Component extends React.PureComponent {
               <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
             </p>
             <a
-              id="order-pulse-upsell11-mobile"
+              id="cheaper-capsule-yes-top"
               href="javascript:void(0)"
               onClick={() => this.upgrade('top')}
             >
@@ -131,7 +131,7 @@ class Upsell11Treatment1Component extends React.PureComponent {
             </a>
             <p className="thanks-txt">
               <a
-                id="skip-pulse-upsell11-mobile"
+                id="cheaper-capsule-no-top"
                 href="javascript:void(0)"
                 onClick={() => this.skipUpsell('top')}
               >
@@ -154,7 +154,7 @@ class Upsell11Treatment1Component extends React.PureComponent {
             <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
           </p>
           <a
-            id="order-pulse-upsell11-mobile"
+            id="cheaper-capsule-yes-bottom"
             href="javascript:void(0)"
             onClick={() => this.upgrade('bottom')}
           >
@@ -168,7 +168,7 @@ class Upsell11Treatment1Component extends React.PureComponent {
           </a>
           <p className="thanks-txt">
             <a
-              id="skip-pulse-upsell11-mobile"
+              id="cheaper-capsule-no-bottom"
               href="javascript:void(0)"
               onClick={() => this.skipUpsell('bottom')}
             >
