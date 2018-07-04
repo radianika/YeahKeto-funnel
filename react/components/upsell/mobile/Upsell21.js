@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import moment from 'moment';
 import { PromoSession, Footer } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
@@ -8,12 +10,33 @@ import { getQueryString } from 'helpers';
  * @description Mobile Component rendered after Upsell2 page
  */
 class Upsell21 extends React.PureComponent {
-  upgrade = () => {
+  upgrade = button => {
+    this.postActionTracker('upsell-2-1-yes', `upsell-2-1-yes-${button}`);
     this.props.upgrade(215, '/promo/mobile/thankyou');
   };
-  skipUpsell = () => {
+
+  skipUpsell = button => {
+    this.postActionTracker('upsell-2-1-no', `upsell-2-1-no-${button}`);
     window.location.assign(`/promo/mobile/thankyou?${getQueryString()}`);
   };
+
+  postActionTracker = (name, value_string) => {
+    const { abtastyParams } = this.props;
+    const body = {
+      name,
+      value_string,
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'MOBILE_PHONE',
+        origin: 'Upsell21',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -61,7 +84,7 @@ class Upsell21 extends React.PureComponent {
             <a
               id="order-pulse-upsell21-mobile-1"
               href="javascript:void(0)"
-              onClick={this.upgrade}
+              onClick={() => this.upgrade('top')}
             >
               <img
                 src="/static/assets/images/ord-btn.png"
@@ -75,7 +98,7 @@ class Upsell21 extends React.PureComponent {
               <a
                 id="skip-pulse-upsell21-mobile-1"
                 href="javascript:void(0)"
-                onClick={this.skipUpsell}
+                onClick={() => this.skipUpsell('top')}
               >
                 <img
                   src="/static/assets/images/cut-icon.png"
@@ -138,7 +161,7 @@ class Upsell21 extends React.PureComponent {
             <a
               id="order-pulse-upsell21-mobile-2"
               href="javascript:void(0)"
-              onClick={this.upgrade}
+              onClick={() => this.upgrade('bottom')}
             >
               <img
                 src="/static/assets/images/ord-btn.png"
@@ -152,7 +175,7 @@ class Upsell21 extends React.PureComponent {
               <a
                 id="skip-pulse-upsell21-mobile-2"
                 href="javascript:void(0)"
-                onClick={this.skipUpsell}
+                onClick={() => this.skipUpsell('bottom')}
               >
                 <img
                   src="/static/assets/images/cut-icon.png"

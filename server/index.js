@@ -502,11 +502,19 @@ app.prepare().then(() => {
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
 
+      const { visitorId } = await getVisitorId(req, res);
+      const campaignId = '308075';
+      const variationId = await getVariationForVisitor(visitorId, campaignId);
+      console.log({ variationId, campaignId });
+
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-mobile-upsell', {
         upsell: '2-1',
         orderId,
         offerId,
+        visitorId,
+        campaignId,
+        variationId,
         transaction_id,
         adv_sub,
         sessionId,
