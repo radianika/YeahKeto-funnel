@@ -192,7 +192,7 @@ function* placeOrder(action) {
     ) {
       const { localStorage } = window;
       const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-      if (abtastyParams) {
+      if (abtastyParams && abtastyParams.requestAgent === 'desktop') {
         yield call(postActionTracker, abtastyParams, action.payload.pack.name);
       }
       const order = apiResponse.response.data.data;
