@@ -263,6 +263,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         placeholder="Zip Code"
                         normalize={normalizePostalCode}
                         inputMode="numeric"
+                        pattern="[0-9]*"
                         autoCorrect="off"
                         autoComplete="postal-code"
                       />
@@ -309,11 +310,12 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                       name="cardNumber"
                       className="creditcard"
                       placeholder="•••• •••• •••• ••••"
-                      label="Card No"
+                      label="Card Number"
                       normalize={normalizeCardNumber}
                       inputMode="numeric"
                       autoComplete="cc-number"
                       autoCorrect="off"
+                      pattern="[0-9]*"
                     />
                     <div className="clearfix" />
                     <Field
@@ -340,6 +342,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                               inputMode="numeric"
                               autoCorrect="off"
                               autoComplete="cc-csc"
+                              pattern="[0-9]*"
                             />
                             <img
                               src="/static/promo/mobile/images/cvv.png"
