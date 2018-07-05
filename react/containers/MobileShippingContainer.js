@@ -18,6 +18,7 @@ import {
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
 import { OrderActions } from 'redux/actions';
+import { getQueryString } from 'helpers';
 
 /**
  * @class MobileShippingContainerComponent
@@ -49,8 +50,10 @@ class MobileShippingContainerComponent extends React.PureComponent {
       this.props.submitStatus === 'success'
     ) {
       this.setState({ showCheckingModal: false });
+      const queryString = getQueryString();
       setTimeout(
-        () => window.location.assign('/promo/mobile/select-package'),
+        () =>
+          window.location.assign(`/promo/mobile/select-package?${queryString}`),
         1000,
       );
     }
