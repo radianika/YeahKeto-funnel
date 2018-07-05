@@ -163,6 +163,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
               alt=""
               src="/static/assets/images/checkout_card_failure_popup.png"
               style={{ width: '100%', height: '100%' }}
+              onClick={this.hideErrorModal}
             />
           </ImageModal>
         )}
