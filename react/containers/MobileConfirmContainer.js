@@ -353,7 +353,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                       className="creditcard"
                       placeholder="•••• •••• •••• ••••"
                       onChange={e => this._checkCardType(e.target.value)}
-                      label="Card Number*"
+                      label="Card Number*:"
                       normalize={normalizeCardNumber}
                       inputMode="numeric"
                       autoComplete="cc-number"
