@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'next/router';
+import creditCartType from 'credit-card-type';
 import {
   stateslist,
   packages,
@@ -18,10 +19,11 @@ import {
   SelectField,
   AddressField,
   Spinner,
-  SuccessModal,
+  ImageModal,
   MobileCardExpiryField,
 } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
+import { getQueryString } from 'helpers';
 
 /**
  * @class MobileConfirmContainerComponent
@@ -48,14 +50,27 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     });
   }
 
-  componentWillReceiveProps(newProps) {
+  componentDidUpdate(prevProps) {
     if (
-      this.props.submitStatus === 'submitting' &&
-      newProps.submitStatus === 'failure'
+      prevProps.submitStatus === 'submitting' &&
+      this.props.submitStatus === 'failure'
     ) {
       this.setState({ showErrorModal: true });
     }
+    if (
+      prevProps.submitStatus !== 'success' &&
+      this.props.submitStatus === 'success'
+    ) {
+      this.setState({ showErrorModal: false });
+      const queryString = getQueryString();
+      setTimeout(
+        () => window.location.assign(`/promo/mobile/upsell-1?${queryString}`),
+        1000,
+      );
+    }
   }
+
+  hideErrorModal = () => this.setState({ showErrorModal: false });
 
   getPrice() {
     if (this.state.pack.packagePrice) {
@@ -140,7 +155,22 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     );
   }
 
+  _checkCardType(cc) {
+    if (!cc) return;
+
+    const value = cc.toString().replace(/\s/g, '');
+    const cc_type = creditCartType(value);
+
+    if (cc_type && cc_type[0] && value.length > 3) {
+      this.setState({ active_cc_type: cc_type[0].type });
+    } else if (this.state.active_cc_type || value.length < 3) {
+      this.setState({ active_cc_type: '' });
+    }
+  }
+
   render() {
+    const { active_cc_type } = this.state;
+
     return (
       <div className="mobile-body">
         <div className="container">
@@ -192,13 +222,25 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                       </p>
                     */}
                     <div className="cards">
-                      <span className="card-visa">
+                      <span
+                        className={`card-visa ${
+                          active_cc_type === 'visa' ? 'active' : ''
+                        }`}
+                      >
                         <img src="/static/Visa.png" alt="" />
                       </span>
-                      <span className="card-mastercard">
+                      <span
+                        className={`card-mastercard ${
+                          active_cc_type === 'master-card' ? 'active' : ''
+                        }`}
+                      >
                         <img src="/static/Mastercard.png" alt="" />
                       </span>
-                      <span className="card-discover">
+                      <span
+                        className={`card-discover" ${
+                          active_cc_type === 'american-express' ? 'active' : ''
+                        }`}
+                      >
                         <img src="/static/amex.png" alt="" />
                       </span>
                     </div>
@@ -263,6 +305,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         placeholder="Zip Code"
                         normalize={normalizePostalCode}
                         inputMode="numeric"
+                        pattern="[0-9]*"
                         autoCorrect="off"
                         autoComplete="postal-code"
                       />
@@ -309,11 +352,13 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                       name="cardNumber"
                       className="creditcard"
                       placeholder="•••• •••• •••• ••••"
-                      label="Card No"
+                      onChange={e => this._checkCardType(e.target.value)}
+                      label="Card Number*:"
                       normalize={normalizeCardNumber}
                       inputMode="numeric"
                       autoComplete="cc-number"
                       autoCorrect="off"
+                      pattern="[0-9]*"
                     />
                     <div className="clearfix" />
                     <Field
@@ -340,6 +385,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                               inputMode="numeric"
                               autoCorrect="off"
                               autoComplete="cc-csc"
+                              pattern="[0-9]*"
                             />
                             <img
                               src="/static/promo/mobile/images/cvv.png"
@@ -393,17 +439,25 @@ class MobileConfirmContainerComponent extends React.PureComponent {
           </div>
         </div>
         {this.props.submitStatus === 'submitting' && <Spinner />}
-        <SuccessModal
-          visible={this.props.submitStatus === 'success'}
-          message="Your order has been placed successfully."
-        />
-        <SuccessModal
-          style={{ width: '80%' }}
-          title="Problem with your order"
-          visible={this.state.showErrorModal}
-          onClose={() => this.setState({ showErrorModal: false })}
-          message={this.props.submitFailure}
-        />
+        {this.props.submitStatus === 'success' && (
+          <ImageModal>
+            <img
+              alt=""
+              src="/static/assets/images/checkout_success_popup.png"
+              style={{ width: '100%', height: '100%' }}
+            />
+          </ImageModal>
+        )}
+        {this.state.showErrorModal && (
+          <ImageModal onClose={this.hideErrorModal}>
+            <img
+              alt=""
+              src="/static/assets/images/checkout_card_failure_popup.png"
+              style={{ width: '100%', height: '100%' }}
+              onClick={this.hideErrorModal}
+            />
+          </ImageModal>
+        )}
       </div>
     );
   }

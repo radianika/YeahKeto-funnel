@@ -10,6 +10,7 @@ import {
   SuccessModal,
   Modal,
   CardExpiryField,
+  ImageModal,
 } from 'react/components/common';
 import {
   billingFormValidator,
@@ -30,29 +31,30 @@ class PromoCheckoutPaymentFormClass extends React.Component {
       show_cvv_modal: false,
       showErrorModal: false,
     };
-    this._toggleCVVModal = this._toggleCVVModal.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
+  componentDidUpdate(prevProps) {
     if (
-      this.props.submitStatus === 'submitting' &&
-      newProps.submitStatus === 'failure'
+      prevProps.submitStatus === 'submitting' &&
+      this.props.submitStatus === 'failure'
     ) {
       this.setState({ showErrorModal: true });
     }
   }
 
-  _toggleCVVModal(e) {
+  hideErrorModal = () => this.setState({ showErrorModal: false });
+
+  _toggleCVVModal = e => {
     e.preventDefault();
     this.setState({ show_cvv_modal: !this.state.show_cvv_modal });
-  }
+  };
 
   /**
    * @param {*} cc credit card number
    * @memberof PromoCheckoutPaymentFormClass
    * @description check creditcard type using package "credit-card-type"
    */
-  _checkCardType(cc) {
+  _checkCardType = cc => {
     if (!cc) return;
 
     const value = cc.toString().replace(/\s/g, '');
@@ -63,7 +65,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
     } else if (this.state.active_cc_type || value.length < 3) {
       this.setState({ active_cc_type: '' });
     }
-  }
+  };
 
   render() {
     const { active_cc_type, show_cvv_modal } = this.state;
@@ -124,7 +126,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
             name="cardNumber"
             className="creditcard"
             placeholder="•••• •••• •••• ••••"
-            label="Card No*"
+            label="Card Number*"
             onChange={e => this._checkCardType(e.target.value)}
             normalize={normalizeCardNumber}
           />
@@ -146,16 +148,34 @@ class PromoCheckoutPaymentFormClass extends React.Component {
           />
         </form>
         {this.props.submitStatus === 'submitting' && <Spinner />}
-        <SuccessModal
-          visible={this.props.submitStatus === 'success'}
-          message="Your order has been placed successfully."
+        {this.props.submitStatus === 'success' && (
+          <ImageModal>
+            <img
+              alt=""
+              src="/static/assets/images/checkout_success_popup.png"
+              style={{ width: '100%', height: '100%' }}
+            />
+          </ImageModal>
+        )}
+        {this.state.showErrorModal && (
+          <ImageModal onClose={this.hideErrorModal}>
+            <img
+              alt=""
+              src="/static/assets/images/checkout_card_failure_popup.png"
+              style={{ width: '100%', height: '100%' }}
+              onClick={this.hideErrorModal}
+            />
+          </ImageModal>
+        )}
+        <img
+          alt=""
+          src="/static/assets/images/checkout_success_popup.png"
+          style={{ width: 0, height: 0 }}
         />
-        <SuccessModal
-          style={{ width: 423 }}
-          title="Problem with your order"
-          visible={this.state.showErrorModal}
-          onClose={() => this.setState({ showErrorModal: false })}
-          message={this.props.submitFailure}
+        <img
+          alt=""
+          src="/static/assets/images/checkout_card_failure_popup.png"
+          style={{ width: 0, height: 0 }}
         />
       </div>
     );

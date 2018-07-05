@@ -4,11 +4,30 @@ import { withRouter } from 'next/router';
 import axios from 'axios';
 import moment from 'moment';
 import { OrderActions } from 'redux/actions';
-import { Spinner, SuccessModal } from 'react/components/common';
+import { Spinner, ImageModal } from 'react/components/common';
+import { getQueryString } from 'helpers';
 import { getVariationValue } from 'helpers/abtasty';
 import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
 class PromoSectionOneDesktopComponent extends React.PureComponent {
+  state = {
+    showCheckingModal: false,
+  };
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.submitStatus !== 'success' &&
+      this.props.submitStatus === 'success'
+    ) {
+      this.setState({ showCheckingModal: false });
+      const queryString = getQueryString();
+      setTimeout(
+        () => window.location.assign(`/promo/desktop/checkout?${queryString}`),
+        1000,
+      );
+    }
+  }
+
   postActionTracker = () => {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
@@ -29,6 +48,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
   };
 
   submitShippingForm = values => {
+    this.setState({ showCheckingModal: true });
     this.postActionTracker();
     this.props.submitLeadsForm({
       values,
@@ -101,10 +121,24 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
           </div>
         </div>
         {this.props.submitStatus === 'submitting' && <Spinner />}
-        <SuccessModal
-          visible={this.props.submitStatus === 'success'}
-          message="Information captured successfully."
-        />
+        {this.state.showCheckingModal && (
+          <ImageModal>
+            <img
+              alt="checking"
+              src="/static/assets/images/checking_popup.png"
+              style={{ width: '100%', height: '100%' }}
+            />
+          </ImageModal>
+        )}
+        {this.props.submitStatus === 'success' && (
+          <ImageModal>
+            <img
+              alt=""
+              src="/static/assets/images/lead_form_success_popup.png"
+              style={{ width: '100%', height: '100%' }}
+            />
+          </ImageModal>
+        )}
       </div>
     );
   }

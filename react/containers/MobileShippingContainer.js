@@ -13,6 +13,7 @@ import {
   AddressField,
   Spinner,
   SuccessModal,
+  ImageModal,
 } from 'react/components/common';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
@@ -24,7 +25,15 @@ import { OrderActions } from 'redux/actions';
  * @description Container Component for Shipping Form on Mobile
  */
 class MobileShippingContainerComponent extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showCheckingModal: false,
+    };
+  }
+
   onSubmit = e => {
+    this.setState({ showCheckingModal: true });
     this.props.handleSubmit(values => {
       this.props.submitLeadsForm({
         values,
@@ -33,6 +42,22 @@ class MobileShippingContainerComponent extends React.PureComponent {
       });
     })(e);
   };
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.submitStatus !== 'success' &&
+      this.props.submitStatus === 'success'
+    ) {
+      this.setState({ showCheckingModal: false });
+      setTimeout(
+        () => window.location.assign('/promo/mobile/select-package'),
+        1000,
+      );
+    }
+  }
+
+  hideErrorModal = () => this.setState({ showErrorModal: false });
+
   render() {
     return (
       <div className="mobile-body">
@@ -114,6 +139,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       placeholder="Zip Code"
                       normalize={normalizePostalCode}
                       inputMode="numeric"
+                      pattern="[0-9]*"
                       autoCorrect="off"
                       autoComplete="postal-code"
                     />
@@ -180,11 +206,24 @@ class MobileShippingContainerComponent extends React.PureComponent {
             </div>
           </div>
         </div>
-        {this.props.submitStatus === 'submitting' && <Spinner />}
-        <SuccessModal
-          visible={this.props.submitStatus === 'success'}
-          message="Information captured successfully."
-        />
+        {this.state.showCheckingModal && (
+          <ImageModal>
+            <img
+              alt=""
+              src="/static/assets/images/shipping-page-submitting.png"
+              style={{ width: '100%', height: '100%' }}
+            />
+          </ImageModal>
+        )}
+        {this.props.submitStatus === 'success' && (
+          <ImageModal>
+            <img
+              alt=""
+              src="/static/assets/images/lead_form_success_popup.png"
+              style={{ width: '100%', height: '100%' }}
+            />
+          </ImageModal>
+        )}
       </div>
     );
   }
