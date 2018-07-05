@@ -54,9 +54,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       prevProps.submitStatus === 'submitting' &&
       this.props.submitStatus === 'failure'
     ) {
-      this.setState({ showErrorModal: true }, () => {
-        setTimeout(this.hideErrorModal, 2000);
-      });
+      this.setState({ showErrorModal: true });
     }
     if (
       prevProps.submitStatus !== 'success' &&
@@ -419,7 +417,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
           </ImageModal>
         )}
         {this.state.showErrorModal && (
-          <ImageModal>
+          <ImageModal onClose={this.hideErrorModal}>
             <img
               alt=""
               src="/static/assets/images/checkout_card_failure_popup.png"
