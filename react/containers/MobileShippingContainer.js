@@ -139,6 +139,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       placeholder="Zip Code"
                       normalize={normalizePostalCode}
                       inputMode="numeric"
+                      pattern="[0-9]*"
                       autoCorrect="off"
                       autoComplete="postal-code"
                     />

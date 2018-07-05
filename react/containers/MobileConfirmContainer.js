@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'next/router';
+import creditCartType from 'credit-card-type';
 import {
   stateslist,
   packages,
@@ -154,7 +155,22 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     );
   }
 
+  _checkCardType(cc) {
+    if (!cc) return;
+
+    const value = cc.toString().replace(/\s/g, '');
+    const cc_type = creditCartType(value);
+
+    if (cc_type && cc_type[0] && value.length > 3) {
+      this.setState({ active_cc_type: cc_type[0].type });
+    } else if (this.state.active_cc_type || value.length < 3) {
+      this.setState({ active_cc_type: '' });
+    }
+  }
+
   render() {
+    const { active_cc_type } = this.state;
+
     return (
       <div className="mobile-body">
         <div className="container">
@@ -206,13 +222,25 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                       </p>
                     */}
                     <div className="cards">
-                      <span className="card-visa">
+                      <span
+                        className={`card-visa ${
+                          active_cc_type === 'visa' ? 'active' : ''
+                        }`}
+                      >
                         <img src="/static/Visa.png" alt="" />
                       </span>
-                      <span className="card-mastercard">
+                      <span
+                        className={`card-mastercard ${
+                          active_cc_type === 'master-card' ? 'active' : ''
+                        }`}
+                      >
                         <img src="/static/Mastercard.png" alt="" />
                       </span>
-                      <span className="card-discover">
+                      <span
+                        className={`card-discover" ${
+                          active_cc_type === 'american-express' ? 'active' : ''
+                        }`}
+                      >
                         <img src="/static/amex.png" alt="" />
                       </span>
                     </div>
@@ -277,6 +305,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                         placeholder="Zip Code"
                         normalize={normalizePostalCode}
                         inputMode="numeric"
+                        pattern="[0-9]*"
                         autoCorrect="off"
                         autoComplete="postal-code"
                       />
@@ -323,11 +352,13 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                       name="cardNumber"
                       className="creditcard"
                       placeholder="•••• •••• •••• ••••"
-                      label="Card No"
+                      onChange={e => this._checkCardType(e.target.value)}
+                      label="Card Number*"
                       normalize={normalizeCardNumber}
                       inputMode="numeric"
                       autoComplete="cc-number"
                       autoCorrect="off"
+                      pattern="[0-9]*"
                     />
                     <div className="clearfix" />
                     <Field
@@ -354,6 +385,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                               inputMode="numeric"
                               autoCorrect="off"
                               autoComplete="cc-csc"
+                              pattern="[0-9]*"
                             />
                             <img
                               src="/static/promo/mobile/images/cvv.png"
