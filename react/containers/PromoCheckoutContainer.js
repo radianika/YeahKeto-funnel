@@ -179,8 +179,8 @@ class PromoCheckout extends React.PureComponent {
                   <p className="moneyback-txt1">100% Money Back Guarantee </p>
                   <p className="moneyback-txt">
                     Your purchase is insured by our 90 Day Money Back Guarantee,
-                    which ensures that if you are completely satisfied with the
-                    results, we will refund your money, no questions asked.{' '}
+                    which ensures that if you are not completely satisfied with
+                    the results, we will refund your money, no questions asked.{' '}
                   </p>
                 </div>
                 <img
