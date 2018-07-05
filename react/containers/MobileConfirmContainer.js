@@ -18,10 +18,11 @@ import {
   SelectField,
   AddressField,
   Spinner,
-  SuccessModal,
+  ImageModal,
   MobileCardExpiryField,
 } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
+import { getQueryString } from 'helpers';
 
 /**
  * @class MobileConfirmContainerComponent
@@ -48,14 +49,27 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     });
   }
 
-  componentWillReceiveProps(newProps) {
+  componentDidUpdate(prevProps) {
     if (
-      this.props.submitStatus === 'submitting' &&
-      newProps.submitStatus === 'failure'
+      prevProps.submitStatus === 'submitting' &&
+      this.props.submitStatus === 'failure'
     ) {
       this.setState({ showErrorModal: true });
     }
+    if (
+      prevProps.submitStatus !== 'success' &&
+      this.props.submitStatus === 'success'
+    ) {
+      this.setState({ showErrorModal: false });
+      const queryString = getQueryString();
+      setTimeout(
+        () => window.location.assign(`/promo/mobile/upsell-1?${queryString}`),
+        1000,
+      );
+    }
   }
+
+  hideErrorModal = () => this.setState({ showErrorModal: false });
 
   getPrice() {
     if (this.state.pack.packagePrice) {
@@ -393,17 +407,25 @@ class MobileConfirmContainerComponent extends React.PureComponent {
           </div>
         </div>
         {this.props.submitStatus === 'submitting' && <Spinner />}
-        <SuccessModal
-          visible={this.props.submitStatus === 'success'}
-          message="Your order has been placed successfully."
-        />
-        <SuccessModal
-          style={{ width: '80%' }}
-          title="Problem with your order"
-          visible={this.state.showErrorModal}
-          onClose={() => this.setState({ showErrorModal: false })}
-          message={this.props.submitFailure}
-        />
+        {this.props.submitStatus === 'success' && (
+          <ImageModal>
+            <img
+              alt=""
+              src="/static/assets/images/checkout_success_popup.png"
+              style={{ width: '100%', height: '100%' }}
+            />
+          </ImageModal>
+        )}
+        {this.state.showErrorModal && (
+          <ImageModal onClose={this.hideErrorModal}>
+            <img
+              alt=""
+              src="/static/assets/images/checkout_card_failure_popup.png"
+              style={{ width: '100%', height: '100%' }}
+              onClick={this.hideErrorModal}
+            />
+          </ImageModal>
+        )}
       </div>
     );
   }

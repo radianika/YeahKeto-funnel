@@ -128,7 +128,7 @@ function* submitLeadsForm(action) {
       return;
     }
     yield put(OrderActions.submitLeadsFormSuccess());
-    window.location.assign(`${nextUrl}?${queryString}`);
+    // window.location.assign(`${nextUrl}?${queryString}`);
   } else {
     yield put(OrderActions.submitLeadsFormFailure());
   }
