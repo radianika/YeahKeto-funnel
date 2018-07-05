@@ -124,7 +124,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
             name="cardNumber"
             className="creditcard"
             placeholder="•••• •••• •••• ••••"
-            label="Card Number"
+            label="Card Number*"
             onChange={e => this._checkCardType(e.target.value)}
             normalize={normalizeCardNumber}
           />
