@@ -12,3 +12,4 @@ export * from './PromoSession';
 export * from './Spinner';
 export * from './SuccessModal';
 export * from './SegmentioTracker';
+export * from './ImageModal';
