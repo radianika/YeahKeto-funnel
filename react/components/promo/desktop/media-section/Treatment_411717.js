@@ -1,66 +1,27 @@
 import React, { PropTypes } from 'react';
 
-const Treatment_411717 = ({ className }) => (
-  <div className="s5-left-wrapper">
-    <div className="s5left">
-      <i className="vdo-arw sprite5 sprite-vdo-arw" />
-      <div
-        className="wistia_responsive_padding"
-        style={{ padding: '56.25% 0 0 0', position: 'relative' }}
-      >
-        <div
-          className="wistia_responsive_wrapper"
-          style={{
-              height: '277px',
-              left: 0,
-              position: 'absolute',
-              top: 0,
-              width: '490px',
-            }}
-        >
-          <iframe
-            src="https://fast.wistia.net/embed/iframe/qny03evham?videoFoam=true"
-            title="Wistia video player"
-            allowTransparency="true"
-            frameBorder="0"
-            scrolling="no"
-            className="wistia_embed"
-            name="wistia_embed"
-            allowFullScreen
-            mozallowfullscreen="true"
-            webkitallowfullscreen="true"
-            oallowfullscreen="true"
-            msallowfullscreen="true"
-            width="490px"
-            height="277px"
-          />
-        </div>
-      </div>
-      <p className="limited-offer">HURRY! Limited Time Offer</p>
-      <div id="clockdiv">
-        <div>
-          <span className="hours">{hours}</span>
-          <p>HOUR</p>
-        </div>
-        <p className="colon">:</p>
-        <div>
-          <span className="minutes">{minutes}</span>
-          <p>Minute</p>
-        </div>
-        <p className="colon">:</p>
-        <div>
-          <span className="seconds">{seconds}</span>
-          <p>SECONDS</p>
-        </div>
-      </div>
-    </div>
-    <div className="s5right">
-      <p className="s5-txt5">
-        <span>BENEFITS OF CBD </span>
-        <br />HAVE BEEN SEEN ON{' '}
-      </p>
-      <i className="s5-logos sprite4 sprite-s5-logos" />
-    </div>
+const Treatment_411717 = (props) => (
+  <div className="s5-left-wrapper wrapper-411717">
+    <ul class="sec5-list">
+    <li>
+        <img src="/static/assets/images/s5-lg1.png" alt="" class="md-logo"/>
+           <p>Marijuana’s advocates believe the long-maligned plant can enhance life—and help deliver people from 
+           sickness and pain.</p>
+           <img src="/static/assets/images/md-img1.png" alt="" class="md-img"/>
+       </li>
+       <li>
+        <img src="/static/assets/images/s5-lg2.png" alt="" class="md-logo"/>
+           <p>The strongest trials supported CBD's ability to relieve chronic pain, nausea and vomiting from 
+           chemotherapy, and sleep disturbances.</p>
+           <img src="/static/assets/images/md-img2.png" alt="" class="md-img"/>
+       </li>
+       <li>
+        <img src="/static/assets/images/s5-lg3.png" alt="" class="md-logo"/>
+           <p>CBD is a 100% all organic & non-addictive therapeutic remedy for pain, anxiety, depression, and even 
+           cognitive disorders.</p>
+           <img src="/static/assets/images/md-img3.png" alt="" class="md-img"/>
+       </li>
+    </ul>
   </div>
 );
 

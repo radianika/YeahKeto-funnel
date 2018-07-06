@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 const Treatment_411716 = props => (
-  <div className="s5-left-wrapper">
+  <div className="s5-left-wrapper wrapper-411716">
     <div className="s5left">
     	<img src="/static/assets/images/s5-lft-img.png" alt="" />
     </div>
