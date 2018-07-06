@@ -62,7 +62,7 @@ class PromoDesktop extends React.PureComponent {
 
 function mapStateToProps(state) {
   return {
-    sessionId: state.auth.sessionId,
+    sessionId: state.auth && state.auth.sessionId,
   };
 }
 

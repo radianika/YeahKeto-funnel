@@ -6,7 +6,7 @@ import {
   setUniqueSessionId,
 } from 'redux/actions/authActions';
 
-const getSession = state => state.auth.sessionId;
+const getSession = state => state.auth && state.auth.sessionId;
 
 /**
  * @description createNewSession

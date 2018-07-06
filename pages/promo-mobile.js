@@ -94,7 +94,7 @@ class Promo extends React.PureComponent {
 
 function mapStateToProps(state) {
   return {
-    sessionId: state.auth.sessionId,
+    sessionId: state.auth && state.auth.sessionId,
     abtastyParams: state.auth.abtastyParams,
   };
 }

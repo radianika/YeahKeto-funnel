@@ -98,11 +98,11 @@ server.use((req, res, cb) => {
         res.set('ABCBDSESSID', req.sessionID);
       }
 
-      if (!req.session.ip) {
+      if (req.session && !req.session.ip) {
         req.session.ip = security.getIp(req); // eslint-disable-line no-param-reassign
       }
 
-      if (!req.session.userAgent) {
+      if (!req.session && req.session.userAgent) {
         req.session.userAgent = req.get('User-Agent'); // eslint-disable-line no-param-reassign
       }
     }

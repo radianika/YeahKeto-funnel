@@ -173,7 +173,7 @@ class Cart extends PureComponent {
 
 function mapStateToProps(state) {
   return {
-    sessionId: state.auth.sessionId,
+    sessionId: state.auth && state.auth.sessionId,
     submitStatus: state.order.submitLeadsFormStatus,
   };
 }
