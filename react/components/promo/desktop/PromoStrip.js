@@ -14,7 +14,7 @@ class PromoStrip extends React.PureComponent {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
-      name: 'Rush My Order Scroll Clicks',
+      name: 'rush-my-order-scroll-clicks',
       value_string: 'rush-my-order-scroll-clicks',
       type: 'CLICK',
       tracking_data: {

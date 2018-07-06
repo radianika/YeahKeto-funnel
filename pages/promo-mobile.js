@@ -6,6 +6,8 @@ import { PromoSession, Spinner } from 'react/components/common';
 import { createNewSession } from 'redux/actions/authActions';
 import Router from 'next/router';
 import { AuthActions } from 'redux/actions';
+import moment from 'moment';
+import axios from 'axios';
 
 class Promo extends React.PureComponent {
   static getInitialProps({
@@ -39,6 +41,8 @@ class Promo extends React.PureComponent {
 
   componentDidMount() {
     this.props.createNewSession();
+    this.postCampaignActivatedEvent();
+    this.postVisitEvent();
     const { localStorage } = window;
     localStorage.setItem(
       'abtastyParams',
@@ -48,6 +52,44 @@ class Promo extends React.PureComponent {
       this.setState({ showSpinner: true });
     };
   }
+
+  postCampaignActivatedEvent = () => {
+    const { localStorage } = window;
+    localStorage.setItem(
+      'abtastyParams',
+      JSON.stringify(this.props.abtastyParams),
+    );
+    const body = {
+      campaign_id: '312494',
+      variation_id: this.props.abtastyParams.variationId,
+      tracking_data: {
+        device_type: 'MOBILE_PHONE',
+        ip: this.props.abtastyParams.ip,
+        origin: 'Promo Mobile',
+        timestamp: moment().format(),
+        visitor_id: this.props.abtastyParams.visitorId,
+      },
+    };
+    axios.post('/abtasty', {
+      ...body,
+      action: 'campaign_activated_event',
+    });
+  };
+
+  postVisitEvent = () => {
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'MOBILE_PHONE',
+        origin: window.location.href,
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'visit_event' });
+  };
 
   render() {
     return (
