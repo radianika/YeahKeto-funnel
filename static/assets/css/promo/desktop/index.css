@@ -747,9 +747,60 @@ ul.s4-list2 li:nth-child(3) {
 }
 
 /*-----------------sec5------------------*/
-
 .section5 {
-  height: 798px;
+  height:798px;
+}
+.s5-txt1{
+  text-align: center;
+  margin: 0 0 0 0;
+  padding: 15px 140px 0 140px;
+  }
+.s5-line{
+  display:block;
+  margin:29px auto 0 auto;
+  }
+.s5left, .s5right{
+  display: inline-block;
+    width:50%;
+    float: left;
+    margin: 25px 0 0 -9px;
+  }
+.s5right{
+  margin:50px 0 0 7px;
+  }
+ul.sec5-list{
+  float:left;
+  width:100%;
+}
+ul.sec5-list li{
+  border:1px dotted #e8e8e8;
+  border-radius:10px;
+  text-align:center;
+  background:#f7f7f7;
+  width:47%;
+  margin:10px 0;
+}
+ul.sec5-list li:first-child{width:100%;}
+ul.sec5-list li:nth-child(2) img{padding:17px 10px;}
+ul.sec5-list li img{
+  display:inline-block;
+  padding:10px;
+  vertical-align:middle;
+}
+ul.sec5-list li p{
+  background:#fff;
+  width:100%;
+  display:inline-block;
+  box-sizing:border-box;
+  padding:20px 15px;
+  font-size:18px;
+  line-height:22px;
+}
+ul.sec5-list li:first-child p{
+  padding:20px 60px;
+}
+.s5left{
+  position:relative;
 }
 
 .section5.revcbd {
