@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment';
+import axios from 'axios';
 
 class PromoStrip extends React.PureComponent {
   scrollToTop = () => {
@@ -7,6 +9,25 @@ class PromoStrip extends React.PureComponent {
       behavior: 'smooth',
     });
   };
+
+  postActionTracker = () => {
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      name: 'Rush My Order Scroll Clicks',
+      value_string: 'rush-my-order-scroll-clicks',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: 'promo desktop',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+  };
+
   render() {
     return (
       <div className="strip dsplay sprite5 sprite-strip">
@@ -20,10 +41,13 @@ class PromoStrip extends React.PureComponent {
           <a
             id={this.props.tagID}
             href="javascript:void(0)"
-            onClick={this.scrollToTop}
+            onClick={() => {
+              this.postActionTracker();
+              this.scrollToTop();
+            }}
           >
             {' '}
-            <i className="stripbtn pulse sprite5 sprite-submit" />
+            <i className="stripbtn pulse sprite5 sprite-submit" id="rush-my-order-scroll-clicks"/>
           </a>
         </div>
       </div>
