@@ -12,7 +12,7 @@ import {
 } from 'helpers';
 import { getCookie } from 'react/components/common';
 
-const getSession = state => state.auth.sessionId;
+const getSession = state => state.auth && state.auth.sessionId;
 
 const packIdMap = {
   210: {
