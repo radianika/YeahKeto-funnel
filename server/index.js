@@ -211,8 +211,8 @@ app.prepare().then(() => {
           `/promo/${requestAgent}?${querystring.stringify(req.query)}`,
         );
       }
+      const variationId = await getVariationForVisitor(visitorId, '312492');
       if (requestAgent === 'desktop') {
-        const variationId = await getVariationForVisitor(visitorId, '306753');
         return app.render(req, res, '/promo-desktop', {
           requestAgent,
           visitorId,
@@ -224,6 +224,7 @@ app.prepare().then(() => {
         return app.render(req, res, '/promo-mobile', {
           requestAgent,
           visitorId,
+          variationId,
           device: requestAgent,
         });
       }
