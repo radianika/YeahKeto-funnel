@@ -162,7 +162,7 @@ class PromoCheckout extends React.PureComponent {
                       </li>
                       <li id="" style={{ fontWeight: 400 }} />
                       <li>Shipping and Handling</li>
-                      <li id="shp">$0.00</li>
+                      <li id="shp">0.00</li>
                       <li>Total</li>
                       <li id="total">
                         {this.state.selected.packagePrice}
