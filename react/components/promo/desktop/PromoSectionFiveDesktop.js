@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { AuthActions } from 'redux/actions';
+import moment from 'moment';
+import axios from 'axios';
 
 import Control_411715 from './media-section/control.js';
 import Treatment_711416 from './media-section/Treatment_411716.js';
@@ -26,9 +28,31 @@ class PromoSectionFiveDesktop extends React.PureComponent {
       this.updateTime();
     }, 1000);
 
-    console.log('props');
-    console.log(this.props);
+    this.postCampaignActivatedEvent();
   }
+
+  postCampaignActivatedEvent = () => {
+    const { localStorage } = window;
+    localStorage.setItem(
+      'abtastyParams',
+      JSON.stringify(this.props.abtastyParams),
+    );
+    const body = {
+      campaign_id: '306753',
+      variation_id: this.props.abtastyParams.variationId,
+      tracking_data: {
+        device_type: 'DESKTOP',
+        ip: this.props.abtastyParams.ip,
+        origin: 'Promo Desktop Media',
+        timestamp: moment().format(),
+        visitor_id: this.props.abtastyParams.visitorId,
+      },
+    };
+    axios.post('/abtasty', {
+      ...body,
+      action: 'campaign_activated_event',
+    });
+  };
 
   updateTime() {
     let seconds = parseInt(this.state.seconds, 10) - 1;
