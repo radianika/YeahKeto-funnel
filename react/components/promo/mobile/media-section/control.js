@@ -47,17 +47,17 @@ const Control_411721 = (props) => (
       <p className="limited-offer">HURRY! Limited Time Offer</p>
       <div id="clockdiv">
         <div>
-          <span className="hours">{this.state.hours}</span>
+          <span className="hours">{props.hours}</span>
           <p>HOUR</p>
         </div>
         <p className="colon">:</p>
         <div>
-          <span className="minutes">{this.state.minutes}</span>
+          <span className="minutes">{props.minutes}</span>
           <p>Minute</p>
         </div>
         <p className="colon">:</p>
         <div>
-          <span className="seconds">{this.state.seconds}</span>
+          <span className="seconds">{props.seconds}</span>
           <p>SECONDS</p>
         </div>
       </div>

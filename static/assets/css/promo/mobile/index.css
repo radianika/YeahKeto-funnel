@@ -648,6 +648,56 @@ start section5
   margin:0 auto;
   padding:20px 0 0 0;}
 
+.wrapper-411723 .strip {
+  background: url(../../../../assets/images/promoMobileV3/strip-bg.jpg) center top no-repeat;
+  height: 125px;
+  display: block;
+  margin: 20px auto 0 auto;
+}
+
+#section-five.wrapper-411723 {
+  height: auto;
+  position:relative;
+  padding:0 0 0 0;
+  }
+.wrapper-411723 .s5-txt1 {
+  font-size: 30px;
+  line-height: 40px;
+  text-align: center;
+  color: #2d2d2d;
+  margin: 0 auto;
+  padding: 20px 20px 0 20px;
+}
+.wrapper-411723 .magazine{
+  display:block;
+  margin:30px auto 0 auto;}
+.wrapper-411723 .s5-box{
+  background:url(../../../../assets/images/promoMobileV3/mag-box.png) center top no-repeat;
+  width:623px;
+  height:304px;
+  display:block;
+  margin:30px auto 0 auto;
+  padding:0 0 0 0;}
+  
+.wrapper-411723 .ng{
+  display:block;
+  margin:0 auto 0 auto;
+  padding:22px 0 0 0;}
+.wrapper-411723 .s5-box-txt{
+  font-size:30px;
+  line-height:40px;
+  text-align:center;
+  color:#2d2d2d;
+  margin:0 auto;
+  padding:20px 0 0 0;}
+.wrapper-411723 .mag1{
+  margin:-65px auto 40px auto;
+  display:block;}
+
+.wrapper-411723 .s5-box-hd {
+  background: none;
+}
+
 /*----------------
 start section6
 ----------------*/
