@@ -160,7 +160,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                   <li>S&amp;H: </li>
                   <li>$0.00</li>
                   <li>TOTAL</li>
-                  <li>{this.getPrice()}</li>
+                  <li>{`$${this.getPrice()}`}</li>
                 </ul>
               </div>
               <img src="/static/promo/mobile/images/post.jpg" alt="" />
