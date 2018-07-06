@@ -42,7 +42,7 @@ class FooterPromo extends React.PureComponent {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
-      name: 'Mobile Order Now',
+      name: 'mobile-order-now',
       value_string: 'mobile-order-now',
       type: 'CLICK',
       tracking_data: {
