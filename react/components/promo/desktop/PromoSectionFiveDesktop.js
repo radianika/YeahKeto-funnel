@@ -60,7 +60,7 @@ class PromoSectionFiveDesktop extends React.PureComponent {
             featured across print &amp; media in 2018.
           </p>
           <i className="s5-line sprite4 sprite-s5-line" />
-          <Treatment_711416 {...this.state}/>
+          <Treatment_711416 {...this.state} />
         </div>
       </div>
     );
