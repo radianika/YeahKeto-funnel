@@ -107,7 +107,7 @@ class Upsell2Treatment1 extends React.PureComponent {
               </span>{' '}
               87/<sup>ea</sup>{' '}
               <img
-                src="images/arrow-right.png"
+                src="/static/assets/images/arrow-right.png"
                 width="77"
                 height="33"
                 alt=""
