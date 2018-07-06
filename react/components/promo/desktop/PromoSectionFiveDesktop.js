@@ -27,32 +27,7 @@ class PromoSectionFiveDesktop extends React.PureComponent {
     setInterval(() => {
       this.updateTime();
     }, 1000);
-
-    this.postCampaignActivatedEvent();
   }
-
-  postCampaignActivatedEvent = () => {
-    const { localStorage } = window;
-    localStorage.setItem(
-      'abtastyParams',
-      JSON.stringify(this.props.abtastyParams),
-    );
-    const body = {
-      campaign_id: '312492',
-      variation_id: this.props.abtastyParams.variationId,
-      tracking_data: {
-        device_type: 'DESKTOP',
-        ip: this.props.abtastyParams.ip,
-        origin: 'Promo Desktop Media',
-        timestamp: moment().format(),
-        visitor_id: this.props.abtastyParams.visitorId,
-      },
-    };
-    axios.post('/abtasty', {
-      ...body,
-      action: 'campaign_activated_event',
-    });
-  };
 
   updateTime() {
     let seconds = parseInt(this.state.seconds, 10) - 1;

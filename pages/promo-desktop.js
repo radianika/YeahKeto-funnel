@@ -41,11 +41,10 @@ class Promo extends React.PureComponent {
       JSON.stringify(this.props.abtastyParams),
     );
     const body = {
-      campaign_id: '306753',
+      campaign_id: '312492',
       variation_id: this.props.abtastyParams.variationId,
       tracking_data: {
-        device_type:
-          this.props.query.device === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
+        device_type: 'DESKTOP',
         ip: this.props.abtastyParams.ip,
         origin: 'Promo Desktop',
         timestamp: moment().format(),
