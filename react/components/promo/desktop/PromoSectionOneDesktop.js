@@ -1,12 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
-import axios from 'axios';
-import moment from 'moment';
 import { OrderActions } from 'redux/actions';
 import { Spinner, ImageModal } from 'react/components/common';
 import { getQueryString } from 'helpers';
-import { getVariationValue } from 'helpers/abtasty';
 import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
 class PromoSectionOneDesktopComponent extends React.PureComponent {
@@ -28,28 +25,8 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
     }
   }
 
-  postActionTracker = () => {
-    const { localStorage } = window;
-    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const body = {
-      name: 'rush-my-order-shipping-page',
-      value_string: 'rushmyorder_form',
-      type: 'CLICK',
-      tracking_data: {
-        visitor_id: abtastyParams.visitorId,
-        device_type:
-          abtastyParams.requestAgent === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
-        origin: 'PromoLeadPages',
-        timestamp: moment().format(),
-        ip: abtastyParams.ip,
-      },
-    };
-    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
-  };
-
   submitShippingForm = values => {
     this.setState({ showCheckingModal: true });
-    this.postActionTracker();
     this.props.submitLeadsForm({
       values,
       router: this.props.router,
@@ -58,16 +35,12 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
   };
 
   render() {
-    const { variationId } = this.props;
-    // To be stored in redux now
-    const campaignId = 306753;
-    const currentConfig = getVariationValue(campaignId, variationId, 'promo');
-
     return (
       <div
         className="section1 dsplay"
         style={{
-          background: `url(${currentConfig.section1Img}) center top no-repeat`,
+          background:
+            'url("/static/promo/desktop/images/section1.jpg") center top no-repeat',
         }}
       >
         <h2 style={{ display: 'none' }}>American Science CBD</h2>
@@ -147,7 +120,6 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     submitStatus: state.order.submitLeadsFormStatus,
-    variationId: state.auth.abtastyParams.variationId,
   };
 }
 
