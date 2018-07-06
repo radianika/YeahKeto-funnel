@@ -38,7 +38,7 @@ class PromoSectionFiveDesktop extends React.PureComponent {
       JSON.stringify(this.props.abtastyParams),
     );
     const body = {
-      campaign_id: '306753',
+      campaign_id: '312492',
       variation_id: this.props.abtastyParams.variationId,
       tracking_data: {
         device_type: 'DESKTOP',

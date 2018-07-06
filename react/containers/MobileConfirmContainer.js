@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'next/router';
 import creditCartType from 'credit-card-type';
+import moment from 'moment';
+import axios from 'axios';
 import {
   stateslist,
   packages,
@@ -79,7 +81,28 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     return this.state.pack.price;
   }
 
+  sendTransactionDetails = () => {
+    const id = this.state.pack.id;
+    const revenue = this.getPrice();
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      name: 'order-confirmation-checkout-mobile',
+      id,
+      revenue,
+      shipping: '0',
+      tracking_data: {
+        device_type:'MOBILE_PHONE',
+        ip: abtastyParams ? abtastyParams.ip : '',
+        origin: 'MobileConfirmContainer',
+        timestamp: moment().format(),
+        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'transaction_event' });
+  };
+
   confirmOrder = values => {
+    this.sendTransactionDetails();
     const { localStorage } = window;
     const customerData = JSON.parse(localStorage.getItem('parsedShipping'));
     if (this.state.isSame) {
