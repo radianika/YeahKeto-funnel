@@ -94,7 +94,7 @@ class Upsell2Treatment1 extends React.PureComponent {
             <p className="price-box-txt2">Save 60% Today</p>
             <p className="price-box-txt3">
               <img
-                src="/static/assets/images/arrow-left.png"
+                src="/static/assets/images/arrow-left-upsell.png"
                 width="77"
                 height="33"
                 alt=""
