@@ -127,9 +127,12 @@ export async function getVariationForVisitor(visitor_id, campaign_id) {
       },
     );
     if (idx(response, _ => _.data.variation_id)) {
+      console.log('****************************response********************************');
       return response.data.variation_id;
     }
   } catch (error) {
+    console.log('XXXXXXXXXxxxxxxxxx')
+    console.log(error)
     Raven.captureException(error);
     console.error('Exception Occurred in ReactApp', error.stack || error);
   }

@@ -119,7 +119,7 @@ class Promo extends React.PureComponent {
           />
           <script src="https://fast.wistia.net/assets/external/E-v1.js" async />
         </Head>
-        <PromoDesktopContainer />
+        <PromoDesktopContainer abtastyParams={this.props.abtastyParams}/>
       </React.Fragment>
     );
   }

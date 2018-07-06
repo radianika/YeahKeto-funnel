@@ -212,6 +212,9 @@ app.prepare().then(() => {
         );
       }
       const variationId = await getVariationForVisitor(visitorId, '312492');
+      console.log('********************************************************');
+      console.log(variationId);
+      console.log('********************************************************');
       if (requestAgent === 'desktop') {
         return app.render(req, res, '/promo-desktop', {
           requestAgent,

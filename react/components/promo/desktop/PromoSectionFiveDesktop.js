@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { AuthActions } from 'redux/actions';
+
 import Control_411715 from './media-section/control.js';
 import Treatment_711416 from './media-section/Treatment_411716.js';
 import Treatment_711417 from './media-section/Treatment_411717.js';
@@ -22,6 +25,9 @@ class PromoSectionFiveDesktop extends React.PureComponent {
     setInterval(() => {
       this.updateTime();
     }, 1000);
+
+    console.log('props');
+    console.log(this.props);
   }
 
   updateTime() {
@@ -60,11 +66,36 @@ class PromoSectionFiveDesktop extends React.PureComponent {
             featured across print &amp; media in 2018.
           </p>
           <i className="s5-line sprite4 sprite-s5-line" />
-          <Treatment_711417 {...this.state} />
+          {
+            this.props.abtastyParams && this.props.abtastyParams.variationId === '411715' ?
+            <Control_411715 {...this.state} /> : null
+          }
+
+          {
+            this.props.abtastyParams && this.props.abtastyParams.variationId === '411716' ?
+            <Treatment_711416 {...this.state} /> : null
+          }
+
+          {
+            this.props.abtastyParams && this.props.abtastyParams.variationId === '411717' ?
+            <Treatment_711417 {...this.state} /> : null
+          }
+
+          {
+            this.props.abtastyParams && (this.props.abtastyParams.variationId !== '411715'
+              && this.props.abtastyParams.variationId !== '411716'
+              && this.props.abtastyParams.variationId !== '411717') ?
+            <Control_411715 {...this.state} /> : null
+          }
+
         </div>
       </div>
     );
   }
 }
 
-export { PromoSectionFiveDesktop };
+const mapStateToProps = state => ({
+  abtastyParams: state.auth.abtastyParams,
+});
+
+export default connect(mapStateToProps, { ...AuthActions })(PromoSectionFiveDesktop);

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Control_411715 = ({ className }) => (
+const Control_411715 = (props) => (
   <div className="s5-left-wrapper">
     <div className="s5left">
       <i className="vdo-arw sprite5 sprite-vdo-arw" />
@@ -39,17 +39,17 @@ const Control_411715 = ({ className }) => (
       <p className="limited-offer">HURRY! Limited Time Offer</p>
       <div id="clockdiv">
         <div>
-          <span className="hours">{hours}</span>
+          <span className="hours">{props.hours}</span>
           <p>HOUR</p>
         </div>
         <p className="colon">:</p>
         <div>
-          <span className="minutes">{minutes}</span>
+          <span className="minutes">{props.minutes}</span>
           <p>Minute</p>
         </div>
         <p className="colon">:</p>
         <div>
-          <span className="seconds">{seconds}</span>
+          <span className="seconds">{props.seconds}</span>
           <p>SECONDS</p>
         </div>
       </div>
