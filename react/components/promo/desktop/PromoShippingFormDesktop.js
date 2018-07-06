@@ -8,14 +8,37 @@ import {
 } from 'helpers';
 import { TextField, SelectField, AddressField } from 'react/components/common';
 import { connect } from 'react-redux';
+import moment from 'moment';
+import axios from 'axios';
 
 class PromoShippingFormDesktopComponent extends React.PureComponent {
+  postActionTracker = () => {
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      name: 'rush-my-order-form-click',
+      value_string: 'rush-my-order-form-click',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: 'promo desktop',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+  };
+
   render() {
     const { props } = this;
     return (
       <form
         id="form-contact"
-        onSubmit={props.handleSubmit}
+        onSubmit={() => {
+          this.postActionTracker();
+          props.handleSubmit();
+        }}
         className="pure-form pure-form-aligned fv-form fv-form-pure"
       >
         <button
@@ -102,7 +125,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         />
         <div className="clearall" />
         <button
-          id="promo-shipping-form-submit-desktop"
+          id="rush-my-order-form-click"
           onClick={this.showErrorModal}
           className="submit pulse sprite5 sprite-submit"
         />

@@ -98,11 +98,11 @@ server.use((req, res, cb) => {
         res.set('ABCBDSESSID', req.sessionID);
       }
 
-      if (!req.session.ip) {
+      if (req.session && !req.session.ip) {
         req.session.ip = security.getIp(req); // eslint-disable-line no-param-reassign
       }
 
-      if (!req.session.userAgent) {
+      if (req.session && !req.session.userAgent) {
         req.session.userAgent = req.get('User-Agent'); // eslint-disable-line no-param-reassign
       }
     }
@@ -212,7 +212,7 @@ app.prepare().then(() => {
         );
       }
       if (requestAgent === 'desktop') {
-        const variationId = await getVariationForVisitor(visitorId, '306753');
+        const variationId = await getVariationForVisitor(visitorId, '312492');
         return app.render(req, res, '/promo-desktop', {
           requestAgent,
           visitorId,
@@ -221,9 +221,11 @@ app.prepare().then(() => {
         });
       }
       if (requestAgent === 'mobile') {
+        const variationId = await getVariationForVisitor(visitorId, '312494');
         return app.render(req, res, '/promo-mobile', {
           requestAgent,
           visitorId,
+          variationId,
           device: requestAgent,
         });
       }

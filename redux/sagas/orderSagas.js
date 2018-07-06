@@ -12,7 +12,7 @@ import {
 } from 'helpers';
 import { getCookie } from 'react/components/common';
 
-const getSession = state => state.auth.sessionId;
+const getSession = state => state.auth && state.auth.sessionId;
 
 const packIdMap = {
   210: {
@@ -134,24 +134,6 @@ function* submitLeadsForm(action) {
   }
 }
 
-const postActionTracker = async (abtastyParams, selectedName) => {
-  const value_string = selectedName;
-  const body = {
-    name: 'rush-my-order-checkout-page',
-    value_string,
-    type: 'CLICK',
-    tracking_data: {
-      visitor_id: abtastyParams.visitorId,
-      device_type:
-        abtastyParams.requestAgent === 'desktop' ? 'DESKTOP' : 'MOBILE_PHONE',
-      origin: 'CheckoutPage',
-      timestamp: moment().format(),
-      ip: abtastyParams.ip,
-    },
-  };
-  await axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
-};
-
 /**
  * placeOrder: calls the api which internally calls the placeOrder call to CRM api
  * @namespace orderSaga
@@ -192,9 +174,6 @@ function* placeOrder(action) {
     ) {
       const { localStorage } = window;
       const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-      if (abtastyParams && abtastyParams.requestAgent === 'desktop') {
-        yield call(postActionTracker, abtastyParams, action.payload.pack.name);
-      }
       const order = apiResponse.response.data.data;
       localStorage.setItem('upsell1', JSON.stringify([order]));
       if (values.cart) {

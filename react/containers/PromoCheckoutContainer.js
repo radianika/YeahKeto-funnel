@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import axios from 'axios';
 import { Footer } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
 import { PromoCheckoutPaymentForm } from 'react/components/promo/desktop';
@@ -16,6 +17,7 @@ class PromoCheckout extends React.PureComponent {
   }
 
   submitBillingForm = values => {
+    this.sendTransactionDetails();
     this.props.placeOrder({
       values,
       pack: this.state.selected,
@@ -23,6 +25,26 @@ class PromoCheckout extends React.PureComponent {
       nextUrl: '/promo/desktop/upsell-1',
       isDesktop: true,
     });
+  };
+
+  sendTransactionDetails = () => {
+    const id = this.state.selected.id;
+    const revenue = this.state.selected.packagePrice;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      name: 'order-confirmation-checkout-desktop',
+      id,
+      revenue,
+      shipping: '0',
+      tracking_data: {
+        device_type:'DESKTOP',
+        ip: abtastyParams ? abtastyParams.ip : '',
+        origin: 'PromoCheckoutPaymentForm',
+        timestamp: moment().format(),
+        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'transaction_event' });
   };
 
   render() {
@@ -142,8 +164,8 @@ class PromoCheckout extends React.PureComponent {
                       <li>Shipping and Handling</li>
                       <li id="shp">$0.00</li>
                       <li>Total</li>
-                      <li id="total" style={{ fontWeight: 600 }}>
-                        {this.state.selected.packagePrice}
+                      <li id="total">
+                        {`$${this.state.selected.packagePrice}`}
                       </li>
                     </ul>
                   </div>

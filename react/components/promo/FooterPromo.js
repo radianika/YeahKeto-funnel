@@ -2,6 +2,9 @@ import React from 'react';
 import { Footer } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
+import moment from 'moment';
+import axios from 'axios';
+
 class FooterPromo extends React.PureComponent {
   constructor() {
     super();
@@ -35,6 +38,24 @@ class FooterPromo extends React.PureComponent {
     window.location.assign(`/promo/mobile/shipping?${getQueryString()}`);
   };
 
+  postActionTracker = () => {
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      name: 'mobile-order-now',
+      value_string: 'mobile-order-now',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'MOBILE_PHONE',
+        origin: 'promo mobile',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+  };
+
   render() {
     return (
       <footer ref={this.footerRef}>
@@ -43,10 +64,13 @@ class FooterPromo extends React.PureComponent {
             <a
               id={this.props.tagID}
               href="javascript:void(0)"
-              onClick={this.gotoShipping}
+              onClick={() => {
+                this.postActionTracker();
+                this.gotoShipping();
+              }}
               className="shipping_redirect"
             >
-              <i className="btn pulse sprite3 sprite-ship-btn" />
+              <i className="btn pulse sprite3 sprite-ship-btn" id="mobie-order-now"/>
             </a>
           </div>
         )}
