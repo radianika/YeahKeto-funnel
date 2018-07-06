@@ -55,7 +55,7 @@ class Upsell1Component extends React.PureComponent {
           <p className="with-txt">with</p>
           <p className="up-txt2">Maximum Strength CBD Capsules</p>
           <img
-            src="/static/assets/images/up1-bottle.png"
+            src="/static/assets/images/up-prod-1.jpg"
             className="up-prod"
             alt=""
           />
