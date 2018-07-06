@@ -83,7 +83,7 @@ class Upsell2Treatment1 extends React.PureComponent {
           <p className="with-txt">with</p>
           <p className="up-txt2">CBD Warming Balm</p>
           <img
-            src="/static/assets/images/upsell2-mobile/up2-combo.png"
+            src="/static/assets/images/up2-combo.png"
             className="up-prod"
           />
           <div className="clearall" />
