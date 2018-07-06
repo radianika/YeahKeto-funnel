@@ -102,7 +102,7 @@ server.use((req, res, cb) => {
         req.session.ip = security.getIp(req); // eslint-disable-line no-param-reassign
       }
 
-      if (!req.session && req.session.userAgent) {
+      if (req.session && !req.session.userAgent) {
         req.session.userAgent = req.get('User-Agent'); // eslint-disable-line no-param-reassign
       }
     }
