@@ -598,11 +598,11 @@ app.prepare().then(() => {
       if (
         req.url.indexOf('/static/') === -1 &&
         req.url.indexOf('on-demand-entries-ping') === -1 &&
-        req.url.indexOf('_next') === -1
+        req.url.indexOf('_next') === -1 &&
+        req.url !== '/'
       ) {
         res.redirect('/promo');
       }
-      return handle(req, res);
       return handle(req, res);
     } catch (error) {
       Raven.captureException(error);
