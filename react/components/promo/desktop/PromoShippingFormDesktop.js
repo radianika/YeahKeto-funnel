@@ -13,21 +13,25 @@ import axios from 'axios';
 
 class PromoShippingFormDesktopComponent extends React.PureComponent {
   postActionTracker = () => {
-    const { localStorage } = window;
-    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const body = {
-      name: 'rush-my-order-form-click',
-      value_string: 'rush-my-order-form-click',
-      type: 'CLICK',
-      tracking_data: {
-        visitor_id: abtastyParams.visitorId,
-        device_type: 'DESKTOP',
-        origin: 'promo desktop',
-        timestamp: moment().format(),
-        ip: abtastyParams.ip,
-      },
-    };
-    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+    try {
+      const { localStorage } = window;
+      const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+      const body = {
+        name: 'rush-my-order-form-click',
+        value_string: 'rush-my-order-form-click',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'DESKTOP',
+          origin: 'promo desktop',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+      axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   render() {
@@ -35,7 +39,10 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
     return (
       <form
         id="form-contact"
-        onSubmit={props.handleSubmit}
+        onSubmit={(e) => {
+          this.postActionTracker();
+          props.handleSubmit(e);
+        }}
         className="pure-form pure-form-aligned fv-form fv-form-pure"
       >
         <button
