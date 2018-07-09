@@ -33,10 +33,6 @@ class Index extends React.Component {
             type="text/css"
             href="/static/assets/css/style.css"
           />
-          <script
-            src="https://cdn.useproof.com/proof.js?acc=Der7ihJpySMVVqyPFbHeXzJjwYm2"
-            async
-          />
         </Head>
         <HomeContainer />
       </React.Fragment>
