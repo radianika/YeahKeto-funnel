@@ -21,7 +21,7 @@ const packIdMap = {
       {
         ProductID: 21340,
         Quantity: 5,
-        Amount: 49,
+        Amount: 39,
       },
     ],
   },
@@ -31,7 +31,7 @@ const packIdMap = {
       {
         ProductID: 21340,
         Quantity: 3,
-        Amount: 59,
+        Amount: 49,
       },
     ],
   },
@@ -41,7 +41,7 @@ const packIdMap = {
       {
         ProductID: 21340,
         Quantity: 1,
-        Amount: 79,
+        Amount: 69,
       },
     ],
   },
