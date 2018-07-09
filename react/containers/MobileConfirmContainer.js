@@ -122,8 +122,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     }
     const body = {
       name,
-      id,
-      revenue,
+      id: id.toString(),
+      revenue: parseInt(revenue),
       shipping: '0',
       tracking_data: {
         device_type: 'MOBILE_PHONE',
