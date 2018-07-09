@@ -9,6 +9,8 @@ class Promo extends React.PureComponent {
     const {
       store, isServer, query, req,
     } = props.ctx;
+    const { visitorId, variationId } = query;
+    const { ip } = req.session;
     if (isServer) {
       store.dispatch(
         AuthActions.setUniqueSessionId({
@@ -16,6 +18,13 @@ class Promo extends React.PureComponent {
           headers: {
             'x-ascbd-req-origin': req.get('host'),
           },
+        }),
+      );
+      store.dispatch(
+        AuthActions.setAbtastyParams({
+          visitorId,
+          variationId,
+          ip,
         }),
       );
     }

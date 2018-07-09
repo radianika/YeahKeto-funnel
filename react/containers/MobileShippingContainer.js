@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import moment from 'moment';
 import {
   stateslist,
   shippingFormValidator,
@@ -18,7 +20,7 @@ import {
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
 import { OrderActions } from 'redux/actions';
-import { getQueryString } from 'helpers';
+import { getQueryString, packages } from 'helpers';
 
 /**
  * @class MobileShippingContainerComponent
@@ -33,6 +35,49 @@ class MobileShippingContainerComponent extends React.PureComponent {
     };
   }
 
+  componentDidMount() {
+    this.postCampaignActivatedEvent();
+    this.postVisitEvent();
+  }
+
+  postCampaignActivatedEvent = () => {
+    const { localStorage } = window;
+    localStorage.setItem(
+      'abtastyParams',
+      JSON.stringify(this.props.abtastyParams),
+    );
+    const body = {
+      campaign_id: '312844',
+      variation_id: this.props.abtastyParams.variationId,
+      tracking_data: {
+        device_type: 'MOBILE_PHONE',
+        ip: this.props.abtastyParams.ip,
+        origin: 'Promo Shipping Mobile',
+        timestamp: moment().format(),
+        visitor_id: this.props.abtastyParams.visitorId,
+      },
+    };
+    axios.post('/abtasty', {
+      ...body,
+      action: 'campaign_activated_event',
+    });
+  };
+
+  postVisitEvent = () => {
+    const { localStorage } = window;
+    const abtastyParams = this.props.abtastyParams;
+    const body = {
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'MOBILE_PHONE',
+        origin: window.location.href,
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'visit_event' });
+  };
+
   onSubmit = e => {
     this.setState({ showCheckingModal: true });
     this.props.handleSubmit(values => {
@@ -45,17 +90,29 @@ class MobileShippingContainerComponent extends React.PureComponent {
   };
 
   componentDidUpdate(prevProps) {
+    const { abtastyParams } = this.props;
+    const queryString = getQueryString();
+    let nextUrl = '';
+    let pack = {};
+    if (!abtastyParams.variationId || abtastyParams.variationId === '412122') {
+      nextUrl = `/promo/mobile/select-package?${queryString}`;
+    } else if (abtastyParams.variationId === '412123') {
+      pack = packages[0];
+      nextUrl = `/promo/mobile/confirm?${queryString}&productId=${pack.id}`;
+    } else if (abtastyParams.variationId === '412124') {
+      pack = packages[1];
+      nextUrl = `/promo/mobile/confirm?${queryString}&productId=${pack.id}`;
+    }
     if (
       prevProps.submitStatus !== 'success' &&
       this.props.submitStatus === 'success'
     ) {
       this.setState({ showCheckingModal: false });
-      const queryString = getQueryString();
-      setTimeout(
-        () =>
-          window.location.assign(`/promo/mobile/select-package?${queryString}`),
-        1000,
-      );
+      setTimeout(() => {
+        const { localStorage } = window;
+        localStorage.setItem('pack', JSON.stringify(pack));
+        window.location.assign(nextUrl);
+      }, 1000);
     }
   }
 
@@ -235,6 +292,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     submitStatus: state.order.submitLeadsFormStatus,
+    abtastyParams: state.auth.abtastyParams,
   };
 }
 
