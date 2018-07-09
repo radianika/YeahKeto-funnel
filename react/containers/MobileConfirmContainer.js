@@ -168,6 +168,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
 
   renderSummary() {
     const { pack } = this.state;
+    console.log({ pack });
 
     if (this.state.summaryOpen) {
       return (
@@ -188,7 +189,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                 <ul className="rgtlist1">
                   <li>
                     <span>american science</span>
-                    <br /> {pack.title.props.children[0]}
+                    <br /> <b>{pack.name}</b>
                   </li>
                 </ul>
                 <ul className="rgtlist2">
