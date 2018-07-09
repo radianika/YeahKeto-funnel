@@ -8,12 +8,22 @@ import { OrderActions } from 'redux/actions';
 import { PromoCheckoutPaymentForm } from 'react/components/promo/desktop';
 import { packages } from 'helpers';
 
+const packMapping = {
+  210 : '5-bottle-order-1',
+  209 : '3-bottle-order-1',
+  208 : '1-bottle-order-1'
+}
+
 class PromoCheckout extends React.PureComponent {
   constructor() {
     super();
     this.state = {
       selected: packages[0],
     };
+  }
+
+  componentDidMount() {
+    this.sendTransactionDetailsPackInfo();
   }
 
   submitBillingForm = values => {
@@ -46,12 +56,6 @@ class PromoCheckout extends React.PureComponent {
     };
     axios.post('/abtasty', { ...body, action: 'transaction_event' });
   };
-
-  const packMapping = [
-    210 : '5-bottle-order-1',
-    209 : '3-bottle-order-1',
-    208 : '1-bottle-order-1'
-  ]
 
   sendTransactionDetailsPackInfo = () => {
     const id = this.state.selected.id;
@@ -117,6 +121,7 @@ class PromoCheckout extends React.PureComponent {
                       }
                       onClick={() => {
                         this.setState({ selected: pack });
+                        this.sendTransactionDetailsPackInfo();
                       }}
                     >
                       <div className="pkg-hdbox">
