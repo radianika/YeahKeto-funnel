@@ -22,10 +22,6 @@ class PromoCheckout extends React.PureComponent {
     };
   }
 
-  componentDidMount() {
-    this.sendTransactionDetailsPackInfo();
-  }
-
   submitBillingForm = values => {
     this.sendTransactionDetails();
     this.sendTransactionDetailsPackInfo();
@@ -39,7 +35,7 @@ class PromoCheckout extends React.PureComponent {
   };
 
   sendTransactionDetails = () => {
-    const id = this.state.selected.id;
+    const id = ''+this.state.selected.id;
     const revenue = Math.round(this.state.selected.packagePrice);
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
@@ -59,7 +55,7 @@ class PromoCheckout extends React.PureComponent {
   };
 
   sendTransactionDetailsPackInfo = () => {
-    const id = this.state.selected.id;
+    const id = ''+this.state.selected.id;
     const revenue = Math.round(this.state.selected.packagePrice);
     const abtastyParams = JSON.parse(
       localStorage.getItem('abtastyParams_313018'),
