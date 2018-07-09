@@ -9,10 +9,10 @@ import { PromoCheckoutPaymentForm } from 'react/components/promo/desktop';
 import { packages } from 'helpers';
 
 const packMapping = {
-  210 : '5-bottle-order-1',
-  209 : '3-bottle-order-1',
-  208 : '1-bottle-order-1'
-}
+  210: '5-bottle-order-1',
+  209: '3-bottle-order-1',
+  208: '1-bottle-order-1',
+};
 
 class PromoCheckout extends React.PureComponent {
   constructor() {
@@ -22,12 +22,9 @@ class PromoCheckout extends React.PureComponent {
     };
   }
 
-  componentDidMount() {
-    this.sendTransactionDetailsPackInfo();
-  }
-
   submitBillingForm = values => {
     this.sendTransactionDetails();
+    this.sendTransactionDetailsPackInfo();
     this.props.placeOrder({
       values,
       pack: this.state.selected,
@@ -38,8 +35,8 @@ class PromoCheckout extends React.PureComponent {
   };
 
   sendTransactionDetails = () => {
-    const id = this.state.selected.id;
-    const revenue = this.state.selected.packagePrice;
+    const id = ''+this.state.selected.id;
+    const revenue = parseInt(this.state.selected.packagePrice);
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
       name: 'order-confirmation-checkout-desktop',
@@ -58,9 +55,11 @@ class PromoCheckout extends React.PureComponent {
   };
 
   sendTransactionDetailsPackInfo = () => {
-    const id = this.state.selected.id;
-    const revenue = this.state.selected.packagePrice;
-    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams_313018'));
+    const id = ''+this.state.selected.id;
+    const revenue = parseInt(this.state.selected.packagePrice);
+    const abtastyParams = JSON.parse(
+      localStorage.getItem('abtastyParams_313018'),
+    );
     const body = {
       name: packMapping[id],
       id,
@@ -121,7 +120,6 @@ class PromoCheckout extends React.PureComponent {
                       }
                       onClick={() => {
                         this.setState({ selected: pack });
-                        this.sendTransactionDetailsPackInfo();
                       }}
                     >
                       <div className="pkg-hdbox">
