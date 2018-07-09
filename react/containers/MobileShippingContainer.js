@@ -94,15 +94,17 @@ class MobileShippingContainerComponent extends React.PureComponent {
     const queryString = getQueryString();
     let nextUrl = '';
     let pack = {};
-    if (!abtastyParams.variationId || abtastyParams.variationId === '412122') {
-      nextUrl = `/promo/mobile/select-package?${queryString}`;
-    } else if (abtastyParams.variationId === '412123') {
-      pack = packages[0];
-      nextUrl = `/promo/mobile/confirm?${queryString}&productId=${pack.id}`;
-    } else if (abtastyParams.variationId === '412124') {
-      pack = packages[1];
-      nextUrl = `/promo/mobile/confirm?${queryString}&productId=${pack.id}`;
-    }
+    // if (!abtastyParams.variationId || abtastyParams.variationId === '412122') {
+    //   nextUrl = `/promo/mobile/select-package?${queryString}`;
+    // } else if (abtastyParams.variationId === '412123') {
+    //   pack = packages[0];
+    //   nextUrl = `/promo/mobile/confirm?${queryString}&productId=${pack.id}`;
+    // } else if (abtastyParams.variationId === '412124') {
+    //   pack = packages[1];
+    //   nextUrl = `/promo/mobile/confirm?${queryString}&productId=${pack.id}`;
+    // }
+    pack = packages[0];
+    nextUrl = `/promo/mobile/confirm?${queryString}&productId=${pack.id}`;
     if (
       prevProps.submitStatus !== 'success' &&
       this.props.submitStatus === 'success'
