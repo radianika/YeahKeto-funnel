@@ -103,7 +103,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
 
   sendTransactionDetails = () => {
     const id = ''+this.state.pack.id;
-    const revenue = Math.round(this.getPrice());
+    const revenue = parseInt(this.getPrice());
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     let name = '';
     const { variationId } = abtastyParams;

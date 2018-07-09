@@ -36,7 +36,7 @@ class PromoCheckout extends React.PureComponent {
 
   sendTransactionDetails = () => {
     const id = ''+this.state.selected.id;
-    const revenue = Math.round(this.state.selected.packagePrice);
+    const revenue = parseInt(this.state.selected.packagePrice);
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
       name: 'order-confirmation-checkout-desktop',
@@ -56,7 +56,7 @@ class PromoCheckout extends React.PureComponent {
 
   sendTransactionDetailsPackInfo = () => {
     const id = ''+this.state.selected.id;
-    const revenue = Math.round(this.state.selected.packagePrice);
+    const revenue = parseInt(this.state.selected.packagePrice);
     const abtastyParams = JSON.parse(
       localStorage.getItem('abtastyParams_313018'),
     );
