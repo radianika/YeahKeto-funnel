@@ -117,7 +117,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       } else if (id === 209) {
         name = '3-bottle-order';
       } else if (id === 210) {
-        name = '1-bottle-order';
+        name = '5-bottle-order';
       }
     }
     const body = {
