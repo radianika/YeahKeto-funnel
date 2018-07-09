@@ -239,10 +239,14 @@ app.prepare().then(() => {
     try {
       const sessionId = await getSessionId(req, res);
       const { orderId } = req.query;
+      const { visitorId, isNew } = await getVisitorId(req, res);
+      const variationId = await getVariationForVisitor(visitorId, '313018');
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-desktop-checkout', {
         orderId,
         sessionId,
+        visitorId,
+        variationId,
       });
       // });
     } catch (error) {
@@ -343,8 +347,13 @@ app.prepare().then(() => {
   server.get('/promo/mobile/shipping', async (req, res) => {
     try {
       const sessionId = await getSessionId(req, res);
+      const { visitorId, isNew } = await getVisitorId(req, res);
+      const variationId = await getVariationForVisitor(visitorId, '312844');
+
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,
+        visitorId,
+        variationId,
       });
     } catch (error) {
       Raven.captureException(error);

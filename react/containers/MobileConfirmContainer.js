@@ -81,17 +81,52 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     return this.state.pack.price;
   }
 
+  // sendTransactionDetails = () => {
+  //   const id = this.state.pack.id;
+  //   const revenue = this.getPrice();
+  //   const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+  //   const body = {
+  //     name: 'order-confirmation-checkout-mobile',
+  //     id,
+  //     revenue,
+  //     shipping: '0',
+  //     tracking_data: {
+  //       device_type:'MOBILE_PHONE',
+  //       ip: abtastyParams ? abtastyParams.ip : '',
+  //       origin: 'MobileConfirmContainer',
+  //       timestamp: moment().format(),
+  //       visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+  //     },
+  //   };
+  //   axios.post('/abtasty', { ...body, action: 'transaction_event' });
+  // };
+
   sendTransactionDetails = () => {
-    const id = this.state.pack.id;
-    const revenue = this.getPrice();
+    const id = ''+this.state.pack.id;
+    const revenue = parseInt(this.getPrice());
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    let name = '';
+    const { variationId } = abtastyParams;
+    if (variationId === '412123') {
+      name = '5-default-bottle-order';
+    } else if (variationId === '412124') {
+      name = '3-default-bottle-order';
+    } else if (variationId === '412122') {
+      if (id === 208) {
+        name = '1-bottle-order';
+      } else if (id === 209) {
+        name = '3-bottle-order';
+      } else if (id === 210) {
+        name = '5-bottle-order';
+      }
+    }
     const body = {
-      name: 'order-confirmation-checkout-mobile',
-      id,
-      revenue,
+      name,
+      id: id.toString(),
+      revenue: parseInt(revenue),
       shipping: '0',
       tracking_data: {
-        device_type:'MOBILE_PHONE',
+        device_type: 'MOBILE_PHONE',
         ip: abtastyParams ? abtastyParams.ip : '',
         origin: 'MobileConfirmContainer',
         timestamp: moment().format(),
