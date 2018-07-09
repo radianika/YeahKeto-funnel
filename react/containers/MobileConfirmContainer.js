@@ -168,8 +168,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
 
   renderSummary() {
     const { pack } = this.state;
-    console.log({ pack });
-
     if (this.state.summaryOpen) {
       return (
         <div className="package picked" onClick={this.toggleSummary}>
@@ -189,7 +187,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                 <ul className="rgtlist1">
                   <li>
                     <span>american science</span>
-                    <br /> <b>{pack.name}</b>
+                    <br /> {pack.name.split('+')[0]}{' '}
+                    {pack.name.split('+').length > 1 ? '+' : ''}
+                    <b>{pack.name.split('+')[1]}</b>
                   </li>
                 </ul>
                 <ul className="rgtlist2">
