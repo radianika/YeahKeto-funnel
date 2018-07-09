@@ -13,16 +13,16 @@ class Promo extends React.PureComponent {
     ctx: {
       store,
       isServer,
-      query: { visitorId, variationId, requestAgent, sessionId },
+      query: {
+        visitorId, variationId, requestAgent, sessionId,
+      },
       req: {
         session: { ip },
       },
     },
   }) {
     if (isServer) {
-      store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId }),
-      );
+      store.dispatch(AuthActions.setUniqueSessionId({ sessionId }));
       store.dispatch(
         AuthActions.setAbtastyParams({
           visitorId,
@@ -64,7 +64,9 @@ class Promo extends React.PureComponent {
 
   postVisitEvent = () => {
     const { localStorage } = window;
-    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams_313018'));
+    const abtastyParams = JSON.parse(
+      localStorage.getItem('abtastyParams_313018'),
+    );
     const body = {
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
