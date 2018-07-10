@@ -430,6 +430,24 @@
   display: block;
 }
 
+.sprite5-413271 {
+  background-image: url(/static/assets/images/submit_orange.png);
+  display: block;
+  background-size: 103% 134%;
+}
+
+.sprite5-413272 {
+  background-image: url(/static/assets/images/submit_red.png);
+  display: block;
+  background-size: 103% 134%;
+}
+
+.sprite5-413273 {
+  background-image: url(/static/assets/images/submit_blue.png);
+  display: block;
+  background-size: 103% 134%;
+}
+
 .sprite-select {
   width: 648px;
   height: 260px;

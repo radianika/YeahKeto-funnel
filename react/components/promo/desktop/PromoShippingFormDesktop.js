@@ -16,7 +16,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
     try {
       const { localStorage } = window;
       const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-      const body = {
+      const event1 = {
         name: 'rush-my-order-form-click',
         value_string: 'rush-my-order-form-click',
         type: 'CLICK',
@@ -28,6 +28,31 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
           ip: abtastyParams.ip,
         },
       };
+
+      const event2 = {
+        name: 'rush-my-order-shipping-page-1',
+        value_string: 'rush-my-order-shipping-page-1',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'DESKTOP',
+          origin: 'promo desktop',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
+      axios.post('/multicampaign-abtasty', {
+        312492: {
+          ...event1,
+          action: 'action_tracking_event',
+        },
+        313763: {
+          ...event2,
+          action: 'action_tracking_event',
+        },
+      });
+
       axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
     } catch (err) {
       console.log(err);
@@ -131,7 +156,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         <button
           id="rush-my-order-form-click"
           onClick={this.showErrorModal}
-          className="submit pulse sprite5 sprite-submit"
+          className={`submit pulse sprite5-${this.props.abtastyParams.campaignMaps['313763']} sprite-submit`}
         />
         <div className="clearall" />
         <div>
@@ -142,9 +167,15 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
   }
 }
 
-function mapStateToProps() {
+const mapStateToProps = reduxState => {
+  if (reduxState.order) {
+    return {
+      placeOrderStatus: reduxState.order.placeOrderStatus,
+      abtastyParams: reduxState.auth.abtastyParams,
+    };
+  }
   return {};
-}
+};
 
 const PromoShippingFormDesktop = connect(mapStateToProps)(
   reduxForm({

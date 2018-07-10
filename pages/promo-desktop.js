@@ -11,7 +11,7 @@ class Promo extends React.PureComponent {
     ctx: {
       store,
       isServer,
-      query: { visitorId, variationId, requestAgent },
+      query: { visitorId, variationId, requestAgent, campaignMaps },
       req: {
         session: { ip },
       },
@@ -24,6 +24,7 @@ class Promo extends React.PureComponent {
           variationId,
           requestAgent,
           ip,
+          campaignMaps,
         }),
       );
     }
@@ -40,7 +41,12 @@ class Promo extends React.PureComponent {
       'abtastyParams',
       JSON.stringify(this.props.abtastyParams),
     );
-    const body = {
+    localStorage.setItem(
+      'campaignMaps',
+      JSON.stringify(this.props.abtastyParams.campaignMaps),
+    );
+
+    const event1 = {
       campaign_id: '312492',
       variation_id: this.props.abtastyParams.variationId,
       tracking_data: {
@@ -51,9 +57,28 @@ class Promo extends React.PureComponent {
         visitor_id: this.props.abtastyParams.visitorId,
       },
     };
-    axios.post('/abtasty', {
-      ...body,
-      action: 'campaign_activated_event',
+
+    const event2 = {
+      campaign_id: '313763',
+      variation_id: this.props.abtastyParams.campaignMaps['313763'],
+      tracking_data: {
+        device_type: 'DESKTOP',
+        ip: this.props.abtastyParams.ip,
+        origin: 'Promo Desktop',
+        timestamp: moment().format(),
+        visitor_id: this.props.abtastyParams.visitorId,
+      },
+    };
+
+    axios.post('/multicampaign-abtasty', {
+      312492: {
+        ...event1,
+        action: 'campaign_activated_event',
+      },
+      313763: {
+        ...event2,
+        action: 'campaign_activated_event',
+      },
     });
   };
 
