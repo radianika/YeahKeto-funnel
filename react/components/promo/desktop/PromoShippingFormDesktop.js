@@ -30,8 +30,8 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
       };
 
       const event2 = {
-        name: 'rush-my-order-shipping-page-1',
-        value_string: 'rush-my-order-shipping-page-1',
+        name: 'rush-my-order-shipping-page-color-test',
+        value_string: 'rush-my-order-shipping-page-color-test',
         type: 'CLICK',
         tracking_data: {
           visitor_id: abtastyParams.visitorId,
