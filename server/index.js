@@ -166,13 +166,10 @@ app.prepare().then(() => {
     const promises = [];
 
     Object.keys(campaigns).forEach(key => {
-      console.log('campaigns')
-      console.log(campaigns[key])
       const response = postToAbtastyMultiple(campaigns[key].action, campaigns[key]);
       promises.push(response);
     });
 
-    console.log('I am coming here too')
     Promise.all(promises).then(values => { 
       console.log(values);
       res.status(200);
