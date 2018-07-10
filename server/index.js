@@ -173,11 +173,12 @@ app.prepare().then(() => {
     });
 
     console.log('I am coming here too')
-    return Promise.all(promises).then(values => { 
+    Promise.all(promises).then(values => { 
       console.log(values);
-      return res.status(200).send(values);
+      res.status(200);
     }).catch(reason => { 
       console.log(reason)
+      res.status(400);
     });
   });
 

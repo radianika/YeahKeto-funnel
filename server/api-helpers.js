@@ -98,7 +98,7 @@ export async function postToAbtasty(action, body) {
   }
 }
 
-export async function postToAbtastyMultiple(action, body) {
+export function postToAbtastyMultiple(action, body) {
   try {
     const url = `${ABTASTY_BASE_URL}/${action}`;
     return axios.post(url, body, {
