@@ -145,3 +145,21 @@ export async function getVariationForVisitor(visitor_id, campaign_id) {
     console.error('Exception Occurred in ReactApp', error.stack || error);
   }
 }
+
+export function asyncGetVariationForVisitor(visitor_id, campaign_id) {
+  console.log({ visitor_id, campaign_id });
+  try {
+    return axios.post(
+      `${ABTASTY_BASE_URL}/allocate`,
+      { campaign_id, visitor_id },
+      {
+        headers: {
+          'x-api-key': ABTASTY_API_KEY,
+        },
+      },
+    );
+  } catch (error) {
+    Raven.captureException(error);
+    console.error('Exception Occurred in ReactApp', error.stack || error);
+  }
+}

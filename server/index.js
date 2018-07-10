@@ -17,6 +17,7 @@ import {
   generateAbtastyVisitorId,
   getVariationForVisitor,
   postToAbtastyMultiple,
+  asyncGetVariationForVisitor,
 } from './api-helpers';
 import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
@@ -25,7 +26,13 @@ import redis from './redis-config';
 
 require('dotenv').config();
 
-const { PORT, NODE_ENV } = process.env;
+const {
+  PORT,
+  NODE_ENV,
+  API_BASE_URL,
+  ABTASTY_BASE_URL,
+  ABTASTY_API_KEY,
+} = process.env;
 
 const dev = NODE_ENV !== 'production';
 
@@ -166,17 +173,22 @@ app.prepare().then(() => {
     const promises = [];
 
     Object.keys(campaigns).forEach(key => {
-      const response = postToAbtastyMultiple(campaigns[key].action, campaigns[key]);
+      const response = postToAbtastyMultiple(
+        campaigns[key].action,
+        campaigns[key],
+      );
       promises.push(response);
     });
 
-    Promise.all(promises).then(values => { 
-      console.log(values);
-      res.status(200).send('success');
-    }).catch(reason => { 
-      console.log(reason)
-      res.status(500).send('error');
-    });
+    Promise.all(promises)
+      .then(values => {
+        console.log(values);
+        res.status(200).send('success');
+      })
+      .catch(reason => {
+        console.log(reason);
+        res.status(500).send('error');
+      });
   });
 
   server.get('/start-session', async (req, res) => {
@@ -259,15 +271,35 @@ app.prepare().then(() => {
       const sessionId = await getSessionId(req, res);
       const { orderId } = req.query;
       const { visitorId, isNew } = await getVisitorId(req, res);
-      const variationId = await getVariationForVisitor(visitorId, '313018');
-      // redirectToPromo(orderId, req, res, () => {
-      app.render(req, res, '/promo-desktop-checkout', {
-        orderId,
-        sessionId,
-        visitorId,
-        variationId,
+      // const variationId = await getVariationForVisitor(visitorId, '313018');
+      const tests = ['313018'];
+      const promisses = [];
+      const campaigns = {};
+
+      tests.forEach((test, index) => {
+        console.log(test);
+        campaigns[index] = test;
+        promisses.push(asyncGetVariationForVisitor(visitorId, test));
       });
-      // });
+
+      await Promise.all(promisses).then(values => {
+        const campaignMaps = {};
+        values.forEach((value, index) => {
+          if (idx(value, _ => _.data.variation_id)) {
+            campaignMaps[campaigns[index]] = value.data.variation_id;
+          }
+        });
+
+        // redirectToPromo(orderId, req, res, () => {
+        app.render(req, res, '/promo-desktop-checkout', {
+          orderId,
+          sessionId,
+          visitorId,
+          variationId,
+          campaignMaps,
+        });
+        // });
+      });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
