@@ -172,10 +172,10 @@ app.prepare().then(() => {
 
     Promise.all(promises).then(values => { 
       console.log(values);
-      res.status(200);
+      res.status(200).send();
     }).catch(reason => { 
       console.log(reason)
-      res.status(400);
+      res.status(400).send();
     });
   });
 
