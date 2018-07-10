@@ -156,7 +156,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         <button
           id="rush-my-order-form-click"
           onClick={this.showErrorModal}
-          className={`submit pulse sprite5-${this.props.abtastyParams.campaignMaps['313763']} sprite-submit`}
+          className={`submit pulse sprite5 sprite5-${this.props.abtastyParams.campaignMaps['313763']} sprite-submit`}
         />
         <div className="clearall" />
         <div>
