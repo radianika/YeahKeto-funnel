@@ -244,11 +244,33 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'desktop') {
         const variationId = await getVariationForVisitor(visitorId, '312492');
-        return app.render(req, res, '/promo-desktop', {
-          requestAgent,
-          visitorId,
-          variationId,
-          device: requestAgent,
+        const tests = ['313763'];
+        const promisses = [];
+        const campaigns = {};
+
+        tests.forEach((test, index) => {
+          console.log(test);
+          campaigns[index] = test;
+          promisses.push(asyncGetVariationForVisitor(visitorId, test));
+        });
+
+        Promise.all(promisses).then(values => {
+
+          console.log(values);
+          const campaignMaps = {};
+          values.forEach((value, index) => {
+            if (idx(value, _ => _.data.variation_id)) {
+              campaignMaps[campaigns[index]] = value.data.variation_id;
+            }
+          });
+
+          app.render(req, res, '/promo-desktop', {
+            requestAgent,
+            visitorId,
+            variationId,
+            device: requestAgent,
+            campaignMaps,
+          });
         });
       }
       if (requestAgent === 'mobile') {
@@ -271,35 +293,16 @@ app.prepare().then(() => {
       const sessionId = await getSessionId(req, res);
       const { orderId } = req.query;
       const { visitorId, isNew } = await getVisitorId(req, res);
-      // const variationId = await getVariationForVisitor(visitorId, '313018');
-      const tests = ['313018'];
-      const promisses = [];
-      const campaigns = {};
-
-      tests.forEach((test, index) => {
-        console.log(test);
-        campaigns[index] = test;
-        promisses.push(asyncGetVariationForVisitor(visitorId, test));
+      const variationId = await getVariationForVisitor(visitorId, '313018');
+      
+      // redirectToPromo(orderId, req, res, () => {
+      app.render(req, res, '/promo-desktop-checkout', {
+        orderId,
+        sessionId,
+        visitorId,
+        variationId,
       });
-
-      await Promise.all(promisses).then(values => {
-        const campaignMaps = {};
-        values.forEach((value, index) => {
-          if (idx(value, _ => _.data.variation_id)) {
-            campaignMaps[campaigns[index]] = value.data.variation_id;
-          }
-        });
-
-        // redirectToPromo(orderId, req, res, () => {
-        app.render(req, res, '/promo-desktop-checkout', {
-          orderId,
-          sessionId,
-          visitorId,
-          variationId,
-          campaignMaps,
-        });
-        // });
-      });
+      // });
     } catch (error) {
       Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
