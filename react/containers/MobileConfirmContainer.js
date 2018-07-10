@@ -81,25 +81,25 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     return this.state.pack.price;
   }
 
-  // sendTransactionDetails = () => {
-  //   const id = this.state.pack.id;
-  //   const revenue = this.getPrice();
-  //   const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-  //   const body = {
-  //     name: 'order-confirmation-checkout-mobile',
-  //     id,
-  //     revenue,
-  //     shipping: '0',
-  //     tracking_data: {
-  //       device_type:'MOBILE_PHONE',
-  //       ip: abtastyParams ? abtastyParams.ip : '',
-  //       origin: 'MobileConfirmContainer',
-  //       timestamp: moment().format(),
-  //       visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-  //     },
-  //   };
-  //   axios.post('/abtasty', { ...body, action: 'transaction_event' });
-  // };
+  sendTransactionDetails2 = () => {
+    const id = this.state.pack.id;
+    const revenue = this.getPrice();
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const body = {
+      name: 'order-confirmation-checkout-mobile',
+      id: id ? id.toString() : '',
+      revenue: parseInt(revenue),
+      shipping: '0',
+      tracking_data: {
+        device_type: 'MOBILE_PHONE',
+        ip: abtastyParams ? abtastyParams.ip : '',
+        origin: 'MobileConfirmContainer',
+        timestamp: moment().format(),
+        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'transaction_event' });
+  };
 
   sendTransactionDetails = () => {
     const id = ''+this.state.pack.id;
@@ -123,7 +123,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     name = '5-default-bottle-order';
     const body = {
       name,
-      id: id.toString(),
+      id: id ? id.toString() : '',
       revenue: parseInt(revenue),
       shipping: '0',
       tracking_data: {
@@ -139,6 +139,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
 
   confirmOrder = values => {
     this.sendTransactionDetails();
+    this.sendTransactionDetails2();
     const { localStorage } = window;
     const customerData = JSON.parse(localStorage.getItem('parsedShipping'));
     if (this.state.isSame) {
