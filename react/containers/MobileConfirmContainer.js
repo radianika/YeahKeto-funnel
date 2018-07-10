@@ -102,24 +102,25 @@ class MobileConfirmContainerComponent extends React.PureComponent {
   };
 
   sendTransactionDetails = () => {
-    const id = this.state.pack.id;
-    const revenue = this.getPrice();
+    const id = ''+this.state.pack.id;
+    const revenue = parseInt(this.getPrice());
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     let name = '';
     const { variationId } = abtastyParams;
-    if (variationId === '412123') {
-      name = '5-default-bottle-order';
-    } else if (variationId === '412124') {
-      name = '3-default-bottle-order';
-    } else if (variationId === '412122') {
-      if (id === 208) {
-        name = '1-bottle-order';
-      } else if (id === 209) {
-        name = '3-bottle-order';
-      } else if (id === 210) {
-        name = '5-bottle-order';
-      }
-    }
+    // if (variationId === '412123') {
+    //   name = '5-default-bottle-order';
+    // } else if (variationId === '412124') {
+    //   name = '3-default-bottle-order';
+    // } else if (variationId === '412122') {
+    //   if (id === 208) {
+    //     name = '1-bottle-order';
+    //   } else if (id === 209) {
+    //     name = '3-bottle-order';
+    //   } else if (id === 210) {
+    //     name = '5-bottle-order';
+    //   }
+    // }
+    name = '5-default-bottle-order';
     const body = {
       name,
       id: id ? id.toString() : '',

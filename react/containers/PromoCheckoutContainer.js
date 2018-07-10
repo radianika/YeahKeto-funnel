@@ -8,6 +8,12 @@ import { OrderActions } from 'redux/actions';
 import { PromoCheckoutPaymentForm } from 'react/components/promo/desktop';
 import { packages } from 'helpers';
 
+const packMapping = {
+  210: '5-bottle-order-1',
+  209: '3-bottle-order-1',
+  208: '1-bottle-order-1',
+};
+
 class PromoCheckout extends React.PureComponent {
   constructor() {
     super();
@@ -18,6 +24,7 @@ class PromoCheckout extends React.PureComponent {
 
   submitBillingForm = values => {
     this.sendTransactionDetails();
+    this.sendTransactionDetailsPackInfo();
     this.props.placeOrder({
       values,
       pack: this.state.selected,
@@ -28,8 +35,8 @@ class PromoCheckout extends React.PureComponent {
   };
 
   sendTransactionDetails = () => {
-    const id = this.state.selected.id;
-    const revenue = this.state.selected.packagePrice;
+    const id = ''+this.state.selected.id;
+    const revenue = parseInt(this.state.selected.packagePrice);
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
       name: 'order-confirmation-checkout-desktop',
@@ -37,7 +44,29 @@ class PromoCheckout extends React.PureComponent {
       revenue,
       shipping: '0',
       tracking_data: {
-        device_type:'DESKTOP',
+        device_type: 'DESKTOP',
+        ip: abtastyParams ? abtastyParams.ip : '',
+        origin: 'PromoCheckoutPaymentForm',
+        timestamp: moment().format(),
+        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'transaction_event' });
+  };
+
+  sendTransactionDetailsPackInfo = () => {
+    const id = ''+this.state.selected.id;
+    const revenue = parseInt(this.state.selected.packagePrice);
+    const abtastyParams = JSON.parse(
+      localStorage.getItem('abtastyParams_313018'),
+    );
+    const body = {
+      name: packMapping[id],
+      id,
+      revenue,
+      shipping: '0',
+      tracking_data: {
+        device_type: 'DESKTOP',
         ip: abtastyParams ? abtastyParams.ip : '',
         origin: 'PromoCheckoutPaymentForm',
         timestamp: moment().format(),
@@ -138,38 +167,41 @@ class PromoCheckout extends React.PureComponent {
                     </a>
                   </div>
                 ))}
-                <div className="summary-box">
-                  <p className="smry-hding">Order Summary</p>
-                  <div className="clearall" />
-                  <div className="smry-lft">
-                    <p className="smry-lfttxt">
-                      Your Order is estimated
-                      <br /> to arrive by {shippingDate.format('dddd')},
-                      <br /> <span>{shippingDate.format('ll')}</span>
-                    </p>{' '}
-                    <img
-                      src="/static/promo/desktop/images/smryimg.png"
-                      alt="smry-img"
-                      className="smryimg"
-                    />{' '}
+                {this.props.abtastyParams &&
+                this.props.abtastyParams.variationId === '412321' ? null : (
+                  <div className="summary-box">
+                    <p className="smry-hding">Order Summary</p>
+                    <div className="clearall" />
+                    <div className="smry-lft">
+                      <p className="smry-lfttxt">
+                        Your Order is estimated
+                        <br /> to arrive by {shippingDate.format('dddd')},
+                        <br /> <span>{shippingDate.format('ll')}</span>
+                      </p>{' '}
+                      <img
+                        src="/static/promo/desktop/images/smryimg.png"
+                        alt="smry-img"
+                        className="smryimg"
+                      />{' '}
+                    </div>
+                    <div className="smry-rgt">
+                      <ul className="smrylist">
+                        <li>
+                          american science
+                          <br />{' '}
+                          <span id="pkg-name">{this.state.selected.title}</span>
+                        </li>
+                        <li id="" style={{ fontWeight: 400 }} />
+                        <li>Shipping and Handling</li>
+                        <li id="shp">$0.00</li>
+                        <li>Total</li>
+                        <li id="total">
+                          {`$${this.state.selected.packagePrice}`}
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <div className="smry-rgt">
-                    <ul className="smrylist">
-                      <li>
-                        american science
-                        <br />{' '}
-                        <span id="pkg-name">{this.state.selected.title}</span>
-                      </li>
-                      <li id="" style={{ fontWeight: 400 }} />
-                      <li>Shipping and Handling</li>
-                      <li id="shp">$0.00</li>
-                      <li>Total</li>
-                      <li id="total">
-                        {`$${this.state.selected.packagePrice}`}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                )}
               </div>
               <div className="chk-rgt">
                 <div className="chkfrm-top">
@@ -224,7 +256,10 @@ const PromoCheckoutWithRouter = withRouter(PromoCheckout);
 
 const mapStateToProps = reduxState => {
   if (reduxState.order) {
-    return { placeOrderStatus: reduxState.order.placeOrderStatus };
+    return {
+      placeOrderStatus: reduxState.order.placeOrderStatus,
+      abtastyParams: reduxState.auth.abtastyParams,
+    };
   }
   return {};
 };
