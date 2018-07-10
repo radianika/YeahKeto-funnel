@@ -16,6 +16,7 @@ import {
   postToAbtasty,
   generateAbtastyVisitorId,
   getVariationForVisitor,
+  postToAbtastyMultiple,
 } from './api-helpers';
 import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
@@ -163,14 +164,21 @@ app.prepare().then(() => {
   server.post('/multicampaign-abtasty', async (req, res) => {
     const campaigns = req.body;
     const promises = [];
-    campaigns.forEach(async campaign => {
-      const response = await postToAbtasty(campaign.action, campaign);
-      console.log({ response });
+
+    Object.keys(campaigns).forEach(key => {
+      console.log('campaigns')
+      console.log(campaigns[key])
+      const response = postToAbtastyMultiple(campaigns[key].action, campaigns[key]);
       promises.push(response);
     });
 
-    await Promise.all(promises)
-    res.status(200).send(promises);
+    console.log('I am coming here too')
+    return Promise.all(promises).then(values => { 
+      console.log(values);
+      return res.status(200).send(values);
+    }).catch(reason => { 
+      console.log(reason)
+    });
   });
 
   server.get('/start-session', async (req, res) => {

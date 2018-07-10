@@ -98,6 +98,17 @@ export async function postToAbtasty(action, body) {
   }
 }
 
+export async function postToAbtastyMultiple(action, body) {
+  try {
+    const url = `${ABTASTY_BASE_URL}/${action}`;
+    return axios.post(url, body, {
+      headers: { 'x-api-key': ABTASTY_API_KEY },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function generateAbtastyVisitorId() {
   try {
     const response = await axios.post(
