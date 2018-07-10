@@ -160,6 +160,19 @@ app.prepare().then(() => {
     res.status(200).send(response);
   });
 
+  server.post('/multicampaign-abtasty', async (req, res) => {
+    const campaigns = req.body;
+    const promises = [];
+    campaigns.forEach(async campaign => {
+      const response = await postToAbtasty(campaign.action, campaign);
+      console.log({ response });
+      promises.push(response);
+    });
+
+    await Promise.all(promises)
+    res.status(200).send(promises);
+  });
+
   server.get('/start-session', async (req, res) => {
     const sessionResponse = await post(
       '/v1/auth',
