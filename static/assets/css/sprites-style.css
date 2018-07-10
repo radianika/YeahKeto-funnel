@@ -430,6 +430,26 @@
   display: block;
 }
 
+.sprite5.sprite5-413271 {
+  background-image: url(../sprites/spritesheet5.png);
+  background-repeat: no-repeat;
+  display: block;
+}
+
+.sprite5.sprite5-413272 {
+  background-image: url(../sprites/spritesheet5.png);
+  background-repeat: no-repeat;
+  display: block;
+  background-position: -4px -531px;
+}
+
+.sprite5.sprite5-413273 {
+  background-image: url(../sprites/spritesheet5.png);
+  background-repeat: no-repeat;
+  display: block;
+  background-position: -4px -606px;
+}
+
 .sprite-select {
   width: 648px;
   height: 260px;

@@ -16,6 +16,8 @@ import {
   postToAbtasty,
   generateAbtastyVisitorId,
   getVariationForVisitor,
+  postToAbtastyMultiple,
+  asyncGetVariationForVisitor,
 } from './api-helpers';
 import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
@@ -24,7 +26,13 @@ import redis from './redis-config';
 
 require('dotenv').config();
 
-const { PORT, NODE_ENV } = process.env;
+const {
+  PORT,
+  NODE_ENV,
+  API_BASE_URL,
+  ABTASTY_BASE_URL,
+  ABTASTY_API_KEY,
+} = process.env;
 
 const dev = NODE_ENV !== 'production';
 
@@ -160,6 +168,29 @@ app.prepare().then(() => {
     res.status(200).send(response);
   });
 
+  server.post('/multicampaign-abtasty', async (req, res) => {
+    const campaigns = req.body;
+    const promises = [];
+
+    Object.keys(campaigns).forEach(key => {
+      const response = postToAbtastyMultiple(
+        campaigns[key].action,
+        campaigns[key],
+      );
+      promises.push(response);
+    });
+
+    Promise.all(promises)
+      .then(values => {
+        console.log(values);
+        res.status(200).send('success');
+      })
+      .catch(reason => {
+        console.log(reason);
+        res.status(500).send('error');
+      });
+  });
+
   server.get('/start-session', async (req, res) => {
     const sessionResponse = await post(
       '/v1/auth',
@@ -213,11 +244,33 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'desktop') {
         const variationId = await getVariationForVisitor(visitorId, '312492');
-        return app.render(req, res, '/promo-desktop', {
-          requestAgent,
-          visitorId,
-          variationId,
-          device: requestAgent,
+        const tests = ['313763'];
+        const promisses = [];
+        const campaigns = {};
+
+        tests.forEach((test, index) => {
+          console.log(test);
+          campaigns[index] = test;
+          promisses.push(asyncGetVariationForVisitor(visitorId, test));
+        });
+
+        Promise.all(promisses).then(values => {
+
+          console.log(values);
+          const campaignMaps = {};
+          values.forEach((value, index) => {
+            if (idx(value, _ => _.data.variation_id)) {
+              campaignMaps[campaigns[index]] = value.data.variation_id;
+            }
+          });
+
+          app.render(req, res, '/promo-desktop', {
+            requestAgent,
+            visitorId,
+            variationId,
+            device: requestAgent,
+            campaignMaps,
+          });
         });
       }
       if (requestAgent === 'mobile') {
@@ -241,6 +294,7 @@ app.prepare().then(() => {
       const { orderId } = req.query;
       const { visitorId, isNew } = await getVisitorId(req, res);
       const variationId = await getVariationForVisitor(visitorId, '313018');
+      
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-desktop-checkout', {
         orderId,
