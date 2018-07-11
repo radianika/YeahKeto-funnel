@@ -1,11 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Footer } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
 import moment from 'moment';
 import axios from 'axios';
 
-class FooterPromo extends React.PureComponent {
+class FooterPromoComponent extends React.PureComponent {
   constructor() {
     super();
     this.footerRef = React.createRef();
@@ -70,7 +71,7 @@ class FooterPromo extends React.PureComponent {
               }}
               className="shipping_redirect"
             >
-              <i className="btn pulse sprite3 sprite-ship-btn" id="mobie-order-now"/>
+              <i className={`btn pulse sprite3 sprite3-${this.props.abtastyParams.campaignMaps['313876']} sprite-ship-btn`} id="mobie-order-now"/>
             </a>
           </div>
         )}
@@ -104,4 +105,16 @@ class FooterPromo extends React.PureComponent {
     );
   }
 }
+
+const mapStateToProps = reduxState => {
+  if (reduxState.order) {
+    return {
+      abtastyParams: reduxState.auth.abtastyParams,
+    };
+  }
+  return {};
+};
+
+const FooterPromo = connect(mapStateToProps, null)(FooterPromoComponent);
+
 export { FooterPromo };
