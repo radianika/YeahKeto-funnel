@@ -69,8 +69,6 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
           action: 'action_tracking_event',
         },
       });
-
-      axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
     } catch (err) {
       console.log(err);
     }

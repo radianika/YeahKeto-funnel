@@ -272,7 +272,7 @@ app.prepare().then(() => {
               campaignMaps,
             });
           })
-          .catch((err) => {
+          .catch(err => {
             app.render(req, res, '/promo-desktop', {
               requestAgent,
               visitorId,
@@ -284,7 +284,7 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'mobile') {
         const variationId = await getVariationForVisitor(visitorId, '312494');
-        const tests = ['313876'];
+        const tests = ['313876', '314235'];
         const promisses = [];
         const campaigns = {};
 
@@ -312,7 +312,7 @@ app.prepare().then(() => {
               campaignMaps,
             });
           })
-          .catch((err) => {
+          .catch(err => {
             app.render(req, res, '/promo-mobile', {
               requestAgent,
               visitorId,
