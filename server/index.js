@@ -271,15 +271,54 @@ app.prepare().then(() => {
             device: requestAgent,
             campaignMaps,
           });
+        })
+        .catch(function(err) {
+          app.render(req, res, '/promo-desktop', {
+            requestAgent,
+            visitorId,
+            variationId,
+            device: requestAgent,
+            campaignMaps: {'313763': '413271'},
+          });
         });
       }
       if (requestAgent === 'mobile') {
         const variationId = await getVariationForVisitor(visitorId, '312494');
-        return app.render(req, res, '/promo-mobile', {
-          requestAgent,
-          visitorId,
-          variationId,
-          device: requestAgent,
+        const tests = ['313876'];
+        const promisses = [];
+        const campaigns = {};
+
+        tests.forEach((test, index) => {
+          console.log(test);
+          campaigns[index] = test;
+          promisses.push(asyncGetVariationForVisitor(visitorId, test));
+        });
+
+        Promise.all(promisses).then(values => {
+          console.log(values);
+          const campaignMaps = {};
+          values.forEach((value, index) => {
+            if (idx(value, _ => _.data.variation_id)) {
+              campaignMaps[campaigns[index]] = value.data.variation_id;
+            }
+          });
+
+          app.render(req, res, '/promo-mobile', {
+            requestAgent,
+            visitorId,
+            variationId,
+            device: requestAgent,
+            campaignMaps,
+          });
+        })
+        .catch(function(err) {
+          app.render(req, res, '/promo-mobile', {
+            requestAgent,
+            visitorId,
+            variationId,
+            device: requestAgent,
+            campaignMaps: {'313876': '413418'},
+          });
         });
       }
     } catch (error) {

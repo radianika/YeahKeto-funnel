@@ -1,11 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Footer } from 'react/components/common';
 import { getQueryString } from 'helpers';
 
 import moment from 'moment';
 import axios from 'axios';
 
-class FooterPromo extends React.PureComponent {
+class FooterPromoComponent extends React.PureComponent {
   constructor() {
     super();
     this.footerRef = React.createRef();
@@ -39,21 +40,48 @@ class FooterPromo extends React.PureComponent {
   };
 
   postActionTracker = () => {
-    const { localStorage } = window;
-    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const body = {
-      name: 'mobile-order-now',
-      value_string: 'mobile-order-now',
-      type: 'CLICK',
-      tracking_data: {
-        visitor_id: abtastyParams.visitorId,
-        device_type: 'MOBILE_PHONE',
-        origin: 'promo mobile',
-        timestamp: moment().format(),
-        ip: abtastyParams.ip,
-      },
-    };
-    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+    try {
+      const { localStorage } = window;
+      const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+      const event1 = {
+        name: 'mobile-order-now',
+        value_string: 'mobile-order-now',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'MOBILE_PHONE',
+          origin: 'promo mobile',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
+      const event2 = {
+        name: 'mobile-rush-my-order-shipping-page-color-test',
+        value_string: 'mobile-rush-my-order-shipping-page-color-test',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'MOBILE_PHONE',
+          origin: 'promo mobile',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
+      axios.post('/multicampaign-abtasty', {
+        312494: {
+          ...event1,
+          action: 'action_tracking_event',
+        },
+        313876: {
+          ...event2,
+          action: 'action_tracking_event',
+        },
+      });
+    }catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
@@ -70,7 +98,7 @@ class FooterPromo extends React.PureComponent {
               }}
               className="shipping_redirect"
             >
-              <i className="btn pulse sprite3 sprite-ship-btn" id="mobie-order-now"/>
+              <i className={`btn pulse sprite3 sprite3-${this.props.abtastyParams.campaignMaps['313876']} sprite-ship-btn`} id="mobie-order-now"/>
             </a>
           </div>
         )}
@@ -104,4 +132,16 @@ class FooterPromo extends React.PureComponent {
     );
   }
 }
+
+const mapStateToProps = reduxState => {
+  if (reduxState.order) {
+    return {
+      abtastyParams: reduxState.auth.abtastyParams,
+    };
+  }
+  return {};
+};
+
+const FooterPromo = connect(mapStateToProps, null)(FooterPromoComponent);
+
 export { FooterPromo };
