@@ -40,21 +40,48 @@ class FooterPromoComponent extends React.PureComponent {
   };
 
   postActionTracker = () => {
-    const { localStorage } = window;
-    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const body = {
-      name: 'mobile-order-now',
-      value_string: 'mobile-order-now',
-      type: 'CLICK',
-      tracking_data: {
-        visitor_id: abtastyParams.visitorId,
-        device_type: 'MOBILE_PHONE',
-        origin: 'promo mobile',
-        timestamp: moment().format(),
-        ip: abtastyParams.ip,
-      },
-    };
-    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
+    try {
+      const { localStorage } = window;
+      const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+      const event1 = {
+        name: 'mobile-order-now',
+        value_string: 'mobile-order-now',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'MOBILE_PHONE',
+          origin: 'promo mobile',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
+      const event2 = {
+        name: 'mobile-rush-my-order-shipping-page-color-test',
+        value_string: 'mobile-rush-my-order-shipping-page-color-test',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'MOBILE_PHONE',
+          origin: 'promo mobile',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
+      axios.post('/multicampaign-abtasty', {
+        312494: {
+          ...event1,
+          action: 'action_tracking_event',
+        },
+        313876: {
+          ...event2,
+          action: 'action_tracking_event',
+        },
+      });
+    }catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
