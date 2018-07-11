@@ -271,6 +271,15 @@ app.prepare().then(() => {
             device: requestAgent,
             campaignMaps,
           });
+        })
+        .catch(function(err) {
+          app.render(req, res, '/promo-desktop', {
+            requestAgent,
+            visitorId,
+            variationId,
+            device: requestAgent,
+            campaignMaps: {'313763': '413271'},
+          });
         });
       }
       if (requestAgent === 'mobile') {
@@ -300,6 +309,15 @@ app.prepare().then(() => {
             variationId,
             device: requestAgent,
             campaignMaps,
+          });
+        })
+        .catch(function(err) {
+          app.render(req, res, '/promo-mobile', {
+            requestAgent,
+            visitorId,
+            variationId,
+            device: requestAgent,
+            campaignMaps: {'313876': '413418'},
           });
         });
       }
