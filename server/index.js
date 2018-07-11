@@ -244,7 +244,7 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'desktop') {
         const variationId = await getVariationForVisitor(visitorId, '312492');
-        const tests = ['313763'];
+        const tests = ['313763', '314234'];
         const promisses = [];
         const campaigns = {};
 
@@ -254,37 +254,37 @@ app.prepare().then(() => {
           promisses.push(asyncGetVariationForVisitor(visitorId, test));
         });
 
-        Promise.all(promisses).then(values => {
+        Promise.all(promisses)
+          .then(values => {
+            console.log({ values });
+            const campaignMaps = {};
+            values.forEach((value, index) => {
+              if (idx(value, _ => _.data.variation_id)) {
+                campaignMaps[campaigns[index]] = value.data.variation_id;
+              }
+            });
 
-          console.log(values);
-          const campaignMaps = {};
-          values.forEach((value, index) => {
-            if (idx(value, _ => _.data.variation_id)) {
-              campaignMaps[campaigns[index]] = value.data.variation_id;
-            }
+            app.render(req, res, '/promo-desktop', {
+              requestAgent,
+              visitorId,
+              variationId,
+              device: requestAgent,
+              campaignMaps,
+            });
+          })
+          .catch(err => {
+            app.render(req, res, '/promo-desktop', {
+              requestAgent,
+              visitorId,
+              variationId,
+              device: requestAgent,
+              campaignMaps: { 313763: '413271' },
+            });
           });
-
-          app.render(req, res, '/promo-desktop', {
-            requestAgent,
-            visitorId,
-            variationId,
-            device: requestAgent,
-            campaignMaps,
-          });
-        })
-        .catch(function(err) {
-          app.render(req, res, '/promo-desktop', {
-            requestAgent,
-            visitorId,
-            variationId,
-            device: requestAgent,
-            campaignMaps: {'313763': '413271'},
-          });
-        });
       }
       if (requestAgent === 'mobile') {
         const variationId = await getVariationForVisitor(visitorId, '312494');
-        const tests = ['313876'];
+        const tests = ['313876', '314235'];
         const promisses = [];
         const campaigns = {};
 
@@ -294,32 +294,33 @@ app.prepare().then(() => {
           promisses.push(asyncGetVariationForVisitor(visitorId, test));
         });
 
-        Promise.all(promisses).then(values => {
-          console.log(values);
-          const campaignMaps = {};
-          values.forEach((value, index) => {
-            if (idx(value, _ => _.data.variation_id)) {
-              campaignMaps[campaigns[index]] = value.data.variation_id;
-            }
-          });
+        Promise.all(promisses)
+          .then(values => {
+            console.log(values);
+            const campaignMaps = {};
+            values.forEach((value, index) => {
+              if (idx(value, _ => _.data.variation_id)) {
+                campaignMaps[campaigns[index]] = value.data.variation_id;
+              }
+            });
 
-          app.render(req, res, '/promo-mobile', {
-            requestAgent,
-            visitorId,
-            variationId,
-            device: requestAgent,
-            campaignMaps,
+            app.render(req, res, '/promo-mobile', {
+              requestAgent,
+              visitorId,
+              variationId,
+              device: requestAgent,
+              campaignMaps,
+            });
+          })
+          .catch(err => {
+            app.render(req, res, '/promo-mobile', {
+              requestAgent,
+              visitorId,
+              variationId,
+              device: requestAgent,
+              campaignMaps: { 313876: '413418' },
+            });
           });
-        })
-        .catch(function(err) {
-          app.render(req, res, '/promo-mobile', {
-            requestAgent,
-            visitorId,
-            variationId,
-            device: requestAgent,
-            campaignMaps: {'313876': '413418'},
-          });
-        });
       }
     } catch (error) {
       Raven.captureException(error);
@@ -333,7 +334,7 @@ app.prepare().then(() => {
       const { orderId } = req.query;
       const { visitorId, isNew } = await getVisitorId(req, res);
       const variationId = await getVariationForVisitor(visitorId, '313018');
-      
+
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-desktop-checkout', {
         orderId,

@@ -69,17 +69,34 @@ class FooterPromoComponent extends React.PureComponent {
         },
       };
 
+      const event3 = {
+        name: 'mobile-hp-text1-test-rush-my-order',
+        value_string: 'mobile-hp-text1-test-rush-my-order',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'DESKTOP',
+          origin: 'promo desktop',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
       axios.post('/multicampaign-abtasty', {
-        312494: {
+        312492: {
           ...event1,
           action: 'action_tracking_event',
         },
-        313876: {
+        313763: {
           ...event2,
           action: 'action_tracking_event',
         },
+        314235: {
+          ...event3,
+          action: 'action_tracking_event',
+        },
       });
-    }catch (error) {
+    } catch (error) {
       console.log(error);
     }
   };
@@ -98,7 +115,12 @@ class FooterPromoComponent extends React.PureComponent {
               }}
               className="shipping_redirect"
             >
-              <i className={`btn pulse sprite3 sprite3-${this.props.abtastyParams.campaignMaps['313876']} sprite-ship-btn`} id="mobie-order-now"/>
+              <i
+                className={`btn pulse sprite3 sprite3-${
+                  this.props.abtastyParams.campaignMaps['313876']
+                } sprite-ship-btn`}
+                id="mobie-order-now"
+              />
             </a>
           </div>
         )}
