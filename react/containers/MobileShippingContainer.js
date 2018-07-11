@@ -36,8 +36,8 @@ class MobileShippingContainerComponent extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.postCampaignActivatedEvent();
-    this.postVisitEvent();
+    // this.postCampaignActivatedEvent();
+    // this.postVisitEvent();
   }
 
   postCampaignActivatedEvent = () => {
