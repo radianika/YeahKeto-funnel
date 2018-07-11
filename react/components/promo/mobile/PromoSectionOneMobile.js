@@ -11,6 +11,10 @@ class PromoSectionOneMobile extends React.PureComponent {
           Derived from organic, US-harvested hemp, lab-tested for quality.
           Clinically proven therapeutic effects.
         </p>
+        <p className="s1-txt4">
+          For a limited, receive a FREE bottle of our FDA Approved CBD Oil on
+          your first order (no prescription required).
+        </p>
         <p className="clearall" />
         <ul className="s1-list">
           <li>

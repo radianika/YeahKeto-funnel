@@ -42,6 +42,19 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         },
       };
 
+      const event3 = {
+        name: 'desktop-hp-text1-test-rush-my-order',
+        value_string: 'desktop-hp-text1-test-rush-my-order',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'DESKTOP',
+          origin: 'promo desktop',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
       axios.post('/multicampaign-abtasty', {
         312492: {
           ...event1,
@@ -49,6 +62,10 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         },
         313763: {
           ...event2,
+          action: 'action_tracking_event',
+        },
+        314234: {
+          ...event3,
           action: 'action_tracking_event',
         },
       });
@@ -64,7 +81,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
     return (
       <form
         id="form-contact"
-        onSubmit={(e) => {
+        onSubmit={e => {
           this.postActionTracker();
           props.handleSubmit(e);
         }}
@@ -156,7 +173,9 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         <button
           id="rush-my-order-form-click"
           onClick={this.showErrorModal}
-          className={`submit pulse sprite5 sprite5-${this.props.abtastyParams.campaignMaps['313763']} sprite-submit`}
+          className={`submit pulse sprite5 sprite5-${
+            this.props.abtastyParams.campaignMaps['313763']
+          } sprite-submit`}
         />
         <div className="clearall" />
         <div>
