@@ -75,8 +75,8 @@ class FooterPromoComponent extends React.PureComponent {
         type: 'CLICK',
         tracking_data: {
           visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
+          device_type: 'MOBILE_PHONE',
+          origin: 'promo mobile',
           timestamp: moment().format(),
           ip: abtastyParams.ip,
         },
@@ -88,8 +88,8 @@ class FooterPromoComponent extends React.PureComponent {
         type: 'CLICK',
         tracking_data: {
           visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
+          device_type: 'MOBILE_PHONE',
+          origin: 'promo mobile',
           timestamp: moment().format(),
           ip: abtastyParams.ip,
         },
@@ -108,7 +108,7 @@ class FooterPromoComponent extends React.PureComponent {
           ...event3,
           action: 'action_tracking_event',
         },
-        314363: {
+        314411: {
           ...event4,
           action: 'action_tracking_event',
         },
