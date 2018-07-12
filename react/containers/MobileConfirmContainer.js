@@ -82,10 +82,11 @@ class MobileConfirmContainerComponent extends React.PureComponent {
   }
 
   sendTransactionDetails2 = () => {
+    const { localStorage } = window;
     const id = this.state.pack.id;
     const revenue = this.getPrice();
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const body = {
+    const body1 = {
       name: 'order-confirmation-checkout-mobile',
       id: id ? id.toString() : '',
       revenue: parseInt(revenue),
@@ -98,31 +99,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
         visitor_id: abtastyParams ? abtastyParams.visitorId : '',
       },
     };
-    axios.post('/abtasty', { ...body, action: 'transaction_event' });
-  };
 
-  sendTransactionDetails = () => {
-    const id = ''+this.state.pack.id;
-    const revenue = parseInt(this.getPrice());
-    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    let name = '';
-    const { variationId } = abtastyParams;
-    // if (variationId === '412123') {
-    //   name = '5-default-bottle-order';
-    // } else if (variationId === '412124') {
-    //   name = '3-default-bottle-order';
-    // } else if (variationId === '412122') {
-    //   if (id === 208) {
-    //     name = '1-bottle-order';
-    //   } else if (id === 209) {
-    //     name = '3-bottle-order';
-    //   } else if (id === 210) {
-    //     name = '5-bottle-order';
-    //   }
-    // }
-    name = '5-default-bottle-order';
-    const body = {
-      name,
+    const body2 = {
+      name: 'mobile-hp-text1-test-checkout',
       id: id ? id.toString() : '',
       revenue: parseInt(revenue),
       shipping: '0',
@@ -134,11 +113,57 @@ class MobileConfirmContainerComponent extends React.PureComponent {
         visitor_id: abtastyParams ? abtastyParams.visitorId : '',
       },
     };
-    axios.post('/abtasty', { ...body, action: 'transaction_event' });
+    // axios.post('/abtasty', { ...body, action: 'transaction_event' });
+    axios.post('/multicampaign-abtasty', {
+      312494: {
+        ...body1,
+        action: 'transaction_event',
+      },
+      314235: {
+        ...body2,
+        action: 'transaction_event',
+      },
+    });
   };
 
+  // sendTransactionDetails = () => {
+  //   const id = ''+this.state.pack.id;
+  //   const revenue = parseInt(this.getPrice());
+  //   const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+  //   let name = '';
+  //   const { variationId } = abtastyParams;
+  //   // if (variationId === '412123') {
+  //   //   name = '5-default-bottle-order';
+  //   // } else if (variationId === '412124') {
+  //   //   name = '3-default-bottle-order';
+  //   // } else if (variationId === '412122') {
+  //   //   if (id === 208) {
+  //   //     name = '1-bottle-order';
+  //   //   } else if (id === 209) {
+  //   //     name = '3-bottle-order';
+  //   //   } else if (id === 210) {
+  //   //     name = '5-bottle-order';
+  //   //   }
+  //   // }
+  //   name = '5-default-bottle-order';
+  //   const body = {
+  //     name,
+  //     id: id ? id.toString() : '',
+  //     revenue: parseInt(revenue),
+  //     shipping: '0',
+  //     tracking_data: {
+  //       device_type: 'MOBILE_PHONE',
+  //       ip: abtastyParams ? abtastyParams.ip : '',
+  //       origin: 'MobileConfirmContainer',
+  //       timestamp: moment().format(),
+  //       visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+  //     },
+  //   };
+  //   axios.post('/abtasty', { ...body, action: 'transaction_event' });
+  // };
+
   confirmOrder = values => {
-    this.sendTransactionDetails();
+    // this.sendTransactionDetails();
     this.sendTransactionDetails2();
     const { localStorage } = window;
     const customerData = JSON.parse(localStorage.getItem('parsedShipping'));

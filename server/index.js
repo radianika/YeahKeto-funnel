@@ -244,7 +244,7 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'desktop') {
         const variationId = await getVariationForVisitor(visitorId, '312492');
-        const tests = ['313763'];
+        const tests = ['313763', '314234'];
         const promisses = [];
         const campaigns = {};
 
@@ -254,33 +254,73 @@ app.prepare().then(() => {
           promisses.push(asyncGetVariationForVisitor(visitorId, test));
         });
 
-        Promise.all(promisses).then(values => {
+        Promise.all(promisses)
+          .then(values => {
+            console.log({ values });
+            const campaignMaps = {};
+            values.forEach((value, index) => {
+              if (idx(value, _ => _.data.variation_id)) {
+                campaignMaps[campaigns[index]] = value.data.variation_id;
+              }
+            });
 
-          console.log(values);
-          const campaignMaps = {};
-          values.forEach((value, index) => {
-            if (idx(value, _ => _.data.variation_id)) {
-              campaignMaps[campaigns[index]] = value.data.variation_id;
-            }
+            app.render(req, res, '/promo-desktop', {
+              requestAgent,
+              visitorId,
+              variationId,
+              device: requestAgent,
+              campaignMaps,
+            });
+          })
+          .catch(err => {
+            app.render(req, res, '/promo-desktop', {
+              requestAgent,
+              visitorId,
+              variationId,
+              device: requestAgent,
+              campaignMaps: { 313763: '413271' },
+            });
           });
-
-          app.render(req, res, '/promo-desktop', {
-            requestAgent,
-            visitorId,
-            variationId,
-            device: requestAgent,
-            campaignMaps,
-          });
-        });
       }
       if (requestAgent === 'mobile') {
         const variationId = await getVariationForVisitor(visitorId, '312494');
-        return app.render(req, res, '/promo-mobile', {
-          requestAgent,
-          visitorId,
-          variationId,
-          device: requestAgent,
+        const tests = ['313876', '314235'];
+        const promisses = [];
+        const campaigns = {};
+
+        tests.forEach((test, index) => {
+          console.log(test);
+          campaigns[index] = test;
+          promisses.push(asyncGetVariationForVisitor(visitorId, test));
         });
+
+        Promise.all(promisses)
+          .then(values => {
+            console.log(values);
+            const campaignMaps = {};
+            values.forEach((value, index) => {
+              if (idx(value, _ => _.data.variation_id)) {
+                campaignMaps[campaigns[index]] = value.data.variation_id;
+              }
+            });
+
+            app.render(req, res, '/promo-mobile', {
+              requestAgent,
+              visitorId,
+              variationId,
+              device: requestAgent,
+              campaignMaps,
+            });
+          })
+          .catch(err => {
+            app.render(req, res, '/promo-mobile', {
+              requestAgent,
+              visitorId,
+              variationId,
+              device: requestAgent,
+              campaignMaps: { 313876: '413418' },
+            });
+          });
       }
     } catch (error) {
       Raven.captureException(error);
@@ -294,7 +334,7 @@ app.prepare().then(() => {
       const { orderId } = req.query;
       const { visitorId, isNew } = await getVisitorId(req, res);
       const variationId = await getVariationForVisitor(visitorId, '313018');
-      
+
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-desktop-checkout', {
         orderId,
@@ -401,13 +441,13 @@ app.prepare().then(() => {
   server.get('/promo/mobile/shipping', async (req, res) => {
     try {
       const sessionId = await getSessionId(req, res);
-      const { visitorId, isNew } = await getVisitorId(req, res);
-      const variationId = await getVariationForVisitor(visitorId, '312844');
+      // const { visitorId } = await getVisitorId(req, res);
+      // const variationId = await getVariationForVisitor(visitorId, '312844');
 
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,
-        visitorId,
-        variationId,
+        // visitorId,
+        // variationId,
       });
     } catch (error) {
       Raven.captureException(error);

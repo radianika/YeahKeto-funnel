@@ -11,7 +11,9 @@ class Promo extends React.PureComponent {
     ctx: {
       store,
       isServer,
-      query: { visitorId, variationId, requestAgent, campaignMaps },
+      query: {
+        visitorId, variationId, requestAgent, campaignMaps,
+      },
       req: {
         session: { ip },
       },
@@ -70,6 +72,18 @@ class Promo extends React.PureComponent {
       },
     };
 
+    const event3 = {
+      campaign_id: '314234',
+      variation_id: this.props.abtastyParams.campaignMaps['314234'],
+      tracking_data: {
+        device_type: 'DESKTOP',
+        ip: this.props.abtastyParams.ip,
+        origin: 'Promo Desktop',
+        timestamp: moment().format(),
+        visitor_id: this.props.abtastyParams.visitorId,
+      },
+    };
+
     axios.post('/multicampaign-abtasty', {
       312492: {
         ...event1,
@@ -77,6 +91,10 @@ class Promo extends React.PureComponent {
       },
       313763: {
         ...event2,
+        action: 'campaign_activated_event',
+      },
+      314234: {
+        ...event3,
         action: 'campaign_activated_event',
       },
     });

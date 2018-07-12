@@ -24,7 +24,7 @@ class PromoCheckout extends React.PureComponent {
 
   submitBillingForm = values => {
     this.sendTransactionDetails();
-    this.sendTransactionDetailsPackInfo();
+    // this.sendTransactionDetailsPackInfo();
     this.props.placeOrder({
       values,
       pack: this.state.selected,
@@ -35,10 +35,10 @@ class PromoCheckout extends React.PureComponent {
   };
 
   sendTransactionDetails = () => {
-    const id = ''+this.state.selected.id;
+    const id = `${this.state.selected.id}`;
     const revenue = parseInt(this.state.selected.packagePrice);
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const body = {
+    const body1 = {
       name: 'order-confirmation-checkout-desktop',
       id,
       revenue,
@@ -51,16 +51,8 @@ class PromoCheckout extends React.PureComponent {
         visitor_id: abtastyParams ? abtastyParams.visitorId : '',
       },
     };
-    axios.post('/abtasty', { ...body, action: 'transaction_event' });
-  };
 
-  sendTransactionDetailsPackInfo = () => {
-    const id = ''+this.state.selected.id;
-    const revenue = parseInt(this.state.selected.packagePrice);
-    const abtastyParams = JSON.parse(
-      localStorage.getItem('abtastyParams_313018'),
-    );
-    const body = {
+    const body2 = {
       name: packMapping[id],
       id,
       revenue,
@@ -73,8 +65,58 @@ class PromoCheckout extends React.PureComponent {
         visitor_id: abtastyParams ? abtastyParams.visitorId : '',
       },
     };
-    axios.post('/abtasty', { ...body, action: 'transaction_event' });
+
+    const body3 = {
+      name: 'desktop-hp-text1-test-checkout',
+      id,
+      revenue,
+      shipping: '0',
+      tracking_data: {
+        device_type: 'DESKTOP',
+        ip: abtastyParams ? abtastyParams.ip : '',
+        origin: 'PromoCheckoutPaymentForm',
+        timestamp: moment().format(),
+        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+      },
+    };
+
+    axios.post('/multicampaign-abtasty', {
+      1: {
+        ...body1,
+        action: 'transaction_event',
+      },
+      2: {
+        ...body2,
+        action: 'transaction_event',
+      },
+      3: {
+        ...body3,
+        action: 'transaction_event',
+      },
+    });
   };
+
+  // sendTransactionDetailsPackInfo = () => {
+  //   const id = ''+this.state.selected.id;
+  //   const revenue = parseInt(this.state.selected.packagePrice);
+  //   const abtastyParams = JSON.parse(
+  //     localStorage.getItem('abtastyParams_313018'),
+  //   );
+  //   const body = {
+  //     name: packMapping[id],
+  //     id,
+  //     revenue,
+  //     shipping: '0',
+  //     tracking_data: {
+  //       device_type: 'DESKTOP',
+  //       ip: abtastyParams ? abtastyParams.ip : '',
+  //       origin: 'PromoCheckoutPaymentForm',
+  //       timestamp: moment().format(),
+  //       visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+  //     },
+  //   };
+  //   axios.post('/abtasty', { ...body, action: 'transaction_event' });
+  // };
 
   render() {
     const { selected } = this.state;

@@ -35,6 +35,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
   };
 
   render() {
+    const variationId = this.props.abtastyParams.campaignMaps['314234'];
     return (
       <div
         className="section1 dsplay"
@@ -49,10 +50,18 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
             <i className="logo sprite2 sprite-logo" />
             <i className="s1seal sprite3 sprite-s1seal" />
             <i className="s1hd sprite3 sprite-s1hd" />
-            <p className="s1txt">
-              Derived from organic, US-harvested hemp, lab-tested for quality.
-              Clinically proven therapeutic effects.{' '}
-            </p>
+            {!variationId || variationId === '413871' ? (
+              <p className="s1txt">
+                Derived from organic, US-harvested hemp, lab-tested for quality.
+                Clinically proven therapeutic effects.{' '}
+              </p>
+            ) : null}
+            {variationId === '413872' ? (
+              <p className="s1txt">
+                For a limited, receive a FREE bottle of our FDA Approved CBD Oil
+                on your first order (no prescription required).
+              </p>
+            ) : null}
             <ul className="s1list ">
               <li className="sprite2 sprite-s1bullet">
                 <span>Relieves</span> Anxiety &amp; Stress{' '}
@@ -120,6 +129,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     submitStatus: state.order.submitLeadsFormStatus,
+    abtastyParams: state.auth.abtastyParams,
   };
 }
 
