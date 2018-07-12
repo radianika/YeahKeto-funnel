@@ -15,8 +15,8 @@ const packMapping = {
 };
 
 class PromoCheckout extends React.PureComponent {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       selected: packages[0],
     };

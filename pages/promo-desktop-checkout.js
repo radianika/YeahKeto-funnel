@@ -40,6 +40,10 @@ class Promo extends React.PureComponent {
     }
   }
 
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     this.postCampaignActivatedEvent();
     this.postVisitEvent();
@@ -117,7 +121,7 @@ class Promo extends React.PureComponent {
           />
         </Head>
         <PromoSession pageType="checkoutPage" />
-        <PromoCheckoutContainer />
+        <PromoCheckoutContainer {...this.props}/>
       </React.Fragment>
     );
   }
