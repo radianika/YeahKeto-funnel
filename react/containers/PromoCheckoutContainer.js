@@ -35,10 +35,11 @@ class PromoCheckout extends React.PureComponent {
   };
 
   sendTransactionDetails = () => {
+    const { localStorage } = window;
     const id = `${this.state.selected.id}`;
     const revenue = parseInt(this.state.selected.packagePrice);
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const body1 = {
+    const event1 = {
       name: 'order-confirmation-checkout-desktop',
       id,
       revenue,
@@ -52,7 +53,7 @@ class PromoCheckout extends React.PureComponent {
       },
     };
 
-    const body2 = {
+    const event2 = {
       name: packMapping[id],
       id,
       revenue,
@@ -66,8 +67,22 @@ class PromoCheckout extends React.PureComponent {
       },
     };
 
-    const body3 = {
+    const event3 = {
       name: 'desktop-hp-text1-test-checkout',
+      id,
+      revenue,
+      shipping: '0',
+      tracking_data: {
+        device_type: 'DESKTOP',
+        ip: abtastyParams ? abtastyParams.ip : '',
+        origin: 'PromoCheckoutPaymentForm',
+        timestamp: moment().format(),
+        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+      },
+    };
+
+    const event4 = {
+      name: 'desktop-hp-text2-test-checkout',
       id,
       revenue,
       shipping: '0',
@@ -82,15 +97,19 @@ class PromoCheckout extends React.PureComponent {
 
     axios.post('/multicampaign-abtasty', {
       1: {
-        ...body1,
+        ...event1,
         action: 'transaction_event',
       },
       2: {
-        ...body2,
+        ...event2,
         action: 'transaction_event',
       },
       3: {
-        ...body3,
+        ...event3,
+        action: 'transaction_event',
+      },
+      314334: {
+        ...event4,
         action: 'transaction_event',
       },
     });
