@@ -6,9 +6,8 @@ import BenefitsSectionTreatment2 from './BenefitsSectionTreatment2';
 
 class PromoSectionFourMobileComponent extends React.PureComponent {
   render() {
-    // const variation314431 = this.props.abtastyParams.campaignMaps['314431'];
-    const variation314431 = '414151';
-    console.log({ variation314431, props: this.props.abtastyParams });
+    const variation314431 = this.props.abtastyParams.campaignMaps['314431'];
+    // const variation314431 = '414151';
     let returnJSX =
       !variation314431 || variation314431 === '414149' ? (
         <BenefitsSectionControl />

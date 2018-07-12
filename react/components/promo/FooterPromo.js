@@ -108,6 +108,19 @@ class FooterPromoComponent extends React.PureComponent {
         },
       };
 
+      const event6 = {
+        name: 'mobile-hp-benefits-module-test-rush-my-order',
+        value_string: 'mobile-hp-benefits-module-test-rush-my-order',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'MOBILE_PHONE',
+          origin: 'promo desktop',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
       axios.post('/multicampaign-abtasty', {
         312492: {
           ...event1,
@@ -127,6 +140,10 @@ class FooterPromoComponent extends React.PureComponent {
         },
         314411: {
           ...event5,
+          action: 'action_tracking_event',
+        },
+        314431: {
+          ...event6,
           action: 'action_tracking_event',
         },
       });

@@ -142,6 +142,20 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       },
     };
 
+    const event5 = {
+      name: 'mobile-hp-benefits-module-test-checkout',
+      id: id ? id.toString() : '',
+      revenue: parseInt(revenue),
+      shipping: '0',
+      tracking_data: {
+        device_type: 'MOBILE_PHONE',
+        ip: abtastyParams ? abtastyParams.ip : '',
+        origin: 'MobileConfirmContainer',
+        timestamp: moment().format(),
+        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+      },
+    };
+
     axios.post('/multicampaign-abtasty', {
       312494: {
         ...event1,
@@ -157,6 +171,10 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       },
       314411: {
         ...event4,
+        action: 'transaction_event',
+      },
+      314431: {
+        ...event5,
         action: 'transaction_event',
       },
     });
