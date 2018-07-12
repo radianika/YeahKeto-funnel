@@ -84,6 +84,30 @@ class Promo extends React.PureComponent {
       },
     };
 
+    const event4 = {
+      campaign_id: '314334',
+      variation_id: this.props.abtastyParams.campaignMaps['314334'],
+      tracking_data: {
+        device_type: 'DESKTOP',
+        ip: this.props.abtastyParams.ip,
+        origin: 'Promo Desktop',
+        timestamp: moment().format(),
+        visitor_id: this.props.abtastyParams.visitorId,
+      },
+    };
+
+    const event5 = {
+      campaign_id: '314363',
+      variation_id: this.props.abtastyParams.campaignMaps['314363'],
+      tracking_data: {
+        device_type: 'DESKTOP',
+        ip: this.props.abtastyParams.ip,
+        origin: 'Promo Desktop',
+        timestamp: moment().format(),
+        visitor_id: this.props.abtastyParams.visitorId,
+      },
+    };
+
     axios.post('/multicampaign-abtasty', {
       312492: {
         ...event1,
@@ -95,6 +119,14 @@ class Promo extends React.PureComponent {
       },
       314234: {
         ...event3,
+        action: 'campaign_activated_event',
+      },
+      314334: {
+        ...event4,
+        action: 'campaign_activated_event',
+      },
+      314363: {
+        ...event4,
         action: 'campaign_activated_event',
       },
     });

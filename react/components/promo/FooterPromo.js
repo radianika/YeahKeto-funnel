@@ -75,6 +75,32 @@ class FooterPromoComponent extends React.PureComponent {
         type: 'CLICK',
         tracking_data: {
           visitor_id: abtastyParams.visitorId,
+          device_type: 'MOBILE_PHONE',
+          origin: 'promo mobile',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
+      const event4 = {
+        name: 'mobile-hp-top-module-symbol1-test-rush-my-order',
+        value_string: 'mobile-hp-top-module-symbol1-test-rush-my-order',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'MOBILE_PHONE',
+          origin: 'promo mobile',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
+      const event5 = {
+        name: 'mobile-hp-text2-test-rush-my-order',
+        value_string: 'mobile-hp-text2-test-rush-my-order',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
           device_type: 'DESKTOP',
           origin: 'promo desktop',
           timestamp: moment().format(),
@@ -93,6 +119,14 @@ class FooterPromoComponent extends React.PureComponent {
         },
         314235: {
           ...event3,
+          action: 'action_tracking_event',
+        },
+        314336: {
+          ...event4,
+          action: 'transaction_event',
+        },
+        314411: {
+          ...event5,
           action: 'action_tracking_event',
         },
       });
