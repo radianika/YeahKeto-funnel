@@ -99,6 +99,10 @@ start section1
   padding: 0;
 }
 
+.sprite3-414126 + .s1-txt4 {
+  display: none;
+}
+
 ul.s1-list {
   margin: 24px 0 0 233px;
   padding: 0;
