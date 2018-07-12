@@ -83,9 +83,9 @@ class Promo extends React.PureComponent {
       campaign_id: '313876',
       variation_id: this.props.abtastyParams.campaignMaps['313876'],
       tracking_data: {
-        device_type: 'DESKTOP',
+        device_type: 'MOBILE_PHONE',
         ip: this.props.abtastyParams.ip,
-        origin: 'Promo Desktop',
+        origin: 'Promo Mobile',
         timestamp: moment().format(),
         visitor_id: this.props.abtastyParams.visitorId,
       },
@@ -95,9 +95,9 @@ class Promo extends React.PureComponent {
       campaign_id: '314235',
       variation_id: this.props.abtastyParams.campaignMaps['314235'],
       tracking_data: {
-        device_type: 'DESKTOP',
+        device_type: 'MOBILE_PHONE',
         ip: this.props.abtastyParams.ip,
-        origin: 'Promo Desktop',
+        origin: 'Promo Mobile',
         timestamp: moment().format(),
         visitor_id: this.props.abtastyParams.visitorId,
       },
@@ -107,9 +107,9 @@ class Promo extends React.PureComponent {
       campaign_id: '314336',
       variation_id: this.props.abtastyParams.campaignMaps['314336'],
       tracking_data: {
-        device_type: 'DESKTOP',
+        device_type: 'MOBILE_PHONE',
         ip: this.props.abtastyParams.ip,
-        origin: 'Promo Desktop',
+        origin: 'Promo Mobile',
         timestamp: moment().format(),
         visitor_id: this.props.abtastyParams.visitorId,
       },
@@ -119,9 +119,21 @@ class Promo extends React.PureComponent {
       campaign_id: '314411',
       variation_id: this.props.abtastyParams.campaignMaps['314411'],
       tracking_data: {
-        device_type: 'DESKTOP',
+        device_type: 'MOBILE_PHONE',
         ip: this.props.abtastyParams.ip,
-        origin: 'Promo Desktop',
+        origin: 'Promo Mobile',
+        timestamp: moment().format(),
+        visitor_id: this.props.abtastyParams.visitorId,
+      },
+    };
+
+    const event6 = {
+      campaign_id: '314431',
+      variation_id: this.props.abtastyParams.campaignMaps['314431'],
+      tracking_data: {
+        device_type: 'MOBILE_PHONE',
+        ip: this.props.abtastyParams.ip,
+        origin: 'Promo Mobile',
         timestamp: moment().format(),
         visitor_id: this.props.abtastyParams.visitorId,
       },
@@ -146,6 +158,10 @@ class Promo extends React.PureComponent {
       },
       314411: {
         ...event5,
+        action: 'campaign_activated_event',
+      },
+      314431: {
+        ...event6,
         action: 'campaign_activated_event',
       },
     });
