@@ -124,8 +124,16 @@ class PromoCheckout extends React.PureComponent {
       this.props.order && this.props.order.dateCreated
         ? moment(this.props.order.dateCreated).add(5, 'day')
         : moment();
+    const { adv_sub, offerId, transaction_id } = this.props.query;
     return (
       <React.Fragment>
+        <iframe
+          src={`https://kowboykit.com/api/event/purchase/?clickid=${adv_sub}&apikey=cad0f78407d7d852008a98df1b266293&programid=125&tid=${transaction_id}&oid=${offerId}`}
+          frameBorder="0"
+          width="1"
+          height="1"
+          style={{ position: 'absolute' }}
+        />
         <div className="secone">
           <div className="container">
             <div className="s1inner">

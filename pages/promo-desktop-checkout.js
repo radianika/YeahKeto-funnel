@@ -14,7 +14,13 @@ class Promo extends React.PureComponent {
       store,
       isServer,
       query: {
-        visitorId, variationId, requestAgent, sessionId,
+        visitorId,
+        variationId,
+        requestAgent,
+        sessionId,
+        adv_sub,
+        transaction_id,
+        offerId,
       },
       req: {
         session: { ip },
