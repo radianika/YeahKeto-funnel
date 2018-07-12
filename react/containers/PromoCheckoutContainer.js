@@ -108,7 +108,7 @@ class PromoCheckout extends React.PureComponent {
         ...event3,
         action: 'transaction_event',
       },
-      314334: {
+      4: {
         ...event4,
         action: 'transaction_event',
       },
