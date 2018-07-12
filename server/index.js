@@ -244,7 +244,7 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'desktop') {
         const variationId = await getVariationForVisitor(visitorId, '312492');
-        const tests = ['313763', '314234'];
+        const tests = ['313763', '314234', '314363'];
         const promisses = [];
         const campaigns = {};
 
@@ -278,7 +278,11 @@ app.prepare().then(() => {
               visitorId,
               variationId,
               device: requestAgent,
-              campaignMaps: { 313763: '413271' },
+              campaignMaps: {
+                313763: '413271',
+                314234: '413871',
+                314363: '414063',
+              },
             });
           });
       }

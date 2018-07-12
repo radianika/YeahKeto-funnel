@@ -49,7 +49,11 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
           <div className="s1lft position">
             <i className="logo sprite2 sprite-logo" />
             <i className="s1seal sprite3 sprite-s1seal" />
-            <i className="s1hd sprite3 sprite-s1hd" />
+            <i
+              className={`s1hd sprite3 sprite3-${
+                this.props.abtastyParams.campaignMaps['314363']
+              } sprite-s1hd`}
+            />
             {!variationId || variationId === '413871' ? (
               <p className="s1txt">
                 Derived from organic, US-harvested hemp, lab-tested for quality.
