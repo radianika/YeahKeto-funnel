@@ -244,7 +244,7 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'desktop') {
         const variationId = await getVariationForVisitor(visitorId, '312492');
-        const tests = ['313763', '314234', '314334'];
+        const tests = ['313763', '314234', '314334', '314363'];
         const promisses = [];
         const campaigns = {};
 
@@ -278,13 +278,17 @@ app.prepare().then(() => {
               visitorId,
               variationId,
               device: requestAgent,
-              campaignMaps: { 313763: '413271' },
+              campaignMaps: {
+                313763: '413271',
+                314234: '413871',
+                314363: '414063',
+              },
             });
           });
       }
       if (requestAgent === 'mobile') {
         const variationId = await getVariationForVisitor(visitorId, '312494');
-        const tests = ['313876', '314235', '314336'];
+        const tests = ['313876', '314235', '314336', '314411'];
         const promisses = [];
         const campaigns = {};
 
@@ -318,7 +322,7 @@ app.prepare().then(() => {
               visitorId,
               variationId,
               device: requestAgent,
-              campaignMaps: { 313876: '413418' },
+              campaignMaps: { 313876: '413418', 314235: '413873', 314411: '414125' },
             });
           });
       }

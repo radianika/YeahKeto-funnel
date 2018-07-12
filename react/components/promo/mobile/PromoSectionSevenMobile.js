@@ -1,11 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-class PromoSectionSevenMobile extends React.PureComponent {
+class PromoSectionSevenMobileComponent extends React.PureComponent {
   render() {
     return (
       <div id="section-seven" className="sprite2 sprite-sec7">
         <i className="s7-logo sprite3 sprite-s7-logo" />{' '}
-        <i className="s1-hd sprite3 sprite-s1-hd" />
+        <i className={`s1-hd sprite3 ${this.props.abtastyParams.campaignMaps['314411']} sprite-s1-hd`} />
         <p className="s1-txt4">
           Derived from organic, US-harvested hemp, lab-tested for quality.
           Clinically proven therapeutic effects.{' '}
@@ -41,5 +42,15 @@ class PromoSectionSevenMobile extends React.PureComponent {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    abtastyParams: state.auth.abtastyParams,
+  };
+}
+
+const PromoSectionSevenMobile = connect(mapStateToProps, {})(
+  PromoSectionSevenMobileComponent,
+);
 
 export { PromoSectionSevenMobile };

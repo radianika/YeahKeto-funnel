@@ -95,6 +95,20 @@ class PromoCheckout extends React.PureComponent {
       },
     };
 
+    const event5 = {
+      name: 'desktop-hp-top-module-symbol1-test-checkout',
+      id,
+      revenue,
+      shipping: '0',
+      tracking_data: {
+        device_type: 'DESKTOP',
+        ip: abtastyParams ? abtastyParams.ip : '',
+        origin: 'PromoCheckoutPaymentForm',
+        timestamp: moment().format(),
+        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+      },
+    };
+
     axios.post('/multicampaign-abtasty', {
       1: {
         ...event1,
@@ -110,6 +124,10 @@ class PromoCheckout extends React.PureComponent {
       },
       4: {
         ...event4,
+        action: 'transaction_event',
+      },
+      5: {
+        ...event5,
         action: 'transaction_event',
       },
     });
