@@ -247,6 +247,10 @@ MAIN CSS START
   letter-spacing: -1px;
 }
 
+.sprite3-414064 + .s1txt {
+  display: none;
+}
+
 ul.s1list {
   padding: 19px 0 0 240px;
 }
