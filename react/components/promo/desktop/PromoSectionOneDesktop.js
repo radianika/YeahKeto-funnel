@@ -55,7 +55,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
                 this.props.abtastyParams.campaignMaps['314363']
               } sprite-s1hd`}
             />
-            {!variationId || variationId === '413871' ? (
+            {!variation314234 || variation314234 === '413871' ? (
               <p className="s1txt">
                 Derived from organic, US-harvested hemp, lab-tested for quality.
                 Clinically proven therapeutic effects.{' '}

@@ -95,7 +95,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
           action: 'action_tracking_event',
         },
         314363: {
-          ..event4,
+          ...event4,
           action: 'action_tracking_event',
         },
         314334: {
