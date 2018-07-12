@@ -35,7 +35,8 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
   };
 
   render() {
-    const variationId = this.props.abtastyParams.campaignMaps['314234'];
+    const variation314234 = this.props.abtastyParams.campaignMaps['314234'];
+    const variation314334 = this.props.abtastyParams.campaignMaps['314334'];
     return (
       <div
         className="section1 dsplay"
@@ -50,32 +51,53 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
             <i className="logo sprite2 sprite-logo" />
             <i className="s1seal sprite3 sprite-s1seal" />
             <i className="s1hd sprite3 sprite-s1hd" />
-            {!variationId || variationId === '413871' ? (
+            {!variation314234 || variation314234 === '413871' ? (
               <p className="s1txt">
                 Derived from organic, US-harvested hemp, lab-tested for quality.
                 Clinically proven therapeutic effects.{' '}
               </p>
             ) : null}
-            {variationId === '413872' ? (
+            {variation314234 === '413872' ? (
               <p className="s1txt">
                 For a limited, receive a FREE bottle of our FDA Approved CBD Oil
                 on your first order (no prescription required).
               </p>
             ) : null}
-            <ul className="s1list ">
-              <li className="sprite2 sprite-s1bullet">
-                <span>Relieves</span> Anxiety &amp; Stress{' '}
-              </li>
-              <li className="sprite2 sprite-s1bullet">
-                <span>Eliminates</span> Chronic Pain &amp; Aches{' '}
-              </li>
-              <li className="sprite2 sprite-s1bullet">
-                <span>Regulates</span> Mood &amp; Sleep Patterns{' '}
-              </li>
-              <li className="sprite2 sprite-s1bullet">
-                <span>Enhances </span> Focus &amp; Clarity{' '}
-              </li>
-            </ul>
+            {!variation314334 || variation314334 === '414030' ? (
+              <ul className="s1list ">
+                <li className="sprite2 sprite-s1bullet">
+                  <span>Relieves</span> Anxiety &amp; Stress{' '}
+                </li>
+                <li className="sprite2 sprite-s1bullet">
+                  <span>Eliminates</span> Chronic Pain &amp; Aches{' '}
+                </li>
+                <li className="sprite2 sprite-s1bullet">
+                  <span>Promotes</span> Mood &amp; Sleep Patterns{' '}
+                </li>
+                <li className="sprite2 sprite-s1bullet">
+                  <span>Enhances </span> Focus &amp; Clarity{' '}
+                </li>
+              </ul>
+            ) : null}
+            {variation314334 === '414031' ? (
+              <ul className="s1list ">
+                <li className="sprite2 sprite-s1bullet">
+                  <span>Relieves</span> Chronic Pain &amp; Arthritis{' '}
+                </li>
+                <li className="sprite2 sprite-s1bullet">
+                  <span>Alleviates</span> Anxiety &amp; Stress{' '}
+                </li>
+                <li className="sprite2 sprite-s1bullet">
+                  <span>Lowers</span> Blood Sugar{' '}
+                </li>
+                <li className="sprite2 sprite-s1bullet">
+                  <span>Improves </span> Mood &amp; Concentration{' '}
+                </li>
+                <li className="sprite2 sprite-s1bullet">
+                  <span>Promotes </span> Sleep &amp; Energy Levels{' '}
+                </li>
+              </ul>
+            ) : null}
             <div className="clearall" />
             <i className="chkarrow sprite3 sprite-s1arrow" />
             {/* <i className="s1bottle sprite3 sprite-s1bottle" /> */}
