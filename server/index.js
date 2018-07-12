@@ -334,6 +334,9 @@ app.prepare().then(() => {
       const { orderId } = req.query;
       const { visitorId, isNew } = await getVisitorId(req, res);
       const variationId = await getVariationForVisitor(visitorId, '313018');
+      const offerId = req.query.sourceValue5;
+      const transaction_id = req.query.sourceValue3;
+      const adv_sub = req.query.sourceValue2;
 
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-desktop-checkout', {
@@ -341,6 +344,9 @@ app.prepare().then(() => {
         sessionId,
         visitorId,
         variationId,
+        adv_sub,
+        transaction_id,
+        offerId,
       });
       // });
     } catch (error) {
@@ -446,8 +452,6 @@ app.prepare().then(() => {
 
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,
-        // visitorId,
-        // variationId,
       });
     } catch (error) {
       Raven.captureException(error);
@@ -475,11 +479,17 @@ app.prepare().then(() => {
     try {
       const sessionId = await getSessionId(req, res);
       const { orderId } = req.query;
+      const offerId = req.query.sourceValue5;
+      const transaction_id = req.query.sourceValue3;
+      const adv_sub = req.query.sourceValue2;
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-mobile-confirm', {
         sessionId,
         orderId,
         productId: req.query.productId,
+        offerId,
+        transaction_id,
+        adv_sub,
       });
       // });
     } catch (error) {
