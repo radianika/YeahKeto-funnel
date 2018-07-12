@@ -10,7 +10,6 @@
     "start": "NODE_ENV=production node ./dist/index.js",
     "generate-docs": "./node_modules/.bin/jsdoc react/* redux/* server/* helpers/* -r",
     "postinstall": "yarn build",
-    "precommit": "lint-staged"
   },
   "lint-staged": {
     "react/**/*.js": [

@@ -447,17 +447,11 @@ app.prepare().then(() => {
   server.get('/promo/mobile/shipping', async (req, res) => {
     try {
       const sessionId = await getSessionId(req, res);
-      const offerId = req.query.sourceValue5;
-      const transaction_id = req.query.sourceValue3;
-      const adv_sub = req.query.sourceValue2;
       // const { visitorId } = await getVisitorId(req, res);
       // const variationId = await getVariationForVisitor(visitorId, '312844');
 
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,
-        adv_sub,
-        transaction_id,
-        offerId,
       });
     } catch (error) {
       Raven.captureException(error);
@@ -485,11 +479,17 @@ app.prepare().then(() => {
     try {
       const sessionId = await getSessionId(req, res);
       const { orderId } = req.query;
+      const offerId = req.query.sourceValue5;
+      const transaction_id = req.query.sourceValue3;
+      const adv_sub = req.query.sourceValue2;
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-mobile-confirm', {
         sessionId,
         orderId,
         productId: req.query.productId,
+        offerId,
+        transaction_id,
+        adv_sub,
       });
       // });
     } catch (error) {

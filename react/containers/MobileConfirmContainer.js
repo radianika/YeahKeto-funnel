@@ -195,9 +195,17 @@ class MobileConfirmContainerComponent extends React.PureComponent {
 
   renderSummary() {
     const { pack } = this.state;
+    const { adv_sub, offerId, transaction_id } = this.props.query;
     if (this.state.summaryOpen) {
       return (
         <div className="package picked" onClick={this.toggleSummary}>
+          <iframe
+            src={`https://kowboykit.com/api/event/purchase/?clickid=${adv_sub}&apikey=cad0f78407d7d852008a98df1b266293&programid=125&tid=${transaction_id}&oid=${offerId}`}
+            frameBorder="0"
+            width="1"
+            height="1"
+            style={{ position: 'absolute' }}
+          />
           <div className="smrhding">
             <p>Order Summary</p>
           </div>
