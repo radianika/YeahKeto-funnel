@@ -56,6 +56,19 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
       };
 
       const event4 = {
+        name: 'desktop-hp-text2-test-rush-my-order',
+        value_string: 'desktop-hp-text2-test-rush-my-order',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'DESKTOP',
+          origin: 'promo desktop',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
+      const event5 = {
         name: 'desktop-hp-top-module-symbol1-test-rush-my-order',
         value_string: 'desktop-hp-top-module-symbol1-test-rush-my-order',
         type: 'CLICK',
@@ -82,7 +95,11 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
           action: 'action_tracking_event',
         },
         314363: {
-          ...event4,
+          ..event4,
+          action: 'action_tracking_event',
+        },
+        314334: {
+          ...event5,
           action: 'action_tracking_event',
         },
       });

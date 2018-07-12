@@ -86,7 +86,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     const id = this.state.pack.id;
     const revenue = this.getPrice();
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const body1 = {
+    const event1 = {
       name: 'order-confirmation-checkout-mobile',
       id: id ? id.toString() : '',
       revenue: parseInt(revenue),
@@ -100,7 +100,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       },
     };
 
-    const body2 = {
+    const event2 = {
       name: 'mobile-hp-text1-test-checkout',
       id: id ? id.toString() : '',
       revenue: parseInt(revenue),
@@ -114,7 +114,21 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       },
     };
 
-    const body3 = {
+    const event3 = {
+      name: 'mobile-hp-text2-test-checkout',
+      id: id ? id.toString() : '',
+      revenue: parseInt(revenue),
+      shipping: '0',
+      tracking_data: {
+        device_type: 'MOBILE_PHONE',
+        ip: abtastyParams ? abtastyParams.ip : '',
+        origin: 'MobileConfirmContainer',
+        timestamp: moment().format(),
+        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+      },
+    };
+
+    const event4 = {
       name: 'mobile-hp-top-module-symbol1-test-checkout',
       id: id ? id.toString() : '',
       revenue: parseInt(revenue),
@@ -127,18 +141,22 @@ class MobileConfirmContainerComponent extends React.PureComponent {
         visitor_id: abtastyParams ? abtastyParams.visitorId : '',
       },
     };
-    // axios.post('/abtasty', { ...body, action: 'transaction_event' });
+
     axios.post('/multicampaign-abtasty', {
       312494: {
-        ...body1,
+        ...event1,
         action: 'transaction_event',
       },
       314235: {
-        ...body2,
+        ...event2,
+        action: 'transaction_event',
+      },
+      314336: {
+        ...event3,
         action: 'transaction_event',
       },
       314411: {
-        ...body3,
+        ...event4,
         action: 'transaction_event',
       },
     });
