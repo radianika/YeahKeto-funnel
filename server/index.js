@@ -699,6 +699,16 @@ app.prepare().then(() => {
     }
   });
 
+  server.get('/uploads/*', async (req, res) => {
+    try {
+      const newUrl = `/static${req.url}`;
+      res.redirect(newUrl);
+    } catch (error) {
+      Raven.captureException(error);
+      console.error('Exception Occurred in ReactApp', error.stack || error);
+    }
+  });
+
   server.get('/warming_balm', async (req, res) => {
     try {
       return app.render(req, res, '/products', {
