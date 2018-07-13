@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 
 class PromoSectionSevenDesktopComponent extends React.PureComponent {
   render() {
+    const variation314691 = this.props.abtastyParams.campaignMaps['314691'];
     return (
-      <div className="section7">
+      <div className={`section7 section7-${variation314691}`}>
         <div className="container position">
           <i className="s7logo sprite2 sprite-logo" />
           <i className="s7seal sprite3 sprite-s1seal" />

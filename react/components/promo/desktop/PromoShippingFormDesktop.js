@@ -81,6 +81,19 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         },
       };
 
+      const event6 = {
+        name: 'desktop-hp-last-module-picture-test-rush-my-order',
+        value_string: 'desktop-hp-last-module-picture-test-rush-my-order',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'DESKTOP',
+          origin: 'promo desktop',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
       axios.post('/multicampaign-abtasty', {
         312492: {
           ...event1,
@@ -100,6 +113,10 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         },
         314334: {
           ...event5,
+          action: 'action_tracking_event',
+        },
+        314691: {
+          ...event6,
           action: 'action_tracking_event',
         },
       });
