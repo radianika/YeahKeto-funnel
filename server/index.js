@@ -717,11 +717,12 @@ app.prepare().then(() => {
 
   server.get('*', (req, res) => {
     try {
-      const permittedRoutes = ['/', '/faqs', '/contact', '/products', '/uploads'];
+      const permittedRoutes = ['/', '/faqs', '/contact', '/products'];
       if (
         req.url.indexOf('/static/') === -1 &&
         req.url.indexOf('on-demand-entries-ping') === -1 &&
         req.url.indexOf('_next') === -1 &&
+        req.url.indexOf('uploads') === -1 &&
         !permittedRoutes.includes(req.url)
       ) {
         res.redirect('/promo');
