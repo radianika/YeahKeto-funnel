@@ -291,7 +291,7 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'mobile') {
         const variationId = await getVariationForVisitor(visitorId, '312494');
-        const tests = ['313876', '314235', '314336', '314411', '314431'];
+        const tests = ['313876', '314235', '314336', '314411', '314431', '314728'];
         const promisses = [];
         const campaigns = {};
 
@@ -329,6 +329,9 @@ app.prepare().then(() => {
                 313876: '413418',
                 314235: '413873',
                 314411: '414125',
+                314728: '414506',
+                314431: '414149',
+                314336: '414033',
               },
             });
           });

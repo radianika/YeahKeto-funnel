@@ -50,6 +50,7 @@ class FooterPromoComponent extends React.PureComponent {
       'mobile-hp-top-module-symbol1-test-rush-my-order',
       'mobile-hp-text2-test-rush-my-order',
       'mobile-hp-benefits-module-test-rush-my-order',
+      'mobile-hp-last-module-picture-test-rush-my-order',
     ];
     const tracking_data = {
       visitor_id: abtastyParams.visitorId,

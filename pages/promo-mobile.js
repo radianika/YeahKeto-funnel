@@ -67,7 +67,7 @@ class Promo extends React.PureComponent {
       JSON.stringify(this.props.abtastyParams.campaignMaps),
     );
 
-    const campaigns = ['313876', '314235', '314336', '314411', '314431'];
+    const campaigns = ['313876', '314235', '314336', '314411', '314431', '314728'];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
       ip: this.props.abtastyParams.ip,
