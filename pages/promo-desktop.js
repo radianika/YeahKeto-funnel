@@ -61,6 +61,7 @@ class Promo extends React.PureComponent {
       campaign_id: '312492',
       variation_id: this.props.abtastyParams.variationId,
       tracking_data,
+      action: 'campaign_activated_event',
     };
 
     campaigns.forEach(campaign => {
@@ -68,6 +69,7 @@ class Promo extends React.PureComponent {
         campaign_id: campaign,
         variation_id: this.props.abtastyParams.campaignMaps[campaign],
         tracking_data,
+        action: 'campaign_activated_event',
       }
     });
 

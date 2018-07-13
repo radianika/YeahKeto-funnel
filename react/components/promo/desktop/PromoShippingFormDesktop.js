@@ -38,6 +38,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         value_string: event,
         type: 'CLICK',
         tracking_data,
+        action: 'action_tracking_event',
       }
     });
 
