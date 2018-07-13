@@ -15,11 +15,12 @@ const packMapping = {
 };
 
 class PromoCheckout extends React.PureComponent {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       selected: packages[0],
     };
+    console.log(this.props)
   }
 
   submitBillingForm = values => {
@@ -164,13 +165,15 @@ class PromoCheckout extends React.PureComponent {
     const { adv_sub, offerId, transaction_id } = this.props.query;
     return (
       <React.Fragment>
-        <iframe
-          src={`https://kowboykit.com/api/event/purchase/?clickid=${adv_sub}&apikey=cad0f78407d7d852008a98df1b266293&programid=125&tid=${transaction_id}&oid=${offerId}`}
-          frameBorder="0"
-          width="1"
-          height="1"
-          style={{ position: 'absolute' }}
-        />
+        {(adv_sub && transaction_id && offerId) ?
+          <iframe
+            src={`https://kowboykit.com/api/event/purchase/?clickid=${adv_sub}&apikey=cad0f78407d7d852008a98df1b266293&programid=125&tid=${transaction_id}&oid=${offerId}`}
+            frameBorder="0"
+            width="1"
+            height="1"
+            style={{ position: 'absolute' }}
+          /> : null
+        }
         <div className="secone">
           <div className="container">
             <div className="s1inner">

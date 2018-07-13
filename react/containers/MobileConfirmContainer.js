@@ -33,8 +33,8 @@ import { getQueryString } from 'helpers';
  * @description This is the equivalant of PromoCheckoutContainer on Mobile
  */
 class MobileConfirmContainerComponent extends React.PureComponent {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isSame: true,
       summaryOpen: false,
@@ -42,6 +42,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       pack: {},
     };
     this.toggleSummary = this.toggleSummary.bind(this);
+    console.log(this.props)
   }
 
   componentDidMount() {
@@ -235,13 +236,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     if (this.state.summaryOpen) {
       return (
         <div className="package picked" onClick={this.toggleSummary}>
-          <iframe
-            src={`https://kowboykit.com/api/event/purchase/?clickid=${adv_sub}&apikey=cad0f78407d7d852008a98df1b266293&programid=125&tid=${transaction_id}&oid=${offerId}`}
-            frameBorder="0"
-            width="1"
-            height="1"
-            style={{ position: 'absolute' }}
-          />
           <div className="smrhding">
             <p>Order Summary</p>
           </div>
@@ -278,6 +272,15 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     }
     return (
       <div className="package picked" onClick={this.toggleSummary}>
+        {(adv_sub && transaction_id && offerId) ?
+          <iframe
+            src={`https://kowboykit.com/api/event/purchase/?clickid=${adv_sub}&apikey=cad0f78407d7d852008a98df1b266293&programid=125&tid=${transaction_id}&oid=${offerId}`}
+            frameBorder="0"
+            width="1"
+            height="1"
+            style={{ position: 'absolute' }}
+          /> : null
+        }
         <div className="smrhding smrhding-close">
           <p>Order Summary</p>
         </div>
