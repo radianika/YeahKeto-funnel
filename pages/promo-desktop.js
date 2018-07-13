@@ -71,8 +71,6 @@ class Promo extends React.PureComponent {
       }
     });
 
-    console.log(postData);
-
     postData['312492'] = event1;
 
     axios.post('/multicampaign-abtasty', postData);

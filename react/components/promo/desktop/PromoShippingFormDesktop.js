@@ -13,116 +13,112 @@ import axios from 'axios';
 
 class PromoShippingFormDesktopComponent extends React.PureComponent {
   postActionTracker = () => {
-    try {
-      const { localStorage } = window;
-      const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-      const event1 = {
-        name: 'rush-my-order-form-click',
-        value_string: 'rush-my-order-form-click',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+    const event1 = {
+      name: 'rush-my-order-form-click',
+      value_string: 'rush-my-order-form-click',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: 'promo desktop',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
 
-      const event2 = {
-        name: 'rush-my-order-shipping-page-color-test',
-        value_string: 'rush-my-order-shipping-page-color-test',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
+    const event2 = {
+      name: 'rush-my-order-shipping-page-color-test',
+      value_string: 'rush-my-order-shipping-page-color-test',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: 'promo desktop',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
 
-      const event3 = {
-        name: 'desktop-hp-text1-test-rush-my-order',
-        value_string: 'desktop-hp-text1-test-rush-my-order',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
+    const event3 = {
+      name: 'desktop-hp-text1-test-rush-my-order',
+      value_string: 'desktop-hp-text1-test-rush-my-order',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: 'promo desktop',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
 
-      const event4 = {
-        name: 'desktop-hp-text2-test-rush-my-order',
-        value_string: 'desktop-hp-text2-test-rush-my-order',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
+    const event4 = {
+      name: 'desktop-hp-text2-test-rush-my-order',
+      value_string: 'desktop-hp-text2-test-rush-my-order',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: 'promo desktop',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
 
-      const event5 = {
-        name: 'desktop-hp-top-module-symbol1-test-rush-my-order',
-        value_string: 'desktop-hp-top-module-symbol1-test-rush-my-order',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
+    const event5 = {
+      name: 'desktop-hp-top-module-symbol1-test-rush-my-order',
+      value_string: 'desktop-hp-top-module-symbol1-test-rush-my-order',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: 'promo desktop',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
 
-      const event6 = {
-        name: 'desktop-hp-last-module-picture-test-rush-my-order',
-        value_string: 'desktop-hp-last-module-picture-test-rush-my-order',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
+    const event6 = {
+      name: 'desktop-hp-last-module-picture-test-rush-my-order',
+      value_string: 'desktop-hp-last-module-picture-test-rush-my-order',
+      type: 'CLICK',
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: 'promo desktop',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
 
-      axios.post('/multicampaign-abtasty', {
-        312492: {
-          ...event1,
-          action: 'action_tracking_event',
-        },
-        313763: {
-          ...event2,
-          action: 'action_tracking_event',
-        },
-        314234: {
-          ...event3,
-          action: 'action_tracking_event',
-        },
-        314363: {
-          ...event4,
-          action: 'action_tracking_event',
-        },
-        314334: {
-          ...event5,
-          action: 'action_tracking_event',
-        },
-        314691: {
-          ...event6,
-          action: 'action_tracking_event',
-        },
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    axios.post('/multicampaign-abtasty', {
+      312492: {
+        ...event1,
+        action: 'action_tracking_event',
+      },
+      313763: {
+        ...event2,
+        action: 'action_tracking_event',
+      },
+      314234: {
+        ...event3,
+        action: 'action_tracking_event',
+      },
+      314363: {
+        ...event4,
+        action: 'action_tracking_event',
+      },
+      314334: {
+        ...event5,
+        action: 'action_tracking_event',
+      },
+      314691: {
+        ...event6,
+        action: 'action_tracking_event',
+      },
+    });
   };
 
   render() {
