@@ -145,7 +145,7 @@ class Promo extends React.PureComponent {
         action: 'campaign_activated_event',
       },
       314411: {
-        ..event5,
+        ...event5,
         action: 'campaign_activated_event',
       },
     });
