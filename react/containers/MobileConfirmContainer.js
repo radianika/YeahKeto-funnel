@@ -42,7 +42,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       pack: {},
     };
     this.toggleSummary = this.toggleSummary.bind(this);
-    console.log(this.props)
+    console.log(this.props);
   }
 
   componentDidMount() {
@@ -143,6 +143,20 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       },
     };
 
+    const event5 = {
+      name: 'mobile-hp-benefits-module-test-checkout',
+      id: id ? id.toString() : '',
+      revenue: parseInt(revenue),
+      shipping: '0',
+      tracking_data: {
+        device_type: 'MOBILE_PHONE',
+        ip: abtastyParams ? abtastyParams.ip : '',
+        origin: 'MobileConfirmContainer',
+        timestamp: moment().format(),
+        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
+      },
+    };
+
     axios.post('/multicampaign-abtasty', {
       312494: {
         ...event1,
@@ -158,6 +172,10 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       },
       314411: {
         ...event4,
+        action: 'transaction_event',
+      },
+      314431: {
+        ...event5,
         action: 'transaction_event',
       },
     });
@@ -272,15 +290,15 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     }
     return (
       <div className="package picked" onClick={this.toggleSummary}>
-        {(adv_sub && transaction_id && offerId) ?
+        {adv_sub && transaction_id && offerId ? (
           <iframe
             src={`https://kowboykit.com/api/event/purchase/?clickid=${adv_sub}&apikey=cad0f78407d7d852008a98df1b266293&programid=125&tid=${transaction_id}&oid=${offerId}`}
             frameBorder="0"
             width="1"
             height="1"
             style={{ position: 'absolute' }}
-          /> : null
-        }
+          />
+        ) : null}
         <div className="smrhding smrhding-close">
           <p>Order Summary</p>
         </div>
