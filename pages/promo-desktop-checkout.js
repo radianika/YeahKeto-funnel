@@ -14,7 +14,13 @@ class Promo extends React.PureComponent {
       store,
       isServer,
       query: {
-        visitorId, variationId, requestAgent, sessionId,
+        visitorId,
+        variationId,
+        requestAgent,
+        sessionId,
+        adv_sub,
+        transaction_id,
+        offerId,
       },
       req: {
         session: { ip },
@@ -32,6 +38,10 @@ class Promo extends React.PureComponent {
         }),
       );
     }
+  }
+
+  constructor(props) {
+    super(props);
   }
 
   componentDidMount() {
@@ -111,7 +121,7 @@ class Promo extends React.PureComponent {
           />
         </Head>
         <PromoSession pageType="checkoutPage" />
-        <PromoCheckoutContainer />
+        <PromoCheckoutContainer {...this.props} />
       </React.Fragment>
     );
   }
