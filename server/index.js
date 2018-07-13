@@ -717,7 +717,7 @@ app.prepare().then(() => {
 
   server.get('*', (req, res) => {
     try {
-      const permittedRoutes = ['/', '/faqs', '/contact', '/products'];
+      const permittedRoutes = ['/', '/faqs', '/contact', '/products', '/uploads'];
       if (
         req.url.indexOf('/static/') === -1 &&
         req.url.indexOf('on-demand-entries-ping') === -1 &&
