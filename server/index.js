@@ -56,6 +56,7 @@ server.use(
 server.use(cookieParser());
 server.use(bodyParser.json());
 server.use(useragent.express());
+server.use('/uploads', express.static('uploads'));
 
 // configure remote logging
 if (!dev) {
