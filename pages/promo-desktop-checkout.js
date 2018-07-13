@@ -121,7 +121,7 @@ class Promo extends React.PureComponent {
           />
         </Head>
         <PromoSession pageType="checkoutPage" />
-        <PromoCheckoutContainer {...this.props}/>
+        <PromoCheckoutContainer {...this.props} />
       </React.Fragment>
     );
   }
