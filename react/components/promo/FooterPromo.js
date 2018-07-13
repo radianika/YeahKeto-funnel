@@ -40,99 +40,36 @@ class FooterPromoComponent extends React.PureComponent {
   };
 
   postActionTracker = () => {
-    try {
-      const { localStorage } = window;
-      const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-      const event1 = {
-        name: 'mobile-order-now',
-        value_string: 'mobile-order-now',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'MOBILE_PHONE',
-          origin: 'promo mobile',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
+    const { localStorage } = window;
+    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
 
-      const event2 = {
-        name: 'mobile-rush-my-order-shipping-page-color-test',
-        value_string: 'mobile-rush-my-order-shipping-page-color-test',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'MOBILE_PHONE',
-          origin: 'promo mobile',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
+    const eventsArray = [
+      'mobile-order-now',
+      'mobile-rush-my-order-shipping-page-color-test',
+      'mobile-hp-text1-test-rush-my-order',
+      'mobile-hp-top-module-symbol1-test-rush-my-order',
+      'mobile-hp-text2-test-rush-my-order',
+      'mobile-hp-benefits-module-test-rush-my-order',
+    ];
+    const tracking_data = {
+      visitor_id: abtastyParams.visitorId,
+      device_type: 'MOBILE_PHONE',
+      origin: 'promo mobile',
+      timestamp: moment().format(),
+      ip: abtastyParams.ip,
+    };
+    const postData = {};
 
-      const event3 = {
-        name: 'mobile-hp-text1-test-rush-my-order',
-        value_string: 'mobile-hp-text1-test-rush-my-order',
+    eventsArray.forEach((event, index) => {
+      postData[index] = {
+        name: event,
+        value_string: event,
         type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'MOBILE_PHONE',
-          origin: 'promo mobile',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
+        tracking_data,
+      }
+    });
 
-      const event4 = {
-        name: 'mobile-hp-top-module-symbol1-test-rush-my-order',
-        value_string: 'mobile-hp-top-module-symbol1-test-rush-my-order',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'MOBILE_PHONE',
-          origin: 'promo mobile',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
-
-      const event5 = {
-        name: 'mobile-hp-text2-test-rush-my-order',
-        value_string: 'mobile-hp-text2-test-rush-my-order',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
-
-      axios.post('/multicampaign-abtasty', {
-        312492: {
-          ...event1,
-          action: 'action_tracking_event',
-        },
-        313763: {
-          ...event2,
-          action: 'action_tracking_event',
-        },
-        314235: {
-          ...event3,
-          action: 'action_tracking_event',
-        },
-        314336: {
-          ...event4,
-          action: 'transaction_event',
-        },
-        314411: {
-          ...event5,
-          action: 'action_tracking_event',
-        },
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    axios.post('/multicampaign-abtasty', postData);
   };
 
   render() {

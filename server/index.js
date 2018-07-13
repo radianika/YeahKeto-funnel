@@ -56,6 +56,7 @@ server.use(
 server.use(cookieParser());
 server.use(bodyParser.json());
 server.use(useragent.express());
+server.use('/uploads', express.static('uploads'));
 
 // configure remote logging
 if (!dev) {
@@ -244,7 +245,7 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'desktop') {
         const variationId = await getVariationForVisitor(visitorId, '312492');
-        const tests = ['313763', '314234', '314334', '314363'];
+        const tests = ['313763', '314234', '314334', '314363', '314691'];
         const promisses = [];
         const campaigns = {};
 
@@ -281,14 +282,16 @@ app.prepare().then(() => {
               campaignMaps: {
                 313763: '413271',
                 314234: '413871',
+                314334: '414030',
                 314363: '414063',
+                314691: '414447',
               },
             });
           });
       }
       if (requestAgent === 'mobile') {
         const variationId = await getVariationForVisitor(visitorId, '312494');
-        const tests = ['313876', '314235', '314336', '314411'];
+        const tests = ['313876', '314235', '314336', '314411', '314431'];
         const promisses = [];
         const campaigns = {};
 
@@ -322,7 +325,11 @@ app.prepare().then(() => {
               visitorId,
               variationId,
               device: requestAgent,
-              campaignMaps: { 313876: '413418', 314235: '413873', 314411: '414125' },
+              campaignMaps: {
+                313876: '413418',
+                314235: '413873',
+                314411: '414125',
+              },
             });
           });
       }
@@ -717,6 +724,7 @@ app.prepare().then(() => {
         req.url.indexOf('/static/') === -1 &&
         req.url.indexOf('on-demand-entries-ping') === -1 &&
         req.url.indexOf('_next') === -1 &&
+        req.url.indexOf('uploads') === -1 &&
         !permittedRoutes.includes(req.url)
       ) {
         res.redirect('/promo');

@@ -9,8 +9,12 @@ class PromoSectionOneMobileComponent extends React.PureComponent {
     return (
       <div id="section-one" className="sprite2 sprite-sec1">
         <i className="s1-logo sprite3 sprite-s1-logo " />
-        <i className={`s1-hd sprite3 sprite3-${this.props.abtastyParams.campaignMaps['314411']} sprite-s1-hd`} />
-        {!variationId || variationId === '413873' ? (
+        <i
+          className={`s1-hd sprite3 sprite3-${
+            this.props.abtastyParams.campaignMaps['314411']
+          } sprite-s1-hd`}
+        />
+        {!variation314235 || variation314235 === '413873' ? (
           <p className="s1-txt4">
             Derived from organic, US-harvested hemp, lab-tested for quality.
             Clinically proven therapeutic effects.
