@@ -67,104 +67,34 @@ class Promo extends React.PureComponent {
       JSON.stringify(this.props.abtastyParams.campaignMaps),
     );
 
+    const campaigns = ['313876', '314235', '314336', '314411', '314431'];
+    const tracking_data = {
+      device_type: 'MOBILE_PHONE',
+      ip: this.props.abtastyParams.ip,
+      origin: 'Promo Mobile',
+      timestamp: moment().format(),
+      visitor_id: this.props.abtastyParams.visitorId,
+    };
+
+    let postData = {};
+
     const event1 = {
       campaign_id: '312494',
       variation_id: this.props.abtastyParams.variationId,
-      tracking_data: {
-        device_type: 'MOBILE_PHONE',
-        ip: this.props.abtastyParams.ip,
-        origin: 'Promo Mobile',
-        timestamp: moment().format(),
-        visitor_id: this.props.abtastyParams.visitorId,
-      },
+      tracking_data,
     };
 
-    const event2 = {
-      campaign_id: '313876',
-      variation_id: this.props.abtastyParams.campaignMaps['313876'],
-      tracking_data: {
-        device_type: 'MOBILE_PHONE',
-        ip: this.props.abtastyParams.ip,
-        origin: 'Promo Mobile',
-        timestamp: moment().format(),
-        visitor_id: this.props.abtastyParams.visitorId,
-      },
-    };
-
-    const event3 = {
-      campaign_id: '314235',
-      variation_id: this.props.abtastyParams.campaignMaps['314235'],
-      tracking_data: {
-        device_type: 'MOBILE_PHONE',
-        ip: this.props.abtastyParams.ip,
-        origin: 'Promo Mobile',
-        timestamp: moment().format(),
-        visitor_id: this.props.abtastyParams.visitorId,
-      },
-    };
-
-    const event4 = {
-      campaign_id: '314336',
-      variation_id: this.props.abtastyParams.campaignMaps['314336'],
-      tracking_data: {
-        device_type: 'MOBILE_PHONE',
-        ip: this.props.abtastyParams.ip,
-        origin: 'Promo Mobile',
-        timestamp: moment().format(),
-        visitor_id: this.props.abtastyParams.visitorId,
-      },
-    };
-
-    const event5 = {
-      campaign_id: '314411',
-      variation_id: this.props.abtastyParams.campaignMaps['314411'],
-      tracking_data: {
-        device_type: 'MOBILE_PHONE',
-        ip: this.props.abtastyParams.ip,
-        origin: 'Promo Mobile',
-        timestamp: moment().format(),
-        visitor_id: this.props.abtastyParams.visitorId,
-      },
-    };
-
-    const event6 = {
-      campaign_id: '314431',
-      variation_id: this.props.abtastyParams.campaignMaps['314431'],
-      tracking_data: {
-        device_type: 'MOBILE_PHONE',
-        ip: this.props.abtastyParams.ip,
-        origin: 'Promo Mobile',
-        timestamp: moment().format(),
-        visitor_id: this.props.abtastyParams.visitorId,
-      },
-    };
-
-    axios.post('/multicampaign-abtasty', {
-      312494: {
-        ...event1,
-        action: 'campaign_activated_event',
-      },
-      313876: {
-        ...event2,
-        action: 'campaign_activated_event',
-      },
-      314235: {
-        ...event3,
-        action: 'campaign_activated_event',
-      },
-      314336: {
-        ...event4,
-        action: 'campaign_activated_event',
-      },
-      314411: {
-        ...event5,
-        action: 'campaign_activated_event',
-      },
-      314431: {
-        ...event6,
-        action: 'campaign_activated_event',
-      },
+    campaigns.forEach(campaign => {
+      postData[campaign] = {
+        campaign_id: campaign,
+        variation_id: this.props.abtastyParams.campaignMaps[campaign],
+        tracking_data,
+      }
     });
+
+    postData['312494'] = event1;
+
+    axios.post('/multicampaign-abtasty', postData);
   };
 
   postVisitEvent = () => {

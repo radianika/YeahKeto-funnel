@@ -82,144 +82,42 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     return this.state.pack.price;
   }
 
-  sendTransactionDetails2 = () => {
+  sendTransactionDetails = () => {
     const { localStorage } = window;
-    const id = this.state.pack.id;
-    const revenue = this.getPrice();
+    const id = `${this.state.pack.id}`;
+    const revenue = parseInt(this.getPrice());
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const event1 = {
-      name: 'order-confirmation-checkout-mobile',
-      id: id ? id.toString() : '',
-      revenue: parseInt(revenue),
-      shipping: '0',
-      tracking_data: {
-        device_type: 'MOBILE_PHONE',
-        ip: abtastyParams ? abtastyParams.ip : '',
-        origin: 'MobileConfirmContainer',
-        timestamp: moment().format(),
-        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-      },
+    const eventsArray = [
+      'order-confirmation-checkout-mobile',
+      'mobile-hp-text1-test-checkout',
+      'mobile-hp-text2-test-checkout',
+      'mobile-hp-top-module-symbol1-test-checkout',
+      'mobile-hp-benefits-module-test-checkout',
+    ];
+    const tracking_data = {
+      device_type: 'MOBILE_PHONE',
+      ip: abtastyParams ? abtastyParams.ip : '',
+      origin: 'MobileConfirmContainer',
+      timestamp: moment().format(),
+      visitor_id: abtastyParams ? abtastyParams.visitorId : '',
     };
+    const postData = {};
 
-    const event2 = {
-      name: 'mobile-hp-text1-test-checkout',
-      id: id ? id.toString() : '',
-      revenue: parseInt(revenue),
-      shipping: '0',
-      tracking_data: {
-        device_type: 'MOBILE_PHONE',
-        ip: abtastyParams ? abtastyParams.ip : '',
-        origin: 'MobileConfirmContainer',
-        timestamp: moment().format(),
-        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-      },
-    };
-
-    const event3 = {
-      name: 'mobile-hp-text2-test-checkout',
-      id: id ? id.toString() : '',
-      revenue: parseInt(revenue),
-      shipping: '0',
-      tracking_data: {
-        device_type: 'MOBILE_PHONE',
-        ip: abtastyParams ? abtastyParams.ip : '',
-        origin: 'MobileConfirmContainer',
-        timestamp: moment().format(),
-        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-      },
-    };
-
-    const event4 = {
-      name: 'mobile-hp-top-module-symbol1-test-checkout',
-      id: id ? id.toString() : '',
-      revenue: parseInt(revenue),
-      shipping: '0',
-      tracking_data: {
-        device_type: 'MOBILE_PHONE',
-        ip: abtastyParams ? abtastyParams.ip : '',
-        origin: 'MobileConfirmContainer',
-        timestamp: moment().format(),
-        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-      },
-    };
-
-    const event5 = {
-      name: 'mobile-hp-benefits-module-test-checkout',
-      id: id ? id.toString() : '',
-      revenue: parseInt(revenue),
-      shipping: '0',
-      tracking_data: {
-        device_type: 'MOBILE_PHONE',
-        ip: abtastyParams ? abtastyParams.ip : '',
-        origin: 'MobileConfirmContainer',
-        timestamp: moment().format(),
-        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-      },
-    };
-
-    axios.post('/multicampaign-abtasty', {
-      312494: {
-        ...event1,
-        action: 'transaction_event',
-      },
-      314235: {
-        ...event2,
-        action: 'transaction_event',
-      },
-      314336: {
-        ...event3,
-        action: 'transaction_event',
-      },
-      314411: {
-        ...event4,
-        action: 'transaction_event',
-      },
-      314431: {
-        ...event5,
-        action: 'transaction_event',
-      },
+    eventsArray.forEach((event, index) => {
+      postData[index] = {
+        name: event,
+        id,
+        revenue,
+        shipping: '0',
+        tracking_data,
+      }
     });
+
+    axios.post('/multicampaign-abtasty', postData);
   };
 
-  // sendTransactionDetails = () => {
-  //   const id = ''+this.state.pack.id;
-  //   const revenue = parseInt(this.getPrice());
-  //   const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-  //   let name = '';
-  //   const { variationId } = abtastyParams;
-  //   // if (variationId === '412123') {
-  //   //   name = '5-default-bottle-order';
-  //   // } else if (variationId === '412124') {
-  //   //   name = '3-default-bottle-order';
-  //   // } else if (variationId === '412122') {
-  //   //   if (id === 208) {
-  //   //     name = '1-bottle-order';
-  //   //   } else if (id === 209) {
-  //   //     name = '3-bottle-order';
-  //   //   } else if (id === 210) {
-  //   //     name = '5-bottle-order';
-  //   //   }
-  //   // }
-  //   name = '5-default-bottle-order';
-  //   const body = {
-  //     name,
-  //     id: id ? id.toString() : '',
-  //     revenue: parseInt(revenue),
-  //     shipping: '0',
-  //     tracking_data: {
-  //       device_type: 'MOBILE_PHONE',
-  //       ip: abtastyParams ? abtastyParams.ip : '',
-  //       origin: 'MobileConfirmContainer',
-  //       timestamp: moment().format(),
-  //       visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-  //     },
-  //   };
-  //   axios.post('/abtasty', { ...body, action: 'transaction_event' });
-  // };
-
   confirmOrder = values => {
-    // this.sendTransactionDetails();
-    this.sendTransactionDetails2();
+    this.sendTransactionDetails();
     const { localStorage } = window;
     const customerData = JSON.parse(localStorage.getItem('parsedShipping'));
     if (this.state.isSame) {

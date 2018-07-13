@@ -40,139 +40,35 @@ class PromoCheckout extends React.PureComponent {
     const id = `${this.state.selected.id}`;
     const revenue = parseInt(this.state.selected.packagePrice);
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const event1 = {
-      name: 'order-confirmation-checkout-desktop',
-      id,
-      revenue,
-      shipping: '0',
-      tracking_data: {
-        device_type: 'DESKTOP',
-        ip: abtastyParams ? abtastyParams.ip : '',
-        origin: 'PromoCheckoutPaymentForm',
-        timestamp: moment().format(),
-        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-      },
+    const eventsArray = [
+      'order-confirmation-checkout-desktop',
+      'desktop-hp-text1-test-checkout',
+      'desktop-hp-text2-test-checkout',
+      'desktop-hp-top-module-symbol1-test-checkout',
+      'desktop-hp-last-module-picture-test-checkout',
+    ];
+    eventsArray.push(packMapping[id]);
+    const tracking_data = {
+      device_type: 'DESKTOP',
+      ip: abtastyParams ? abtastyParams.ip : '',
+      origin: 'PromoCheckoutPaymentForm',
+      timestamp: moment().format(),
+      visitor_id: abtastyParams ? abtastyParams.visitorId : '',
     };
+    const postData = {};
 
-    const event2 = {
-      name: packMapping[id],
-      id,
-      revenue,
-      shipping: '0',
-      tracking_data: {
-        device_type: 'DESKTOP',
-        ip: abtastyParams ? abtastyParams.ip : '',
-        origin: 'PromoCheckoutPaymentForm',
-        timestamp: moment().format(),
-        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-      },
-    };
-
-    const event3 = {
-      name: 'desktop-hp-text1-test-checkout',
-      id,
-      revenue,
-      shipping: '0',
-      tracking_data: {
-        device_type: 'DESKTOP',
-        ip: abtastyParams ? abtastyParams.ip : '',
-        origin: 'PromoCheckoutPaymentForm',
-        timestamp: moment().format(),
-        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-      },
-    };
-
-    const event4 = {
-      name: 'desktop-hp-text2-test-checkout',
-      id,
-      revenue,
-      shipping: '0',
-      tracking_data: {
-        device_type: 'DESKTOP',
-        ip: abtastyParams ? abtastyParams.ip : '',
-        origin: 'PromoCheckoutPaymentForm',
-        timestamp: moment().format(),
-        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-      },
-    };
-
-    const event5 = {
-      name: 'desktop-hp-top-module-symbol1-test-checkout',
-      id,
-      revenue,
-      shipping: '0',
-      tracking_data: {
-        device_type: 'DESKTOP',
-        ip: abtastyParams ? abtastyParams.ip : '',
-        origin: 'PromoCheckoutPaymentForm',
-        timestamp: moment().format(),
-        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-      },
-    };
-
-    const event6 = {
-      name: 'desktop-hp-last-module-picture-test-checkout',
-      id,
-      revenue,
-      shipping: '0',
-      tracking_data: {
-        device_type: 'DESKTOP',
-        ip: abtastyParams ? abtastyParams.ip : '',
-        origin: 'PromoCheckoutPaymentForm',
-        timestamp: moment().format(),
-        visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-      },
-    };
-
-    axios.post('/multicampaign-abtasty', {
-      1: {
-        ...event1,
-        action: 'transaction_event',
-      },
-      2: {
-        ...event2,
-        action: 'transaction_event',
-      },
-      3: {
-        ...event3,
-        action: 'transaction_event',
-      },
-      4: {
-        ...event4,
-        action: 'transaction_event',
-      },
-      5: {
-        ...event5,
-        action: 'transaction_event',
-      },
-      6: {
-        ...event6,
-        action: 'transaction_event',
-      },
+    eventsArray.forEach((event, index) => {
+      postData[index] = {
+        name: event,
+        id,
+        revenue,
+        shipping: '0',
+        tracking_data,
+      }
     });
-  };
 
-  // sendTransactionDetailsPackInfo = () => {
-  //   const id = ''+this.state.selected.id;
-  //   const revenue = parseInt(this.state.selected.packagePrice);
-  //   const abtastyParams = JSON.parse(
-  //     localStorage.getItem('abtastyParams_313018'),
-  //   );
-  //   const body = {
-  //     name: packMapping[id],
-  //     id,
-  //     revenue,
-  //     shipping: '0',
-  //     tracking_data: {
-  //       device_type: 'DESKTOP',
-  //       ip: abtastyParams ? abtastyParams.ip : '',
-  //       origin: 'PromoCheckoutPaymentForm',
-  //       timestamp: moment().format(),
-  //       visitor_id: abtastyParams ? abtastyParams.visitorId : '',
-  //     },
-  //   };
-  //   axios.post('/abtasty', { ...body, action: 'transaction_event' });
-  // };
+    axios.post('/multicampaign-abtasty', postData);
+  };
 
   render() {
     const { selected } = this.state;
