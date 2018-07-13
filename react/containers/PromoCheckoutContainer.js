@@ -64,6 +64,7 @@ class PromoCheckout extends React.PureComponent {
         revenue,
         shipping: '0',
         tracking_data,
+        action: 'transaction_event',
       }
     });
 
