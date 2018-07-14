@@ -47,6 +47,7 @@ class PromoCheckout extends React.PureComponent {
       'desktop-hp-top-module-symbol1-test-checkout',
       'desktop-hp-last-module-picture-test-checkout',
       'desktop-hp-form-top-section-test-checkout',
+      'desktop-hp-module2-caption1-test-checkout',
     ];
     eventsArray.push(packMapping[id]);
     const tracking_data = {
