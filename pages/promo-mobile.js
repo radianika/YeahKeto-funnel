@@ -67,7 +67,14 @@ class Promo extends React.PureComponent {
       JSON.stringify(this.props.abtastyParams.campaignMaps),
     );
 
-    const campaigns = ['313876', '314235', '314336', '314411', '314431'];
+    const campaigns = [
+      '313876',
+      '314235',
+      '314336',
+      '314411',
+      '314431',
+      '315258',
+    ];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
       ip: this.props.abtastyParams.ip,
@@ -76,7 +83,7 @@ class Promo extends React.PureComponent {
       visitor_id: this.props.abtastyParams.visitorId,
     };
 
-    let postData = {};
+    const postData = {};
 
     const event1 = {
       campaign_id: '312494',
@@ -91,7 +98,7 @@ class Promo extends React.PureComponent {
         variation_id: this.props.abtastyParams.campaignMaps[campaign],
         tracking_data,
         action: 'campaign_activated_event',
-      }
+      };
     });
 
     postData['312494'] = event1;
