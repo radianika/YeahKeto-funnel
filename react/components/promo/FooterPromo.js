@@ -118,6 +118,19 @@ class FooterPromoComponent extends React.PureComponent {
         },
       };
 
+      const event6 = {
+        name: 'desktop-hp-module2-caption1-test-rush-my-order',
+        value_string: 'desktop-hp-module2-caption1-test-rush-my-order',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'DESKTOP',
+          origin: 'promo desktop',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
       axios.post('/multicampaign-abtasty', {
         312492: {
           ...event1,
@@ -137,6 +150,10 @@ class FooterPromoComponent extends React.PureComponent {
         },
         314363: {
           ...event5,
+          action: 'action_tracking_event',
+        },
+        315257: {
+          ...event6,
           action: 'action_tracking_event',
         },
       });
@@ -227,6 +244,19 @@ class FooterPromoComponent extends React.PureComponent {
         },
       };
 
+      const event7 = {
+        name: 'mobile-hp-module2-caption1-test-rush-my-order',
+        value_string: 'mobile-hp-module2-caption1-test-rush-my-order',
+        type: 'CLICK',
+        tracking_data: {
+          visitor_id: abtastyParams.visitorId,
+          device_type: 'MOBILE_PHONE',
+          origin: 'promo mobile',
+          timestamp: moment().format(),
+          ip: abtastyParams.ip,
+        },
+      };
+
       axios.post('/multicampaign-abtasty', {
         312492: {
           ...event1,
@@ -250,6 +280,10 @@ class FooterPromoComponent extends React.PureComponent {
         },
         314431: {
           ...event6,
+          action: 'action_tracking_event',
+        },
+        315258: {
+          ...event7,
           action: 'action_tracking_event',
         },
       });
