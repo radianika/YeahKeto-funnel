@@ -22,6 +22,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
       'desktop-hp-text2-test-rush-my-order',
       'desktop-hp-top-module-symbol1-test-rush-my-order',
       'desktop-hp-last-module-picture-test-rush-my-order',
+      'desktop-hp-form-top-section-test-rush-my-order',
     ];
     const tracking_data = {
       visitor_id: abtastyParams.visitorId,
@@ -29,7 +30,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
       origin: 'promo desktop',
       timestamp: moment().format(),
       ip: abtastyParams.ip,
-    }
+    };
     const postData = {};
 
     eventsArray.forEach((event, index) => {
@@ -39,7 +40,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         type: 'CLICK',
         tracking_data,
         action: 'action_tracking_event',
-      }
+      };
     });
 
     axios.post('/multicampaign-abtasty', postData);

@@ -48,7 +48,14 @@ class Promo extends React.PureComponent {
       JSON.stringify(this.props.abtastyParams.campaignMaps),
     );
 
-    const campaigns = ['313763', '314234', '314334', '314363', '314691'];
+    const campaigns = [
+      '313763',
+      '314234',
+      '314334',
+      '314363',
+      '314691',
+      '315256',
+    ];
     const tracking_data = {
       device_type: 'DESKTOP',
       ip: this.props.abtastyParams.ip,
@@ -56,7 +63,7 @@ class Promo extends React.PureComponent {
       timestamp: moment().format(),
       visitor_id: this.props.abtastyParams.visitorId,
     };
-    let postData = {};
+    const postData = {};
     const event1 = {
       campaign_id: '312492',
       variation_id: this.props.abtastyParams.variationId,
@@ -70,7 +77,7 @@ class Promo extends React.PureComponent {
         variation_id: this.props.abtastyParams.campaignMaps[campaign],
         tracking_data,
         action: 'campaign_activated_event',
-      }
+      };
     });
 
     postData['312492'] = event1;

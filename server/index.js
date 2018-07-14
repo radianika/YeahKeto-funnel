@@ -245,7 +245,14 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'desktop') {
         const variationId = await getVariationForVisitor(visitorId, '312492');
-        const tests = ['313763', '314234', '314334', '314363', '314691'];
+        const tests = [
+          '313763',
+          '314234',
+          '314334',
+          '314363',
+          '314691',
+          '315256',
+        ];
         const promisses = [];
         const campaigns = {};
 
@@ -285,6 +292,7 @@ app.prepare().then(() => {
                 314334: '414030',
                 314363: '414063',
                 314691: '414447',
+                315256: '415140',
               },
             });
           });
