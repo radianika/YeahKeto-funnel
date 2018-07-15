@@ -93,6 +93,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       'mobile-hp-text2-test-checkout',
       'mobile-hp-top-module-symbol1-test-checkout',
       'mobile-hp-benefits-module-test-checkout',
+      'mobile-hp-module2-caption1-test-checkout',
     ];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
@@ -111,7 +112,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
         shipping: '0',
         tracking_data,
         action: 'transaction_event',
-      }
+      };
     });
 
     axios.post('/multicampaign-abtasty', postData);

@@ -53,93 +53,35 @@ class FooterPromoComponent extends React.PureComponent {
     try {
       const { localStorage } = window;
       const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-      const event1 = {
-        name: 'rush-my-order-form-click',
-        value_string: 'rush-my-order-form-click',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
 
-      const event2 = {
-        name: 'rush-my-order-shipping-page-color-test',
-        value_string: 'rush-my-order-shipping-page-color-test',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
+      const eventsArray = [
+        'rush-my-order-form-click',
+        'rush-my-order-shipping-page-color-test',
+        'desktop-hp-text1-test-rush-my-order',
+        'desktop-hp-text2-test-rush-my-order',
+        'desktop-hp-top-module-symbol1-test-rush-my-order',
+        'desktop-hp-module2-caption1-test-rush-my-order',
+        'mobile-hp-module2-caption1-test-rush-my-order',
+      ];
+      const tracking_data = {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: 'promo DESKTOP',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
       };
+      const postData = {};
 
-      const event3 = {
-        name: 'desktop-hp-text1-test-rush-my-order',
-        value_string: 'desktop-hp-text1-test-rush-my-order',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
-
-      const event4 = {
-        name: 'desktop-hp-text2-test-rush-my-order',
-        value_string: 'desktop-hp-text2-test-rush-my-order',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
-
-      const event5 = {
-        name: 'desktop-hp-top-module-symbol1-test-rush-my-order',
-        value_string: 'desktop-hp-top-module-symbol1-test-rush-my-order',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'DESKTOP',
-          origin: 'promo desktop',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
-
-      axios.post('/multicampaign-abtasty', {
-        312492: {
-          ...event1,
-          action: 'action_tracking_event',
-        },
-        313763: {
-          ...event2,
-          action: 'action_tracking_event',
-        },
-        314234: {
-          ...event3,
-          action: 'action_tracking_event',
-        },
-        314334: {
-          ...event4,
-          action: 'action_tracking_event',
-        },
-        314363: {
-          ...event5,
-          action: 'action_tracking_event',
-        },
+      eventsArray.forEach((event, index) => {
+        postData[index] = {
+          name: event,
+          value_string: event,
+          type: 'CLICK',
+          tracking_data,
+        };
       });
+
+      axios.post('/multicampaign-abtasty', postData);
     } catch (err) {
       console.log(err);
     }
@@ -149,110 +91,35 @@ class FooterPromoComponent extends React.PureComponent {
     try {
       const { localStorage } = window;
       const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-      const event1 = {
-        name: 'mobile-order-now',
-        value_string: 'mobile-order-now',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'MOBILE_PHONE',
-          origin: 'promo mobile',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
 
-      const event2 = {
-        name: 'mobile-rush-my-order-shipping-page-color-test',
-        value_string: 'mobile-rush-my-order-shipping-page-color-test',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'MOBILE_PHONE',
-          origin: 'promo mobile',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
+      const eventsArray = [
+        'mobile-order-now',
+        'mobile-rush-my-order-shipping-page-color-test',
+        'mobile-hp-text1-test-rush-my-order',
+        'mobile-hp-top-module-symbol1-test-rush-my-order',
+        'mobile-hp-text2-test-rush-my-order',
+        'mobile-hp-benefits-module-test-rush-my-order',
+        'mobile-hp-module2-caption1-test-rush-my-order',
+      ];
+      const tracking_data = {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'MOBILE_PHONE',
+        origin: 'promo mobile',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
       };
+      const postData = {};
 
-      const event3 = {
-        name: 'mobile-hp-text1-test-rush-my-order',
-        value_string: 'mobile-hp-text1-test-rush-my-order',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'MOBILE_PHONE',
-          origin: 'promo mobile',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
-
-      const event4 = {
-        name: 'mobile-hp-top-module-symbol1-test-rush-my-order',
-        value_string: 'mobile-hp-top-module-symbol1-test-rush-my-order',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'MOBILE_PHONE',
-          origin: 'promo mobile',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
-
-      const event5 = {
-        name: 'mobile-hp-text2-test-rush-my-order',
-        value_string: 'mobile-hp-text2-test-rush-my-order',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'MOBILE_PHONE',
-          origin: 'promo mobile',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
-
-      const event6 = {
-        name: 'mobile-hp-benefits-module-test-rush-my-order',
-        value_string: 'mobile-hp-benefits-module-test-rush-my-order',
-        type: 'CLICK',
-        tracking_data: {
-          visitor_id: abtastyParams.visitorId,
-          device_type: 'MOBILE_PHONE',
-          origin: 'promo mobile',
-          timestamp: moment().format(),
-          ip: abtastyParams.ip,
-        },
-      };
-
-      axios.post('/multicampaign-abtasty', {
-        312492: {
-          ...event1,
-          action: 'action_tracking_event',
-        },
-        313763: {
-          ...event2,
-          action: 'action_tracking_event',
-        },
-        314235: {
-          ...event3,
-          action: 'action_tracking_event',
-        },
-        314336: {
-          ...event4,
-          action: 'action_tracking_event',
-        },
-        314411: {
-          ...event5,
-          action: 'action_tracking_event',
-        },
-        314431: {
-          ...event6,
-          action: 'action_tracking_event',
-        },
+      eventsArray.forEach((event, index) => {
+        postData[index] = {
+          name: event,
+          value_string: event,
+          type: 'TOUCH',
+          tracking_data,
+        };
       });
+
+      axios.post('/multicampaign-abtasty', postData);
     } catch (error) {
       console.log(error);
     }

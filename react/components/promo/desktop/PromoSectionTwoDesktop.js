@@ -1,8 +1,10 @@
 import React from 'react';
 import LazyLoad from 'react-lazyload';
+import { connect } from 'react-redux';
 
-class PromoSectionTwoDesktop extends React.PureComponent {
+class PromoSectionTwoDesktopComponent extends React.PureComponent {
   render() {
+    const variation315257 = this.props.abtastyParams.campaignMaps['315257'];
     return (
       <div className="section2">
         <div className="container position">
@@ -27,9 +29,15 @@ class PromoSectionTwoDesktop extends React.PureComponent {
             </b>{' '}
           </p>
           <p className="s2subhd1">All Natural Organic CBD Extract </p>
-          <p className="s2subhd2">
-            Quick Absorption, Extended Release Formula{' '}
-          </p>
+          {!variation315257 || variation315257 === '415142' ? (
+            <p className="s2subhd2">
+              Quick Absorption, Extended Release Formula{' '}
+            </p>
+          ) : (
+            <p className="s2subhd2-T">
+              Quick Absorption &amp; Fast Action Formula{' '}
+            </p>
+          )}
           <ul className="s2list">
             <li>
               {' '}
@@ -84,5 +92,15 @@ class PromoSectionTwoDesktop extends React.PureComponent {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    abtastyParams: state.auth.abtastyParams,
+  };
+}
+
+const PromoSectionTwoDesktop = connect(mapStateToProps, {})(
+  PromoSectionTwoDesktopComponent,
+);
 
 export { PromoSectionTwoDesktop };

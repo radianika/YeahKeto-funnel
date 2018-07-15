@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-class PromoSectionTwoMobile extends React.PureComponent {
+class PromoSectionTwoMobileComponent extends React.PureComponent {
   render() {
+    const variation315258 = this.props.abtastyParams.campaignMaps['315258'];
     return (
       <div id="section-two">
         <p className="s2-hd-txt">
@@ -38,7 +40,11 @@ class PromoSectionTwoMobile extends React.PureComponent {
           </b>
         </p>
         <p className="s2-txt3">All Natural Organic CBD Extract</p>
-        <p className="s2-txt4">Quick Absorption, Extended Release Formula</p>
+        {!variation315258 || variation315258 === '415144' ? (
+          <p className="s2-txt4">Quick Absorption, Extended Release </p>
+        ) : (
+          <p className="s2-txt4-T">Quick Absorption, Extended Release </p>
+        )}
         <p className="clearall" />
         <ul className="s2-list">
           <li>
@@ -75,5 +81,15 @@ class PromoSectionTwoMobile extends React.PureComponent {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    abtastyParams: state.auth.abtastyParams,
+  };
+}
+
+const PromoSectionTwoMobile = connect(mapStateToProps, {})(
+  PromoSectionTwoMobileComponent,
+);
 
 export { PromoSectionTwoMobile };
