@@ -300,10 +300,8 @@ app.prepare().then(() => {
           });
       }
       if (requestAgent === 'mobile') {
-        // const variationId = await getVariationForVisitor(visitorId, '312494');
-        const variationId = '411723';
+        let variationId;
         const tests = [
-          '313876',
           '314235',
           '314336',
           '314411',
@@ -344,7 +342,6 @@ app.prepare().then(() => {
               variationId,
               device: requestAgent,
               campaignMaps: {
-                313876: '413418',
                 314235: '413873',
                 314411: '414125',
                 315258: '415144',
@@ -478,7 +475,6 @@ app.prepare().then(() => {
     try {
       const sessionId = await getSessionId(req, res);
       // const { visitorId } = await getVisitorId(req, res);
-      // const variationId = await getVariationForVisitor(visitorId, '312844');
 
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,
