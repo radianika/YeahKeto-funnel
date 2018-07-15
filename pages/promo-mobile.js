@@ -68,7 +68,6 @@ class Promo extends React.PureComponent {
     );
 
     const campaigns = [
-      '313876',
       '314235',
       '314336',
       '314411',
