@@ -84,13 +84,13 @@ class Promo extends React.PureComponent {
     };
 
     const postData = {};
-
-    const event1 = {
-      campaign_id: '312494',
-      variation_id: this.props.abtastyParams.variationId,
-      tracking_data,
-      action: 'campaign_activated_event',
-    };
+    //
+    // const event1 = {
+    //   campaign_id: '312494',
+    //   variation_id: this.props.abtastyParams.variationId,
+    //   tracking_data,
+    //   action: 'campaign_activated_event',
+    // };
 
     campaigns.forEach(campaign => {
       postData[campaign] = {
@@ -101,7 +101,7 @@ class Promo extends React.PureComponent {
       };
     });
 
-    postData['312494'] = event1;
+    // postData['312494'] = event1;
 
     axios.post('/multicampaign-abtasty', postData);
   };

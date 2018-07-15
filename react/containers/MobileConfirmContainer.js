@@ -88,7 +88,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     const revenue = parseInt(this.getPrice());
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const eventsArray = [
-      'order-confirmation-checkout-mobile',
+      // 'order-confirmation-checkout-mobile',
       'mobile-hp-text1-test-checkout',
       'mobile-hp-text2-test-checkout',
       'mobile-hp-top-module-symbol1-test-checkout',
