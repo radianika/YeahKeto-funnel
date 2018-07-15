@@ -300,8 +300,7 @@ app.prepare().then(() => {
           });
       }
       if (requestAgent === 'mobile') {
-        // const variationId = await getVariationForVisitor(visitorId, '312494');
-        const variationId = '411723';
+        let variationId;
         const tests = [
           '314235',
           '314336',
