@@ -94,7 +94,6 @@ class FooterPromoComponent extends React.PureComponent {
 
       const eventsArray = [
         // 'mobile-order-now',
-        'mobile-rush-my-order-shipping-page-color-test',
         'mobile-hp-text1-test-rush-my-order',
         'mobile-hp-top-module-symbol1-test-rush-my-order',
         'mobile-hp-text2-test-rush-my-order',
@@ -140,9 +139,7 @@ class FooterPromoComponent extends React.PureComponent {
               className="shipping_redirect"
             >
               <i
-                className={`btn pulse sprite3 sprite3-${
-                  this.props.abtastyParams.campaignMaps['313876']
-                } sprite-ship-btn`}
+                className={`btn pulse sprite3 sprite3-413418 sprite-ship-btn`}
                 id="mobie-order-now"
               />
             </a>

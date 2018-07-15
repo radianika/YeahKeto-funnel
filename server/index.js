@@ -303,7 +303,6 @@ app.prepare().then(() => {
         // const variationId = await getVariationForVisitor(visitorId, '312494');
         const variationId = '411723';
         const tests = [
-          '313876',
           '314235',
           '314336',
           '314411',
@@ -344,7 +343,6 @@ app.prepare().then(() => {
               variationId,
               device: requestAgent,
               campaignMaps: {
-                313876: '413418',
                 314235: '413873',
                 314411: '414125',
                 315258: '415144',
