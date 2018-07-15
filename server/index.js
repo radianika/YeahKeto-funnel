@@ -475,7 +475,6 @@ app.prepare().then(() => {
     try {
       const sessionId = await getSessionId(req, res);
       // const { visitorId } = await getVisitorId(req, res);
-      // const variationId = await getVariationForVisitor(visitorId, '312844');
 
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,
