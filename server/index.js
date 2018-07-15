@@ -245,7 +245,15 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'desktop') {
         const variationId = await getVariationForVisitor(visitorId, '312492');
-        const tests = ['313763', '314234', '314334', '314363', '314691'];
+        const tests = [
+          '313763',
+          '314234',
+          '314334',
+          '314363',
+          '314691',
+          '315256',
+          '315257',
+        ];
         const promisses = [];
         const campaigns = {};
 
@@ -285,13 +293,22 @@ app.prepare().then(() => {
                 314334: '414030',
                 314363: '414063',
                 314691: '414447',
+                315256: '415140',
+                315257: '415142',
               },
             });
           });
       }
       if (requestAgent === 'mobile') {
         const variationId = await getVariationForVisitor(visitorId, '312494');
-        const tests = ['313876', '314235', '314336', '314411', '314431'];
+        const tests = [
+          '313876',
+          '314235',
+          '314336',
+          '314411',
+          '314431',
+          '315258',
+        ];
         const promisses = [];
         const campaigns = {};
 
@@ -329,6 +346,7 @@ app.prepare().then(() => {
                 313876: '413418',
                 314235: '413873',
                 314411: '414125',
+                315258: '415144',
               },
             });
           });
