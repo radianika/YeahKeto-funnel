@@ -23,7 +23,7 @@ import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
 import redis from './redis-config';
-import { authenticParams } from '../constants/urlParams';
+// import authenticParams from '../constants/urlParams';
 
 require('dotenv').config();
 
@@ -235,6 +235,7 @@ app.prepare().then(() => {
       const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
       const { visitorId, isNew } = await getVisitorId(req, res);
       let isAuthenticUser = false;
+      const authenticParams = ['affId', 'sourceValue3', 'sourceValue4', 'sourceValue5', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
 
       if (req.query && Object.keys(req.query).length) {
         const queryParams = Object.keys(req.query);
