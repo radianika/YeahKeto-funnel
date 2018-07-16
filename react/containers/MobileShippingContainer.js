@@ -2,11 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import moment from 'moment';
+import { AuthActions } from 'redux/actions';
 import {
+  get,
   stateslist,
   shippingFormValidator,
   normalizePhone,
   normalizePostalCode,
+  getQueryString,
+  packages,
 } from 'helpers';
 import {
   Footer,
@@ -20,7 +24,7 @@ import {
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
 import { OrderActions } from 'redux/actions';
-import { getQueryString, packages } from 'helpers';
+import { getCookie } from 'react/components/common';
 
 /**
  * @class MobileShippingContainerComponent
@@ -36,8 +40,16 @@ class MobileShippingContainerComponent extends React.PureComponent {
   }
 
   componentDidMount() {
-    // this.postCampaignActivatedEvent();
-    // this.postVisitEvent();
+    let sessionId = getCookie('ascbd_session');
+    get(`/v1/response/customer/1`, sessionId, {})
+      .then(response => {
+        console.log(response);
+        if (response.response && response.response.data && response.response.data.code === 200) {
+          this.props.dispatch(
+            AuthActions.setUserInfo(response.response.data.data),
+          )
+        }
+      });
   }
 
   postVisitEvent = () => {
@@ -263,13 +275,22 @@ function mapStateToProps(state) {
   return {
     submitStatus: state.order.submitLeadsFormStatus,
     abtastyParams: state.auth.abtastyParams,
+    initialValues: state.auth.userInfo,
   };
 }
 
-const MobileShippingContainer = connect(mapStateToProps, { ...OrderActions })(
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ...OrderActions,
+    dispatch
+  }
+}
+
+const MobileShippingContainer = connect(mapStateToProps, mapDispatchToProps) (
   reduxForm({
     form: 'MobileShippingForm',
     validate: shippingFormValidator,
+    enableReinitialize: true,
   })(withRouter(MobileShippingContainerComponent)),
 );
 
