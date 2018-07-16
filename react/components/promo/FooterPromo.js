@@ -140,7 +140,7 @@ class FooterPromoComponent extends React.PureComponent {
               className="shipping_redirect"
             >
               <i
-                className="btn pulse sprite3 sprite3-413418 sprite-ship-btn"
+                className={`btn pulse sprite3 sprite3-413418 sprite3-${this.props.isAuthentic.isAuthenticUser} sprite-ship-btn`}
                 id="mobie-order-now"
               />
             </a>
@@ -181,6 +181,7 @@ const mapStateToProps = reduxState => {
   if (reduxState.order) {
     return {
       abtastyParams: reduxState.auth.abtastyParams,
+      isAuthentic: reduxState.auth.isAuthentic,
     };
   }
   return {};

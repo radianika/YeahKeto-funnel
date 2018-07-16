@@ -40,7 +40,6 @@ class Promo extends React.PureComponent {
   componentDidMount() {
     this.postCampaignActivatedEvent();
     this.postVisitEvent();
-    console.log(this.props)
   }
 
   postCampaignActivatedEvent = () => {
