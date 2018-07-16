@@ -70,12 +70,6 @@ class Promo extends React.PureComponent {
       visitor_id: this.props.abtastyParams.visitorId,
     };
     const postData = {};
-    const event1 = {
-      campaign_id: '312492',
-      variation_id: this.props.abtastyParams.variationId,
-      tracking_data,
-      action: 'campaign_activated_event',
-    };
 
     campaigns.forEach(campaign => {
       postData[campaign] = {
@@ -85,8 +79,6 @@ class Promo extends React.PureComponent {
         action: 'campaign_activated_event',
       };
     });
-
-    postData['312492'] = event1;
 
     axios.post('/multicampaign-abtasty', postData);
   };

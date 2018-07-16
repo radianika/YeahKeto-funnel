@@ -10,24 +10,6 @@ class PromoStrip extends React.PureComponent {
     });
   };
 
-  postActionTracker = () => {
-    const { localStorage } = window;
-    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const body = {
-      name: 'rush-my-order-scroll-clicks',
-      value_string: 'rush-my-order-scroll-clicks',
-      type: 'CLICK',
-      tracking_data: {
-        visitor_id: abtastyParams.visitorId,
-        device_type: 'DESKTOP',
-        origin: 'promo desktop',
-        timestamp: moment().format(),
-        ip: abtastyParams.ip,
-      },
-    };
-    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
-  };
-
   render() {
     return (
       <div className="strip dsplay sprite5 sprite-strip">
