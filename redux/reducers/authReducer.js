@@ -12,6 +12,8 @@ export default function (state = initialState, action) {
       return ip.setIn(state, ['sessionId'], action.payload.sessionId.id);
     case AuthActions.SET_ABTASTY_PARAMS:
       return ip.setIn(state, ['abtastyParams'], action.payload);
+    case AuthActions.SET_IS_AUTHENTIC_PARAMS:
+      return ip.setIn(state, ['isAuthentic'], action.payload);
     default:
       return state;
   }
