@@ -66,24 +66,28 @@ class PromoSectionFiveDesktop extends React.PureComponent {
           </p>
           <i className="s5-line sprite4 sprite-s5-line" />
           {
-            this.props.abtastyParams && this.props.abtastyParams.variationId === '411715' ?
+            this.props.abtastyParams &&
+            this.props.isAuthentic.isAuthenticUser &&
+            this.props.abtastyParams.variationId === '411715' ?
             <Control_411715 {...this.state} /> : null
           }
 
           {
-            this.props.abtastyParams && this.props.abtastyParams.variationId === '411716' ?
+            this.props.abtastyParams && this.props.isAuthentic.isAuthenticUser &&
+            this.props.abtastyParams.variationId === '411716' ?
             <Treatment_711416 {...this.state} /> : null
           }
 
           {
-            this.props.abtastyParams && this.props.abtastyParams.variationId === '411717' ?
+            this.props.abtastyParams && this.props.isAuthentic.isAuthenticUser &&
+            this.props.abtastyParams.variationId === '411717' ?
             <Treatment_711417 {...this.state} /> : null
           }
 
           {
-            this.props.abtastyParams && (this.props.abtastyParams.variationId !== '411715'
+            (this.props.abtastyParams && (this.props.abtastyParams.variationId !== '411715'
               && this.props.abtastyParams.variationId !== '411716'
-              && this.props.abtastyParams.variationId !== '411717') ?
+              && this.props.abtastyParams.variationId !== '411717')) || !this.props.isAuthentic.isAuthenticUser ?
             <Control_411715 {...this.state} /> : null
           }
 
@@ -95,6 +99,7 @@ class PromoSectionFiveDesktop extends React.PureComponent {
 
 const mapStateToProps = state => ({
   abtastyParams: state.auth.abtastyParams,
+  isAuthentic: state.auth.isAuthentic,
 });
 
 export default connect(mapStateToProps, { ...AuthActions })(PromoSectionFiveDesktop);

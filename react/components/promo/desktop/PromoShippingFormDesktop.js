@@ -146,7 +146,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
           onClick={this.showErrorModal}
           className={`submit pulse sprite5 sprite5-${
             this.props.abtastyParams.campaignMaps['313763']
-          } sprite-submit`}
+          } sprite5-${this.props.isAuthentic.isAuthenticUser} sprite-submit`}
         />
         <div className="clearall" />
         <div>
@@ -162,6 +162,7 @@ const mapStateToProps = reduxState => {
     return {
       placeOrderStatus: reduxState.order.placeOrderStatus,
       abtastyParams: reduxState.auth.abtastyParams,
+      isAuthentic: reduxState.auth.isAuthentic,
     };
   }
   return {};

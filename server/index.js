@@ -23,6 +23,7 @@ import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
 import redis from './redis-config';
+// import authenticParams from '../constants/urlParams';
 
 require('dotenv').config();
 
@@ -233,6 +234,19 @@ app.prepare().then(() => {
     try {
       const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
       const { visitorId, isNew } = await getVisitorId(req, res);
+      let isAuthenticUser = false;
+      const authenticParams = ['affId', 'sourceValue3', 'sourceValue4', 'sourceValue5', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+
+      if (req.query && Object.keys(req.query).length) {
+        const queryParams = Object.keys(req.query);
+
+        isAuthenticUser = queryParams.some(param => {
+          if (authenticParams.includes(param)) {
+            return true;
+          }
+          return false;
+        });
+      }
 
       if (isNew) {
         res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
@@ -279,6 +293,7 @@ app.prepare().then(() => {
               variationId,
               device: requestAgent,
               campaignMaps,
+              isAuthenticUser,
             });
           })
           .catch(err => {
@@ -287,6 +302,7 @@ app.prepare().then(() => {
               visitorId,
               variationId,
               device: requestAgent,
+              isAuthenticUser,
               campaignMaps: {
                 313763: '413271',
                 314234: '413871',
@@ -333,6 +349,7 @@ app.prepare().then(() => {
               variationId,
               device: requestAgent,
               campaignMaps,
+              isAuthenticUser,
             });
           })
           .catch(err => {
@@ -341,6 +358,7 @@ app.prepare().then(() => {
               visitorId,
               variationId,
               device: requestAgent,
+              isAuthenticUser,
               campaignMaps: {
                 314235: '413873',
                 314411: '414125',

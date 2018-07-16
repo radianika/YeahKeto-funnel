@@ -232,6 +232,10 @@
   background-position: -654px -1560px;
 }
 
+.sprite3.sprite3-false {
+  background-position: -654px -1560px !important;
+}
+
 .sprite-logo {
   width: 206px;
   height: 66px;
