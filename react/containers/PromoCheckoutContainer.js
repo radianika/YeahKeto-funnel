@@ -41,7 +41,6 @@ class PromoCheckout extends React.PureComponent {
     const revenue = parseInt(this.state.selected.packagePrice);
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const eventsArray = [
-      'order-confirmation-checkout-desktop',
       'desktop-hp-text1-test-checkout',
       'desktop-hp-text2-test-checkout',
       'desktop-hp-top-module-symbol1-test-checkout',
