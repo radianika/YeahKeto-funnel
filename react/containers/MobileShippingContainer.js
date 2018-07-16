@@ -11,6 +11,7 @@ import {
   normalizePostalCode,
   getQueryString,
   packages,
+  getParameterByName,
 } from 'helpers';
 import {
   Footer,
@@ -40,16 +41,19 @@ class MobileShippingContainerComponent extends React.PureComponent {
   }
 
   componentDidMount() {
-    let sessionId = getCookie('ascbd_session');
-    get(`/v1/response/customer/1`, sessionId, {})
-      .then(response => {
-        console.log(response);
-        if (response.response && response.response.data && response.response.data.code === 200) {
-          this.props.dispatch(
-            AuthActions.setUserInfo(response.response.data.data),
-          )
-        }
-      });
+    const cidParams = getParameterByName('cid');
+    if (cidParams) {
+      let sessionId = getCookie('ascbd_session');
+      get(`/v1/response/customer/${cidParams}`, sessionId, {})
+        .then(response => {
+          console.log(response);
+          if (response.response && response.response.data && response.response.data.code === 200) {
+            this.props.dispatch(
+              AuthActions.setUserInfo(response.response.data.data),
+            )
+          }
+        });
+    }
   }
 
   postVisitEvent = () => {
