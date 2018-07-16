@@ -78,6 +78,7 @@ class FooterPromoComponent extends React.PureComponent {
           value_string: event,
           type: 'CLICK',
           tracking_data,
+          action: 'action_tracking_event',
         };
       });
 
@@ -114,6 +115,7 @@ class FooterPromoComponent extends React.PureComponent {
           value_string: event,
           type: 'TOUCH',
           tracking_data,
+          action: 'action_tracking_event',
         };
       });
 
@@ -138,7 +140,7 @@ class FooterPromoComponent extends React.PureComponent {
               className="shipping_redirect"
             >
               <i
-                className={`btn pulse sprite3 sprite3-413418 sprite-ship-btn`}
+                className="btn pulse sprite3 sprite3-413418 sprite-ship-btn"
                 id="mobie-order-now"
               />
             </a>
