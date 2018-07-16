@@ -1,6 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import { connect } from 'react-redux';
+import idx from 'idx';
+import { get, getParameterByName, normalizePhone } from 'helpers';
 import { MobileShippingContainer } from 'react/containers';
 import { AuthActions } from 'redux/actions';
 
@@ -27,6 +29,21 @@ class Promo extends React.PureComponent {
       //     ip,
       //   }),
       // );
+      console.log(req.url);
+      const cidParams = getParameterByName('cid', req.url);
+      if (cidParams) {
+        const { sessionId } = query;
+        const cidResponse = await get(
+          `/v1/response/customer/${cidParams}`,
+          sessionId,
+          {},
+        );
+        if (idx(cidResponse, _ => _.response.data.code) === 200) {
+          let { data: userInfo } = cidResponse.response.data;
+          userInfo = { ...userInfo, Phone: normalizePhone(userInfo.Phone) };
+          store.dispatch(AuthActions.setUserInfo(userInfo));
+        }
+      }
     }
   }
 

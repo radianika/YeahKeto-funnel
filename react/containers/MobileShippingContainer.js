@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import idx from 'idx';
 import moment from 'moment';
-import { AuthActions } from 'redux/actions';
+import { AuthActions, OrderActions } from 'redux/actions';
 import {
   get,
   stateslist,
@@ -18,14 +19,11 @@ import {
   TextField,
   SelectField,
   AddressField,
-  Spinner,
-  SuccessModal,
   ImageModal,
+  getCookie,
 } from 'react/components/common';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
-import { OrderActions } from 'redux/actions';
-import { getCookie } from 'react/components/common';
 
 /**
  * @class MobileShippingContainerComponent
@@ -41,53 +39,28 @@ class MobileShippingContainerComponent extends React.PureComponent {
   }
 
   componentDidMount() {
+    // TODO: Remove this once the api thing is working
     const cidParams = getParameterByName('cid');
     if (cidParams) {
-      let sessionId = getCookie('ascbd_session');
-      get(`/v1/response/customer/${cidParams}`, sessionId, {})
-        .then(response => {
-          console.log(response);
-          if (response.response && response.response.data && response.response.data.code === 200) {
-            this.props.dispatch(
-              AuthActions.setUserInfo(response.response.data.data),
-            )
+      const sessionId = getCookie('ascbd_session');
+      get(`/v1/response/customer/${cidParams}`, sessionId, {}).then(
+        response => {
+          if (idx(response, _ => _.response.data.code) === 200) {
+            let { data: userInfo } = response.response.data;
+            userInfo = { ...userInfo, Phone: normalizePhone(userInfo.Phone) };
+            console.log({ userInfo });
+            this.props.setUserInfo(userInfo);
           }
-        });
+        },
+      );
     }
   }
 
-  postVisitEvent = () => {
-    const { localStorage } = window;
-    const abtastyParams = this.props.abtastyParams;
-    const body = {
-      tracking_data: {
-        visitor_id: abtastyParams.visitorId,
-        device_type: 'MOBILE_PHONE',
-        origin: window.location.href,
-        timestamp: moment().format(),
-        ip: abtastyParams.ip,
-      },
-    };
-    axios.post('/abtasty', { ...body, action: 'visit_event' });
-  };
-
-  onSubmit = e => {
-    this.setState({ showCheckingModal: true });
-    this.props.handleSubmit(values => {
-      this.props.submitLeadsForm({
-        values,
-        router: this.props.router,
-        nextUrl: '/promo/mobile/select-package',
-      });
-    })(e);
-  };
-
   componentDidUpdate(prevProps) {
-    const { abtastyParams } = this.props;
     const queryString = getQueryString();
     let nextUrl = '';
     let pack = {};
-    pack = packages[0];
+    [pack] = packages;
     nextUrl = `/promo/mobile/confirm?${queryString}&productId=${pack.id}`;
     if (
       prevProps.submitStatus !== 'success' &&
@@ -101,6 +74,31 @@ class MobileShippingContainerComponent extends React.PureComponent {
       }, 1000);
     }
   }
+
+  onSubmit = e => {
+    this.props.handleSubmit(values => {
+      this.setState({ showCheckingModal: true });
+      this.props.submitLeadsForm({
+        values,
+        router: this.props.router,
+        nextUrl: '/promo/mobile/select-package',
+      });
+    })(e);
+  };
+
+  postVisitEvent = () => {
+    const { abtastyParams } = this.props;
+    const body = {
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'MOBILE_PHONE',
+        origin: window.location.href,
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'visit_event' });
+  };
 
   hideErrorModal = () => this.setState({ showErrorModal: false });
 
@@ -283,14 +281,10 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    ...OrderActions,
-    dispatch
-  }
-}
-
-const MobileShippingContainer = connect(mapStateToProps, mapDispatchToProps) (
+const MobileShippingContainer = connect(mapStateToProps, {
+  ...OrderActions,
+  ...AuthActions,
+})(
   reduxForm({
     form: 'MobileShippingForm',
     validate: shippingFormValidator,

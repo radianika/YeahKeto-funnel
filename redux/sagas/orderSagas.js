@@ -1,7 +1,5 @@
-import { select, put, all, fork, takeLatest, call } from 'redux-saga/effects';
+import { select, put, all, fork, takeLatest } from 'redux-saga/effects';
 import idx from 'idx';
-import axios from 'axios';
-import moment from 'moment';
 import { OrderActions } from 'redux/actions';
 import {
   post,
@@ -94,6 +92,7 @@ const packIdMap = {
  * @param  {} action
  */
 function* submitLeadsForm(action) {
+  console.log({ action });
   yield put(OrderActions.submitLeadsFormRequest());
 
   const { values, nextUrl, headers } = action.payload;
