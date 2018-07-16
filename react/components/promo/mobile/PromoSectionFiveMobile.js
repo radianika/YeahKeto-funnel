@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { AuthActions } from 'redux/actions';
 
+import Control_411721 from './media-section/control.js';
 import Treatment_411723 from './media-section/Treatment_411723.js';
 
 const format = input => {
@@ -50,8 +51,9 @@ class PromoSectionFiveMobile extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
-        {
-          <Treatment_411723 {...this.state} />
+        { this.props.isAuthentic.isAuthenticUser ?
+          <Treatment_411723 {...this.state} /> : 
+          <Control_411721 {...this.state} />
         }
       </React.Fragment>
     );
@@ -60,6 +62,7 @@ class PromoSectionFiveMobile extends React.PureComponent {
 
 const mapStateToProps = state => ({
   abtastyParams: state.auth.abtastyParams,
+  isAuthentic: state.auth.isAuthentic,
 });
 
 export default connect(mapStateToProps, { ...AuthActions })(PromoSectionFiveMobile);

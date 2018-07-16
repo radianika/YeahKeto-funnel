@@ -455,6 +455,13 @@
   background-position: -4px -606px;
 }
 
+.sprite5.sprite5-false {
+  background-image: url(../sprites/spritesheet5.png) !important;
+  background-repeat: no-repeat;
+  display: block;
+  background-position: -4px -606px;
+}
+
 .sprite-select {
   width: 648px;
   height: 260px;

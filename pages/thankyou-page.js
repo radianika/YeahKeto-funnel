@@ -148,22 +148,22 @@ class Thankyou extends React.PureComponent {
           )}
         </Head>
         <PromoSession pageType="thankyouPage" />
-        {device === 'desktop' &&
-          this.state.items.length && (
+        {(device === 'desktop' &&
+          this.state.items.length) ?
             <ThankyouDesktop
               isPromo={isPromo}
               items={this.state.items}
               shippingDetails={this.state.shippingDetails}
-            />
-          )}
-        {device === 'mobile' &&
-          this.state.items.length && (
+            /> : null
+          }
+        {(device === 'mobile' &&
+          this.state.items.length) ?
             <ThankyouMobile
               isPromo={isPromo}
               items={this.state.items}
               shippingDetails={this.state.shippingDetails}
-            />
-          )}
+            /> : null
+          }
       </React.Fragment>
     );
   }

@@ -8,3 +8,6 @@ export const createNewSession = createAction(CREATE_NEW_SESSION);
 
 export const SET_ABTASTY_PARAMS = 'AUTH/SET_ABTASTY_PARAMS';
 export const setAbtastyParams = createAction(SET_ABTASTY_PARAMS);
+
+export const SET_IS_AUTHENTIC_PARAMS = 'AUTH/SET_IS_AUTHENTIC_PARAMS';
+export const setIsAuthenticParams = createAction(SET_IS_AUTHENTIC_PARAMS);
