@@ -258,7 +258,7 @@ app.prepare().then(() => {
         );
       }
       if (requestAgent === 'desktop') {
-        const variationId = await getVariationForVisitor(visitorId, '312492');
+        let variationId;
         const tests = [
           '313763',
           '314234',

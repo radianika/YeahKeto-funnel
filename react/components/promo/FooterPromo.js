@@ -55,7 +55,6 @@ class FooterPromoComponent extends React.PureComponent {
       const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
 
       const eventsArray = [
-        'rush-my-order-form-click',
         'rush-my-order-shipping-page-color-test',
         'desktop-hp-text1-test-rush-my-order',
         'desktop-hp-text2-test-rush-my-order',
