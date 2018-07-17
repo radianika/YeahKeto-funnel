@@ -560,6 +560,7 @@ app.prepare().then(() => {
       const offerId = req.query.offer_id;
       const transaction_id = req.query.transaction_id;
       const adv_sub = req.query.aff_sub2;
+      const cidParams = getParameterByName('cid', req.originalUrl);
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-mobile-confirm', {
         sessionId,
@@ -568,6 +569,7 @@ app.prepare().then(() => {
         offerId,
         transaction_id,
         adv_sub,
+        cidParams,
       });
       // });
     } catch (error) {

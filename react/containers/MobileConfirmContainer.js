@@ -223,7 +223,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
 
   render() {
     const { active_cc_type } = this.state;
-
     return (
       <div className="mobile-body">
         <div className="container">
@@ -239,6 +238,13 @@ class MobileConfirmContainerComponent extends React.PureComponent {
             </div>
             <div className="con-hd2" />
             <p className="clearall" />
+            {this.props.query.cidParams && (
+              <div style={{ backgroundColor: 'red', textAlign: 'center' }}>
+                <p style={{ color: 'white', fontSize: 20 }}>
+                  20% Off, Valid through {moment().format('Do MMMM')}
+                </p>
+              </div>
+            )}
             <div className="trialsec2">
               {this.renderSummary()}
 
