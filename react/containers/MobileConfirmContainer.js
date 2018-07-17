@@ -76,16 +76,17 @@ class MobileConfirmContainerComponent extends React.PureComponent {
   hideErrorModal = () => this.setState({ showErrorModal: false });
 
   getPrice() {
-    if (this.state.pack.packagePrice) {
-      return this.state.pack.packagePrice;
-    }
-    return this.state.pack.price;
+    const priceToShow = this.state.pack.packagePrice || this.state.pack.price;
+    return priceToShow;
   }
 
   sendTransactionDetails = () => {
     const { localStorage } = window;
+    const { cidParams } = this.props.query;
     const id = `${this.state.pack.id}`;
-    const revenue = parseInt(this.getPrice());
+    const revenue = cidParams
+      ? parseInt(0.8 * this.getPrice())
+      : parseInt(this.getPrice());
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const eventsArray = [
       'mobile-hp-text1-test-checkout',
@@ -143,6 +144,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       pack,
       router,
       nextUrl: '/promo/mobile/upsell-1',
+      cidParams: this.props.query.cidParams,
     });
   };
 
@@ -152,7 +154,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
 
   renderSummary() {
     const { pack } = this.state;
-    const { adv_sub, offerId, transaction_id } = this.props.query;
+    const {
+      adv_sub, offerId, transaction_id, cidParams,
+    } = this.props.query;
     if (this.state.summaryOpen) {
       return (
         <div className="package picked" onClick={this.toggleSummary}>
@@ -182,6 +186,14 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                   <li>$0.00</li>
                   <li>TOTAL</li>
                   <li>{`$${this.getPrice()}`}</li>
+                </ul>
+                <ul className="rgtlist2">
+                  <li>DISCOUNT 20%: </li>
+                  <li>{`$${0.2 * this.getPrice()}`}</li>
+                </ul>
+                <ul className="rgtlist2">
+                  <li>FINAL TOTAL: </li>
+                  <li>{`$${0.8 * this.getPrice()}`}</li>
                 </ul>
               </div>
               <img src="/static/promo/mobile/images/post.jpg" alt="" />

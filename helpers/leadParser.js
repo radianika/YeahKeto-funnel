@@ -104,7 +104,7 @@ const parseLeadPostData = values => {
   };
 };
 
-const parseOrderPostData = (values, pack) => {
+const parseOrderPostData = (values, pack, discount = 0) => {
   const AffiliateID = getParameterByName('sourceValue1');
   const SubAffiliateID = getParameterByName('sourceValue2');
   let shippingLocalStorageData = {
@@ -262,6 +262,13 @@ const parseOrderPostData = (values, pack) => {
   } else {
     customProductMap.push(packIdMap[pack.id] || null);
   }
+
+  customProductMap[0].CustomProducts[0].Amount = discount
+    ? Number(customProductMap[0].CustomProducts[0].Amount) -
+      Number(customProductMap[0].CustomProducts[0].Amount) * discount
+    : Number(customProductMap[0].CustomProducts[0].Amount);
+
+  console.log({ customProductMap });
 
   let postData = {
     BillingAddress: {

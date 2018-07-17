@@ -143,7 +143,7 @@ function* placeOrder(action) {
   yield put(OrderActions.placeOrderRequest());
   try {
     const {
-      values, pack, nextUrl, headers,
+      values, pack, nextUrl, headers, cidParams,
     } = action.payload;
     let sessionId = '';
 
@@ -158,7 +158,9 @@ function* placeOrder(action) {
       sessionId = yield select(getSession);
     }
 
-    let parsedOrder = parseOrderPostData(values, pack);
+    const discount = cidParams ? 0.2 : 0;
+
+    let parsedOrder = parseOrderPostData(values, pack, discount);
     const queryString = `${
       getQueryString().startsWith('&') || !getQueryString().length ? '' : '&'
     }${getQueryString()}`;
