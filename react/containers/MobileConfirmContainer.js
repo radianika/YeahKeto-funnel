@@ -14,6 +14,7 @@ import {
   normalizeCardNumber,
   normalizeSecurityCode,
   getParameterByName,
+  getQueryString,
 } from 'helpers';
 import {
   Footer,
@@ -25,7 +26,6 @@ import {
   MobileCardExpiryField,
 } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
-import { getQueryString } from 'helpers';
 
 /**
  * @class MobileConfirmContainerComponent

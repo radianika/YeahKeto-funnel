@@ -9,15 +9,16 @@ import connectRedis from 'connect-redis';
 import querystring from 'querystring';
 import Raven from 'raven';
 import morgan from 'morgan';
-import axios from 'axios';
 import bodyParser from 'body-parser';
 import {
+  get,
   post,
   postToAbtasty,
   generateAbtastyVisitorId,
   getVariationForVisitor,
   postToAbtastyMultiple,
   asyncGetVariationForVisitor,
+  getParameterByName,
 } from './api-helpers';
 import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
@@ -514,9 +515,21 @@ app.prepare().then(() => {
     try {
       const sessionId = await getSessionId(req, res);
       // const { visitorId } = await getVisitorId(req, res);
-
+      const cidParams = getParameterByName('cid', req.originalUrl);
+      const cidResponse = await get(
+        `/v1/response/customer/${cidParams}`,
+        sessionId.id,
+        {
+          'x-ascbd-req-origin': req.get('host'),
+        },
+      );
+      let userInfo = null;
+      if (idx(cidResponse, _ => _.response.data.code) === 200) {
+        ({ data: userInfo } = cidResponse.response.data);
+      }
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,
+        userInfo,
       });
     } catch (error) {
       Raven.captureException(error);

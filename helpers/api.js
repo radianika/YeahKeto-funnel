@@ -70,5 +70,3 @@ export function get(location, sessionId, headers) {
       return error.message;
     });
 }
-
-

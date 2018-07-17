@@ -1,18 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import idx from 'idx';
 import moment from 'moment';
 import { AuthActions, OrderActions } from 'redux/actions';
 import {
-  get,
   stateslist,
   shippingFormValidator,
   normalizePhone,
   normalizePostalCode,
   getQueryString,
   packages,
-  getParameterByName,
 } from 'helpers';
 import {
   Footer,
@@ -20,7 +17,6 @@ import {
   SelectField,
   AddressField,
   ImageModal,
-  getCookie,
 } from 'react/components/common';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
@@ -36,24 +32,6 @@ class MobileShippingContainerComponent extends React.PureComponent {
     this.state = {
       showCheckingModal: false,
     };
-  }
-
-  componentDidMount() {
-    // TODO: Remove this once the api thing is working
-    const cidParams = getParameterByName('cid');
-    if (cidParams) {
-      const sessionId = getCookie('ascbd_session');
-      get(`/v1/response/customer/${cidParams}`, sessionId, {}).then(
-        response => {
-          if (idx(response, _ => _.response.data.code) === 200) {
-            let { data: userInfo } = response.response.data;
-            userInfo = { ...userInfo, Phone: normalizePhone(userInfo.Phone) };
-            console.log({ userInfo });
-            this.props.setUserInfo(userInfo);
-          }
-        },
-      );
-    }
   }
 
   componentDidUpdate(prevProps) {
