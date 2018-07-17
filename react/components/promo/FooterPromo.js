@@ -55,7 +55,6 @@ class FooterPromoComponent extends React.PureComponent {
       const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
 
       const eventsArray = [
-        'rush-my-order-shipping-page-color-test',
         'desktop-hp-text1-test-rush-my-order',
         'desktop-hp-text2-test-rush-my-order',
         'desktop-hp-top-module-symbol1-test-rush-my-order',
@@ -139,7 +138,9 @@ class FooterPromoComponent extends React.PureComponent {
               className="shipping_redirect"
             >
               <i
-                className={`btn pulse sprite3 sprite3-413418 sprite3-${this.props.isAuthentic.isAuthenticUser} sprite-ship-btn`}
+                className={`btn pulse sprite3 sprite3-413418 sprite3-${
+                  this.props.isAuthentic.isAuthenticUser
+                } sprite-ship-btn`}
                 id="mobie-order-now"
               />
             </a>

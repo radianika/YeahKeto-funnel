@@ -235,7 +235,17 @@ app.prepare().then(() => {
       const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
       const { visitorId, isNew } = await getVisitorId(req, res);
       let isAuthenticUser = false;
-      const authenticParams = ['affId', 'sourceValue3', 'sourceValue4', 'sourceValue5', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+      const authenticParams = [
+        'affId',
+        'sourceValue3',
+        'sourceValue4',
+        'sourceValue5',
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_term',
+        'utm_content',
+      ];
 
       if (req.query && Object.keys(req.query).length) {
         const queryParams = Object.keys(req.query);
@@ -260,7 +270,6 @@ app.prepare().then(() => {
       if (requestAgent === 'desktop') {
         let variationId;
         const tests = [
-          '313763',
           '314234',
           '314334',
           '314363',
@@ -304,7 +313,6 @@ app.prepare().then(() => {
               device: requestAgent,
               isAuthenticUser,
               campaignMaps: {
-                313763: '413271',
                 314234: '413871',
                 314334: '414030',
                 314363: '414063',
@@ -317,13 +325,7 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'mobile') {
         let variationId;
-        const tests = [
-          '314235',
-          '314336',
-          '314411',
-          '314431',
-          '315258',
-        ];
+        const tests = ['314235', '314336', '314411', '314431', '315258'];
         const promisses = [];
         const campaigns = {};
 
