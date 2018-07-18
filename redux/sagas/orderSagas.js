@@ -11,6 +11,7 @@ import {
   parseOrderPostData,
 } from 'helpers';
 import { getCookie } from 'react/components/common';
+import { getParameterByName } from '../../helpers/leadParser';
 
 const getSession = state => state.auth && state.auth.sessionId;
 
@@ -158,10 +159,15 @@ function* placeOrder(action) {
       sessionId = yield select(getSession);
     }
 
-    const parsedOrder = parseOrderPostData(values, pack);
+    let parsedOrder = parseOrderPostData(values, pack);
     const queryString = `${
       getQueryString().startsWith('&') || !getQueryString().length ? '' : '&'
     }${getQueryString()}`;
+    const mailsoft_person_id = getParameterByName('mailsoft_person_id');
+    if (mailsoft_person_id) {
+      parsedOrder = { ...parsedOrder, mailsoft_person_id };
+    }
+    console.log({ parsedOrder });
     const apiResponse = yield post(
       '/v1/response/order',
       parsedOrder,
@@ -173,7 +179,6 @@ function* placeOrder(action) {
       idx(apiResponse, _ => _.response.data.code) !== 500
     ) {
       const { localStorage } = window;
-      const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
       const order = apiResponse.response.data.data;
       localStorage.setItem('upsell1', JSON.stringify([order]));
       if (values.cart) {
