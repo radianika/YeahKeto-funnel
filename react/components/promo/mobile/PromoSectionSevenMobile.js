@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 
 class PromoSectionSevenMobileComponent extends React.PureComponent {
   render() {
+    const variation316466 = this.props.abtastyParams.campaignMaps['316466'];
     return (
       <div id="section-seven" className="sprite2 sprite-sec7">
-        <i className="s7-logo sprite3 sprite-s7-logo" />{' '}
+        <i className={`s7-logo sprite3 sprite-s7-logo-${variation316466}`} />{' '}
         <i className={`s1-hd sprite3 ${this.props.abtastyParams.campaignMaps['314411']} sprite-s1-hd`} />
         <p className="s1-txt4">
           Derived from organic, US-harvested hemp, lab-tested for quality.

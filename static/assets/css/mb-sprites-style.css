@@ -219,7 +219,7 @@
   display: block;
 }
 
-.sprite3.sprite3-414126 {
+.sprite3.sprite3-414126 { 
   background-position: -4px -1510px;
   height: 216px;
 }
@@ -457,6 +457,22 @@
   width: 442px;
   height: 79px;
   background-position: -932px -950px;
+  margin: 13px 0 0 186px;
+  display: inline-block;
+}
+
+.sprite-s7-logo-416740 {
+  width: 442px;
+  height: 79px;
+  background-position: -932px -950px;
+  margin: 13px 0 0 186px;
+  display: inline-block;
+}
+
+.sprite-s7-logo-416741 {
+  width: 442px;
+  height: 79px;
+  background-position: -1184px -1549px;
   margin: 13px 0 0 186px;
   display: inline-block;
 }
