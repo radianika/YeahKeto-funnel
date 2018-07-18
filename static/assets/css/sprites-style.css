@@ -439,7 +439,7 @@
   background-image: url(../sprites/spritesheet5.png) !important;
   background-repeat: no-repeat;
   display: block;
-  background-position: -4px -606px;
+  background-position: -4px -606px !important;
 }
 
 .sprite-select {
