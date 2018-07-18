@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { AuthActions } from 'redux/actions';
 
 import Control_411721 from './media-section/control.js';
-import Treatment_711422 from './media-section/Treatment_411722.js';
-import Treatment_711423 from './media-section/Treatment_411723.js';
+import Treatment_411723 from './media-section/Treatment_411723.js';
 
 const format = input => {
   if (input === 0 || input < 0) return '00';
@@ -52,26 +51,9 @@ class PromoSectionFiveMobile extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
-        {
-          this.props.abtastyParams && this.props.abtastyParams.variationId === '411721' ?
-          <Control_411721 {...this.state} /> : null
-        }
-
-        {
-          this.props.abtastyParams && this.props.abtastyParams.variationId === '411722' ?
-          <Treatment_711422 {...this.state} /> : null
-        }
-
-        {
-          this.props.abtastyParams && this.props.abtastyParams.variationId === '411723' ?
-          <Treatment_711423 {...this.state} /> : null
-        }
-
-        {
-          this.props.abtastyParams && (this.props.abtastyParams.variationId !== '411721'
-            && this.props.abtastyParams.variationId !== '411722'
-            && this.props.abtastyParams.variationId !== '411723') ?
-          <Control_411721 {...this.state} /> : null
+        { this.props.isAuthentic.isAuthenticUser ?
+          <Treatment_411723 {...this.state} /> : 
+          <Control_411721 {...this.state} />
         }
       </React.Fragment>
     );
@@ -80,6 +62,7 @@ class PromoSectionFiveMobile extends React.PureComponent {
 
 const mapStateToProps = state => ({
   abtastyParams: state.auth.abtastyParams,
+  isAuthentic: state.auth.isAuthentic,
 });
 
 export default connect(mapStateToProps, { ...AuthActions })(PromoSectionFiveMobile);

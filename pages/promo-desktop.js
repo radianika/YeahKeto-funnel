@@ -12,7 +12,11 @@ class Promo extends React.PureComponent {
       store,
       isServer,
       query: {
-        visitorId, variationId, requestAgent, campaignMaps,
+        visitorId,
+        variationId,
+        requestAgent,
+        campaignMaps,
+        isAuthenticUser,
       },
       req: {
         session: { ip },
@@ -27,6 +31,11 @@ class Promo extends React.PureComponent {
           requestAgent,
           ip,
           campaignMaps,
+        }),
+      );
+      store.dispatch(
+        AuthActions.setIsAuthenticParams({
+          isAuthenticUser,
         }),
       );
     }
@@ -48,7 +57,15 @@ class Promo extends React.PureComponent {
       JSON.stringify(this.props.abtastyParams.campaignMaps),
     );
 
-    const campaigns = ['313763', '314234', '314334', '314363', '314691'];
+    const campaigns = [
+      '314234',
+      '314334',
+      '314363',
+      '314691',
+      '315256',
+      '315257',
+      '314104',
+    ];
     const tracking_data = {
       device_type: 'DESKTOP',
       ip: this.props.abtastyParams.ip,
@@ -56,22 +73,16 @@ class Promo extends React.PureComponent {
       timestamp: moment().format(),
       visitor_id: this.props.abtastyParams.visitorId,
     };
-    let postData = {};
-    const event1 = {
-      campaign_id: '312492',
-      variation_id: this.props.abtastyParams.variationId,
-      tracking_data,
-    };
+    const postData = {};
 
     campaigns.forEach(campaign => {
       postData[campaign] = {
         campaign_id: campaign,
         variation_id: this.props.abtastyParams.campaignMaps[campaign],
         tracking_data,
-      }
+        action: 'campaign_activated_event',
+      };
     });
-
-    postData['312492'] = event1;
 
     axios.post('/multicampaign-abtasty', postData);
   };

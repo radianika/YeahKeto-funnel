@@ -88,11 +88,12 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     const revenue = parseInt(this.getPrice());
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const eventsArray = [
-      'order-confirmation-checkout-mobile',
       'mobile-hp-text1-test-checkout',
       'mobile-hp-text2-test-checkout',
       'mobile-hp-top-module-symbol1-test-checkout',
       'mobile-hp-benefits-module-test-checkout',
+      'mobile-hp-module2-caption1-test-checkout',
+      'mobile-hp-rush-my-order-texts-test-checkout',
       'mobile-hp-last-module-picture-test-checkout',
     ];
     const tracking_data = {
@@ -111,7 +112,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
         revenue,
         shipping: '0',
         tracking_data,
-      }
+        action: 'transaction_event',
+      };
     });
 
     axios.post('/multicampaign-abtasty', postData);
@@ -277,21 +279,44 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                           active_cc_type === 'visa' ? 'active' : ''
                         }`}
                       >
-                        <img src="/static/Visa.png" alt="" />
+                        <img
+                          src="/static/Visa.png"
+                          className="card-image"
+                          alt=""
+                        />
                       </span>
                       <span
                         className={`card-mastercard ${
                           active_cc_type === 'master-card' ? 'active' : ''
                         }`}
                       >
-                        <img src="/static/Mastercard.png" alt="" />
+                        <img
+                          src="/static/Mastercard.png"
+                          className="card-image"
+                          alt=""
+                        />
                       </span>
                       <span
                         className={`card-discover" ${
                           active_cc_type === 'american-express' ? 'active' : ''
                         }`}
                       >
-                        <img src="/static/amex.png" alt="" />
+                        <img
+                          src="/static/amex.png"
+                          className="card-image"
+                          alt=""
+                        />
+                      </span>
+                      <span
+                        className={`card-discover" ${
+                          active_cc_type === 'discover' ? 'active' : ''
+                        }`}
+                      >
+                        <img
+                          src="/static/discover.png"
+                          className="card-image"
+                          alt=""
+                        />
                       </span>
                     </div>
                   </div>

@@ -435,24 +435,11 @@
   display: block;
 }
 
-.sprite5.sprite5-413271 {
-  background-image: url(../sprites/spritesheet5.png);
+.sprite5.sprite5-false {
+  background-image: url(../sprites/spritesheet5.png) !important;
   background-repeat: no-repeat;
   display: block;
-}
-
-.sprite5.sprite5-413272 {
-  background-image: url(../sprites/spritesheet5.png);
-  background-repeat: no-repeat;
-  display: block;
-  background-position: -4px -531px;
-}
-
-.sprite5.sprite5-413273 {
-  background-image: url(../sprites/spritesheet5.png);
-  background-repeat: no-repeat;
-  display: block;
-  background-position: -4px -606px;
+  background-position: -4px -606px !important;
 }
 
 .sprite-select {
@@ -530,7 +517,20 @@
 .sprite-submit {
   width: 280px;
   height: 67px;
+  border-radius: 4px;
   background-position: -5px -458px;
+}
+
+.sprite-submit.sprite-submit-413653 {
+  background-position: -5px -458px;
+}
+
+.sprite-submit.sprite-submit-413654 {
+  background-position: -4px -687px;
+}
+
+.sprite-submit.sprite-submit-413655 {
+  background-position: -4px -765px;
 }
 
 .sprite-t-box {

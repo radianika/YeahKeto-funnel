@@ -51,7 +51,7 @@ class PromoSectionSevenDesktopComponent extends React.PureComponent {
               window.scroll({ top: 0, behavior: 'smooth' });
             }}
           >
-            <i className="s7btn pulse sprite5 sprite-submit" />
+            <i className={`s7btn pulse sprite5 sprite-submit sprite5-${this.props.isAuthentic.isAuthenticUser}`} />
           </a>
         </div>
       </div>
@@ -62,6 +62,7 @@ class PromoSectionSevenDesktopComponent extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     abtastyParams: state.auth.abtastyParams,
+    isAuthentic: state.auth.isAuthentic,
   };
 }
 

@@ -5,8 +5,7 @@ import moment from 'moment';
 import axios from 'axios';
 
 import Control_411715 from './media-section/control.js';
-import Treatment_711416 from './media-section/Treatment_411716.js';
-import Treatment_711417 from './media-section/Treatment_411717.js';
+import Treatment_411716 from './media-section/Treatment_411716.js';
 
 const format = input => {
   if (input === 0 || input < 0) return '00';
@@ -66,27 +65,10 @@ class PromoSectionFiveDesktop extends React.PureComponent {
           </p>
           <i className="s5-line sprite4 sprite-s5-line" />
           {
-            this.props.abtastyParams && this.props.abtastyParams.variationId === '411715' ?
-            <Control_411715 {...this.state} /> : null
+            this.props.isAuthentic.isAuthenticUser ?
+              <Treatment_411716 {...this.state} /> :
+              <Control_411715 {...this.state} />
           }
-
-          {
-            this.props.abtastyParams && this.props.abtastyParams.variationId === '411716' ?
-            <Treatment_711416 {...this.state} /> : null
-          }
-
-          {
-            this.props.abtastyParams && this.props.abtastyParams.variationId === '411717' ?
-            <Treatment_711417 {...this.state} /> : null
-          }
-
-          {
-            this.props.abtastyParams && (this.props.abtastyParams.variationId !== '411715'
-              && this.props.abtastyParams.variationId !== '411716'
-              && this.props.abtastyParams.variationId !== '411717') ?
-            <Control_411715 {...this.state} /> : null
-          }
-
         </div>
       </div>
     );
@@ -95,6 +77,7 @@ class PromoSectionFiveDesktop extends React.PureComponent {
 
 const mapStateToProps = state => ({
   abtastyParams: state.auth.abtastyParams,
+  isAuthentic: state.auth.isAuthentic,
 });
 
 export default connect(mapStateToProps, { ...AuthActions })(PromoSectionFiveDesktop);

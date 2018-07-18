@@ -15,6 +15,7 @@ class FooterPromoComponent extends React.PureComponent {
       ctaStyle: { position: 'fixed' },
     };
   }
+
   componentDidMount() {
     if (this.props.isMobile) {
       document.onscroll = () => {
@@ -35,45 +36,98 @@ class FooterPromoComponent extends React.PureComponent {
       };
     }
   }
+
   gotoShipping = () => {
     window.location.assign(`/promo/mobile/shipping?${getQueryString()}`);
   };
 
-  postActionTracker = () => {
-    const { localStorage } = window;
-    const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+  postActionTracker() {
+    if (this.props.isMobile) {
+      this.postActionTrackerForMobile();
+    } else {
+      this.postActionTrackerForDesktop();
+    }
+  }
 
-    const eventsArray = [
-      'mobile-order-now',
-      'mobile-rush-my-order-shipping-page-color-test',
-      'mobile-hp-text1-test-rush-my-order',
-      'mobile-hp-top-module-symbol1-test-rush-my-order',
-      'mobile-hp-text2-test-rush-my-order',
-      'mobile-hp-benefits-module-test-rush-my-order',
-      'mobile-hp-last-module-picture-test-rush-my-order',
-    ];
-    const tracking_data = {
-      visitor_id: abtastyParams.visitorId,
-      device_type: 'MOBILE_PHONE',
-      origin: 'promo mobile',
-      timestamp: moment().format(),
-      ip: abtastyParams.ip,
-    };
-    const postData = {};
+  postActionTrackerForDesktop = () => {
+    try {
+      const { localStorage } = window;
+      const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
 
-    eventsArray.forEach((event, index) => {
-      postData[index] = {
-        name: event,
-        value_string: event,
-        type: 'CLICK',
-        tracking_data,
-      }
-    });
+      const eventsArray = [
+        'desktop-hp-text1-test-rush-my-order',
+        'desktop-hp-text2-test-rush-my-order',
+        'desktop-hp-top-module-symbol1-test-rush-my-order',
+        'desktop-hp-module2-caption1-test-rush-my-order',
+        'desktop-hp-rush-my-order-texts-test-rush-my-order',
+      ];
+      const tracking_data = {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'DESKTOP',
+        origin: 'promo DESKTOP',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      };
+      const postData = {};
 
-    axios.post('/multicampaign-abtasty', postData);
+      eventsArray.forEach((event, index) => {
+        postData[index] = {
+          name: event,
+          value_string: event,
+          type: 'CLICK',
+          tracking_data,
+          action: 'action_tracking_event',
+        };
+      });
+
+      axios.post('/multicampaign-abtasty', postData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  postActionTrackerForMobile = () => {
+    try {
+      const { localStorage } = window;
+      const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
+
+      const eventsArray = [
+        'mobile-hp-text1-test-rush-my-order',
+        'mobile-hp-top-module-symbol1-test-rush-my-order',
+        'mobile-hp-text2-test-rush-my-order',
+        'mobile-hp-benefits-module-test-rush-my-order',
+        'mobile-hp-module2-caption1-test-rush-my-order',
+        'mobile-hp-rush-my-order-texts-test-rush-my-order',
+        'mobile-hp-last-module-picture-test-rush-my-order',
+      ];
+      const tracking_data = {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'MOBILE_PHONE',
+        origin: 'promo mobile',
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      };
+      const postData = {};
+
+      eventsArray.forEach((event, index) => {
+        postData[index] = {
+          name: event,
+          value_string: event,
+          type: 'TOUCH',
+          tracking_data,
+          action: 'action_tracking_event',
+        };
+      });
+
+      axios.post('/multicampaign-abtasty', postData);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
+    const variation316344 = this.props.abtastyParams.campaignMaps['316344'];
+
     return (
       <footer ref={this.footerRef}>
         {this.props.isMobile && (
@@ -88,9 +142,9 @@ class FooterPromoComponent extends React.PureComponent {
               className="shipping_redirect"
             >
               <i
-                className={`btn pulse sprite3 sprite3-${
-                  this.props.abtastyParams.campaignMaps['313876']
-                } sprite-ship-btn`}
+                className={`btn pulse sprite3 sprite3-413418 sprite3-${
+                  this.props.isAuthentic.isAuthenticUser
+                } sprite-ship-btn sprite3-${variation316344}`}
                 id="mobie-order-now"
               />
             </a>
@@ -131,6 +185,7 @@ const mapStateToProps = reduxState => {
   if (reduxState.order) {
     return {
       abtastyParams: reduxState.auth.abtastyParams,
+      isAuthentic: reduxState.auth.isAuthentic,
     };
   }
   return {};

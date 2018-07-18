@@ -23,6 +23,7 @@ import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
 import redis from './redis-config';
+// import authenticParams from '../constants/urlParams';
 
 require('dotenv').config();
 
@@ -233,6 +234,29 @@ app.prepare().then(() => {
     try {
       const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
       const { visitorId, isNew } = await getVisitorId(req, res);
+      let isAuthenticUser = false;
+      const authenticParams = [
+        'affId',
+        'sourceValue3',
+        'sourceValue4',
+        'sourceValue5',
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_term',
+        'utm_content',
+      ];
+
+      if (req.query && Object.keys(req.query).length) {
+        const queryParams = Object.keys(req.query);
+
+        isAuthenticUser = queryParams.some(param => {
+          if (authenticParams.includes(param)) {
+            return true;
+          }
+          return false;
+        });
+      }
 
       if (isNew) {
         res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
@@ -244,8 +268,16 @@ app.prepare().then(() => {
         );
       }
       if (requestAgent === 'desktop') {
-        const variationId = await getVariationForVisitor(visitorId, '312492');
-        const tests = ['313763', '314234', '314334', '314363', '314691'];
+        let variationId;
+        const tests = [
+          '314234',
+          '314334',
+          '314363',
+          '314691',
+          '315256',
+          '315257',
+          '314104',
+        ];
         const promisses = [];
         const campaigns = {};
 
@@ -271,6 +303,7 @@ app.prepare().then(() => {
               variationId,
               device: requestAgent,
               campaignMaps,
+              isAuthenticUser,
             });
           })
           .catch(err => {
@@ -279,19 +312,22 @@ app.prepare().then(() => {
               visitorId,
               variationId,
               device: requestAgent,
+              isAuthenticUser,
               campaignMaps: {
-                313763: '413271',
                 314234: '413871',
                 314334: '414030',
                 314363: '414063',
                 314691: '414447',
+                315256: '415140',
+                315257: '415142',
+                314104: '413653',
               },
             });
           });
       }
       if (requestAgent === 'mobile') {
-        const variationId = await getVariationForVisitor(visitorId, '312494');
-        const tests = ['313876', '314235', '314336', '314411', '314431', '314728'];
+        let variationId;
+        const tests = ['314235', '314336', '314411', '314431', '315258', '316344', '314728'];
         const promisses = [];
         const campaigns = {};
 
@@ -317,6 +353,7 @@ app.prepare().then(() => {
               variationId,
               device: requestAgent,
               campaignMaps,
+              isAuthenticUser,
             });
           })
           .catch(err => {
@@ -325,13 +362,18 @@ app.prepare().then(() => {
               visitorId,
               variationId,
               device: requestAgent,
+              isAuthenticUser,
               campaignMaps: {
-                313876: '413418',
                 314235: '413873',
                 314411: '414125',
+<<<<<<< HEAD
                 314728: '414506',
                 314431: '414149',
                 314336: '414033',
+=======
+                315258: '415144',
+                316344: '416545',
+>>>>>>> develop
               },
             });
           });
@@ -462,7 +504,6 @@ app.prepare().then(() => {
     try {
       const sessionId = await getSessionId(req, res);
       // const { visitorId } = await getVisitorId(req, res);
-      // const variationId = await getVariationForVisitor(visitorId, '312844');
 
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,

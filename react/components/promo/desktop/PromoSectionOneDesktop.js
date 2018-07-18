@@ -37,12 +37,14 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
   render() {
     const variation314234 = this.props.abtastyParams.campaignMaps['314234'];
     const variation314334 = this.props.abtastyParams.campaignMaps['314334'];
+    const variation315256 = this.props.abtastyParams.campaignMaps['315256'];
     return (
       <div
         className="section1 dsplay"
         style={{
           background:
-            'url("/static/promo/desktop/images/section1.jpg") center top no-repeat',
+            `url("/static/promo/desktop/images/${this.props.isAuthentic.isAuthenticUser ?
+              'section1.jpg' : 'section1-not-auth.jpg'}") center top no-repeat`,
         }}
       >
         <h2 style={{ display: 'none' }}>American Science CBD</h2>
@@ -113,13 +115,19 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
             <i className="s1asseen sprite2 sprite-s1asseen" />
           </div>
           <div className="s1rgt">
-            <div className="exoffer-box dsplay">
-              <i className="sprite2 sprite-flag" />
-              <p className="exof-txt">
-                Internet Exclusive Offer
-                <br /> <b>Available to US Residents Only</b>
-              </p>
-            </div>
+            {!variation315256 || variation315256 === '415140' ? (
+              <div className="exoffer-box dsplay">
+                <i className="sprite2 sprite-flag" />
+                <p className="exof-txt">
+                  Internet Exclusive Offer
+                  <br /> <b>Available to US Residents Only</b>
+                </p>
+              </div>
+            ) : (
+              <div className="exoffer-box dsplay">
+                <img src="/static/assets/images/states.png" alt="" />
+              </div>
+            )}
             <div className="frm" id="topfrm">
               <PromoShippingFormDesktop
                 id="promo-section1-submit-desktop"
@@ -156,6 +164,7 @@ function mapStateToProps(state) {
   return {
     submitStatus: state.order.submitLeadsFormStatus,
     abtastyParams: state.auth.abtastyParams,
+    isAuthentic: state.auth.isAuthentic,
   };
 }
 

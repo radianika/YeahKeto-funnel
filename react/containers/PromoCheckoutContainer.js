@@ -41,11 +41,13 @@ class PromoCheckout extends React.PureComponent {
     const revenue = parseInt(this.state.selected.packagePrice);
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const eventsArray = [
-      'order-confirmation-checkout-desktop',
       'desktop-hp-text1-test-checkout',
       'desktop-hp-text2-test-checkout',
       'desktop-hp-top-module-symbol1-test-checkout',
       'desktop-hp-last-module-picture-test-checkout',
+      'desktop-hp-form-top-section-test-checkout',
+      'desktop-hp-module2-caption1-test-checkout',
+      'desktop-hp-rush-my-order-texts-test-checkout',
     ];
     eventsArray.push(packMapping[id]);
     const tracking_data = {
@@ -64,7 +66,8 @@ class PromoCheckout extends React.PureComponent {
         revenue,
         shipping: '0',
         tracking_data,
-      }
+        action: 'transaction_event',
+      };
     });
 
     axios.post('/multicampaign-abtasty', postData);
