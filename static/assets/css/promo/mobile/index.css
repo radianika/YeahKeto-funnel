@@ -789,8 +789,26 @@ start section6
 start section7
 ----------------*/
 
-#section-seven {
+#section-seven-414506 {
   background: url("../../../../promo/mobile/images/sec7.jpg") center top
+    no-repeat;
+  height: 800px;
+}
+
+#section-seven-414507 {
+  background: url("../../../../promo/mobile/images/sec7_v1.jpg") center top
+    no-repeat;
+  height: 800px;
+}
+
+#section-seven-414508 {
+  background: url("../../../../promo/mobile/images/sec7_v2.jpg") center top
+    no-repeat;
+  height: 800px;
+}
+
+#section-seven-414509 {
+  background: url("../../../../promo/mobile/images/sec7_v3.jpg") center top
     no-repeat;
   height: 800px;
 }
