@@ -245,6 +245,7 @@ app.prepare().then(() => {
         'utm_campaign',
         'utm_term',
         'utm_content',
+        'mailsoft_person_id',
       ];
 
       if (req.query && Object.keys(req.query).length) {
