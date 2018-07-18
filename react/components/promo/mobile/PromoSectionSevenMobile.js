@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class PromoSectionSevenMobileComponent extends React.PureComponent {
   render() {
-    const variation316466 = this.props.abtastyParams.campaignMaps['316466'];
+    const variation316547 = this.props.abtastyParams.campaignMaps['316547'];
     const variation314728 = this.props.abtastyParams.campaignMaps['314728'];
 
     return (
@@ -11,7 +11,7 @@ class PromoSectionSevenMobileComponent extends React.PureComponent {
         id={`section-seven-${variation314728}`}
         className="sprite2 sprite-sec7"
       >
-        <i className={`s7-logo sprite3 sprite-s7-logo-${variation316466}`} />{' '}
+        <i className={`s7-logo sprite3 sprite-s7-logo-${variation316547}`} />{' '}
         <i
           className={`s1-hd sprite3 ${
             this.props.abtastyParams.campaignMaps['314411']
