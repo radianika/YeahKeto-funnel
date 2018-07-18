@@ -1,8 +1,8 @@
 import React from 'react';
-import moment from 'moment';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 
-class PromoStrip extends React.PureComponent {
+class PromoStripComponent extends React.PureComponent {
   scrollToTop = () => {
     window.scroll({
       top: 0,
@@ -29,12 +29,26 @@ class PromoStrip extends React.PureComponent {
             }}
           >
             {' '}
-            <i className="stripbtn pulse sprite5 sprite-submit" id="rush-my-order-scroll-clicks"/>
+            <i
+              className={`stripbtn pulse sprite5 sprite-submit sprite5-${this.props.isAuthentic.isAuthenticUser}`}
+              id="rush-my-order-scroll-clicks"
+            />
           </a>
         </div>
       </div>
     );
   }
 }
+
+
+function mapStateToProps(state) {
+  return {
+    isAuthentic: state.auth.isAuthentic,
+  };
+}
+
+const PromoStrip = connect(mapStateToProps)(
+  withRouter(PromoStripComponent),
+);
 
 export { PromoStrip };
