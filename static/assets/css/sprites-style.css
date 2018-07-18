@@ -517,7 +517,20 @@
 .sprite-submit {
   width: 280px;
   height: 67px;
+  border-radius: 4px;
   background-position: -5px -458px;
+}
+
+.sprite-submit.sprite-submit-413653 {
+  background-position: -5px -458px;
+}
+
+.sprite-submit.sprite-submit-413654 {
+  background-position: -4px -687px;
+}
+
+.sprite-submit.sprite-submit-413655 {
+  background-position: -4px -765px;
 }
 
 .sprite-t-box {

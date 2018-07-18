@@ -22,6 +22,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
       'desktop-hp-last-module-picture-test-rush-my-order',
       'desktop-hp-form-top-section-test-rush-my-order',
       'desktop-hp-module2-caption1-test-rush-my-order',
+      'desktop-hp-rush-my-order-texts-test-rush-my-order',
     ];
     const tracking_data = {
       visitor_id: abtastyParams.visitorId,
@@ -47,6 +48,8 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
 
   render() {
     const { props } = this;
+    const variation314104 = this.props.abtastyParams.campaignMaps['314104'];
+
     return (
       <form
         id="form-contact"
@@ -144,7 +147,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
           onClick={this.showErrorModal}
           className={`submit pulse sprite5 sprite5-${
             this.props.isAuthentic.isAuthenticUser
-          } sprite-submit`}
+          } sprite-submit sprite-submit-${variation314104}`}
         />
         <div className="clearall" />
         <div>

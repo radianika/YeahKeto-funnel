@@ -59,7 +59,7 @@ class FooterPromoComponent extends React.PureComponent {
         'desktop-hp-text2-test-rush-my-order',
         'desktop-hp-top-module-symbol1-test-rush-my-order',
         'desktop-hp-module2-caption1-test-rush-my-order',
-        'mobile-hp-module2-caption1-test-rush-my-order',
+        'desktop-hp-rush-my-order-texts-test-rush-my-order',
       ];
       const tracking_data = {
         visitor_id: abtastyParams.visitorId,
@@ -97,6 +97,7 @@ class FooterPromoComponent extends React.PureComponent {
         'mobile-hp-text2-test-rush-my-order',
         'mobile-hp-benefits-module-test-rush-my-order',
         'mobile-hp-module2-caption1-test-rush-my-order',
+        'mobile-hp-rush-my-order-texts-test-rush-my-order',
       ];
       const tracking_data = {
         visitor_id: abtastyParams.visitorId,
@@ -124,6 +125,8 @@ class FooterPromoComponent extends React.PureComponent {
   };
 
   render() {
+    const variation316344 = this.props.abtastyParams.campaignMaps['316344'];
+
     return (
       <footer ref={this.footerRef}>
         {this.props.isMobile && (
@@ -140,7 +143,7 @@ class FooterPromoComponent extends React.PureComponent {
               <i
                 className={`btn pulse sprite3 sprite3-413418 sprite3-${
                   this.props.isAuthentic.isAuthenticUser
-                } sprite-ship-btn`}
+                } sprite-ship-btn sprite3-${variation316344}`}
                 id="mobie-order-now"
               />
             </a>
