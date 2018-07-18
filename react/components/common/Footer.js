@@ -66,20 +66,7 @@ class Footer extends PureComponent {
                       <div className="cards">
                         <span className="card-amex">
                           <LazyLoad height={45} offset={75}>
-                            <img src="/static/amex-card.png" alt="Amex" />
-                          </LazyLoad>
-                        </span>
-                        <span className="card-visa">
-                          <LazyLoad height={45} offset={75}>
-                            <img src="/static/visa-card.png" alt="Visa" />
-                          </LazyLoad>
-                        </span>
-                        <span className="card-mastercard">
-                          <LazyLoad height={45} offset={75}>
-                            <img
-                              src="/static/mastercard-card.png"
-                              alt="Mastercard"
-                            />
+                            <img src="/static/cards_logos.png" alt="Amex" />
                           </LazyLoad>
                         </span>
                       </div>
