@@ -12,7 +12,11 @@ class Promo extends React.PureComponent {
       store,
       isServer,
       query: {
-        visitorId, variationId, requestAgent, campaignMaps, isAuthenticUser,
+        visitorId,
+        variationId,
+        requestAgent,
+        campaignMaps,
+        isAuthenticUser,
       },
       req: {
         session: { ip },
@@ -31,9 +35,9 @@ class Promo extends React.PureComponent {
       );
       store.dispatch(
         AuthActions.setIsAuthenticParams({
-          isAuthenticUser
+          isAuthenticUser,
         }),
-      )
+      );
     }
   }
 
@@ -54,7 +58,6 @@ class Promo extends React.PureComponent {
     );
 
     const campaigns = [
-      '313763',
       '314234',
       '314334',
       '314363',

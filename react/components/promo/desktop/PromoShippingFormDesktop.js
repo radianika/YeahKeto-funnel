@@ -16,7 +16,6 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const eventsArray = [
-      'rush-my-order-shipping-page-color-test',
       'desktop-hp-text1-test-rush-my-order',
       'desktop-hp-text2-test-rush-my-order',
       'desktop-hp-top-module-symbol1-test-rush-my-order',
@@ -144,8 +143,8 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
           id="rush-my-order-form-click"
           onClick={this.showErrorModal}
           className={`submit pulse sprite5 sprite5-${
-            this.props.abtastyParams.campaignMaps['313763']
-          } sprite5-${this.props.isAuthentic.isAuthenticUser} sprite-submit`}
+            this.props.isAuthentic.isAuthenticUser
+          } sprite-submit`}
         />
         <div className="clearall" />
         <div>
