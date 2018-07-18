@@ -245,6 +245,7 @@ app.prepare().then(() => {
         'utm_campaign',
         'utm_term',
         'utm_content',
+        'mailsoft_person_id',
       ];
 
       if (req.query && Object.keys(req.query).length) {
@@ -336,6 +337,7 @@ app.prepare().then(() => {
           '314431',
           '315258',
           '316344',
+          '314728',
           '316466',
         ];
         const promisses = [];
@@ -379,6 +381,7 @@ app.prepare().then(() => {
                 315258: '415144',
                 316344: '416545',
                 316466: '416740',
+                314728: '414506',
               },
             });
           });
