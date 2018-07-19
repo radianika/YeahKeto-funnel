@@ -5,11 +5,12 @@ import { connect } from 'react-redux';
 class PromoSectionSevenDesktopComponent extends React.PureComponent {
   render() {
     const variation314691 = this.props.abtastyParams.campaignMaps['314691'];
+    const variation316439 = this.props.abtastyParams.campaignMaps['316439'];
     return (
       <div className={`section7 section7-${variation314691}`}>
         <div className="container position">
           <i className="s7logo sprite2 sprite-logo" />
-          <i className="s7seal sprite3 sprite-s1seal" />
+          <i className={`s7seal sprite3 sprite-s1seal-${variation316439}`} />
           <i
             className={`s7hd sprite3 sprite3-${
               this.props.abtastyParams.campaignMaps['314363']
@@ -51,7 +52,11 @@ class PromoSectionSevenDesktopComponent extends React.PureComponent {
               window.scroll({ top: 0, behavior: 'smooth' });
             }}
           >
-            <i className="s7btn pulse sprite5 sprite-submit" />
+            <i
+              className={`s7btn pulse sprite5 sprite-submit sprite5-${
+                this.props.isAuthentic.isAuthenticUser
+              }`}
+            />
           </a>
         </div>
       </div>
@@ -62,6 +67,7 @@ class PromoSectionSevenDesktopComponent extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     abtastyParams: state.auth.abtastyParams,
+    isAuthentic: state.auth.isAuthentic,
   };
 }
 

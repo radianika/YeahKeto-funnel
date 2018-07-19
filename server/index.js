@@ -235,7 +235,18 @@ app.prepare().then(() => {
       const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
       const { visitorId, isNew } = await getVisitorId(req, res);
       let isAuthenticUser = false;
-      const authenticParams = ['affId', 'sourceValue3', 'sourceValue4', 'sourceValue5', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+      const authenticParams = [
+        'affId',
+        'sourceValue3',
+        'sourceValue4',
+        'sourceValue5',
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_term',
+        'utm_content',
+        'mailsoft_person_id',
+      ];
 
       if (req.query && Object.keys(req.query).length) {
         const queryParams = Object.keys(req.query);
@@ -260,13 +271,14 @@ app.prepare().then(() => {
       if (requestAgent === 'desktop') {
         let variationId;
         const tests = [
-          '313763',
           '314234',
           '314334',
           '314363',
           '314691',
           '315256',
           '315257',
+          '314104',
+          '316439',
         ];
         const promisses = [];
         const campaigns = {};
@@ -304,13 +316,14 @@ app.prepare().then(() => {
               device: requestAgent,
               isAuthenticUser,
               campaignMaps: {
-                313763: '413271',
                 314234: '413871',
                 314334: '414030',
                 314363: '414063',
                 314691: '414447',
                 315256: '415140',
                 315257: '415142',
+                314104: '413653',
+                316439: '416690',
               },
             });
           });
@@ -323,6 +336,9 @@ app.prepare().then(() => {
           '314411',
           '314431',
           '315258',
+          '316344',
+          '314728',
+          '316547',
         ];
         const promisses = [];
         const campaigns = {};
@@ -363,6 +379,9 @@ app.prepare().then(() => {
                 314235: '413873',
                 314411: '414125',
                 315258: '415144',
+                316344: '416545',
+                316547: '416840',
+                314728: '414506',
               },
             });
           });

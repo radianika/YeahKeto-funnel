@@ -16,13 +16,14 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const eventsArray = [
-      'rush-my-order-shipping-page-color-test',
       'desktop-hp-text1-test-rush-my-order',
       'desktop-hp-text2-test-rush-my-order',
       'desktop-hp-top-module-symbol1-test-rush-my-order',
       'desktop-hp-last-module-picture-test-rush-my-order',
       'desktop-hp-form-top-section-test-rush-my-order',
       'desktop-hp-module2-caption1-test-rush-my-order',
+      'desktop-hp-rush-my-order-texts-test-rush-my-order',
+      'desktop-hp-last-module-badge-test-rush-my-order',
     ];
     const tracking_data = {
       visitor_id: abtastyParams.visitorId,
@@ -48,6 +49,8 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
 
   render() {
     const { props } = this;
+    const variation314104 = this.props.abtastyParams.campaignMaps['314104'];
+
     return (
       <form
         id="form-contact"
@@ -144,8 +147,8 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
           id="rush-my-order-form-click"
           onClick={this.showErrorModal}
           className={`submit pulse sprite5 sprite5-${
-            this.props.abtastyParams.campaignMaps['313763']
-          } sprite5-${this.props.isAuthentic.isAuthenticUser} sprite-submit`}
+            this.props.isAuthentic.isAuthenticUser
+          } sprite-submit sprite-submit-${variation314104}`}
         />
         <div className="clearall" />
         <div>

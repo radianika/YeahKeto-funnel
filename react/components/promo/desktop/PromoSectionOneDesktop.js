@@ -43,7 +43,8 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
         className="section1 dsplay"
         style={{
           background:
-            'url("/static/promo/desktop/images/section1.jpg") center top no-repeat',
+            `url("/static/promo/desktop/images/${this.props.isAuthentic.isAuthenticUser ?
+              'section1.jpg' : 'section1-not-auth.jpg'}") center top no-repeat`,
         }}
       >
         <h2 style={{ display: 'none' }}>American Science CBD</h2>
@@ -163,6 +164,7 @@ function mapStateToProps(state) {
   return {
     submitStatus: state.order.submitLeadsFormStatus,
     abtastyParams: state.auth.abtastyParams,
+    isAuthentic: state.auth.isAuthentic,
   };
 }
 

@@ -7,7 +7,11 @@ class PromoSectionOneMobileComponent extends React.PureComponent {
     const variation314235 = this.props.abtastyParams.campaignMaps['314235'];
     const variation314336 = this.props.abtastyParams.campaignMaps['314336'];
     return (
-      <div id="section-one" className="sprite2 sprite-sec1">
+      <div
+        id="section-one"
+        className="sprite2 sprite-sec1"
+        style={{ backgroundPosition: this.props.isAuthentic.isAuthenticUser ? '-654px -899px' : '-2350px -866px' }}
+      >
         <i className="s1-logo sprite3 sprite-s1-logo " />
         <i
           className={`s1-hd sprite3 sprite3-${
@@ -96,6 +100,7 @@ class PromoSectionOneMobileComponent extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     abtastyParams: state.auth.abtastyParams,
+    isAuthentic: state.auth.isAuthentic,
   };
 }
 
