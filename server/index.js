@@ -245,6 +245,7 @@ app.prepare().then(() => {
         'utm_campaign',
         'utm_term',
         'utm_content',
+        'mailsoft_person_id',
       ];
 
       if (req.query && Object.keys(req.query).length) {
@@ -277,7 +278,8 @@ app.prepare().then(() => {
           '315256',
           '315257',
           '314104',
-          '317090'
+          '316439',
+          '317090',
         ];
         const promisses = [];
         const campaigns = {};
@@ -322,14 +324,24 @@ app.prepare().then(() => {
                 315256: '415140',
                 315257: '415142',
                 314104: '413653',
-                317090: '417538'
+                316439: '416690',
+                317090: '417538',
               },
             });
           });
       }
       if (requestAgent === 'mobile') {
         let variationId;
-        const tests = ['314235', '314336', '314411', '314431', '315258', '316344'];
+        const tests = [
+          '314235',
+          '314336',
+          '314411',
+          '314431',
+          '315258',
+          '316344',
+          '314728',
+          '316547',
+        ];
         const promisses = [];
         const campaigns = {};
 
@@ -370,6 +382,8 @@ app.prepare().then(() => {
                 314411: '414125',
                 315258: '415144',
                 316344: '416545',
+                316547: '416840',
+                314728: '414506',
               },
             });
           });

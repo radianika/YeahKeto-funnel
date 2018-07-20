@@ -54,6 +54,8 @@ const isValidCreditCard = (type, cardNumber) => {
     re = /^5[1-5]\d{2}-?\d{4}-?\d{4}-?\d{4}$/;
   } else if (type === 'american-express') {
     re = /^3[4,7]\d{13}$/;
+  } else if (type === 'discover') {
+    re = /^(?:6011\d{12})|(?:65\d{14})$/;
   }
   if (!re) {
     return false;
