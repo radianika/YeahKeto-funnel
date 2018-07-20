@@ -38,6 +38,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
     const variation314234 = this.props.abtastyParams.campaignMaps['314234'];
     const variation314334 = this.props.abtastyParams.campaignMaps['314334'];
     const variation315256 = this.props.abtastyParams.campaignMaps['315256'];
+    const variation317090 = this.props.abtastyParams.campaignMaps['317090'];
     return (
       <div
         className="section1 dsplay"
@@ -112,7 +113,10 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
               className="s1bottle"
               alt=""
             />
-            <i className="s1asseen sprite2 sprite-s1asseen" />
+            <i
+              className="s1asseen sprite2 sprite-s1asseen"
+              style={{ backgroundPosition: variation317090 === '417539' ? '-385px -485px' : '-385px -421px' }}
+            />
           </div>
           <div className="s1rgt">
             {!variation315256 || variation315256 === '415140' ? (
