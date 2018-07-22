@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -99,154 +100,46 @@ class UpsellMobileContainerComponent extends React.PureComponent {
       this.props.abtastyParams.prev &&
       this.props.abtastyParams.prev.indexOf('upsell11') > -1;
     return (
-      <div id="container">
+      <React.Fragment>
+        <Head>
+          <script dangerouslySetInnerHTML={{ __html:`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '287233031840657');
+            fbq('track', 'PageView');
+          `}} />
 
-        <script>{`
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '287233031840657');
-          fbq('track', 'PageView');
-        `}</script>
-        <noscript><img height="1" width="1" style={{display: 'none'}}
-                       src="https://www.facebook.com/tr?id=287233031840657&ev=PageView&noscript=1"/></noscript>
-
-        {upsell === 1 &&
-          offerId && (
-            <iframe
-              title="cbd"
-              // src={`https://trk.starlightgroup.io/aff_l?offer_id=${offerId}&transaction_id=${transaction_id}&adv_sub=${adv_sub}`}
-              src={`https://trk.starlightgroup.io/aff_l?offer_id=${offerId}&adv_sub=${adv_sub}`}
-              frameBorder="0"
-              width="1"
-              height="1"
-              style={{ position: 'absolute' }}
-            />
-          )}
-        <SuccessModal
-          visible={this.props.submitStatus === 'success'}
-          message="Order updated successfully."
-        />
-        {upsell === 1 && (
-          <React.Fragment>
-            {this.props.abtastyParams.variationId === '406285' && (
-              <React.Fragment>
-                <a href="/">
-                  <img
-                    src="/static/mobile/images/logo.png"
-                    alt=""
-                    className="logo"
-                  />
-                </a>
-                <Upsell1
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
-              </React.Fragment>
-            )}
-            {this.props.abtastyParams.variationId === '406286' && (
-              <React.Fragment>
-                <a href="/">
-                  <img
-                    src="/static/mobile/images/logo.png"
-                    alt=""
-                    className="logo"
-                  />
-                </a>
-                <Upsell1Treatment1
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
-              </React.Fragment>
-            )}
-            {this.props.abtastyParams.variationId === '406287' && (
-              <Upsell1Treatment2
-                upgrade={this.upgrade}
-                {...this.props}
-                abtastyParams={abtastyParams}
-                sendTransactionDetails={this.sendTransactionDetails}
+          <noscript dangerouslySetInnerHTML={{ __html:`
+            <img height="1" width="1" style={{display: 'none'}}
+                         src="https://www.facebook.com/tr?id=287233031840657&ev=PageView&noscript=1"/>
+          `}}/>
+        </Head>
+        <div id="container">
+          {upsell === 1 &&
+            offerId && (
+              <iframe
+                title="cbd"
+                // src={`https://trk.starlightgroup.io/aff_l?offer_id=${offerId}&transaction_id=${transaction_id}&adv_sub=${adv_sub}`}
+                src={`https://trk.starlightgroup.io/aff_l?offer_id=${offerId}&adv_sub=${adv_sub}`}
+                frameBorder="0"
+                width="1"
+                height="1"
+                style={{ position: 'absolute' }}
               />
             )}
-          </React.Fragment>
-        )}
-        {upsell === '1-1' && (
-          <React.Fragment>
-            {this.props.abtastyParams.variationId === '406288' && (
-              <React.Fragment>
-                <a href="/">
-                  <img
-                    src="/static/mobile/images/logo.png"
-                    alt=""
-                    className="logo"
-                  />
-                </a>
-                <Upsell11
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
-              </React.Fragment>
-            )}
-            {this.props.abtastyParams.variationId === '406289' && (
-              <React.Fragment>
-                <a href="/">
-                  <img
-                    src="/static/mobile/images/logo.png"
-                    alt=""
-                    className="logo"
-                  />
-                </a>
-                <Upsell11Treatment1
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
-              </React.Fragment>
-            )}
-            {this.props.abtastyParams.variationId === '406290' && (
-              <Upsell11Treatment2
-                upgrade={this.upgrade}
-                {...this.props}
-                abtastyParams={abtastyParams}
-                sendTransactionDetails={this.sendTransactionDetails}
-              />
-            )}
-          </React.Fragment>
-        )}
-        {upsell === 2 && (
-          <React.Fragment>
-            {(this.props.abtastyParams.variationId === '406291' ||
-              isPrevUpsell11) && (
-              <React.Fragment>
-                <a href="/">
-                  <img
-                    src="/static/mobile/images/logo.png"
-                    alt=""
-                    className="logo"
-                  />
-                </a>
-                <Upsell2
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                  isPrevUpsell11={isPrevUpsell11}
-                />
-              </React.Fragment>
-            )}
-            {this.props.abtastyParams.variationId === '406292' &&
-              !isPrevUpsell11 && (
+          <SuccessModal
+            visible={this.props.submitStatus === 'success'}
+            message="Order updated successfully."
+          />
+          {upsell === 1 && (
+            <React.Fragment>
+              {this.props.abtastyParams.variationId === '406285' && (
                 <React.Fragment>
                   <a href="/">
                     <img
@@ -255,7 +148,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                       className="logo"
                     />
                   </a>
-                  <Upsell2Treatment1
+                  <Upsell1
                     upgrade={this.upgrade}
                     {...this.props}
                     abtastyParams={abtastyParams}
@@ -263,36 +156,149 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                   />
                 </React.Fragment>
               )}
-            {this.props.abtastyParams.variationId === '406293' &&
-              !isPrevUpsell11 && (
-                <Upsell2Treatment2
+              {this.props.abtastyParams.variationId === '406286' && (
+                <React.Fragment>
+                  <a href="/">
+                    <img
+                      src="/static/mobile/images/logo.png"
+                      alt=""
+                      className="logo"
+                    />
+                  </a>
+                  <Upsell1Treatment1
+                    upgrade={this.upgrade}
+                    {...this.props}
+                    abtastyParams={abtastyParams}
+                    sendTransactionDetails={this.sendTransactionDetails}
+                  />
+                </React.Fragment>
+              )}
+              {this.props.abtastyParams.variationId === '406287' && (
+                <Upsell1Treatment2
                   upgrade={this.upgrade}
                   {...this.props}
                   abtastyParams={abtastyParams}
                   sendTransactionDetails={this.sendTransactionDetails}
                 />
               )}
-          </React.Fragment>
-        )}
-        {upsell === '2-1' && (
-          <React.Fragment>
-            <a href="/">
-              <img
-                src="/static/mobile/images/logo.png"
-                alt=""
-                className="logo"
+            </React.Fragment>
+          )}
+          {upsell === '1-1' && (
+            <React.Fragment>
+              {this.props.abtastyParams.variationId === '406288' && (
+                <React.Fragment>
+                  <a href="/">
+                    <img
+                      src="/static/mobile/images/logo.png"
+                      alt=""
+                      className="logo"
+                    />
+                  </a>
+                  <Upsell11
+                    upgrade={this.upgrade}
+                    {...this.props}
+                    abtastyParams={abtastyParams}
+                    sendTransactionDetails={this.sendTransactionDetails}
+                  />
+                </React.Fragment>
+              )}
+              {this.props.abtastyParams.variationId === '406289' && (
+                <React.Fragment>
+                  <a href="/">
+                    <img
+                      src="/static/mobile/images/logo.png"
+                      alt=""
+                      className="logo"
+                    />
+                  </a>
+                  <Upsell11Treatment1
+                    upgrade={this.upgrade}
+                    {...this.props}
+                    abtastyParams={abtastyParams}
+                    sendTransactionDetails={this.sendTransactionDetails}
+                  />
+                </React.Fragment>
+              )}
+              {this.props.abtastyParams.variationId === '406290' && (
+                <Upsell11Treatment2
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
+                />
+              )}
+            </React.Fragment>
+          )}
+          {upsell === 2 && (
+            <React.Fragment>
+              {(this.props.abtastyParams.variationId === '406291' ||
+                isPrevUpsell11) && (
+                <React.Fragment>
+                  <a href="/">
+                    <img
+                      src="/static/mobile/images/logo.png"
+                      alt=""
+                      className="logo"
+                    />
+                  </a>
+                  <Upsell2
+                    upgrade={this.upgrade}
+                    {...this.props}
+                    abtastyParams={abtastyParams}
+                    sendTransactionDetails={this.sendTransactionDetails}
+                    isPrevUpsell11={isPrevUpsell11}
+                  />
+                </React.Fragment>
+              )}
+              {this.props.abtastyParams.variationId === '406292' &&
+                !isPrevUpsell11 && (
+                  <React.Fragment>
+                    <a href="/">
+                      <img
+                        src="/static/mobile/images/logo.png"
+                        alt=""
+                        className="logo"
+                      />
+                    </a>
+                    <Upsell2Treatment1
+                      upgrade={this.upgrade}
+                      {...this.props}
+                      abtastyParams={abtastyParams}
+                      sendTransactionDetails={this.sendTransactionDetails}
+                    />
+                  </React.Fragment>
+                )}
+              {this.props.abtastyParams.variationId === '406293' &&
+                !isPrevUpsell11 && (
+                  <Upsell2Treatment2
+                    upgrade={this.upgrade}
+                    {...this.props}
+                    abtastyParams={abtastyParams}
+                    sendTransactionDetails={this.sendTransactionDetails}
+                  />
+                )}
+            </React.Fragment>
+          )}
+          {upsell === '2-1' && (
+            <React.Fragment>
+              <a href="/">
+                <img
+                  src="/static/mobile/images/logo.png"
+                  alt=""
+                  className="logo"
+                />
+              </a>
+              <Upsell21
+                upgrade={this.upgrade}
+                {...this.props}
+                abtastyParams={abtastyParams}
+                sendTransactionDetails={this.sendTransactionDetails}
               />
-            </a>
-            <Upsell21
-              upgrade={this.upgrade}
-              {...this.props}
-              abtastyParams={abtastyParams}
-              sendTransactionDetails={this.sendTransactionDetails}
-            />
-          </React.Fragment>
-        )}
-        {this.props.submitStatus === 'submitting' && <Spinner />}
-      </div>
+            </React.Fragment>
+          )}
+          {this.props.submitStatus === 'submitting' && <Spinner />}
+        </div>
+      </React.Fragment>
     );
   }
 }
