@@ -3,7 +3,7 @@ import moment from 'moment';
 import axios from 'axios';
 import { PromoSession, Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
-import { getQueryString } from 'helpers';
+import { getQueryString, getDiscountBanner } from 'helpers';
 import { SatisfactionBox } from './SatisfactionBox';
 
 /**
@@ -40,9 +40,17 @@ class Upsell1Component extends React.PureComponent {
   };
 
   render() {
+    const { cid } = this.props.query;
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage1" />
+        {getDiscountBanner({ cid }) && (
+          <div style={{ backgroundColor: 'red', textAlign: 'center' }}>
+            <p style={{ color: 'white', fontSize: 20 }}>
+              20% Off, Valid through {moment().format('Do MMMM')}
+            </p>
+          </div>
+        )}
         <div className="up-strip">
           <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
           <p>
@@ -76,8 +84,25 @@ class Upsell1Component extends React.PureComponent {
               <span className="old-price">
                 <img src="/static/assets/images/price-cut.png" alt="" />120/
                 <sup>ea</sup>
-              </span>{' '}
-              77/<sup>ea</sup>{' '}
+              </span>
+              {getDiscountBanner({ cid }) ? (
+                <React.Fragment>
+                  <span className="old-price" style={{ marginLeft: 5 }}>
+                    {' '}
+                    <img src="/static/assets/images/price-cut.png" alt="" />
+                    77/<sup>ea</sup>{' '}
+                  </span>
+                  <span>
+                    {' '}
+                    62/<sup>ea</sup>{' '}
+                  </span>
+                </React.Fragment>
+              ) : (
+                <span>
+                  {' '}
+                  77/<sup>ea</sup>{' '}
+                </span>
+              )}
               <img
                 src="/static/assets/images/arrow-right.png"
                 width="77"

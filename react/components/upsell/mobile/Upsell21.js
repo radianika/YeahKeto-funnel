@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { PromoSession, Footer } from 'react/components/common';
-import { getQueryString } from 'helpers';
+import { getQueryString, getDiscountBanner } from 'helpers';
 
 /**
  * @class Upsell21
@@ -38,9 +38,17 @@ class Upsell21 extends React.PureComponent {
   };
 
   render() {
+    const { cid } = this.props.query;
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage2" />
+        {getDiscountBanner({ cid }) && (
+          <div style={{ backgroundColor: 'red', textAlign: 'center' }}>
+            <p style={{ color: 'white', fontSize: 20 }}>
+              20% Off, Valid through {moment().format('Do MMMM')}
+            </p>
+          </div>
+        )}
         <div className="up-strip">
           <h3>YOU QUALIFY FOR A LIMITED TIME DISCOUNT</h3>
           <p>
@@ -69,7 +77,8 @@ class Upsell21 extends React.PureComponent {
                 height="33"
                 alt="arrow-left"
                 className="arrow-left"
-              />97.00{' '}
+              />
+              {getDiscountBanner({ cid }) ? 77 : 97.0}{' '}
               <img
                 src="/static/assets/images/upsell2-mobile/arrow-right.png"
                 width="77"

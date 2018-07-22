@@ -60,10 +60,12 @@ class UpsellMobileContainerComponent extends React.PureComponent {
   };
 
   upgrade = (productId, nextPage) => {
+    const { cid } = this.props.query;
     this.props.addUpsellToOrder({
       productId,
       sendTo: nextPage,
       router: this.props.router,
+      cid,
     });
   };
 

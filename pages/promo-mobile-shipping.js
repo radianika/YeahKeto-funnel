@@ -30,7 +30,11 @@ class Promo extends React.PureComponent {
       // );
       let { userInfo } = query;
       if (userInfo) {
-        userInfo = { ...userInfo, Phone: normalizePhone(userInfo.Phone) };
+        userInfo = {
+          ...userInfo,
+          Phone: normalizePhone(userInfo.Phone),
+          ZipCode: userInfo.Zipcode,
+        };
         store.dispatch(AuthActions.setUserInfo(userInfo));
       }
     }
