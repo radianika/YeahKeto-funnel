@@ -131,12 +131,7 @@ class Upsell2Treatment2 extends React.PureComponent {
                 </p>
                 <p className="price-txt">
                   Today Only<br />
-                  <span>130.00</span>{' '}
-                  {getDiscountBanner({ cid }) ? (
-                    <span>69.00/ea</span>
-                  ) : (
-                    <span>87.00/ea</span>
-                  )}
+                  <span>130.00</span> {getDiscountBanner({ cid }) ? 69.0 : 87.0}/ea
                 </p>
                 <p className="shipping-txt">
                   Plus we'll pay for the added shipping cost
