@@ -108,7 +108,8 @@ class Upsell11Treatment1Component extends React.PureComponent {
                 alt="arrow-left-upsell"
                 className="arrow-left"
               />
-              {getDiscountBanner({ cid }) ? 69.0 : 87.0}{' '}
+              {getDiscountBanner({ cid }) ? 69.0 : 87.0}
+              {'/ea'}
               <img
                 src="/static/assets/images/arrow-right.png"
                 width="77"
