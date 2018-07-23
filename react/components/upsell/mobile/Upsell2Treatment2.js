@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import { PromoSession, Footer } from 'react/components/common';
-import { getQueryString } from 'helpers';
+import { getQueryString, getDiscountBanner } from 'helpers';
 import Head from 'next/head';
 
 /**
@@ -61,6 +61,7 @@ class Upsell2Treatment2 extends React.PureComponent {
   };
 
   render() {
+    const { cid } = this.props.query;
     return (
       <React.Fragment>
         <Head>
@@ -87,6 +88,13 @@ class Upsell2Treatment2 extends React.PureComponent {
         </div>
 
         <div className="up-mid1">
+          {getDiscountBanner({ cid }) && (
+            <div style={{ backgroundColor: 'red', textAlign: 'center' }}>
+              <p style={{ color: 'white', fontSize: 20 }}>
+                20% Off, Valid through {moment().format('Do MMMM')}
+              </p>
+            </div>
+          )}
           <div className="contentWrap">
             <p className="up-txt1">WAIT! Your Order Is Not Complete</p>
             <p className="up-txt2">
@@ -97,6 +105,7 @@ class Upsell2Treatment2 extends React.PureComponent {
 
             <div className="pop-coupon">
               <img
+                alt=""
                 src="/static/assets/images/up2-combo.png"
                 style={{
                   position: 'absolute',
@@ -107,6 +116,7 @@ class Upsell2Treatment2 extends React.PureComponent {
               />
               <div className="up1-content">
                 <img
+                  alt=""
                   src="/static/assets/images/timer-icon.png"
                   className="up-timer"
                 />
@@ -121,7 +131,12 @@ class Upsell2Treatment2 extends React.PureComponent {
                 </p>
                 <p className="price-txt">
                   Today Only<br />
-                  <span>130.00</span> 87.00/ea
+                  <span>130.00</span>{' '}
+                  {getDiscountBanner({ cid }) ? (
+                    <span>69.00/ea</span>
+                  ) : (
+                    <span>87.00/ea</span>
+                  )}
                 </p>
                 <p className="shipping-txt">
                   Plus we'll pay for the added shipping cost

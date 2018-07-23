@@ -77,10 +77,10 @@ const isValidCreditCard = (type, cardNumber) => {
     if (digit < 10) {
       checkSum += digit;
     } else {
-      checkSum += (digit - 9);
+      checkSum += digit - 9;
     }
   }
-  return (checkSum % 10) === 0;
+  return checkSum % 10 === 0;
 };
 
 // this validator is used in promo pages
@@ -121,8 +121,11 @@ const billingFormValidator = values => {
     if (value.length > 3 && !cardTypes.length) {
       errors.cardNumber = 'Card type is not supported';
     }
-    if (value.length === length && cardTypes.length &&
-      !isValidCreditCard(cardTypes[0].type, value)) {
+    if (
+      value.length === length &&
+      cardTypes.length &&
+      !isValidCreditCard(cardTypes[0].type, value)
+    ) {
       errors.cardNumber = 'Please enter valid card';
     }
   }

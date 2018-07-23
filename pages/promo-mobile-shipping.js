@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { connect } from 'react-redux';
+import { normalizePhone } from 'helpers';
 import { MobileShippingContainer } from 'react/containers';
 import { AuthActions } from 'redux/actions';
 
@@ -27,6 +28,15 @@ class Promo extends React.PureComponent {
       //     ip,
       //   }),
       // );
+      let { userInfo } = query;
+      if (userInfo) {
+        userInfo = {
+          ...userInfo,
+          Phone: normalizePhone(userInfo.Phone),
+          ZipCode: userInfo.Zipcode,
+        };
+        store.dispatch(AuthActions.setUserInfo(userInfo));
+      }
     }
   }
 

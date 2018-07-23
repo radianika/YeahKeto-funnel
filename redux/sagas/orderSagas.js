@@ -1,7 +1,5 @@
-import { select, put, all, fork, takeLatest, call } from 'redux-saga/effects';
+import { select, put, all, fork, takeLatest } from 'redux-saga/effects';
 import idx from 'idx';
-import axios from 'axios';
-import moment from 'moment';
 import { OrderActions } from 'redux/actions';
 import {
   post,
@@ -9,9 +7,10 @@ import {
   getQueryString,
   parseLeadPostData,
   parseOrderPostData,
+  getRevenueAfterDiscount,
+  getParameterByName,
 } from 'helpers';
 import { getCookie } from 'react/components/common';
-import { getParameterByName } from '../../helpers/leadParser';
 
 const getSession = state => state.auth && state.auth.sessionId;
 
@@ -94,6 +93,7 @@ const packIdMap = {
  * @param  {} action
  */
 function* submitLeadsForm(action) {
+  console.log({ action });
   yield put(OrderActions.submitLeadsFormRequest());
 
   const { values, nextUrl, headers } = action.payload;
@@ -144,7 +144,7 @@ function* placeOrder(action) {
   yield put(OrderActions.placeOrderRequest());
   try {
     const {
-      values, pack, nextUrl, headers,
+      values, pack, nextUrl, headers, cid,
     } = action.payload;
     let sessionId = '';
 
@@ -160,6 +160,14 @@ function* placeOrder(action) {
     }
 
     let parsedOrder = parseOrderPostData(values, pack);
+    parsedOrder.PaymentInformation.ProductGroups[0].CustomProducts[0].Amount = getRevenueAfterDiscount(
+      {
+        cid,
+        revenue:
+          parsedOrder.PaymentInformation.ProductGroups[0].CustomProducts[0]
+            .Amount,
+      },
+    );
     const queryString = `${
       getQueryString().startsWith('&') || !getQueryString().length ? '' : '&'
     }${getQueryString()}`;
@@ -167,7 +175,6 @@ function* placeOrder(action) {
     if (mailsoft_person_id) {
       parsedOrder = { ...parsedOrder, mailsoft_person_id };
     }
-    console.log({ parsedOrder });
     const apiResponse = yield post(
       '/v1/response/order',
       parsedOrder,
@@ -207,7 +214,7 @@ function* placeOrder(action) {
 function* addUpsellToOrder(action) {
   yield put(OrderActions.addUpsellToOrderRequest());
   try {
-    const { sendTo, headers } = action.payload;
+    const { sendTo, headers, cid } = action.payload;
     let sessionId = '';
     const { localStorage } = window;
 
@@ -229,6 +236,13 @@ function* addUpsellToOrder(action) {
       CustomerID: upsell1.OrderInfo.CustomerID,
       ProductGroups: [packIdMap[action.payload.productId]],
     };
+
+    payload.ProductGroups[0].CustomProducts[0].Amount = getRevenueAfterDiscount(
+      {
+        cid,
+        revenue: payload.ProductGroups[0].CustomProducts[0].Amount,
+      },
+    );
 
     const apiResponse = yield post('/v1/response/upsale', payload, sessionId, {
       ...headers,

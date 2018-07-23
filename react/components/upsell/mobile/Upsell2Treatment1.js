@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import { PromoSession, Footer } from 'react/components/common';
-import { getQueryString } from 'helpers';
+import { getQueryString, getDiscountBanner } from 'helpers';
 import Head from 'next/head';
 
 /**
@@ -61,6 +61,7 @@ class Upsell2Treatment1 extends React.PureComponent {
   };
 
   render() {
+    const { cid } = this.props.query;
     return (
       <React.Fragment>
         <Head>
@@ -70,6 +71,13 @@ class Upsell2Treatment1 extends React.PureComponent {
           />
         </Head>
         <PromoSession pageType="upsellPage2" />
+        {getDiscountBanner({ cid }) && (
+          <div style={{ backgroundColor: 'red', textAlign: 'center' }}>
+            <p style={{ color: 'white', fontSize: 20 }}>
+              20% Off, Valid through {moment().format('Do MMMM')}
+            </p>
+          </div>
+        )}
         <div className="up-strip">
           <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
           <p>
@@ -82,10 +90,7 @@ class Upsell2Treatment1 extends React.PureComponent {
           <p className="up-txt1">GET INSTANT PAIN RELIEF</p>
           <p className="with-txt">with</p>
           <p className="up-txt2">CBD Warming Balm</p>
-          <img
-            src="/static/assets/images/up2-combo.png"
-            className="up-prod"
-          />
+          <img src="/static/assets/images/up2-combo.png" className="up-prod" />
           <div className="clearall" />
           <div className="price-box">
             <p className="price-box-txt1">
@@ -105,7 +110,23 @@ class Upsell2Treatment1 extends React.PureComponent {
                   ea
                 </sup>
               </span>{' '}
-              87/<sup>ea</sup>{' '}
+              {getDiscountBanner({ cid }) ? (
+                <React.Fragment>
+                  <span className="old-price">
+                    <img
+                      src="/static/assets/images/upsell2-mobile/price-cut.png"
+                      alt="price-cut"
+                    />87/<sup>ea</sup>
+                  </span>{' '}
+                  <span>
+                    69/<sup>ea</sup>
+                  </span>
+                </React.Fragment>
+              ) : (
+                <span>
+                  87/<sup>ea</sup>
+                </span>
+              )}{' '}
               <img
                 src="/static/assets/images/arrow-right.png"
                 width="77"

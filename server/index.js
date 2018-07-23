@@ -9,15 +9,16 @@ import connectRedis from 'connect-redis';
 import querystring from 'querystring';
 import Raven from 'raven';
 import morgan from 'morgan';
-import axios from 'axios';
 import bodyParser from 'body-parser';
 import {
+  get,
   post,
   postToAbtasty,
   generateAbtastyVisitorId,
   getVariationForVisitor,
   postToAbtastyMultiple,
   asyncGetVariationForVisitor,
+  getParameterByName,
 } from './api-helpers';
 import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
@@ -158,6 +159,20 @@ const getVisitorId = async (req, res) => {
     Raven.captureException(error);
     console.error('Exception Occurred in ReactApp', error.stack || error);
   }
+};
+
+const qualifiesForCidDiscount = req => {
+  try {
+    const { cookies } = req;
+    const cidDiscount = idx(cookies, _ => _.cid_discount);
+    if (cidDiscount && cidDiscount === 'true') {
+      return true;
+    }
+  } catch (error) {
+    Raven.captureException(error);
+    console.error('Exception Occurred in ReactApp', error.stack || error);
+  }
+  return false;
 };
 
 const app = next({ dev });
@@ -514,9 +529,24 @@ app.prepare().then(() => {
     try {
       const sessionId = await getSessionId(req, res);
       // const { visitorId } = await getVisitorId(req, res);
-
+      const cid = getParameterByName('cid', req.originalUrl);
+      const cidResponse = await get(
+        `/v1/response/customer/${cid}`,
+        sessionId.id,
+        {
+          'x-ascbd-req-origin': req.get('host'),
+        },
+      );
+      let userInfo = null;
+      if (idx(cidResponse, _ => _.response.data.code) === 200) {
+        ({ data: userInfo } = cidResponse.response.data);
+      }
+      if (userInfo) {
+        res.cookie('cid_discount', true, { maxAge: 3600000 });
+      }
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,
+        userInfo,
       });
     } catch (error) {
       Raven.captureException(error);
@@ -547,6 +577,9 @@ app.prepare().then(() => {
       const offerId = req.query.offer_id;
       const transaction_id = req.query.transaction_id;
       const adv_sub = req.query.aff_sub2;
+      const cid = qualifiesForCidDiscount(req)
+        ? getParameterByName('cid', req.originalUrl)
+        : null;
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-mobile-confirm', {
         sessionId,
@@ -555,6 +588,7 @@ app.prepare().then(() => {
         offerId,
         transaction_id,
         adv_sub,
+        cid,
       });
       // });
     } catch (error) {
@@ -574,7 +608,9 @@ app.prepare().then(() => {
       const campaignId = '308072';
       const variationId = await getVariationForVisitor(visitorId, campaignId);
       console.log({ variationId, visitorId });
-
+      const cid = qualifiesForCidDiscount(req)
+        ? getParameterByName('cid', req.originalUrl)
+        : null;
       app.render(req, res, '/promo-mobile-upsell', {
         upsell: 1,
         offerId,
@@ -585,6 +621,7 @@ app.prepare().then(() => {
         variationId,
         campaignId,
         visitorId,
+        cid,
       });
     } catch (error) {
       Raven.captureException(error);
@@ -602,6 +639,9 @@ app.prepare().then(() => {
       const { visitorId } = await getVisitorId(req, res);
       const campaignId = '308073';
       const variationId = await getVariationForVisitor(visitorId, campaignId);
+      const cid = qualifiesForCidDiscount(req)
+        ? getParameterByName('cid', req.originalUrl)
+        : null;
 
       app.render(req, res, '/promo-mobile-upsell', {
         upsell: '1-1',
@@ -612,6 +652,7 @@ app.prepare().then(() => {
         transaction_id,
         adv_sub,
         sessionId,
+        cid,
       });
     } catch (error) {
       Raven.captureException(error);
@@ -635,6 +676,9 @@ app.prepare().then(() => {
         variationId = await getVariationForVisitor(visitorId, campaignId);
       }
       console.log({ variationId, campaignId });
+      const cid = qualifiesForCidDiscount(req)
+        ? getParameterByName('cid', req.originalUrl)
+        : null;
 
       app.render(req, res, '/promo-mobile-upsell', {
         upsell: 2,
@@ -647,6 +691,7 @@ app.prepare().then(() => {
         transaction_id,
         adv_sub,
         sessionId,
+        cid,
       });
     } catch (error) {
       Raven.captureException(error);
@@ -661,7 +706,9 @@ app.prepare().then(() => {
       const offerId = req.query.sourceValue5;
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
-
+      const cid = qualifiesForCidDiscount(req)
+        ? getParameterByName('cid', req.originalUrl)
+        : null;
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-desktop-upsell', {
         upsell: '2-1',
@@ -670,6 +717,7 @@ app.prepare().then(() => {
         transaction_id,
         adv_sub,
         sessionId,
+        cid,
       });
       // });
     } catch (error) {
@@ -690,6 +738,9 @@ app.prepare().then(() => {
       const campaignId = '308075';
       const variationId = await getVariationForVisitor(visitorId, campaignId);
       console.log({ variationId, campaignId });
+      const cid = qualifiesForCidDiscount(req)
+        ? getParameterByName('cid', req.originalUrl)
+        : null;
 
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-mobile-upsell', {
@@ -702,6 +753,7 @@ app.prepare().then(() => {
         transaction_id,
         adv_sub,
         sessionId,
+        cid,
       });
       // });
     } catch (error) {
