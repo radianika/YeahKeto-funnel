@@ -577,9 +577,6 @@ app.prepare().then(() => {
       const offerId = req.query.offer_id;
       const transaction_id = req.query.transaction_id;
       const adv_sub = req.query.aff_sub2;
-      console.log('8888888888888888');
-      console.log(qualifiesForCidDiscount(req));
-      console.log('8888888888888888');
       const cid = qualifiesForCidDiscount(req)
         ? getParameterByName('cid', req.originalUrl)
         : null;

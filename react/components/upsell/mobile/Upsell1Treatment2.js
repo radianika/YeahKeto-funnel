@@ -108,17 +108,10 @@ class Upsell1Treatment2Component extends React.PureComponent {
                   Get 1 Bottle<br />
                   <span>Absolutely Free</span>
                 </p>
-                {getDiscountBanner({ cid }) ? (
-                  <p className="price-txt">
-                    Today Only<br />
-                    <span>129.95</span> 61.00/ea
-                  </p>
-                ) : (
-                  <p className="price-txt">
-                    Today Only<br />
-                    <span>129.95</span> 77.00/ea
-                  </p>
-                )}
+                <p className="price-txt">
+                  Today Only<br />
+                  <span>129.95</span> {getDiscountBanner({ cid }) ? 61.0 : 77.0}/ea
+                </p>
                 <p className="shipping-txt">
                   Plus we'll pay for the added shipping cost
                 </p>
