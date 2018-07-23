@@ -161,6 +161,20 @@ const getVisitorId = async (req, res) => {
   }
 };
 
+const qualifiesForCidDiscount = req => {
+  try {
+    const { cookies } = req;
+    const cidDiscount = idx(cookies, _ => _.cid_discount);
+    if (cidDiscount && cidDiscount === 'true') {
+      return true;
+    }
+  } catch (error) {
+    Raven.captureException(error);
+    console.error('Exception Occurred in ReactApp', error.stack || error);
+  }
+  return false;
+};
+
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -527,6 +541,9 @@ app.prepare().then(() => {
       if (idx(cidResponse, _ => _.response.data.code) === 200) {
         ({ data: userInfo } = cidResponse.response.data);
       }
+      if (userInfo) {
+        res.cookie('cid_discount', true, { maxAge: 3600000 });
+      }
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,
         userInfo,
@@ -560,7 +577,12 @@ app.prepare().then(() => {
       const offerId = req.query.offer_id;
       const transaction_id = req.query.transaction_id;
       const adv_sub = req.query.aff_sub2;
-      const cid = getParameterByName('cid', req.originalUrl);
+      console.log('8888888888888888');
+      console.log(qualifiesForCidDiscount(req));
+      console.log('8888888888888888');
+      const cid = qualifiesForCidDiscount(req)
+        ? getParameterByName('cid', req.originalUrl)
+        : null;
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-mobile-confirm', {
         sessionId,
@@ -589,7 +611,9 @@ app.prepare().then(() => {
       const campaignId = '308072';
       const variationId = await getVariationForVisitor(visitorId, campaignId);
       console.log({ variationId, visitorId });
-      const cid = getParameterByName('cid', req.originalUrl);
+      const cid = qualifiesForCidDiscount(req)
+        ? getParameterByName('cid', req.originalUrl)
+        : null;
       app.render(req, res, '/promo-mobile-upsell', {
         upsell: 1,
         offerId,
@@ -618,7 +642,9 @@ app.prepare().then(() => {
       const { visitorId } = await getVisitorId(req, res);
       const campaignId = '308073';
       const variationId = await getVariationForVisitor(visitorId, campaignId);
-      const cid = getParameterByName('cid', req.originalUrl);
+      const cid = qualifiesForCidDiscount(req)
+        ? getParameterByName('cid', req.originalUrl)
+        : null;
 
       app.render(req, res, '/promo-mobile-upsell', {
         upsell: '1-1',
@@ -653,7 +679,9 @@ app.prepare().then(() => {
         variationId = await getVariationForVisitor(visitorId, campaignId);
       }
       console.log({ variationId, campaignId });
-      const cid = getParameterByName('cid', req.originalUrl);
+      const cid = qualifiesForCidDiscount(req)
+        ? getParameterByName('cid', req.originalUrl)
+        : null;
 
       app.render(req, res, '/promo-mobile-upsell', {
         upsell: 2,
@@ -681,7 +709,9 @@ app.prepare().then(() => {
       const offerId = req.query.sourceValue5;
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
-      const cid = getParameterByName('cid', req.originalUrl);
+      const cid = qualifiesForCidDiscount(req)
+        ? getParameterByName('cid', req.originalUrl)
+        : null;
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-desktop-upsell', {
         upsell: '2-1',
@@ -711,7 +741,9 @@ app.prepare().then(() => {
       const campaignId = '308075';
       const variationId = await getVariationForVisitor(visitorId, campaignId);
       console.log({ variationId, campaignId });
-      const cid = getParameterByName('cid', req.originalUrl);
+      const cid = qualifiesForCidDiscount(req)
+        ? getParameterByName('cid', req.originalUrl)
+        : null;
 
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-mobile-upsell', {
