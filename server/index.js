@@ -261,6 +261,7 @@ app.prepare().then(() => {
         'utm_term',
         'utm_content',
         'mailsoft_person_id',
+        'cid',
       ];
 
       if (req.query && Object.keys(req.query).length) {
