@@ -78,7 +78,7 @@ class Upsell21 extends React.PureComponent {
                 alt="arrow-left"
                 className="arrow-left"
               />
-              {getDiscountBanner({ cid }) ? 77 : 97.0}{' '}
+              {getDiscountBanner({ cid }) ? 77 : 97.0}/ea
               <img
                 src="/static/assets/images/upsell2-mobile/arrow-right.png"
                 width="77"
