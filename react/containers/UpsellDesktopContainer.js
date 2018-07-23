@@ -45,9 +45,7 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '321559294932280');
             fbq('track', 'PageView');
-          `,
-            }}
-          />
+          `}} />
 
           <noscript
             dangerouslySetInnerHTML={{
@@ -57,9 +55,7 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
               width="1"
               style="display:none"
               src="https://www.facebook.com/tr?id=321559294932280&ev=PageView&noscript=1"/>
-          `,
-            }}
-          />
+          `}} />
         </Head>
 
         <noscript>
