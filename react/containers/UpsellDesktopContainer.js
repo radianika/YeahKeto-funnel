@@ -32,7 +32,9 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
     return (
       <React.Fragment>
         <Head>
-          <script dangerouslySetInnerHTML={{ __html: `
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
               n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -43,16 +45,31 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '321559294932280');
             fbq('track', 'PageView');
-          `}} />
+          `,
+            }}
+          />
 
-          <noscript dangerouslySetInnerHTML={{ __html: `
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `
             <img
               height="1"
               width="1"
-              style={{display: 'none'}}
+              style="display:none"
               src="https://www.facebook.com/tr?id=321559294932280&ev=PageView&noscript=1"/>
-          `}} />
+          `,
+            }}
+          />
         </Head>
+
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=321559294932280&ev=PageView&noscript=1"
+          />
+        </noscript>
 
         {upsell === 1 &&
           offerId && (
