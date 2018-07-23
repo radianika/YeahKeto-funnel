@@ -4,7 +4,7 @@ import moment from 'moment';
 import axios from 'axios';
 import { PromoSession, Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
-import { getQueryString } from 'helpers';
+import { getQueryString, getDiscountBanner } from 'helpers';
 import { SatisfactionBox } from './SatisfactionBox';
 
 /**
@@ -63,6 +63,7 @@ class Upsell11Treatment1Component extends React.PureComponent {
   };
 
   render() {
+    const { cid } = this.props.query;
     return (
       <React.Fragment>
         <Head>
@@ -72,6 +73,13 @@ class Upsell11Treatment1Component extends React.PureComponent {
           />
         </Head>
         <PromoSession pageType="upsellPage1" />
+        {getDiscountBanner({ cid }) && (
+          <div style={{ backgroundColor: 'red', textAlign: 'center' }}>
+            <p style={{ color: 'white', fontSize: 20 }}>
+              20% Off, Valid through {moment().format('Do MMMM')}
+            </p>
+          </div>
+        )}
         <div className="up-strip">
           <h3>YOU QUALIFY FOR A LIMITED TIME DISCOUNT</h3>
           <p>
@@ -100,7 +108,7 @@ class Upsell11Treatment1Component extends React.PureComponent {
                 alt="arrow-left-upsell"
                 className="arrow-left"
               />
-              87.00{' '}
+              {getDiscountBanner({ cid }) ? 69.0 : 87.0}{' '}
               <img
                 src="/static/assets/images/arrow-right.png"
                 width="77"

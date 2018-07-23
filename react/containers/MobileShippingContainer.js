@@ -2,25 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import moment from 'moment';
+import { AuthActions, OrderActions } from 'redux/actions';
 import {
   stateslist,
   shippingFormValidator,
   normalizePhone,
   normalizePostalCode,
+  getQueryString,
+  packages,
 } from 'helpers';
 import {
   Footer,
   TextField,
   SelectField,
   AddressField,
-  Spinner,
-  SuccessModal,
   ImageModal,
 } from 'react/components/common';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
-import { OrderActions } from 'redux/actions';
-import { getQueryString, packages } from 'helpers';
 
 /**
  * @class MobileShippingContainerComponent
@@ -35,43 +34,11 @@ class MobileShippingContainerComponent extends React.PureComponent {
     };
   }
 
-  componentDidMount() {
-    // this.postCampaignActivatedEvent();
-    // this.postVisitEvent();
-  }
-
-  postVisitEvent = () => {
-    const { localStorage } = window;
-    const abtastyParams = this.props.abtastyParams;
-    const body = {
-      tracking_data: {
-        visitor_id: abtastyParams.visitorId,
-        device_type: 'MOBILE_PHONE',
-        origin: window.location.href,
-        timestamp: moment().format(),
-        ip: abtastyParams.ip,
-      },
-    };
-    axios.post('/abtasty', { ...body, action: 'visit_event' });
-  };
-
-  onSubmit = e => {
-    this.setState({ showCheckingModal: true });
-    this.props.handleSubmit(values => {
-      this.props.submitLeadsForm({
-        values,
-        router: this.props.router,
-        nextUrl: '/promo/mobile/select-package',
-      });
-    })(e);
-  };
-
   componentDidUpdate(prevProps) {
-    const { abtastyParams } = this.props;
     const queryString = getQueryString();
     let nextUrl = '';
     let pack = {};
-    pack = packages[0];
+    [pack] = packages;
     nextUrl = `/promo/mobile/confirm?${queryString}&productId=${pack.id}`;
     if (
       prevProps.submitStatus !== 'success' &&
@@ -85,6 +52,31 @@ class MobileShippingContainerComponent extends React.PureComponent {
       }, 1000);
     }
   }
+
+  onSubmit = e => {
+    this.props.handleSubmit(values => {
+      this.setState({ showCheckingModal: true });
+      this.props.submitLeadsForm({
+        values,
+        router: this.props.router,
+        nextUrl: '/promo/mobile/select-package',
+      });
+    })(e);
+  };
+
+  postVisitEvent = () => {
+    const { abtastyParams } = this.props;
+    const body = {
+      tracking_data: {
+        visitor_id: abtastyParams.visitorId,
+        device_type: 'MOBILE_PHONE',
+        origin: window.location.href,
+        timestamp: moment().format(),
+        ip: abtastyParams.ip,
+      },
+    };
+    axios.post('/abtasty', { ...body, action: 'visit_event' });
+  };
 
   hideErrorModal = () => this.setState({ showErrorModal: false });
 
@@ -263,13 +255,18 @@ function mapStateToProps(state) {
   return {
     submitStatus: state.order.submitLeadsFormStatus,
     abtastyParams: state.auth.abtastyParams,
+    initialValues: state.auth.userInfo,
   };
 }
 
-const MobileShippingContainer = connect(mapStateToProps, { ...OrderActions })(
+const MobileShippingContainer = connect(mapStateToProps, {
+  ...OrderActions,
+  ...AuthActions,
+})(
   reduxForm({
     form: 'MobileShippingForm',
     validate: shippingFormValidator,
+    enableReinitialize: true,
   })(withRouter(MobileShippingContainerComponent)),
 );
 

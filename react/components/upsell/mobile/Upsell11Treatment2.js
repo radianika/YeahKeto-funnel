@@ -4,7 +4,7 @@ import moment from 'moment';
 import axios from 'axios';
 import { PromoSession, Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
-import { getQueryString } from 'helpers';
+import { getQueryString, getDiscountBanner } from 'helpers';
 
 /**
  * @class Upsell11Treatment2Component
@@ -61,6 +61,7 @@ class Upsell11Treatment2Component extends React.PureComponent {
     axios.post('/abtasty', { ...body, action: 'visit_event' });
   };
   render() {
+    const { cid } = this.props.query;
     console.info('Rendering Upsell11 Treatment 2');
     return (
       <React.Fragment>
@@ -87,6 +88,13 @@ class Upsell11Treatment2Component extends React.PureComponent {
           </div>
         </div>
         <div className="up-mid1">
+          {getDiscountBanner({ cid }) && (
+            <div style={{ backgroundColor: 'red', textAlign: 'center' }}>
+              <p style={{ color: 'white', fontSize: 20 }}>
+                20% Off, Valid through {moment().format('Do MMMM')}
+              </p>
+            </div>
+          )}
           <div className="contentWrap">
             <p className="up-txt1">WAIT! Your Order Is Not Complete</p>
             <p className="up-txt2">
@@ -123,7 +131,7 @@ class Upsell11Treatment2Component extends React.PureComponent {
                 </p>
                 <p className="price-txt">
                   Today Only<br />
-                  <span>129.95</span> 87.00/ea
+                  <span>129.95</span> {getDiscountBanner({ cid }) ? 69.0 : 87.0}ea
                 </p>
                 <p className="shipping-txt">
                   Plus we'll pay for the added shipping cost

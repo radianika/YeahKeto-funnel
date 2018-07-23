@@ -68,13 +68,18 @@ export function put(location, body, headers) {
  * @param {*} headers
  * @returns {}
  */
-export function get(location, headers) {
+export function get(location, sessionId, headers) {
+  headers = headers || {};
   console.log(`get ${API_BASE_URL}${location}`);
   return axios
-    .get(`${API_BASE_URL}${location}`, headers)
-    .then(response => ({ error: null, response }))
+    .get(`${API_BASE_URL}${location}`, {
+      headers: { Authorization: `JWT ${sessionId}`, ...headers },
+    })
+    .then(response => {
+      console.log({ response });
+      return { error: null, response };
+    })
     .catch(error => {
-      Raven.captureException(error);
       console.error('Exception Occurred in ReactApp', error.stack || error);
       if (error.response) {
         return { error: error.response };
@@ -163,3 +168,16 @@ export function asyncGetVariationForVisitor(visitor_id, campaign_id) {
     console.error('Exception Occurred in ReactApp', error.stack || error);
   }
 }
+
+export const getParameterByName = (name, url) => {
+  name = name.replace(/[\[\]]/g, '\\$&');
+  const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`);
+  const results = regex.exec(url);
+  if (!results) {
+    return null;
+  }
+  if (!results[2]) {
+    return '';
+  }
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+};

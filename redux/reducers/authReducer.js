@@ -4,6 +4,7 @@ import { AuthActions } from 'redux/actions';
 const initialState = ip.freeze({
   sessionId: null,
   abtastyParams: null,
+  userInfo: null,
 });
 
 export default function (state = initialState, action) {
@@ -14,6 +15,8 @@ export default function (state = initialState, action) {
       return ip.setIn(state, ['abtastyParams'], action.payload);
     case AuthActions.SET_IS_AUTHENTIC_PARAMS:
       return ip.setIn(state, ['isAuthentic'], action.payload);
+    case AuthActions.SET_USER_INFO:
+      return ip.setIn(state, ['userInfo'], action.payload);
     default:
       return state;
   }

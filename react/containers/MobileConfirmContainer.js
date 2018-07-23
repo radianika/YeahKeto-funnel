@@ -14,6 +14,11 @@ import {
   normalizeCardNumber,
   normalizeSecurityCode,
   getParameterByName,
+  getQueryString,
+  getDiscountBanner,
+  getRevenueAfterDiscount,
+  getDiscountPercent,
+  getDiscountAmount,
 } from 'helpers';
 import {
   Footer,
@@ -25,7 +30,6 @@ import {
   MobileCardExpiryField,
 } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
-import { getQueryString } from 'helpers';
 
 /**
  * @class MobileConfirmContainerComponent
@@ -73,19 +77,18 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     }
   }
 
-  hideErrorModal = () => this.setState({ showErrorModal: false });
-
   getPrice() {
-    if (this.state.pack.packagePrice) {
-      return this.state.pack.packagePrice;
-    }
-    return this.state.pack.price;
+    const priceToShow = this.state.pack.packagePrice || this.state.pack.price;
+    return priceToShow;
   }
+
+  hideErrorModal = () => this.setState({ showErrorModal: false });
 
   sendTransactionDetails = () => {
     const { localStorage } = window;
+    const { cid } = this.props.query;
     const id = `${this.state.pack.id}`;
-    const revenue = parseInt(this.getPrice());
+    const revenue = getRevenueAfterDiscount({ cid, revenue: this.getPrice() });
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const eventsArray = [
       'mobile-hp-text1-test-checkout',
@@ -143,6 +146,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       pack,
       router,
       nextUrl: '/promo/mobile/upsell-1',
+      cid: this.props.query.cid,
     });
   };
 
@@ -150,9 +154,24 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     this.setState({ summaryOpen: !this.state.summaryOpen });
   }
 
+  _checkCardType(cc) {
+    if (!cc) return;
+
+    const value = cc.toString().replace(/\s/g, '');
+    const cc_type = creditCartType(value);
+
+    if (cc_type && cc_type[0] && value.length > 3) {
+      this.setState({ active_cc_type: cc_type[0].type });
+    } else if (this.state.active_cc_type || value.length < 3) {
+      this.setState({ active_cc_type: '' });
+    }
+  }
+
   renderSummary() {
     const { pack } = this.state;
-    const { adv_sub, offerId, transaction_id } = this.props.query;
+    const {
+      adv_sub, offerId, transaction_id, cid,
+    } = this.props.query;
     if (this.state.summaryOpen) {
       return (
         <div className="package picked" onClick={this.toggleSummary}>
@@ -183,6 +202,26 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                   <li>TOTAL</li>
                   <li>{`$${this.getPrice()}`}</li>
                 </ul>
+                {getDiscountBanner({ cid }) && (
+                  <React.Fragment>
+                    <ul className="rgtlist2">
+                      <li>DISCOUNT {getDiscountPercent({ cid })}: </li>
+                      <li>{`$${getDiscountAmount({
+                        cid,
+                        revenue: this.getPrice(),
+                      })}`}
+                      </li>
+                    </ul>
+                    <ul className="rgtlist2">
+                      <li>FINAL TOTAL: </li>
+                      <li>{`$${getRevenueAfterDiscount({
+                        cid,
+                        revenue: this.getPrice(),
+                      })}`}
+                      </li>
+                    </ul>
+                  </React.Fragment>
+                )}
               </div>
               <img src="/static/promo/mobile/images/post.jpg" alt="" />
             </div>
@@ -194,6 +233,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       <div className="package picked" onClick={this.toggleSummary}>
         {adv_sub && transaction_id && offerId ? (
           <iframe
+            title="tracker"
             src={`https://kowboykit.com/api/event/purchase/?clickid=${adv_sub}&apikey=cad0f78407d7d852008a98df1b266293&programid=125&tid=${transaction_id}&oid=${offerId}`}
             frameBorder="0"
             width="1"
@@ -208,22 +248,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     );
   }
 
-  _checkCardType(cc) {
-    if (!cc) return;
-
-    const value = cc.toString().replace(/\s/g, '');
-    const cc_type = creditCartType(value);
-
-    if (cc_type && cc_type[0] && value.length > 3) {
-      this.setState({ active_cc_type: cc_type[0].type });
-    } else if (this.state.active_cc_type || value.length < 3) {
-      this.setState({ active_cc_type: '' });
-    }
-  }
-
   render() {
     const { active_cc_type } = this.state;
-
+    const { cid } = this.props.query;
     return (
       <div className="mobile-body">
         <div className="container">
@@ -239,6 +266,13 @@ class MobileConfirmContainerComponent extends React.PureComponent {
             </div>
             <div className="con-hd2" />
             <p className="clearall" />
+            {getDiscountBanner({ cid }) && (
+              <div style={{ backgroundColor: 'red', textAlign: 'center' }}>
+                <p style={{ color: 'white', fontSize: 20 }}>
+                  20% Off, Valid through {moment().format('Do MMMM')}
+                </p>
+              </div>
+            )}
             <div className="trialsec2">
               {this.renderSummary()}
 
@@ -527,10 +561,11 @@ class MobileConfirmContainerComponent extends React.PureComponent {
         {this.state.showErrorModal && (
           <ImageModal onClose={this.hideErrorModal}>
             <img
+              role="button"
+              tabIndex="0"
               alt=""
               src="/static/assets/images/checkout_card_failure_popup.png"
               style={{ width: '100%', height: '100%' }}
-              onClick={this.hideErrorModal}
             />
           </ImageModal>
         )}
