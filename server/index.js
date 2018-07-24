@@ -574,25 +574,52 @@ app.prepare().then(() => {
     }
   });
 
+  // A.k.a. Checkout in AB testing
   server.get('/promo/mobile/confirm', async (req, res) => {
     try {
       const sessionId = await getSessionId(req, res);
-      const { orderId } = req.query;
-      const offerId = req.query.offer_id;
-      const transaction_id = req.query.transaction_id;
-      const adv_sub = req.query.aff_sub2;
+      const { visitorId } = await getVisitorId(req, res);
+      const {
+        orderId,
+        offer_id: offerId,
+        transaction_id,
+        aff_sub2: adv_sub,
+        productId,
+      } = req.query;
       const cid = qualifiesForCidDiscount(req)
         ? getParameterByName('cid', req.originalUrl)
         : null;
+
+      // The keys are test ids, the values are the default variation ids
+      const campaignMaps = {
+        317687: 418332,
+      };
+
+      // Getting the variation ids for all the tests (campaigns)
+      await Promise.all(Object.keys(campaignMaps).map(async testId => {
+        console.log(`Getting data for the test #${testId}`);
+        try {
+          const response = await asyncGetVariationForVisitor(visitorId, testId);
+          console.log(`The response for the test #${testId} is: `, response);
+          if (idx(response, _ => _.data.variation_id)) {
+            campaignMaps[testId] = response.data.variation_id;
+          }
+        } catch (err) {
+          console.error(`Getting data for the test #${testId} failed: `, err);
+        }
+      }));
+
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-mobile-confirm', {
         sessionId,
+        visitorId,
         orderId,
-        productId: req.query.productId,
+        productId,
         offerId,
         transaction_id,
         adv_sub,
         cid,
+        campaignMaps,
       });
       // });
     } catch (error) {

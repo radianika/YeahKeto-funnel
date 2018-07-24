@@ -254,6 +254,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
   render() {
     const { active_cc_type } = this.state;
     const { cid } = this.props.query;
+    const variation317687 = this.props.abtastyParams.campaignMaps['317687'];
+
     return (
       <div className="mobile-body">
         <div className="container">
@@ -282,7 +284,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
               <div className="clearfix" />
               <p className="clearall" />
               <p className="trial-toptxt1 border-bottom">
-                Enter your payment information
+                {variation317687 === '418333'
+                  ? 'Complete your order!'
+                  : 'Enter your payment information'}
               </p>
               <p className="clearall" />
               <div className="trialfrmmid">
