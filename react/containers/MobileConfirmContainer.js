@@ -206,18 +206,20 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                   <React.Fragment>
                     <ul className="rgtlist2">
                       <li>DISCOUNT {getDiscountPercent({ cid })}: </li>
-                      <li>{`$${getDiscountAmount({
-                        cid,
-                        revenue: this.getPrice(),
-                      })}`}
+                      <li>
+                        {`$${getDiscountAmount({
+                          cid,
+                          revenue: this.getPrice(),
+                        })}`}
                       </li>
                     </ul>
                     <ul className="rgtlist2">
                       <li>FINAL TOTAL: </li>
-                      <li>{`$${getRevenueAfterDiscount({
-                        cid,
-                        revenue: this.getPrice(),
-                      })}`}
+                      <li>
+                        {`$${getRevenueAfterDiscount({
+                          cid,
+                          revenue: this.getPrice(),
+                        })}`}
                       </li>
                     </ul>
                   </React.Fragment>
@@ -267,9 +269,10 @@ class MobileConfirmContainerComponent extends React.PureComponent {
             <div className="con-hd2" />
             <p className="clearall" />
             {getDiscountBanner({ cid }) && (
-              <div style={{ backgroundColor: 'red', textAlign: 'center' }}>
-                <p style={{ color: 'white', fontSize: 20 }}>
-                  20% Off, Valid through {moment().format('Do MMMM')}
+              <div className="topbar">
+                <p className="topbartxt">
+                  <span>20% Off</span>, Valid through{' '}
+                  <span>{moment().format('Do MMMM')}</span>
                 </p>
               </div>
             )}
@@ -553,7 +556,11 @@ class MobileConfirmContainerComponent extends React.PureComponent {
           <ImageModal>
             <img
               alt=""
-              src="/static/assets/images/checkout_success_popup.png"
+              src={
+                getDiscountBanner({ cid })
+                  ? '/static/assets/images/discount-applied-popup.png'
+                  : '/static/assets/images/checkout_success_popup.png'
+              }
               style={{ width: '100%', height: '100%' }}
             />
           </ImageModal>
@@ -561,14 +568,21 @@ class MobileConfirmContainerComponent extends React.PureComponent {
         {this.state.showErrorModal && (
           <ImageModal onClose={this.hideErrorModal}>
             <img
-              role="button"
-              tabIndex="0"
               alt=""
               src="/static/assets/images/checkout_card_failure_popup.png"
               style={{ width: '100%', height: '100%' }}
             />
           </ImageModal>
         )}
+        <img
+          alt=""
+          src={
+            getDiscountBanner({ cid })
+              ? '/static/assets/images/discount-applied-popup.png'
+              : '/static/assets/images/checkout_success_popup.png'
+          }
+          style={{ width: 0, height: 0 }}
+        />
       </div>
     );
   }

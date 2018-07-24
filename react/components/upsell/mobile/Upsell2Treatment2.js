@@ -89,9 +89,10 @@ class Upsell2Treatment2 extends React.PureComponent {
 
         <div className="up-mid1">
           {getDiscountBanner({ cid }) && (
-            <div style={{ backgroundColor: 'red', textAlign: 'center' }}>
-              <p style={{ color: 'white', fontSize: 20 }}>
-                20% Off, Valid through {moment().format('Do MMMM')}
+            <div className="topbar">
+              <p className="topbartxt">
+                <span>20% Off</span>, Valid through{' '}
+                <span>{moment().format('Do MMMM')}</span>
               </p>
             </div>
           )}
