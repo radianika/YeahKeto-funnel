@@ -10,6 +10,7 @@ import {
   normalizePostalCode,
   getQueryString,
   packages,
+  getDiscountBanner,
 } from 'helpers';
 import {
   Footer,
@@ -81,6 +82,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
   hideErrorModal = () => this.setState({ showErrorModal: false });
 
   render() {
+    const { cid } = this.props.query;
     return (
       <div className="mobile-body">
         <div id="container">
@@ -241,11 +243,24 @@ class MobileShippingContainerComponent extends React.PureComponent {
           <ImageModal>
             <img
               alt=""
-              src="/static/assets/images/lead_form_success_popup.png"
+              src={
+                getDiscountBanner({ cid })
+                  ? '/static/assets/images/discount-applied-popup.png'
+                  : '/static/assets/images/lead_form_success_popup.png'
+              }
               style={{ width: '100%', height: '100%' }}
             />
           </ImageModal>
         )}
+        <img
+          alt=""
+          src={
+            getDiscountBanner({ cid })
+              ? '/static/assets/images/discount-applied-popup.png'
+              : '/static/assets/images/lead_form_success_popup.png'
+          }
+          style={{ width: 0, height: 0 }}
+        />
       </div>
     );
   }

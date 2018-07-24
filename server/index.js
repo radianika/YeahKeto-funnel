@@ -547,6 +547,7 @@ app.prepare().then(() => {
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,
         userInfo,
+        cid,
       });
     } catch (error) {
       Raven.captureException(error);
