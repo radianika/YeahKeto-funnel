@@ -20,7 +20,7 @@ class AddressField extends React.PureComponent {
   componentDidMount() {
     const placesScript = document.createElement('script');
     placesScript.src =
-      'https://maps.googleapis.com/maps/api/js?key=AIzaSyBk1_Ehzo1zD1s5wojBRHNCBhrsU9N7Wb0&libraries=places';
+      'https://maps.googleapis.com/maps/api/js?key=AIzaSyDkEIdHmcCCKXbjuk5jqel_oaRXdXx9bF0&libraries=places';
     placesScript.async = true;
     placesScript.addEventListener('load', () => {
       this.initialiseAutoComplete();
