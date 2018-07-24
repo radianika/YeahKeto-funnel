@@ -99,6 +99,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       'mobile-hp-rush-my-order-texts-test-checkout',
       'mobile-hp-last-module-badge-test-checkout',
       'mobile-hp-last-module-picture-test-checkout',
+      'mobile-hp-first-module-badge-test-checkout',
     ];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
@@ -206,18 +207,20 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                   <React.Fragment>
                     <ul className="rgtlist2">
                       <li>DISCOUNT {getDiscountPercent({ cid })}: </li>
-                      <li>{`$${getDiscountAmount({
-                        cid,
-                        revenue: this.getPrice(),
-                      })}`}
+                      <li>
+                        {`$${getDiscountAmount({
+                          cid,
+                          revenue: this.getPrice(),
+                        })}`}
                       </li>
                     </ul>
                     <ul className="rgtlist2">
                       <li>FINAL TOTAL: </li>
-                      <li>{`$${getRevenueAfterDiscount({
-                        cid,
-                        revenue: this.getPrice(),
-                      })}`}
+                      <li>
+                        {`$${getRevenueAfterDiscount({
+                          cid,
+                          revenue: this.getPrice(),
+                        })}`}
                       </li>
                     </ul>
                   </React.Fragment>
