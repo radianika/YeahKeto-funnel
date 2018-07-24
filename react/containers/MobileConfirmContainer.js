@@ -101,6 +101,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       'mobile-hp-last-module-picture-test-checkout',
       'mobile-hp-first-module-badge-test-checkout',
       'mobile-hp-as-advertised-on-text-test-checkout',
+      'mobile-checkout-enter-payment-text-test-checkout',
     ];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
@@ -255,6 +256,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
   render() {
     const { active_cc_type } = this.state;
     const { cid } = this.props.query;
+    const variation317687 = this.props.abtastyParams.campaignMaps['317687'];
+
     return (
       <div className="mobile-body">
         <div className="container">
@@ -283,7 +286,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
               <div className="clearfix" />
               <p className="clearall" />
               <p className="trial-toptxt1 border-bottom">
-                Enter your payment information
+                {variation317687 === '418333'
+                  ? 'Complete your order!'
+                  : 'Enter your payment information'}
               </p>
               <p className="clearall" />
               <div className="trialfrmmid">
