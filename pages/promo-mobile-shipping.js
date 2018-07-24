@@ -76,7 +76,7 @@ class Promo extends React.PureComponent {
             href="/static/assets/css/formvalidation/formValidation.min.css"
           />
         </Head>
-        <MobileShippingContainer />
+        <MobileShippingContainer {...this.props} />
       </React.Fragment>
     );
   }

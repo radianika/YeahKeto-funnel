@@ -346,6 +346,7 @@ app.prepare().then(() => {
           });
       }
       if (requestAgent === 'mobile') {
+        const cid = getParameterByName('cid', req.originalUrl);
         let variationId;
         const tests = [
           '314235',
@@ -383,6 +384,7 @@ app.prepare().then(() => {
               device: requestAgent,
               campaignMaps,
               isAuthenticUser,
+              cid,
             });
           })
           .catch(err => {
@@ -547,6 +549,7 @@ app.prepare().then(() => {
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,
         userInfo,
+        cid,
       });
     } catch (error) {
       Raven.captureException(error);

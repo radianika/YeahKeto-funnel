@@ -72,9 +72,10 @@ class Upsell2Treatment1 extends React.PureComponent {
         </Head>
         <PromoSession pageType="upsellPage2" />
         {getDiscountBanner({ cid }) && (
-          <div style={{ backgroundColor: 'red', textAlign: 'center' }}>
-            <p style={{ color: 'white', fontSize: 20 }}>
-              20% Off, Valid through {moment().format('Do MMMM')}
+          <div className="topbar">
+            <p className="topbartxt">
+              PROMO CODE <span>CBD33</span> APPLIED!
+              <span> HURRY, GET 20% OFF TODAY!</span>
             </p>
           </div>
         )}

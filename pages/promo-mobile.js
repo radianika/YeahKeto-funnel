@@ -155,7 +155,7 @@ class Promo extends React.PureComponent {
           />
         </Head>
         {this.props.sessionId && <PromoSession pageType="leadPage" />}
-        <PromoMobileContainer />
+        <PromoMobileContainer {...this.props} />
         {this.state.showSpinner && <Spinner />}
       </React.Fragment>
     );
