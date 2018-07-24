@@ -415,3 +415,23 @@
 .clear-both {
   clear: both;
 }
+
+/* top-bar */
+.topbar {
+  height: 32px;
+  background: #ff0000;
+}
+
+.topbartxt {
+  font-size: 22px;
+  line-height: 32px;
+  padding: 2px 0 0;
+  color: #fff;
+  text-align: center;
+}
+
+.topbartxt span {
+  font-weight: 700;
+  color: #fff600;
+}
+/* top-bar end */

@@ -274,9 +274,10 @@ class MobileConfirmContainerComponent extends React.PureComponent {
             <div className="con-hd2" />
             <p className="clearall" />
             {getDiscountBanner({ cid }) && (
-              <div style={{ backgroundColor: 'red', textAlign: 'center' }}>
-                <p style={{ color: 'white', fontSize: 20 }}>
-                  20% Off, Valid through {moment().format('Do MMMM')}
+              <div className="topbar">
+                <p className="topbartxt">
+                  PROMO CODE <span>CBD33</span> APPLIED!
+                  <span> HURRY, GET 20% OFF TODAY!</span>
                 </p>
               </div>
             )}
@@ -570,14 +571,17 @@ class MobileConfirmContainerComponent extends React.PureComponent {
         {this.state.showErrorModal && (
           <ImageModal onClose={this.hideErrorModal}>
             <img
-              role="button"
-              tabIndex="0"
               alt=""
               src="/static/assets/images/checkout_card_failure_popup.png"
               style={{ width: '100%', height: '100%' }}
             />
           </ImageModal>
         )}
+        <img
+          alt=""
+          src="/static/assets/images/checkout_success_popup.png"
+          style={{ width: 0, height: 0 }}
+        />
       </div>
     );
   }

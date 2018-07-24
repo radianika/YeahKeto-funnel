@@ -10,6 +10,7 @@ import {
   normalizePostalCode,
   getQueryString,
   packages,
+  getDiscountBanner,
 } from 'helpers';
 import {
   Footer,
@@ -81,21 +82,34 @@ class MobileShippingContainerComponent extends React.PureComponent {
   hideErrorModal = () => this.setState({ showErrorModal: false });
 
   render() {
+    const { cid } = this.props.query;
     return (
       <div className="mobile-body">
         <div id="container">
           <div className="getheight">
-            <div className="spng-hd">
+            <div
+              className="spng-hd"
+              style={{ height: getDiscountBanner({ cid }) ? '173px' : '143px' }}
+            >
               <div className="spng-hd2">
                 <img
                   src="/static/promo/mobile/images/ck-top.jpg"
                   alt="American Science CBD"
                   className="sping-logo"
+                  style={{ lineHeight: 0 }}
                 />
-                <p className="clearall" />
-                <p className="trial-toptxt1">VERIFY YOUR SHIPPING INFO</p>
               </div>
+              {getDiscountBanner({ cid }) && (
+                <div className="topbar">
+                  <p className="topbartxt">
+                    PROMO CODE <span>CBD33</span> APPLIED!
+                    <span> HURRY, GET 20% OFF TODAY!</span>
+                  </p>
+                </div>
+              )}
+              <p className="trial-toptxt1">VERIFY YOUR SHIPPING INFO</p>
             </div>
+            <p className="clearall" />
             <div id="trialsec2">
               <div className="clearfix" />
               <div className="trialform">
@@ -246,6 +260,11 @@ class MobileShippingContainerComponent extends React.PureComponent {
             />
           </ImageModal>
         )}
+        <img
+          alt=""
+          src="/static/assets/images/lead_form_success_popup.png"
+          style={{ width: 0, height: 0 }}
+        />
       </div>
     );
   }
