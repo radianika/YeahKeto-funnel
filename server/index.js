@@ -592,7 +592,7 @@ app.prepare().then(() => {
 
       // The keys are test ids, the values are the default variation ids
       const campaignMaps = {
-        317687: 418332,
+        317687: '418332',
       };
 
       // Getting the variation ids for all the tests (campaigns)

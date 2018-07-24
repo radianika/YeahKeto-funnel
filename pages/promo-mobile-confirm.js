@@ -41,7 +41,7 @@ class Confirm extends React.PureComponent {
   }
 
   postCampaignActivatedEvent() {
-    const campaigns = [317687];
+    const campaigns = ['317687'];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
       ip: this.props.abtastyParams.ip,

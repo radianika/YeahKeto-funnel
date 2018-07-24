@@ -100,6 +100,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       'mobile-hp-last-module-badge-test-checkout',
       'mobile-hp-last-module-picture-test-checkout',
       'mobile-hp-first-module-badge-test-checkout',
+      'mobile-checkout-enter-payment-text-test-checkout',
     ];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
