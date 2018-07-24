@@ -182,10 +182,6 @@ start section2
   letter-spacing: -1px;
 }
 
-.section-one-extra-padding + #section-two .s2-hd-txt {
-  padding: 120px 0 15px;
-}
-
 .s2-img {
   display: block;
   margin: 5px auto 0;
