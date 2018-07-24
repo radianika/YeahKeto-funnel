@@ -10,7 +10,26 @@ import {
   Upsell2,
   Upsell21,
 } from '../components/upsell/desktop';
+import { getRevenueAfterDiscount, getParameterByName } from 'helpers';
 
+const revenueMaps = {
+  1: {
+    cid: 62,
+    noCid: 77,
+  },
+  '1-1': {
+    cid: 69,
+    noCid: 87,
+  },
+  '2-1': {
+    cid: 77,
+    noCid: 97,
+  },
+  2: {
+    cid: 69,
+    noCid: 87,
+  }
+}
 /**
  * @class UpsellDesktopContainerComponent
  * @extends {React.PureComponent}
@@ -18,6 +37,28 @@ import {
  * Also renders iframe for tracking variables
  */
 class UpsellDesktopContainerComponent extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      shouldAddPixel: false,
+      revenue: ''
+    };
+  }
+
+  componentDidMount() {
+    let pixelRevenue = revenueMaps[this.props.query.upsell].noCid;
+    const isCid = getParameterByName('cid');
+    if (isCid) {
+      pixelRevenue = revenueMaps[this.props.query.upsell].cid;
+    }
+
+    this.setState({
+      shouldAddPixel: true
+    },() => {
+      this.setState({ revenue: pixelRevenue})
+    });
+  }
+
   upgrade = (productId, nextPage) => {
     this.props.addUpsellToOrder({
       productId,
@@ -34,25 +75,29 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
         <Head>
         </Head>
 
-        <script>{`
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '321559294932280');
-          fbq('track', 'Purchase', {currency: 'USD', value: 69.00});
-          `}
-        </script>
+        {this.state.shouldAddPixel ?
+          <React.Fragment>
+            <script>{`
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '321559294932280');
+              fbq('track', 'Purchase', {currency: 'USD', value: ${this.state.revenue}});
+              `}
+            </script>
 
-        <noscript>
-          <img height="1" width="1" style={{display: 'none'}}
-               src="https://www.facebook.com/tr?id=321559294932280&amp;ev=Purchase&amp;cd[currency]=USD&amp;cd[value]=69.00"
-          />
-        </noscript>
+            <noscript>
+              <img height="1" width="1" style={{display: 'none'}}
+                src={`https://www.facebook.com/tr?id=321559294932280&amp;ev=Purchase&amp;cd[currency]=USD&amp;cd[value]=${this.state.revenue}`}
+              />
+            </noscript>
+          </React.Fragment> : null
+        }
 
         {upsell === 1 &&
           offerId && (
