@@ -24,6 +24,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
       'desktop-hp-module2-caption1-test-rush-my-order',
       'desktop-hp-rush-my-order-texts-test-rush-my-order',
       'desktop-hp-last-module-badge-test-rush-my-order',
+      'desktop-hp-first-module-badge-test-rush-my-order',
     ];
     const tracking_data = {
       visitor_id: abtastyParams.visitorId,
