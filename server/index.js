@@ -598,18 +598,23 @@ app.prepare().then(() => {
       };
 
       // Getting the variation ids for all the tests (campaigns)
-      await Promise.all(Object.keys(campaignMaps).map(async testId => {
-        console.log(`Getting data for the test #${testId}`);
-        try {
-          const response = await asyncGetVariationForVisitor(visitorId, testId);
-          console.log(`The response for the test #${testId} is: `, response);
-          if (idx(response, _ => _.data.variation_id)) {
-            campaignMaps[testId] = response.data.variation_id;
+      await Promise.all(
+        Object.keys(campaignMaps).map(async testId => {
+          console.log(`Getting data for the test #${testId}`);
+          try {
+            const response = await asyncGetVariationForVisitor(
+              visitorId,
+              testId,
+            );
+            console.log(`The response for the test #${testId} is: `, response);
+            if (idx(response, _ => _.data.variation_id)) {
+              campaignMaps[testId] = response.data.variation_id;
+            }
+          } catch (err) {
+            console.error(`Getting data for the test #${testId} failed: `, err);
           }
-        } catch (err) {
-          console.error(`Getting data for the test #${testId} failed: `, err);
-        }
-      }));
+        }),
+      );
 
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-mobile-confirm', {
