@@ -83,11 +83,6 @@ class PromoSectionOneMobileComponent extends React.PureComponent {
               <span>Improves </span>
               <br /> Mood &amp; Concentration
             </li>
-            <li>
-              <i className="sprite3 sprite-s1-tick" />
-              <span>Promotes </span>
-              <br /> Sleep &amp; Energy Levels
-            </li>
           </ul>
         ) : null}
         <p className="clearall" />{' '}

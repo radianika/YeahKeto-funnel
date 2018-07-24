@@ -212,6 +212,7 @@
 }
 
 .sprite-sec7 {
+  position: relative;
   width: 640px;
   height: 745px;
   background-position: -1682px -5px;
