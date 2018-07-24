@@ -13,8 +13,24 @@ import { SatisfactionBox } from './SatisfactionBox';
  * @description Mobile component rendered after checkout page <br />
  */
 class Upsell1Treatment1Component extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      shouldAddPixel: false,
+      revenue: ''
+    };
+  }
+  
   componentDidMount() {
     this.postVisitEvent();
+    let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
+    upsell1 = upsell1[0];
+  
+    this.setState({
+      shouldAddPixel: true
+    },() => {
+      this.setState({ revenue: upsell1.OrderInfo.TotalAmount})
+    });
   }
 
   upgrade = () => {
@@ -53,6 +69,29 @@ class Upsell1Treatment1Component extends React.PureComponent {
             rel="stylesheet"
           />
         </Head>
+        {this.state.shouldAddPixel ?
+          <React.Fragment>
+            <script>{`
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '321559294932280');
+              fbq('track', 'Purchase', {currency: 'USD', value: ${this.state.revenue}});
+              `}
+            </script>
+
+            <noscript>
+              <img height="1" width="1" style={{display: 'none'}}
+                src={`https://www.facebook.com/tr?id=321559294932280&amp;ev=Purchase&amp;cd[currency]=USD&amp;cd[value]=${this.state.revenue}`}
+              />
+            </noscript>
+          </React.Fragment> : null
+        }
         <PromoSession pageType="upsellPage1" />
         {getDiscountBanner({ cid }) && (
           <div style={{ backgroundColor: 'red', textAlign: 'center' }}>

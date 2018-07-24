@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -21,24 +20,6 @@ import { Spinner, SuccessModal } from 'react/components/common';
 import { getRevenueAfterDiscount, getParameterByName } from 'helpers';
 
 const campaignIds = { 1: '308072', '1-1': '308073', 2: '308075' };
-const revenueMaps = {
-  1: {
-    cid: 62,
-    noCid: 77,
-  },
-  '1-1': {
-    cid: 69,
-    noCid: 87,
-  },
-  '2-1': {
-    cid: 77,
-    noCid: 97,
-  },
-  2: {
-    cid: 69,
-    noCid: 87,
-  }
-}
 /**
  * @class UpsellMobileContainerComponent
  * @extends {React.PureComponent}
@@ -47,14 +28,6 @@ const revenueMaps = {
  * Also renders iframe for tracking variables
  */
 class UpsellMobileContainerComponent extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      shouldAddPixel: false,
-      revenue: ''
-    };
-  }
-
   componentDidMount() {
     const isPrevUpsell11 =
       this.props.abtastyParams.prev &&
@@ -62,18 +35,6 @@ class UpsellMobileContainerComponent extends React.PureComponent {
     if (!isPrevUpsell11) {
       this.postCampaignActivatedEvent();
     }
-
-    let pixelRevenue = revenueMaps[this.props.query.upsell].noCid;
-    const isCid = getParameterByName('cid');
-    if (isCid) {
-      pixelRevenue = revenueMaps[this.props.query.upsell].cid;
-    }
-
-    this.setState({
-      shouldAddPixel: true
-    },() => {
-      this.setState({ revenue: pixelRevenue})
-    });
   }
 
   postCampaignActivatedEvent = () => {
@@ -143,33 +104,6 @@ class UpsellMobileContainerComponent extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <Head>
-        </Head>
-
-        {this.state.shouldAddPixel ?
-          <React.Fragment>
-            <script>{`
-              !function(f,b,e,v,n,t,s)
-              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-                n.queue=[];t=b.createElement(e);t.async=!0;
-                t.src=v;s=b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t,s)}(window, document,'script',
-              'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '321559294932280');
-              fbq('track', 'Purchase', {currency: 'USD', value: ${this.state.revenue}});
-              `}
-            </script>
-
-            <noscript>
-              <img height="1" width="1" style={{display: 'none'}}
-                   src={`https://www.facebook.com/tr?id=321559294932280&amp;ev=Purchase&amp;cd[currency]=USD&amp;cd[value]=${this.state.revenue}`}
-              />
-            </noscript>
-          </React.Fragment> : null
-        }
-
         <div id="container">
           {upsell === 1 &&
             offerId && (
