@@ -7,6 +7,7 @@ class PromoSectionOneMobileComponent extends React.PureComponent {
     const variation314235 = this.props.abtastyParams.campaignMaps['314235'];
     const variation314336 = this.props.abtastyParams.campaignMaps['314336'];
     const variation317679 = this.props.abtastyParams.campaignMaps['317679'];
+    const variation314411 = this.props.abtastyParams.campaignMaps['314411'];
     return (
       <div
         id="section-one"
@@ -90,7 +91,7 @@ class PromoSectionOneMobileComponent extends React.PureComponent {
           </ul>
         ) : null}
         <p className="clearall" />{' '}
-        <i className="as-seen sprite1 sprite-as-seen" />
+        <i className={`as-seen sprite1 sprite-as-seen-${variation314411}`} />
         {/* <i className="s1-bottle sprite3 sprite-s1-bottle" /> */}
         <img
           src="/static/promo/mobile/images/s1-bottle.png"

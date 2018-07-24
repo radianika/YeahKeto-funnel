@@ -86,6 +86,7 @@ class Promo extends React.PureComponent {
       '316547',
       '314728',
       '317679',
+      '317677',
     ];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
