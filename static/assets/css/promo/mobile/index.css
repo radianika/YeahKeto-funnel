@@ -1805,23 +1805,3 @@ hr {
 }
 
 /* modal style ends */
-
-/* top-bar */
-.topbar {
-  height: 29px;
-  background: #ff0000;
-}
-
-.topbartxt {
-  font-size: 18px;
-  line-height: 27px;
-  padding: 2px 0 0;
-  color: #fff;
-  text-align: center;
-}
-
-.topbartxt span {
-  font-weight: 700;
-  color: #fff600;
-}
-/* top-bar end */

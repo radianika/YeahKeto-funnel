@@ -69,8 +69,8 @@ class Upsell11Component extends React.PureComponent {
         {getDiscountBanner({ cid }) && (
           <div className="topbar">
             <p className="topbartxt">
-              <span>20% Off</span>, Valid through{' '}
-              <span>{moment().format('Do MMMM')}</span>
+              PROMO CODE <span>CBD33</span> APPLIED!
+              <span> HURRY, GET 20% OFF TODAY!</span>
             </p>
           </div>
         )}

@@ -418,13 +418,13 @@
 
 /* top-bar */
 .topbar {
-  height: 29px;
+  height: 32px;
   background: #ff0000;
 }
 
 .topbartxt {
-  font-size: 18px;
-  line-height: 27px;
+  font-size: 22px;
+  line-height: 32px;
   padding: 2px 0 0;
   color: #fff;
   text-align: center;

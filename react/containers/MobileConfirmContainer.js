@@ -271,8 +271,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
             {getDiscountBanner({ cid }) && (
               <div className="topbar">
                 <p className="topbartxt">
-                  <span>20% Off</span>, Valid through{' '}
-                  <span>{moment().format('Do MMMM')}</span>
+                  PROMO CODE <span>CBD33</span> APPLIED!
+                  <span> HURRY, GET 20% OFF TODAY!</span>
                 </p>
               </div>
             )}
@@ -556,11 +556,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
           <ImageModal>
             <img
               alt=""
-              src={
-                getDiscountBanner({ cid })
-                  ? '/static/assets/images/discount-applied-popup.png'
-                  : '/static/assets/images/checkout_success_popup.png'
-              }
+              src="/static/assets/images/checkout_success_popup.png"
               style={{ width: '100%', height: '100%' }}
             />
           </ImageModal>
@@ -576,11 +572,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
         )}
         <img
           alt=""
-          src={
-            getDiscountBanner({ cid })
-              ? '/static/assets/images/discount-applied-popup.png'
-              : '/static/assets/images/checkout_success_popup.png'
-          }
+          src="/static/assets/images/checkout_success_popup.png"
           style={{ width: 0, height: 0 }}
         />
       </div>
