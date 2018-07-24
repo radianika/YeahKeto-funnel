@@ -182,6 +182,10 @@ start section2
   letter-spacing: -1px;
 }
 
+.section-one-extra-padding + #section-two .s2-hd-txt {
+  padding: 120px 0 15px;
+}
+
 .s2-img {
   display: block;
   margin: 5px auto 0;
@@ -790,24 +794,28 @@ start section7
 ----------------*/
 
 #section-seven-414506 {
+  position: relative;
   background: url("../../../../promo/mobile/images/sec7.jpg") center top
     no-repeat;
   height: 800px;
 }
 
 #section-seven-414507 {
+  position: relative;
   background: url("../../../../promo/mobile/images/sec7_v1.jpg") center top
     no-repeat;
   height: 800px;
 }
 
 #section-seven-414508 {
+  position: relative;
   background: url("../../../../promo/mobile/images/sec7_v2.jpg") center top
     no-repeat;
   height: 800px;
 }
 
 #section-seven-414509 {
+  position: relative;
   background: url("../../../../promo/mobile/images/sec7_v3.jpg") center top
     no-repeat;
   height: 800px;
