@@ -18,6 +18,10 @@ class AddressField extends React.PureComponent {
    * @description initialise geoplaces script and add eventHandlers
    */
   componentDidMount() {
+    if (this.props.input.value) {
+      this.autocompleteRef.current.focus();
+      this.autocompleteRef.current.blur();
+    }
     const placesScript = document.createElement('script');
     placesScript.src =
       'https://maps.googleapis.com/maps/api/js?key=AIzaSyDkEIdHmcCCKXbjuk5jqel_oaRXdXx9bF0&libraries=places';
