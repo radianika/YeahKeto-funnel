@@ -17,7 +17,6 @@ import {
   Upsell21,
 } from 'react/components/upsell/mobile';
 import { Spinner, SuccessModal } from 'react/components/common';
-import { getRevenueAfterDiscount, getParameterByName } from 'helpers';
 
 const campaignIds = { 1: '308072', '1-1': '308073', 2: '308075' };
 /**
