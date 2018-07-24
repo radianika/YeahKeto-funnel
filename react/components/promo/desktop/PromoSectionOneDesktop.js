@@ -39,20 +39,23 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
     const variation314334 = this.props.abtastyParams.campaignMaps['314334'];
     const variation315256 = this.props.abtastyParams.campaignMaps['315256'];
     const variation317090 = this.props.abtastyParams.campaignMaps['317090'];
+    const variation317678 = this.props.abtastyParams.campaignMaps['317678'];
     return (
       <div
         className="section1 dsplay"
         style={{
-          background:
-            `url("/static/promo/desktop/images/${this.props.isAuthentic.isAuthenticUser ?
-              'section1.jpg' : 'section1-not-auth.jpg'}") center top no-repeat`,
+          background: `url("/static/promo/desktop/images/${
+            this.props.isAuthentic.isAuthenticUser
+              ? 'section1.jpg'
+              : 'section1-not-auth.jpg'
+          }") center top no-repeat`,
         }}
       >
         <h2 style={{ display: 'none' }}>American Science CBD</h2>
         <div className="container">
           <div className="s1lft position">
             <i className="logo sprite2 sprite-logo" />
-            <i className="s1seal sprite3 sprite-s1seal" />
+            <i className={`s1seal sprite3 sprite-s1seal-${variation317678}`} />
             <i
               className={`s1hd sprite3 sprite3-${
                 this.props.abtastyParams.campaignMaps['314363']
@@ -115,7 +118,12 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
             />
             <i
               className="s1asseen sprite2 sprite-s1asseen"
-              style={{ backgroundPosition: variation317090 === '417539' ? '-385px -485px' : '-385px -421px' }}
+              style={{
+                backgroundPosition:
+                  variation317090 === '417539'
+                    ? '-385px -485px'
+                    : '-385px -421px',
+              }}
             />
           </div>
           <div className="s1rgt">
