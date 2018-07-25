@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -101,31 +100,9 @@ class UpsellMobileContainerComponent extends React.PureComponent {
     const isPrevUpsell11 =
       this.props.abtastyParams.prev &&
       this.props.abtastyParams.prev.indexOf('upsell11') > -1;
+
     return (
       <React.Fragment>
-        <Head>
-        </Head>
-
-        <script>{`
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '321559294932280');
-          fbq('track', 'Purchase', {currency: 'USD', value: 69.00});
-          `}
-        </script>
-
-        <noscript>
-          <img height="1" width="1" style={{display: 'none'}}
-               src="https://www.facebook.com/tr?id=321559294932280&amp;ev=Purchase&amp;cd[currency]=USD&amp;cd[value]=69.00"
-          />
-        </noscript>
-
         <div id="container">
           {upsell === 1 &&
             offerId && (

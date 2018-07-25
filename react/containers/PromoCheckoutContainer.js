@@ -50,6 +50,7 @@ class PromoCheckout extends React.PureComponent {
       'desktop-hp-rush-my-order-texts-test-checkout',
       'desktop-hp-last-module-badge-test-checkout',
       'desktop-hp-as-advertised-on-text-test-checkout',
+      'desktop-hp-first-module-badge-test-checkout',
     ];
     eventsArray.push(packMapping[id]);
     const tracking_data = {

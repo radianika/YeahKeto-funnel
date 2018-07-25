@@ -36,6 +36,18 @@
   background-position: -261px -5px;
 }
 
+.sprite-as-seen-418313 {
+  width: 639px;
+  height: 151px;
+  background-position: -261px -5px;
+}
+
+.sprite-as-seen-418314 {
+  width: 639px;
+  height: 151px;
+  background-position: -5px -776px;
+}
+
 .sprite-as-seen-revcbd {
   width: 639px;
   height: 151px;
@@ -200,6 +212,7 @@
 }
 
 .sprite-sec7 {
+  position: relative;
   width: 640px;
   height: 745px;
   background-position: -1682px -5px;
@@ -461,7 +474,8 @@
   display: inline-block;
 }
 
-.sprite-s7-logo-416840 {
+.sprite-s7-logo-416840,
+.sprite-s1-logo-418317 {
   width: 442px;
   height: 79px;
   background-position: -932px -950px;
@@ -469,7 +483,8 @@
   display: inline-block;
 }
 
-.sprite-s7-logo-416841 {
+.sprite-s7-logo-416841,
+.sprite-s1-logo-418318 {
   width: 442px;
   height: 79px;
   background-position: -1184px -1549px;
