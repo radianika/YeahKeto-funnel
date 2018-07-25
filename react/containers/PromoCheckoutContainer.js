@@ -51,6 +51,7 @@ class PromoCheckout extends React.PureComponent {
       'desktop-hp-last-module-badge-test-checkout',
       'desktop-hp-as-advertised-on-text-test-checkout',
       'desktop-hp-first-module-badge-test-checkout',
+      'desktop-hp-second-module-bulletpoints-test-checkout',
     ];
     eventsArray.push(packMapping[id]);
     const tracking_data = {
@@ -205,8 +206,9 @@ class PromoCheckout extends React.PureComponent {
                         <li>Shipping and Handling</li>
                         <li id="shp">$0.00</li>
                         <li>Total</li>
-                        <li id="total">
-                          {`$${this.state.selected.packagePrice}`}
+                        <li id="total">{`$${
+                          this.state.selected.packagePrice
+                        }`}
                         </li>
                       </ul>
                     </div>
