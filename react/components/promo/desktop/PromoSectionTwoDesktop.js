@@ -6,7 +6,6 @@ class PromoSectionTwoDesktopComponent extends React.PureComponent {
   render() {
     const variation315257 = this.props.abtastyParams.campaignMaps['315257'];
     const variation317682 = this.props.abtastyParams.campaignMaps['317682'];
-    console.log({ variation317682 });
     return (
       <div className="section2">
         <div className="container position">
