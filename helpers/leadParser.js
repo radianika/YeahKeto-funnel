@@ -60,6 +60,7 @@ const parseLeadPostData = values => {
   const CustomerID = getParameterByName('cid');
   const mailsoftPersonId = getParameterByName('mailsoft_person_id');
   const from_k = getParameterByName('from_k');
+  const sms_id = getParameterByName('sms_id');
 
   let postData = {
     Email: values.Email,
@@ -102,6 +103,7 @@ const parseLeadPostData = values => {
     CustomerID ? { CustomerID } : null,
     mailsoftPersonId ? { mailsoftPersonId } : null,
     from_k ? { from_k } : null,
+    sms_id ? { sms_id } : null,
   );
 
   return {
