@@ -173,6 +173,16 @@ function* placeOrder(action) {
       getQueryString().startsWith('&') || !getQueryString().length ? '' : '&'
     }${getQueryString()}`;
 
+    const sms_id = getParameterByName('sms_id');
+    if (sms_id) {
+      parsedOrder = { ...parsedOrder, sms_id };
+    }
+
+    const from_k = getParameterByName('from_k');
+    if (from_k) {
+      parsedOrder = { ...parsedOrder, from_k };
+    }
+
     const apiResponse = yield post(
       '/v1/response/order',
       parsedOrder,
