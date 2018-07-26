@@ -516,6 +516,7 @@ app.prepare().then(() => {
         : null;
       const campaignMaps = await getVariationsForVisitor(visitorId, {
         317687: '418332',
+        318677: '419447',
       });
 
       // redirectToPromo(orderId, req, res, () => {

@@ -64,10 +64,17 @@
 
 .cards span {
   margin: 0 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.cards .carts-prefix {
+  font-size: 26px;
 }
 
 .cards img {
   border: 3px solid transparent;
+  vertical-align: bottom; /* Removes the excess bottom margin */
 }
 
 .cards .active img {
