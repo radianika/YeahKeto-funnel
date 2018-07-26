@@ -51,6 +51,8 @@ class PromoCheckout extends React.PureComponent {
       'desktop-hp-last-module-badge-test-checkout',
       'desktop-hp-as-advertised-on-text-test-checkout',
       'desktop-hp-first-module-badge-test-checkout',
+      'desktop-hp-second-module-bulletpoints-test-checkout',
+      'desktop-checkout-cc-label-test-checkout',
     ];
     eventsArray.push(packMapping[id]);
     const tracking_data = {
@@ -83,6 +85,8 @@ class PromoCheckout extends React.PureComponent {
         ? moment(this.props.order.dateCreated).add(5, 'day')
         : moment();
     const { adv_sub, offerId, transaction_id } = this.props.query;
+    const variation313018 = this.props.abtastyParams.campaignMaps['313018'];
+
     return (
       <React.Fragment>
         {adv_sub && transaction_id && offerId ? (
@@ -178,7 +182,7 @@ class PromoCheckout extends React.PureComponent {
                   </div>
                 ))}
                 {this.props.abtastyParams &&
-                this.props.abtastyParams.variationId === '412321' ? null : (
+                variation313018 === '412321' ? null : (
                   <div className="summary-box">
                     <p className="smry-hding">Order Summary</p>
                     <div className="clearall" />
@@ -226,7 +230,10 @@ class PromoCheckout extends React.PureComponent {
                     </p>
                   </div>
                 </div>
-                <PromoCheckoutPaymentForm onSubmit={this.submitBillingForm} />
+                <PromoCheckoutPaymentForm
+                  onSubmit={this.submitBillingForm}
+                  abtastyParams={this.props.abtastyParams}
+                />
                 <div className="chkfrm-btm">
                   <img
                     src="/static/promo/desktop/images/chk-frmbtm.png"

@@ -69,6 +69,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
 
   render() {
     const { active_cc_type, show_cvv_modal } = this.state;
+    const variation318676 = this.props.abtastyParams.campaignMaps['318676'];
 
     return (
       <div className="chkfrm-mid">
@@ -91,6 +92,9 @@ class PromoCheckoutPaymentFormClass extends React.Component {
             style={{ display: 'none', height: 0, width: 0 }}
           />
           <div className="cards">
+            {variation318676 === '419446' && (
+              <span className="cards-prefix">We accept:</span>
+            )}
             <span
               className={`card-visa ${
                 active_cc_type === 'visa' ? 'active' : ''

@@ -102,6 +102,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       'mobile-hp-first-module-badge-test-checkout',
       'mobile-hp-as-advertised-on-text-test-checkout',
       'mobile-checkout-enter-payment-text-test-checkout',
+      'mobile-hp-second-module-bulletpoints-test-checkout',
+      'mobile-checkout-cc-label-test-checkout',
     ];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
@@ -257,6 +259,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     const { active_cc_type } = this.state;
     const { cid } = this.props.query;
     const variation317687 = this.props.abtastyParams.campaignMaps['317687'];
+    const variation318677 = this.props.abtastyParams.campaignMaps['318677'];
 
     return (
       <div className="mobile-body">
@@ -319,6 +322,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                       </p>
                     */}
                     <div className="cards">
+                      {variation318677 === '419448' && (
+                        <span className="cards-prefix">We accept:</span>
+                      )}
                       <span
                         className={`card-visa ${
                           active_cc_type === 'visa' ? 'active' : ''

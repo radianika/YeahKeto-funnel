@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 class PromoSectionTwoMobileComponent extends React.PureComponent {
   render() {
     const variation315258 = this.props.abtastyParams.campaignMaps['315258'];
+    const variation317683 = this.props.abtastyParams.campaignMaps['317683'];
     return (
       <div id="section-two">
         <p className="s2-hd-txt">
@@ -46,29 +47,38 @@ class PromoSectionTwoMobileComponent extends React.PureComponent {
           <p className="s2-txt4-T">Quick Absorption, Extended Release </p>
         )}
         <p className="clearall" />
-        <ul className="s2-list">
-          <li>
-            <i className="s2-icons sprite3 sprite-s2limg1" /> <span>LEGAL</span>
-            <br />IN ALL 50
-            <br />US STATES
-          </li>
-          <li>
-            <i className="s2-icons sprite3 sprite-s2limg2" /> <span>100%</span>
-            <br />THC FREE
-            <br />& NO HIGH
-          </li>
-          <li>
-            <i className="s2-icons sprite3 sprite-s2limg3" />{' '}
-            <span>DOESN&#39;T </span>
-            <br />SHOW ON
-            <br />DRUG TEST
-          </li>
-          <li>
-            <i className="s2-icons sprite3 sprite-s2limg4" />{' '}
-            <span>AVAILABLE </span>
-            <br />WITHOUT PRESCRIPTION
-          </li>
-        </ul>
+        {variation317683 === '418325' && (
+          <ul className="s2-list">
+            <li>
+              <i className="s2-icons sprite3 sprite-s2limg1" />{' '}
+              <span>LEGAL</span>
+              <br />IN ALL 50
+              <br />US STATES
+            </li>
+            <li>
+              <i className="s2-icons sprite3 sprite-s2limg2" />{' '}
+              <span>100%</span>
+              <br />THC FREE
+              <br />& NO HIGH
+            </li>
+            <li>
+              <i className="s2-icons sprite3 sprite-s2limg3" />{' '}
+              <span>DOESN&#39;T </span>
+              <br />SHOW ON
+              <br />DRUG TEST
+            </li>
+            <li>
+              <i className="s2-icons sprite3 sprite-s2limg4" />{' '}
+              <span>AVAILABLE </span>
+              <br />WITHOUT PRESCRIPTION
+            </li>
+          </ul>
+        )}
+        {variation317683 === '418326' && (
+          <ul className="s2-list">
+            <img alt="" className="sprite3 sprite3-variation317683-418326" />
+          </ul>
+        )}
         <p className="clearall" />
         <div className="strip sprite3 sprite-strip-bg">
           <p className="strip-txt">

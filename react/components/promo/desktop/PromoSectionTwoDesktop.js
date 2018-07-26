@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 class PromoSectionTwoDesktopComponent extends React.PureComponent {
   render() {
     const variation315257 = this.props.abtastyParams.campaignMaps['315257'];
+    const variation317682 = this.props.abtastyParams.campaignMaps['317682'];
     return (
       <div className="section2">
         <div className="container position">
@@ -38,47 +39,59 @@ class PromoSectionTwoDesktopComponent extends React.PureComponent {
               Quick Absorption &amp; Fast Action Formula{' '}
             </p>
           )}
-          <ul className="s2list">
-            <li>
-              {' '}
-              <i className="s2limg sprite4 sprite-s2limg1" />
-              <p className="s2ltxt">
-                <span>Legal</span>
-                <br /> In All 50
-                <br />US States{' '}
-              </p>
-              <i className="s5limg2 sprite4 sprite-s2line" />
-            </li>
-            <li>
-              {' '}
-              <i className="s2limg sprite4 sprite-s2limg2" />
-              <p className="s2ltxt">
-                <span>100%</span>
-                <br /> THC Free
-                <br />&amp; No High
-              </p>{' '}
-              <i className="s5limg2 sprite4 sprite-s2line" />{' '}
-            </li>
-            <li>
-              {' '}
-              <i className="s2limg sprite4 sprite-s2limg3" />
-              <p className="s2ltxt">
-                <span>Doesn&#39;t</span>
-                <br /> Show On
-                <br /> Drug test{' '}
-              </p>{' '}
-              <i className="s5limg2 sprite4 sprite-s2line" />{' '}
-            </li>
-            <li>
-              {' '}
-              <i className="s2limg sprite4 sprite-s2limg4" />
-              <p className="s2ltxt">
-                <span>Available</span>
-                <br /> Without Prescription{' '}
-              </p>{' '}
-              <i className="s5limg2 sprite4 sprite-s2line" />{' '}
-            </li>
-          </ul>{' '}
+          {variation317682 === '418323' && (
+            <ul className="s2list">
+              <li>
+                {' '}
+                <i className="s2limg sprite4 sprite-s2limg1" />
+                <p className="s2ltxt">
+                  <span>Legal</span>
+                  <br /> In All 50
+                  <br />US States{' '}
+                </p>
+                <i className="s5limg2 sprite4 sprite-s2line" />
+              </li>
+              <li>
+                {' '}
+                <i className="s2limg sprite4 sprite-s2limg2" />
+                <p className="s2ltxt">
+                  <span>100%</span>
+                  <br /> THC Free
+                  <br />&amp; No High
+                </p>{' '}
+                <i className="s5limg2 sprite4 sprite-s2line" />{' '}
+              </li>
+              <li>
+                {' '}
+                <i className="s2limg sprite4 sprite-s2limg3" />
+                <p className="s2ltxt">
+                  <span>Doesn&#39;t</span>
+                  <br /> Show On
+                  <br /> Drug test{' '}
+                </p>{' '}
+                <i className="s5limg2 sprite4 sprite-s2line" />{' '}
+              </li>
+              <li>
+                {' '}
+                <i className="s2limg sprite4 sprite-s2limg4" />
+                <p className="s2ltxt">
+                  <span>Available</span>
+                  <br /> Without Prescription{' '}
+                </p>{' '}
+                <i className="s5limg2 sprite4 sprite-s2line" />{' '}
+              </li>
+            </ul>
+          )}{' '}
+          {variation317682 === '418324' && (
+            <ul className="s2list">
+              <li>
+                <img
+                  alt=""
+                  className="sprite4 sprite4-variation317682-418324"
+                />
+              </li>
+            </ul>
+          )}{' '}
           {/* <i className="s2bottle sprite3 sprite-s2bottle" />{' '} */}
           <LazyLoad height={484} offset={75}>
             <img

@@ -15,11 +15,7 @@ class Promo extends React.PureComponent {
       store,
       isServer,
       query: {
-        visitorId,
-        variationId,
-        requestAgent,
-        campaignMaps,
-        isAuthenticUser,
+        visitorId, requestAgent, campaignMaps, isAuthenticUser,
       },
       req: {
         session: { ip },
@@ -30,7 +26,6 @@ class Promo extends React.PureComponent {
       store.dispatch(
         AuthActions.setAbtastyParams({
           visitorId,
-          variationId,
           requestAgent,
           campaignMaps,
           ip,
@@ -87,6 +82,7 @@ class Promo extends React.PureComponent {
       '314728',
       '317679',
       '317677',
+      '317683',
     ];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
