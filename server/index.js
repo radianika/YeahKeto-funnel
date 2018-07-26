@@ -463,8 +463,10 @@ app.prepare().then(() => {
       const sessionId = await getSessionId(req, res);
       // const { visitorId } = await getVisitorId(req, res);
       const cid = getParameterByName('cid', req.originalUrl);
+      const fromKonnective = getParameterByName('from_k', req.originalUrl);
+
       const cidResponse = await get(
-        `/v1/response/customer/${cid}`,
+        `/v1/response/customer/${cid}?from_k=${fromKonnective}`,
         sessionId.id,
         {
           'x-ascbd-req-origin': req.get('host'),

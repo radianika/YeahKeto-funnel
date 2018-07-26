@@ -57,6 +57,9 @@ const getMFD = () => {
 const parseLeadPostData = values => {
   const AffiliateID = getParameterByName('sourceValue1');
   const SubAffiliateID = getParameterByName('sourceValue2');
+  const CustomerID = getParameterByName('cid');
+  const mailsoftPersonId = getParameterByName('mailsoft_person_id');
+  const from_k = getParameterByName('from_k');
 
   let postData = {
     Email: values.Email,
@@ -96,6 +99,9 @@ const parseLeadPostData = values => {
     parseLeadData,
     AffiliateID ? { AffiliateID } : null,
     SubAffiliateID ? { SubAffiliateID } : null,
+    CustomerID ? { CustomerID } : null,
+    mailsoftPersonId ? { mailsoftPersonId } : null,
+    from_k ? { from_k } : null,
   );
 
   return {
