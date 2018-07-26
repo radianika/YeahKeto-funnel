@@ -12,11 +12,7 @@ class Promo extends React.PureComponent {
       store,
       isServer,
       query: {
-        visitorId,
-        variationId,
-        requestAgent,
-        campaignMaps,
-        isAuthenticUser,
+        visitorId, requestAgent, campaignMaps, isAuthenticUser,
       },
       req: {
         session: { ip },
@@ -27,7 +23,6 @@ class Promo extends React.PureComponent {
       store.dispatch(
         AuthActions.setAbtastyParams({
           visitorId,
-          variationId,
           requestAgent,
           ip,
           campaignMaps,

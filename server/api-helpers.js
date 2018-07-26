@@ -131,7 +131,10 @@ export async function generateAbtastyVisitorId() {
 }
 
 export async function getVariationForVisitor(visitor_id, campaign_id) {
-  console.log({ visitor_id, campaign_id });
+  console.log('Getting variation id for a campaign', {
+    visitor_id,
+    campaign_id,
+  });
   try {
     const response = await axios.post(
       `${ABTASTY_BASE_URL}/allocate`,
@@ -142,27 +145,13 @@ export async function getVariationForVisitor(visitor_id, campaign_id) {
         },
       },
     );
-    if (idx(response, _ => _.data.variation_id)) {
-      return response.data.variation_id;
-    }
-  } catch (error) {
-    Raven.captureException(error);
-    console.error('Exception Occurred in ReactApp', error.stack || error);
-  }
-}
-
-export function asyncGetVariationForVisitor(visitor_id, campaign_id) {
-  console.log({ visitor_id, campaign_id });
-  try {
-    return axios.post(
-      `${ABTASTY_BASE_URL}/allocate`,
-      { campaign_id, visitor_id },
-      {
-        headers: {
-          'x-api-key': ABTASTY_API_KEY,
-        },
-      },
-    );
+    const variation_id = idx(response, _ => _.data.variation_id);
+    console.log('Got the variation id for the campaign', {
+      visitor_id,
+      campaign_id,
+      variation_id,
+    });
+    return variation_id;
   } catch (error) {
     Raven.captureException(error);
     console.error('Exception Occurred in ReactApp', error.stack || error);
@@ -181,3 +170,31 @@ export const getParameterByName = (name, url) => {
   }
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 };
+
+/**
+ * Gets variation ids for many ABTasty campaigns. If getting a variation id for a campaign fails,
+ * the error is reported and the default id is returned.
+ *
+ * @param {string} visitor_id ABTasty visitor id
+ * @param {{}} campaigns The list of campaigns. The keys are campaign ids, the values are the
+ *   default variation ids.
+ * @return {Promise<{}>} A promise resolving with the same list of campaigns but the values are the
+ *   actual variation ids.
+ */
+export async function getVariationsForVisitor(visitor_id, campaigns) {
+  const campaignMaps = { ...campaigns };
+
+  await Promise.all(
+    Object.keys(campaignMaps).map(async campaign_id => {
+      const variation_id = await getVariationForVisitor(
+        visitor_id,
+        campaign_id,
+      );
+      if (variation_id) {
+        campaignMaps[campaign_id] = variation_id;
+      }
+    }),
+  );
+
+  return campaignMaps;
+}
