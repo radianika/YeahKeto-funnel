@@ -496,6 +496,17 @@ ul.smrylist li:nth-child(8) {
   text-align: center;
 }
 
+.cards span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.cards .cards-prefix {
+  color: #fff;
+  display: block;
+  margin-top: -8px;
+}
+
 .card-image {
   width: 60px;
 }
