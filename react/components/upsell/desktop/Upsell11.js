@@ -43,7 +43,7 @@ class Upsell11Component extends React.PureComponent {
           <img
             alt="up-arrow-1"
             src="/static/assets/images/up-arw1.png"
-            style={{ position: 'absolute', left: '260px', top: '400px' }}
+            style={{ position: 'absolute', left: '350px', top: '400px', width: '175px' }}
           />
           <div className="up-rgt-content">
             <p className="up-txt1">Amplify Your Results</p>
