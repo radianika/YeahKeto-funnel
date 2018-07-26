@@ -262,6 +262,8 @@ app.prepare().then(() => {
         'utm_content',
         'mailsoft_person_id',
         'cid',
+        'sms_id',
+        'promocode',
       ];
 
       if (req.query && Object.keys(req.query).length) {
