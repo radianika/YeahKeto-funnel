@@ -58,7 +58,7 @@ const parseLeadPostData = values => {
   const AffiliateID = getParameterByName('sourceValue1');
   const SubAffiliateID = getParameterByName('sourceValue2');
   const CustomerID = getParameterByName('cid');
-  const mailsoftPersonId = getParameterByName('mailsoft_person_id');
+  const mailsoft_person_id = getParameterByName('mailsoft_person_id');
   const from_k = getParameterByName('from_k');
   const sms_id = getParameterByName('sms_id');
 
@@ -101,7 +101,7 @@ const parseLeadPostData = values => {
     AffiliateID ? { AffiliateID } : null,
     SubAffiliateID ? { SubAffiliateID } : null,
     CustomerID ? { CustomerID } : null,
-    mailsoftPersonId ? { mailsoftPersonId } : null,
+    mailsoft_person_id ? { mailsoft_person_id } : null,
     from_k ? { from_k } : null,
     sms_id ? { sms_id } : null,
   );
