@@ -15,7 +15,7 @@ class Promo extends React.PureComponent {
       isServer,
       query: {
         visitorId,
-        variationId,
+        campaignMaps,
         requestAgent,
         sessionId,
         adv_sub,
@@ -32,7 +32,7 @@ class Promo extends React.PureComponent {
       store.dispatch(
         AuthActions.setAbtastyParams({
           visitorId,
-          variationId,
+          campaignMaps,
           requestAgent,
           ip,
         }),
@@ -40,54 +40,46 @@ class Promo extends React.PureComponent {
     }
   }
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.postCampaignActivatedEvent();
     this.postVisitEvent();
   }
 
-  postCampaignActivatedEvent = () => {
-    const { localStorage } = window;
-    localStorage.setItem(
-      'abtastyParams_313018',
-      JSON.stringify(this.props.abtastyParams),
-    );
-    const body = {
-      campaign_id: '313018',
-      variation_id: this.props.abtastyParams.variationId,
-      tracking_data: {
-        device_type: 'DESKTOP',
-        ip: this.props.abtastyParams.ip,
-        origin: 'Promo Desktop checkout',
-        timestamp: moment().format(),
-        visitor_id: this.props.abtastyParams.visitorId,
-      },
+  postCampaignActivatedEvent() {
+    const campaigns = ['313018', '318676'];
+    const tracking_data = {
+      device_type: 'DESKTOP',
+      ip: this.props.abtastyParams.ip,
+      origin: 'Promo Desktop checkout',
+      timestamp: moment().format(),
+      visitor_id: this.props.abtastyParams.visitorId,
     };
-    axios.post('/abtasty', {
-      ...body,
-      action: 'campaign_activated_event',
-    });
-  };
+    const postData = {};
 
-  postVisitEvent = () => {
-    const { localStorage } = window;
-    const abtastyParams = JSON.parse(
-      localStorage.getItem('abtastyParams_313018'),
-    );
-    const body = {
+    campaigns.forEach(campaign => {
+      postData[campaign] = {
+        campaign_id: campaign,
+        variation_id: this.props.abtastyParams.campaignMaps[campaign],
+        tracking_data,
+        action: 'campaign_activated_event',
+      };
+    });
+
+    axios.post('/multicampaign-abtasty', postData);
+  }
+
+  postVisitEvent() {
+    axios.post('/abtasty', {
       tracking_data: {
-        visitor_id: abtastyParams.visitorId,
+        visitor_id: this.props.abtastyParams.visitorId,
         device_type: 'DESKTOP',
         origin: window.location.href,
         timestamp: moment().format(),
-        ip: abtastyParams.ip,
+        ip: this.props.abtastyParams.ip,
       },
-    };
-    axios.post('/abtasty', { ...body, action: 'visit_event' });
-  };
+      action: 'visit_event',
+    });
+  }
 
   render() {
     return (
