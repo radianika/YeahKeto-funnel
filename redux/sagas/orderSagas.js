@@ -92,6 +92,7 @@ const packIdMap = {
  * @namespace orderSaga
  * @param  {} action
  */
+
 function* submitLeadsForm(action) {
   console.log({ action });
   yield put(OrderActions.submitLeadsFormRequest());
@@ -171,10 +172,17 @@ function* placeOrder(action) {
     const queryString = `${
       getQueryString().startsWith('&') || !getQueryString().length ? '' : '&'
     }${getQueryString()}`;
-    const mailsoft_person_id = getParameterByName('mailsoft_person_id');
-    if (mailsoft_person_id) {
-      parsedOrder = { ...parsedOrder, mailsoft_person_id };
+
+    const sms_id = getParameterByName('sms_id');
+    if (sms_id) {
+      parsedOrder = { ...parsedOrder, sms_id };
     }
+
+    const from_k = getParameterByName('from_k');
+    if (from_k) {
+      parsedOrder = { ...parsedOrder, from_k };
+    }
+
     const apiResponse = yield post(
       '/v1/response/order',
       parsedOrder,
