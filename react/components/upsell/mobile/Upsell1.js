@@ -76,8 +76,13 @@ class Upsell1Component extends React.PureComponent {
             </script>
 
             <noscript>
-              <img height="1" width="1" style={{display: 'none'}}
-                src={`https://www.facebook.com/tr?id=321559294932280&amp;ev=Purchase&amp;cd[currency]=USD&amp;cd[value]=${this.state.revenue}`}
+              <iframe
+                title="fb-pixel-tracking"
+                src={`https://thefiresoflife.com/pixel_page.html?id=321559294932280&amp;ev=Purchase&amp;cd[currency]=USD&amp;cd[value]=${this.state.revenue}`}
+                frameBorder="0"
+                width="1"
+                height="1"
+                style={{ position: 'absolute' }}
               />
             </noscript>
           </React.Fragment> : null
