@@ -199,7 +199,6 @@ app.prepare().then(() => {
 
     Promise.all(promises)
       .then(values => {
-        console.log(values);
         res.status(200).send('success');
       })
       .catch(reason => {
@@ -287,6 +286,7 @@ app.prepare().then(() => {
         );
       }
       if (requestAgent === 'desktop') {
+		const sessionId = await getSessionId(req, res);
         const campaignMaps = await getVariationsForVisitor(visitorId, {
           314234: '413871',
           314334: '414030',
@@ -300,6 +300,27 @@ app.prepare().then(() => {
           317678: '418315',
           317682: '418323',
         });
+        const cid = getParameterByName('cid', req.originalUrl);
+        const fromKonnective = getParameterByName('from_k', req.originalUrl);
+
+        const cidResponse = await get(
+          `/v1/response/customer/${cid}?from_k=${fromKonnective}`,
+          sessionId.id,
+          {
+            'x-ascbd-req-origin': req.get('host'),
+          },
+        );
+
+        console.log('cidResponse', cidResponse)
+        let userInfo = null;
+        if (idx(cidResponse, _ => _.response.data.code) === 200) {
+          ({ data: userInfo } = cidResponse.response.data);
+        }
+        if (userInfo) {
+          res.cookie('cid_discount', true, { maxAge: 3600000 });
+        }
+
+        console.log('userInfo', userInfo)
 
         app.render(req, res, '/promo-desktop', {
           requestAgent,
@@ -307,6 +328,8 @@ app.prepare().then(() => {
           device: requestAgent,
           campaignMaps,
           isAuthenticUser,
+          userInfo,
+          cid,
         });
       }
       if (requestAgent === 'mobile') {

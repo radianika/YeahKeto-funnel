@@ -1,5 +1,8 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
+import moment from 'moment';
+import axios from 'axios';
 import {
   stateslist,
   shippingFormValidator,
@@ -7,9 +10,7 @@ import {
   normalizePostalCode,
 } from 'helpers';
 import { TextField, SelectField, AddressField } from 'react/components/common';
-import { connect } from 'react-redux';
-import moment from 'moment';
-import axios from 'axios';
+import { AuthActions, OrderActions } from 'redux/actions';
 
 class PromoShippingFormDesktopComponent extends React.PureComponent {
   postActionTracker = () => {
@@ -167,15 +168,20 @@ const mapStateToProps = reduxState => {
       placeOrderStatus: reduxState.order.placeOrderStatus,
       abtastyParams: reduxState.auth.abtastyParams,
       isAuthentic: reduxState.auth.isAuthentic,
+      initialValues: reduxState.auth.userInfo,
     };
   }
   return {};
 };
 
-const PromoShippingFormDesktop = connect(mapStateToProps)(
+const PromoShippingFormDesktop = connect(mapStateToProps, {
+  ...OrderActions,
+  ...AuthActions,
+})(
   reduxForm({
     form: 'PromoContact',
     validate: shippingFormValidator,
+    enableReinitialize: true,
   })(PromoShippingFormDesktopComponent),
 );
 
