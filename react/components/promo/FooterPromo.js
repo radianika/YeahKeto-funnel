@@ -97,7 +97,6 @@ class FooterPromoComponent extends React.PureComponent {
 
       const eventsArray = [
         'mobile-hp-top-module-symbol1-test-rush-my-order',
-        'mobile-hp-text2-test-rush-my-order',
         'mobile-hp-benefits-module-test-rush-my-order',
         'mobile-hp-module2-caption1-test-rush-my-order',
         'mobile-hp-rush-my-order-texts-test-rush-my-order',
