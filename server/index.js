@@ -498,21 +498,24 @@ app.prepare().then(() => {
       // const { visitorId } = await getVisitorId(req, res);
       const cid = getParameterByName('cid', req.originalUrl);
       const fromKonnective = getParameterByName('from_k', req.originalUrl);
-
-      const cidResponse = await get(
-        `/v1/response/customer/${cid}?from_k=${fromKonnective}`,
-        sessionId.id,
-        {
-          'x-ascbd-req-origin': req.get('host'),
-        },
-      );
       let userInfo = null;
-      if (idx(cidResponse, _ => _.response.data.code) === 200) {
-        ({ data: userInfo } = cidResponse.response.data);
+
+      if (cid) {
+        const cidResponse = await get(
+          `/v1/response/customer/${cid}?from_k=${fromKonnective}`,
+          sessionId.id,
+          {
+            'x-ascbd-req-origin': req.get('host'),
+          },
+        );
+        if (idx(cidResponse, _ => _.response.data.code) === 200) {
+          ({ data: userInfo } = cidResponse.response.data);
+        }
+        if (userInfo) {
+          res.cookie('cid_discount', true, { maxAge: 3600000 });
+        }
       }
-      if (userInfo) {
-        res.cookie('cid_discount', true, { maxAge: 3600000 });
-      }
+
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,
         userInfo,
