@@ -46,7 +46,7 @@ class Promo extends React.PureComponent {
   }
 
   postCampaignActivatedEvent() {
-    const campaigns = ['313018', '318676'];
+    const campaigns = ['313018', '318676', '319131', '319133', '319137'];
     const tracking_data = {
       device_type: 'DESKTOP',
       ip: this.props.abtastyParams.ip,
