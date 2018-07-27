@@ -6,7 +6,6 @@ class PromoSectionOneMobileComponent extends React.PureComponent {
   render() {
     const variation317679 = this.props.abtastyParams.campaignMaps['317679'];
     const variation317677 = this.props.abtastyParams.campaignMaps['317677'];
-    console.log(this.props.isAuthentic);
     return (
       <div
         id="section-one"
