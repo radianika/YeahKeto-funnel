@@ -146,6 +146,23 @@ const getSessionId = async (req, res) => {
   }
 };
 
+const generateSession = async (req, res) => {
+  const sessionResponse = await post(
+    '/v1/auth',
+    {
+      username: 'larby@starlightgroup.io',
+      password: 'P@ssw0rd',
+    },
+    {
+      'x-ascbd-req-origin': req.get('host'),
+    },
+  );
+  if (idx(sessionResponse, _ => _.response.data)) {
+    // eslint-disable-next-line
+    return sessionResponse.response.data.data.token;
+  }
+}
+
 const getVisitorId = async (req, res) => {
   try {
     const { cookies } = req;
@@ -199,7 +216,6 @@ app.prepare().then(() => {
 
     Promise.all(promises)
       .then(values => {
-        console.log(values);
         res.status(200).send('success');
       })
       .catch(reason => {
@@ -209,23 +225,11 @@ app.prepare().then(() => {
   });
 
   server.get('/start-session', async (req, res) => {
-    const sessionResponse = await post(
-      '/v1/auth',
-      {
-        username: 'larby@starlightgroup.io',
-        password: 'P@ssw0rd',
-      },
-      {
-        'x-ascbd-req-origin': req.get('host'),
-      },
-    );
-    if (idx(sessionResponse, _ => _.response.data)) {
-      // eslint-disable-next-line
-      const token = sessionResponse.response.data.data.token;
-      res.cookie('ascbd_session', token, { maxAge: 3600000 });
-      res.status(200).send({ token });
-    }
+    const token = await generateSession(req, res);
+    res.cookie('ascbd_session', token, { maxAge: 3600000 });
+    res.status(200).send({ token });
   });
+
   server.get('/cart', async (req, res) => app.render(req, res, '/cart'));
 
   server.get('/thankyou?', async (req, res) => {
@@ -287,6 +291,10 @@ app.prepare().then(() => {
         );
       }
       if (requestAgent === 'desktop') {
+        const token = await generateSession(req, res);
+        const sessionId = {
+          id: token
+        };
         const campaignMaps = await getVariationsForVisitor(visitorId, {
           314234: '413871',
           314334: '414030',
@@ -300,6 +308,26 @@ app.prepare().then(() => {
           317678: '418315',
           317682: '418323',
         });
+        const cid = getParameterByName('cid', req.originalUrl);
+        const fromKonnective = getParameterByName('from_k', req.originalUrl);
+        let userInfo = null;
+
+        if (cid) {
+          const cidResponse = await get(
+            `/v1/response/customer/${cid}?from_k=${fromKonnective}`,
+            sessionId.id,
+            {
+              'x-ascbd-req-origin': req.get('host'),
+            },
+          );
+
+          if (idx(cidResponse, _ => _.response.data.code) === 200) {
+            ({ data: userInfo } = cidResponse.response.data);
+          }
+          if (userInfo) {
+            res.cookie('cid_discount', true, { maxAge: 3600000 });
+          }
+        }
 
         app.render(req, res, '/promo-desktop', {
           requestAgent,
@@ -307,6 +335,8 @@ app.prepare().then(() => {
           device: requestAgent,
           campaignMaps,
           isAuthenticUser,
+          userInfo,
+          cid,
         });
       }
       if (requestAgent === 'mobile') {
@@ -468,21 +498,24 @@ app.prepare().then(() => {
       // const { visitorId } = await getVisitorId(req, res);
       const cid = getParameterByName('cid', req.originalUrl);
       const fromKonnective = getParameterByName('from_k', req.originalUrl);
-
-      const cidResponse = await get(
-        `/v1/response/customer/${cid}?from_k=${fromKonnective}`,
-        sessionId.id,
-        {
-          'x-ascbd-req-origin': req.get('host'),
-        },
-      );
       let userInfo = null;
-      if (idx(cidResponse, _ => _.response.data.code) === 200) {
-        ({ data: userInfo } = cidResponse.response.data);
+
+      if (cid) {
+        const cidResponse = await get(
+          `/v1/response/customer/${cid}?from_k=${fromKonnective}`,
+          sessionId.id,
+          {
+            'x-ascbd-req-origin': req.get('host'),
+          },
+        );
+        if (idx(cidResponse, _ => _.response.data.code) === 200) {
+          ({ data: userInfo } = cidResponse.response.data);
+        }
+        if (userInfo) {
+          res.cookie('cid_discount', true, { maxAge: 3600000 });
+        }
       }
-      if (userInfo) {
-        res.cookie('cid_discount', true, { maxAge: 3600000 });
-      }
+
       return app.render(req, res, '/promo-mobile-shipping', {
         sessionId,
         userInfo,

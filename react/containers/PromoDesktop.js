@@ -23,7 +23,7 @@ import { PromoSession } from 'react/components/common';
 class PromoDesktop extends React.PureComponent {
   componentDidMount() {
     const { localStorage } = window;
-    this.props.createNewSession();
+    // this.props.createNewSession();
     localStorage.clear();
   }
 
