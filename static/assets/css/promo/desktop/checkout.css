@@ -123,6 +123,7 @@ MAIN CSS START
   width: 648px;
   display: table;
   margin: 0 0 0 28px;
+  position: relative;
 }
 
 .chk-rgt {
@@ -629,6 +630,21 @@ a.what {
   cursor: pointer;
   margin: 16px auto 10px auto;
   display: block;
+}
+
+.chkfrm-arrow {
+  transform: rotate(9deg);
+  transition: all 1s ease 0s;
+  top: 55px;
+  right: -98px;
+  z-index: 9;
+  overflow: hidden;
+  position: absolute;
+}
+
+.chkfrm-arrow-animate {
+  transform: rotate(-5deg);
+  top: 20px;
 }
 
 .moneyback-box {

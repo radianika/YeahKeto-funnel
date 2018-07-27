@@ -353,6 +353,9 @@ app.prepare().then(() => {
       const campaignMaps = await getVariationsForVisitor(visitorId, {
         313018: undefined,
         318676: '419445',
+        319131: '420043',
+        319133: '420046',
+        319137: '420050',
       });
 
       // redirectToPromo(orderId, req, res, () => {
