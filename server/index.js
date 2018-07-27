@@ -312,8 +312,6 @@ app.prepare().then(() => {
       if (requestAgent === 'mobile') {
         const cid = getParameterByName('cid', req.originalUrl);
         const campaignMaps = await getVariationsForVisitor(visitorId, {
-          314235: '413873',
-          314336: undefined,
           314411: '414125',
           314431: undefined,
           315258: '415144',
@@ -353,6 +351,9 @@ app.prepare().then(() => {
       const campaignMaps = await getVariationsForVisitor(visitorId, {
         313018: undefined,
         318676: '419445',
+        319131: '420043',
+        319133: '420046',
+        319137: '420050',
       });
 
       // redirectToPromo(orderId, req, res, () => {
