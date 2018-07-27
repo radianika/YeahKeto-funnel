@@ -311,7 +311,6 @@ app.prepare().then(() => {
           },
         );
 
-        console.log('cidResponse', cidResponse)
         let userInfo = null;
         if (idx(cidResponse, _ => _.response.data.code) === 200) {
           ({ data: userInfo } = cidResponse.response.data);
@@ -319,8 +318,6 @@ app.prepare().then(() => {
         if (userInfo) {
           res.cookie('cid_discount', true, { maxAge: 3600000 });
         }
-
-        console.log('userInfo', userInfo)
 
         app.render(req, res, '/promo-desktop', {
           requestAgent,
