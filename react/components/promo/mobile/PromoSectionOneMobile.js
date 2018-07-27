@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 class PromoSectionOneMobileComponent extends React.PureComponent {
   render() {
-    const variation314336 = this.props.abtastyParams.campaignMaps['314336'];
     const variation317679 = this.props.abtastyParams.campaignMaps['317679'];
     const variation317677 = this.props.abtastyParams.campaignMaps['317677'];
     return (
@@ -25,18 +24,18 @@ class PromoSectionOneMobileComponent extends React.PureComponent {
         />
         {this.props.isAuthentic ? (
           <p className="s1-txt4">
-            Derived from organic, US-harvested hemp, lab-tested for quality.
-            Clinically proven therapeutic effects.
+            Derived from organic, US-harvested hemp, lab-tested for quality. Clinically proven
+            therapeutic effects.
           </p>
         ) : null}
         {!this.props.isAuthentic ? (
           <p className="s1-txt4">
-            For a limited, receive a FREE bottle of our FDA Approved CBD Oil on
-            your first order (no prescription required).
+            For a limited, receive a FREE bottle of our FDA Approved CBD Oil on your first order (no
+            prescription required).
           </p>
         ) : null}
         <p className="clearall" />
-        {!variation314336 || variation314336 === '414033' ? (
+        {!this.props.isAuthentic ? (
           <ul className="s1-list">
             <li>
               <i className="sprite3 sprite-s1-tick" />
@@ -60,7 +59,7 @@ class PromoSectionOneMobileComponent extends React.PureComponent {
             </li>
           </ul>
         ) : null}
-        {variation314336 === '414034' ? (
+        {this.props.isAuthentic ? (
           <ul className="s1-list">
             <li>
               <i className="sprite3 sprite-s1-tick" />
@@ -87,11 +86,7 @@ class PromoSectionOneMobileComponent extends React.PureComponent {
         <p className="clearall" />{' '}
         <i className={`as-seen sprite1 sprite-as-seen-${variation317677}`} />
         {/* <i className="s1-bottle sprite3 sprite-s1-bottle" /> */}
-        <img
-          src="/static/promo/mobile/images/s1-bottle.png"
-          className="s1-bottle"
-          alt=""
-        />
+        <img src="/static/promo/mobile/images/s1-bottle.png" className="s1-bottle" alt="" />
       </div>
     );
   }
@@ -104,8 +99,6 @@ function mapStateToProps(state) {
   };
 }
 
-const PromoSectionOneMobile = connect(mapStateToProps, {})(
-  PromoSectionOneMobileComponent,
-);
+const PromoSectionOneMobile = connect(mapStateToProps, {})(PromoSectionOneMobileComponent);
 
 export { PromoSectionOneMobile };

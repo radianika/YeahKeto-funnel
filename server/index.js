@@ -312,7 +312,6 @@ app.prepare().then(() => {
       if (requestAgent === 'mobile') {
         const cid = getParameterByName('cid', req.originalUrl);
         const campaignMaps = await getVariationsForVisitor(visitorId, {
-          314336: undefined,
           314411: '414125',
           314431: undefined,
           315258: '415144',
