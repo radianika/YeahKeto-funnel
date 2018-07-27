@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 class PromoSectionOneMobileComponent extends React.PureComponent {
   render() {
-    const variation314235 = this.props.abtastyParams.campaignMaps['314235'];
     const variation314336 = this.props.abtastyParams.campaignMaps['314336'];
     const variation317679 = this.props.abtastyParams.campaignMaps['317679'];
     const variation317677 = this.props.abtastyParams.campaignMaps['317677'];
@@ -24,13 +23,13 @@ class PromoSectionOneMobileComponent extends React.PureComponent {
             this.props.abtastyParams.campaignMaps['314411']
           } sprite-s1-hd`}
         />
-        {!variation314235 || variation314235 === '413873' ? (
+        {this.props.isAuthentic ? (
           <p className="s1-txt4">
             Derived from organic, US-harvested hemp, lab-tested for quality.
             Clinically proven therapeutic effects.
           </p>
         ) : null}
-        {variation314235 === '413874' ? (
+        {!this.props.isAuthentic ? (
           <p className="s1-txt4">
             For a limited, receive a FREE bottle of our FDA Approved CBD Oil on
             your first order (no prescription required).
@@ -101,7 +100,7 @@ class PromoSectionOneMobileComponent extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     abtastyParams: state.auth.abtastyParams,
-    isAuthentic: state.auth.isAuthentic,
+    isAuthentic: state.auth.isAuthentic.isAuthenticUser,
   };
 }
 
