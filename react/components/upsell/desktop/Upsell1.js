@@ -65,7 +65,7 @@ class Upsell1Component extends React.PureComponent {
 
             <noscript>
               <iframe
-                src={`https://thefiresoflife.com/pixel_page.html?id=321559294932280&amp;ev=Purchase&amp;cd[currency]=USD&amp;cd[value]=${this.state.revenue}`}
+                src={`https://thefiresoflife.com/pixel_page?id=321559294932280&amp;ev=Purchase&amp;cd[currency]=USD&amp;cd[value]=${this.state.revenue}`}
                 width="1"
                 height="1"
                 alt=""
