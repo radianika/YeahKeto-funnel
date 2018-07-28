@@ -6,7 +6,7 @@ import axios from 'axios';
 import { PromoDesktopContainer } from 'react/containers';
 import { AuthActions } from 'redux/actions';
 import { createNewSession } from 'redux/actions/authActions';
-import { normalizePhone } from 'helpers';
+import { normalizePhone, getParameterByName } from 'helpers';
 
 class Promo extends React.PureComponent {
   static getInitialProps({
@@ -51,6 +51,15 @@ class Promo extends React.PureComponent {
     this.props.createNewSession();
     this.postCampaignActivatedEvent();
     this.postVisitEvent();
+
+    // email_id call
+    const emailId = getParameterByName('email_id');
+
+    // check for email_id
+    if (emailId) {
+      const url  = `${this.props.API_BASE_URL}/v1/track/emailclick${window.location.search}`;
+      axios.get(url);
+    }
   }
 
   postCampaignActivatedEvent = () => {
