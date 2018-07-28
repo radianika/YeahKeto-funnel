@@ -8,6 +8,7 @@ import Router from 'next/router';
 import { AuthActions } from 'redux/actions';
 import moment from 'moment';
 import axios from 'axios';
+import { getParameterByName } from 'helpers';
 
 class Promo extends React.PureComponent {
   static getInitialProps({
@@ -58,6 +59,14 @@ class Promo extends React.PureComponent {
     Router.onRouteChangeStart = () => {
       this.setState({ showSpinner: true });
     };
+
+    // sms_id call
+    const smsId = getParameterByName('sms_id');
+
+    // check for sms_id
+    if (smsId) {
+      axios.get(`/api/v1/track/smsclick${window.location.search}`);
+    }
   }
 
   postCampaignActivatedEvent = () => {
