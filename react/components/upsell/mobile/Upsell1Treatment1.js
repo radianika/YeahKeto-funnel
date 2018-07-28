@@ -86,12 +86,17 @@ class Upsell1Treatment1Component extends React.PureComponent {
             </script>
 
             <noscript>
-              <img height="1" width="1" style={{display: 'none'}}
-                src={`https://www.facebook.com/tr?id=321559294932280&amp;ev=Purchase&amp;cd[currency]=USD&amp;cd[value]=${this.state.revenue}`}
+              <iframe
+                src={`https://thefiresoflife.com/pixel_page?id=321559294932280&amp;ev=Purchase&amp;cd[currency]=USD&amp;cd[value]=${this.state.revenue}`}
+                width="1"
+                height="1"
+                alt=""
+                style={{display: 'none'}}
               />
             </noscript>
           </React.Fragment> : null
         }
+
         <PromoSession pageType="upsellPage1" />
         {getDiscountBanner({ cid }) && (
           <div className="topbar">

@@ -5,6 +5,8 @@ import moment from 'moment';
 import axios from 'axios';
 import { PromoDesktopContainer } from 'react/containers';
 import { AuthActions } from 'redux/actions';
+import { createNewSession } from 'redux/actions/authActions';
+import { normalizePhone } from 'helpers';
 
 class Promo extends React.PureComponent {
   static getInitialProps({
@@ -12,7 +14,7 @@ class Promo extends React.PureComponent {
       store,
       isServer,
       query: {
-        visitorId, requestAgent, campaignMaps, isAuthenticUser,
+        visitorId, requestAgent, campaignMaps, isAuthenticUser, userInfo,
       },
       req: {
         session: { ip },
@@ -33,10 +35,20 @@ class Promo extends React.PureComponent {
           isAuthenticUser,
         }),
       );
+
+      if (userInfo) {
+        userInfo = {
+          ...userInfo,
+          Phone: normalizePhone(userInfo.Phone),
+          ZipCode: userInfo.Zipcode,
+        };
+        store.dispatch(AuthActions.setUserInfo(userInfo));
+      }
     }
   }
 
   componentDidMount() {
+    this.props.createNewSession();
     this.postCampaignActivatedEvent();
     this.postVisitEvent();
   }
@@ -153,4 +165,4 @@ const mapStateToProps = state => ({
   abtastyParams: state.auth.abtastyParams,
 });
 
-export default connect(mapStateToProps, { ...AuthActions })(Promo);
+export default connect(mapStateToProps, { ...AuthActions, createNewSession })(Promo);
