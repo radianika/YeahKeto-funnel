@@ -69,6 +69,15 @@ class Promo extends React.PureComponent {
       const url  = `${this.props.API_BASE_URL}/v1/track/smsclick${window.location.search}`;
       axios.get(url);
     }
+
+    // email_id call
+    const emailId = getParameterByName('email_id');
+
+    // check for email_id
+    if (emailId) {
+      const url  = `${this.props.API_BASE_URL}/v1/track/emailclick${window.location.search}`;
+      axios.get(url);
+    }
   }
 
   postCampaignActivatedEvent = () => {
