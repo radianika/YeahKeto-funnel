@@ -360,6 +360,7 @@ app.prepare().then(() => {
           campaignMaps,
           isAuthenticUser,
           cid,
+          API_BASE_URL,
         });
       }
     } catch (error) {
