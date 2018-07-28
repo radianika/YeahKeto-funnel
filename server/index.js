@@ -337,6 +337,7 @@ app.prepare().then(() => {
           isAuthenticUser,
           userInfo,
           cid,
+          API_BASE_URL,
         });
       }
       if (requestAgent === 'mobile') {
