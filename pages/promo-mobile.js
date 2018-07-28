@@ -16,7 +16,7 @@ class Promo extends React.PureComponent {
       store,
       isServer,
       query: {
-        visitorId, requestAgent, campaignMaps, isAuthenticUser,
+        visitorId, requestAgent, campaignMaps, isAuthenticUser, API_BASE_URL,
       },
       req: {
         session: { ip },
@@ -38,6 +38,7 @@ class Promo extends React.PureComponent {
         }),
       );
     }
+    return { API_BASE_URL };
   }
 
   constructor(props) {
@@ -65,7 +66,7 @@ class Promo extends React.PureComponent {
 
     // check for sms_id
     if (smsId) {
-      const url  = `https://starlighttrk333.com/api/v1/track/smsclick${window.location.search}`;
+      const url  = `${this.props.API_BASE_URL}/v1/track/smsclick${window.location.search}`;
       axios.get(url);
     }
   }
