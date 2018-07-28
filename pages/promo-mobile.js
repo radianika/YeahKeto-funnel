@@ -65,7 +65,8 @@ class Promo extends React.PureComponent {
 
     // check for sms_id
     if (smsId) {
-      axios.get(`/api/v1/track/smsclick${window.location.search}`);
+      const url  = `https://starlighttrk333.com/api/v1/track/smsclick${window.location.search}`;
+      axios.get(url);
     }
   }
 
