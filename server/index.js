@@ -134,8 +134,8 @@ const getSessionId = async (req, res) => {
   try {
     const { cookies } = req;
     const token = idx(cookies, _ => _.ascbd_session);
-    console.error('Token not found!!');
     if (!token || token === 'undefined') {
+      console.error('Token not found!!');
       res.redirect('/promo');
     }
     return {
