@@ -134,6 +134,7 @@ const getSessionId = async (req, res) => {
   try {
     const { cookies } = req;
     const token = idx(cookies, _ => _.ascbd_session);
+    console.error('Token not found!!');
     if (!token || token === 'undefined') {
       res.redirect('/promo');
     }
@@ -289,6 +290,7 @@ app.prepare().then(() => {
         res.redirect(
           `/promo/${requestAgent}?${querystring.stringify(req.query)}`,
         );
+        return;
       }
       if (requestAgent === 'desktop') {
         const token = await generateSession(req, res);
@@ -324,6 +326,8 @@ app.prepare().then(() => {
           if (idx(cidResponse, _ => _.response.data.code) === 200) {
             ({ data: userInfo } = cidResponse.response.data);
           }
+
+          console.log('userInfo', userInfo);
           if (userInfo) {
             res.cookie('cid_discount', true, { maxAge: 3600000 });
           }
@@ -513,6 +517,8 @@ app.prepare().then(() => {
         if (idx(cidResponse, _ => _.response.data.code) === 200) {
           ({ data: userInfo } = cidResponse.response.data);
         }
+
+        console.log('userInfo', userInfo);
         if (userInfo) {
           res.cookie('cid_discount', true, { maxAge: 3600000 });
         }
