@@ -162,7 +162,7 @@ const generateSession = async (req, res) => {
     // eslint-disable-next-line
     return sessionResponse.response.data.data.token;
   }
-}
+};
 
 const getVisitorId = async (req, res) => {
   try {
@@ -295,7 +295,7 @@ app.prepare().then(() => {
       if (requestAgent === 'desktop') {
         const token = await generateSession(req, res);
         const sessionId = {
-          id: token
+          id: token,
         };
         const campaignMaps = await getVariationsForVisitor(visitorId, {
           314234: '413871',
@@ -569,6 +569,7 @@ app.prepare().then(() => {
       const campaignMaps = await getVariationsForVisitor(visitorId, {
         317687: '418332',
         318677: '419447',
+        319527: '420486',
       });
 
       // redirectToPromo(orderId, req, res, () => {
