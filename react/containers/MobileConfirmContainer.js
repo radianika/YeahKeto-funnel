@@ -54,6 +54,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     // eslint-disable-next-line
     this.setState({
       pack: JSON.parse(localStorage.getItem('pack')),
+      summaryOpen: this.props.abtastyParams.campaignMaps['319527'] === '420487',
     });
   }
 
@@ -102,6 +103,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       'mobile-checkout-enter-payment-text-test-checkout',
       'mobile-hp-second-module-bulletpoints-test-checkout',
       'mobile-checkout-cc-label-test-checkout',
+      'mobile-checkout-order-summary-test-checkout',
     ];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
@@ -606,6 +608,7 @@ function mapStateToProps(reduxState, ownProps) {
       pack,
       submitStatus: reduxState.order.placeOrderStatus,
       submitFailure: reduxState.order.placeOrderError,
+      abtastyParams: reduxState.auth.abtastyParams
     };
   }
 
