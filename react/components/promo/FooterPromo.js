@@ -177,7 +177,7 @@ class FooterPromoComponent extends React.PureComponent {
                 CLICK HERE
               </a>
               &nbsp; to find evidence of a test, analysis, research, or study
-              describing the ben efits, performance or efficacy of American
+              describing the benefits, performance or efficacy of American
               Science CBD based on the expertise of relevant professionals.
             </Footer>
           </div>
