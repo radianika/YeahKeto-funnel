@@ -212,7 +212,7 @@ class ContactUs extends React.Component {
                 </li>
                 <li>
                   <span>Phone</span>
-                  <p>1-888-601-6014</p>
+                  <p>1-877-279-5390</p>
                 </li>
               </ul>
             </div>
