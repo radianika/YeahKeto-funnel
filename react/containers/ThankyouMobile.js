@@ -69,7 +69,7 @@ class ThankyouMobileComponent extends React.PureComponent {
           with the same.{' '}
         </p>
         <ul className="green-list">
-          <li>1-888-601-6014</li>
+          <li>1-877-279-5390</li>
           <li>support@americanscience.com</li>
         </ul>
         {items.length && (
