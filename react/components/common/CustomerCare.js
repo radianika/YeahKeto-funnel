@@ -13,7 +13,7 @@ const CustomerCare = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="list">
-      <b>Customer Service:</b> 1-888-601-6014<br />
+      <b>Customer Service:</b> 1-877-279-5390<br />
       <b>Email:</b> support&#64;americansciencecbd.com
     </p>
     <p className="normal">&nbsp;</p>

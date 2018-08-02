@@ -43,13 +43,13 @@ export const TermsAndConditions = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
-      <b>Toll Free Customer Service phone:</b> 1-888-601-6014
+      <b>Toll Free Customer Service phone:</b> 1-877-279-5390
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
       <b>
         All charges on your bank statement will read:
-        &quot;AmericanScience8886016014&quot;
+        &quot;AmericanScience8772795390&quot;
       </b>
     </p>
     <p className="normal">&nbsp;</p>
@@ -106,7 +106,7 @@ export const TermsAndConditions = () => (
     <p className="normal b">Shipping</p>
     <p className="normal">
       To initiate a return, please email us at
-      support&#64;americansciencecbd.com or contact us by phone (888) 601-6014
+      support&#64;americansciencecbd.com or contact us by phone (877) 279-5390
       24/7/365 to request a return merchandise authorization number. We require
       an RMA # received from customer support to accompany your return. All
       returned merchandise should be sent to us at 6525 Gunpark Drive Ste
@@ -593,7 +593,7 @@ export const TermsAndConditions = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="text-center">
-      <b>Toll Free Customer Service phone:</b> 1-888-601-6014
+      <b>Toll Free Customer Service phone:</b> 1-877-279-5390
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">&nbsp;</p>
