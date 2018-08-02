@@ -49,7 +49,7 @@ export const TermsAndConditions = () => (
     <p className="normal">
       <b>
         All charges on your bank statement will read:
-        &quot;AmericanScience8772795390&quot;
+        &quot;AmericanScience8886016014&quot;
       </b>
     </p>
     <p className="normal">&nbsp;</p>

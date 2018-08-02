@@ -383,7 +383,7 @@ class CartForm extends React.PureComponent {
                 I agree to the Terms &amp; Conditions &amp; Privacy Policy.{' '}
                 <br />
                 All charges on your bank statement will appear as
-                &quot;AmericanScience8772795390&quot;
+                &quot;AmericanScience8886016014&quot;
               </p>
               <div className="clearall" />
               <div className="frmelements btn-element">
