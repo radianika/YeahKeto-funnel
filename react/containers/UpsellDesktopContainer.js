@@ -45,6 +45,19 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
             />
           )}
 
+          <React.Fragment>
+            {upsell === 1 &&
+              affId === 'cake' && (
+                <iframe
+                  src="https://response-pixel.com/p.ashx?o=608&e=232"
+                  frameBorder="0"
+                  width="1"
+                  height="1"
+                  style={{ position: 'absolute' }}
+                />
+              )}
+          </React.Fragment>
+
         <div className="container">
           <div className="upsell-box">
             <div className="up-header">

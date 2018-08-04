@@ -16,6 +16,7 @@ class PromoMobileUpsell extends React.PureComponent {
         requestAgent,
         sessionId,
         prev,
+        affId,
       },
       req: {
         session: { ip },
@@ -33,6 +34,8 @@ class PromoMobileUpsell extends React.PureComponent {
           prev,
         }),
       );
+
+      return affId;
     }
   }
 

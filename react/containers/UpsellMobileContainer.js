@@ -95,7 +95,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
   };
 
   render() {
-    const { upsell, offerId, adv_sub } = this.props.query;
+    const { upsell, offerId, adv_sub, affId } = this.props.query;
     const { abtastyParams } = this.props;
     const isPrevUpsell11 =
       this.props.abtastyParams.prev &&
@@ -116,6 +116,19 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                 style={{ position: 'absolute' }}
               />
             )}
+
+          <React.Fragment>
+            {upsell === 1 &&
+              affId === 'cake' && (
+                <iframe
+                  src="https://response-pixel.com/p.ashx?o=608&e=232"
+                  frameBorder="0"
+                  width="1"
+                  height="1"
+                  style={{ position: 'absolute' }}
+                />
+              )}
+          </React.Fragment>
           <SuccessModal
             visible={this.props.submitStatus === 'success'}
             message="Order updated successfully."
