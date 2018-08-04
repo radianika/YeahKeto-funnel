@@ -28,7 +28,8 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
   };
 
   render() {
-    const { upsell, offerId, adv_sub } = this.props.query;
+    const { upsell, offerId, adv_sub, affId } = this.props.query;
+
     return (
       <React.Fragment>
         {upsell === 1 &&
