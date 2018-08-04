@@ -416,6 +416,7 @@ app.prepare().then(() => {
       const offerId = req.query.sourceValue5;
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
+      const affId = req.query.affId;
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-desktop-upsell', {
         upsell: 1,
@@ -424,6 +425,7 @@ app.prepare().then(() => {
         transaction_id,
         adv_sub,
         sessionId,
+        affId,
       });
       // });
     } catch (error) {
@@ -598,6 +600,7 @@ app.prepare().then(() => {
       const offerId = req.query.sourceValue5;
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
+      const affId = req.query.affId;
       const { visitorId } = await getVisitorId(req, res);
       const campaignId = '308072';
       const variationId = await getVariationForVisitor(visitorId, campaignId);
@@ -616,6 +619,7 @@ app.prepare().then(() => {
         campaignId,
         visitorId,
         cid,
+        affId,
       });
     } catch (error) {
       Raven.captureException(error);

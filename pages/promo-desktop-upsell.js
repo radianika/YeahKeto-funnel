@@ -11,6 +11,7 @@ class SelectPackage extends React.PureComponent {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
+      return query;
     }
   }
 
