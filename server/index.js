@@ -351,7 +351,6 @@ app.prepare().then(() => {
         const campaignMaps = await getVariationsForVisitor(visitorId, {
           314431: undefined,
           317679: '317679',
-          317677: '418313',
         });
 
         app.render(req, res, '/promo-mobile', {

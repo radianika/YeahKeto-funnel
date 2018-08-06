@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 class PromoSectionOneMobileComponent extends React.PureComponent {
   render() {
     const variation317679 = this.props.abtastyParams.campaignMaps['317679'];
-    const variation317677 = this.props.abtastyParams.campaignMaps['317677'];
+    const variation317677 = this.props.isAuthentic.isAuthenticUser
+      ? '418314'
+      : '418313';
     return (
       <div
         id="section-one"

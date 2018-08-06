@@ -98,7 +98,6 @@ class FooterPromoComponent extends React.PureComponent {
       const eventsArray = [
         'mobile-hp-benefits-module-test-rush-my-order',
         'mobile-hp-first-module-badge-test-rush-my-order',
-        'mobile-hp-as-advertised-on-text-test-rush-my-order',
       ];
       const tracking_data = {
         visitor_id: abtastyParams.visitorId,
