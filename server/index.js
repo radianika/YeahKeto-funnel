@@ -351,7 +351,6 @@ app.prepare().then(() => {
         const campaignMaps = await getVariationsForVisitor(visitorId, {
           314431: undefined,
           316547: '416840',
-          314728: '414506',
           317679: '317679',
           317677: '418313',
         });

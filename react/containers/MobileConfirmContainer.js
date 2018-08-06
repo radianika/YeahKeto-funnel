@@ -94,7 +94,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     const eventsArray = [
       'mobile-hp-benefits-module-test-checkout',
       'mobile-hp-last-module-badge-test-checkout',
-      'mobile-hp-last-module-picture-test-checkout',
       'mobile-hp-first-module-badge-test-checkout',
       'mobile-hp-as-advertised-on-text-test-checkout',
       'mobile-checkout-enter-payment-text-test-checkout',
