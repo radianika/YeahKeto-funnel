@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 class PromoSectionTwoMobileComponent extends React.PureComponent {
   render() {
     const variation315258 = this.props.abtastyParams.campaignMaps['315258'];
-    const variation317683 = this.props.abtastyParams.campaignMaps['317683'];
     return (
       <div id="section-two">
         <p className="s2-hd-txt">
@@ -47,7 +46,7 @@ class PromoSectionTwoMobileComponent extends React.PureComponent {
           <p className="s2-txt4-T">Quick Absorption, Extended Release </p>
         )}
         <p className="clearall" />
-        {variation317683 === '418325' && (
+        {this.props.isAuthentic.isAuthenticUser ? (
           <ul className="s2-list">
             <li>
               <i className="s2-icons sprite3 sprite-s2limg1" />{' '}
@@ -73,8 +72,7 @@ class PromoSectionTwoMobileComponent extends React.PureComponent {
               <br />WITHOUT PRESCRIPTION
             </li>
           </ul>
-        )}
-        {variation317683 === '418326' && (
+        ) : (
           <ul className="s2-list">
             <img alt="" className="sprite3 sprite3-variation317683-418326" />
           </ul>
@@ -95,6 +93,7 @@ class PromoSectionTwoMobileComponent extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     abtastyParams: state.auth.abtastyParams,
+    isAuthentic: state.auth.isAuthentic,
   };
 }
 

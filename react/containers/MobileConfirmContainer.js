@@ -101,7 +101,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       'mobile-hp-first-module-badge-test-checkout',
       'mobile-hp-as-advertised-on-text-test-checkout',
       'mobile-checkout-enter-payment-text-test-checkout',
-      'mobile-hp-second-module-bulletpoints-test-checkout',
       'mobile-checkout-cc-label-test-checkout',
       'mobile-checkout-order-summary-test-checkout',
     ];
@@ -608,7 +607,7 @@ function mapStateToProps(reduxState, ownProps) {
       pack,
       submitStatus: reduxState.order.placeOrderStatus,
       submitFailure: reduxState.order.placeOrderError,
-      abtastyParams: reduxState.auth.abtastyParams
+      abtastyParams: reduxState.auth.abtastyParams,
     };
   }
 
