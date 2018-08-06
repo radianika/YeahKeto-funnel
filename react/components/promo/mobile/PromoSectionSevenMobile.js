@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 
 class PromoSectionSevenMobileComponent extends React.PureComponent {
   render() {
-    const variation316547 = this.props.abtastyParams.campaignMaps['316547'];
+    const variation316547 = this.props.isAuthentic.isAuthenticUser
+      ? '416840'
+      : '416841';
     const variation314728 = this.props.isAuthentic.isAuthenticUser
       ? '414509'
       : '414507';

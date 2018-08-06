@@ -350,7 +350,6 @@ app.prepare().then(() => {
         const cid = getParameterByName('cid', req.originalUrl);
         const campaignMaps = await getVariationsForVisitor(visitorId, {
           314431: undefined,
-          316547: '416840',
           317679: '317679',
           317677: '418313',
         });
