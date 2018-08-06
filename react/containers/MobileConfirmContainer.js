@@ -93,7 +93,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const eventsArray = [
       'mobile-hp-benefits-module-test-checkout',
-      'mobile-hp-first-module-badge-test-checkout',
       'mobile-checkout-enter-payment-text-test-checkout',
       'mobile-checkout-cc-label-test-checkout',
       'mobile-checkout-order-summary-test-checkout',

@@ -95,10 +95,7 @@ class FooterPromoComponent extends React.PureComponent {
       const { localStorage } = window;
       const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
 
-      const eventsArray = [
-        'mobile-hp-benefits-module-test-rush-my-order',
-        'mobile-hp-first-module-badge-test-rush-my-order',
-      ];
+      const eventsArray = ['mobile-hp-benefits-module-test-rush-my-order'];
       const tracking_data = {
         visitor_id: abtastyParams.visitorId,
         device_type: 'MOBILE_PHONE',
