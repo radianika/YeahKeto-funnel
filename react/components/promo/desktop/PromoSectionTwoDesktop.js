@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 class PromoSectionTwoDesktopComponent extends React.PureComponent {
   render() {
-    const variation315257 = this.props.abtastyParams.campaignMaps['315257'];
     const variation317682 = this.props.abtastyParams.campaignMaps['317682'];
     return (
       <div className="section2">
@@ -30,15 +29,9 @@ class PromoSectionTwoDesktopComponent extends React.PureComponent {
             </b>{' '}
           </p>
           <p className="s2subhd1">All Natural Organic CBD Extract </p>
-          {!variation315257 || variation315257 === '415142' ? (
-            <p className="s2subhd2">
-              Quick Absorption, Extended Release Formula{' '}
-            </p>
-          ) : (
-            <p className="s2subhd2-T">
-              Quick Absorption &amp; Fast Action Formula{' '}
-            </p>
-          )}
+          <p className="s2subhd2">
+            Quick Absorption, Extended Release Formula{' '}
+          </p>
           {variation317682 === '418323' && (
             <ul className="s2list">
               <li>

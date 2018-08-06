@@ -35,7 +35,6 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
   };
 
   render() {
-    const variation314234 = this.props.abtastyParams.campaignMaps['314234'];
     const variation314334 = this.props.abtastyParams.campaignMaps['314334'];
     const variation315256 = this.props.abtastyParams.campaignMaps['315256'];
     const variation317090 = this.props.abtastyParams.campaignMaps['317090'];
@@ -61,18 +60,10 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
                 this.props.abtastyParams.campaignMaps['314363']
               } sprite-s1hd`}
             />
-            {!variation314234 || variation314234 === '413871' ? (
-              <p className="s1txt">
-                Derived from organic, US-harvested hemp, lab-tested for quality.
-                Clinically proven therapeutic effects.{' '}
-              </p>
-            ) : null}
-            {variation314234 === '413872' ? (
-              <p className="s1txt">
-                For a limited, receive a FREE bottle of our FDA Approved CBD Oil
-                on your first order (no prescription required).
-              </p>
-            ) : null}
+            <p className="s1txt">
+              For a limited, receive a FREE bottle of our FDA Approved CBD Oil
+              on your first order (no prescription required).
+            </p>
             {!variation314334 || variation314334 === '414030' ? (
               <ul className="s1list ">
                 <li className="sprite2 sprite-s1bullet">
