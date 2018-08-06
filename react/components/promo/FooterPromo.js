@@ -98,7 +98,6 @@ class FooterPromoComponent extends React.PureComponent {
       const eventsArray = [
         'mobile-hp-top-module-symbol1-test-rush-my-order',
         'mobile-hp-benefits-module-test-rush-my-order',
-        'mobile-hp-rush-my-order-texts-test-rush-my-order',
         'mobile-hp-last-module-badge-test-rush-my-order',
         'mobile-hp-last-module-picture-test-rush-my-order',
         'mobile-hp-first-module-badge-test-rush-my-order',
@@ -130,7 +129,9 @@ class FooterPromoComponent extends React.PureComponent {
   };
 
   render() {
-    const variation316344 = this.props.abtastyParams.campaignMaps['316344'];
+    const variation316344 = this.props.isAuthentic.isAuthenticUser
+      ? '416547'
+      : '416545';
 
     return (
       <footer ref={this.footerRef}>
