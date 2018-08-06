@@ -95,7 +95,9 @@ class UpsellMobileContainerComponent extends React.PureComponent {
   };
 
   render() {
-    const { upsell, offerId, adv_sub, affId } = this.props.query;
+    const {
+      upsell, offerId, adv_sub, affId,
+    } = this.props.query;
     const { abtastyParams } = this.props;
     const isPrevUpsell11 =
       this.props.abtastyParams.prev &&
@@ -135,24 +137,14 @@ class UpsellMobileContainerComponent extends React.PureComponent {
           />
           {upsell === 1 && (
             <React.Fragment>
-              {this.props.abtastyParams.variationId === '406285' && (
-                <React.Fragment>
-                  <a href="/">
-                    <img
-                      src="/static/mobile/images/logo.png"
-                      alt=""
-                      className="logo"
-                    />
-                  </a>
-                  <Upsell1
-                    upgrade={this.upgrade}
-                    {...this.props}
-                    abtastyParams={abtastyParams}
-                    sendTransactionDetails={this.sendTransactionDetails}
-                  />
-                </React.Fragment>
-              )}
-              {this.props.abtastyParams.variationId === '406286' && (
+              {this.props.isAuthentic.isAuthenticUser ? (
+                <Upsell1Treatment2
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
+                />
+              ) : (
                 <React.Fragment>
                   <a href="/">
                     <img
@@ -168,14 +160,6 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                     sendTransactionDetails={this.sendTransactionDetails}
                   />
                 </React.Fragment>
-              )}
-              {this.props.abtastyParams.variationId === '406287' && (
-                <Upsell1Treatment2
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
               )}
             </React.Fragment>
           )}
@@ -303,6 +287,7 @@ function mapStateToProps(state) {
   return {
     submitStatus: state.order.addUpsellToOrderStatus,
     abtastyParams: state.auth.abtastyParams,
+    isAuthentic: state.auth.isAuthentic,
   };
 }
 

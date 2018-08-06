@@ -92,6 +92,37 @@ server.use(
 
 server.use('/*', rateLimiter);
 
+const isAuthentic = req => {
+  let isAuthenticUser = false;
+  const authenticParams = [
+    'affId',
+    'sourceValue3',
+    'sourceValue4',
+    'sourceValue5',
+    'utm_source',
+    'utm_medium',
+    'utm_campaign',
+    'utm_term',
+    'utm_content',
+    'mailsoft_person_id',
+    'cid',
+    'sms_id',
+    'promocode',
+  ];
+
+  if (req.query && Object.keys(req.query).length) {
+    const queryParams = Object.keys(req.query);
+
+    isAuthenticUser = queryParams.some(param => {
+      if (authenticParams.includes(param)) {
+        return true;
+      }
+      return false;
+    });
+  }
+  return isAuthenticUser;
+};
+
 // Security.js for protecting agains xss attacks
 server.use((req, res, cb) => {
   res.set('X-Powered-By', 'American Science CBD');
@@ -254,33 +285,7 @@ app.prepare().then(() => {
     try {
       const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
       const { visitorId, isNew } = await getVisitorId(req, res);
-      let isAuthenticUser = false;
-      const authenticParams = [
-        'affId',
-        'sourceValue3',
-        'sourceValue4',
-        'sourceValue5',
-        'utm_source',
-        'utm_medium',
-        'utm_campaign',
-        'utm_term',
-        'utm_content',
-        'mailsoft_person_id',
-        'cid',
-        'sms_id',
-        'promocode',
-      ];
-
-      if (req.query && Object.keys(req.query).length) {
-        const queryParams = Object.keys(req.query);
-
-        isAuthenticUser = queryParams.some(param => {
-          if (authenticParams.includes(param)) {
-            return true;
-          }
-          return false;
-        });
-      }
+      const isAuthenticUser = isAuthentic(req);
 
       if (isNew) {
         res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
@@ -601,10 +606,8 @@ app.prepare().then(() => {
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
       const affId = req.query.affId;
+      const isAuthenticUser = isAuthentic(req);
       const { visitorId } = await getVisitorId(req, res);
-      const campaignId = '308072';
-      const variationId = await getVariationForVisitor(visitorId, campaignId);
-      console.log({ variationId, visitorId });
       const cid = qualifiesForCidDiscount(req)
         ? getParameterByName('cid', req.originalUrl)
         : null;
@@ -614,9 +617,8 @@ app.prepare().then(() => {
         orderId,
         transaction_id,
         adv_sub,
+        isAuthenticUser,
         sessionId,
-        variationId,
-        campaignId,
         visitorId,
         cid,
         affId,
