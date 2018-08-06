@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 class PromoSectionTwoMobileComponent extends React.PureComponent {
   render() {
-    const variation315258 = this.props.abtastyParams.campaignMaps['315258'];
     return (
       <div id="section-two">
         <p className="s2-hd-txt">
@@ -40,7 +39,7 @@ class PromoSectionTwoMobileComponent extends React.PureComponent {
           </b>
         </p>
         <p className="s2-txt3">All Natural Organic CBD Extract</p>
-        {!variation315258 || variation315258 === '415144' ? (
+        {this.props.isAuthentic.isAuthenticUser ? (
           <p className="s2-txt4">Quick Absorption, Extended Release </p>
         ) : (
           <p className="s2-txt4-T">Quick Absorption, Extended Release </p>
