@@ -29,9 +29,15 @@ class PromoSectionTwoDesktopComponent extends React.PureComponent {
             </b>{' '}
           </p>
           <p className="s2subhd1">All Natural Organic CBD Extract </p>
-          <p className="s2subhd2">
-            Quick Absorption, Extended Release Formula{' '}
-          </p>
+          {this.props.isAuthentic.isAuthenticUser ? (
+            <p className="s2subhd2-T">
+              Quick Absorption &amp; Fast Action Formula{' '}
+            </p>
+          ) : (
+            <p className="s2subhd2">
+              Quick Absorption, Extended Release Formula{' '}
+            </p>
+          )}
           {variation317682 === '418323' && (
             <ul className="s2list">
               <li>

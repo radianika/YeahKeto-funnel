@@ -60,10 +60,17 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
                 this.props.abtastyParams.campaignMaps['314363']
               } sprite-s1hd`}
             />
-            <p className="s1txt">
-              For a limited, receive a FREE bottle of our FDA Approved CBD Oil
-              on your first order (no prescription required).
-            </p>
+            {this.props.isAuthentic.isAuthenticUser ? (
+              <p className="s1txt">
+                Derived from organic, US-harvested hemp, lab-tested for quality.
+                Clinically proven therapeutic effects.{' '}
+              </p>
+            ) : (
+              <p className="s1txt">
+                For a limited, receive a FREE bottle of our FDA Approved CBD Oil
+                on your first order (no prescription required).
+              </p>)
+            }
             {!variation314334 || variation314334 === '414030' ? (
               <ul className="s1list ">
                 <li className="sprite2 sprite-s1bullet">
