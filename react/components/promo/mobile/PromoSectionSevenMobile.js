@@ -14,7 +14,7 @@ class PromoSectionSevenMobileComponent extends React.PureComponent {
         <i className={`s7-logo sprite3 sprite-s7-logo-${variation316547}`} />{' '}
         <i
           className={`s1-hd sprite3 ${
-            this.props.abtastyParams.campaignMaps['314411']
+            this.props.isAuthentic.isAuthenticUser ? '414125' : '414126'
           } sprite-s1-hd`}
         />
         <p className="s1-txt4">
@@ -56,6 +56,7 @@ class PromoSectionSevenMobileComponent extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     abtastyParams: state.auth.abtastyParams,
+    isAuthentic: state.auth.isAuthentic,
   };
 }
 
