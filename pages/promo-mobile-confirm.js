@@ -1,10 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
+import moment from 'moment';
 import { MobileConfirmContainer } from 'react/containers';
 import { connect } from 'react-redux';
 import { AuthActions, OrderActions } from 'redux/actions';
 import { PromoSession } from 'react/components/common';
 import idx from 'idx';
+import axios from 'axios/index';
 
 class Confirm extends React.PureComponent {
   static async getInitialProps({
