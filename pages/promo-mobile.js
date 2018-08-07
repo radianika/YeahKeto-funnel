@@ -16,7 +16,11 @@ class Promo extends React.PureComponent {
       store,
       isServer,
       query: {
-        visitorId, requestAgent, campaignMaps, isAuthenticUser, API_BASE_URL,
+        visitorId,
+        requestAgent,
+        campaignMaps,
+        isAuthenticUser,
+        API_BASE_URL,
       },
       req: {
         session: { ip },
@@ -66,7 +70,9 @@ class Promo extends React.PureComponent {
 
     // check for sms_id
     if (smsId) {
-      const url  = `${this.props.API_BASE_URL}/v1/track/smsclick${window.location.search}`;
+      const url = `${this.props.API_BASE_URL}/v1/track/smsclick${
+        window.location.search
+      }`;
       axios.get(url);
     }
 
@@ -75,7 +81,9 @@ class Promo extends React.PureComponent {
 
     // check for email_id
     if (emailId) {
-      const url  = `${this.props.API_BASE_URL}/v1/track/emailclick${window.location.search}`;
+      const url = `${this.props.API_BASE_URL}/v1/track/emailclick${
+        window.location.search
+      }`;
       axios.get(url);
     }
   }
@@ -91,17 +99,7 @@ class Promo extends React.PureComponent {
       JSON.stringify(this.props.abtastyParams.campaignMaps),
     );
 
-    const campaigns = [
-      '314411',
-      '314431',
-      '315258',
-      '316344',
-      '316547',
-      '314728',
-      '317679',
-      '317677',
-      '317683',
-    ];
+    const campaigns = ['314431'];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
       ip: this.props.abtastyParams.ip,

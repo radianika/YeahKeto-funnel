@@ -92,16 +92,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     const revenue = getRevenueAfterDiscount({ cid, revenue: this.getPrice() });
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const eventsArray = [
-      'mobile-hp-top-module-symbol1-test-checkout',
       'mobile-hp-benefits-module-test-checkout',
-      'mobile-hp-module2-caption1-test-checkout',
-      'mobile-hp-rush-my-order-texts-test-checkout',
-      'mobile-hp-last-module-badge-test-checkout',
-      'mobile-hp-last-module-picture-test-checkout',
-      'mobile-hp-first-module-badge-test-checkout',
-      'mobile-hp-as-advertised-on-text-test-checkout',
       'mobile-checkout-enter-payment-text-test-checkout',
-      'mobile-hp-second-module-bulletpoints-test-checkout',
       'mobile-checkout-cc-label-test-checkout',
       'mobile-checkout-order-summary-test-checkout',
     ];
@@ -608,7 +600,7 @@ function mapStateToProps(reduxState, ownProps) {
       pack,
       submitStatus: reduxState.order.placeOrderStatus,
       submitFailure: reduxState.order.placeOrderError,
-      abtastyParams: reduxState.auth.abtastyParams
+      abtastyParams: reduxState.auth.abtastyParams,
     };
   }
 
