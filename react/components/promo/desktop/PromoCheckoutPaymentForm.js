@@ -211,6 +211,7 @@ function mapStateToProps(reduxState) {
       },
       submitStatus: reduxState.order.placeOrderStatus,
       submitFailure: reduxState.order.placeOrderError,
+      abtastyParams: reduxState.auth.abtastyParams,
     };
   }
   return {};

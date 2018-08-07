@@ -24,6 +24,8 @@ import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
 import redis from './redis-config';
+
+const path = require('path');
 // import authenticParams from '../constants/urlParams';
 
 require('dotenv').config();
@@ -91,6 +93,37 @@ server.use(
 );
 
 server.use('/*', rateLimiter);
+
+const isAuthentic = req => {
+  let isAuthenticUser = false;
+  const authenticParams = [
+    'affId',
+    'sourceValue3',
+    'sourceValue4',
+    'sourceValue5',
+    'utm_source',
+    'utm_medium',
+    'utm_campaign',
+    'utm_term',
+    'utm_content',
+    'mailsoft_person_id',
+    'cid',
+    'sms_id',
+    'promocode',
+  ];
+
+  if (req.query && Object.keys(req.query).length) {
+    const queryParams = Object.keys(req.query);
+
+    isAuthenticUser = queryParams.some(param => {
+      if (authenticParams.includes(param)) {
+        return true;
+      }
+      return false;
+    });
+  }
+  return isAuthenticUser;
+};
 
 // Security.js for protecting agains xss attacks
 server.use((req, res, cb) => {
@@ -233,6 +266,34 @@ app.prepare().then(() => {
 
   server.get('/cart', async (req, res) => app.render(req, res, '/cart'));
 
+  server.get('/cbd', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'index.html')),
+  );
+
+  server.get('/cbd/checkout', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'checkout.html')),
+  );
+
+  server.get('/cbd/thankyou', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'thankyou.html')),
+  );
+
+  server.get('/cbd/tnc', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'tnc.html')),
+  );
+
+  server.get('/cbd/privacy', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'privacypolicy.html')),
+  );
+
+  server.get('/cbd/customer', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'customer.html')),
+  );
+
+  server.get('/cbd/cvv', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'cvv.html')),
+  );
+
   server.get('/thankyou?', async (req, res) => {
     try {
       const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
@@ -254,33 +315,7 @@ app.prepare().then(() => {
     try {
       const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
       const { visitorId, isNew } = await getVisitorId(req, res);
-      let isAuthenticUser = false;
-      const authenticParams = [
-        'affId',
-        'sourceValue3',
-        'sourceValue4',
-        'sourceValue5',
-        'utm_source',
-        'utm_medium',
-        'utm_campaign',
-        'utm_term',
-        'utm_content',
-        'mailsoft_person_id',
-        'cid',
-        'sms_id',
-        'promocode',
-      ];
-
-      if (req.query && Object.keys(req.query).length) {
-        const queryParams = Object.keys(req.query);
-
-        isAuthenticUser = queryParams.some(param => {
-          if (authenticParams.includes(param)) {
-            return true;
-          }
-          return false;
-        });
-      }
+      const isAuthenticUser = isAuthentic(req);
 
       if (isNew) {
         res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
@@ -298,12 +333,9 @@ app.prepare().then(() => {
           id: token,
         };
         const campaignMaps = await getVariationsForVisitor(visitorId, {
-          314234: '413871',
           314334: '414030',
           314363: '414063',
-          314691: '414447',
           315256: '415140',
-          315257: '415142',
           314104: '413653',
           316439: '416690',
           317090: '417538',
@@ -347,15 +379,7 @@ app.prepare().then(() => {
       if (requestAgent === 'mobile') {
         const cid = getParameterByName('cid', req.originalUrl);
         const campaignMaps = await getVariationsForVisitor(visitorId, {
-          314411: '414125',
           314431: undefined,
-          315258: '415144',
-          316344: '416545',
-          316547: '416840',
-          314728: '414506',
-          317679: '317679',
-          317677: '418313',
-          317683: '418325',
         });
 
         app.render(req, res, '/promo-mobile', {
@@ -568,11 +592,7 @@ app.prepare().then(() => {
       const cid = qualifiesForCidDiscount(req)
         ? getParameterByName('cid', req.originalUrl)
         : null;
-      const campaignMaps = await getVariationsForVisitor(visitorId, {
-        317687: '418332',
-        318677: '419447',
-        319527: '420486',
-      });
+      const isAuthenticUser = isAuthentic(req);
 
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-mobile-confirm', {
@@ -584,7 +604,7 @@ app.prepare().then(() => {
         transaction_id,
         adv_sub,
         cid,
-        campaignMaps,
+        isAuthenticUser,
       });
       // });
     } catch (error) {
@@ -601,10 +621,8 @@ app.prepare().then(() => {
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
       const affId = req.query.affId;
+      const isAuthenticUser = isAuthentic(req);
       const { visitorId } = await getVisitorId(req, res);
-      const campaignId = '308072';
-      const variationId = await getVariationForVisitor(visitorId, campaignId);
-      console.log({ variationId, visitorId });
       const cid = qualifiesForCidDiscount(req)
         ? getParameterByName('cid', req.originalUrl)
         : null;
@@ -614,9 +632,8 @@ app.prepare().then(() => {
         orderId,
         transaction_id,
         adv_sub,
+        isAuthenticUser,
         sessionId,
-        variationId,
-        campaignId,
         visitorId,
         cid,
         affId,

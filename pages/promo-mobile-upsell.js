@@ -15,6 +15,7 @@ class PromoMobileUpsell extends React.PureComponent {
         campaignId,
         requestAgent,
         sessionId,
+        isAuthenticUser,
         prev,
         affId,
       },
@@ -32,6 +33,11 @@ class PromoMobileUpsell extends React.PureComponent {
           requestAgent,
           ip,
           prev,
+        }),
+      );
+      store.dispatch(
+        AuthActions.setIsAuthenticParams({
+          isAuthenticUser,
         }),
       );
 

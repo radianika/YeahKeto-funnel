@@ -46,7 +46,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       pack: {},
     };
     this.toggleSummary = this.toggleSummary.bind(this);
-    console.log(this.props);
   }
 
   componentDidMount() {
@@ -54,7 +53,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     // eslint-disable-next-line
     this.setState({
       pack: JSON.parse(localStorage.getItem('pack')),
-      summaryOpen: this.props.abtastyParams.campaignMaps['319527'] === '420487',
+      summaryOpen: !this.props.isAuthentic.isAuthenticUser,
     });
   }
 
@@ -91,20 +90,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     const id = `${this.state.pack.id}`;
     const revenue = getRevenueAfterDiscount({ cid, revenue: this.getPrice() });
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const eventsArray = [
-      'mobile-hp-top-module-symbol1-test-checkout',
-      'mobile-hp-benefits-module-test-checkout',
-      'mobile-hp-module2-caption1-test-checkout',
-      'mobile-hp-rush-my-order-texts-test-checkout',
-      'mobile-hp-last-module-badge-test-checkout',
-      'mobile-hp-last-module-picture-test-checkout',
-      'mobile-hp-first-module-badge-test-checkout',
-      'mobile-hp-as-advertised-on-text-test-checkout',
-      'mobile-checkout-enter-payment-text-test-checkout',
-      'mobile-hp-second-module-bulletpoints-test-checkout',
-      'mobile-checkout-cc-label-test-checkout',
-      'mobile-checkout-order-summary-test-checkout',
-    ];
+    const eventsArray = ['mobile-hp-benefits-module-test-checkout'];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
       ip: abtastyParams ? abtastyParams.ip : '',
@@ -258,8 +244,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
   render() {
     const { active_cc_type } = this.state;
     const { cid } = this.props.query;
-    const variation317687 = this.props.abtastyParams.campaignMaps['317687'];
-    const variation318677 = this.props.abtastyParams.campaignMaps['318677'];
 
     return (
       <div className="mobile-body">
@@ -290,7 +274,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
               <div className="clearfix" />
               <p className="clearall" />
               <p className="trial-toptxt1 border-bottom">
-                {variation317687 === '418333'
+                {this.props.isAuthentic.isAuthenticUser
                   ? 'Complete your order!'
                   : 'Enter your payment information'}
               </p>
@@ -322,7 +306,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                       </p>
                     */}
                     <div className="cards">
-                      {variation318677 === '419448' && (
+                      {this.props.isAuthentic.isAuthenticUser && (
                         <span className="cards-prefix">We accept:</span>
                       )}
                       <span
@@ -602,17 +586,22 @@ const MobileConfirmContainerPage = reduxForm({
 function mapStateToProps(reduxState, ownProps) {
   const { productId } = ownProps.query;
   const pack = packages.find(p => String(p.id) === String(productId));
+  let props = {
+    initialValues: {},
+    pack,
+    abtastyParams: reduxState.auth.abtastyParams,
+    isAuthentic: reduxState.auth.isAuthentic,
+  };
+
   if (reduxState.order) {
-    return {
-      initialValues: {},
-      pack,
+    props = {
+      ...props,
       submitStatus: reduxState.order.placeOrderStatus,
       submitFailure: reduxState.order.placeOrderError,
-      abtastyParams: reduxState.auth.abtastyParams
     };
   }
 
-  return {};
+  return props;
 }
 
 const MobileConfirmContainer = connect(mapStateToProps, {
