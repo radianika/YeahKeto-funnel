@@ -562,11 +562,7 @@ app.prepare().then(() => {
       const cid = qualifiesForCidDiscount(req)
         ? getParameterByName('cid', req.originalUrl)
         : null;
-      const campaignMaps = await getVariationsForVisitor(visitorId, {
-        317687: '418332',
-        318677: '419447',
-        319527: '420486',
-      });
+      const isAuthenticUser = isAuthentic(req);
 
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-mobile-confirm', {
@@ -578,7 +574,7 @@ app.prepare().then(() => {
         transaction_id,
         adv_sub,
         cid,
-        campaignMaps,
+        isAuthenticUser,
       });
       // });
     } catch (error) {
