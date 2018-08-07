@@ -10,7 +10,6 @@ import querystring from 'querystring';
 import Raven from 'raven';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-var path = require('path');
 import {
   get,
   post,
@@ -25,6 +24,8 @@ import security from './middlewares/Security';
 import rateLimiter from './middlewares/RateLimiter';
 import config from './server-config';
 import redis from './redis-config';
+
+const path = require('path');
 // import authenticParams from '../constants/urlParams';
 
 require('dotenv').config();
@@ -265,17 +266,25 @@ app.prepare().then(() => {
 
   server.get('/cart', async (req, res) => app.render(req, res, '/cart'));
 
-  server.get('/cbd', async (req, res) => {
-    return res.sendFile(path.join(__dirname, '../static/temp', 'index.html'))
-  });
+  server.get('/cbd', async (req, res) => res.sendFile(path.join(__dirname, '../static/temp', 'index.html')));
 
-  server.get('/cbd/checkout', async (req, res) => {
-    return res.sendFile(path.join(__dirname, '../static/temp', 'checkout.html'))
-  });
+  server.get('/cbd/checkout', async (req, res) => res.sendFile(
+    path.join(__dirname, '../static/temp', 'checkout.html'),
+  ));
 
-  server.get('/cbd/thankyou', async (req, res) => {
-    return res.sendFile(path.join(__dirname, '../static/temp', 'thankyou.html'))
-  });
+  server.get('/cbd/thankyou', async (req, res) => res.sendFile(
+    path.join(__dirname, '../static/temp', 'thankyou.html'),
+  ));
+
+  server.get('/cbd/tnc', async (req, res) => res.sendFile(path.join(__dirname, '../static/temp', 'tnc.html')));
+
+  server.get('/cbd/privacy', async (req, res) => res.sendFile(
+    path.join(__dirname, '../static/temp', 'privacypolicy.html'),
+  ));
+
+  server.get('/cbd/customer', async (req, res) => res.sendFile(
+    path.join(__dirname, '../static/temp', 'customer.html'),
+  ));
 
   server.get('/thankyou?', async (req, res) => {
     try {
