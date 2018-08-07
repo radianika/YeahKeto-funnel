@@ -563,7 +563,6 @@ app.prepare().then(() => {
         ? getParameterByName('cid', req.originalUrl)
         : null;
       const campaignMaps = await getVariationsForVisitor(visitorId, {
-        317687: '418332',
         318677: '419447',
       });
       const isAuthenticUser = isAuthentic(req);

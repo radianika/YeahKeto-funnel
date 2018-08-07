@@ -93,7 +93,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const eventsArray = [
       'mobile-hp-benefits-module-test-checkout',
-      'mobile-checkout-enter-payment-text-test-checkout',
       'mobile-checkout-cc-label-test-checkout',
     ];
     const tracking_data = {
@@ -249,7 +248,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
   render() {
     const { active_cc_type } = this.state;
     const { cid } = this.props.query;
-    const variation317687 = this.props.abtastyParams.campaignMaps['317687'];
     const variation318677 = this.props.abtastyParams.campaignMaps['318677'];
 
     return (
@@ -281,7 +279,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
               <div className="clearfix" />
               <p className="clearall" />
               <p className="trial-toptxt1 border-bottom">
-                {variation317687 === '418333'
+                {this.props.isAuthentic.isAuthenticUser
                   ? 'Complete your order!'
                   : 'Enter your payment information'}
               </p>
