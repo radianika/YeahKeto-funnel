@@ -19,7 +19,7 @@ class PromoCheckout extends React.PureComponent {
     super(props);
     this.state = {
       selected: packages[0],
-      scrolled: false
+      scrolled: false,
     };
     console.log(this.props);
   }
@@ -88,10 +88,7 @@ class PromoCheckout extends React.PureComponent {
 
   render() {
     const { selected } = this.state;
-    const shippingDate =
-      this.props.order && this.props.order.dateCreated
-        ? moment(this.props.order.dateCreated).add(5, 'day')
-        : moment();
+    const shippingDate = moment().add(2, 'day');
     const { adv_sub, offerId, transaction_id } = this.props.query;
     const variation313018 = this.props.abtastyParams.campaignMaps['313018'];
     const variation319131 = this.props.abtastyParams.campaignMaps['319131'];
@@ -123,15 +120,19 @@ class PromoCheckout extends React.PureComponent {
                   alt="chktop"
                   className="chktop-img"
                 />
-                {variation319131 === '420044' ? <img
-                  src="/static/promo/desktop/images/ck-seal-treatment.png"
-                  alt="ck-seal-treatment"
-                  className="ck-ab"
-                /> : <img
-                  src="/static/promo/desktop/images/ck-seal.png"
-                  alt="ck-seal"
-                  className="ck-ab"
-                />}
+                {variation319131 === '420044' ? (
+                  <img
+                    src="/static/promo/desktop/images/ck-seal-treatment.png"
+                    alt="ck-seal-treatment"
+                    className="ck-ab"
+                  />
+                ) : (
+                  <img
+                    src="/static/promo/desktop/images/ck-seal.png"
+                    alt="ck-seal"
+                    className="ck-ab"
+                  />
+                )}
               </div>
               <div className="chk-lft">
                 <p className="chklft-hding">
@@ -173,7 +174,8 @@ class PromoCheckout extends React.PureComponent {
                             REGULAR PRICE {pack.regularPrice}
                           </p>
                           <p className="pkgcont-price">
-                            {variation319133 === '420047' && '$'}{pack.price}
+                            {variation319133 === '420047' && '$'}
+                            {pack.price}
                             <span>/ea</span>
                           </p>
 
@@ -245,11 +247,15 @@ class PromoCheckout extends React.PureComponent {
                     </p>
                   </div>
                 </div>
-                <PromoCheckoutPaymentForm onSubmit={this.submitBillingForm}/>
-                {variation319137 === '420051' &&
-                <div className={`${!this.state.scrolled && 'chkfrm-arrow-animate'} chkfrm-arrow`}>
-                  <img src="/static/promo/desktop/images/arrow.png" alt="" />
-                </div>}
+                <PromoCheckoutPaymentForm onSubmit={this.submitBillingForm} />
+                {variation319137 === '420051' && (
+                  <div
+                    className={`${!this.state.scrolled &&
+                      'chkfrm-arrow-animate'} chkfrm-arrow`}
+                  >
+                    <img src="/static/promo/desktop/images/arrow.png" alt="" />
+                  </div>
+                )}
                 <div className="chkfrm-btm">
                   <img
                     src="/static/promo/desktop/images/chk-frmbtm.png"
