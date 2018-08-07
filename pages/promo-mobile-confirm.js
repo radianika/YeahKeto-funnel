@@ -37,6 +37,23 @@ class Confirm extends React.PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.postVisitEvent();
+  }
+
+  postVisitEvent() {
+    axios.post('/abtasty', {
+      tracking_data: {
+        visitor_id: this.props.abtastyParams.visitorId,
+        device_type: 'MOBILE_PHONE',
+        origin: window.location.href,
+        timestamp: moment().format(),
+        ip: this.props.abtastyParams.ip,
+      },
+      action: 'visit_event',
+    });
+  }
+
   render() {
     const { props } = this;
     return (
