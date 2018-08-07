@@ -14,7 +14,12 @@ class Confirm extends React.PureComponent {
       store,
       isServer,
       query: {
-        visitorId, requestAgent, campaignMaps, sessionId, productId,
+        visitorId,
+        requestAgent,
+        campaignMaps,
+        sessionId,
+        productId,
+        isAuthenticUser,
       },
       req: {
         session: { ip },
@@ -31,6 +36,11 @@ class Confirm extends React.PureComponent {
           productId,
         }),
       );
+      store.dispatch(
+        AuthActions.setIsAuthenticParams({
+          isAuthenticUser,
+        }),
+      );
       store.dispatch(AuthActions.setUniqueSessionId({ sessionId }));
     }
   }
@@ -41,7 +51,7 @@ class Confirm extends React.PureComponent {
   }
 
   postCampaignActivatedEvent() {
-    const campaigns = ['317687', '318677', '319527'];
+    const campaigns = ['317687', '318677'];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
       ip: this.props.abtastyParams.ip,

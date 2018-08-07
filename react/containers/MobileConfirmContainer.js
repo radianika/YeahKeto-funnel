@@ -54,7 +54,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     // eslint-disable-next-line
     this.setState({
       pack: JSON.parse(localStorage.getItem('pack')),
-      summaryOpen: this.props.abtastyParams.campaignMaps['319527'] === '420487',
+      summaryOpen: !this.props.isAuthentic.isAuthenticUser,
     });
   }
 
@@ -95,7 +95,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       'mobile-hp-benefits-module-test-checkout',
       'mobile-checkout-enter-payment-text-test-checkout',
       'mobile-checkout-cc-label-test-checkout',
-      'mobile-checkout-order-summary-test-checkout',
     ];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
@@ -594,17 +593,22 @@ const MobileConfirmContainerPage = reduxForm({
 function mapStateToProps(reduxState, ownProps) {
   const { productId } = ownProps.query;
   const pack = packages.find(p => String(p.id) === String(productId));
+  let props = {
+    initialValues: {},
+    pack,
+    abtastyParams: reduxState.auth.abtastyParams,
+    isAuthentic: reduxState.auth.isAuthentic,
+  };
+
   if (reduxState.order) {
-    return {
-      initialValues: {},
-      pack,
+    props = {
+      ...props,
       submitStatus: reduxState.order.placeOrderStatus,
       submitFailure: reduxState.order.placeOrderError,
-      abtastyParams: reduxState.auth.abtastyParams,
     };
   }
 
-  return {};
+  return props;
 }
 
 const MobileConfirmContainer = connect(mapStateToProps, {
