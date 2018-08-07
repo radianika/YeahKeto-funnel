@@ -245,10 +245,7 @@ class PromoCheckout extends React.PureComponent {
                     </p>
                   </div>
                 </div>
-                <PromoCheckoutPaymentForm
-                  onSubmit={this.submitBillingForm}
-                  abtastyParams={this.props.abtastyParams}
-                />
+                <PromoCheckoutPaymentForm onSubmit={this.submitBillingForm}/>
                 {variation319137 === '420051' &&
                 <div className={`${!this.state.scrolled && 'chkfrm-arrow-animate'} chkfrm-arrow`}>
                   <img src="/static/promo/desktop/images/arrow.png" alt="" />
