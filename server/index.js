@@ -562,9 +562,6 @@ app.prepare().then(() => {
       const cid = qualifiesForCidDiscount(req)
         ? getParameterByName('cid', req.originalUrl)
         : null;
-      const campaignMaps = await getVariationsForVisitor(visitorId, {
-        318677: '419447',
-      });
       const isAuthenticUser = isAuthentic(req);
 
       // redirectToPromo(orderId, req, res, () => {
@@ -577,7 +574,6 @@ app.prepare().then(() => {
         transaction_id,
         adv_sub,
         cid,
-        campaignMaps,
         isAuthenticUser,
       });
       // });

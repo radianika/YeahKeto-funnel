@@ -1,12 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-import moment from 'moment';
 import { MobileConfirmContainer } from 'react/containers';
 import { connect } from 'react-redux';
 import { AuthActions, OrderActions } from 'redux/actions';
 import { PromoSession } from 'react/components/common';
 import idx from 'idx';
-import axios from 'axios/index';
 
 class Confirm extends React.PureComponent {
   static async getInitialProps({
@@ -14,12 +12,7 @@ class Confirm extends React.PureComponent {
       store,
       isServer,
       query: {
-        visitorId,
-        requestAgent,
-        campaignMaps,
-        sessionId,
-        productId,
-        isAuthenticUser,
+        visitorId, requestAgent, sessionId, productId, isAuthenticUser,
       },
       req: {
         session: { ip },
@@ -32,7 +25,6 @@ class Confirm extends React.PureComponent {
           visitorId,
           requestAgent,
           ip,
-          campaignMaps,
           productId,
         }),
       );
@@ -43,47 +35,6 @@ class Confirm extends React.PureComponent {
       );
       store.dispatch(AuthActions.setUniqueSessionId({ sessionId }));
     }
-  }
-
-  componentDidMount() {
-    this.postCampaignActivatedEvent();
-    this.postVisitEvent();
-  }
-
-  postCampaignActivatedEvent() {
-    const campaigns = ['318677'];
-    const tracking_data = {
-      device_type: 'MOBILE_PHONE',
-      ip: this.props.abtastyParams.ip,
-      origin: 'Promo Mobile checkout',
-      timestamp: moment().format(),
-      visitor_id: this.props.abtastyParams.visitorId,
-    };
-    const postData = {};
-
-    campaigns.forEach(campaign => {
-      postData[campaign] = {
-        campaign_id: campaign,
-        variation_id: this.props.abtastyParams.campaignMaps[campaign],
-        tracking_data,
-        action: 'campaign_activated_event',
-      };
-    });
-
-    axios.post('/multicampaign-abtasty', postData);
-  }
-
-  postVisitEvent() {
-    axios.post('/abtasty', {
-      tracking_data: {
-        visitor_id: this.props.abtastyParams.visitorId,
-        device_type: 'MOBILE_PHONE',
-        origin: window.location.href,
-        timestamp: moment().format(),
-        ip: this.props.abtastyParams.ip,
-      },
-      action: 'visit_event',
-    });
   }
 
   render() {

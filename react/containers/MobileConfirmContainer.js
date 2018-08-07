@@ -91,10 +91,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     const id = `${this.state.pack.id}`;
     const revenue = getRevenueAfterDiscount({ cid, revenue: this.getPrice() });
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const eventsArray = [
-      'mobile-hp-benefits-module-test-checkout',
-      'mobile-checkout-cc-label-test-checkout',
-    ];
+    const eventsArray = ['mobile-hp-benefits-module-test-checkout'];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
       ip: abtastyParams ? abtastyParams.ip : '',
@@ -248,7 +245,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
   render() {
     const { active_cc_type } = this.state;
     const { cid } = this.props.query;
-    const variation318677 = this.props.abtastyParams.campaignMaps['318677'];
 
     return (
       <div className="mobile-body">
@@ -311,7 +307,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                       </p>
                     */}
                     <div className="cards">
-                      {variation318677 === '419448' && (
+                      {this.props.isAuthentic.isAuthenticUser && (
                         <span className="cards-prefix">We accept:</span>
                       )}
                       <span
