@@ -46,7 +46,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
       pack: {},
     };
     this.toggleSummary = this.toggleSummary.bind(this);
-    console.log(this.props);
   }
 
   componentDidMount() {
