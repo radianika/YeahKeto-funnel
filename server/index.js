@@ -266,25 +266,33 @@ app.prepare().then(() => {
 
   server.get('/cart', async (req, res) => app.render(req, res, '/cart'));
 
-  server.get('/cbd', async (req, res) => res.sendFile(path.join(__dirname, '../static/temp', 'index.html')));
+  server.get('/cbd', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'index.html')),
+  );
 
-  server.get('/cbd/checkout', async (req, res) => res.sendFile(
-    path.join(__dirname, '../static/temp', 'checkout.html'),
-  ));
+  server.get('/cbd/checkout', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'checkout.html')),
+  );
 
-  server.get('/cbd/thankyou', async (req, res) => res.sendFile(
-    path.join(__dirname, '../static/temp', 'thankyou.html'),
-  ));
+  server.get('/cbd/thankyou', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'thankyou.html')),
+  );
 
-  server.get('/cbd/tnc', async (req, res) => res.sendFile(path.join(__dirname, '../static/temp', 'tnc.html')));
+  server.get('/cbd/tnc', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'tnc.html')),
+  );
 
-  server.get('/cbd/privacy', async (req, res) => res.sendFile(
-    path.join(__dirname, '../static/temp', 'privacypolicy.html'),
-  ));
+  server.get('/cbd/privacy', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'privacypolicy.html')),
+  );
 
-  server.get('/cbd/customer', async (req, res) => res.sendFile(
-    path.join(__dirname, '../static/temp', 'customer.html'),
-  ));
+  server.get('/cbd/customer', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'customer.html')),
+  );
+
+  server.get('/cbd/cvv', async (req, res) =>
+    res.sendFile(path.join(__dirname, '../static/temp', 'cvv.html')),
+  );
 
   server.get('/thankyou?', async (req, res) => {
     try {
