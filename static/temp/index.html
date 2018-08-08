@@ -41,12 +41,12 @@
             <div class="idx-frm-top" id="frm1"></div>
             <div class="idx-frm-mid">
                <form name="requestForm" action="" id="requestForm">
-    <div class="label">First Name<input type="text" name="" id=""  class="chk validate[required] radio"/></div>
-    <div class="label">Last Name<input type="text" name="" id="" class="chk validate[required] radio" /></div>
-    <div class="label">Address <input type="text" name="" id="" class="chk validate[required] radio" /></div>
-    <div class="label">City <input type="text" name="" id="" class="chk validate[required] radio" /></div>
+    <div class="label">First Name<input type="text" name="FirstName" id=""  class="chk validate[required] radio"/></div>
+    <div class="label">Last Name<input type="text" name="LastName" id="" class="chk validate[required] radio" /></div>
+    <div class="label">Address <input type="text" name="Address1" id="" class="chk validate[required] radio" /></div>
+    <div class="label">City <input type="text" name="City" id="City" class="chk validate[required] radio" /></div>
   <div class="label">State
-  <select class="chk validate[required] radio">
+  <select name="State" class="chk validate[required] radio">
         <option selected="selected" value="" onclick="">Select State</option>
         <option value="AL" onclick="">Alabama (AL)</option>
         <option value="AK" onclick="">Alaska (AK)</option>
@@ -100,15 +100,15 @@
         <option value="WY" onclick="">Wyoming (WY)</option>
   </select> 
     </div>
-    <div class="label">ZIP Code <input type="text" name="" id="" class="chk validate[required] radio" maxlength="5" /></div> 
-    <div class="label">Phone <input type="text" name=""  data-mask="phone" id="" class="chk validate[required] radio" maxlength="10" /></div>  
-    <div class="label">Email <input type="text" name="" id="" class="chk validate[required] radio" /></div>    
+    <div class="label">ZIP Code <input type="text" name="ZipCode" id="" class="chk validate[required] radio" maxlength="5" /></div> 
+    <div class="label">Phone <input type="text" name="Phone"  data-mask="phone" id="" class="chk validate[required] radio" maxlength="10" /></div>  
+    <div class="label">Email <input type="text" name="Email" id="" class="chk validate[required] radio" /></div>    
     <div class="label1">
         <input type="checkbox" style="float:left; margin:7px 0 0 5px;" name="agree_terms" id="agree_terms" class="chk validate[required] radio" />
         <p class="flt-l">I confirm I am over 18 and agree to the <a href="/cbd/tnc" target="_blank">Terms and Conditions</a>. I agree to read and fully understand the <a href="/cbd/tnc" target="_blank">Terms and Conditions</a> before entering my payment information and taking advantage of this American Science on the next page. Furthermore, I also understand that I can call Customer Support if I have any questions regarding the purchase of any of these products at 1-877-279-5390.</p>
         <div class="flt-n"></div>
     </div>
-    <center><input type="submit"  value="" /></center>
+    <center><input id="customer_submit" type="submit"  value="" /></center>
 </form> 
             </div>
             <div class="idx-frm-btm"></div>
@@ -184,11 +184,20 @@
 $(document).ready(function(){
   var newUrl = window.location.protocol + '//' + window.location.host + "/cbd/checkout";
     $("#requestForm").attr('action', newUrl);
-var formSubmitted = false;
-var internalLink = false;
-$("input[data-mask='phone']").mask("(999) 999-9999");
-modalOnClick();
-
+    var formSubmitted = false;
+    var internalLink = false;
+    $("input[data-mask='phone']").mask("(999) 999-9999");
+    modalOnClick();
+    $( "#requestForm" ).on( "submit", function( event ) {
+      var data = $( this ).serializeArray();
+      var obj = {};
+      $.each(data,
+        function(i, v) {
+            obj[v.name] = v.value;
+        });
+      console.log(obj);
+      localStorage.setItem("customerInfo", JSON.stringify(obj));
+    });
 });
 </script>
 </html>
