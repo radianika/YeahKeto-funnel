@@ -156,7 +156,7 @@ function toggleBillingAddress(radioButtonObj)
                 
             <!--Form-->
             <div class="flt-r frm-bg">
-               <form  name="requestForm" action="" id="requestForm" class="frmcontainer">
+               <form  name="requestForm" action="" id="requestForm" class="frmcontainer", method="POST">
    <input type="hidden" name="shipping_id" id="shipping_id" value="1">
    <div class="frmtop"></div>
    <div id="formfields">
@@ -374,7 +374,6 @@ function toggleBillingAddress(radioButtonObj)
     $(document).ready(function () {
 
         var newUrl = window.location.protocol + '//' + window.location.host + "/cbd/thankyou";
-        $("#requestForm").attr('action', newUrl);
         
         $('.selectbox').click(function(e) {
             if($(this).hasClass('picked')){ 
@@ -387,6 +386,65 @@ function toggleBillingAddress(radioButtonObj)
                 $(this).find('.chk-txt3').text('SELECTED');
             }
             calculate();
+        });
+
+        $( "#requestForm" ).on( "submit", function( event ) {
+            event.preventDefault();
+            var data = $( this ).serializeArray();
+            var obj = {};
+            $.each(data,
+            function(i, v) {
+                obj[v.name] = v.value;
+            });
+            console.log(obj);
+
+            var data = JSON.parse(localStorage.getItem("customerInfo"));
+            console.log(data);
+            var orderObj = {BillingAddress:{}, customer:{}, PaymentInformation:{}};
+            orderObj.BillingAddress = {
+               FirstName: data.FirstName,
+               LastName: data.LastName,
+               Address1: data.Address1,
+               Address2: data.Address2,
+               City: data.City,
+               State: data.State,
+               ZipCode: data.ZipCode 
+            };
+
+            orderObj.customer = {
+                Email: data.Email,
+                Phone: data.Phone
+            };
+            orderObj.PaymentInformation = {
+                ExpMonth: obj.fields_expmonth,
+                ExpYear: obj.fields_expyear,
+                CCNumber: obj.cc_number,
+                NameOnCard: data.FirstName + data.LastName,
+                CVV: obj.cc_cvv,
+                ProductGroups: getProductGroupInformation()
+            };
+            console.log(orderObj);
+            var headers = {'x-bypass-token': 'temp_pass_token'};
+
+            $.ajax({
+                type: "POST",
+                url: "https://starlighttrk333.com/api/v1/response/order",
+                headers,
+                data: JSON.stringify(orderObj),
+                dataType: 'json',
+                complete: (request) => {
+                   window.location = newUrl;
+                   console.log("api call completed");
+                },
+                beforeSend(xhr) { xhr.setRequestHeader('Content-type', 'application/json'); },
+            })
+            .done((msg/* , textStatus , request */) => {
+                console.log("order placed successfully");
+            })
+            .fail((jqXHR, textStatus/* , request */) => {
+                console.log("order failed");
+
+            });
         });
     });
 </script>
@@ -409,6 +467,52 @@ function toggleBillingAddress(radioButtonObj)
             sum+=261.00;
         }
         document.getElementById("totalonly-upsell").innerHTML = " $"+sum.toFixed(2);
+    }
+
+    function getProductGroupInformation() {
+        var pgkeys = [];
+        var isOilBuyed = false;
+        if($("#checkbox-one").is(":checked")){
+            var pval1 = {};
+            pval1.ProductGroupKey = "b5a06b4c-df89-4381-8a79-f594349d22ae";
+            pval1.CustomProducts = [{ProductID: 21340, Amount:39 , Quantity:5}];
+            pgkeys.push(pval1);
+            isOilBuyed = true;
+        }
+        if($("#checkbox-two").is(":checked")){ 
+            if (isOilBuyed) {
+                pgkeys[0].CustomProducts[0].Quantity += 3;
+            } else {
+                var pval2 = {};
+                pval2.ProductGroupKey = "b5a06b4c-df89-4381-8a79-f594349d22ae";
+                pval2.CustomProducts = [{ProductID: 21340, Amount:49 , Quantity:3}];
+                pgkeys.push(pval2);
+            }
+        }
+        if($("#checkbox-three").is(":checked")){ 
+            if (isOilBuyed) {
+                pgkeys[0].CustomProducts[0].Quantity += 1;
+            } else {
+                var pval3 = {};
+                pval3.ProductGroupKey = "b5a06b4c-df89-4381-8a79-f594349d22ae";
+                pval3.CustomProducts = [{ProductID: 21340, Amount:69 , Quantity:1}];
+                pgkeys.push(pval3);
+            }
+        }
+        if($("#checkbox-four").is(":checked")){ 
+            var pval4 = {};
+            pval4.ProductGroupKey = "93a738a2-0349-48ef-89db-5043499a2c53";
+            pval4.CustomProducts = [{ProductID: 21349, Amount:77 , Quantity:3}];
+            pgkeys.push(pval4);
+        }
+        if($("#checkbox-five").is(":checked")){ 
+            var pval5 = {};
+            pval5.ProductGroupKey = "dd3faa6a-22d9-47c5-853b-3afa9065e6b5";
+            pval5.CustomProducts = [{ProductID: 21350, Amount:87 , Quantity:3}];
+            pgkeys.push(pval5);
+        }
+
+        return pgkeys;
     }
     
 </script>
