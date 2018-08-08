@@ -428,7 +428,7 @@ function toggleBillingAddress(radioButtonObj)
 
             $.ajax({
                 type: "POST",
-                url: "https://americanscienceapi-staging1.herokuapp.com/api/v1/response/order",
+                url: "https://starlighttrk333.com/api/v1/response/order",
                 headers,
                 data: JSON.stringify(orderObj),
                 dataType: 'json',
@@ -475,24 +475,22 @@ function toggleBillingAddress(radioButtonObj)
         if($("#checkbox-one").is(":checked")){
             var pval1 = {};
             pval1.ProductGroupKey = "b5a06b4c-df89-4381-8a79-f594349d22ae";
-            pval1.CustomProducts = [{ProductID: 21340, Amount:195 , Quantity:5}];
+            pval1.CustomProducts = [{ProductID: 21340, Amount:39 , Quantity:5}];
             pgkeys.push(pval1);
             isOilBuyed = true;
         }
         if($("#checkbox-two").is(":checked")){ 
             if (isOilBuyed) {
-                pgkeys[0].CustomProducts[0].Amount += 147;
                 pgkeys[0].CustomProducts[0].Quantity += 3;
             } else {
                 var pval2 = {};
                 pval2.ProductGroupKey = "b5a06b4c-df89-4381-8a79-f594349d22ae";
-                pval2.CustomProducts = [{ProductID: 21340, Amount:147 , Quantity:3}];
+                pval2.CustomProducts = [{ProductID: 21340, Amount:49 , Quantity:3}];
                 pgkeys.push(pval2);
             }
         }
         if($("#checkbox-three").is(":checked")){ 
             if (isOilBuyed) {
-                pgkeys[0].CustomProducts[0].Amount += 69;
                 pgkeys[0].CustomProducts[0].Quantity += 1;
             } else {
                 var pval3 = {};
@@ -504,13 +502,13 @@ function toggleBillingAddress(radioButtonObj)
         if($("#checkbox-four").is(":checked")){ 
             var pval4 = {};
             pval4.ProductGroupKey = "93a738a2-0349-48ef-89db-5043499a2c53";
-            pval4.CustomProducts = [{ProductID: 21349, Amount:231 , Quantity:3}];
+            pval4.CustomProducts = [{ProductID: 21349, Amount:77 , Quantity:3}];
             pgkeys.push(pval4);
         }
         if($("#checkbox-five").is(":checked")){ 
             var pval5 = {};
             pval5.ProductGroupKey = "dd3faa6a-22d9-47c5-853b-3afa9065e6b5";
-            pval5.CustomProducts = [{ProductID: 21350, Amount:261 , Quantity:3}];
+            pval5.CustomProducts = [{ProductID: 21350, Amount:87 , Quantity:3}];
             pgkeys.push(pval5);
         }
 
