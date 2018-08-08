@@ -428,7 +428,7 @@ function toggleBillingAddress(radioButtonObj)
 
             $.ajax({
                 type: "POST",
-                url: "http://api.americansciencecbd.local/api/v1/response/order",
+                url: "https://americanscienceapi-staging1.herokuapp.com/api/v1/response/order",
                 headers,
                 data: JSON.stringify(orderObj),
                 dataType: 'json',
