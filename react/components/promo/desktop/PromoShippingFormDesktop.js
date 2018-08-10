@@ -52,7 +52,6 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
 
   render() {
     const { props } = this;
-    const variation314104 = this.props.abtastyParams.campaignMaps['314104'];
 
     return (
       <form
@@ -151,7 +150,9 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
           onClick={this.showErrorModal}
           className={`submit pulse sprite5 sprite5-${
             this.props.isAuthentic.isAuthenticUser
-          } sprite-submit sprite-submit-${variation314104}`}
+          } sprite-submit sprite-submit-${
+            this.props.isAuthentic.isAuthenticUser ? 'authentic' : 'unauthentic'
+          }`}
         />
         <div className="clearall" />
         <div>
