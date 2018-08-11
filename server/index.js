@@ -333,11 +333,7 @@ app.prepare().then(() => {
           id: token,
         };
         const campaignMaps = await getVariationsForVisitor(visitorId, {
-          314334: '414030',
-          314363: '414063',
           315256: '415140',
-          314104: '413653',
-          316439: '416690',
           317090: '417538',
           317678: '418315',
           317682: '418323',
