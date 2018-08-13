@@ -204,11 +204,6 @@
   display: block;
 }
 
-.sprite3.sprite3-414064 {
-  background-position: -746px -260px;
-  height: 220px;
-}
-
 .sprite-pkg3-img {
   width: 107px;
   height: 198px;
@@ -257,14 +252,14 @@
   background-position: -1040px -175px;
 }
 
-.sprite-s1seal-416690,
+.sprite-s1seal-true,
 .sprite-s1seal-418315 {
   width: 205px;
   height: 72px;
   background-position: -1040px -175px;
 }
 
-.sprite-s1seal-416691,
+.sprite-s1seal-false,
 .sprite-s1seal-418316 {
   width: 205px;
   height: 72px;
@@ -541,16 +536,12 @@
   background-position: -5px -458px;
 }
 
-.sprite-submit.sprite-submit-413653 {
+.sprite-submit.sprite-submit-unauthentic {
   background-position: -5px -458px;
 }
 
-.sprite-submit.sprite-submit-413654 {
+.sprite-submit.sprite-submit-authentic {
   background-position: -4px -687px;
-}
-
-.sprite-submit.sprite-submit-413655 {
-  background-position: -4px -765px;
 }
 
 .sprite-t-box {

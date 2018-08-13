@@ -24,13 +24,14 @@ class PromoStripComponent extends React.PureComponent {
             id={this.props.tagID}
             href="javascript:void(0)"
             onClick={() => {
-              this.postActionTracker();
               this.scrollToTop();
             }}
           >
             {' '}
             <i
-              className={`stripbtn pulse sprite5 sprite-submit sprite5-${this.props.isAuthentic.isAuthenticUser}`}
+              className={`stripbtn pulse sprite5 sprite-submit sprite5-${
+                this.props.isAuthentic.isAuthenticUser
+              }`}
               id="rush-my-order-scroll-clicks"
             />
           </a>
@@ -40,15 +41,12 @@ class PromoStripComponent extends React.PureComponent {
   }
 }
 
-
 function mapStateToProps(state) {
   return {
     isAuthentic: state.auth.isAuthentic,
   };
 }
 
-const PromoStrip = connect(mapStateToProps)(
-  withRouter(PromoStripComponent),
-);
+const PromoStrip = connect(mapStateToProps)(withRouter(PromoStripComponent));
 
 export { PromoStrip };

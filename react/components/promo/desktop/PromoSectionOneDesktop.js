@@ -35,7 +35,6 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
   };
 
   render() {
-    const variation314334 = this.props.abtastyParams.campaignMaps['314334'];
     const variation315256 = this.props.abtastyParams.campaignMaps['315256'];
     const variation317090 = this.props.abtastyParams.campaignMaps['317090'];
     const variation317678 = this.props.abtastyParams.campaignMaps['317678'];
@@ -56,9 +55,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
             <i className="logo sprite2 sprite-logo" />
             <i className={`s1seal sprite3 sprite-s1seal-${variation317678}`} />
             <i
-              className={`s1hd sprite3 sprite3-${
-                this.props.abtastyParams.campaignMaps['314363']
-              } sprite-s1hd`}
+              className="s1hd sprite3 sprite-s1hd"
             />
             {this.props.isAuthentic.isAuthenticUser ? (
               <p className="s1txt">
@@ -71,7 +68,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
                 on your first order (no prescription required).
               </p>)
             }
-            {!variation314334 || variation314334 === '414030' ? (
+            {this.props.isAuthentic.isAuthenticUser ? (
               <ul className="s1list ">
                 <li className="sprite2 sprite-s1bullet">
                   <span>Relieves</span> Anxiety &amp; Stress{' '}
@@ -86,9 +83,8 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
                   <span>Enhances </span> Focus &amp; Clarity{' '}
                 </li>
               </ul>
-            ) : null}
-            {variation314334 === '414031' ? (
-              <ul className="s1list ">
+            ) : 
+              (<ul className="s1list ">
                 <li className="sprite2 sprite-s1bullet">
                   <span>Relieves</span> Chronic Pain &amp; Arthritis{' '}
                 </li>
@@ -104,8 +100,8 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
                 <li className="sprite2 sprite-s1bullet">
                   <span>Promotes </span> Sleep &amp; Energy Levels{' '}
                 </li>
-              </ul>
-            ) : null}
+              </ul>)
+            }
             <div className="clearall" />
             <i className="chkarrow sprite3 sprite-s1arrow" />
             {/* <i className="s1bottle sprite3 sprite-s1bottle" /> */}
