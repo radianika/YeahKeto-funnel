@@ -333,7 +333,6 @@ app.prepare().then(() => {
           id: token,
         };
         const campaignMaps = await getVariationsForVisitor(visitorId, {
-          315256: '415140',
           317682: '418323',
         });
         const cid = getParameterByName('cid', req.originalUrl);
