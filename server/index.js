@@ -371,9 +371,7 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'mobile') {
         const cid = getParameterByName('cid', req.originalUrl);
-        const campaignMaps = await getVariationsForVisitor(visitorId, {
-          314431: undefined,
-        });
+        const campaignMaps = await getVariationsForVisitor(visitorId, {});
 
         app.render(req, res, '/promo-mobile', {
           requestAgent,
