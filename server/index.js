@@ -334,8 +334,6 @@ app.prepare().then(() => {
         };
         const campaignMaps = await getVariationsForVisitor(visitorId, {
           315256: '415140',
-          317090: '417538',
-          317678: '418315',
           317682: '418323',
         });
         const cid = getParameterByName('cid', req.originalUrl);

@@ -36,8 +36,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
 
   render() {
     const variation315256 = this.props.abtastyParams.campaignMaps['315256'];
-    const variation317090 = this.props.abtastyParams.campaignMaps['317090'];
-    const variation317678 = this.props.abtastyParams.campaignMaps['317678'];
+    const variation317678 = this.props.isAuthentic ? '418315' : '418316';
     return (
       <div
         className="section1 dsplay"
@@ -54,9 +53,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
           <div className="s1lft position">
             <i className="logo sprite2 sprite-logo" />
             <i className={`s1seal sprite3 sprite-s1seal-${variation317678}`} />
-            <i
-              className="s1hd sprite3 sprite-s1hd"
-            />
+            <i className="s1hd sprite3 sprite-s1hd" />
             {this.props.isAuthentic.isAuthenticUser ? (
               <p className="s1txt">
                 Derived from organic, US-harvested hemp, lab-tested for quality.
@@ -66,8 +63,8 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
               <p className="s1txt">
                 For a limited, receive a FREE bottle of our FDA Approved CBD Oil
                 on your first order (no prescription required).
-              </p>)
-            }
+              </p>
+            )}
             {this.props.isAuthentic.isAuthenticUser ? (
               <ul className="s1list ">
                 <li className="sprite2 sprite-s1bullet">
@@ -83,8 +80,8 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
                   <span>Enhances </span> Focus &amp; Clarity{' '}
                 </li>
               </ul>
-            ) : 
-              (<ul className="s1list ">
+            ) : (
+              <ul className="s1list ">
                 <li className="sprite2 sprite-s1bullet">
                   <span>Relieves</span> Chronic Pain &amp; Arthritis{' '}
                 </li>
@@ -100,8 +97,8 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
                 <li className="sprite2 sprite-s1bullet">
                   <span>Promotes </span> Sleep &amp; Energy Levels{' '}
                 </li>
-              </ul>)
-            }
+              </ul>
+            )}
             <div className="clearall" />
             <i className="chkarrow sprite3 sprite-s1arrow" />
             {/* <i className="s1bottle sprite3 sprite-s1bottle" /> */}
@@ -113,10 +110,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
             <i
               className="s1asseen sprite2 sprite-s1asseen"
               style={{
-                backgroundPosition:
-                  variation317090 === '417539'
-                    ? '-385px -485px'
-                    : '-385px -421px',
+                backgroundPosition: '-385px -421px',
               }}
             />
           </div>

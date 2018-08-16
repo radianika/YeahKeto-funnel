@@ -14,7 +14,12 @@ class Promo extends React.PureComponent {
       store,
       isServer,
       query: {
-        visitorId, requestAgent, campaignMaps, isAuthenticUser, userInfo, API_BASE_URL,
+        visitorId,
+        requestAgent,
+        campaignMaps,
+        isAuthenticUser,
+        userInfo,
+        API_BASE_URL,
       },
       req: {
         session: { ip },
@@ -58,7 +63,9 @@ class Promo extends React.PureComponent {
 
     // check for email_id
     if (emailId) {
-      const url  = `${this.props.API_BASE_URL}/v1/track/emailclick${window.location.search}`;
+      const url = `${this.props.API_BASE_URL}/v1/track/emailclick${
+        window.location.search
+      }`;
       axios.get(url);
     }
   }
@@ -74,12 +81,7 @@ class Promo extends React.PureComponent {
       JSON.stringify(this.props.abtastyParams.campaignMaps),
     );
 
-    const campaigns = [
-      '315256',
-      '317090',
-      '317678',
-      '317682',
-    ];
+    const campaigns = ['315256', '317682'];
     const tracking_data = {
       device_type: 'DESKTOP',
       ip: this.props.abtastyParams.ip,
@@ -168,4 +170,6 @@ const mapStateToProps = state => ({
   abtastyParams: state.auth.abtastyParams,
 });
 
-export default connect(mapStateToProps, { ...AuthActions, createNewSession })(Promo);
+export default connect(mapStateToProps, { ...AuthActions, createNewSession })(
+  Promo,
+);
