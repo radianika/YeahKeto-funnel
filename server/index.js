@@ -673,6 +673,7 @@ app.prepare().then(() => {
       const offerId = req.query.sourceValue5;
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
+      const isAuthenticUser = isAuthentic(req);
 
       const { visitorId } = await getVisitorId(req, res);
 
@@ -685,6 +686,7 @@ app.prepare().then(() => {
         orderId,
         offerId,
         visitorId,
+        isAuthenticUser,
         transaction_id,
         adv_sub,
         sessionId,
