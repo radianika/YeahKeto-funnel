@@ -435,3 +435,12 @@
   color: #fff600;
 }
 /* top-bar end */
+
+/* remove person icon from form fields in Safari browser */
+input::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
