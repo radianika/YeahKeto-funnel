@@ -77,7 +77,7 @@ const products = {
     supplement: {
       image: '/static/assets/images/cbd-balm-label.jpg',
       how_to_use: {
-        1: 'Take two capsules of American Science Warming Balm daily with a glass of water.',
+        1: 'Put a small amount of Warming Balm on your fingers, apply to clean skin and massage well into areas experiencing muscle soreness.',
         2: 'Follow a healthy lifestyle along with a balanced diet & regular exercise.',
         3: 'Follow the supplementation & use daily for best results and maximum benefits.',
       },
