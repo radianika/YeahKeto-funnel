@@ -675,13 +675,7 @@ app.prepare().then(() => {
       const adv_sub = req.query.sourceValue2;
 
       const { visitorId } = await getVisitorId(req, res);
-      const campaignId = '308075';
-      const { prev } = req.query;
-      let variationId = '';
-      if (prev !== 'upsell11') {
-        variationId = await getVariationForVisitor(visitorId, campaignId);
-      }
-      console.log({ variationId, campaignId });
+
       const cid = qualifiesForCidDiscount(req)
         ? getParameterByName('cid', req.originalUrl)
         : null;
@@ -691,9 +685,6 @@ app.prepare().then(() => {
         orderId,
         offerId,
         visitorId,
-        campaignId,
-        prev,
-        variationId,
         transaction_id,
         adv_sub,
         sessionId,
@@ -741,9 +732,6 @@ app.prepare().then(() => {
       const adv_sub = req.query.sourceValue2;
 
       const { visitorId } = await getVisitorId(req, res);
-      const campaignId = '308075';
-      const variationId = await getVariationForVisitor(visitorId, campaignId);
-      console.log({ variationId, campaignId });
       const cid = qualifiesForCidDiscount(req)
         ? getParameterByName('cid', req.originalUrl)
         : null;
@@ -754,8 +742,6 @@ app.prepare().then(() => {
         orderId,
         offerId,
         visitorId,
-        campaignId,
-        variationId,
         transaction_id,
         adv_sub,
         sessionId,
