@@ -35,8 +35,12 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
   };
 
   render() {
-    const variation315256 = this.props.isAuthentic ? '415140' : '415141';
-    const variation317678 = this.props.isAuthentic ? '418315' : '418316';
+    const variation315256 = this.props.isAuthentic.isAuthenticUser
+      ? '415140'
+      : '415141';
+    const variation317678 = this.props.isAuthentic.isAuthenticUser
+      ? '418315'
+      : '418316';
     return (
       <div
         className="section1 dsplay"
