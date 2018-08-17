@@ -6,8 +6,9 @@ import BenefitsSectionTreatment2 from './BenefitsSectionTreatment2';
 
 class PromoSectionFourMobileComponent extends React.PureComponent {
   render() {
-    const variation314431 = this.props.abtastyParams.campaignMaps['314431'];
-    // const variation314431 = '414151';
+    const variation314431 = this.props.isAuthentic.isAuthenticUser
+      ? '414150'
+      : '414149';
     let returnJSX =
       !variation314431 || variation314431 === '414149' ? (
         <BenefitsSectionControl />
@@ -41,6 +42,7 @@ class PromoSectionFourMobileComponent extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     abtastyParams: state.auth.abtastyParams,
+    isAuthentic: state.auth.isAuthentic,
   };
 }
 
