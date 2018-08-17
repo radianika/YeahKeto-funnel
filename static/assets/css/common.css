@@ -277,6 +277,10 @@
   padding-left: 0 !important;
 }
 
+.comment-box textarea {
+  font-size: 18px !important;
+}
+
 @-webkit-keyframes sk-circleBounceDelay {
   0%,
   100%,
