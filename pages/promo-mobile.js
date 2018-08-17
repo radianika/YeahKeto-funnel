@@ -99,7 +99,7 @@ class Promo extends React.PureComponent {
       JSON.stringify(this.props.abtastyParams.campaignMaps),
     );
 
-    const campaigns = ['314431'];
+    const campaigns = [];
     const tracking_data = {
       device_type: 'MOBILE_PHONE',
       ip: this.props.abtastyParams.ip,
@@ -110,14 +110,16 @@ class Promo extends React.PureComponent {
 
     const postData = {};
 
-    campaigns.forEach(campaign => {
-      postData[campaign] = {
-        campaign_id: campaign,
-        variation_id: this.props.abtastyParams.campaignMaps[campaign],
-        tracking_data,
-        action: 'campaign_activated_event',
-      };
-    });
+    if (campaigns.length) {
+      campaigns.forEach(campaign => {
+        postData[campaign] = {
+          campaign_id: campaign,
+          variation_id: this.props.abtastyParams.campaignMaps[campaign],
+          tracking_data,
+          action: 'campaign_activated_event',
+        };
+      });
+    }
 
     axios.post('/multicampaign-abtasty', postData);
   };

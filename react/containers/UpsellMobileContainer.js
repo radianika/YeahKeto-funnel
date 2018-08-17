@@ -27,15 +27,6 @@ const campaignIds = { 1: '308072', '1-1': '308073', 2: '308075' };
  * Also renders iframe for tracking variables
  */
 class UpsellMobileContainerComponent extends React.PureComponent {
-  componentDidMount() {
-    const isPrevUpsell11 =
-      this.props.abtastyParams.prev &&
-      this.props.abtastyParams.prev.indexOf('upsell11') > -1;
-    if (!isPrevUpsell11) {
-      this.postCampaignActivatedEvent();
-    }
-  }
-
   postCampaignActivatedEvent = () => {
     const { upsell } = this.props.query;
     const campaignId = campaignIds[upsell.toString()];
@@ -99,9 +90,6 @@ class UpsellMobileContainerComponent extends React.PureComponent {
       upsell, offerId, adv_sub, affId,
     } = this.props.query;
     const { abtastyParams } = this.props;
-    const isPrevUpsell11 =
-      this.props.abtastyParams.prev &&
-      this.props.abtastyParams.prev.indexOf('upsell11') > -1;
 
     return (
       <React.Fragment>
@@ -211,8 +199,14 @@ class UpsellMobileContainerComponent extends React.PureComponent {
           )}
           {upsell === 2 && (
             <React.Fragment>
-              {(this.props.abtastyParams.variationId === '406291' ||
-                isPrevUpsell11) && (
+              {this.props.isAuthentic.isAuthenticUser ? (
+                <Upsell2Treatment2
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
+                />
+              ) : (
                 <React.Fragment>
                   <a href="/">
                     <img
@@ -221,42 +215,14 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                       className="logo"
                     />
                   </a>
-                  <Upsell2
+                  <Upsell2Treatment1
                     upgrade={this.upgrade}
                     {...this.props}
                     abtastyParams={abtastyParams}
                     sendTransactionDetails={this.sendTransactionDetails}
-                    isPrevUpsell11={isPrevUpsell11}
                   />
                 </React.Fragment>
               )}
-              {this.props.abtastyParams.variationId === '406292' &&
-                !isPrevUpsell11 && (
-                  <React.Fragment>
-                    <a href="/">
-                      <img
-                        src="/static/mobile/images/logo.png"
-                        alt=""
-                        className="logo"
-                      />
-                    </a>
-                    <Upsell2Treatment1
-                      upgrade={this.upgrade}
-                      {...this.props}
-                      abtastyParams={abtastyParams}
-                      sendTransactionDetails={this.sendTransactionDetails}
-                    />
-                  </React.Fragment>
-                )}
-              {this.props.abtastyParams.variationId === '406293' &&
-                !isPrevUpsell11 && (
-                  <Upsell2Treatment2
-                    upgrade={this.upgrade}
-                    {...this.props}
-                    abtastyParams={abtastyParams}
-                    sendTransactionDetails={this.sendTransactionDetails}
-                  />
-                )}
             </React.Fragment>
           )}
           {upsell === '2-1' && (

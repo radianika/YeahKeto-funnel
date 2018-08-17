@@ -333,9 +333,6 @@ app.prepare().then(() => {
           id: token,
         };
         const campaignMaps = await getVariationsForVisitor(visitorId, {
-          315256: '415140',
-          317090: '417538',
-          317678: '418315',
           317682: '418323',
         });
         const cid = getParameterByName('cid', req.originalUrl);
@@ -374,9 +371,7 @@ app.prepare().then(() => {
       }
       if (requestAgent === 'mobile') {
         const cid = getParameterByName('cid', req.originalUrl);
-        const campaignMaps = await getVariationsForVisitor(visitorId, {
-          314431: undefined,
-        });
+        const campaignMaps = await getVariationsForVisitor(visitorId, {});
 
         app.render(req, res, '/promo-mobile', {
           requestAgent,
@@ -678,15 +673,10 @@ app.prepare().then(() => {
       const offerId = req.query.sourceValue5;
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
+      const isAuthenticUser = isAuthentic(req);
 
       const { visitorId } = await getVisitorId(req, res);
-      const campaignId = '308075';
-      const { prev } = req.query;
-      let variationId = '';
-      if (prev !== 'upsell11') {
-        variationId = await getVariationForVisitor(visitorId, campaignId);
-      }
-      console.log({ variationId, campaignId });
+
       const cid = qualifiesForCidDiscount(req)
         ? getParameterByName('cid', req.originalUrl)
         : null;
@@ -696,9 +686,7 @@ app.prepare().then(() => {
         orderId,
         offerId,
         visitorId,
-        campaignId,
-        prev,
-        variationId,
+        isAuthenticUser,
         transaction_id,
         adv_sub,
         sessionId,
@@ -746,9 +734,6 @@ app.prepare().then(() => {
       const adv_sub = req.query.sourceValue2;
 
       const { visitorId } = await getVisitorId(req, res);
-      const campaignId = '308075';
-      const variationId = await getVariationForVisitor(visitorId, campaignId);
-      console.log({ variationId, campaignId });
       const cid = qualifiesForCidDiscount(req)
         ? getParameterByName('cid', req.originalUrl)
         : null;
@@ -759,8 +744,6 @@ app.prepare().then(() => {
         orderId,
         offerId,
         visitorId,
-        campaignId,
-        variationId,
         transaction_id,
         adv_sub,
         sessionId,
