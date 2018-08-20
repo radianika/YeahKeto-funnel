@@ -192,7 +192,7 @@ class ContactUs extends React.Component {
               </p>
               <ul className="cont-list">
                 <li>
-                  <span className="mtop1">American Science CBD</span>
+                  <span className="mtop1 address-mtop-1">American Science CBD</span>
                   <p>
                     Corporate: 6525 Gunpark Drive Ste 370-347, Boulder, CO 80301
                   </p>
