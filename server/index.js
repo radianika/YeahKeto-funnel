@@ -641,10 +641,7 @@ app.prepare().then(() => {
       const { orderId } = req.query;
       const transaction_id = req.query.sourceValue3;
       const adv_sub = req.query.sourceValue2;
-
-      const { visitorId } = await getVisitorId(req, res);
-      const campaignId = '308073';
-      const variationId = await getVariationForVisitor(visitorId, campaignId);
+      const isAuthenticUser = isAuthentic(req);
       const cid = qualifiesForCidDiscount(req)
         ? getParameterByName('cid', req.originalUrl)
         : null;
@@ -652,10 +649,8 @@ app.prepare().then(() => {
       app.render(req, res, '/promo-mobile-upsell', {
         upsell: '1-1',
         orderId,
-        campaignId: '308073',
-        visitorId,
-        variationId,
         transaction_id,
+        isAuthenticUser,
         adv_sub,
         sessionId,
         cid,

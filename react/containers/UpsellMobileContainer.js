@@ -153,24 +153,14 @@ class UpsellMobileContainerComponent extends React.PureComponent {
           )}
           {upsell === '1-1' && (
             <React.Fragment>
-              {this.props.abtastyParams.variationId === '406288' && (
-                <React.Fragment>
-                  <a href="/">
-                    <img
-                      src="/static/mobile/images/logo.png"
-                      alt=""
-                      className="logo"
-                    />
-                  </a>
-                  <Upsell11
-                    upgrade={this.upgrade}
-                    {...this.props}
-                    abtastyParams={abtastyParams}
-                    sendTransactionDetails={this.sendTransactionDetails}
-                  />
-                </React.Fragment>
-              )}
-              {this.props.abtastyParams.variationId === '406289' && (
+              {this.props.isAuthentic.isAuthenticUser ? (
+                <Upsell11Treatment2
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
+                />
+              ) : (
                 <React.Fragment>
                   <a href="/">
                     <img
@@ -186,14 +176,6 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                     sendTransactionDetails={this.sendTransactionDetails}
                   />
                 </React.Fragment>
-              )}
-              {this.props.abtastyParams.variationId === '406290' && (
-                <Upsell11Treatment2
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
               )}
             </React.Fragment>
           )}
