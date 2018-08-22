@@ -21,8 +21,6 @@ class PromoSectionFiveMobile extends React.PureComponent {
   }
 
   componentDidMount() {
-    console.log('abtastyParams');
-    console.log(this.props.abtastyParams);
     setInterval(() => {
       this.updateTime();
     }, 1000);
@@ -51,10 +49,11 @@ class PromoSectionFiveMobile extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
-        { this.props.isAuthentic.isAuthenticUser ?
-          <Treatment_411723 {...this.state} /> : 
+        {this.props.isAuthentic.isAuthenticUser ? (
+          <Treatment_411723 {...this.state} />
+        ) : (
           <Control_411721 {...this.state} />
-        }
+        )}
       </React.Fragment>
     );
   }
@@ -65,4 +64,6 @@ const mapStateToProps = state => ({
   isAuthentic: state.auth.isAuthentic,
 });
 
-export default connect(mapStateToProps, { ...AuthActions })(PromoSectionFiveMobile);
+export default connect(mapStateToProps, { ...AuthActions })(
+  PromoSectionFiveMobile,
+);

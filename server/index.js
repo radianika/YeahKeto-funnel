@@ -332,9 +332,7 @@ app.prepare().then(() => {
         const sessionId = {
           id: token,
         };
-        const campaignMaps = await getVariationsForVisitor(visitorId, {
-          317682: '418323',
-        });
+        const campaignMaps = await getVariationsForVisitor(visitorId, {});
         const cid = getParameterByName('cid', req.originalUrl);
         const fromKonnective = getParameterByName('from_k', req.originalUrl);
         let userInfo = null;
