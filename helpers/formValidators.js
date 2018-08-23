@@ -2,6 +2,7 @@ import validator from 'validator';
 import moment from 'moment';
 import creditCartType from 'credit-card-type';
 import idx from 'idx';
+import { stateslist } from 'helpers';
 
 const testCardNumbers = ['1333 3333 3333 3333'];
 
@@ -23,7 +24,9 @@ const shippingFormValidator = values => {
   } else if (values.City && values.City.trim().length > 50) {
     errors.City = 'The city should be less than 50 characters long.';
   }
-  if (!values.State || !values.State.trim() || values.State === 'State') {
+  // A value out of the states list can be selected by the Google autocomplete of the Address field.
+  // In this case the HTML select will have empty state (placeholder).
+  if (!values.State || !stateslist.hasOwnProperty(values.State)) {
     errors.State = 'Please enter your state.';
   }
   if (!values.ZipCode || !values.ZipCode.trim()) {
