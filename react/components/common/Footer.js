@@ -76,9 +76,19 @@ class Footer extends PureComponent {
               )}
 
               {this.props.children || (
-                <p className="ftrtxt just">
+                <p className="ftrtxt">
                   <React.Fragment>
-                    <br />This product is not for use by or sale to persons
+                    <br />
+                    © Copyright 2018. All Rights Reserved
+                    <br /><br />
+                    Peahead Productions LLC
+                    <br /><br />
+                    630 Freedom Business Center Dr King of Prussia, MONTGOMERY,
+                    PA 19406
+                    <br /><br />
+                    Email: support@americansciencecbd.com
+                    <br /><br />
+                    This product is not for use by or sale to persons
                     under the age of 18. This product should be used only as
                     directed on the label. It should not be used if you are
                     pregnant or nursing. Consult with a physician before use if
