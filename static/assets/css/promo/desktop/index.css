@@ -208,7 +208,7 @@ MAIN CSS START
 /*-----------------sec1------------------*/
 
 .section1 {
-  height: 720px;
+  height: 880px;
 }
 
 .s1lft,
@@ -239,20 +239,22 @@ MAIN CSS START
 }
 
 .s1txt {
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 24px;
+  line-height: 35px;
   color: #2c2c2c;
   text-align: left;
-  padding: 4px 0 0 236px;
-  letter-spacing: -1px;
+  padding: 4px 0 0 11px;
+  text-align: center;
+  width: 80%;
 }
 
 .sprite3-414064 + .s1txt {
   display: none;
 }
 
-ul.s1list {
-  padding: 19px 0 0 240px;
+ul.s1list,
+.s1-p2 {
+  padding: 19px 0 0 133px;
 }
 
 ul.s1list li {
@@ -280,7 +282,8 @@ ul.s1list li span {
 .s1bottle {
   position: absolute;
   left: -102px;
-  top: 247px;
+  top: 451px;
+  width: 215px;
 }
 
 .s1asseen {
@@ -420,12 +423,16 @@ ul.s1list li span {
   margin: 17px 0 0 10px;
 }
 
+.s1-arrow {
+  left: -227px;
+  position: absolute;
+}
+
 /*-----------------sec2------------------*/
 
 .section2 {
   background: url("../../../../promo/desktop/images/section2.jpg") center top
     no-repeat;
-
   height: 799px;
 }
 

@@ -55,8 +55,8 @@ class Promo extends React.PureComponent {
 
   componentDidMount() {
     this.props.createNewSession();
-    this.postCampaignActivatedEvent();
-    this.postVisitEvent();
+    // this.postCampaignActivatedEvent();
+    // this.postVisitEvent();
 
     // email_id call
     const emailId = getParameterByName('email_id');

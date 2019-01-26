@@ -423,7 +423,24 @@
 /* top-bar */
 .topbar {
   height: 32px;
-  background: #ff0000;
+  background: #191a1a;
+}
+
+.promo-home-logo {
+  right: -18%;
+  position: relative;
+  margin-top: 53px;
+}
+
+.promo-home-top-section-1 {
+  position: absolute;
+  left: 25%;
+}
+
+.promo-home-top-section-2 {
+  padding-left: 0;
+  position: absolute;
+  right: 24px;
 }
 
 .topbartxt {
@@ -436,7 +453,7 @@
 
 .topbartxt span {
   font-weight: 700;
-  color: #fff600;
+  color: #ff1e00;
 }
 /* top-bar end */
 

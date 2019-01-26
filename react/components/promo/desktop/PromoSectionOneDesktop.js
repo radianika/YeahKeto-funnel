@@ -45,80 +45,56 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
       <div
         className="section1 dsplay"
         style={{
-          background: `url("/static/promo/desktop/images/${
-            this.props.isAuthentic.isAuthenticUser
-              ? 'section1.jpg'
-              : 'section1-not-auth.jpg'
-          }") center top no-repeat`,
+          background: 'url(/static/promo/desktop/images/section1.jpg) center top no-repeat',
+          'background-position': '-216px -20px',
         }}
       >
-        <h2 style={{ display: 'none' }}>American Science CBD</h2>
         <div className="container">
-          <div className="s1lft position">
-            <i className="logo sprite2 sprite-logo" />
-            <i className={`s1seal sprite3 sprite-s1seal-${variation317678}`} />
-            <i className="s1hd sprite3 sprite-s1hd" />
-            {this.props.isAuthentic.isAuthenticUser ? (
-              <p className="s1txt">
-                Derived from organic, US-harvested hemp, lab-tested for quality.
-                Clinically proven therapeutic effects.{' '}
-              </p>
-            ) : (
-              <p className="s1txt">
-                For a limited, receive a FREE bottle of our FDA Approved CBD Oil
-                on your first order (no prescription required).
-              </p>
-            )}
-            {this.props.isAuthentic.isAuthenticUser ? (
-              <ul className="s1list ">
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Relieves</span> Anxiety &amp; Stress{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Eliminates</span> Chronic Pain &amp; Aches{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Promotes</span> Mood &amp; Sleep Patterns{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Enhances </span> Focus &amp; Clarity{' '}
-                </li>
-              </ul>
-            ) : (
-              <ul className="s1list ">
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Relieves</span> Chronic Pain &amp; Arthritis{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Alleviates</span> Anxiety &amp; Stress{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Lowers</span> Blood Sugar{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Improves </span> Mood &amp; Concentration{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Promotes </span> Sleep &amp; Energy Levels{' '}
-                </li>
-              </ul>
-            )}
+          <div className="promo-home-top-section-1 s1lft position">
+            <img
+              className="promo-home-logo"
+              src="/static/promo/desktop/images/logo.png"
+              alt=""
+            />
+            <img
+              src="/static/promo/desktop/images/images/s1-hd.png"
+              alt=""
+              style={{ 'margin-top': '40px' }}
+            />
+            <p className="s1txt">
+              <b>Yeah Keto</b> triggers and maintains the state of ketosis,
+              burning fat for energy!{' '}
+            </p>
+            <p className="s1-p2">Yeah Keto Helps You With</p>
+            <ul className="s1list ">
+              <li className="sprite2 sprite-s1bullet">
+                <span>Rapid</span> Ketogenic Weight Loss{' '}
+              </li>
+              <li className="sprite2 sprite-s1bullet">
+                <span>Instant</span> Energy Boost{' '}
+              </li>
+              <li className="sprite2 sprite-s1bullet">
+                <span>Appetite</span> Suppression{' '}
+              </li>
+              <li className="sprite2 sprite-s1bullet">
+                <span>Optimal</span> Metabolic Rate{' '}
+              </li>
+            </ul>
+            <img
+              src="/static/promo/desktop/images/images/s1-arrow.png"
+              className="s1-arrow"
+              alt=""
+            />
+
             <div className="clearall" />
-            <i className="chkarrow sprite3 sprite-s1arrow" />
             {/* <i className="s1bottle sprite3 sprite-s1bottle" /> */}
             <img
-              src="/static/promo/desktop/images/s1bottle.png"
+              src="/static/promo/desktop/images/images/s1-btl1.png"
               className="s1bottle"
               alt=""
             />
-            <i
-              className="s1asseen sprite2 sprite-s1asseen"
-              style={{
-                backgroundPosition: '-385px -421px',
-              }}
-            />
           </div>
-          <div className="s1rgt">
+          <div className="s1rgt promo-home-top-section-2">
             {!variation315256 || variation315256 === '415140' ? (
               <div className="exoffer-box dsplay">
                 <i className="sprite2 sprite-flag" />

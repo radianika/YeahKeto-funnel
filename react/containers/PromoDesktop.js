@@ -35,7 +35,7 @@ class PromoDesktop extends React.PureComponent {
           <div className="container">
             <p className="topbartxt">
               <span>WARNING:</span> Due to extremely high media demand, there is
-              limited supply of <span>CBD Oil</span> in stock as of{' '}
+              limited supply of <span>Yeah Keto</span> in stock as of{' '}
               <span>{moment().format('dddd, ll')}</span>
             </p>
           </div>
