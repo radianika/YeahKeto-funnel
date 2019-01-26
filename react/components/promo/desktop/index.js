@@ -8,3 +8,4 @@ export * from './PromoSectionSixDesktop';
 export * from './PromoSectionSevenDesktop';
 export * from './PromoCheckoutPaymentForm';
 export * from './PromoShippingFormDesktop';
+export * from './PromoHomeNewSection';

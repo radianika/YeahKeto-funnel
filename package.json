@@ -9,8 +9,7 @@
     "build": "babel server -d dist && next build",
     "start": "NODE_ENV=production node ./dist/index.js",
     "generate-docs": "./node_modules/.bin/jsdoc react/* redux/* server/* helpers/* -r",
-    "postinstall": "yarn build",
-    "precommit": "lint-staged"
+    "postinstall": "yarn build"
   },
   "lint-staged": {
     "react/**/*.js": [

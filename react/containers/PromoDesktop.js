@@ -10,6 +10,7 @@ import {
   PromoSectionFiveDesktop,
   PromoSectionSixDesktop,
   PromoSectionSevenDesktop,
+  PromoHomeNewSection
 } from 'react/components/promo/desktop';
 import { createNewSession } from 'redux/actions/authActions';
 import { FooterPromo } from 'react/components/promo';
@@ -41,20 +42,7 @@ class PromoDesktop extends React.PureComponent {
           </div>
         </div>
         <PromoSectionOneDesktop />
-        <PromoSectionTwoDesktop />
-        <PromoStrip tagID="promo-strip-scroll-desktop-1" />
-        <PromoSectionThreeDesktop />
-        <PromoStrip tagID="promo-strip-scroll-desktop-2" />
-        <PromoSectionFourDesktop />
-        <PromoStrip tagID="promo-strip-scroll-desktop-3" />
-        <PromoSectionFiveDesktop />
-        <PromoStrip tagID="promo-strip-scroll-desktop-4" />
-        <PromoSectionSixDesktop />
-        <PromoStrip tagID="promo-strip-scroll-desktop-5" />
-        <PromoSectionSevenDesktop />
-        <div style={{ clear: 'both' }} />
-        <FooterPromo tagID="promo-shipping-form-submit-desktop-footer" />
-        {this.props.sessionId && <PromoSession pageType="leadPage" />}
+        <PromoHomeNewSection />
       </React.Fragment>
     );
   }
