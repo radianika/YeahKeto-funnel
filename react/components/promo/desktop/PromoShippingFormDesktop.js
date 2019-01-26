@@ -57,7 +57,6 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
       <form
         id="form-contact"
         onSubmit={e => {
-          this.postActionTracker();
           props.handleSubmit(e);
         }}
         className="pure-form pure-form-aligned fv-form fv-form-pure"
@@ -68,96 +67,69 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
           className="fv-hidden-submit"
           style={{ display: 'none', width: '0px', height: '0px' }}
         />
-        <div className="sldrtxt" id="fades">
-          <div className="aggettivi">
-            <div className="text-animated-one">
-              <i className="sprite2 sprite-eye" /> 13 others are viewing this
-              offer right now!
-            </div>
-            <div className="text-animated-two">
-              <i className="sprite2 sprite-eye" /> 25 people purchased this in
-              the last hour
-            </div>
+        <div className="rgt-form">
+          {/*<img src="/static/promo/desktop/images/images/s1-arrow2.png" alt className="s1-animate-arrow" />*/}
+          <div className="form-position">
+            <p className="frm-timer">Hurry! Limited Time Offer <span id="stopwatch">04:52</span></p>
+            <img src="/static/promo/desktop/images/images/s1-rgt-hd.png" alt className="s1-rgt-hd" />
+            <Field
+              component={TextField}
+              containerClass="first-field"
+              name="FirstName"
+              placeholder="First name"
+            />
+            <Field
+              component={TextField}
+              name="LastName"
+              placeholder="Last name"
+            />
+            <Field
+              component={AddressField}
+              name="Address1"
+              placeholder="Street and number, P.O. box, c/o."
+              changeField={this.props.change}
+            />
+            <Field
+              component={TextField}
+              name="Address2"
+              placeholder="Apartment, suite, unit, building, floor, etc."
+            />
+            <Field
+              component={TextField}
+              name="City"
+              placeholder="Your City"
+            />
+            <Field
+              component={SelectField}
+              name="State"
+              placeholder="State"
+              options={stateslist}
+            />
+            <Field
+              component={TextField}
+              name="ZipCode"
+              placeholder="Zip Code"
+              normalize={normalizePostalCode}
+            />
+            <Field
+              component={TextField}
+              name="Phone"
+              placeholder="Example: (123) 555-6789"
+              normalize={normalizePhone}
+            />
+            <Field
+              component={TextField}
+              name="Email"
+              placeholder="Example: email@somewhere.com"
+            />
+          </div>
+          <div><input type="submit" value="" id="rush-my-order-form-click" onClick={this.showErrorModal} class="submit pulse" /></div> 
+          <div className="clearall" />
+          <div>
+            <img src="/static/promo/desktop/images/images/secure.png"  alt=""  class="secure"/>
           </div>
         </div>
-        <div className="frmhdr sprite2 sprite-frmhdr">
-          <p className="frmhd-txt">
-            TELL US WHERE TO SEND
-            <br /> <span>Your Bottle Today!</span>
-          </p>
-        </div>
-        <Field
-          component={TextField}
-          name="FirstName"
-          label="First Name*:"
-          placeholder="First name"
-        />
-        <Field
-          component={TextField}
-          name="LastName"
-          label="Last Name*:"
-          placeholder="Last name"
-        />
-        <Field
-          component={AddressField}
-          name="Address1"
-          label="Address Line 1*:"
-          placeholder="Street and number, P.O. box, c/o."
-          changeField={this.props.change}
-        />
-        <Field
-          component={TextField}
-          name="Address2"
-          label="Address Line 2:"
-          placeholder="Apartment, suite, unit, building, floor, etc."
-        />
-        <Field
-          component={TextField}
-          name="City"
-          label="City*:"
-          placeholder="Your City"
-        />
-        <Field
-          component={SelectField}
-          name="State"
-          label="State*:"
-          placeholder="State"
-          options={stateslist}
-        />
-        <Field
-          component={TextField}
-          name="ZipCode"
-          label="Zip Code*:"
-          placeholder="Zip Code"
-          normalize={normalizePostalCode}
-        />
-        <Field
-          component={TextField}
-          name="Phone"
-          label="Phone*:"
-          placeholder="Example: (123) 555-6789"
-          normalize={normalizePhone}
-        />
-        <Field
-          component={TextField}
-          name="Email"
-          label="Email*:"
-          placeholder="Example: email@somewhere.com"
-        />
         <div className="clearall" />
-        <button
-          id="rush-my-order-form-click"
-          onClick={this.showErrorModal}
-          className={`submit pulse sprite5 sprite5-${
-            this.props.isAuthentic.isAuthenticUser
-          } sprite-submit sprite-submit-${
-            this.props.isAuthentic.isAuthenticUser ? 'authentic' : 'unauthentic'
-          }`}
-        />
-        <div className="clearall" />
-        <div>
-          <i className="s1logos sprite3 sprite-s1logos" />
-        </div>
       </form>
     );
   }

@@ -46,7 +46,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
         className="section1 dsplay"
         style={{
           background: 'url(/static/promo/desktop/images/section1.jpg) center top no-repeat',
-          'background-position': '-216px -20px',
+          'background-position': '-216px 0px',
         }}
       >
         <div className="container">
@@ -95,19 +95,9 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
             />
           </div>
           <div className="s1rgt promo-home-top-section-2">
-            {!variation315256 || variation315256 === '415140' ? (
-              <div className="exoffer-box dsplay">
-                <i className="sprite2 sprite-flag" />
-                <p className="exof-txt">
-                  Internet Exclusive Offer
-                  <br /> <b>Available to US Residents Only</b>
-                </p>
-              </div>
-            ) : (
-              <div className="exoffer-box dsplay">
-                <img src="/static/assets/images/states.png" alt="" />
-              </div>
-            )}
+            <div className="exoffer-box dsplay">
+              <img src="/static/promo/desktop/images/images/s1-seal.png" alt="" />
+            </div>
             <div className="frm" id="topfrm">
               <PromoShippingFormDesktop
                 id="promo-section1-submit-desktop"

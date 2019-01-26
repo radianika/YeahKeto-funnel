@@ -145,15 +145,15 @@
 }
 /*-----------------sec1------------------*/
  .section1 {
-     height: 880px;
+     height: 960px;
 }
  .s1lft, .s1rgt {
      float: left;
      display: inline-block;
      width: 690px;
 }
- .s1rgt {
-     width: 307px;
+.s1rgt {
+     width: 354px;
 }
  .logo {
      margin: 9px 0 0 205px;
@@ -230,9 +230,8 @@
     */
 }
  .frm {
-     padding-bottom: 15px;
      width: 100%;
-     background: #069852;
+     background: white;
      border-radius: 5px 5px 0 0;
 }
  .sldrtxt {
@@ -330,6 +329,7 @@
  .s1-arrow {
      left: -227px;
      position: absolute;
+     width: 107%;
 }
 /*-----------------sec2------------------*/
  .section2 {
@@ -1171,6 +1171,11 @@
      padding:0;
      position:relative;
 }
+
+.rgt-form {
+     border: 1px solid #1a407b;
+}
+
  .s1-logo{
     margin:41px 0 0 360px;
 }
@@ -1190,7 +1195,7 @@
      text-align: center;
      font-style: italic;
      color: #373737;
-     margin: 17px 5px 0 213px;
+     margin: 17px 5px 0 -189pxs;
      padding: 19px 0 0 27px;
 }
  ul.s1-list{
@@ -1211,7 +1216,7 @@
      text-transform:uppercase;
 }
  .s1-arrow{
-    margin:-37px 0 0 3px;
+     margin: -11px 0 0 56px;
 }
  .s1-btl1{
      position: absolute;
@@ -1230,16 +1235,20 @@
 }
 /* form start */
  .rgt-form{
-    width: 357px;
+    width: 354px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
  .form-position{
-    margin:1px 0 0 0;
+    background: #1a407b;
+    padding-bottom: 25px;
 }
  .s1-seal{
     margin:6px 0 0 22px;
 }
  .s1-rgt-hd{
     display:block;
+    background: #1a407b;
     margin:0 auto 0 auto;
 }
  .frm-fields{
@@ -1271,12 +1280,12 @@
      border:1px solid #c5c7d1;
 }
  .frmElemts select{
-     width: 322px;
+     width: 308px;
      height: 40px;
      line-height: 30px;
 }
  .submit{
-     margin: 12px 0 0 17px;
+     margin: 12px 0 0 11px;
      background: url(../../../../promo/desktop/images/images/submit-btn.png) 0 0 no-repeat;
      height: 74px;
      width: 328px;
@@ -1301,6 +1310,13 @@
      letter-spacing:1px;
      line-height:36px;
      margin:7px 0 8px 0;
+     background: #143869;
+     margin: 0;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.first-field {
+     margin-top: 40px;
 }
  .frm-timer span {
      font-weight: bold;
