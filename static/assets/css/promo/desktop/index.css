@@ -186,6 +186,7 @@
  ul.s1list li {
     /*background:url(../../../../promo/desktop/images/s1bullet.png) left top no-repeat;
     */
+     background: url(../../../../promo/desktop/images/images/s1-tk.png) left 0px no-repeat;
      padding: 0 0 0 31px;
      font-weight: 600;
      font-size: 25px;
@@ -194,9 +195,10 @@
      text-align: left;
      margin: 17px 0 0;
      letter-spacing: -1px;
+     background-size: 4%;
 }
  ul.s1list li span {
-     color: #01a16a;
+     color: #ea6302;
      text-transform: uppercase;
 }
  .chkarrow {
