@@ -31,7 +31,7 @@ class SelectPackage extends React.PureComponent {
             rel="stylesheet"
           />
           <link
-            href="/static/assets/css/promo/desktop/upsell2.css"
+            href="/static/assets/css/promo/desktop/upsell1.css"
             rel="stylesheet"
           />
           <link href="/static/desktop/css/checkout.css" rel="stylesheet" />

@@ -60,25 +60,9 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
 
         <div className="container">
           <div className="upsell-box">
-            <div className="up-header">
-              <a href="/">
-                <img
-                  src="/static/desktop/images/logo.png"
-                  alt=""
-                  className="upsell-logo"
-                />
-              </a>
-              <img
-                src="/static/desktop/images/step.png"
-                alt=""
-                className="upsell-step"
-              />
-              <img
-                src="/static/desktop/images/seals.png"
-                alt=""
-                className="upsell-seal"
-              />
-            </div>
+            <div className="up-top">
+          <p><span>WARNING:</span> Due to extremely high media demand, there is limited supply of <span>Yeah Forskolin</span> in stock as of <span /></p>
+        </div>
             {upsell === 1 && <Upsell1 upgrade={this.upgrade} {...this.props} />}
             {upsell === '1-1' && (
               <Upsell11 upgrade={this.upgrade} {...this.props} />
@@ -87,43 +71,6 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
             {upsell === '2-1' && (
               <Upsell21 upgrade={this.upgrade} {...this.props} />
             )}
-            {/* <div className="footer">
-            <div className="clearall" />
-
-            <div
-              style={{
-                display: 'table',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}
-              >
-              <img
-                src="/static/assets/images/badges/mcafee.png"
-                alt=""
-                style={{ height: 50, width: 150, display: 'inline-block' }}
-              />
-              <img
-                src="/static/assets/images/badges/imgnortonsiteseal.png"
-                alt=""
-                style={{
-                  height: 54,
-                  width: 100,
-                  display: 'inline-block',
-                  marginLeft: 15,
-                }}
-              />
-              <img
-                src="/static/assets/images/badges/ext.jpeg"
-                alt=""
-                style={{
-                  height: 60,
-                  width: 105,
-                  display: 'inline-block',
-                  marginLeft: 15,
-                }}
-              />
-            </div>
-          </div> */}
           </div>
           <div className="clearall" />
           {this.props.submitStatus === 'submitting' && <Spinner />}
@@ -131,15 +78,6 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
             visible={this.props.submitStatus === 'success'}
             message="Order updated successfully."
           />
-        </div>
-        <div id="footer">
-          <div className="container">
-            <div className="ftr-txt">
-              <Footer noLogo>
-                <span />
-              </Footer>
-            </div>
-          </div>
         </div>
       </React.Fragment>
     );
