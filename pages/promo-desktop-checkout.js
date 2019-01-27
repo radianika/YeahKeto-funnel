@@ -85,7 +85,7 @@ class Promo extends React.PureComponent {
     return (
       <React.Fragment>
         <Head>
-          <title>American Science CBD Oil</title>
+          <title>Yeah Keto</title>
           <link
             rel="stylesheet"
             type="text/css"

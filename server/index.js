@@ -314,12 +314,14 @@ app.prepare().then(() => {
   server.get('/promo/:useragent?', async (req, res) => {
     try {
       const requestAgent = req.useragent.isMobile ? 'mobile' : 'desktop';
-      const { visitorId, isNew } = await getVisitorId(req, res);
+      // const { visitorId, isNew } = await getVisitorId(req, res);
+      const visitorId = null;
+      const isNew = false;
       const isAuthenticUser = isAuthentic(req);
 
-      if (isNew) {
-        res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
-      }
+      // if (isNew) {
+      //   res.cookie('asc_visitor_id', visitorId, { maxAge: 3600000 });
+      // }
 
       if (requestAgent !== req.params.useragent) {
         res.redirect(
@@ -332,7 +334,8 @@ app.prepare().then(() => {
         const sessionId = {
           id: token,
         };
-        const campaignMaps = await getVariationsForVisitor(visitorId, {});
+        // const campaignMaps = await getVariationsForVisitor(visitorId, {});
+        const campaignMaps = [];
         const cid = getParameterByName('cid', req.originalUrl);
         const fromKonnective = getParameterByName('from_k', req.originalUrl);
         let userInfo = null;
@@ -358,7 +361,7 @@ app.prepare().then(() => {
 
         app.render(req, res, '/promo-desktop', {
           requestAgent,
-          visitorId,
+          visitorId: null,
           device: requestAgent,
           campaignMaps,
           isAuthenticUser,
@@ -396,24 +399,24 @@ app.prepare().then(() => {
         offer_id: offerId,
         aff_sub2: adv_sub,
       } = req.query;
-      const { visitorId } = await getVisitorId(req, res);
-      const campaignMaps = await getVariationsForVisitor(visitorId, {
-        313018: undefined,
-        318676: '419445',
-        319131: '420043',
-        319133: '420046',
-        319137: '420050',
-      });
+      // const { visitorId } = await getVisitorId(req, res);
+      // const campaignMaps = await getVariationsForVisitor(visitorId, {
+      //   313018: undefined,
+      //   318676: '419445',
+      //   319131: '420043',
+      //   319133: '420046',
+      //   319137: '420050',
+      // });
 
       // redirectToPromo(orderId, req, res, () => {
       app.render(req, res, '/promo-desktop-checkout', {
         orderId,
         sessionId,
-        visitorId,
+        visitorId: '',
         adv_sub,
         transaction_id,
         offerId,
-        campaignMaps,
+        campaignMaps: [],
       });
       // });
     } catch (error) {
@@ -820,6 +823,7 @@ app.prepare().then(() => {
         req.url.indexOf('uploads') === -1 &&
         !permittedRoutes.includes(req.url)
       ) {
+        console.log('coming here also');
         res.redirect('/promo');
       }
       return handle(req, res);
