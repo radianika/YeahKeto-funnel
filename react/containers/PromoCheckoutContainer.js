@@ -106,59 +106,40 @@ class PromoCheckout extends React.PureComponent {
                     <img src="/static/promo/desktop/images/images/chk-eye.png" alt className="chk-eye" /><span id="stopwatch">0:00</span></p>            
                 </div>
                 <p className="lft-top-txt">SELECT YOUR PACKAGE TODAY &amp; SAVE MORE!</p>
-                <div className="prdbox1">                     
-                  <a href="javascript:void(0)" className="picked">
-                    <p className="pack-hding">Buy 3 Bottles +<span> Get 2 FREE</span></p>
-                    <div className="free-shipping">Free Shipping</div>
-                    <div className="box-lft">
-                      <div className="lft-btl">
-                        <img src="/static/promo/desktop/images/images/5pack.png" alt className="rvw-product" /> 
-                      </div>                              
-                    </div>
-                    <div className="box-rgt">
-                      <div className="selected-arrow">popular package </div>
-                      <p className="retail-price">REGULAR  <span>$209.97<img src="/static/promo/desktop/images/images/red-cut.png" alt className="red-cut" /></span></p>
-                      <p className="prdct-price">$41.99<span>/ea</span></p>
-                      <p className="you-save">You Save $214.98</p>  
-                      <div className="selected-btn" />
-                    </div>
-                  </a>               
-                </div>
-                <div className="prdbox2">
-                  <a href="javascript:void(0)">
-                    <p className="pack-hding">Buy 2 Bottles +<span> Get 1 FREE</span></p>
-                    <div className="free-shipping">Free Shipping</div>
-                    <div className="box-lft">
-                      <div className="lft-btl">
-                        <img src="/static/promo/desktop/images/images/3pack.png" alt className="rvw-product" /> 
-                      </div>                              
-                    </div>
-                    <div className="box-rgt">
-                      <div className="selected-arrow">Best Value package</div>
-                      <p className="retail-price">REGULAR <span>$16798<img src="/static/promo/desktop/images/images/red-cut.png" alt className="red-cut" /></span></p>
-                      <p className="prdct-price">$55.99<span>/ea</span></p>
-                      <p className="you-save">YOU SAVE  $41.98</p>
-                      <div className="selected-btn" />  
-                    </div>
-                  </a>
-                </div>
-                <div className="prdbox3">
-                  <a href="javascript:void(0)">
-                    <p className="pack-hding">Buy 1 Bottle</p>
-                    <div className="free-shipping">Free Shipping</div>
-                    <div className="box-lft">
-                      <div className="lft-btl">
-                        <img src="/static/promo/desktop/images/images/1pack.png" alt className="rvw-product" /> 
-                      </div>                              
-                    </div>
-                    <div className="box-rgt">
-                      <div className="selected-arrow">Sampler package</div>
-                      <p className="prdct-price" style={{padding: '50px 0 0 0'}}>$69.99<span>/ea</span></p>
-                      <p className="you-save">YOU SAVE  $10.00</p> 
-                      <div className="selected-btn" /> 
-                    </div>
-                  </a>
-                </div>
+                {packages.map((pack, index) => (
+                  <div key={pack.id} className={`prdbox${index+1}`}>
+                    <a
+                      id={`select-package-${pack.id}`}
+                      href="javascript:void(0);"
+                      className={
+                        pack && pack.id === this.state.selected.id
+                          ? 'picked'
+                          : ''
+                      }
+                      onClick={() => {
+                        this.setState({ selected: pack });
+                      }}
+                    >
+                      <p className="pack-hding">{pack.title}</p>
+                      <div className="free-shipping">Free Shipping</div>
+                      <div className="box-lft">
+                        <div className="lft-btl">
+                          <img src={`/static/promo/desktop/images/images/${
+                              pack.desktopImg
+                            }`} alt className="rvw-product" /> 
+                        </div>                              
+                      </div>
+
+                      <div className="box-rgt">
+                        <div className="selected-arrow">{pack.msg} </div>
+                        <p className="retail-price">REGULAR PRICE <span>{pack.regularPrice}<img src="/static/promo/desktop/images/images/red-cut.png" alt className="red-cut" /></span></p>
+                        <p className="prdct-price">{pack.price}<span>/ea</span></p>
+                        <p className="you-save">You Save $214.98</p>  
+                        <div className="selected-btn" />
+                      </div>
+                    </a>
+                  </div>
+                ))}
                 <div className="summary-box" id="prc">
                   <div className="smry-hding-bx">
                     <p className="smryhding">ORDER SUMMARY</p>
@@ -171,14 +152,14 @@ class PromoCheckout extends React.PureComponent {
                     </div>
                     <div className="smrybox-rgt">
                       <ul className="smrylist">
-                        <li className="lft" style={{lineHeight: '20px'}}><b>Keto</b><br /><span id="package_type">Buy 5 Bottles</span></li>
-                        <li className="rgt" style={{padding: '0 0 12px 0'}}><span id="sub_total">$209.95</span></li>
+                        <li className="lft" style={{lineHeight: '20px'}}><b>Keto</b><br /><span id="package_type">{this.state.selected.title}</span></li>
+                        <li className="rgt" style={{padding: '0 0 12px 0'}}><span id="sub_total">{`$${this.state.selected.packagePrice}`}</span></li>
                         <li className="lft">Shipping &amp; Handling:</li>
                         <li className="rgt" id="shipping_price">$0.00</li>
                         <li className="lft">Discount</li>
                         <li className="rgt">$0.00</li>
                         <li className="lft" style={{borderBottom: 'none'}}><b>Total:</b></li>
-                        <li className="rgt" style={{borderBottom: 'none'}} id="total_price"><b>$209.95</b></li>
+                        <li className="rgt" style={{borderBottom: 'none'}} id="total_price"><b>{`$${this.state.selected.packagePrice}`}</b></li>
                       </ul>
                     </div>
                   </div>
