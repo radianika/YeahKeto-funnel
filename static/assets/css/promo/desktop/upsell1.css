@@ -60,7 +60,7 @@ CSS FOR UPSELL PAGE
 .up-bg{
   float:left;
   width:100%;
-  background:url(../images/up-bg.jpg) center top no-repeat;
+  background:url(../../../../promo/desktop/images/images/up-bg.jpg) center top no-repeat;
 }
 .up-inr{
   margin:0 auto;
@@ -134,7 +134,7 @@ CSS FOR UPSELL PAGE
   position:absolute;
   right:-66px;
   top:25px;
-  background:url(../images/up-seal.png) center top no-repeat;
+  background:url(../../../../promo/desktop/images/images/up-seal.png) center top no-repeat;
   width:128px;
   height:128px;
   }
@@ -264,7 +264,7 @@ CSS FOR THANKYOU PAGE
 .thnk-recpt-box{
   float:left;
   width:100%;
-  background:#f1f1f1 url(../images/thnk-bg.png) repeat-x left top;
+  background:#f1f1f1 url(../../../../promo/desktop/images/images/thnk-bg.png) repeat-x left top;
   padding:30px 35px;
   margin:30px 0 0;
   }
