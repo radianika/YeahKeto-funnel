@@ -7,6 +7,7 @@ import { PromoDesktopContainer } from 'react/containers';
 import { AuthActions } from 'redux/actions';
 import { createNewSession } from 'redux/actions/authActions';
 import { normalizePhone, getParameterByName } from 'helpers';
+import { PromoSession } from 'react/components/common';
 
 class Promo extends React.PureComponent {
   static getInitialProps({
@@ -160,6 +161,7 @@ class Promo extends React.PureComponent {
           />
           <script src="https://fast.wistia.net/assets/external/E-v1.js" async />
         </Head>
+        {this.props.sessionId && <PromoSession pageType="leadPage" />}
         <PromoDesktopContainer />
       </React.Fragment>
     );
@@ -167,6 +169,7 @@ class Promo extends React.PureComponent {
 }
 
 const mapStateToProps = state => ({
+  sessionId: state.auth && state.auth.sessionId,
   abtastyParams: state.auth.abtastyParams,
 });
 
