@@ -91,23 +91,13 @@ class MobileShippingContainerComponent extends React.PureComponent {
               className="spng-hd"
               style={{ height: getDiscountBanner({ cid }) ? '173px' : '143px' }}
             >
-              <div className="spng-hd2">
-                <img
-                  src="/static/promo/mobile/images/ck-top.jpg"
-                  alt="American Science CBD"
-                  className="sping-logo"
-                  style={{ lineHeight: 0 }}
-                />
-              </div>
-              {getDiscountBanner({ cid }) && (
-                <div className="topbar">
-                  <p className="topbartxt">
-                    PROMO CODE <span>CBD33</span> APPLIED!
-                    <span> HURRY, GET 20% OFF TODAY!</span>
-                  </p>
+              <img src="/static/promo/mobile/images/images/top-img.jpg" alt="" className="img-resp" />
+              <div id="ck-sec2">
+                <div className="frm-bg2">
+                  <p className="chk-toptxt1">VERIFY YOUR SHIPPING INFO</p>
+                  <p className="chk-top-txt2"></p>
                 </div>
-              )}
-              <p className="trial-toptxt1">VERIFY YOUR SHIPPING INFO</p>
+              </div>
             </div>
             <p className="clearall" />
             <div id="trialsec2">
@@ -213,33 +203,27 @@ class MobileShippingContainerComponent extends React.PureComponent {
                     />
                   </div>
                   <div className="clearfix" />
-                  <div className="shpbtm">
-                    <a
-                      id="promo-shipping-form-submit-mobile"
-                      href="javascript:void(0)"
-                      className="button"
-                      onClick={this.onSubmit}
-                    >
-                      <img
-                        src="/static/promo/mobile/images/ship-btn.png"
-                        alt="American Science CBD"
-                        className="ship-btn pulse"
-                      />
-                    </a>
-                    <img
-                      src="/static/promo/mobile/images/loogs.png"
-                      alt="American Science CBD"
-                      className="loogs"
-                    />
+                  <div className="btn-box">
+                    <img src="/static/promo/mobile/images/images/secure-img.png" className="secure-img" />                
+                    <a href="select-package.php"><img src="/static/promo/mobile/images/images/rush-button.png" alt className="trial-btn pulse" /></a>
+                    <img src="/static/promo/mobile/images/images/c-logo.png" alt className="c-logo" />
                   </div>
                 </form>
               </div>
             </div>
           </div>
           <div className="legal">
-            <div className="ftr-txt">
-              <Footer promo />
-            </div>
+            <p className="ftr-txt">
+              <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
+              <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
+              <a href="#"> Contact Us </a> <br /><br />
+              <span style={{'text-transform': 'none'}}>
+                <script type="text/javascript">
+                  var year = new Date();document.write(year.getFullYear());
+                </script> &copy;
+                Yeah Keto
+              </span>
+            </p>
           </div>
         </div>
         {this.state.showCheckingModal && (

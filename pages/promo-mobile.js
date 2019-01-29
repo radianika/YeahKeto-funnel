@@ -162,6 +162,11 @@ class Promo extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
+            href="/static/assets/css/promo/mobile/mobile-new.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
             href="/static/assets/css/mb-style.css"
           />
           <link
