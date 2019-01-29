@@ -37,6 +37,11 @@ class SelectPackage extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
+            href="/static/assets/css/promo/mobile/checkout-new.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
             href="/static/assets/css/mb-style.css"
           />
           <link
