@@ -9,13 +9,69 @@ import {
 import { OrderActions } from 'redux/actions';
 import moment from 'moment';
 
+// id: {
+//   imgUrl: ,
+//   name: '',
+//   packSize: '',
+//   price: ''
+// }
+
+const productMapping = {
+  4165: {
+    imgUrl: '/static/promo/desktop/images/images/thk-prd.png',
+    name: 'Yeah Keto',
+    packSize: '5 Bottles',
+    price: 195
+  },
+  4163: {
+    imgUrl: '/static/promo/desktop/images/images/thk-prd.png',
+    name: 'Yeah Keto',
+    packSize: '3 Bottles',
+    price: 147
+  },
+  4161: {
+    imgUrl: '/static/promo/desktop/images/images/thk-prd.png',
+    name: 'Yeah Keto',
+    packSize: '1 Bottles',
+    price: 69
+  },
+  4168: {
+    imgUrl: '/static/promo/desktop/images/images/thk-prd-2.png',
+    name: 'Yeah Forskolin',
+    packSize: '1 Bottles',
+    price: 49.99
+  },
+  4166: {
+    imgUrl: '/static/promo/desktop/images/images/thk-prd-1.png',
+    name: 'Yeah Caralluma',
+    packSize: '1 Bottles',
+    price: 49.99
+  }
+}
+
 /**
  * @class ThankyouDesktopComponent
  * @extends {React.Component}
  * @description Common Thankyou page between promo flow and cart flow on desktop
  */
 class ThankyouDesktopComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      leadData: JSON.parse(localStorage.getItem('leadData'))
+    }
+  }
+
   render() {
+    console.log('this.state', this.state.items);
+    const products = JSON.parse(localStorage.getItem('pdcts'));
+    const items = [];
+    let totalPrice = 0;
+    products.forEach(prod => {
+      totalPrice = totalPrice + productMapping[prod.productId].price;
+      items.push(productMapping[prod.productId])
+    });
+
     return (
       <div className="container">
         <div className="up-top">
@@ -34,8 +90,8 @@ class ThankyouDesktopComponent extends React.Component {
                 <p className="thk-p1">Order Reciept</p>
                 <div className="thnk-lft">
                   <div className="thk-in-lft">
-                    <p className="thk-p2"><span>Order Placed:</span> </p>
-                    <p className="thk-p2"><span>Order Number:</span> 341160</p>
+                    <p className="thk-p2"><span>Order Placed:</span> {moment(this.state.leadData.dateCreated).format('MMM DD hh:mm:ss')}</p>
+                    <p className="thk-p2"><span>Order Number:</span> {this.state.leadData.orderId}</p>
                   </div>
                   <div className="thk-in-lft">
                     <p className="thk-p2"><span>Estimated Delivery Date: </span></p>
@@ -45,33 +101,23 @@ class ThankyouDesktopComponent extends React.Component {
                     <div className="thk-dtl-l">
                       <p className="thk-p3">Items Orderd</p>
                       <div className="thk-prds">
-                        <div className="thk-prd-row">
-                          <div className="thk-prd-box">
-                            <img src="/static/promo/desktop/images/images/thk-prd.png" />
+                      {
+                        items.map(item => (
+                          <div className="thk-prd-row">
+                            <div className="thk-prd-box">
+                              <img src={item.imgUrl} />
+                            </div>
+                            <p className="thk-p2"><span>Yeah Keto</span><span className="fr">${item.price}</span></p>
+                            <p className="thk-p2 gry-clr">{item.packSize} </p>
                           </div>
-                          <p className="thk-p2"><span>Yeah Keto</span><span className="fr">$195.00</span></p>
-                          <p className="thk-p2 gry-clr">5 Bottles </p>
-                        </div>
-                        <div className="thk-prd-row">
-                          <div className="thk-prd-box">
-                            <img src="/static/promo/desktop/images/images/thk-prd-1.png" />
-                          </div>
-                          <p className="thk-p2"><span>Yeah Caralluma</span><span className="fr">$195.00</span></p>
-                          <p className="thk-p2 gry-clr">1 Bottles </p>
-                        </div>
-                        <div className="thk-prd-row">
-                          <div className="thk-prd-box">
-                            <img src="/static/promo/desktop/images/images/thk-prd-2.png" />
-                          </div>
-                          <p className="thk-p2"><span>Yeah Forskolin</span><span className="fr">$49.99</span></p>
-                          <p className="thk-p2 gry-clr">1 Bottles </p>
-                        </div>
+                        ))
+                      }
                       </div>
                       <div className="thk-total-div">
                         <div className="thk-total-inn">
-                          <p className="thk-p4">Sub Total:  <span>$687.00</span></p>
+                          <p className="thk-p4">Sub Total:  <span>${totalPrice}</span></p>
                           <p className="thk-p4 brd-tb">Shipping &amp; handling: <span className="grn-clr"><b>FREE</b></span></p>
-                          <p className="thk-p4">Total:  <span>$687.00</span></p>
+                          <p className="thk-p4">Total:  <span>${totalPrice}</span></p>
                         </div>
                       </div>
                     </div>
