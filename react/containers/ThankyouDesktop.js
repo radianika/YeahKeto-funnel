@@ -94,7 +94,7 @@ class ThankyouDesktopComponent extends React.Component {
                     <p className="thk-p2"><span>Order Number:</span> {this.state.leadData.orderId}</p>
                   </div>
                   <div className="thk-in-lft">
-                    <p className="thk-p2"><span>Estimated Delivery Date: </span></p>
+                    <p className="thk-p2"><span>Estimated Delivery Date: {moment(this.state.leadData.dateCreated).add(3, 'days').format('MMM DD hh:mm:ss')} </span></p>
                     <p className="thk-p2" />
                   </div>
                   <div className="thk-in-box">
