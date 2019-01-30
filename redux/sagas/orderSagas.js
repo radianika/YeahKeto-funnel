@@ -9,6 +9,7 @@ import {
   parseOrderPostData,
   getRevenueAfterDiscount,
   getParameterByName,
+  parseQuery
 } from 'helpers';
 import { getCookie } from 'react/components/common';
 
@@ -257,6 +258,7 @@ function* placeOrder(action) {
       const { localStorage } = window;
       const order = apiResponse.response.data.data;
       localStorage.setItem('upsell1', JSON.stringify([order]));
+      localStorage.setItem('pdcts', JSON.stringify(order.items));
       if (values.cart) {
         localStorage.setItem('cartthankyou', true);
         yield put(OrderActions.submitLeadsFormSuccess());
@@ -284,8 +286,9 @@ function* placeOrder(action) {
 function* addUpsellToOrder(action) {
   yield put(OrderActions.addUpsellToOrderRequest());
   try {
-    const { sendTo, headers, cid } = action.payload;
+    const { productId, sendTo, headers, cid } = action.payload;
     let sessionId = '';
+    let kSessionId = '';
     const { localStorage } = window;
 
     let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
@@ -293,6 +296,7 @@ function* addUpsellToOrder(action) {
 
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
+      kSessionId = yield getCookie('ascbd_promo_session');
 
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
@@ -302,28 +306,47 @@ function* addUpsellToOrder(action) {
       sessionId = yield select(getSession);
     }
 
+     const { orderId } = parseQuery(window.location.search);
+
     const payload = {
-      CustomerID: upsell1.OrderInfo.CustomerID,
-      ProductGroups: [packIdMap[action.payload.productId]],
+      orderId,
+      productId,
+      productQty: 1
     };
 
-    payload.ProductGroups[0].CustomProducts[0].Amount = getRevenueAfterDiscount(
+    // payload.ProductGroups[0].CustomProducts[0].Amount = getRevenueAfterDiscount(
+    //   {
+    //     cid,
+    //     revenue: payload.ProductGroups[0].CustomProducts[0].Amount,
+    //   },
+    // );
+
+    // const apiResponse = yield post('/v1/response/upsale', payload, sessionId, {
+    //   ...headers,
+    // });
+
+    const apiResponse = yield post(
+      '/v1/konnektive/upsale',
+      payload,
+      sessionId,
       {
-        cid,
-        revenue: payload.ProductGroups[0].CustomProducts[0].Amount,
+        ...headers,
+        'k-session-id': kSessionId,
       },
     );
 
-    const apiResponse = yield post('/v1/response/upsale', payload, sessionId, {
-      ...headers,
-    });
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const newOrder = apiResponse.response.data.data;
 
-      const oldUpselldata = JSON.parse(localStorage.getItem('upsell1'));
-      oldUpselldata.push(newOrder);
+      console.log('newOrder', newOrder);
 
-      localStorage.setItem('upsell1', JSON.stringify(oldUpselldata));
+      const oldUpselldata = JSON.parse(localStorage.getItem('upsell1'));
+      localStorage.setItem('pdcts', JSON.stringify(newOrder.items));
+
+      // oldUpselldata.push(newOrder);
+      // pdcts.push(newOrder);
+
+      // localStorage.setItem('upsell1', JSON.stringify(oldUpselldata));
       yield put(OrderActions.placeOrderSuccess({ order: newOrder }));
       yield put(OrderActions.addUpsellToOrderSuccess());
       const queryString = getQueryString();
@@ -332,6 +355,7 @@ function* addUpsellToOrder(action) {
       yield put(OrderActions.addUpsellToOrderFailure());
     }
   } catch (error) {
+    console.log('error', error);
     yield put(OrderActions.addUpsellToOrderFailure({ error }));
   }
 }

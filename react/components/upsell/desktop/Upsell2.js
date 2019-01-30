@@ -9,11 +9,11 @@ import { getQueryString } from 'helpers';
  */
 class Upsell2 extends React.PureComponent {
   upgrade = () => {
-    this.props.upgrade(217, '/promo/desktop/thankyou');
+    this.props.upgrade(4166, '/promo/desktop/thankyou');
   };
 
   skipUpsell = () => {
-    window.location.assign(`/promo/desktop/upsell-2-1?${getQueryString()}`);
+    window.location.assign(`'/promo/desktop/thankyou?${getQueryString()}`);
   };
 
   render() {
@@ -58,7 +58,7 @@ class Upsell2 extends React.PureComponent {
                       <div className="up-prd-info">
                         <p className="up-prd-p1">Add Your <span>Special Discounted</span> Bottle<br />Just Pay a Special Price <span><img src="/static/promo/desktop/images/images/strike.png" alt />$89.99</span></p>
                         <p className="prd-prc">$49.99</p>
-                        <a href="#" onClick={this.upsell}><img src="/static/promo/desktop/images/images/up-btn.png" alt className="up-btn" /></a>
+                        <a href="#" onClick={this.upgrade}><img src="/static/promo/desktop/images/images/up-btn.png" alt className="up-btn" /></a>
                         <a href="#" onClick={this.skipUpsell}><p className="no-p"> No thanks, I’m not interested </p></a>
                       </div>
                     </div>
