@@ -126,25 +126,25 @@ class ThankyouDesktopComponent extends React.Component {
                 <div className="thk-dtl-r">
                   <p className="thk-p3">Shipping Info</p>
                   <ul className="user-info">
-                    <li><span>First Name:</span> Name</li>
-                    <li><span>Last Name:</span> name</li>
-                    <li><span>Address:</span> 123, Church Street</li>
-                    <li><span>City:</span> Mississippi</li>
-                    <li><span>State:</span> CA</li>
-                    <li><span>Zip Code:</span> 2311441</li>
-                    <li><span>Phone:</span> 1-XXX-XXX-XXXX</li>
-                    <li><span>Email:</span> name@email.com</li>
+                    <li><span>First Name:</span> {this.state.leadData.firstName}</li>
+                    <li><span>Last Name:</span>{this.state.leadData.lastName}</li>
+                    <li><span>Address:</span>{this.state.leadData.address1}, {this.state.leadData.address2}</li>
+                    <li><span>City:</span>{this.state.leadData.city}</li>
+                    <li><span>State:</span>{this.state.leadData.state}</li>
+                    <li><span>Zip Code:</span>{this.state.leadData.postalCode}</li>
+                    <li><span>Phone:</span>{this.state.leadData.phoneNumber}</li>
+                    <li><span>Email:</span>{this.state.leadData.emailAddress}</li>
                   </ul>
                   <p className="thk-p3 pad-top">Billing Info</p>
                   <ul className="user-info">
-                    <li><span>First Name:</span> Name</li>
-                    <li><span>Last Name:</span> name</li>
-                    <li><span>Address:</span> 123, Church Street</li>
-                    <li><span>City:</span> Mississippi</li>
-                    <li><span>State:</span> CA</li>
-                    <li><span>Zip Code:</span> 2311441</li>
-                    <li><span>Phone:</span> 1-XXX-XXX-XXXX</li>
-                    <li><span>Email:</span> name@email.com</li>
+                    <li><span>First Name:</span> {this.state.leadData.firstName}</li>
+                    <li><span>Last Name:</span>{this.state.leadData.lastName}</li>
+                    <li><span>Address:</span>{`${this.state.leadData.address1} ${this.state.leadData.address2}`}</li>
+                    <li><span>City:</span>{this.state.leadData.city}</li>
+                    <li><span>State:</span>{this.state.leadData.state}</li>
+                    <li><span>Zip Code:</span>{this.state.leadData.postalCode}</li>
+                    <li><span>Phone:</span>{this.state.leadData.phoneNumber}</li>
+                    <li><span>Email:</span>{this.state.leadData.emailAddress}</li>
                   </ul>
                 </div>
               </div>
