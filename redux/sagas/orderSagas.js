@@ -114,6 +114,17 @@ function* submitLeadsForm(action) {
       const phoneNumber = values.Phone;
       const email = values.Email;
 
+      const trackingVars = {
+        'affId': getParameterByName('affId'),
+        'sourceValue1': getParameterByName('sourceValue1'),
+        'sourceValue2': getParameterByName('sourceValue2'),
+        'sourceValue3': getParameterByName('sourceValue3'),
+        'sourceValue4': getParameterByName('sourceValue4'),
+        'sourceValue5': getParameterByName('sourceValue5')
+      }
+
+      localStorage.setItem('trck_vars', JSON.stringify(trackingVars));
+
       const billing = {
         firstName,
         lastName,
@@ -153,7 +164,7 @@ function* submitLeadsForm(action) {
         {
           ...billing,
           shipping,
-          tracking_vars: {},
+          tracking_vars: trackingVars,
         },
         sessionId,
         { ...headers, 'k-session-id': kSessionId },
@@ -190,6 +201,8 @@ function* placeOrder(action) {
     let kSessionId = '';
 
     const values1 = JSON.parse(localStorage.getItem('leadData'));
+
+    const trackingVars = JSON.parse(localStorage.getItem('trck_vars'));
 
     console.log('values', values1)
 
@@ -230,15 +243,6 @@ function* placeOrder(action) {
       cardSecurityCode,
       product1_id: pack.id,
       product1_qty: 1
-      // shipping: {
-      //   firstName,
-      //   lastName,
-      //   address1,
-      //   address2,
-      //   city,
-      //   state,
-      //   postalCode,
-      // },
     };
 
     const queryString = `&orderId=${orderId}${
@@ -247,7 +251,7 @@ function* placeOrder(action) {
 
     const apiResponse = yield post(
       '/v1/konnektive/order',
-      { ...payload, tracking_vars: {} },
+      { ...payload, tracking_vars: trackingVars },
       sessionId,
       { ...headers, 'k-session-id': kSessionId },
     );
