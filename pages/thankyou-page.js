@@ -129,6 +129,11 @@ class Thankyou extends React.PureComponent {
             name="description"
             content="Premium Quality Hemp Extract Products, Organic and Natural"
           />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/desktop/css/upsell-new.css"
+          />
           {device === 'mobile' && (
             <meta name="viewport" content="width=640, user-scalable=0" />
           )}
