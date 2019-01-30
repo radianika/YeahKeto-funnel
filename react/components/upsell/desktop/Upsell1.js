@@ -19,14 +19,14 @@ class Upsell1Component extends React.PureComponent {
   }
  
   componentDidMount() {
-    let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
-    upsell1 = upsell1 && upsell1[0] || {OrderInfo: 200};
+    // let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
+    // upsell1 = upsell1 && upsell1[0] || {OrderInfo: 200};
  
-    this.setState({
-      shouldAddPixel: true
-    },() => {
-      this.setState({ revenue: upsell1.OrderInfo.TotalAmount})
-    });
+    // this.setState({
+    //   shouldAddPixel: true
+    // },() => {
+    //   this.setState({ revenue: upsell1.OrderInfo.TotalAmount})
+    // });
   }
 
   upgrade = () => {

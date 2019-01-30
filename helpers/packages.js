@@ -2,7 +2,7 @@ import React from 'react';
 
 const packages = [
   {
-    id: 210,
+    id: 4165,
     title: (
       <React.Fragment>
         Buy 3 Bottles +<span> Get 2 FREE</span>
@@ -18,7 +18,7 @@ const packages = [
     upsell: 1,
   },
   {
-    id: 209,
+    id: 4163,
     title: (
       <React.Fragment>
         BUY 2 BOTTLES <span> + GET 1 FREE</span>
@@ -34,7 +34,7 @@ const packages = [
     upsell: 2,
   },
   {
-    id: 208,
+    id: 4161,
     title: <React.Fragment>BUY 1 BOTTLE</React.Fragment>,
     name: 'BUY 1 BOTTLE',
     img: 'product-box3.png',
