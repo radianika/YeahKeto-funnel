@@ -7,7 +7,7 @@ class PromoHomeNewSection extends React.Component {
   }
 
   gotoShipping = () => {
-    window.location.assign(`/promo/mobile/shipping?${getQueryString()}`);
+    window.location.assign(`/promo/mobile/shipping`);
   };
 
   render() {
@@ -283,7 +283,7 @@ class PromoHomeNewSection extends React.Component {
         <div className="clearall" />
         <footer>
           <div id="cta"> 
-            <a href="shipping.php" onClick={this.gotoShipping}> <img src="/static/promo/mobile/images/images/button.png" className="btn pulse" /> </a> </div>
+            <a href="#" onClick={this.gotoShipping}> <img src="/static/promo/mobile/images/images/button.png" className="btn pulse" /> </a> </div>
           <p className="clearall" />
           <div className="legal">
             <p className="ftr-txt">This product has not been evaluated by the FDA. This product is not intended to diagnose, treat, cure or prevent any disease.

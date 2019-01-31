@@ -9,13 +9,6 @@ import {
 import { OrderActions } from 'redux/actions';
 import moment from 'moment';
 
-// id: {
-//   imgUrl: ,
-//   name: '',
-//   packSize: '',
-//   price: ''
-// }
-
 const productMapping = {
   4165: {
     imgUrl: '/static/promo/desktop/images/images/thk-prd.png',

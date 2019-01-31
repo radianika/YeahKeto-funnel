@@ -205,7 +205,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                   <div className="clearfix" />
                   <div className="btn-box">
                     <img src="/static/promo/mobile/images/images/secure-img.png" className="secure-img" />                
-                    <a href="select-package.php"><img src="/static/promo/mobile/images/images/rush-button.png" alt className="trial-btn pulse" /></a>
+                    <a href="#" onClick={this.onSubmit}><img src="/static/promo/mobile/images/images/rush-button.png" alt className="trial-btn pulse" /></a>
                     <img src="/static/promo/mobile/images/images/c-logo.png" alt className="c-logo" />
                   </div>
                 </form>
