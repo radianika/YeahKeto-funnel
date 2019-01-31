@@ -116,11 +116,11 @@ function* submitLeadsForm(action) {
 
       const trackingVars = {
         'affId': getParameterByName('affId'),
-        'sourceValue1': getParameterByName('sourceValue1'),
-        'sourceValue2': getParameterByName('sourceValue2'),
-        'sourceValue3': getParameterByName('sourceValue3'),
-        'sourceValue4': getParameterByName('sourceValue4'),
-        'sourceValue5': getParameterByName('sourceValue5')
+        'c1': getParameterByName('c1'),
+        'c2': getParameterByName('c2'),
+        'c3': getParameterByName('c3'),
+        'c4': getParameterByName('c4'),
+        'c5': getParameterByName('c5')
       }
 
       localStorage.setItem('trck_vars', JSON.stringify(trackingVars));
