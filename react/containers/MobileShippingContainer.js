@@ -36,22 +36,22 @@ class MobileShippingContainerComponent extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const queryString = getQueryString();
-    let nextUrl = '';
-    let pack = {};
-    [pack] = packages;
-    nextUrl = `/promo/mobile/confirm?${queryString}&productId=${pack.id}`;
-    if (
-      prevProps.submitStatus !== 'success' &&
-      this.props.submitStatus === 'success'
-    ) {
-      this.setState({ showCheckingModal: false });
-      setTimeout(() => {
-        const { localStorage } = window;
-        localStorage.setItem('pack', JSON.stringify(pack));
-        window.location.assign(nextUrl);
-      }, 1000);
-    }
+    // const queryString = getQueryString();
+    // let nextUrl = '';
+    // let pack = {};
+    // [pack] = packages;
+    // nextUrl = `/promo/mobile/confirm?${queryString}&productId=${pack.id}`;
+    // if (
+    //   prevProps.submitStatus !== 'success' &&
+    //   this.props.submitStatus === 'success'
+    // ) {
+    //   this.setState({ showCheckingModal: false });
+    //   setTimeout(() => {
+    //     const { localStorage } = window;
+    //     localStorage.setItem('pack', JSON.stringify(pack));
+    //     window.location.assign(nextUrl);
+    //   }, 1000);
+    // }
   }
 
   onSubmit = e => {

@@ -26,7 +26,7 @@ class MobileSelectPackageContainer extends React.PureComponent {
 
         {packages.map((pack, index) => (
           <div className="slct-box1" key={pack.id}>
-            <div className="slct-mid" onClick={() => this.selectPackage(pack)}>
+            <div className="slct-mid">
               <p className="seclt-txt1">{pack.title}</p>
             </div>
             <img src="/static/promo/mobile/images/images/product-box1.png" className="pack1-prod" />
@@ -39,7 +39,7 @@ class MobileSelectPackageContainer extends React.PureComponent {
               </div>
               <p className="s-mid-txt2">You Save: $139.98</p>
               <p className="s-mid-txt3">FREE SHIPPING</p>
-              <div className="link-container-5"  onclick="location.href='payment.php?pid=1'" style={{'cursor': 'pointer'}}>
+              <div className="link-container-5" onClick={() => this.selectPackage(pack)} style={{'cursor': 'pointer'}}>
                 <img src="/static/promo/mobile/images/images/select-btn2.png" />
               </div>
             </div>
