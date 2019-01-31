@@ -26,7 +26,7 @@ class Upsell1Treatment1Component extends React.PureComponent {
   };
 
   skipUpsell = () => {
-    window.location.assign(`/promo/mobile/upsell-2`);
+    window.location.assign(`/promo/mobile/upsell-2?${getQueryString()}`);
   };
 
   postVisitEvent = () => {

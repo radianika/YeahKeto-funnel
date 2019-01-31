@@ -296,7 +296,7 @@ function* addUpsellToOrder(action) {
     const { localStorage } = window;
 
     let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
-    upsell1 = upsell1[upsell1.length - 1];
+    upsell1 = upsell1 && upsell1.length && upsell1[upsell1.length - 1];
 
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
@@ -310,8 +310,11 @@ function* addUpsellToOrder(action) {
       sessionId = yield select(getSession);
     }
 
-     const { orderId } = parseQuery(window.location.search);
+     let { orderId } = parseQuery(window.location.search);
 
+     if (!orderId) {
+        orderId  = JSON.parse(localStorage.getItem('leadData')).orderId;
+     }
     const payload = {
       orderId,
       productId,

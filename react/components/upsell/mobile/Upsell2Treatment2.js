@@ -11,22 +11,22 @@ import Head from 'next/head';
  * @description Mobile component rendered after Upsell1 pages
  */
 class Upsell2Treatment2 extends React.PureComponent {
-  componentDidMount() {
-    this.postVisitEvent();
-  }
+  // componentDidMount() {
+  //   this.postVisitEvent();
+  // }
 
   upgrade = () => {
-    this.props.sendTransactionDetails(
-      'order-confirmation-upsell-2',
-      'Upsell2Treatment2',
-    );
-    this.postActionTracker('upsell-2-yes', 'upsell-2-yes');
-    this.props.upgrade(217, '/promo/mobile/thankyou');
+    // this.props.sendTransactionDetails(
+    //   'order-confirmation-upsell-2',
+    //   'Upsell2Treatment2',
+    // );
+    // this.postActionTracker('upsell-2-yes', 'upsell-2-yes');
+    this.props.upgrade(4166, '/promo/mobile/thankyou');
   };
 
   skipUpsell = () => {
-    this.postActionTracker('upsell-2-no', 'upsell-2-no');
-    window.location.assign(`/promo/mobile/upsell-2-1?${getQueryString()}`);
+    // this.postActionTracker('upsell-2-no', 'upsell-2-no');
+    window.location.assign(`/promo/mobile/thankyou?${getQueryString()}`);
   };
 
   postActionTracker = (name, value_string) => {
@@ -61,131 +61,52 @@ class Upsell2Treatment2 extends React.PureComponent {
   };
 
   render() {
-    const { cid } = this.props.query;
+    // const { cid } = this.props.query;
     return (
-      <React.Fragment>
-        <Head>
-          <link
-            href="/static/mobile/css/upsell2-treatment2.css"
-            rel="stylesheet"
-          />
-        </Head>
-        <PromoSession pageType="upsellPage2" />
-
-        <div className="upsell-top">
-          <div className="contentWrap">
-            <img
-              alt="logo"
-              src="/static/assets/images/logo.png"
-              className="up-logo"
-            />
-            <img
-              src="/static/assets/images/ups-step.png"
-              alt=""
-              className="up-step"
-            />
-          </div>
-        </div>
-
-        <div className="up-mid1">
-          {getDiscountBanner({ cid }) && (
-            <div className="topbar">
-              <p className="topbartxt">
-                PROMO CODE <span>CBD33</span> APPLIED!
-                <span> HURRY, GET 20% OFF TODAY!</span>
-              </p>
-            </div>
-          )}
-          <div className="contentWrap">
-            <p className="up-txt1">WAIT! Your Order Is Not Complete</p>
-            <p className="up-txt2">
-              Get better results by adding on the <strong>CBD Capsules</strong>{' '}
-              to your order. Take advantage of our special offer-{' '}
-              <strong>Buy 2 Bottles &amp; Get 1 Bottle Free</strong>{' '}
-            </p>
-
-            <div className="pop-coupon">
-              <img
-                alt=""
-                src="/static/assets/images/up2-combo.png"
-                style={{
-                  position: 'absolute',
-                  top: '135px',
-                  left: '20px',
-                  width: '270px',
-                }}
-              />
-              <div className="up1-content">
-                <img
-                  alt=""
-                  src="/static/assets/images/timer-icon.png"
-                  className="up-timer"
-                />
-                <p className="prod-txt">
-                  Buy 2 Jar Of<br />
-                  <span>CBD Warming Balm</span>
-                </p>
-                <p className="prod-txt">+</p>
-                <p className="prod-txt">
-                  Get 1 Jar<br />
-                  <span>Absolutely Free</span>
-                </p>
-                <p className="price-txt">
-                  Today Only<br />
-                  <span>130.00</span> {getDiscountBanner({ cid }) ? 69.0 : 87.0}/ea
-                </p>
-                <p className="shipping-txt">
-                  Plus we'll pay for the added shipping cost
-                </p>
+      <div className="container">
+        <div className="upsell-hdr"><img src="/static/promo/mobile/images/images/top-img.jpg" /></div>
+        <div className="upsell1-sec1">
+          <p className="upsell-txt1"><span>WAIT!</span> YOU QUALIFY FOR A LIMITEDTIME DISCOUNT</p>
+          <p className="upsell-txt2">93% of customers who purchase <span>Yeah Keto</span> also purchase <span>Yeah Caralluma.</span></p>
+          <div className="up-mid">
+            <p className="upsell-txt3">CURB YOUR CRAVINGS WITH</p>
+            <div className="clearall" />
+            <img src="/static/promo/mobile/images/images/up1-logo.png" className="up1-logo" />
+            <p className="up-sub-name1">Advanced Appetite Suppression*</p>
+            <div className="upsell-sec1-prdct">
+              <div className="upsell1-s1-lftside">
+                <img src="/static/promo/mobile/images/images/upsell1-sec1-bg.png" className="upsell1-sec1-bg" />
+                <img src="/static/promo/mobile/images/images/upsell1-prdct.png" className="upsell1-prdct" />
+                <p className="save-txt1">save 44%</p>
               </div>
+              <ul className="up1-s1-list">
+                <li>Suppress<br /> <span>Appetite</span></li>
+                <li>Reduces<br /> <span>Overeating</span></li>
+                <li>Boost<br /> <span>Weight Loss</span></li>
+              </ul>
             </div>
-
-            <p className="up-txt3">
-              This amazing offer won't ever be made again, and as always, you're
-              backed by a rock-solid, <span>100% money-back-guarantee</span>.
-              Just click the coupon above or the <span>"Yes"</span> button below
-              now to stock up while you can!
+            <div className="up1-dscount-cpn">
+              <p className="dscnt-txt1">Add Your <span className="spcl-dscnt">Special Discounted</span> Bottle Just Pay a Special Price <span className="prc-dscnt">$89.99<img src="/static/promo/mobile/images/images/red-stick.png" /></span></p>
+              <p className="price-text2">$49.99</p>
+              <a href="thank-you.php"><img src="/static/promo/mobile/images/images/upsell-btn.png" className="upsell-btn pulse" /></a>
+              <a href="thank-you.php"><p className="no-txt">No thanks, I’m not interested</p></a>
+            </div>
+          </div>
+        </div>
+        <p className="clearall" />
+        <footer>
+          <div className="legal">
+            <p className="ftr-txt">
+              <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
+              <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
+              <a href="#"> Contact Us </a> <br /><br />
+              <span style={{textTransform: 'none'}}> 
+                ©
+                Yeah Keto</span>
             </p>
-            <input
-              id="balm-yes"
-              type="image"
-              src="/static/assets/images/up1-btn.png"
-              alt=""
-              className="up-btn"
-              onClick={this.upgrade}
-            />
-            <img
-              src="/static/assets/images/secure256.png"
-              alt=""
-              className="up-secur"
-            />
-            <a
-              id="balm-no"
-              href="javascript:void(0);"
-              className="up-no-thanks"
-              onClick={this.skipUpsell}
-            >
-              <img src="/static/assets/images/close-icon.png" />&nbsp;No, I
-              don't want better results.
-            </a>
-            <img
-              src="/static/assets/images/card-secure.png"
-              alt=""
-              className="card-secure"
-            />
           </div>
-        </div>
-
-        <div id="footer">
-          <div className="container">
-            <div className="ftr-txt">
-              <Footer noLogo>
-                <span />
-              </Footer>
-            </div>
-          </div>
-        </div>
-      </React.Fragment>
+        </footer>
+      </div>
     );
   }
 }
