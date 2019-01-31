@@ -75,46 +75,44 @@ class ThankyouMobileComponent extends React.PureComponent {
           <p className="odr-rcpt-txt">Order Placed: {moment(this.state.leadData.dateCreated).format('LLLL') } <br />
             Order Number: {this.state.leadData.orderId}<br />
             Items Ordered:</p>
-          <p className="order-name">Yeah Keto</p>
-          <p className="order-dtl">
-            3-Month Supply <span className="span1 span2">$28.99</span></p>
-          <div className="updvdr" />
+          
+          {
+            items.map(item => (
+              <div>
+                <p className="order-name">{item.name}</p>
+                <p className="order-dtl">
+                  {item.packSize} <span className="span1 span2">{item.price}</span></p>
+                <div className="updvdr" />
+              </div>
+            ))
+          }
+
           <p className="order-dtl">Shipping &amp; Handling: <span className="span1">$0.00</span></p>
-          <p className="order-name">Yeah Caralluma</p>
-          <p className="order-dtl">
-            1-Month Supply <span className="span1 span2">$28.99</span></p>
-          <div className="updvdr" />
-          <p className="order-dtl">Shipping &amp; Handling: <span className="span1">$0.00</span></p>
-          <p className="order-name2">Yeah Forskolin</p>
-          <p className="order-dtl">
-            1-Month Supply <span className="span1 span2">$49.99</span></p>
-          <div className="updvdr" />
-          <p className="order-dtl">Shipping &amp; Handling: <span className="span1">$0.00</span></p>
-          <p className="order-total">Total <span className="span1">$78.98</span></p>
+          <p className="order-total">Total <span className="span1">{totalPrice}</span></p>
         </div>
         <div className="info-box dsplay">
           <p className="info-hding1">Shipping Info</p>
           <ul className="info-list">
-            <li><span className="span1">First Name:</span> Lorem</li>
-            <li><span className="span1">Last Name:</span> Ipsum</li>
-            <li><span className="span1">Address:</span> 123, Church Street</li>
-            <li><span className="span1">City:</span> Mississippi</li>
-            <li><span className="span1">State:</span> CA</li>
-            <li><span className="span1">Zip Code:</span> 2311441</li>
-            <li><span className="span1">Phone:</span> 1-XXX-XXX-XXXX</li>
-            <li><span className="span1">Email:</span> name@companyname.com</li>
+            <li><span>First Name:</span> {this.state.leadData.firstName}</li>
+            <li><span>Last Name:</span>{this.state.leadData.lastName}</li>
+            <li><span>Address:</span>{this.state.leadData.address1}, {this.state.leadData.address2}</li>
+            <li><span>City:</span>{this.state.leadData.city}</li>
+            <li><span>State:</span>{this.state.leadData.state}</li>
+            <li><span>Zip Code:</span>{this.state.leadData.postalCode}</li>
+            <li><span>Phone:</span>{this.state.leadData.phoneNumber}</li>
+            <li><span>Email:</span>{this.state.leadData.emailAddress}</li>
           </ul>
           <div className="clearall" />
-          <p className="info-hding2">Shipping Info</p>
+          <p className="info-hding2">Billing Info</p>
           <ul className="info-list">
-            <li><span className="span1">First Name:</span> Lorem</li>
-            <li><span className="span1">Last Name:</span> Ipsum</li>
-            <li><span className="span1">Address:</span> 123, Church Street</li>
-            <li><span className="span1">City:</span> Mississippi</li>
-            <li><span className="span1">State:</span> CA</li>
-            <li><span className="span1">Zip Code:</span> 2311441</li>
-            <li><span className="span1">Phone:</span> 1-XXX-XXX-XXXX</li>
-            <li><span className="span1">Email:</span> name@companyname.com</li>
+            <li><span>First Name:</span> {this.state.leadData.firstName}</li>
+            <li><span>Last Name:</span>{this.state.leadData.lastName}</li>
+            <li><span>Address:</span>{`${this.state.leadData.address1} ${this.state.leadData.address2}`}</li>
+            <li><span>City:</span>{this.state.leadData.city}</li>
+            <li><span>State:</span>{this.state.leadData.state}</li>
+            <li><span>Zip Code:</span>{this.state.leadData.postalCode}</li>
+            <li><span>Phone:</span>{this.state.leadData.phoneNumber}</li>
+            <li><span>Email:</span>{this.state.leadData.emailAddress}</li>
           </ul>
         </div>
         <footer>
