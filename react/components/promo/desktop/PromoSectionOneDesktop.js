@@ -7,9 +7,42 @@ import { getQueryString } from 'helpers';
 import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
 class PromoSectionOneDesktopComponent extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.timerRef = '';
+  }
+
   state = {
     showCheckingModal: false,
+    timerData: '05:00'
   };
+
+  componentDidMount() {
+    var spd = 100;
+    var spdVal = 10;
+    var cntDown = 5 * 60 * spdVal;
+
+    const self = this;
+    self.timerRef = setInterval(function () {
+      var mn, sc, ms;
+      cntDown--;
+      if(cntDown < 0) {
+        return false;
+      }
+      mn = Math.floor((cntDown / spdVal) / 60 );
+      mn = (mn < 10 ? '0' + mn : mn);
+      sc = Math.floor((cntDown / spdVal) % 60);
+      sc = (sc < 10 ? '0' + sc : sc);
+      ms = Math.floor(cntDown % spdVal);
+      ms = (ms < 10 ? '0' + ms : ms);
+      var result = mn + ':' + sc;
+      self.setState({ timerData: result })
+    }, spd);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerRef);
+  }
 
   componentDidUpdate(prevProps) {
     if (
@@ -58,7 +91,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
             <img src="/static/promo/desktop/images/images/s1-arrow2.png" alt className="s1-animate-arrow" />
             <img src="/static/promo/desktop/images/images/s1-seal.png" alt className="s1-seal" />
             <div className="form-position">
-              <p className="frm-timer">Hurry! Limited Time Offer <span id="stopwatch">04:52</span></p>
+              <p className="frm-timer">Hurry! Limited Time Offer <span id="stopwatch">{this.state.timerData}</span></p>
               <img src="/static/promo/desktop/images/images/s1-rgt-hd.png" alt className="s1-rgt-hd" />
               <form action="checkout.php" method="post">                  
                 <PromoShippingFormDesktop

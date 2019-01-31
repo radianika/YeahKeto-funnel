@@ -224,7 +224,7 @@ ul.up-list li:last-child{border-right:none;}
   font-weight:bold;
   }
 .prd2-prc{ color:#4b052a;}
-.up-btn{display:inline-block;max-width:100%;}
+.up-btn{display:inline-block;max-width:100%;cursor: pointer}
 .no-p {
   float: left;
   width: 100%;
@@ -284,6 +284,7 @@ CSS FOR THANKYOU PAGE
   color: #3a3a3c;
   font-size: 20px;
   line-height: 23px;
+  padding-top: 0;
   }
 .thk-p2 span{font-weight:600;}
 .thk-in-rit{

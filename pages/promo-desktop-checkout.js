@@ -99,6 +99,11 @@ class Promo extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
+            href="/static/assets/fonts/fonts.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
             href="/static/assets/css/formvalidation/formValidation.min.css"
           />
           <link

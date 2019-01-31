@@ -31,6 +31,11 @@ class SelectPackage extends React.PureComponent {
             rel="stylesheet"
           />
           <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/fonts/fonts.css"
+          />
+          <link
             href="/static/assets/css/promo/desktop/upsell1.css"
             rel="stylesheet"
           />

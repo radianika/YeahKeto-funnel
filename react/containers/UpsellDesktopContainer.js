@@ -10,6 +10,7 @@ import {
   Upsell2,
   Upsell21,
 } from '../components/upsell/desktop';
+import moment from 'moment';
 
 /**
  * @class UpsellDesktopContainerComponent
@@ -61,7 +62,11 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
         <div className="container">
           <div className="upsell-box">
             <div className="up-top">
-          <p><span>WARNING:</span> Due to extremely high media demand, there is limited supply of <span>Yeah Forskolin</span> in stock as of <span /></p>
+            <p className="topbartxt">
+              <span>WARNING:</span> Due to extremely high media demand, there is
+              limited supply of <span>Yeah Keto</span> in stock as of{' '}
+              <span>{moment().format('dddd, ll')}</span>
+            </p>
         </div>
             {upsell === 1 && <Upsell1 upgrade={this.upgrade} {...this.props} />}
             {upsell === '1-1' && (

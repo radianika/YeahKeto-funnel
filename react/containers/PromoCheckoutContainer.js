@@ -17,15 +17,41 @@ const packMapping = {
 class PromoCheckout extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.timerRef = '';
     this.state = {
       selected: packages[0],
       scrolled: false,
+      timerData: '05:00'
     };
     console.log(this.props);
   }
 
   componentDidMount() {
+    var spd = 100;
+    var spdVal = 10;
+    var cntDown = 5 * 60 * spdVal;
+
+    const self = this;
+    self.timerRef = setInterval(function () {
+      var mn, sc, ms;
+      cntDown--;
+      if(cntDown < 0) {
+        return false;
+      }
+      mn = Math.floor((cntDown / spdVal) / 60 );
+      mn = (mn < 10 ? '0' + mn : mn);
+      sc = Math.floor((cntDown / spdVal) % 60);
+      sc = (sc < 10 ? '0' + sc : sc);
+      ms = Math.floor(cntDown % spdVal);
+      ms = (ms < 10 ? '0' + ms : ms);
+      var result = mn + ':' + sc;
+      self.setState({ timerData: result })
+    }, spd);
     window.addEventListener('scroll', () => this.setState({ scrolled: true }));
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerRef);
   }
 
   submitBillingForm = values => {
@@ -103,7 +129,7 @@ class PromoCheckout extends React.PureComponent {
               <div className="chkmid-lft">
                 <div className="timer-box">
                   <p className="toptimer-txt">Your Special 40% OFF Savings expires in - 
-                    <img src="/static/promo/desktop/images/images/chk-eye.png" alt className="chk-eye" /><span id="stopwatch">0:00</span></p>            
+                    <img src="/static/promo/desktop/images/images/chk-eye.png" alt className="chk-eye" /><span id="stopwatch">{this.state.timerData}</span></p>            
                 </div>
                 <p className="lft-top-txt">SELECT YOUR PACKAGE TODAY &amp; SAVE MORE!</p>
                 {packages.map((pack, index) => (

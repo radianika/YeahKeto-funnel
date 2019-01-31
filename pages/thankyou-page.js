@@ -132,6 +132,11 @@ class Thankyou extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
+            href="/static/assets/fonts/fonts.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
             href="/static/desktop/css/upsell-new.css"
           />
           {device === 'mobile' && (

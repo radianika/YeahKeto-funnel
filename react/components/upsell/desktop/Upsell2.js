@@ -13,7 +13,7 @@ class Upsell2 extends React.PureComponent {
   };
 
   skipUpsell = () => {
-    window.location.assign(`'/promo/desktop/thankyou?${getQueryString()}`);
+    window.location.assign(`/promo/desktop/thankyou?${getQueryString()}`);
   };
 
   render() {
