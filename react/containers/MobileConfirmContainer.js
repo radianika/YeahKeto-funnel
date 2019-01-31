@@ -115,19 +115,20 @@ class MobileConfirmContainerComponent extends React.PureComponent {
   };
 
   confirmOrder = values => {
-    this.sendTransactionDetails();
+    // this.sendTransactionDetails();
     const { localStorage } = window;
-    const customerData = JSON.parse(localStorage.getItem('parsedShipping'));
+    const customerData = JSON.parse(localStorage.getItem('leadData'));
+
     if (this.state.isSame) {
-      values.Email = customerData.Email;
-      values.Phone = customerData.Phone;
-      values.Address1 = customerData.ShippingAddress.Address1;
-      values.Address2 = customerData.ShippingAddress.Address2;
-      values.City = customerData.ShippingAddress.City;
-      values.FirstName = customerData.ShippingAddress.FirstName;
-      values.LastName = customerData.ShippingAddress.LastName;
-      values.ZipCode = customerData.ShippingAddress.ZipCode;
-      values.State = customerData.ShippingAddress.State;
+      values.Email = customerData.email;
+      values.Phone = customerData.phoneNumber;
+      values.Address1 = customerData.address1;
+      values.Address2 = customerData.address2;
+      values.City = customerData.city;
+      values.FirstName = customerData.firstName;
+      values.LastName = customerData.lastName;
+      values.ZipCode = customerData.postalCode;
+      values.State = customerData.state;
     }
 
     const { router } = this.props;
