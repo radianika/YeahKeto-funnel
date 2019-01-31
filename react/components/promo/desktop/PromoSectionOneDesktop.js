@@ -35,96 +35,41 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
   };
 
   render() {
-    const variation315256 = this.props.isAuthentic.isAuthenticUser
-      ? '415140'
-      : '415141';
-    const variation317678 = this.props.isAuthentic.isAuthenticUser
-      ? '418315'
-      : '418316';
     return (
-      <div
-        className="section1 dsplay"
-        style={{
-          background: 'url(/static/promo/desktop/images/section1.jpg) center top no-repeat',
-          'background-position': '-216px 0px',
-        }}
-      >
-        <div className="container">
-          <div className="promo-home-top-section-1 s1lft position">
-            <img
-              className="promo-home-logo"
-              src="/static/promo/desktop/images/logo.png"
-              alt=""
-            />
-            <img
-              src="/static/promo/desktop/images/images/s1-hd.png"
-              alt=""
-              style={{ 'margin-top': '40px' }}
-            />
-            <p className="s1txt">
-              <b>Yeah Keto</b> triggers and maintains the state of ketosis,
-              burning fat for energy!{' '}
-            </p>
+      <div id="section1">       
+        <div className="contentWrap position" id="sec1">
+          <div className="lft-content">
+            <img src="/static/promo/desktop/images/images/logo.png" alt className="s1-logo" /> 
+            <img src="/static/promo/desktop/images/images/s1-hd.png" alt className="s1-hd" /> 
+            <p className="s1-p1"><strong>Yeah Keto</strong> triggers and maintains the state of ketosis,  burning fat for energy!</p>
             <p className="s1-p2">Yeah Keto Helps You With</p>
-            <ul className="s1list ">
-              <li className="sprite2 sprite-s1bullet">
-                <span>Rapid</span> Ketogenic Weight Loss{' '}
-              </li>
-              <li className="sprite2 sprite-s1bullet">
-                <span>Instant</span> Energy Boost{' '}
-              </li>
-              <li className="sprite2 sprite-s1bullet">
-                <span>Appetite</span> Suppression{' '}
-              </li>
-              <li className="sprite2 sprite-s1bullet">
-                <span>Optimal</span> Metabolic Rate{' '}
-              </li>
+            <ul className="s1-list">
+              <li><span>Rapid</span> Ketogenic Weight Loss </li>
+              <li><span>Instant</span> Energy Boost</li>
+              <li><span>Appetite</span> Suppression</li>
+              <li><span>Optimal</span> Metabolic Rate</li>
             </ul>
-            <img
-              src="/static/promo/desktop/images/images/s1-arrow.png"
-              className="s1-arrow"
-              alt=""
-            />
-
-            <div className="clearall" />
-            {/* <i className="s1bottle sprite3 sprite-s1bottle" /> */}
-            <img
-              src="/static/promo/desktop/images/images/s1-btl1.png"
-              className="s1bottle"
-              alt=""
-            />
+            <p className="clearall" />
+            <img src="/static/promo/desktop/images/images/s1-arrow.png" alt className="s1-arrow" /> 
+            <img src="/static/promo/desktop/images/images/s1-btl1.png" alt className="s1-btl1" />
+            <p className="guarantee-seal">Join the Keto Revolution with Yeah Keto! </p>
           </div>
-          <div className="s1rgt promo-home-top-section-2">
-            <div className="exoffer-box dsplay">
-              <img src="/static/promo/desktop/images/images/s1-seal.png" alt="" />
-            </div>
-            <div className="frm" id="topfrm">
-              <PromoShippingFormDesktop
-                id="promo-section1-submit-desktop"
-                onSubmit={this.submitShippingForm}
-              />
+          <div className="rgt-form">
+            <img src="/static/promo/desktop/images/images/s1-arrow2.png" alt className="s1-animate-arrow" />
+            <img src="/static/promo/desktop/images/images/s1-seal.png" alt className="s1-seal" />
+            <div className="form-position">
+              <p className="frm-timer">Hurry! Limited Time Offer <span id="stopwatch">04:52</span></p>
+              <img src="/static/promo/desktop/images/images/s1-rgt-hd.png" alt className="s1-rgt-hd" />
+              <form action="checkout.php" method="post">                  
+                <PromoShippingFormDesktop
+                  id="promo-section1-submit-desktop"
+                  onSubmit={this.submitShippingForm}
+                />
+              </form>
             </div>
           </div>
-        </div>
-        {this.props.submitStatus === 'submitting' && <Spinner />}
-        {this.state.showCheckingModal && (
-          <ImageModal>
-            <img
-              alt="checking"
-              src="/static/assets/images/checking_popup.png"
-              style={{ width: '100%', height: '100%' }}
-            />
-          </ImageModal>
-        )}
-        {this.props.submitStatus === 'success' && (
-          <ImageModal>
-            <img
-              alt=""
-              src="/static/assets/images/lead_form_success_popup.png"
-              style={{ width: '100%', height: '100%' }}
-            />
-          </ImageModal>
-        )}
+          <p className="clearall" /> 
+        </div>                         
       </div>
     );
   }

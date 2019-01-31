@@ -70,8 +70,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
         <div className="rgt-form">
           {/*<img src="/static/promo/desktop/images/images/s1-arrow2.png" alt className="s1-animate-arrow" />*/}
           <div className="form-position">
-            <p className="frm-timer">Hurry! Limited Time Offer <span id="stopwatch">04:52</span></p>
-            <img src="/static/promo/desktop/images/images/s1-rgt-hd.png" alt className="s1-rgt-hd" />
+            <br/>
             <Field
               component={TextField}
               containerClass="first-field"
