@@ -65,6 +65,7 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
                   id="promo-section1-submit-desktop"
                   onSubmit={this.submitShippingForm}
                 />
+                {this.props.submitStatus === 'submitting' && <Spinner />}
               </form>
             </div>
           </div>
