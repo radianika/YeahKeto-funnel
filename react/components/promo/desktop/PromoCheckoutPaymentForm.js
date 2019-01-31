@@ -117,7 +117,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
             component={CVVField}
             label="CVV/CID*"
             name="cardSecurityCode"
-            className="short"
+            className="short cvv-field"
             normalize={normalizeSecurityCode}
             cvvClick={this._toggleCVVModal}
           />

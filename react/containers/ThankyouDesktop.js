@@ -76,7 +76,11 @@ class ThankyouDesktopComponent extends React.Component {
       <div className="container">
         <div className="up-top">
           <div className="inner-container">
-            <p><span>WARNING:</span> Due to extremely high media demand, there is limited supply of bottle in stock as of <span /></p>
+            <p className="topbartxt">
+              <span>WARNING:</span> Due to extremely high media demand, there is
+              limited supply of <span>Yeah Keto</span> in stock as of{' '}
+              <span>{moment().format('dddd, ll')}</span>
+            </p>
           </div>
         </div>
         <div className="up-bg thnk-pg">

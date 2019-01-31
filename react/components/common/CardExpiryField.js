@@ -37,10 +37,10 @@ class CardExpiryField extends React.PureComponent {
     const valid = props.input.value && props.meta.valid;
     return (
       <React.Fragment>
-        <div className="frmElemts exp-label">
-          <label>&nbsp;</label>
-          <label>(MM/YY)</label>
-        </div>
+        // <div className="frmElemts exp-label">
+        //   <label>&nbsp;</label>
+        //   <label>(MM/YY)</label>
+        // </div>
         <div
           className={`pure-control-group ${
             props.large ? 'frmelements' : 'frmElemts'
