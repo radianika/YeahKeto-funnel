@@ -150,11 +150,18 @@ class Thankyou extends React.PureComponent {
             />
           )}
           {device === 'mobile' && (
-            <link
-              rel="stylesheet"
-              type="text/css"
-              href="/static/mobile/css/style.css"
-            />
+            <React.Fragment>
+              <link
+                rel="stylesheet"
+                type="text/css"
+                href="/static/mobile/css/style.css"
+              />
+              <link
+                rel="stylesheet"
+                type="text/css"
+                href="/static/mobile/css/upsell-new.css"
+              />
+            </React.Fragment>
           )}
         </Head>
         <PromoSession pageType="thankyouPage" />
