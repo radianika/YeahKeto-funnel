@@ -18,6 +18,11 @@ export default class MyDocument extends Document {
             type="text/css"
             href="/static/assets/css/common.css"
           />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/fonts/fonts.css"
+          />
 
           <script
             type="text/javascript"

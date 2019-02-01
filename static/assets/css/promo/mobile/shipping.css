@@ -538,3 +538,12 @@ transform: scale(0.9);
 -webkit-transform: scale(0.95);
 }
 }
+
+.frmelmnts1 input,
+.frmelmnts1 select,
+.frmelmnts2 input,
+.frmelmnts2 select,
+.frmelmnts3 input,
+.frmelmnts3 select {
+  width: 100%;
+}
