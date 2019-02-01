@@ -85,7 +85,7 @@ class Confirm extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/css/promo/mobile/index.css"
+            href="/static/assets/css/mb-checkout-new.css"
           />
           <link
             rel="stylesheet"

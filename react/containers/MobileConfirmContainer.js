@@ -159,420 +159,146 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     }
   }
 
-  renderSummary() {
-    const { pack } = this.state;
-    const {
-      adv_sub, offerId, transaction_id, cid,
-    } = this.props.query;
-    if (this.state.summaryOpen) {
-      return (
-        <div className="package picked" onClick={this.toggleSummary}>
-          <div className="smrhding">
-            <p>Order Summary</p>
-          </div>
-          <div className="odrsmry">
-            <div className="detailbox">
-              <div className="lftbox">
-                <img
-                  src="/static/promo/mobile/images/con-pro5.png"
-                  alt=""
-                  className="lftbtl"
-                />
-              </div>
-              <div className="rgtbox">
-                <ul className="rgtlist1">
-                  <li>
-                    <span>american science</span>
-                    <br /> {pack.name.split('+')[0]}{' '}
-                    {pack.name.split('+').length > 1 ? '+' : ''}
-                    <b>{pack.name.split('+')[1]}</b>
-                  </li>
-                </ul>
-                <ul className="rgtlist2">
-                  <li>S&amp;H: </li>
-                  <li>$0.00</li>
-                  <li>TOTAL</li>
-                  <li>{`$${this.getPrice()}`}</li>
-                </ul>
-                {getDiscountBanner({ cid }) && (
-                  <React.Fragment>
-                    <ul className="rgtlist2">
-                      <li>DISCOUNT {getDiscountPercent({ cid })}: </li>
-                      <li>
-                        {`$${getDiscountAmount({
-                          cid,
-                          revenue: this.getPrice(),
-                        })}`}
-                      </li>
-                    </ul>
-                    <ul className="rgtlist2">
-                      <li>FINAL TOTAL: </li>
-                      <li>
-                        {`$${getRevenueAfterDiscount({
-                          cid,
-                          revenue: this.getPrice(),
-                        })}`}
-                      </li>
-                    </ul>
-                  </React.Fragment>
-                )}
-              </div>
-              <img src="/static/promo/mobile/images/post.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-      );
-    }
-    return (
-      <div className="package picked" onClick={this.toggleSummary}>
-        {adv_sub && transaction_id && offerId ? (
-          <iframe
-            title="tracker"
-            src={`https://kowboykit.com/api/event/purchase/?clickid=${adv_sub}&apikey=cad0f78407d7d852008a98df1b266293&programid=125&tid=${transaction_id}&oid=${offerId}`}
-            frameBorder="0"
-            width="1"
-            height="1"
-            style={{ position: 'absolute' }}
-          />
-        ) : null}
-        <div className="smrhding smrhding-close">
-          <p>Order Summary</p>
-        </div>
-      </div>
-    );
-  }
-
   render() {
     const { active_cc_type } = this.state;
     const { cid } = this.props.query;
 
     return (
-      <div className="mobile-body">
-        <div className="container">
-          <div className="getHeight">
-            <div className="spng-hd1">
-              <div className="spng-hd2">
-                <img
-                  src="/static/promo/mobile/images/ck-top.jpg"
-                  alt=""
-                  className="sping-logo"
-                />
-              </div>
-            </div>
-            <div className="con-hd2" />
-            <p className="clearall" />
-            {getDiscountBanner({ cid }) && (
-              <div className="topbar">
-                <p className="topbartxt">
-                  PROMO CODE <span>CBD33</span> APPLIED!
-                  <span> HURRY, GET 20% OFF TODAY!</span>
-                </p>
-              </div>
-            )}
-            <div className="trialsec2">
-              {this.renderSummary()}
-
-              <div className="clearfix" />
-              <p className="clearall" />
-              <p className="trial-toptxt1 border-bottom">
-                {this.props.isAuthentic.isAuthenticUser
-                  ? 'Complete your order!'
-                  : 'Enter your payment information'}
-              </p>
-              <p className="clearall" />
-              <div className="trialfrmmid">
-                <form
-                  id="form-checkout"
-                  className="pure-form pure-form-aligned fv-form fv-form-pure"
-                >
-                  <button
-                    type="submit"
-                    className="fv-hidden-submit"
-                    style={{ display: 'none', width: '0px', height: '0px' }}
-                  />
-                  <div className="sameas">
-                    {/*
-                      TODO: might be used later when there is the case that
-                      billing andshipping have different addresses
-                      <p>
-                        <input
-                          id="checkbox"
-                          type="checkbox"
-                          checked={this.state.isSame}
-                          onChange={() => {
-                            this.setState({ isSame: !this.state.isSame });
-                          }}
-                        />{' '}
-                        Billing address is the same as shipping
-                      </p>
-                    */}
-                    <div className="cards">
-                      {this.props.isAuthentic.isAuthenticUser && (
-                        <span className="cards-prefix">We accept:</span>
-                      )}
-                      <span
-                        className={`card-visa ${
-                          active_cc_type === 'visa' ? 'active' : ''
-                        }`}
-                      >
-                        <img
-                          src="/static/Visa.png"
-                          className="card-image"
-                          alt=""
-                        />
-                      </span>
-                      <span
-                        className={`card-mastercard ${
-                          active_cc_type === 'master-card' ? 'active' : ''
-                        }`}
-                      >
-                        <img
-                          src="/static/Mastercard.png"
-                          className="card-image"
-                          alt=""
-                        />
-                      </span>
-                      <span
-                        className={`card-discover" ${
-                          active_cc_type === 'american-express' ? 'active' : ''
-                        }`}
-                      >
-                        <img
-                          src="/static/amex.png"
-                          className="card-image"
-                          alt=""
-                        />
-                      </span>
-                      <span
-                        className={`card-discover" ${
-                          active_cc_type === 'discover' ? 'active' : ''
-                        }`}
-                      >
-                        <img
-                          src="/static/discover.png"
-                          className="card-image"
-                          alt=""
-                        />
-                      </span>
-                    </div>
-                  </div>
-                  <div className="clearall" />
-                  {!this.state.isSame && (
-                    <div id="billingDiv">
-                      <Field
-                        containerClass="frmelmnts1"
-                        component={TextField}
-                        name="firstName"
-                        label="First Name"
-                        placeholder="First Name"
-                        autoCorrect="off"
-                        autoComplete="given-name"
-                      />
-                      <Field
-                        containerClass="frmelmnts3"
-                        component={TextField}
-                        name="lastName"
-                        label="Last Name"
-                        placeholder="Last Name"
-                        autoCorrect="off"
-                        autoComplete="family-name"
-                      />
-                      <div className="clearfix" />
-                      <Field
-                        containerClass="frmelmnts2"
-                        component={AddressField}
-                        name="address"
-                        label="Address Line 1"
-                        placeholder="Street and number, P.O. box, c/o."
-                        changeField={this.props.change}
-                        autoCorrect="off"
-                        autoComplete="address-line1"
-                      />
-                      <Field
-                        containerClass="frmelmnts2"
-                        component={TextField}
-                        name="address2"
-                        label="Address Line 2"
-                        placeholder="Apartment, suite, unit, building, floor, etc."
-                        autoCorrect="off"
-                        autoComplete="address-line2"
-                      />
-                      <div className="clearfix" />
-                      <Field
-                        containerClass="frmelmnts2"
-                        component={TextField}
-                        name="city"
-                        label="City"
-                        placeholder="Your City"
-                        autoCorrect="off"
-                        autoComplete="address-level2"
-                      />
-                      <div className="clearfix" />
-                      <Field
-                        containerClass="frmelmnts1"
-                        component={TextField}
-                        name="postalCode"
-                        label="Zip Code"
-                        placeholder="Zip Code"
-                        normalize={normalizePostalCode}
-                        inputMode="numeric"
-                        pattern="[0-9]*"
-                        autoCorrect="off"
-                        autoComplete="postal-code"
-                      />
-                      <Field
-                        containerClass="frmelmnts3"
-                        component={SelectField}
-                        name="state"
-                        label="State"
-                        placeholder="Select State"
-                        options={stateslist}
-                      />
-                      <div className="clearfix" />
-                      <Field
-                        containerClass="frmelmnts1"
-                        component={TextField}
-                        name="phoneNumber"
-                        label="Phone Number"
-                        placeholder="Example: (123) 555-6789"
-                        normalize={normalizePhone}
-                        type="tel"
-                        autoCorrect="off"
-                        autoComplete="tel"
-                      />
-                      <Field
-                        containerClass="frmelmnts3"
-                        component={TextField}
-                        name="email"
-                        label="Email"
-                        placeholder="Example: email@somewhere.com"
-                        type="email"
-                        autoCapitalize="off"
-                        autoCorrect="off"
-                        autoComplete="email"
-                      />
-                    </div>
-                  )}
-                  <div className="clearfix" />
-                  <div style={{ display: 'block' }} id="cardDiv">
-                    <div className="clearfix" />
-                    <div className="clearfix" />
-                    <Field
-                      containerClass="frmelmnts2"
-                      component={TextField}
-                      name="cardNumber"
-                      className="creditcard"
-                      placeholder="•••• •••• •••• ••••"
-                      onChange={e => this._checkCardType(e.target.value)}
-                      label="Card Number*:"
-                      normalize={normalizeCardNumber}
-                      inputMode="numeric"
-                      autoComplete="cc-number"
-                      autoCorrect="off"
-                      pattern="[0-9]*"
-                    />
-                    <div className="clearfix" />
-                    <Field
-                      name="cardExpiry"
-                      component={MobileCardExpiryField}
-                    />
-                    <div className="clearfix" />
-                    <Field
-                      name="cardSecurityCode"
-                      component={props => {
-                        const hasError = props.meta.touched && props.meta.error;
-                        const valid = props.input.value && props.meta.valid;
-                        return (
-                          <div
-                            className={`frmelmnts2 frmelmnts-cvv fv-has-feedback ${hasError &&
-                              'fv-has-error'} ${valid && 'fv-has-success'}`}
-                          >
-                            <label>
-                              CVV/CID<span>*</span>:
-                            </label>
-                            <input
-                              {...props.input}
-                              className="short"
-                              inputMode="numeric"
-                              autoCorrect="off"
-                              autoComplete="cc-csc"
-                              pattern="[0-9]*"
-                            />
-                            <img
-                              src="/static/promo/mobile/images/cvv.png"
-                              width="402"
-                              height="69"
-                              alt=""
-                              className="cvv"
-                            />
-                            <div className="clearall" />
-                            {props.meta.touched &&
-                              props.meta.error && (
-                                <small className="fv-help-block">
-                                  {props.meta.error}
-                                </small>
-                              )}
-                          </div>
-                        );
-                      }}
-                      normalize={normalizeSecurityCode}
-                    />
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div className="clearall" />
-            <div className="shpbtm">
-              <a
-                href="javascript:void(0)"
-                onClick={this.props.handleSubmit(this.confirmOrder)}
-                className="button"
-              >
-                <img
-                  id="checkout-submit-mobile"
-                  src="/static/promo/mobile/images/conf-btn.png"
-                  alt=""
-                  className="ship-btn pulse"
-                />
-              </a>
-              <img
-                src="/static/promo/mobile/images/loogs.png"
-                alt=""
-                className="loogs"
-              />
-            </div>
-            <div className="clearfix" />
-            <div className="legal">
-              <div className="ftr-txt">
-                <Footer promo />
+      <div id="container"> 
+        <img src="/static/promo/mobile/images/images/top-img.jpg" alt />
+        <div id="ck-sec2">
+          <p className="chk-toptxt1" style={{margin: '0px'}}>enter your payment information</p>
+          <div id="form-info">
+            <div className="detailbox">
+              <div className={`${this.state.summaryOpen ? 'rotate' : ''} order-summry smrhding`} onClick={this.toggleSummary}>Order Summary</div>
+              <div className={`${this.state.summaryOpen ? '' : 'display-none'} rgtbox`}>
+                <div className="pricelist" id="btl1" >
+                  <p className="rgtboxtxt1"><span>Yeah Keto</span><br />
+                    { this.state.pack.name } </p>
+                  <ul className="rgtlist">
+                    <li className="one">Price:</li>
+                    <li className="two">${this.state.pack.packagePrice}</li>
+                    <li className="one">Shipping &amp; Handling:</li>
+                    <li className="two"> $0.00 </li>
+                    <li className="one" style={{background: '#143869', color: '#fff', marginTop: '15px'}}><span>TOTAL:</span></li>
+                    <li className="two" style={{background: '#143869', color: '#fff', marginTop: '15px'}}><span>${this.state.pack.packagePrice}</span></li>
+                  </ul>
+                </div>
+                <center>
+                  <img src="/static/promo/mobile/images/images/post.jpg" width="100%" alt />
+                </center>
               </div>
             </div>
           </div>
         </div>
-        {this.props.submitStatus === 'submitting' && <Spinner />}
-        {this.props.submitStatus === 'success' && (
-          <ImageModal>
-            <img
-              alt=""
-              src="/static/assets/images/checkout_success_popup.png"
-              style={{ width: '100%', height: '100%' }}
+        <div className="clearall" />
+        <div className="frm-bg">
+          <div className="sameas">
+            <p className="membership">
+              <img src="/static/promo/mobile/images/images/cards.png" alt className="card" /> 
+            </p>
+          </div>
+          <div className="clearall" />
+          {/* Just a dummy placeholder. Not used at all */}
+          <div className="frmFlds">
+            <label>Card Type</label>
+            <br />
+            <select>
+              <option selected>Visa</option>
+              <option>Master Card</option>
+              <option>Discover</option>
+            </select>
+          </div>
+          <div style={{ display: 'block', 'padding': '0 0 0 33px' }} className="mobile-payment-wrapper" id="cardDiv">
+            <div className="clearall" />
+            <div className="clearall" />
+            <Field
+              containerClass="frmelmnts2"
+              component={TextField}
+              name="cardNumber"
+              className="creditcard"
+              placeholder="•••• •••• •••• ••••"
+              onChange={e => this._checkCardType(e.target.value)}
+              label="Card Number*:"
+              normalize={normalizeCardNumber}
+              inputMode="numeric"
+              autoComplete="cc-number"
+              autoCorrect="off"
+              pattern="[0-9]*"
             />
-          </ImageModal>
-        )}
-        {this.state.showErrorModal && (
-          <ImageModal onClose={this.hideErrorModal}>
-            <img
-              alt=""
-              src="/static/assets/images/checkout_card_failure_popup.png"
-              style={{ width: '100%', height: '100%' }}
+            <div className="clearall" />
+            <Field
+              name="cardExpiry"
+              component={MobileCardExpiryField}
             />
-          </ImageModal>
-        )}
-        <img
-          alt=""
-          src="/static/assets/images/checkout_success_popup.png"
-          style={{ width: 0, height: 0 }}
-        />
+            <div className="clearall" />
+            <Field
+              name="cardSecurityCode"
+              component={props => {
+                const hasError = props.meta.touched && props.meta.error;
+                const valid = props.input.value && props.meta.valid;
+                return (
+                  <div
+                    className={`frmelmnts2 frmelmnts-cvv fv-has-feedback ${hasError &&
+                      'fv-has-error'} ${valid && 'fv-has-success'}`}
+                  >
+                    <label>
+                      CVV/CID<span>*</span>:
+                    </label>
+                    <input
+                      {...props.input}
+                      className="short"
+                      inputMode="numeric"
+                      autoCorrect="off"
+                      autoComplete="cc-csc"
+                      pattern="[0-9]*"
+                    />
+                    <img
+                      src="/static/promo/mobile/images/cvv.png"
+                      width="402"
+                      height="69"
+                      alt=""
+                      className="cvv"
+                    />
+                    <div className="clearall" />
+                    {props.meta.touched &&
+                      props.meta.error && (
+                        <small className="fv-help-block">
+                          {props.meta.error}
+                        </small>
+                      )}
+                  </div>
+                );
+              }}
+              normalize={normalizeSecurityCode}
+            />
+          </div>
+        </div>
+        <div className="clearall" />
+        <div className="btn-box">
+          <img src="/static/promo/mobile/images/images/secure-img.png" className="secure-img" />  
+          <a href="#"><img src="/static/promo/mobile/images/images/ck-btn.png" alt className="trial-btn pulse" /></a> 
+          <img src="/static/promo/mobile/images/images/c-logo.png" alt className="c-logo" /> 
+        </div>
+        <div>
+          <div className="legal">
+            <p className="ftr-txt">
+              <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
+              <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
+              <a href="#"> Contact Us </a> <br /><br />
+              <span style={{textTransform: 'none'}}> 
+                ©
+                Yeah Keto</span>
+            </p>
+          </div>
+          <div className="legal">
+            <p className="ftr-txt">
+              <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
+              <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
+              <a href="#"> Contact Us </a> <br /><br />
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
