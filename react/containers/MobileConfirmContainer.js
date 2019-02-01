@@ -277,7 +277,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
         <div className="clearall" />
         <div className="btn-box">
           <img src="/static/promo/mobile/images/images/secure-img.png" className="secure-img" />  
-          <a href="#"><img src="/static/promo/mobile/images/images/ck-btn.png" alt className="trial-btn pulse" /></a> 
+          <a href="#" onClick={this.props.handleSubmit(this.confirmOrder)}><img src="/static/promo/mobile/images/images/ck-btn.png" alt className="trial-btn pulse" /></a> 
           <img src="/static/promo/mobile/images/images/c-logo.png" alt className="c-logo" /> 
         </div>
         <div>
