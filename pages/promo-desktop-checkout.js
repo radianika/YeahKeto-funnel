@@ -41,8 +41,13 @@ class Promo extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.postCampaignActivatedEvent();
-    this.postVisitEvent();
+    // this.postCampaignActivatedEvent();
+    // this.postVisitEvent();
+    this.props.getOrderDetails({
+      headers: {
+        'x-ascbd-req-origin': window.location.hostname,
+      },
+    });
   }
 
   postCampaignActivatedEvent() {

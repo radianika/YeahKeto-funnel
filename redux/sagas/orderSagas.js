@@ -378,9 +378,11 @@ function* getOrderDetails(action) {
   try {
     const { headers, orderId } = action.payload;
     let sessionId = '';
+    let kSessionId = '';
 
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
+      kSessionId = yield getCookie('ascbd_promo_session');
 
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
@@ -390,18 +392,27 @@ function* getOrderDetails(action) {
       sessionId = yield select(getSession);
     }
     const url = orderId
-      ? `/v1/response/order/${orderId}`
-      : '/v1/response/order/';
+      ? `/v1/konnektive/order/${orderId}`
+      : '/v1/konnektive/order/';
     const apiResponse = yield get(url, sessionId, {
       ...headers,
+      'k-session-id': kSessionId,
     });
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data.data[0];
       yield put(OrderActions.getOrderDetailsSuccess({ order }));
     } else {
+      yield put(
+        OrderActions.getOrderDetails({
+          headers: {
+            'x-ascbd-req-origin': window.location.hostname,
+          },
+        }),
+      );
       yield put(OrderActions.getOrderDetailsFailure());
     }
   } catch (error) {
+    console.log('Error', error)
     yield put(OrderActions.getOrderDetailsFailure({ error }));
   }
 }
