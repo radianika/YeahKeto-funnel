@@ -171,12 +171,12 @@ function* submitLeadsForm(action) {
       );
       if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
         const { lead } = apiResponse.response.data.data;
-        localStorage.setItem('leadData', JSON.stringify(lead));
-        const newQueryString = cart
-          ? `&orderId=${lead.orderId}${queryString}`
-          : queryString;
+        // localStorage.setItem('leadData', JSON.stringify(lead));
+        // const newQueryString = cart
+        //   ? `&orderId=${lead.orderId}${queryString}`
+        //   : queryString;
         yield put(OrderActions.submitLeadsFormSuccess({ lead }));
-        window.location.assign(`${nextUrl}?${newQueryString}`);
+        window.location.assign(`${nextUrl}?${queryString}`);
       } else {
         yield put(OrderActions.submitLeadsFormFailure());
       }
@@ -310,11 +310,11 @@ function* addUpsellToOrder(action) {
       sessionId = yield select(getSession);
     }
 
-     let { orderId } = parseQuery(window.location.search);
+    let { orderId } = parseQuery(window.location.search);
 
-     if (!orderId) {
-        orderId  = JSON.parse(localStorage.getItem('leadData')).orderId;
-     }
+    if (!orderId) {
+      orderId  = JSON.parse(localStorage.getItem('leadData')).orderId;
+    }
     const payload = {
       orderId,
       productId,
@@ -400,6 +400,7 @@ function* getOrderDetails(action) {
     });
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data.data[0];
+      localStorage.setItem('leadData', JSON.stringify(order));
       yield put(OrderActions.getOrderDetailsSuccess({ order }));
     } else {
       yield put(
