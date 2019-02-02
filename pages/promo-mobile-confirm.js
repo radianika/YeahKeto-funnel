@@ -40,7 +40,7 @@ class Confirm extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.postVisitEvent();
+    // this.postVisitEvent();
     this.props.getOrderDetails({
       headers: {
         'x-ascbd-req-origin': window.location.hostname,

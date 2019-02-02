@@ -54,13 +54,13 @@ class Promo extends React.PureComponent {
 
   componentDidMount() {
     this.props.createNewSession();
-    this.postCampaignActivatedEvent();
-    this.postVisitEvent();
+    // this.postCampaignActivatedEvent();
+    // this.postVisitEvent();
     const { localStorage } = window;
-    localStorage.setItem(
-      'abtastyParams',
-      JSON.stringify(this.props.abtastyParams),
-    );
+    // localStorage.setItem(
+    //   'abtastyParams',
+    //   JSON.stringify(this.props.abtastyParams),
+    // );
     Router.onRouteChangeStart = () => {
       this.setState({ showSpinner: true });
     };
