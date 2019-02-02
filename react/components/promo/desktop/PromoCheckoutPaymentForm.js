@@ -100,6 +100,16 @@ class PromoCheckoutPaymentFormClass extends React.Component {
               For now it is not used.
             <Field component={SameAddressCheckField} name="same" />
           */}
+          <div className="frmElemts">
+            <label>Card Type</label>
+            <select>
+              <option selected="selected">Select Card</option>
+              <option>Visa</option>
+              <option>Master Card</option>
+              <option>Discover</option>
+              <option>American Express</option>
+            </select>                           
+          </div>
           <div className="clearfix" />
           <div id="billingDiv" style={{ display: 'none' }} />
           <Field
