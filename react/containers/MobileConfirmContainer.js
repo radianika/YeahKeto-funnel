@@ -165,6 +165,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
 
     return (
       <div id="container"> 
+        {this.props.submitStatus === 'submitting' && <Spinner />}
         <img src="/static/promo/mobile/images/images/top-img.jpg" alt />
         <div id="ck-sec2">
           <p className="chk-toptxt1" style={{margin: '0px'}}>enter your payment information</p>

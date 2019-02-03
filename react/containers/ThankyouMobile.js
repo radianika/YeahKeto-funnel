@@ -70,7 +70,7 @@ class ThankyouMobileComponent extends React.PureComponent {
         <div className="upsell-midbd dsplay">  
           <p className="thnk-hding">THANK YOU FOR YOUR PURCHASE</p>
           <p className="thnk-txt">We hope you enjoy the benefits of <b>Yeah Keto</b><br />
-            Your order is scheduled to arrive by<br /><span /></p>        
+            Your order is scheduled to arrive by<br />{moment(this.state.leadData.dateCreated).add(3, 'days').format('LLLL') }<span /></p>        
           <p className="odr-rcpt">ORDER RECEIPT</p>
           <p className="odr-rcpt-txt">Order Placed: {moment(this.state.leadData.dateCreated).format('LLLL') } <br />
             Order Number: {this.state.leadData.orderId}<br />
