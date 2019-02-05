@@ -25,32 +25,32 @@ export function getCookie(cname) {
 
 class PromoSessionComponent extends React.PureComponent {
   async componentDidMount() {
-    // const existingCookie = getCookie('ascbd_promo_session');
-    // if (!existingCookie || this.props.pageType === 'leadPage') {
-    //   const apiResponse = await post(
-    //     '/v1/konnektive/session',
-    //     {
-    //       pageType: this.props.pageType,
-    //       requestUri: window.location.href,
-    //     },
-    //     this.props.sessionId,
-    //   );
-    //   const ascbd_promo_session = idx(
-    //     apiResponse,
-    //     _ => _.response.data.data.sessionId,
-    //   );
-    //   setCookie('ascbd_promo_session', ascbd_promo_session);
-    // } else {
-    //   await post(
-    //     '/v1/konnektive/session',
-    //     {
-    //       pageType: this.props.pageType,
-    //       sessionId: existingCookie,
-    //       requestUri: window.location.href,
-    //     },
-    //     this.props.sessionId,
-    //   );
-    // }
+    const existingCookie = getCookie('ascbd_promo_session');
+    if (!existingCookie || this.props.pageType === 'leadPage') {
+      const apiResponse = await post(
+        '/v1/konnektive/session',
+        {
+          pageType: this.props.pageType,
+          requestUri: window.location.href,
+        },
+        this.props.sessionId,
+      );
+      const ascbd_promo_session = idx(
+        apiResponse,
+        _ => _.response.data.data.sessionId,
+      );
+      setCookie('ascbd_promo_session', ascbd_promo_session);
+    } else {
+      await post(
+        '/v1/konnektive/session',
+        {
+          pageType: this.props.pageType,
+          sessionId: existingCookie,
+          requestUri: window.location.href,
+        },
+        this.props.sessionId,
+      );
+    }
   }
   render() {
     return null;

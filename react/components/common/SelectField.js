@@ -10,10 +10,12 @@ const SelectField = props => {
       } fv-has-feedback ${hasError && 'fv-has-error'} ${valid &&
         'fv-has-success'}`}
     >
-      <label>
-        {props.label}
-        {props.required && <span>*</span>}
-      </label>
+      {
+        props.label ? <label>
+          {props.label}
+          {props.required && <span>*</span>}
+        </label> : null
+      }
       {!props.large ? (
         <select
           {...props.input}

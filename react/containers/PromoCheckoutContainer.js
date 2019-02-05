@@ -17,19 +17,45 @@ const packMapping = {
 class PromoCheckout extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.timerRef = '';
     this.state = {
       selected: packages[0],
       scrolled: false,
+      timerData: '05:00'
     };
     console.log(this.props);
   }
 
   componentDidMount() {
+    var spd = 100;
+    var spdVal = 10;
+    var cntDown = 5 * 60 * spdVal;
+
+    const self = this;
+    self.timerRef = setInterval(function () {
+      var mn, sc, ms;
+      cntDown--;
+      if(cntDown < 0) {
+        return false;
+      }
+      mn = Math.floor((cntDown / spdVal) / 60 );
+      mn = (mn < 10 ? '0' + mn : mn);
+      sc = Math.floor((cntDown / spdVal) % 60);
+      sc = (sc < 10 ? '0' + sc : sc);
+      ms = Math.floor(cntDown % spdVal);
+      ms = (ms < 10 ? '0' + ms : ms);
+      var result = mn + ':' + sc;
+      self.setState({ timerData: result })
+    }, spd);
     window.addEventListener('scroll', () => this.setState({ scrolled: true }));
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timerRef);
+  }
+
   submitBillingForm = values => {
-    this.sendTransactionDetails();
+    // this.sendTransactionDetails();
     // this.sendTransactionDetailsPackInfo();
     this.props.placeOrder({
       values,
@@ -46,21 +72,7 @@ class PromoCheckout extends React.PureComponent {
     const revenue = parseInt(this.state.selected.packagePrice);
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const eventsArray = [
-      'desktop-hp-text1-test-checkout',
-      'desktop-hp-text2-test-checkout',
-      'desktop-hp-top-module-symbol1-test-checkout',
-      'desktop-hp-last-module-picture-test-checkout',
-      'desktop-hp-form-top-section-test-checkout',
-      'desktop-hp-module2-caption1-test-checkout',
-      'desktop-hp-rush-my-order-texts-test-checkout',
-      'desktop-hp-last-module-badge-test-checkout',
-      'desktop-hp-as-advertised-on-text-test-checkout',
-      'desktop-hp-first-module-badge-test-checkout',
-      'desktop-hp-second-module-bulletpoints-test-checkout',
-      'desktop-checkout-cc-label-test-checkout',
-      'desktop-select-packages-badges-test-checkout',
-      'desktop-select-package-dollar-sign-test-checkout',
-      'desktop-select-package-arrow-test-checkout',
+      'desktop-hp-text1-test-checkout'
     ];
     eventsArray.push(packMapping[id]);
     const tracking_data = {
@@ -106,40 +118,22 @@ class PromoCheckout extends React.PureComponent {
             style={{ position: 'absolute' }}
           />
         ) : null}
-        <div className="secone">
-          <div className="container">
+        <div className="chk-section1">
+          <div className="chk-contentWrap"> 
             <div className="s1inner">
-              <div className="chktop">
-                <img
-                  src="/static/promo/desktop/images/ck-logo.png"
-                  alt="ck-logo"
-                  className="ck-logo"
-                />
-                <img
-                  src="/static/promo/desktop/images/chktop.png"
-                  alt="chktop"
-                  className="chktop-img"
-                />
-                {variation319131 === '420044' ? (
-                  <img
-                    src="/static/promo/desktop/images/ck-seal-treatment.png"
-                    alt="ck-seal-treatment"
-                    className="ck-ab"
-                  />
-                ) : (
-                  <img
-                    src="/static/promo/desktop/images/ck-seal.png"
-                    alt="ck-seal"
-                    className="ck-ab"
-                  />
-                )}
-              </div>
-              <div className="chk-lft">
-                <p className="chklft-hding">
-                  SELECT YOUR PACKAGE TODAY &amp; SAVE MORE!
-                </p>
-                {packages.map(pack => (
-                  <div key={pack.id} className="pkg">
+              <div className="chk-hdr">
+                <img src="/static/promo/desktop/images/images/logo.png" alt className="chk-logo" />
+                <img src="/static/promo/desktop/images/images/chk-hdr.png" alt className="chk-hdr-img" />
+                <img src="/static/promo/desktop/images/images/chk-seal.png" alt className="chk-seal" />
+              </div>        
+              <div className="chkmid-lft">
+                <div className="timer-box">
+                  <p className="toptimer-txt">Your Special 40% OFF Savings expires in - 
+                    <img src="/static/promo/desktop/images/images/chk-eye.png" alt className="chk-eye" /><span id="stopwatch">{this.state.timerData}</span></p>            
+                </div>
+                <p className="lft-top-txt">SELECT YOUR PACKAGE TODAY &amp; SAVE MORE!</p>
+                {packages.map((pack, index) => (
+                  <div key={pack.id} className={`prdbox${index+1}`}>
                     <a
                       id={`select-package-${pack.id}`}
                       href="javascript:void(0);"
@@ -152,140 +146,82 @@ class PromoCheckout extends React.PureComponent {
                         this.setState({ selected: pack });
                       }}
                     >
-                      <div className="pkg-hdbox">
-                        <p className="pkg-hding">{pack.title}</p>
-                        <div className="freeship">
-                          <p>Free Shipping</p>
-                        </div>
-                      </div>
-                      <div className="pkg-contbox">
-                        <div className="pkg-contboxlft">
-                          <img
-                            src={`/static/promo/desktop/images/${
+                      <p className="pack-hding">{pack.title}</p>
+                      <div className="free-shipping">Free Shipping</div>
+                      <div className="box-lft">
+                        <div className="lft-btl">
+                          <img src={`/static/promo/desktop/images/images/${
                               pack.desktopImg
-                            }`}
-                            alt="pkg-btl"
-                            className="pkg-btl"
-                          />
-                        </div>
-                        <div className="pkg-contboxrgt">
-                          <p className="pkgtype-hding">{pack.msg}</p>
-                          <p className="pkgcont-hding">
-                            REGULAR PRICE {pack.regularPrice}
-                          </p>
-                          <p className="pkgcont-price">
-                            {variation319133 === '420047' && '$'}
-                            {pack.price}
-                            <span>/ea</span>
-                          </p>
+                            }`} alt className="rvw-product" /> 
+                        </div>                              
+                      </div>
 
-                          <div
-                            className="select-btn"
-                            style={{
-                              display:
-                                selected.id !== pack.id ? 'block' : 'none',
-                            }}
-                          />
-                          <div
-                            className="select-btn-selected"
-                            style={{
-                              display:
-                                selected.id === pack.id ? 'block' : 'none',
-                            }}
-                          />
-                        </div>
+                      <div className="box-rgt">
+                        <div className="selected-arrow">{pack.msg} </div>
+                        <p className="retail-price">REGULAR PRICE <span>{pack.regularPrice}<img src="/static/promo/desktop/images/images/red-cut.png" alt className="red-cut" /></span></p>
+                        <p className="prdct-price">{pack.price}<span>/ea</span></p>
+                        <p className="you-save">You Save $214.98</p>  
+                        <div className="selected-btn" />
                       </div>
                     </a>
                   </div>
                 ))}
-                {this.props.abtastyParams &&
-                variation313018 === '412321' ? null : (
-                  <div className="summary-box">
-                    <p className="smry-hding">Order Summary</p>
-                    <div className="clearall" />
-                    <div className="smry-lft">
-                      <p className="smry-lfttxt">
-                        Your Order is estimated
-                        <br /> to arrive by {shippingDate.format('dddd')},
-                        <br /> <span>{shippingDate.format('ll')}</span>
-                      </p>{' '}
-                      <img
-                        src="/static/promo/desktop/images/smryimg.png"
-                        alt="smry-img"
-                        className="smryimg"
-                      />{' '}
+                <div className="summary-box" id="prc">
+                  <div className="smry-hding-bx">
+                    <p className="smryhding">ORDER SUMMARY</p>
+                  </div>
+                  <div className="clearall" />
+                  <div id="show1">
+                    <div className="smrybox-lft">
+                      <div id="prod_img"><img src="/static/promo/desktop/images/images/5btl.png" alt className="smry-btl" /></div>
+                      <img src="/static/promo/desktop/images/images/logos.png" alt className="clogo" />  
                     </div>
-                    <div className="smry-rgt">
+                    <div className="smrybox-rgt">
                       <ul className="smrylist">
-                        <li>
-                          american science
-                          <br />{' '}
-                          <span id="pkg-name">{this.state.selected.title}</span>
-                        </li>
-                        <li id="" style={{ fontWeight: 400 }} />
-                        <li>Shipping and Handling</li>
-                        <li id="shp">$0.00</li>
-                        <li>Total</li>
-                        <li id="total">
-                          {`$${this.state.selected.packagePrice}`}
-                        </li>
+                        <li className="lft" style={{lineHeight: '20px'}}><b>Keto</b><br /><span id="package_type">{this.state.selected.title}</span></li>
+                        <li className="rgt" style={{padding: '0 0 12px 0'}}><span id="sub_total">{`$${this.state.selected.packagePrice}`}</span></li>
+                        <li className="lft">Shipping &amp; Handling:</li>
+                        <li className="rgt" id="shipping_price">$0.00</li>
+                        <li className="lft">Discount</li>
+                        <li className="rgt">$0.00</li>
+                        <li className="lft" style={{borderBottom: 'none'}}><b>Total:</b></li>
+                        <li className="rgt" style={{borderBottom: 'none'}} id="total_price"><b>{`$${this.state.selected.packagePrice}`}</b></li>
                       </ul>
                     </div>
                   </div>
-                )}
+                </div>
               </div>
-              <div className="chk-rgt">
-                <div className="chkfrm-top">
-                  <div className="sldrtxt" id="fades">
-                    <p>
-                      <img src="/static/promo/desktop/images/eye.png" alt="" />{' '}
-                      13 others are viewing this offer right now!
-                    </p>
-                    <p>
-                      <img src="/static/promo/desktop/images/eye.png" alt="" />{' '}
-                      25 people purchased this in the last hour
-                    </p>
-                  </div>
+              <div className="chkmid-rgt">
+                <div className="chkfrm-top" />
+                <div className="chkfrm-mid">
+                  <PromoCheckoutPaymentForm onSubmit={this.submitBillingForm} />
                 </div>
-                <PromoCheckoutPaymentForm onSubmit={this.submitBillingForm} />
-                {variation319137 === '420051' && (
-                  <div
-                    className={`${!this.state.scrolled &&
-                      'chkfrm-arrow-animate'} chkfrm-arrow`}
-                  >
-                    <img src="/static/promo/desktop/images/arrow.png" alt="" />
-                  </div>
-                )}
-                <div className="chkfrm-btm">
-                  <img
-                    src="/static/promo/desktop/images/chk-frmbtm.png"
-                    alt=""
-                  />
-                </div>
+                <div className="chkfrm-btm" />   
                 <div className="clearall" />
-                <div className="moneyback-box">
-                  <img
-                    src="/static/promo/desktop/images/moneyback.jpg"
-                    alt=""
-                    className="moneyback-seal"
-                  />
-                  <p className="moneyback-txt1">100% Money Back Guarantee </p>
-                  <p className="moneyback-txt">
-                    Your purchase is insured by our 90 Day Money Back Guarantee,
-                    which ensures that if you are not completely satisfied with
-                    the results, we will refund your money, no questions asked.{' '}
-                  </p>
+                <div className="ck-bottom">
+                  <img src="/static/promo/desktop/images/images/ck-ba.png" alt className="ck-ba" /> 
+                  <p className="ck-bottom-p1">Stubborn belly fat was a major concern for me. Experienced an incredible transformation within a month of using Yeah Keto.</p> 
+                  <p className="ck-bottom-p2"><span>- Susie P.</span>  | Nevada</p>
                 </div>
-                <img
-                  src="/static/promo/desktop/images/shop.png"
-                  alt=""
-                  className="shop"
-                />
               </div>
             </div>
+          </div>  
+        </div>
+        <p className="clearall"></p>
+        <div className="footer">
+          <div className="chk-contentWrap"> 
+            <p className="ftr-txt1">This product has not been evaluated by the FDA. This product is not intended 
+              to diagnose, treat, cure or prevent any disease.<br />
+              Results in description and testimonials may not be typical results and individual results may vary.<br />
+              This product intended to be used in conjunction with a healthy diet and regular exercise.<br />
+              Consult your physician before starting any diet, exercise program, and taking any diet pill 
+              to avoid any health issues.<br />
+              Images above are dramatizations.<br /> <br /> 
+              <a href="#">Terms &amp; Conditions</a> | <a href="#">Privacy Policy</a>
+              | <a href="#">Contact Us </a><br /> 
+              © Yeah Keto</p>
           </div>
         </div>
-        <Footer promo />
       </React.Fragment>
     );
   }

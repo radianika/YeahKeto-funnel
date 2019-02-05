@@ -7,6 +7,7 @@ import {
   PromoSectionFiveMobile,
   PromoSectionSixMobile,
   PromoSectionSevenMobile,
+  PromoHomeNewSection,
 } from 'react/components/promo/mobile';
 import { FooterPromo } from 'react/components/promo';
 import { getDiscountBanner } from 'helpers';
@@ -34,18 +35,7 @@ class PromoMobileContainer extends React.PureComponent {
             </p>
           </div>
         )}
-        <PromoSectionOneMobile />
-        <PromoSectionTwoMobile />
-        <PromoSectionThreeMobile />
-        <PromoSectionFourMobile />
-        <PromoSectionFiveMobile />
-        <PromoSectionSixMobile />
-        <PromoSectionSevenMobile />
-        <div style={{ clear: 'both' }} />
-        <FooterPromo
-          isMobile
-          tagID="promo-shipping-form-submit-mobile-footer"
-        />
+        <PromoHomeNewSection />
       </div>
     );
   }

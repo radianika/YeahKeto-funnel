@@ -19,22 +19,22 @@ class Upsell1Component extends React.PureComponent {
   }
  
   componentDidMount() {
-    let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
-    upsell1 = upsell1[0];
+    // let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
+    // upsell1 = upsell1 && upsell1[0] || {OrderInfo: 200};
  
-    this.setState({
-      shouldAddPixel: true
-    },() => {
-      this.setState({ revenue: upsell1.OrderInfo.TotalAmount})
-    });
+    // this.setState({
+    //   shouldAddPixel: true
+    // },() => {
+    //   this.setState({ revenue: upsell1.OrderInfo.TotalAmount})
+    // });
   }
 
   upgrade = () => {
-    this.props.upgrade(213, '/promo/desktop/upsell-2');
+    this.props.upgrade(4168, '/promo/desktop/upsell-2');
   };
 
   skipUpsell = () => {
-    window.location.assign(`/promo/desktop/upsell-1-1?${getQueryString()}`);
+    window.location.assign(`/promo/desktop/upsell-2?${getQueryString()}`);
   };
 
   scrollToTop = () => {
@@ -76,93 +76,69 @@ class Upsell1Component extends React.PureComponent {
         }
 
         <PromoSession pageType="upsellPage1" />
-        <div className="upsell-strip">
-          <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
-          <p>
-            93% of Customers Added The{' '}
-            <strong>Maximum Strength CBD Capsules</strong> To Their Order!{' '}
-          </p>
-        </div>
-        <div className="up-mid-box-right">
-          <img
-            src="/static/assets/images/up1-bottle.png"
-            alt="upsell-1-bottle"
-            className="up-product"
-          />
-          <img
-            alt="upsell-arrow-1"
-            src="/static/assets/images/up-arw1.png"
-            style={{ position: 'absolute', left: '260px', top: '400px' }}
-          />
-          <div className="up-rgt-content">
-            <p className="up-txt1">Amplify Your Results</p>
-            <p className="with-txt">with</p>
-            <p className="up-txt2">Maximum Strength CBD Capsules</p>
-            <div className="price-box">
-              <p className="price-box-txt1">
-                Buy 2 Bottles + <span>Get 1 Free</span>
-              </p>
-              <p className="price-box-txt2">Save 60% Today</p>
-              <p className="price-box-txt3">
-                <img
-                  src="/static/assets/images/arrow-left-upsell.png"
-                  alt="arrow-left-upsell"
-                  className="arrow-left"
-                  width="77"
-                  height="33"
-                />
-                <span className="old-price">
-                  <img
-                    src="/static/assets/images/price-cut.png"
-                    alt="price-cut"
-                  />
-                  120/
-                  <sup>ea</sup>
-                </span>{' '}
-                77/<sup>ea</sup>{' '}
-                <img
-                  src="/static/assets/images/arrow-right.png"
-                  alt="arrow-right"
-                  className="arrow-right"
-                  width="77"
-                  height="33"
-                />
-              </p>
-            </div>
-            <div className="bnt-sec">
-              <a
-                id="order-pulse-upsell1-desktop"
-                href="javascript:void(0)"
-                onClick={this.upgrade}
-              >
-                <img
-                  src="/static/assets/images/ord-btn.png"
-                  alt="order-btn"
-                  className="ord-btn pulse"
-                  width="370"
-                  height="71"
-                />
-              </a>
-              <p className="thanks-txt">
-                <a
-                  id="skip-pulse-upsell1-desktop"
-                  href="javascript:void(0)"
-                  onClick={this.skipUpsell}
-                >
-                  <img
-                    src="/static/assets/images/cut-icon.png"
-                    alt="cut-icon"
-                    className="cut-icon"
-                    width="15"
-                    height="15"
-                  />{' '}
-                  No, I don&apos;t want better results.
-                </a>
-              </p>
+        <div className="up-bg">
+          <div className="inner-container">
+            <div className="up-inr">
+              <img src="/static/promo/desktop/images/images/logo.png" className="up-logo" />
+              <img src="/static/promo/desktop/images/images/chk-hdr.png" alt className="up-steps" />
+              <div className="inr-chk inr-pack inr-upsell">
+                <div className="upsell-sec">
+                  <p className="up-hdg">WAIT! YOU QUALIFY FOR A LIMITED TIME DISCOUNT</p>
+                  <p className="up-sub-hdg">68% of customers who purchase <span>Yeah Keto</span> also purchase <span>Yeah Forskolin</span></p>
+                  <div className="up-box-bg up2-box-bg">
+                    <div className="up-lft up2-lft">
+                      <img src="/static/promo/desktop/images/images/up2-pro.png" alt className="up-prd" />
+                      <img src="/static/promo/desktop/images/images/up2-lft-img1.png" alt className="up-lft-img1" />
+                      <div className="up-seal">
+                        <p>save<br />$44%</p>
+                      </div>
+                    </div>
+                    <div className="up-rgt">
+                      <p className="up-rgt-txt1">Boost Your Metabolism With</p>
+                      <img src="/static/promo/desktop/images/images/up2-logo.png" className="up1-logo" />
+                      <p className="up-rgt-txt3 up2-rgt-txt3">Advanced Metabolic Support Formula*</p>
+                      <ul className="up-list">
+                        <li>
+                          <img src="/static/promo/desktop/images/images/up2-tick.png" alt className="for-desk" />
+                          <p>Break Down<br /><span>Fatty Tissues</span></p>
+                        </li>
+                        <li>
+                          <img src="/static/promo/desktop/images/images/up2-tick.png" alt className="for-desk" />
+                          <p>Preserve<br /><span>Lean Muscle</span></p>
+                        </li>
+                        <li>
+                          <img src="/static/promo/desktop/images/images/up2-tick.png" alt className="for-desk" />
+                          <p>Boost<br /><span>Metabolism</span></p>
+                        </li>
+                      </ul>
+                      <div className="up-prd-info">
+                        <p className="up-prd-p1 up2-prd-p1">Add Your <span>Special Discounted</span> Bottle<br />Just Pay a Special Price <span><img src="/static/promo/desktop/images/images/strike.png" alt />$89.99</span></p>
+                        <p className="prd-prc prd2-prc">$49.99</p>
+                        <a onClick={this.upgrade}><img src="/static/promo/desktop/images/images/up-btn.png" alt className="up-btn" /></a>
+                        <a onClick={this.skipUpsell}><p className="no-p"> No thanks, I’m not interested </p></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
+        <p className="clearall"></p>
+        <div className="footer">
+          <div className="chk-contentWrap"> 
+            <p className="ftr-txt1">This product has not been evaluated by the FDA. This product is not intended 
+              to diagnose, treat, cure or prevent any disease.<br />
+              Results in description and testimonials may not be typical results and individual results may vary.<br />
+              This product intended to be used in conjunction with a healthy diet and regular exercise.<br />
+              Consult your physician before starting any diet, exercise program, and taking any diet pill 
+              to avoid any health issues.<br />
+              Images above are dramatizations.<br /> <br /> 
+              <a href="#">Terms &amp; Conditions</a> | <a href="#">Privacy Policy</a>
+              | <a href="#">Contact Us </a><br /> 
+              © Yeah Keto</p>
+          </div>
+        </div>
       </React.Fragment>
     );
   }

@@ -133,62 +133,26 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                   sendTransactionDetails={this.sendTransactionDetails}
                 />
               ) : (
-                <React.Fragment>
-                  <a href="/">
-                    <img
-                      src="/static/mobile/images/logo.png"
-                      alt=""
-                      className="logo"
-                    />
-                  </a>
-                  <Upsell1Treatment1
-                    upgrade={this.upgrade}
-                    {...this.props}
-                    abtastyParams={abtastyParams}
-                    sendTransactionDetails={this.sendTransactionDetails}
-                  />
-                </React.Fragment>
+                <Upsell1Treatment1
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
+                />
               )}
             </React.Fragment>
           )}
           {upsell === '1-1' && (
             <React.Fragment>
-              {this.props.abtastyParams.variationId === '406288' && (
-                <React.Fragment>
-                  <a href="/">
-                    <img
-                      src="/static/mobile/images/logo.png"
-                      alt=""
-                      className="logo"
-                    />
-                  </a>
-                  <Upsell11
-                    upgrade={this.upgrade}
-                    {...this.props}
-                    abtastyParams={abtastyParams}
-                    sendTransactionDetails={this.sendTransactionDetails}
-                  />
-                </React.Fragment>
-              )}
-              {this.props.abtastyParams.variationId === '406289' && (
-                <React.Fragment>
-                  <a href="/">
-                    <img
-                      src="/static/mobile/images/logo.png"
-                      alt=""
-                      className="logo"
-                    />
-                  </a>
-                  <Upsell11Treatment1
-                    upgrade={this.upgrade}
-                    {...this.props}
-                    abtastyParams={abtastyParams}
-                    sendTransactionDetails={this.sendTransactionDetails}
-                  />
-                </React.Fragment>
-              )}
-              {this.props.abtastyParams.variationId === '406290' && (
+              {this.props.isAuthentic.isAuthenticUser ? (
                 <Upsell11Treatment2
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
+                />
+              ) : (
+                <Upsell11Treatment1
                   upgrade={this.upgrade}
                   {...this.props}
                   abtastyParams={abtastyParams}
@@ -207,40 +171,22 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                   sendTransactionDetails={this.sendTransactionDetails}
                 />
               ) : (
-                <React.Fragment>
-                  <a href="/">
-                    <img
-                      src="/static/mobile/images/logo.png"
-                      alt=""
-                      className="logo"
-                    />
-                  </a>
-                  <Upsell2Treatment1
-                    upgrade={this.upgrade}
-                    {...this.props}
-                    abtastyParams={abtastyParams}
-                    sendTransactionDetails={this.sendTransactionDetails}
-                  />
-                </React.Fragment>
+                <Upsell2Treatment1
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
+                />
               )}
             </React.Fragment>
           )}
           {upsell === '2-1' && (
-            <React.Fragment>
-              <a href="/">
-                <img
-                  src="/static/mobile/images/logo.png"
-                  alt=""
-                  className="logo"
-                />
-              </a>
-              <Upsell21
-                upgrade={this.upgrade}
-                {...this.props}
-                abtastyParams={abtastyParams}
-                sendTransactionDetails={this.sendTransactionDetails}
-              />
-            </React.Fragment>
+            <Upsell21
+              upgrade={this.upgrade}
+              {...this.props}
+              abtastyParams={abtastyParams}
+              sendTransactionDetails={this.sendTransactionDetails}
+            />
           )}
           {this.props.submitStatus === 'submitting' && <Spinner />}
         </div>

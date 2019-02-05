@@ -9,172 +9,79 @@ import { getQueryString } from 'helpers';
  */
 class Upsell2 extends React.PureComponent {
   upgrade = () => {
-    this.props.upgrade(217, '/promo/desktop/thankyou');
+    this.props.upgrade(4166, '/promo/desktop/thankyou');
   };
 
   skipUpsell = () => {
-    window.location.assign(`/promo/desktop/upsell-2-1?${getQueryString()}`);
+    window.location.assign(`/promo/desktop/thankyou?${getQueryString()}`);
   };
+
   render() {
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage2" />
-        <div className="upsell-strip">
-          <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
-          <p>
-            87% Customers Added The{' '}
-            <strong>CBD Pain Relief Warming Balm</strong> To Their Order!{' '}
-          </p>
-        </div>
-        <div className="up-mid-box-right">
-          <img
-            src="/static/assets/images/upsell2/balm3-bottle.png"
-            alt="balm-3-bottle"
-            className="up-product-3"
-          />
-          <img
-            alt="upsell-arrow-1"
-            src="/static/assets/images/upsell2/up-arw1.png"
-            style={{ position: 'absolute', left: '220px', top: '400px' }}
-          />
-          <div className="up-rgt-content-opt3">
-            <p className="up-txt1">Get Instant Pain Relief</p>
-            <p className="with-txt">with</p>
-            <p className="up-txt2">CBD Warming Balm</p>
-            <div className="price-box pricebox3">
-              <p className="price-box-txt1">
-                Buy 2 Jars + <span>Get 1 Free</span>
-              </p>
-              <p className="price-box-txt2">Save 60% Today</p>
-              <p className="price-box-txt3">
-                <img
-                  src="/static/assets/images/upsell2/arrow-left.png"
-                  alt="arrow-left"
-                  className="arrow-left"
-                  width="77"
-                  height="33"
-                />
-                <span className="old-price">
-                  <img
-                    alt="price-cut"
-                    src="/static/assets/images/upsell2/price-cut.png"
-                  />130/<sup>ea</sup>
-                </span>{' '}
-                87/<sup>ea</sup>{' '}
-                <img
-                  src="/static/assets/images/arrow-right.png"
-                  alt="arrow-right"
-                  className="arrow-right"
-                  width="77"
-                  height="33"
-                />
-              </p>
-            </div>
-            <div className="bnt-sec">
-              <a
-                id="order-pulse-upsell2-desktop-1"
-                href="javascript:void(0)"
-                onClick={this.upgrade}
-              >
-                <img
-                  src="/static/assets/images/upsell2/ord-btn.png"
-                  alt="order-btn"
-                  className="ord-btn pulse"
-                  width="370"
-                  height="71"
-                />
-              </a>
-              <p className="thanks-txt">
-                <a
-                  id="skip-pulse-upsell2-desktop-1"
-                  href="javascript:void(0)"
-                  onClick={this.skipUpsell}
-                >
-                  <img
-                    src="/static/assets/images/upsell2/cut-icon.png"
-                    alt="cut-icon"
-                    className="cut-icon"
-                    width="15"
-                    height="15"
-                  />{' '}
-                  No, I don&apos;t want better results.
-                </a>
-              </p>
+        <div className="up-bg">
+          <div className="inner-container">
+            <div className="up-inr">
+              <img src="/static/promo/desktop/images/images/logo.png" className="up-logo" />
+              <img src="/static/promo/desktop/images/images/chk-hdr.png" alt className="up-steps" />
+              <div className="inr-chk inr-pack inr-upsell">
+                <div className="upsell-sec">
+                  <p className="up-hdg">WAIT! YOU QUALIFY FOR A LIMITED TIME DISCOUNT</p>
+                  <p className="up-sub-hdg">93% of customers who purchase <span>Yeah Keto</span> also purchase <span>Yeah Caralluma</span></p>
+                  <div className="up-box-bg">
+                    <div className="up-lft">
+                      <img src="/static/promo/desktop/images/images/up-prd.png" alt className="up-prd" />
+                      <img src="/static/promo/desktop/images/images/up-lft-img1.png" alt className="up-lft-img1" />
+                      <div className="up-seal">
+                        <p>save<br />$44%</p>
+                      </div>
+                    </div>
+                    <div className="up-rgt">
+                      <p className="up-rgt-txt1">Curb Your Cravings With</p>
+                      <img src="/static/promo/desktop/images/images/up1-logo.png" className="up1-logo" />
+                      <p className="up-rgt-txt3">Advanced Appetite Suppression*</p>
+                      <ul className="up-list">
+                        <li>
+                          <img src="/static/promo/desktop/images/images/up-tick.png" alt className="for-desk" />
+                          <p>Suppress<br /><span>Appetite</span></p>
+                        </li>
+                        <li>
+                          <img src="/static/promo/desktop/images/images/up-tick.png" alt className="for-desk" />
+                          <p>Reduces<br /><span>Overeating</span></p>
+                        </li>
+                        <li>
+                          <img src="/static/promo/desktop/images/images/up-tick.png" alt className="for-desk" />
+                          <p>Boost<br /><span>Weight Loss</span></p>
+                        </li>
+                      </ul>
+                      <div className="up-prd-info">
+                        <p className="up-prd-p1">Add Your <span>Special Discounted</span> Bottle<br />Just Pay a Special Price <span><img src="/static/promo/desktop/images/images/strike.png" alt />$89.99</span></p>
+                        <p className="prd-prc">$49.99</p>
+                        <a href="#" onClick={this.upgrade}><img src="/static/promo/desktop/images/images/up-btn.png" alt className="up-btn" /></a>
+                        <a href="#" onClick={this.skipUpsell}><p className="no-p"> No thanks, I’m not interested </p></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="upsell-strip">
-          <h4 className="strip-txt3">
-            BENEFITS OF CBD WARMING BALM INCLUDE ...
-          </h4>
-        </div>
-        <div className="clearall" />
-        <div className="up-bottom-box box1" style={{ height: '410px' }}>
-          <img alt="" src="/static/assets/images/upsell2/full-spect.jpg" />
-          <p className="box-txt1">FULL SPECTRUM FORMULA</p>
-          <p className="box-txt2">
-            CBD Warming Balm is INFUSED with highly a concentrated CBD which is
-            known for its medicinal properties and yields a more effective
-            solution than any balm in the world.
-          </p>
-        </div>
-
-        <div className="up-bottom-box" style={{ height: '410px' }}>
-          <img
-            alt="upsell-bx-2-bg"
-            src="/static/assets/images/upsell2/up-bx2-bg.jpg"
-          />
-          <p className="box-txt1">OFFERS ANTIOXIDANT SUPPORT</p>
-          <p className="box-txt2">
-            CBD Warming Balm works at a cellular level to combat free radical
-            damage, boost overall immunity, and provides healing as well as
-            aromatherapy benefits.
-          </p>
-        </div>
-
-        <div className="up-bottom-box" style={{ height: '410px' }}>
-          <img
-            alt="pain-releaf"
-            src="/static/assets/images/upsell2/pain-releaf.jpg"
-          />
-          <p className="box-txt1">INSTANTLY RELIEVES Chronic Pain</p>
-          <p className="box-txt2">
-            Melt away muscle fatigue, pain, swelling, and discomfort with
-            American Science CBD WARMING BALM&apos;S deep, penetrating warmth
-            providing FAST relief that will amaze you.
-          </p>
-        </div>
-
-        <div className="bnt-sec">
-          <a
-            id="order-pulse-upsell2-desktop-2"
-            href="javascript:void(0)"
-            onClick={this.upgrade}
-          >
-            <img
-              src="/static/assets/images/upsell2/ord-btn.png"
-              alt="order-btn"
-              className="ord-btn pulse"
-              width="370"
-              height="71"
-            />
-          </a>
-          <p className="thanks-txt">
-            <a
-              id="skip-pulse-upsell2-desktop-2"
-              href="javascript:void(0)"
-              onClick={this.skipUpsell}
-            >
-              <img
-                src="/static/assets/images/upsell2/cut-icon.png"
-                alt="cut-icon"
-                className="cut-icon"
-                width="15"
-                height="15"
-              />{' '}
-              No, I don&apos;t want better results.
-            </a>
-          </p>
+        <p className="clearall"></p>
+        <div className="footer">
+          <div className="chk-contentWrap"> 
+            <p className="ftr-txt1">This product has not been evaluated by the FDA. This product is not intended 
+              to diagnose, treat, cure or prevent any disease.<br />
+              Results in description and testimonials may not be typical results and individual results may vary.<br />
+              This product intended to be used in conjunction with a healthy diet and regular exercise.<br />
+              Consult your physician before starting any diet, exercise program, and taking any diet pill 
+              to avoid any health issues.<br />
+              Images above are dramatizations.<br /> <br /> 
+              <a href="#">Terms &amp; Conditions</a> | <a href="#">Privacy Policy</a>
+              | <a href="#">Contact Us </a><br /> 
+              © Yeah Keto</p>
+          </div>
         </div>
       </React.Fragment>
     );

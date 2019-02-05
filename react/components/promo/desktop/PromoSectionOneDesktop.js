@@ -7,9 +7,42 @@ import { getQueryString } from 'helpers';
 import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
 class PromoSectionOneDesktopComponent extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.timerRef = '';
+  }
+
   state = {
     showCheckingModal: false,
+    timerData: '05:00'
   };
+
+  componentDidMount() {
+    var spd = 100;
+    var spdVal = 10;
+    var cntDown = 5 * 60 * spdVal;
+
+    const self = this;
+    self.timerRef = setInterval(function () {
+      var mn, sc, ms;
+      cntDown--;
+      if(cntDown < 0) {
+        return false;
+      }
+      mn = Math.floor((cntDown / spdVal) / 60 );
+      mn = (mn < 10 ? '0' + mn : mn);
+      sc = Math.floor((cntDown / spdVal) % 60);
+      sc = (sc < 10 ? '0' + sc : sc);
+      ms = Math.floor(cntDown % spdVal);
+      ms = (ms < 10 ? '0' + ms : ms);
+      var result = mn + ':' + sc;
+      self.setState({ timerData: result })
+    }, spd);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerRef);
+  }
 
   componentDidUpdate(prevProps) {
     if (
@@ -35,130 +68,42 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
   };
 
   render() {
-    const variation315256 = this.props.isAuthentic.isAuthenticUser
-      ? '415140'
-      : '415141';
-    const variation317678 = this.props.isAuthentic.isAuthenticUser
-      ? '418315'
-      : '418316';
     return (
-      <div
-        className="section1 dsplay"
-        style={{
-          background: `url("/static/promo/desktop/images/${
-            this.props.isAuthentic.isAuthenticUser
-              ? 'section1.jpg'
-              : 'section1-not-auth.jpg'
-          }") center top no-repeat`,
-        }}
-      >
-        <h2 style={{ display: 'none' }}>American Science CBD</h2>
-        <div className="container">
-          <div className="s1lft position">
-            <i className="logo sprite2 sprite-logo" />
-            <i className={`s1seal sprite3 sprite-s1seal-${variation317678}`} />
-            <i className="s1hd sprite3 sprite-s1hd" />
-            {this.props.isAuthentic.isAuthenticUser ? (
-              <p className="s1txt">
-                Derived from organic, US-harvested hemp, lab-tested for quality.
-                Clinically proven therapeutic effects.{' '}
-              </p>
-            ) : (
-              <p className="s1txt">
-                For a limited, receive a FREE bottle of our FDA Approved CBD Oil
-                on your first order (no prescription required).
-              </p>
-            )}
-            {this.props.isAuthentic.isAuthenticUser ? (
-              <ul className="s1list ">
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Relieves</span> Anxiety &amp; Stress{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Eliminates</span> Chronic Pain &amp; Aches{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Promotes</span> Mood &amp; Sleep Patterns{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Enhances </span> Focus &amp; Clarity{' '}
-                </li>
-              </ul>
-            ) : (
-              <ul className="s1list ">
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Relieves</span> Chronic Pain &amp; Arthritis{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Alleviates</span> Anxiety &amp; Stress{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Lowers</span> Blood Sugar{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Improves </span> Mood &amp; Concentration{' '}
-                </li>
-                <li className="sprite2 sprite-s1bullet">
-                  <span>Promotes </span> Sleep &amp; Energy Levels{' '}
-                </li>
-              </ul>
-            )}
-            <div className="clearall" />
-            <i className="chkarrow sprite3 sprite-s1arrow" />
-            {/* <i className="s1bottle sprite3 sprite-s1bottle" /> */}
-            <img
-              src="/static/promo/desktop/images/s1bottle.png"
-              className="s1bottle"
-              alt=""
-            />
-            <i
-              className="s1asseen sprite2 sprite-s1asseen"
-              style={{
-                backgroundPosition: '-385px -421px',
-              }}
-            />
+      <div id="section1">       
+        <div className="contentWrap position" id="sec1">
+          <div className="lft-content">
+            <img src="/static/promo/desktop/images/images/logo.png" alt className="s1-logo" /> 
+            <img src="/static/promo/desktop/images/images/s1-hd.png" alt className="s1-hd" /> 
+            <p className="s1-p1"><strong>Yeah Keto</strong> triggers and maintains the state of ketosis,  burning fat for energy!</p>
+            <p className="s1-p2">Yeah Keto Helps You With</p>
+            <ul className="s1-list">
+              <li><span>Rapid</span> Ketogenic Weight Loss </li>
+              <li><span>Instant</span> Energy Boost</li>
+              <li><span>Appetite</span> Suppression</li>
+              <li><span>Optimal</span> Metabolic Rate</li>
+            </ul>
+            <p className="clearall" />
+            <img src="/static/promo/desktop/images/images/s1-arrow.png" alt className="s1-arrow" /> 
+            <img src="/static/promo/desktop/images/images/s1-btl1.png" alt className="s1-btl1" />
+            <p className="guarantee-seal">Join the Keto Revolution with Yeah Keto! </p>
           </div>
-          <div className="s1rgt">
-            {!variation315256 || variation315256 === '415140' ? (
-              <div className="exoffer-box dsplay">
-                <i className="sprite2 sprite-flag" />
-                <p className="exof-txt">
-                  Internet Exclusive Offer
-                  <br /> <b>Available to US Residents Only</b>
-                </p>
-              </div>
-            ) : (
-              <div className="exoffer-box dsplay">
-                <img src="/static/assets/images/states.png" alt="" />
-              </div>
-            )}
-            <div className="frm" id="topfrm">
-              <PromoShippingFormDesktop
-                id="promo-section1-submit-desktop"
-                onSubmit={this.submitShippingForm}
-              />
+          <div className="rgt-form">
+            <img src="/static/promo/desktop/images/images/s1-arrow2.png" alt className="s1-animate-arrow" />
+            <img src="/static/promo/desktop/images/images/s1-seal.png" alt className="s1-seal" />
+            <div className="form-position">
+              <p className="frm-timer">Hurry! Limited Time Offer <span id="stopwatch">{this.state.timerData}</span></p>
+              <img src="/static/promo/desktop/images/images/s1-rgt-hd.png" alt className="s1-rgt-hd" />
+              <form action="checkout.php" method="post">                  
+                <PromoShippingFormDesktop
+                  id="promo-section1-submit-desktop"
+                  onSubmit={this.submitShippingForm}
+                />
+                {this.props.submitStatus === 'submitting' && <Spinner />}
+              </form>
             </div>
           </div>
-        </div>
-        {this.props.submitStatus === 'submitting' && <Spinner />}
-        {this.state.showCheckingModal && (
-          <ImageModal>
-            <img
-              alt="checking"
-              src="/static/assets/images/checking_popup.png"
-              style={{ width: '100%', height: '100%' }}
-            />
-          </ImageModal>
-        )}
-        {this.props.submitStatus === 'success' && (
-          <ImageModal>
-            <img
-              alt=""
-              src="/static/assets/images/lead_form_success_popup.png"
-              style={{ width: '100%', height: '100%' }}
-            />
-          </ImageModal>
-        )}
+          <p className="clearall" /> 
+        </div>                         
       </div>
     );
   }

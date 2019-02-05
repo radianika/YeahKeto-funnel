@@ -6,3 +6,4 @@ export * from './PromoSectionFourMobile';
 export PromoSectionFiveMobile from './PromoSectionFiveMobile';
 export * from './PromoSectionSixMobile';
 export * from './PromoSectionSevenMobile';
+export PromoHomeNewSection from './PromoHomeNewSection';

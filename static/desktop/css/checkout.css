@@ -62,7 +62,7 @@ li {
 MAIN CSS START
 ------------------------*/
 .container {
-  width: 1010px;
+  /*width: 1010px;*/
   margin: 0 auto;
   padding: 0;
 }

@@ -9,259 +9,124 @@ import {
 import { OrderActions } from 'redux/actions';
 import moment from 'moment';
 
+const productMapping = {
+  4165: {
+    imgUrl: '/static/promo/mobile/images/images/thk-prd.png',
+    name: 'Yeah Keto',
+    packSize: '5 Bottles',
+    price: 195
+  },
+  4163: {
+    imgUrl: '/static/promo/mobile/images/images/thk-prd.png',
+    name: 'Yeah Keto',
+    packSize: '3 Bottles',
+    price: 147
+  },
+  4161: {
+    imgUrl: '/static/promo/mobile/images/images/thk-prd.png',
+    name: 'Yeah Keto',
+    packSize: '1 Bottles',
+    price: 69
+  },
+  4168: {
+    imgUrl: '/static/promo/mobile/images/images/thk-prd-2.png',
+    name: 'Yeah Forskolin',
+    packSize: '1 Bottles',
+    price: 49.99
+  },
+  4166: {
+    imgUrl: '/static/promo/mobile/images/images/thk-prd-1.png',
+    name: 'Yeah Caralluma',
+    packSize: '1 Bottles',
+    price: 49.99
+  }
+}
+
 /**
  * @class ThankyouMobileComponent
  * @extends {React.PureComponent}
  * @description Common Thankyou page between promo flow and cart flow on mobile
  */
 class ThankyouMobileComponent extends React.PureComponent {
-  render() {
-    const { items, shippingDetails } = this.props;
-    let CustomerInfo = {};
-    if (items.length) {
-      // eslint-disable-next-line
-      CustomerInfo = items[0].CustomerInfo;
+  constructor(props) {
+    super(props);
+    this.state = {
+      leadData: JSON.parse(localStorage.getItem('leadData'))
     }
+  }
 
-    const total = items.reduce(
-      (accumulator, currentValue) =>
-        accumulator + currentValue.OrderInfo.TotalAmount,
-      0,
-    );
+  render() {
+    const products = JSON.parse(localStorage.getItem('pdcts'));
+    const items = [];
+    let totalPrice = 0;
+    products.forEach(prod => {
+      totalPrice = totalPrice + productMapping[prod.productId].price;
+      items.push(productMapping[prod.productId])
+    });
 
     return (
-      <div className="contentWrap">
-        <div className="header position">
-          <a href="/">
-            <img
-              src="/static/mobile/images/logo.png"
-              alt="logo"
-              className="logo"
-            />
-          </a>
+      <div className="container"> 
+        <div className="upsell-hdr" style={{padding: '17px 0 10px'}}><img src="/static/promo/mobile/images/images/logo.png" /></div>
+        <div className="upsell-midbd dsplay">  
+          <p className="thnk-hding">THANK YOU FOR YOUR PURCHASE</p>
+          <p className="thnk-txt">We hope you enjoy the benefits of <b>Yeah Keto</b><br />
+            Your order is scheduled to arrive by<br />{moment(this.state.leadData.dateCreated).add(3, 'days').format('LLLL') }<span /></p>        
+          <p className="odr-rcpt">ORDER RECEIPT</p>
+          <p className="odr-rcpt-txt">Order Placed: {moment(this.state.leadData.dateCreated).format('LLLL') } <br />
+            Order Number: {this.state.leadData.orderId}<br />
+            Items Ordered:</p>
+          
+          {
+            items.map(item => (
+              <div>
+                <p className="order-name">{item.name}</p>
+                <p className="order-dtl">
+                  {item.packSize} <span className="span1 span2">{item.price}</span></p>
+                <div className="updvdr" />
+              </div>
+            ))
+          }
+
+          <p className="order-dtl">Shipping &amp; Handling: <span className="span1">$0.00</span></p>
+          <p className="order-total">Total <span className="span1">{totalPrice}</span></p>
         </div>
-        <div className="thank-mid">
-          <p className="thank-txt1">Congratulations! </p>
-          <p className="thank-txt2">
-            You&#39;ve taken the first step to better health and wellness. We
-            are confident that you will enjoy the benefits of American Science
-            products.{' '}
-          </p>
-          <ul className="thank-list">
-            <li>
-              <span>RELIEVES </span>Anxiety &amp; Stress
-            </li>
-            <li>
-              <span>REGULATES </span>Mood &amp; Sleep Patterns
-            </li>
-            <li>
-              <span>Eliminate </span>Chronic Pain &amp; Aches
-            </li>
-            <li>
-              <span>Enhances </span>Focus &amp; Clarity
-            </li>
+        <div className="info-box dsplay">
+          <p className="info-hding1">Shipping Info</p>
+          <ul className="info-list">
+            <li><span>First Name:</span> {this.state.leadData.firstName}</li>
+            <li><span>Last Name:</span>{this.state.leadData.lastName}</li>
+            <li><span>Address:</span>{this.state.leadData.address1}, {this.state.leadData.address2}</li>
+            <li><span>City:</span>{this.state.leadData.city}</li>
+            <li><span>State:</span>{this.state.leadData.state}</li>
+            <li><span>Zip Code:</span>{this.state.leadData.postalCode}</li>
+            <li><span>Phone:</span>{this.state.leadData.phoneNumber}</li>
+            <li><span>Email:</span>{this.state.leadData.emailAddress}</li>
+          </ul>
+          <div className="clearall" />
+          <p className="info-hding2">Billing Info</p>
+          <ul className="info-list">
+            <li><span>First Name:</span> {this.state.leadData.firstName}</li>
+            <li><span>Last Name:</span>{this.state.leadData.lastName}</li>
+            <li><span>Address:</span>{`${this.state.leadData.address1} ${this.state.leadData.address2}`}</li>
+            <li><span>City:</span>{this.state.leadData.city}</li>
+            <li><span>State:</span>{this.state.leadData.state}</li>
+            <li><span>Zip Code:</span>{this.state.leadData.postalCode}</li>
+            <li><span>Phone:</span>{this.state.leadData.phoneNumber}</li>
+            <li><span>Email:</span>{this.state.leadData.emailAddress}</li>
           </ul>
         </div>
-        <p className="green-bg-txt1">We&#39;re here to help</p>
-        <p className="thank-txt2">
-          If you have any questions regarding the product, it&#39;s usage or
-          billing, our customer care executives are available 24/7 to assist you
-          with the same.{' '}
-        </p>
-        <ul className="green-list">
-          <li>1-877-279-5390</li>
-          <li>support@americanscience.com</li>
-        </ul>
-        {items.length && (
-          <div className="ty-box">
-            <div className="ord-p1">
-              <p className="tp-heading">Order Receipt</p>
-            </div>
-            <div className="ty-left">
-              <div className="opt-top">
-                <p className="order-top">
-                  Order Placed:{' '}
-                  <span>{moment().format('dddd, MMM DD, YYYY')}</span>
-                  <br />
-                  Order Number:{' '}
-                  <span>
-                    {items[0].OrderInfo && items[0].OrderInfo.CustomerID}
-                  </span>
-                  <br />
-                  Estimated Delivery Date:{' '}
-                  <span>
-                    {moment()
-                      .add(4, 'days')
-                      .format('dddd, MMM DD, YYYY')}
-                  </span>
-                </p>
-              </div>
-              <div className="itemordered-heading">Items Ordered</div>
-              {Object.values(items).map(item => (
-                // const item = order.items[key];
-                // const originalProduct = this.getOriginalProduct(item);
-                <div key={item.OrderInfo.TransactionID} className="prod-row">
-                  <div className="prod-data ty">
-                    <div className="prod-shoot">
-                      <img
-                        src={getTyProductImage(item.OrderInfo.Products[0])}
-                        alt="prod-shoot"
-                      />
-                    </div>
-                    <p className="prod-name">
-                      American Science CBD
-                      <br />
-                      {getTyProductName(item.OrderInfo.Products[0])}
-                      <br />
-                      <span>
-                        {item.OrderInfo.Products[0].Quantity}{' '}
-                        {getTyProductContainer(item.OrderInfo.Products[0])}
-                      </span>
-                    </p>
-                  </div>
-                  <div className="prod-price">
-                    ${item.OrderInfo.TotalAmount}
-                  </div>
-                </div>
-              ))}
-              <div className="summry-table">
-                <div className="row pack-name">
-                  Sub Total: <span>${total}</span>
-                </div>
-
-                <div className="row shipping">
-                  Shipping &amp; handling:<span>FREE</span>
-                </div>
-
-                <div className="row total-price">
-                  Total: <span>${total}</span>
-                </div>
-              </div>
-            </div>
-            <div className="ty-rgt">
-              <div className="sh-heading">Shipping Info</div>
-              <ul className="user-info">
-                <li>
-                  <span>First Name:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {CustomerInfo.FirstName}{' '}
-                  </p>
-                </li>
-                <li>
-                  <span>Last Name:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {CustomerInfo.LastName}{' '}
-                  </p>
-                </li>
-                <li>
-                  <span>Address:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.ShippingAddress.Address1} <br />{' '}
-                    {shippingDetails.ShippingAddress.Address2}{' '}
-                  </p>
-                </li>
-                <li>
-                  <span>City:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.ShippingAddress.City}{' '}
-                  </p>
-                </li>
-                <li>
-                  <span>State:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.ShippingAddress.State}{' '}
-                  </p>
-                </li>
-                <li>
-                  <span>Zip Code:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.ShippingAddress.ZipCode}{' '}
-                  </p>
-                </li>
-                <li>
-                  <span>Phone:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.Phone}{' '}
-                  </p>
-                </li>
-                <li>
-                  <span>Email:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.Email}{' '}
-                  </p>
-                </li>
-              </ul>
-              <div className="sh-heading">Billing Info</div>
-              <ul className="user-info">
-                <li>
-                  <span>First Name:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.ShippingAddress.FirstName}{' '}
-                  </p>
-                </li>
-                <li>
-                  <span>Last Name:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.ShippingAddress.LastName}{' '}
-                  </p>
-                </li>
-                <li>
-                  <span>Address:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.ShippingAddress.Address1} <br />{' '}
-                    {shippingDetails.ShippingAddress.Address2}
-                  </p>
-                </li>
-                <li>
-                  <span>City:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.ShippingAddress.City}{' '}
-                  </p>
-                </li>
-                <li>
-                  <span>State:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.ShippingAddress.State}{' '}
-                  </p>
-                </li>
-                <li>
-                  <span>Zip Code:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.ShippingAddress.ZipCode}{' '}
-                  </p>
-                </li>
-                <li>
-                  <span>Phone:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.Phone}{' '}
-                  </p>
-                </li>
-                <li>
-                  <span>Email:</span>
-                  <p className="user-info__value-mb">
-                    {' '}
-                    {shippingDetails.Email}{' '}
-                  </p>
-                </li>
-              </ul>
-            </div>
+        <footer>
+          <div className="legal">
+            <p className="ftr-txt">
+              <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
+              <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
+              <a href="#"> Contact Us </a> <br /><br />
+              <span style={{textTransform: 'none'}}> 
+                ©
+                Yeah Keto</span>
+            </p>
           </div>
-        )}
+        </footer> 
       </div>
     );
   }

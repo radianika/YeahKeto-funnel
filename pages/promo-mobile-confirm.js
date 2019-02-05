@@ -40,7 +40,12 @@ class Confirm extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.postVisitEvent();
+    // this.postVisitEvent();
+    this.props.getOrderDetails({
+      headers: {
+        'x-ascbd-req-origin': window.location.hostname,
+      },
+    });
   }
 
   postVisitEvent() {
@@ -61,7 +66,7 @@ class Confirm extends React.PureComponent {
     return (
       <React.Fragment>
         <Head>
-          <title>American Science CBD Oil</title>
+          <title>Yeah Keto</title>
           <meta name="viewport" content="width=640, user-scalable=0" />
           <meta
             name="description"
@@ -85,7 +90,7 @@ class Confirm extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/css/promo/mobile/index.css"
+            href="/static/assets/css/mb-checkout-new.css"
           />
           <link
             rel="stylesheet"

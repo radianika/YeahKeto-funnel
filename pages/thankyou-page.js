@@ -124,10 +124,20 @@ class Thankyou extends React.PureComponent {
     return (
       <React.Fragment>
         <Head>
-          <title>American Science CBD Oil</title>
+          <title>Yeah Keto</title>
           <meta
             name="description"
             content="Premium Quality Hemp Extract Products, Organic and Natural"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/fonts/fonts.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/desktop/css/upsell-new.css"
           />
           {device === 'mobile' && (
             <meta name="viewport" content="width=640, user-scalable=0" />
@@ -140,11 +150,18 @@ class Thankyou extends React.PureComponent {
             />
           )}
           {device === 'mobile' && (
-            <link
-              rel="stylesheet"
-              type="text/css"
-              href="/static/mobile/css/style.css"
-            />
+            <React.Fragment>
+              <link
+                rel="stylesheet"
+                type="text/css"
+                href="/static/mobile/css/style.css"
+              />
+              <link
+                rel="stylesheet"
+                type="text/css"
+                href="/static/mobile/css/upsell-new.css"
+              />
+            </React.Fragment>
           )}
         </Head>
         <PromoSession pageType="thankyouPage" />

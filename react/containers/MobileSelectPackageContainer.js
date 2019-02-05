@@ -20,81 +20,44 @@ class MobileSelectPackageContainer extends React.PureComponent {
   render() {
     return (
       <div id="container">
-        <div className="spng-hd">
-          <div className="spng-hd2">
-            <img
-              src="/static/promo/mobile/images/ck-top.jpg"
-              alt=""
-              className="sping-logo"
-            />
-            <p className="clearall" />
-            <p className="trial-toptxt1">
-              Select Your Package TODAY &amp; SAVE MORE!
-            </p>
-          </div>
-        </div>
-        {packages.map(pack => (
-          <React.Fragment key={pack.id}>
-            <div
-              className="link-container-3"
-              style={{ cursor: 'pointer', marginBottom: '20px !important' }}
-              onClick={() => this.selectPackage(pack)}
-            >
-              <div
-                id={`select-package-mobile-${pack.id}`}
-                className="select-box1"
-              >
-                <div className="slt-box-hd">
-                  <img
-                    src="/static/promo/mobile/images/select-btn.png"
-                    alt=""
-                    className="select-btn"
-                  />
-                  <p className="slt-box-hd-txt">{pack.title}</p>
-                </div>
-                <div className="box-mid">
-                  <div className="box-mid-left">
-                    <img
-                      src={`/static/promo/mobile/images/${pack.img}`}
-                      alt=""
-                      className="product-box1"
-                    />
-                  </div>
-                  <div className="box-mid-right">
-                    <div className="pkgtype-hdbox">
-                      <p className="pkgtype-hding">{pack.msg}</p>
-                    </div>
-                    <div className="box-mid-right-box">
-                      <p className="box-mid-left-txt1">
-                        REGULAR PRICE {pack.regularPrice}
-                      </p>
-                      <img
-                        src="/static/promo/mobile/images/rd-strk.png"
-                        className="rd-strk"
-                        alt=""
-                      />
-                      <p className="pkgcont-price">
-                        {pack.price}
-                        <span>/ea</span>
-                      </p>
-                    </div>
-                    <img
-                      src="/static/promo/mobile/images/ship-icon.png"
-                      alt=""
-                      className="ship-icon"
-                    />
-                  </div>
-                </div>
+        <img src="/static/promo/mobile/images/images/top-img.jpg" alt className="img-resp" />
+        <p className="chk-toptxt1 chk-toptxt1-bdr">SELECT YOUR PACKAGE</p>
+        <div className="clearall" />
+
+        {packages.map((pack, index) => (
+          <div className="slct-box1" key={pack.id}>
+            <div className="slct-mid">
+              <p className="seclt-txt1">{pack.title}</p>
+            </div>
+            <img src="/static/promo/mobile/images/images/product-box1.png" className="pack1-prod" />
+            <p className="seclt-txt2">{pack.msg}</p>
+            <div className="select-mid-sec">
+              <p className="seclt-reg-txt">REGULAR <span>{pack.regularPrice}<img src="/static/promo/mobile/images/images/cut-line.png" /></span></p>
+              <div className="p5-pkgchk">
+                <p className="prc-details-txt1">{pack.price}</p>
+                <p className="prc-details-txt2">/ea</p>
+              </div>
+              <p className="s-mid-txt2">You Save: $139.98</p>
+              <p className="s-mid-txt3">FREE SHIPPING</p>
+              <div className="link-container-5" onClick={() => this.selectPackage(pack)} style={{'cursor': 'pointer'}}>
+                <img src="/static/promo/mobile/images/images/select-btn2.png" />
               </div>
             </div>
-            <div style={{ clear: 'both' }} />
-          </React.Fragment>
+          </div>
         ))}
         <div className="clearboth" />
         <div className="legal">
-          <div className="ftr-txt">
-            <Footer promo />
-          </div>
+          <p className="ftr-txt">
+            <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
+            <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
+            <a href="#"> Contact Us </a> <br /><br />
+            <span style={{'text-transform': 'none'}}>
+              <script type="text/javascript">
+                var year = new Date();document.write(year.getFullYear());
+              </script> &copy;
+              Yeah Keto
+            </span>
+          </p>
         </div>
       </div>
     );

@@ -10,6 +10,7 @@ import {
   PromoSectionFiveDesktop,
   PromoSectionSixDesktop,
   PromoSectionSevenDesktop,
+  PromoHomeNewSection
 } from 'react/components/promo/desktop';
 import { createNewSession } from 'redux/actions/authActions';
 import { FooterPromo } from 'react/components/promo';
@@ -35,26 +36,13 @@ class PromoDesktop extends React.PureComponent {
           <div className="container">
             <p className="topbartxt">
               <span>WARNING:</span> Due to extremely high media demand, there is
-              limited supply of <span>CBD Oil</span> in stock as of{' '}
+              limited supply of <span>Yeah Keto</span> in stock as of{' '}
               <span>{moment().format('dddd, ll')}</span>
             </p>
           </div>
         </div>
         <PromoSectionOneDesktop />
-        <PromoSectionTwoDesktop />
-        <PromoStrip tagID="promo-strip-scroll-desktop-1" />
-        <PromoSectionThreeDesktop />
-        <PromoStrip tagID="promo-strip-scroll-desktop-2" />
-        <PromoSectionFourDesktop />
-        <PromoStrip tagID="promo-strip-scroll-desktop-3" />
-        <PromoSectionFiveDesktop />
-        <PromoStrip tagID="promo-strip-scroll-desktop-4" />
-        <PromoSectionSixDesktop />
-        <PromoStrip tagID="promo-strip-scroll-desktop-5" />
-        <PromoSectionSevenDesktop />
-        <div style={{ clear: 'both' }} />
-        <FooterPromo tagID="promo-shipping-form-submit-desktop-footer" />
-        {this.props.sessionId && <PromoSession pageType="leadPage" />}
+        <PromoHomeNewSection />
       </React.Fragment>
     );
   }

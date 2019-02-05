@@ -54,13 +54,13 @@ class Promo extends React.PureComponent {
 
   componentDidMount() {
     this.props.createNewSession();
-    this.postCampaignActivatedEvent();
-    this.postVisitEvent();
+    // this.postCampaignActivatedEvent();
+    // this.postVisitEvent();
     const { localStorage } = window;
-    localStorage.setItem(
-      'abtastyParams',
-      JSON.stringify(this.props.abtastyParams),
-    );
+    // localStorage.setItem(
+    //   'abtastyParams',
+    //   JSON.stringify(this.props.abtastyParams),
+    // );
     Router.onRouteChangeStart = () => {
       this.setState({ showSpinner: true });
     };
@@ -143,7 +143,7 @@ class Promo extends React.PureComponent {
     return (
       <React.Fragment>
         <Head>
-          <title>American Science CBD Oil</title>
+          <title>Yeah Keto</title>
           <meta name="viewport" content="width=640, user-scalable=0" />
           <meta
             name="description"
@@ -158,6 +158,11 @@ class Promo extends React.PureComponent {
             rel="stylesheet"
             type="text/css"
             href="/static/assets/css/promo/mobile/index.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/css/promo/mobile/mobile-new.css"
           />
           <link
             rel="stylesheet"

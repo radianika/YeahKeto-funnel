@@ -11,38 +11,22 @@ import Head from 'next/head';
  * @description Mobile component rendered after Upsell1 pages
  */
 class Upsell2Treatment1 extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      shouldAddPixel: false,
-      revenue: ''
-    };
-  }
-  
-  componentDidMount() {
-    this.postVisitEvent();
-    let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
-    upsell1 = upsell1[0];
-  
-    this.setState({
-      shouldAddPixel: true
-    },() => {
-      this.setState({ revenue: upsell1.OrderInfo.TotalAmount})
-    });
-  }
+  // componentDidMount() {
+  //   this.postVisitEvent();
+  // }
 
-  upgrade = button => {
-    this.props.sendTransactionDetails(
-      'order-confirmation-upsell-2',
-      'Upsell2Treatment1',
-    );
-    this.postActionTracker('upsell-2-yes', `upsell-2-yes-${button}`);
-    this.props.upgrade(217, '/promo/mobile/thankyou');
+  upgrade = () => {
+    // this.props.sendTransactionDetails(
+    //   'order-confirmation-upsell-2',
+    //   'Upsell2Treatment1',
+    // );
+    // this.postActionTracker('upsell-2-yes', 'upsell-2-yes');
+    this.props.upgrade(4166, '/promo/mobile/thankyou');
   };
 
-  skipUpsell = button => {
-    this.postActionTracker('upsell-2-no', `upsell-2-no-${button}`);
-    window.location.assign(`/promo/mobile/upsell-2-1?${getQueryString()}`);
+  skipUpsell = () => {
+    // this.postActionTracker('upsell-2-no', 'upsell-2-no');
+    window.location.assign(`/promo/mobile/thankyou?${getQueryString()}`);
   };
 
   postActionTracker = (name, value_string) => {
@@ -77,224 +61,52 @@ class Upsell2Treatment1 extends React.PureComponent {
   };
 
   render() {
-    const { cid } = this.props.query;
+    // const { cid } = this.props.query;
     return (
-      <React.Fragment>
-        <Head>
-          <link
-            href="/static/mobile/css/upsell2-treatment1.css"
-            rel="stylesheet"
-          />
-        </Head>
-        {this.state.shouldAddPixel ?
-          <React.Fragment>
-            <script>{`
-              !function(f,b,e,v,n,t,s)
-              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-                n.queue=[];t=b.createElement(e);t.async=!0;
-                t.src=v;s=b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t,s)}(window, document,'script',
-              'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '321559294932280');
-              fbq('track', 'Purchase', {currency: 'USD', value: ${this.state.revenue}});
-              `}
-            </script>
-
-            <noscript>
-              <img height="1" width="1" style={{display: 'none'}}
-                src={`https://www.facebook.com/tr?id=321559294932280&amp;ev=Purchase&amp;cd[currency]=USD&amp;cd[value]=${this.state.revenue}`}
-              />
-            </noscript>
-          </React.Fragment> : null
-        }
-        <PromoSession pageType="upsellPage2" />
-        {getDiscountBanner({ cid }) && (
-          <div className="topbar">
-            <p className="topbartxt">
-              PROMO CODE <span>CBD33</span> APPLIED!
-              <span> HURRY, GET 20% OFF TODAY!</span>
-            </p>
-          </div>
-        )}
-        <div className="up-strip">
-          <h3>WAIT! YOUR ORDER IS NOT COMPLETE!</h3>
-          <p>
-            87% Customers Added The<br />
-            <strong>CBD Pain Relief Warming Balm</strong> To Their Order!
-          </p>
-        </div>
-
-        <div className="upsell-box">
-          <p className="up-txt1">GET INSTANT PAIN RELIEF</p>
-          <p className="with-txt">with</p>
-          <p className="up-txt2">CBD Warming Balm</p>
-          <img src="/static/assets/images/up2-combo.png" className="up-prod" />
-          <div className="clearall" />
-          <div className="price-box">
-            <p className="price-box-txt1">
-              Buy 2 Jars + <span>Get 1 Free</span>
-            </p>
-            <p className="price-box-txt2">Save 60% Today</p>
-            <p className="price-box-txt3">
-              <img
-                src="/static/assets/images/arrow-left-upsell.png"
-                width="77"
-                height="33"
-                alt=""
-                className="arrow-left"
-              />
-              <span className="old-price">
-                <img src="/static/assets/images/price-cut.png" />130/<sup>
-                  ea
-                </sup>
-              </span>{' '}
-              {getDiscountBanner({ cid }) ? (
-                <React.Fragment>
-                  <span className="old-price">
-                    <img
-                      src="/static/assets/images/upsell2-mobile/price-cut.png"
-                      alt="price-cut"
-                    />87/<sup>ea</sup>
-                  </span>{' '}
-                  <span>
-                    69/<sup>ea</sup>
-                  </span>
-                </React.Fragment>
-              ) : (
-                <span>
-                  87/<sup>ea</sup>
-                </span>
-              )}{' '}
-              <img
-                src="/static/assets/images/arrow-right.png"
-                width="77"
-                height="33"
-                alt=""
-                className="arrow-right"
-              />
-            </p>
-          </div>
-
-          <div className="bnt-sec">
-            <p className="offer-valid">
-              Offer Valid Till{' '}
-              <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
-            </p>
-            <a
-              id="balm-yes-top"
-              href="javascript:void(0)"
-              onClick={() => this.upgrade('top')}
-            >
-              <img
-                src="/static/assets/images/ord-btn.png"
-                alt=""
-                width="370"
-                height="71"
-                className="ord-btn pulse"
-              />
-            </a>
-            <p className="thanks-txt">
-              <a
-                id="balm-no-top"
-                href="javascript:void(0)"
-                onClick={() => this.skipUpsell('top')}
-              >
-                <img
-                  src="/static/assets/images/cut-icon.png"
-                  width="15"
-                  height="15"
-                  alt=""
-                  className="cut-icon"
-                />{' '}
-                No, I don't want better results.
-              </a>
-            </p>
-          </div>
-        </div>
-
-        <div className="up-strip" style={{ 'margin-top': '50px' }}>
-          <h4>BENEFITS OF CBD WARMING BALM INCLUDE ...</h4>
-        </div>
-
-        <div className="clearall" />
-        <div className="up-bottom-box">
-          <img src="/static/assets/images/up1-img1.png" />
-          <p className="box-txt1">FULL SPECTRUM FORMULA</p>
-          <p className="box-txt2">
-            CBD Warming Balm is INFUSED with highly a concentrated CBD which is
-            known for its medicinal properties and yields a more effective
-            solution than any balm in the world.
-          </p>
-        </div>
-
-        <div className="up-bottom-box">
-          <img src="/static/assets/images/upsell2-mobile/up2-img2.png" />
-          <p className="box-txt1">OFFERS ANTIOXIDANT SUPPORT</p>
-          <p className="box-txt2">
-            CBD Warming Balm works at a cellular level to combat free radical
-            damage, boost overall immunity, and provides healing as well as
-            aromatherapy benefits.
-          </p>
-        </div>
-
-        <div className="up-bottom-box">
-          <img src="/static/assets/images/upsell2-mobile/up2-img3.png" />
-          <p className="box-txt1">INSTANTLY RELIEVES CHRONIC PAIN</p>
-          <p className="box-txt2">
-            Melt away muscle fatigue, pain, swelling, and discomfort with
-            American Science CBD WARMING BALM'S deep, penetrating warmth
-            providing FAST relief that will amaze you.
-          </p>
-        </div>
-
-        <div className="bnt-sec">
-          <p className="offer-valid">
-            Offer Valid Till{' '}
-            <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
-          </p>
-          <a
-            id="balm-yes-bottom"
-            href="javascript:void(0)"
-            onClick={() => this.upgrade('bottom')}
-          >
-            <img
-              src="/static/assets/images/ord-btn.png"
-              alt=""
-              width="370"
-              height="71"
-              className="ord-btn pulse"
-            />
-          </a>
-          <p className="thanks-txt">
-            <a
-              id="balm-no-bottom"
-              href="javascript:void(0)"
-              onClick={() => this.skipUpsell('bottom')}
-            >
-              <img
-                src="/static/assets/images/cut-icon.png"
-                width="15"
-                height="15"
-                alt=""
-                className="cut-icon"
-              />{' '}
-              No, I don't want better results.
-            </a>
-          </p>
-        </div>
-
-        <div id="footer">
-          <div className="container">
-            <div className="ftr-txt">
-              <Footer noLogo>
-                <span />
-              </Footer>
+      <div className="container">
+        <div className="upsell-hdr"><img src="/static/promo/mobile/images/images/top-img.jpg" /></div>
+        <div className="upsell1-sec1">
+          <p className="upsell-txt1"><span>WAIT!</span> YOU QUALIFY FOR A LIMITEDTIME DISCOUNT</p>
+          <p className="upsell-txt2">93% of customers who purchase <span>Yeah Keto</span> also purchase <span>Yeah Caralluma.</span></p>
+          <div className="up-mid">
+            <p className="upsell-txt3">CURB YOUR CRAVINGS WITH</p>
+            <div className="clearall" />
+            <img src="/static/promo/mobile/images/images/up1-logo.png" className="up1-logo" />
+            <p className="up-sub-name1">Advanced Appetite Suppression*</p>
+            <div className="upsell-sec1-prdct">
+              <div className="upsell1-s1-lftside">
+                <img src="/static/promo/mobile/images/images/upsell1-sec1-bg.png" className="upsell1-sec1-bg" />
+                <img src="/static/promo/mobile/images/images/upsell1-prdct.png" className="upsell1-prdct" />
+                <p className="save-txt1">save 44%</p>
+              </div>
+              <ul className="up1-s1-list">
+                <li>Suppress<br /> <span>Appetite</span></li>
+                <li>Reduces<br /> <span>Overeating</span></li>
+                <li>Boost<br /> <span>Weight Loss</span></li>
+              </ul>
+            </div>
+            <div className="up1-dscount-cpn">
+              <p className="dscnt-txt1">Add Your <span className="spcl-dscnt">Special Discounted</span> Bottle Just Pay a Special Price <span className="prc-dscnt">$89.99<img src="/static/promo/mobile/images/images/red-stick.png" /></span></p>
+              <p className="price-text2">$49.99</p>
+              <a href="#" onClick={this.upgrade}><img src="/static/promo/mobile/images/images/upsell-btn.png" className="upsell-btn pulse" /></a>
+              <a href="#" onClick={this.skipUpsell}><p className="no-txt">No thanks, I’m not interested</p></a>
             </div>
           </div>
         </div>
-      </React.Fragment>
+        <p className="clearall" />
+        <footer>
+          <div className="legal">
+            <p className="ftr-txt">
+              <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
+              <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
+              <a href="#"> Contact Us </a> <br /><br />
+              <span style={{textTransform: 'none'}}> 
+                ©
+                Yeah Keto</span>
+            </p>
+          </div>
+        </footer>
+      </div>
     );
   }
 }

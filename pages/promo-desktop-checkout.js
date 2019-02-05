@@ -41,8 +41,13 @@ class Promo extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.postCampaignActivatedEvent();
-    this.postVisitEvent();
+    // this.postCampaignActivatedEvent();
+    // this.postVisitEvent();
+    this.props.getOrderDetails({
+      headers: {
+        'x-ascbd-req-origin': window.location.hostname,
+      },
+    });
   }
 
   postCampaignActivatedEvent() {
@@ -85,7 +90,7 @@ class Promo extends React.PureComponent {
     return (
       <React.Fragment>
         <Head>
-          <title>American Science CBD Oil</title>
+          <title>Yeah Keto</title>
           <link
             rel="stylesheet"
             type="text/css"
@@ -95,6 +100,11 @@ class Promo extends React.PureComponent {
             rel="stylesheet"
             type="text/css"
             href="/static/assets/fonts/font-awesome.min.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/static/assets/fonts/fonts.css"
           />
           <link
             rel="stylesheet"

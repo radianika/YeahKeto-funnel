@@ -9,6 +9,7 @@ import {
   parseOrderPostData,
   getRevenueAfterDiscount,
   getParameterByName,
+  parseQuery
 } from 'helpers';
 import { getCookie } from 'react/components/common';
 
@@ -97,43 +98,92 @@ function* submitLeadsForm(action) {
   console.log({ action });
   yield put(OrderActions.submitLeadsFormRequest());
 
-  const { values, nextUrl, headers } = action.payload;
-  const { localStorage } = window;
+  try {
+      const {
+        values, nextUrl, headers, cart,
+      } = action.payload;
+      console.log('values', values);
 
-  const parsedShipping = parseLeadPostData(values).postData;
-  const { parseLeadData } = parseLeadPostData(values);
+      const firstName = values.FirstName;
+      const lastName = values.LastName;
+      const address = values.Address1;
+      const address2 = values.Address2;
+      const city = values.City;
+      const state = values.State;
+      const postalCode = values.ZipCode;
+      const phoneNumber = values.Phone;
+      const email = values.Email;
 
-  let sessionId = '';
-  if (typeof window !== 'undefined') {
-    sessionId = yield getCookie('ascbd_session');
+      const trackingVars = {
+        'affId': getParameterByName('affId'),
+        'sourceValue1': getParameterByName('sourceValue1'),
+        'sourceValue2': getParameterByName('sourceValue2'),
+        'sourceValue3': getParameterByName('sourceValue3'),
+        'sourceValue4': getParameterByName('sourceValue4'),
+        'sourceValue5': getParameterByName('sourceValue5')
+      }
 
-    if (!sessionId || !sessionId.length) {
-      window.location.href = window.location.href;
+      localStorage.setItem('trck_vars', JSON.stringify(trackingVars));
+
+      const billing = {
+        firstName,
+        lastName,
+        address,
+        address2,
+        city,
+        state,
+        postalCode,
+        phoneNumber,
+        email
+      };
+
+      const shipping = {
+        firstName,
+        lastName,
+        address,
+        address2,
+        city,
+        state,
+        postalCode
+      }
+      let sessionId = '';
+      let kSessionId = '';
+      if (typeof window !== 'undefined') {
+        sessionId = yield getCookie('ascbd_session');
+        kSessionId = yield getCookie('ascbd_promo_session');
+
+        if (!sessionId || !sessionId.length) {
+          window.location.href = window.location.href;
+        }
+      } else {
+        sessionId = yield select(getSession);
+      }
+      const queryString = getQueryString();
+      const apiResponse = yield post(
+        '/v1/konnektive/lead',
+        {
+          ...billing,
+          shipping,
+          tracking_vars: trackingVars,
+        },
+        sessionId,
+        { ...headers, 'k-session-id': kSessionId },
+      );
+      if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
+        const { lead } = apiResponse.response.data.data;
+        // localStorage.setItem('leadData', JSON.stringify(lead));
+        // const newQueryString = cart
+        //   ? `&orderId=${lead.orderId}${queryString}`
+        //   : queryString;
+        yield put(OrderActions.submitLeadsFormSuccess({ lead }));
+        window.location.assign(`${nextUrl}?${queryString}`);
+      } else {
+        yield put(OrderActions.submitLeadsFormFailure());
+      }
+    } catch (error) {
+      console.log('error', error);
+      yield put(OrderActions.submitLeadsFormFailure({ error }));
     }
-  } else {
-    sessionId = yield select(getSession);
-  }
-
-  localStorage.setItem('parsedShipping', JSON.stringify(parsedShipping));
-  const queryString = getQueryString();
-  const apiResponse = yield post(
-    '/v1/response/customers',
-    parseLeadData,
-    sessionId,
-    {
-      ...headers,
-    },
-  );
-
-  if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
-    if (!nextUrl) {
-      return;
-    }
-    yield put(OrderActions.submitLeadsFormSuccess());
-    // window.location.assign(`${nextUrl}?${queryString}`);
-  } else {
-    yield put(OrderActions.submitLeadsFormFailure());
-  }
 }
 
 /**
@@ -148,9 +198,17 @@ function* placeOrder(action) {
       values, pack, nextUrl, headers, cid,
     } = action.payload;
     let sessionId = '';
+    let kSessionId = '';
+
+    const values1 = JSON.parse(localStorage.getItem('leadData'));
+
+    const trackingVars = JSON.parse(localStorage.getItem('trck_vars'));
+
+    console.log('values', values1)
 
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
+      kSessionId = yield getCookie('ascbd_promo_session');
 
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
@@ -160,34 +218,42 @@ function* placeOrder(action) {
       sessionId = yield select(getSession);
     }
 
-    let parsedOrder = parseOrderPostData(values, pack);
-    parsedOrder.PaymentInformation.ProductGroups[0].CustomProducts[0].Amount = getRevenueAfterDiscount(
-      {
-        cid,
-        revenue:
-          parsedOrder.PaymentInformation.ProductGroups[0].CustomProducts[0]
-            .Amount,
-      },
-    );
-    const queryString = `${
+    const {
+      orderId,
+      firstName,
+      lastName,
+      address1,
+      address2,
+      city,
+      state,
+      postalCode,
+    } = values1;
+
+    const {
+      cardExpiry,
+      cardNumber,
+      cardSecurityCode,
+    } = values;
+
+    const payload = {
+      orderId,
+      cardNumber,
+      cardMonth: cardExpiry.cardMonth,
+      cardYear: cardExpiry.cardYear,
+      cardSecurityCode,
+      product1_id: pack.id,
+      product1_qty: 1
+    };
+
+    const queryString = `&orderId=${orderId}${
       getQueryString().startsWith('&') || !getQueryString().length ? '' : '&'
     }${getQueryString()}`;
 
-    const sms_id = getParameterByName('sms_id');
-    if (sms_id) {
-      parsedOrder = { ...parsedOrder, sms_id };
-    }
-
-    const from_k = getParameterByName('from_k');
-    if (from_k) {
-      parsedOrder = { ...parsedOrder, from_k };
-    }
-
     const apiResponse = yield post(
-      '/v1/response/order',
-      parsedOrder,
+      '/v1/konnektive/order',
+      { ...payload, tracking_vars: trackingVars },
       sessionId,
-      { ...headers },
+      { ...headers, 'k-session-id': kSessionId },
     );
     if (
       idx(apiResponse, _ => _.response.data.message) === 'Success' &&
@@ -196,6 +262,7 @@ function* placeOrder(action) {
       const { localStorage } = window;
       const order = apiResponse.response.data.data;
       localStorage.setItem('upsell1', JSON.stringify([order]));
+      localStorage.setItem('pdcts', JSON.stringify(order.items));
       if (values.cart) {
         localStorage.setItem('cartthankyou', true);
         yield put(OrderActions.submitLeadsFormSuccess());
@@ -210,6 +277,7 @@ function* placeOrder(action) {
       );
     }
   } catch (error) {
+    console.log('error', error);
     yield put(OrderActions.placeOrderFailure({ error }));
   }
 }
@@ -222,15 +290,17 @@ function* placeOrder(action) {
 function* addUpsellToOrder(action) {
   yield put(OrderActions.addUpsellToOrderRequest());
   try {
-    const { sendTo, headers, cid } = action.payload;
+    const { productId, sendTo, headers, cid } = action.payload;
     let sessionId = '';
+    let kSessionId = '';
     const { localStorage } = window;
 
     let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
-    upsell1 = upsell1[upsell1.length - 1];
+    upsell1 = upsell1 && upsell1.length && upsell1[upsell1.length - 1];
 
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
+      kSessionId = yield getCookie('ascbd_promo_session');
 
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
@@ -240,28 +310,50 @@ function* addUpsellToOrder(action) {
       sessionId = yield select(getSession);
     }
 
+    let { orderId } = parseQuery(window.location.search);
+
+    if (!orderId) {
+      orderId  = JSON.parse(localStorage.getItem('leadData')).orderId;
+    }
     const payload = {
-      CustomerID: upsell1.OrderInfo.CustomerID,
-      ProductGroups: [packIdMap[action.payload.productId]],
+      orderId,
+      productId,
+      productQty: 1
     };
 
-    payload.ProductGroups[0].CustomProducts[0].Amount = getRevenueAfterDiscount(
+    // payload.ProductGroups[0].CustomProducts[0].Amount = getRevenueAfterDiscount(
+    //   {
+    //     cid,
+    //     revenue: payload.ProductGroups[0].CustomProducts[0].Amount,
+    //   },
+    // );
+
+    // const apiResponse = yield post('/v1/response/upsale', payload, sessionId, {
+    //   ...headers,
+    // });
+
+    const apiResponse = yield post(
+      '/v1/konnektive/upsale',
+      payload,
+      sessionId,
       {
-        cid,
-        revenue: payload.ProductGroups[0].CustomProducts[0].Amount,
+        ...headers,
+        'k-session-id': kSessionId,
       },
     );
 
-    const apiResponse = yield post('/v1/response/upsale', payload, sessionId, {
-      ...headers,
-    });
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const newOrder = apiResponse.response.data.data;
 
-      const oldUpselldata = JSON.parse(localStorage.getItem('upsell1'));
-      oldUpselldata.push(newOrder);
+      console.log('newOrder', newOrder);
 
-      localStorage.setItem('upsell1', JSON.stringify(oldUpselldata));
+      const oldUpselldata = JSON.parse(localStorage.getItem('upsell1'));
+      localStorage.setItem('pdcts', JSON.stringify(newOrder.items));
+
+      // oldUpselldata.push(newOrder);
+      // pdcts.push(newOrder);
+
+      // localStorage.setItem('upsell1', JSON.stringify(oldUpselldata));
       yield put(OrderActions.placeOrderSuccess({ order: newOrder }));
       yield put(OrderActions.addUpsellToOrderSuccess());
       const queryString = getQueryString();
@@ -270,6 +362,7 @@ function* addUpsellToOrder(action) {
       yield put(OrderActions.addUpsellToOrderFailure());
     }
   } catch (error) {
+    console.log('error', error);
     yield put(OrderActions.addUpsellToOrderFailure({ error }));
   }
 }
@@ -285,9 +378,11 @@ function* getOrderDetails(action) {
   try {
     const { headers, orderId } = action.payload;
     let sessionId = '';
+    let kSessionId = '';
 
     if (typeof window !== 'undefined') {
       sessionId = yield getCookie('ascbd_session');
+      kSessionId = yield getCookie('ascbd_promo_session');
 
       if (!sessionId || !sessionId.length) {
         window.location.href = window.location.href;
@@ -297,18 +392,28 @@ function* getOrderDetails(action) {
       sessionId = yield select(getSession);
     }
     const url = orderId
-      ? `/v1/response/order/${orderId}`
-      : '/v1/response/order/';
+      ? `/v1/konnektive/order/${orderId}`
+      : '/v1/konnektive/order/';
     const apiResponse = yield get(url, sessionId, {
       ...headers,
+      'k-session-id': kSessionId,
     });
     if (idx(apiResponse, _ => _.response.data.message) === 'Success') {
       const order = apiResponse.response.data.data.data[0];
+      localStorage.setItem('leadData', JSON.stringify(order));
       yield put(OrderActions.getOrderDetailsSuccess({ order }));
     } else {
+      yield put(
+        OrderActions.getOrderDetails({
+          headers: {
+            'x-ascbd-req-origin': window.location.hostname,
+          },
+        }),
+      );
       yield put(OrderActions.getOrderDetailsFailure());
     }
   } catch (error) {
+    console.log('Error', error)
     yield put(OrderActions.getOrderDetailsFailure({ error }));
   }
 }

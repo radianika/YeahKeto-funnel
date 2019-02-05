@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 
 class PromoSectionTwoDesktopComponent extends React.PureComponent {
   render() {
-    const variation317682 = this.props.abtastyParams.campaignMaps['317682'];
+    const variation317682 = this.props.isAuthentic.isAuthenticUser
+      ? '418324'
+      : '418323';
     return (
       <div className="section2">
         <div className="container position">
