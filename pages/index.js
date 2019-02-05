@@ -16,16 +16,6 @@ class Index extends React.Component {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/fonts/fonts.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/fonts/font-open-sans.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
             href="/static/assets/fonts/font-raleway.css"
           />
           <link

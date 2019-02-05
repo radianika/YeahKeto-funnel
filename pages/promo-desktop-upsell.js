@@ -11,8 +11,8 @@ class SelectPackage extends React.PureComponent {
       store.dispatch(
         AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
       );
-      return query;
     }
+    return query;
   }
 
   render() {
@@ -27,13 +27,9 @@ class SelectPackage extends React.PureComponent {
             content="Premium Quality Hemp Extract Products, Organic and Natural"
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700"
-            rel="stylesheet"
-          />
-          <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/fonts/fonts.css"
+            href="/static/assets/fonts/font-hind.css"
           />
           <link
             href="/static/assets/css/promo/desktop/upsell1.css"

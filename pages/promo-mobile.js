@@ -11,6 +11,49 @@ import axios from 'axios';
 import { getParameterByName } from 'helpers';
 
 class Promo extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showSpinner: false,
+    };
+  }
+
+  componentDidMount() {
+    this.props.createNewSession();
+    // this.postCampaignActivatedEvent();
+    // this.postVisitEvent();
+    // const { localStorage } = window;
+    // localStorage.setItem(
+    //   'abtastyParams',
+    //   JSON.stringify(this.props.abtastyParams),
+    // );
+    Router.onRouteChangeStart = () => {
+      this.setState({ showSpinner: true });
+    };
+
+    // sms_id call
+    const smsId = getParameterByName('sms_id');
+
+    // check for sms_id
+    if (smsId) {
+      const url = `${this.props.API_BASE_URL}/v1/track/smsclick${
+        window.location.search
+      }`;
+      axios.get(url);
+    }
+
+    // email_id call
+    const emailId = getParameterByName('email_id');
+
+    // check for email_id
+    if (emailId) {
+      const url = `${this.props.API_BASE_URL}/v1/track/emailclick${
+        window.location.search
+      }`;
+      axios.get(url);
+    }
+  }
+
   static getInitialProps({
     ctx: {
       store,
@@ -43,49 +86,6 @@ class Promo extends React.PureComponent {
       );
     }
     return { API_BASE_URL };
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      showSpinner: false,
-    };
-  }
-
-  componentDidMount() {
-    this.props.createNewSession();
-    // this.postCampaignActivatedEvent();
-    // this.postVisitEvent();
-    const { localStorage } = window;
-    // localStorage.setItem(
-    //   'abtastyParams',
-    //   JSON.stringify(this.props.abtastyParams),
-    // );
-    Router.onRouteChangeStart = () => {
-      this.setState({ showSpinner: true });
-    };
-
-    // sms_id call
-    const smsId = getParameterByName('sms_id');
-
-    // check for sms_id
-    if (smsId) {
-      const url = `${this.props.API_BASE_URL}/v1/track/smsclick${
-        window.location.search
-      }`;
-      axios.get(url);
-    }
-
-    // email_id call
-    const emailId = getParameterByName('email_id');
-
-    // check for email_id
-    if (emailId) {
-      const url = `${this.props.API_BASE_URL}/v1/track/emailclick${
-        window.location.search
-      }`;
-      axios.get(url);
-    }
   }
 
   postCampaignActivatedEvent = () => {

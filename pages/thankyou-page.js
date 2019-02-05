@@ -16,15 +16,6 @@ class Thankyou extends React.PureComponent {
     };
   }
 
-  static async getInitialProps(props) {
-    const { store, isServer, query } = props.ctx;
-    if (isServer) {
-      store.dispatch(
-        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
-      );
-    }
-  }
-
   componentDidMount() {
     const { localStorage } = window;
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
@@ -42,6 +33,15 @@ class Thankyou extends React.PureComponent {
       items,
       shippingDetails: JSON.parse(localStorage.getItem('parsedShipping')),
     });
+  }
+
+  static async getInitialProps(props) {
+    const { store, isServer, query } = props.ctx;
+    if (isServer) {
+      store.dispatch(
+        AuthActions.setUniqueSessionId({ sessionId: query.sessionId }),
+      );
+    }
   }
 
   getItem = () => {
@@ -132,11 +132,6 @@ class Thankyou extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/fonts/fonts.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
             href="/static/desktop/css/upsell-new.css"
           />
           {device === 'mobile' && (
@@ -165,22 +160,20 @@ class Thankyou extends React.PureComponent {
           )}
         </Head>
         <PromoSession pageType="thankyouPage" />
-        {(device === 'desktop' &&
-          this.state.items.length) ?
-            <ThankyouDesktop
-              isPromo={isPromo}
-              items={this.state.items}
-              shippingDetails={this.state.shippingDetails}
-            /> : null
-          }
-        {(device === 'mobile' &&
-          this.state.items.length) ?
-            <ThankyouMobile
-              isPromo={isPromo}
-              items={this.state.items}
-              shippingDetails={this.state.shippingDetails}
-            /> : null
-          }
+        {device === 'desktop' && this.state.items.length ? (
+          <ThankyouDesktop
+            isPromo={isPromo}
+            items={this.state.items}
+            shippingDetails={this.state.shippingDetails}
+          />
+        ) : null}
+        {device === 'mobile' && this.state.items.length ? (
+          <ThankyouMobile
+            isPromo={isPromo}
+            items={this.state.items}
+            shippingDetails={this.state.shippingDetails}
+          />
+        ) : null}
       </React.Fragment>
     );
   }

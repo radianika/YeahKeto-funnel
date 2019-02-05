@@ -9,6 +9,16 @@ import { PromoSession } from 'react/components/common';
 import idx from 'idx';
 
 class Promo extends React.PureComponent {
+  componentDidMount() {
+    // this.postCampaignActivatedEvent();
+    // this.postVisitEvent();
+    this.props.getOrderDetails({
+      headers: {
+        'x-ascbd-req-origin': window.location.hostname,
+      },
+    });
+  }
+
   static async getInitialProps({
     ctx: {
       store,
@@ -18,9 +28,9 @@ class Promo extends React.PureComponent {
         campaignMaps,
         requestAgent,
         sessionId,
-        adv_sub,
-        transaction_id,
-        offerId,
+        // adv_sub,
+        // transaction_id,
+        // offerId,
       },
       req: {
         session: { ip },
@@ -38,16 +48,6 @@ class Promo extends React.PureComponent {
         }),
       );
     }
-  }
-
-  componentDidMount() {
-    // this.postCampaignActivatedEvent();
-    // this.postVisitEvent();
-    this.props.getOrderDetails({
-      headers: {
-        'x-ascbd-req-origin': window.location.hostname,
-      },
-    });
   }
 
   postCampaignActivatedEvent() {
@@ -100,11 +100,6 @@ class Promo extends React.PureComponent {
             rel="stylesheet"
             type="text/css"
             href="/static/assets/fonts/font-awesome.min.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/fonts/fonts.css"
           />
           <link
             rel="stylesheet"

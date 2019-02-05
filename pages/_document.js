@@ -9,6 +9,10 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700"
+            rel="stylesheet"
+          />
+          <link
             rel="shortcut icon"
             type="image/x-icon"
             href="/static/favicon.ico"
