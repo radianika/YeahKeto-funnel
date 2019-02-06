@@ -5,6 +5,7 @@ import { PromoSession, Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
 import { getQueryString, getDiscountBanner } from 'helpers';
 import { SatisfactionBox } from './SatisfactionBox';
+import { FooterMobileNew } from 'react/components/common';
 
 /**
  * @class Upsell1Component
@@ -98,18 +99,7 @@ class Upsell1Component extends React.PureComponent {
           </div>
         </div>
         <p className="clearall" />
-        <footer>
-          <div className="legal">
-            <p className="ftr-txt">
-              <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
-              <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
-              <a href="#"> Contact Us </a> <br /><br />
-              <span style={{textTransform: 'none'}}> 
-                ©
-                Yeah Keto</span>
-            </p>
-          </div>
-        </footer>
+        <FooterMobileNew />
       </div>
     );
   }
