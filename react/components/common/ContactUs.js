@@ -196,8 +196,9 @@ class ContactUs extends React.Component {
                     American Science CBD
                   </span>
                   <p>
-                    Corporate: Peahead Productions LLC, 630 Freedom Business
-                    Center Dr King of Prussia, MONTGOMERY. PA 19406
+                    Corporate: Peahead Productions LLC,
+                    630 Freedom Business Center Dr King of Prussia,
+                    MONTGOMERY. PA 19406
                   </p>
                   <p className="mtop1">
                     Returns: 6525 Gunpark Drive Ste 370-347, Boulder, CO 80301

@@ -9,6 +9,15 @@ import idx from 'idx';
 import axios from 'axios/index';
 
 class Confirm extends React.PureComponent {
+  componentDidMount() {
+    // this.postVisitEvent();
+    this.props.getOrderDetails({
+      headers: {
+        'x-ascbd-req-origin': window.location.hostname,
+      },
+    });
+  }
+
   static async getInitialProps({
     ctx: {
       store,
@@ -37,15 +46,6 @@ class Confirm extends React.PureComponent {
       );
       store.dispatch(AuthActions.setUniqueSessionId({ sessionId }));
     }
-  }
-
-  componentDidMount() {
-    // this.postVisitEvent();
-    this.props.getOrderDetails({
-      headers: {
-        'x-ascbd-req-origin': window.location.hostname,
-      },
-    });
   }
 
   postVisitEvent() {

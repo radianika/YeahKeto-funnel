@@ -10,6 +10,23 @@ import { normalizePhone, getParameterByName } from 'helpers';
 import { PromoSession } from 'react/components/common';
 
 class Promo extends React.PureComponent {
+  componentDidMount() {
+    this.props.createNewSession();
+    // this.postCampaignActivatedEvent();
+    // this.postVisitEvent();
+
+    // email_id call
+    const emailId = getParameterByName('email_id');
+
+    // check for email_id
+    if (emailId) {
+      const url = `${this.props.API_BASE_URL}/v1/track/emailclick${
+        window.location.search
+      }`;
+      axios.get(url);
+    }
+  }
+
   static getInitialProps({
     ctx: {
       store,
@@ -50,25 +67,8 @@ class Promo extends React.PureComponent {
         };
         store.dispatch(AuthActions.setUserInfo(userInfo));
       }
-      return { API_BASE_URL };
     }
-  }
-
-  componentDidMount() {
-    this.props.createNewSession();
-    // this.postCampaignActivatedEvent();
-    // this.postVisitEvent();
-
-    // email_id call
-    const emailId = getParameterByName('email_id');
-
-    // check for email_id
-    if (emailId) {
-      const url = `${this.props.API_BASE_URL}/v1/track/emailclick${
-        window.location.search
-      }`;
-      axios.get(url);
-    }
+    return { API_BASE_URL };
   }
 
   postCampaignActivatedEvent = () => {
@@ -132,11 +132,6 @@ class Promo extends React.PureComponent {
           <link
             rel="stylesheet"
             type="text/css"
-            href="/static/assets/fonts/fonts.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
             href="/static/assets/fonts/font-awesome.min.css"
           />
           <link
@@ -153,11 +148,6 @@ class Promo extends React.PureComponent {
             rel="stylesheet"
             type="text/css"
             href="/static/assets/css/promo-style.css"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/static/assets/css/common.css"
           />
           <link
             rel="stylesheet"

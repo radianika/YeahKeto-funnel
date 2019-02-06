@@ -40,9 +40,8 @@ class PromoMobileUpsell extends React.PureComponent {
           isAuthenticUser,
         }),
       );
-
-      return affId;
     }
+    return affId;
   }
 
   render() {
@@ -57,8 +56,9 @@ class PromoMobileUpsell extends React.PureComponent {
             content="Premium Quality Hemp Extract Products, Organic and Natural"
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700"
             rel="stylesheet"
+            type="text/css"
+            href="/static/assets/fonts/font-hind.css"
           />
           <link href="/static/mobile/css/upsell.css" rel="stylesheet" />
           {/* <link rel="stylesheet" type="text/css" href="/static/assets/css/mb-style.css" /> */}
