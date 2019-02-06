@@ -1,6 +1,7 @@
 import React from 'react';
 import { PromoSession } from 'react/components/common';
 import { getQueryString } from 'helpers';
+import { Footer } from 'react/components/common';
 
 /**
  * @class Upsell2
@@ -69,20 +70,7 @@ class Upsell2 extends React.PureComponent {
           </div>
         </div>
         <p className="clearall"></p>
-        <div className="footer">
-          <div className="chk-contentWrap"> 
-            <p className="ftr-txt1">This product has not been evaluated by the FDA. This product is not intended 
-              to diagnose, treat, cure or prevent any disease.<br />
-              Results in description and testimonials may not be typical results and individual results may vary.<br />
-              This product intended to be used in conjunction with a healthy diet and regular exercise.<br />
-              Consult your physician before starting any diet, exercise program, and taking any diet pill 
-              to avoid any health issues.<br />
-              Images above are dramatizations.<br /> <br /> 
-              <a href="#">Terms &amp; Conditions</a> | <a href="#">Privacy Policy</a>
-              | <a href="#">Contact Us </a><br /> 
-              © Yeah Keto</p>
-          </div>
-        </div>
+        <Footer />
       </React.Fragment>
     );
   }

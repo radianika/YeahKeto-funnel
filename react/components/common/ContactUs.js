@@ -192,7 +192,9 @@ class ContactUs extends React.Component {
               </p>
               <ul className="cont-list">
                 <li>
-                  <span className="mtop1 address-mtop-1">American Science CBD</span>
+                  <span className="mtop1 address-mtop-1">
+                    American Science CBD
+                  </span>
                   <p>
                     Corporate: Peahead Productions LLC,
                     630 Freedom Business Center Dr King of Prussia,

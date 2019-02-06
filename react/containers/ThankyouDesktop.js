@@ -8,6 +8,7 @@ import {
 } from 'helpers';
 import { OrderActions } from 'redux/actions';
 import moment from 'moment';
+import { Footer } from 'react/components/common';
 
 const productMapping = {
   4165: {
@@ -148,20 +149,7 @@ class ThankyouDesktopComponent extends React.Component {
             </div>
           </div>
         </div>
-        <div className="footer">
-          <div className="inner-container">
-            <p className="ftr-txt1">This product has not been evaluated by the FDA. This product is not intended 
-              to diagnose, treat, cure or prevent any disease.<br />
-              Results in description and testimonials may not be typical results and individual results may vary.<br />
-              This product intended to be used in conjunction with a healthy diet and regular exercise.<br />
-              Consult your physician before starting any diet, exercise program, and taking any diet pill 
-              to avoid any health issues.<br />
-              Images above are dramatizations.<br /> <br /> 
-              <a href="#">Terms &amp; Conditions</a> | <a href="#">Privacy Policy</a>
-              | <a href="#">Contact Us</a><br /> 
-              © Yeah Keto</p>
-          </div>
-        </div>
+        <Footer />
       </div>
     );
   }
