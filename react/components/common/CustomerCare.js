@@ -19,7 +19,8 @@ const CustomerCare = () => (
     <p className="normal">&nbsp;</p>
     <p className="list">
       American Science CBD<br />
-      Corporate: American Science CBD<br />
+      Corporate: Peahead Productions LLC, 630 Freedom Business Center Dr King of
+      Prussia, MONTGOMERY. PA 19406<br />
       Returns: 6525 Gunpark Drive Ste 370-347, Boulder, CO 80301
     </p>
     <p className="normal">&nbsp;</p>

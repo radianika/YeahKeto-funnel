@@ -52,7 +52,8 @@ class Footer extends PureComponent {
                   this.setState({ modal: 'footer_customer' });
                 }}
               >Contact Us</a><br /> 
-              © Yeah Keto</p>
+              © Yeah Keto
+            </p>
           </div>
         </div>
         {this.state.modal === 'footer_terms' && (
