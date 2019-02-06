@@ -1,6 +1,12 @@
 .fv-form-pure.pure-form-aligned .fv-help-block {
-  margin-left: 108px;
-  width: 185px;
+  margin-left: 140px;
+  width: auto;
+  display: initial;
+}
+
+#section1 .fv-form-pure.pure-form-aligned .fv-help-block {
+  margin-left: 0;
+  width: auto;
 }
 
 .chk-rgt .fv-form-pure.pure-form-aligned .fv-help-block {
