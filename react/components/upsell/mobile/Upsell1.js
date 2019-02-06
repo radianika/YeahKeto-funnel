@@ -58,6 +58,16 @@ class Upsell1Component extends React.PureComponent {
   render() {
     return (
       <div className="container">
+        <noscript>
+          <iframe
+            src="http://komodo.go2cloud.org/aff_l?offer_id=1`"
+            width="1"
+            height="1"
+            alt=""
+            style={{display: 'none'}}
+            frameborder="0"
+          />
+        </noscript>
         <div className="upsell-hdr"><img src="images/top-img.jpg" /></div>
         <div className="upsell1-sec1">
           <p className="upsell-txt1"><span>WAIT!</span> YOU QUALIFY FOR A LIMITEDTIME DISCOUNT</p>
