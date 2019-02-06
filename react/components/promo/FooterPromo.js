@@ -43,29 +43,6 @@ class FooterPromoComponent extends React.PureComponent {
         }
       };
     }
-
-    // $( document ).ready(function() {
-    //   // Handler for .ready() called.
-    // });
-
-      // $ && $(document).scroll(function() {
-      //   // @TODO change it to react. remove jquery dependency
-      //   var $elem = $('footer');
-      //   var $window = $(window);
-
-      //   var docViewTop = $window.scrollTop();
-      //   var docViewBottom = docViewTop + $window.height();
-
-      //   var elemTop = $elem.offset().top;
-      //   var elemBottom = elemTop + $elem.height();
-
-      //   if (elemTop >= (docViewBottom + 20) || (elemTop + $('#cta').height()) >= (docViewBottom + 134) ) {
-      //     $('#cta').css('position', 'fixed');
-      //   } else {
-      //     $('#cta').css({'position' : 'relative'});
-          
-      //   }
-      // });
   }
 
   gotoShipping = () => {
@@ -206,11 +183,12 @@ class FooterPromoComponent extends React.PureComponent {
               >
                 Contact Us
               </a>
+              <br />
             <span style={{textTransform: 'none'}}> 
-              ©
+              { moment().year() } ©
               Yeah Keto</span> 
           </p>
-        </div>
+        </div>s
         {this.state.modal === 'footer_terms' && (
           <Modal
             onClose={this.closeModal}

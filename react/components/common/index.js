@@ -13,3 +13,4 @@ export * from './Spinner';
 export * from './SuccessModal';
 export * from './SegmentioTracker';
 export * from './ImageModal';
+export * from './FooterMobileNew';
