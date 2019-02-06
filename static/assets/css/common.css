@@ -466,6 +466,6 @@ input::-webkit-contacts-auto-fill-button {
   right: 0;
 }
 
-.legal {
+.legal, .modal-dialog {
   color: black !important;
 }
