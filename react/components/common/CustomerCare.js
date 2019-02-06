@@ -7,18 +7,18 @@ const CustomerCare = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
-      American Science is available 24/7 365 to support our customers. If you
+      Yeah Keto is available 24/7 365 to support our customers. If you
       need assistance with anything related to your order or are interested in
       buying from us, please reach out to us through our convenient solutions.
     </p>
     <p className="normal">&nbsp;</p>
     <p className="list">
       <b>Customer Service:</b> 1-877-279-5390<br />
-      <b>Email:</b> support&#64;americansciencecbd.com
+      <b>Email:</b> support&#64;yeahketo.com
     </p>
     <p className="normal">&nbsp;</p>
     <p className="list">
-      American Science CBD<br />
+      Yeah Keto CBD<br />
       Corporate: Peahead Productions LLC, 630 Freedom Business Center Dr King of
       Prussia, MONTGOMERY. PA 19406<br />
       Returns: 6525 Gunpark Drive Ste 370-347, Boulder, CO 80301

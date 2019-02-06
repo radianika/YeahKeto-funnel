@@ -165,7 +165,7 @@ class FooterPromoComponent extends React.PureComponent {
               >
                 Terms &amp; Conditions
               </a>{' '}
-              |
+              &nbsp;|&nbsp;
               <a
                 href="javascript:void(0)"
                 onClick={() => {
@@ -174,7 +174,7 @@ class FooterPromoComponent extends React.PureComponent {
               >
                 Privacy Policy
               </a>
-              |
+              &nbsp;|&nbsp;
               <a
                 href="javascript:void(0)"
                 onClick={() => {
@@ -188,7 +188,7 @@ class FooterPromoComponent extends React.PureComponent {
               { moment().year() } ©
               Yeah Keto</span> 
           </p>
-        </div>s
+        </div>
         {this.state.modal === 'footer_terms' && (
           <Modal
             onClose={this.closeModal}

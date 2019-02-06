@@ -12,14 +12,14 @@ export const PrivacyPolicy = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
-      <b>American Science CBD</b>
+      <b>Yeah Keto</b>
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
       This Privacy Policy governs your use of this Website and any content,
       products or services made available from or through this website including
       any sub domains thereof (“Website”). The Website is made available for
-      American Science CBD (Hereinafter referred to as “Company”). By visiting
+      Yeah Keto (Hereinafter referred to as “Company”). By visiting
       this Website and requesting information, products or services offered on
       or through this Website, you agree to the terms of this Privacy Policy, as
       they may be amended from time to time. As Company updates or expands its
@@ -96,7 +96,7 @@ export const PrivacyPolicy = () => (
       and have such information acquired by Company. If you did not give express
       permission, or you would like to remove your permission, you may suppress
       all of your information by sending notification to us at
-      support&#64;americansciencecbd.com
+      support&#64;yeahketo.com
     </p>
     <p className="normal">&nbsp;</p>
     <p className="list">
@@ -259,7 +259,7 @@ export const PrivacyPolicy = () => (
       unsubscribe from receiving email communications from us. To unsubscribe
       from all Company emails, email customer service with subject line
       "UNSUBSCRIBE EMAILS" and submit the e-mail address that you desire to be
-      removed from our database at support&#64;americansciencecbd.com, or
+      removed from our database at support&#64;yeahketo.com, or
       contact us at 1-877-279-5390, Monday to Friday, 08:00 AM – 07:00 PM PST,
       Closed on holidays Company's unsubscribe process impacts only the future
       delivery of electronic mailings disseminated by Company on its own behalf.
@@ -334,7 +334,7 @@ export const PrivacyPolicy = () => (
     <p className="list">
       You may remove your information from Company’s database. You may remove
       your information by sending your request in writing via email to
-      support&#64;americansciencecbd.com or by sending "STOP", "END", "QUIT" to
+      support&#64;yeahketo.com or by sending "STOP", "END", "QUIT" to
       the SMS text message you have received.
     </p>
     <p className="normal">&nbsp;</p>
@@ -447,7 +447,7 @@ export const PrivacyPolicy = () => (
       Sacramento, CA 95814; or by phone at 888-406-0993; or by email to
       dca&#64;dca.ca.gov. For more information about protecting your privacy,
       you may wish to visit: https://www.ftc.gov. If you have questions about
-      this policy, please contact us at support&#64;americansciencecbd.com.
+      this policy, please contact us at support&#64;yeahketo.com.
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">&nbsp;</p>
