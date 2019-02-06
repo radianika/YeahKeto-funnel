@@ -26,32 +26,43 @@ class Footer extends PureComponent {
       <React.Fragment>
         <div className="footer">
           <div className="contentWrap">
-            <p className="ftr-txt1">This product has not been evaluated by the FDA. This product is not intended 
-              to diagnose, treat, cure or prevent any disease.<br />
-              Results in description and testimonials may not be typical results and individual results may vary.<br />
-              This product intended to be used in conjunction with a healthy diet and regular exercise.<br />
-              Consult your physician before starting any diet, exercise program, and taking any diet pill 
-              to avoid any health issues.<br />
-              Images above are dramatizations.<br /> <br /> 
+            <p className="ftr-txt1">
+              This product has not been evaluated by the FDA. This product is
+              not intended to diagnose, treat, cure or prevent any disease.<br />
+              Results in description and testimonials may not be typical results
+              and individual results may vary.<br />
+              This product intended to be used in conjunction with a healthy
+              diet and regular exercise.<br />
+              Consult your physician before starting any diet, exercise program,
+              and taking any diet pill to avoid any health issues.<br />
+              Images above are dramatizations.<br /> <br />
               <a
                 href="javascript:void(0)"
                 onClick={() => {
                   this.setState({ modal: 'footer_terms' });
                 }}
-              >Terms &amp; Conditions</a> |
+              >
+                Terms &amp; Conditions
+              </a>{' '}
+              |
               <a
                 href="javascript:void(0)"
                 onClick={() => {
                   this.setState({ modal: 'footer_privacy' });
                 }}
-              >Privacy Policy</a>
+              >
+                Privacy Policy
+              </a>
               |
               <a
                 href="javascript:void(0)"
                 onClick={() => {
                   this.setState({ modal: 'footer_customer' });
                 }}
-              >Contact Us</a><br /> 
+              >
+                Contact Us
+              </a>
+              <br />
               © Yeah Keto
             </p>
           </div>
