@@ -1,10 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Footer } from 'react/components/common';
-import { getQueryString } from 'helpers';
-
 import moment from 'moment';
 import axios from 'axios';
+import { connect } from 'react-redux';
+
+import { getQueryString } from 'helpers';
+import LazyLoad from 'react-lazyload';
+import { Modal } from '../common/Modal';
+import { CustomerCare } from '../common/CustomerCare';
+import { PrivacyPolicy } from '../common/PrivacyPolicy';
+import { TermsAndConditions } from '../common/TermsAndConditions';
 
 class FooterPromoComponent extends React.PureComponent {
   constructor() {
@@ -13,8 +17,12 @@ class FooterPromoComponent extends React.PureComponent {
     this.ctaRef = React.createRef();
     this.state = {
       ctaStyle: { position: 'fixed' },
+      modal: null,
     };
   }
+
+  closeModal = () => this.setState({ modal: null });
+  closeModalImmediately = () => this.setState({ modal: null });
 
   componentDidMount() {
     if (this.props.isMobile) {
@@ -128,52 +136,86 @@ class FooterPromoComponent extends React.PureComponent {
 
     return (
       <footer ref={this.footerRef}>
-        {this.props.isMobile && (
-          <div id="cta" ref={this.ctaRef} style={this.state.ctaStyle}>
-            <a
-              id={this.props.tagID}
-              href="javascript:void(0)"
-              onClick={() => {
-                this.postActionTracker();
-                this.gotoShipping();
-              }}
-              className="shipping_redirect"
+        <div id="cta" ref={this.ctaRef} style={this.state.ctaStyle}>
+          <a
+            id={this.props.tagID}
+            href="javascript:void(0)"
+            onClick={() => {
+              // this.postActionTracker();
+              this.gotoShipping();
+            }}
+            className="shipping_redirect"
             >
-              <i
-                className={`btn pulse sprite3 sprite3-413418 sprite3-${
-                  this.props.isAuthentic.isAuthenticUser
-                } sprite-ship-btn sprite3-${variation316344}`}
-                id="mobie-order-now"
-              />
-            </a>
-          </div>
-        )}
+              <img src="/static/promo/mobile/images/images/button.png" className="btn pulse" />
+          </a>
+        </div>
+
         <p className="clearall" />
         <div className="legal">
-          <div className="ftr-txt">
-            <Footer promo>
-              <br /> * These statements have not been evaluated by the FDA. If
-              you are pregnant, nursing, taking medications, or have a medical
-              condition, consult your physician before using this product.
-              Representations regarding the efficacy and safety of American
-              Science CBD have not been evaluated by the Food and Drug
-              Administration. The FDA only evaluates foods and drugs, not
-              supplements like these products. These products are not intended
-              to diagnose, prevent, treat, or cure any disease. &nbsp;
-              <a
-                href="https://www.ncbi.nlm.nih.gov/pubmed/18728714"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="legal-wiki-click"
+          <p className="ftr-txt">This product has not been evaluated by the FDA. This product is not intended to diagnose, treat, cure or prevent any disease.
+            Results in description and testimonials may not be typical results and individual results may vary.
+            This product intended to be used in conjunction with a healthy diet and regular exercise.
+            Consult your physician before starting any diet, exercise program, and taking any diet pill to avoid any health issues.
+            Images above are dramatizations. <br /><br />
+            <a
+                href="javascript:void(0)"
+                onClick={() => {
+                  this.setState({ modal: 'footer_terms' });
+                }}
               >
-                CLICK HERE
+                Terms &amp; Conditions
+              </a>{' '}
+              |
+              <a
+                href="javascript:void(0)"
+                onClick={() => {
+                  this.setState({ modal: 'footer_privacy' });
+                }}
+              >
+                Privacy Policy
               </a>
-              &nbsp; to find evidence of a test, analysis, research, or study
-              describing the benefits, performance or efficacy of American
-              Science CBD based on the expertise of relevant professionals.
-            </Footer>
-          </div>
-        </div>
+              |
+              <a
+                href="javascript:void(0)"
+                onClick={() => {
+                  this.setState({ modal: 'footer_customer' });
+                }}
+              >
+                Contact Us
+              </a>
+              <br />
+            <span style={{textTransform: 'none'}}> 
+              { moment().year() } ©
+              Yeah Keto</span> 
+          </p>
+        </div>s
+        {this.state.modal === 'footer_terms' && (
+          <Modal
+            onClose={this.closeModal}
+            onCloseBtn={this.closeModalImmediately}
+          >
+            <React.Fragment>Terms and Conditions</React.Fragment>
+            <TermsAndConditions />
+          </Modal>
+        )}
+        {this.state.modal === 'footer_privacy' && (
+          <Modal
+            onClose={this.closeModal}
+            onCloseBtn={this.closeModalImmediately}
+          >
+            <React.Fragment>Privacy Policy</React.Fragment>
+            <PrivacyPolicy />
+          </Modal>
+        )}
+        {this.state.modal === 'footer_customer' && (
+          <Modal
+            onClose={this.closeModal}
+            onCloseBtn={this.closeModalImmediately}
+          >
+            <React.Fragment>Customer Care</React.Fragment>
+            <CustomerCare />
+          </Modal>
+        )}
       </footer>
     );
   }

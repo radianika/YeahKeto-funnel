@@ -21,6 +21,7 @@ import {
 } from 'react/components/common';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
+import { FooterMobileNew } from 'react/components/common';
 
 /**
  * @class MobileShippingContainerComponent
@@ -212,19 +213,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
               </div>
             </div>
           </div>
-          <div className="legal">
-            <p className="ftr-txt">
-              <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
-              <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
-              <a href="#"> Contact Us </a> <br /><br />
-              <span style={{'text-transform': 'none'}}>
-                <script type="text/javascript">
-                  var year = new Date();document.write(year.getFullYear());
-                </script> &copy;
-                Yeah Keto
-              </span>
-            </p>
-          </div>
+          <FooterMobileNew />
         </div>
         {this.state.showCheckingModal && (
           <ImageModal>

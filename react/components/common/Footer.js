@@ -4,6 +4,7 @@ import { Modal } from './Modal';
 import { CustomerCare } from './CustomerCare';
 import { PrivacyPolicy } from './PrivacyPolicy';
 import { TermsAndConditions } from './TermsAndConditions';
+import moment from 'moment';
 
 /**
  * @class Footer
@@ -44,7 +45,7 @@ class Footer extends PureComponent {
               >
                 Terms &amp; Conditions
               </a>{' '}
-              |
+              &nbsp;|&nbsp;
               <a
                 href="javascript:void(0)"
                 onClick={() => {
@@ -53,7 +54,7 @@ class Footer extends PureComponent {
               >
                 Privacy Policy
               </a>
-              |
+              &nbsp;|&nbsp;
               <a
                 href="javascript:void(0)"
                 onClick={() => {
@@ -63,7 +64,7 @@ class Footer extends PureComponent {
                 Contact Us
               </a>
               <br />
-              © Yeah Keto
+              {moment().year()} © Yeah Keto
             </p>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'next/router';
 import creditCartType from 'credit-card-type';
+import { FooterMobileNew } from 'react/components/common';
 import moment from 'moment';
 import axios from 'axios';
 import {
@@ -281,25 +282,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
           <a href="#" onClick={this.props.handleSubmit(this.confirmOrder)}><img src="/static/promo/mobile/images/images/ck-btn.png" alt className="trial-btn pulse" /></a> 
           <img src="/static/promo/mobile/images/images/c-logo.png" alt className="c-logo" /> 
         </div>
-        <div>
-          <div className="legal">
-            <p className="ftr-txt">
-              <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
-              <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
-              <a href="#"> Contact Us </a> <br /><br />
-              <span style={{textTransform: 'none'}}> 
-                ©
-                Yeah Keto</span>
-            </p>
-          </div>
-          <div className="legal">
-            <p className="ftr-txt">
-              <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
-              <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
-              <a href="#"> Contact Us </a> <br /><br />
-            </p>
-          </div>
-        </div>
+        <FooterMobileNew />
       </div>
     );
   }

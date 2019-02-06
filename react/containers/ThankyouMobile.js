@@ -8,6 +8,7 @@ import {
 } from 'helpers';
 import { OrderActions } from 'redux/actions';
 import moment from 'moment';
+import { FooterMobileNew } from 'react/components/common';
 
 const productMapping = {
   4165: {
@@ -115,18 +116,7 @@ class ThankyouMobileComponent extends React.PureComponent {
             <li><span>Email:</span>{this.state.leadData.emailAddress}</li>
           </ul>
         </div>
-        <footer>
-          <div className="legal">
-            <p className="ftr-txt">
-              <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
-              <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
-              <a href="#"> Contact Us </a> <br /><br />
-              <span style={{textTransform: 'none'}}> 
-                ©
-                Yeah Keto</span>
-            </p>
-          </div>
-        </footer> 
+        <FooterMobileNew /> 
       </div>
     );
   }

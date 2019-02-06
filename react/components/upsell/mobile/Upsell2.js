@@ -3,6 +3,7 @@ import moment from 'moment';
 import axios from 'axios';
 import { PromoSession, Footer } from 'react/components/common';
 import { getQueryString, getDiscountBanner } from 'helpers';
+import { FooterMobileNew } from 'react/components/common';
 
 /**
  * @class Upsell2

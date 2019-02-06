@@ -4,6 +4,7 @@ import axios from 'axios';
 import { PromoSession, Footer } from 'react/components/common';
 import { getQueryString, getDiscountBanner } from 'helpers';
 import Head from 'next/head';
+import { FooterMobileNew } from 'react/components/common';
 
 /**
  * @class Upsell2
@@ -94,18 +95,7 @@ class Upsell2Treatment2 extends React.PureComponent {
           </div>
         </div>
         <p className="clearall" />
-        <footer>
-          <div className="legal">
-            <p className="ftr-txt">
-              <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
-              <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
-              <a href="#"> Contact Us </a> <br /><br />
-              <span style={{textTransform: 'none'}}> 
-                ©
-                Yeah Keto</span>
-            </p>
-          </div>
-        </footer>
+        <FooterMobileNew />
       </div>
     );
   }
