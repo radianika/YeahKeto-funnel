@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getQueryString } from 'helpers';
-import { Footer } from 'react/components/common';
+import { FooterPromo } from 'react/components/promo';
 
 class PromoHomeNewSection extends React.Component {
   constructor(props) {
@@ -283,12 +283,10 @@ class PromoHomeNewSection extends React.Component {
           <center><img src="/static/promo/mobile/images/images/s1-seal-img.png" alt className="s1-seal-img" /></center>
         </div>    
         <div className="clearall" />
-        <footer>
-          <div id="cta"> 
-            <a href="#" onClick={this.gotoShipping}> <img src="/static/promo/mobile/images/images/button.png" className="btn pulse" /> </a> </div>
-          <p className="clearall" />
-          <Footer />
-        </footer>
+        <FooterPromo
+          isMobile
+          tagID="promo-shipping-form-submit-mobile-footer"
+        />
       </div>
     );
   }
