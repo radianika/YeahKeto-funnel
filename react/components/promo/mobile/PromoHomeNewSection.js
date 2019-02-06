@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getQueryString } from 'helpers';
+import { Footer } from 'react/components/common';
 
 class PromoHomeNewSection extends React.Component {
   constructor(props) {
@@ -286,20 +287,7 @@ class PromoHomeNewSection extends React.Component {
           <div id="cta"> 
             <a href="#" onClick={this.gotoShipping}> <img src="/static/promo/mobile/images/images/button.png" className="btn pulse" /> </a> </div>
           <p className="clearall" />
-          <div className="legal">
-            <p className="ftr-txt">This product has not been evaluated by the FDA. This product is not intended to diagnose, treat, cure or prevent any disease.
-              Results in description and testimonials may not be typical results and individual results may vary.
-              This product intended to be used in conjunction with a healthy diet and regular exercise.
-              Consult your physician before starting any diet, exercise program, and taking any diet pill to avoid any health issues.
-              /static/promo/mobile/images/images above are dramatizations. <br /><br />
-              <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
-              <a href="#">Privacy Policy</a>&nbsp;|&nbsp; 
-              <a href="#">Contact Us</a> <br /><br />
-              <span style={{textTransform: 'none'}}> 
-                ©
-                Yeah Keto</span> 
-            </p>
-          </div>
+          <Footer />
         </footer>
       </div>
     );

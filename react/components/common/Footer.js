@@ -25,81 +25,34 @@ class Footer extends PureComponent {
     return (
       <React.Fragment>
         <div className="footer">
-          <div className="container">
-            <div className="contentWrap">
-              <p className="ftrtxt">
-                <a
-                  href="javascript:void(0)"
-                  onClick={() => {
-                    this.setState({ modal: 'footer_terms' });
-                  }}
-                >
-                  Terms and Conditions
-                </a>&nbsp;|&nbsp;
-                <a
-                  href="javascript:void(0)"
-                  onClick={() => {
-                    this.setState({ modal: 'footer_privacy' });
-                  }}
-                >
-                  Privacy Policy
-                </a>&nbsp;|&nbsp;
-                <a
-                  href="javascript:void(0)"
-                  onClick={() => {
-                    this.setState({ modal: 'footer_customer' });
-                  }}
-                >
-                  Customer Care
-                </a>
-              </p>
-
-              {!this.props.noLogo && (
-                <p className="ftrtxt w40 mtop2">
-                  {!this.props.promo ? (
-                    <img
-                      src="/static/assets/images/mc-v-a.png"
-                      alt="We accept VISA, MasterCard"
-                    />
-                  ) : (
-                    <React.Fragment>
-                      <div className="cards">
-                        <span className="card-amex">
-                          <LazyLoad height={45} offset={75}>
-                            <img src="/static/cards_logos.png" alt="Amex" />
-                          </LazyLoad>
-                        </span>
-                      </div>
-                    </React.Fragment>
-                  )}
-                </p>
-              )}
-
-              {this.props.children || (
-                <p className="ftrtxt just">
-                  <React.Fragment>
-                    <br />This product is not for use by or sale to persons
-                    under the age of 18. This product should be used only as
-                    directed on the label. It should not be used if you are
-                    pregnant or nursing. Consult with a physician before use if
-                    you have a serious medical condition or use prescription
-                    medications. A {"Doctor's"} advice should be sought before
-                    using this and any supplemental dietary product. All
-                    trademarks and copyrights are property of their respective
-                    owners and are not affiliated with nor do they endorse this
-                    product. These statements have not been evaluated by the
-                    FDA. This product is not intended to diagnose, treat, cure
-                    or prevent any disease. Individual weight loss results will
-                    vary. By using this site, you agree to follow the Privacy
-                    Policy and all Terms & Conditions printed on this site. Void
-                    Where Prohibited by Law.
-                  </React.Fragment>
-                </p>
-              )}
-              <p className="ftrtxt mtop2">
-                Copyright 2018 © All Rights Reserved - American Science CBD
-              </p>
-            </div>
+          <div className="contentWrap">
+            <p className="ftr-txt1">This product has not been evaluated by the FDA. This product is not intended 
+              to diagnose, treat, cure or prevent any disease.<br />
+              Results in description and testimonials may not be typical results and individual results may vary.<br />
+              This product intended to be used in conjunction with a healthy diet and regular exercise.<br />
+              Consult your physician before starting any diet, exercise program, and taking any diet pill 
+              to avoid any health issues.<br />
+              Images above are dramatizations.<br /> <br /> 
+              <a
+                href="javascript:void(0)"
+                onClick={() => {
+                  this.setState({ modal: 'footer_terms' });
+                }}
+              >Terms &amp; Conditions</a> |
+              <a
+                href="javascript:void(0)"
+                onClick={() => {
+                  this.setState({ modal: 'footer_privacy' });
+                }}
+              >Privacy Policy</a>
+              |
+              <a
+                href="javascript:void(0)"
+                onClick={() => {
+                  this.setState({ modal: 'footer_customer' });
+                }}
+              >Contact Us</a><br /> 
+              © Yeah Keto</p>
           </div>
         </div>
         {this.state.modal === 'footer_terms' && (
