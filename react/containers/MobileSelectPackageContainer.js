@@ -2,6 +2,7 @@ import React from 'react';
 import { Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
 import { packages, getQueryString } from 'helpers';
+import { FooterMobileNew } from 'react/components/common';
 
 /**
  * @class MobileSelectPackageContainer
@@ -46,19 +47,7 @@ class MobileSelectPackageContainer extends React.PureComponent {
           </div>
         ))}
         <div className="clearboth" />
-        <div className="legal">
-          <p className="ftr-txt">
-            <a href="#">Terms &amp; Conditions</a>&nbsp;|&nbsp; 
-            <a href="#"> Privacy Policy </a>&nbsp;|&nbsp; 
-            <a href="#"> Contact Us </a> <br /><br />
-            <span style={{'text-transform': 'none'}}>
-              <script type="text/javascript">
-                var year = new Date();document.write(year.getFullYear());
-              </script> &copy;
-              Yeah Keto
-            </span>
-          </p>
-        </div>
+        <FooterMobileNew />
       </div>
     );
   }
