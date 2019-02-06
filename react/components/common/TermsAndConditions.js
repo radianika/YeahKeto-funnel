@@ -35,11 +35,11 @@ export const TermsAndConditions = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
-      <b>American Science CBD</b>
+      <b>Yeah Keto</b>
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
-      <b>Email:</b> support&#64;americansciencecbd.com
+      <b>Email:</b> support&#64;yeahketo.com
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
@@ -106,7 +106,7 @@ export const TermsAndConditions = () => (
     <p className="normal b">Shipping</p>
     <p className="normal">
       To initiate a return, please email us at
-      support&#64;americansciencecbd.com or contact us by phone (877) 279-5390
+      support&#64;yeahketo.com or contact us by phone (877) 279-5390
       24/7/365 to request a return merchandise authorization number. We require
       an RMA # received from customer support to accompany your return. All
       returned merchandise should be sent to us at 6525 Gunpark Drive Ste
@@ -139,7 +139,7 @@ export const TermsAndConditions = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
-      Please address all returns to American Science Returns and include your
+      Please address all returns to Yeah Keto Returns and include your
       RMA # in your shipment.
     </p>
     <p className="normal">&nbsp;</p>
@@ -153,7 +153,7 @@ export const TermsAndConditions = () => (
     <p className="normal">&nbsp;</p>
     <p className="normal">
       This Terms of Service (&quot;TOS&quot;) is a legally binding agreement
-      made by and between American Science (&quot;we&quot; or &quot;us&quot;)
+      made by and between Yeah Keto (&quot;we&quot; or &quot;us&quot;)
       and you, personally and, if applicable, on behalf of the entity for whom
       you are using this web site (collectively, &quot;you&quot;). This TOS
       governs your use of the website (&quot;Website&quot;) and the services we
@@ -316,7 +316,7 @@ export const TermsAndConditions = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="sub-list">
-      (b) Trademarks. American Science CBD is a trade name we own. The related
+      (b) Trademarks. Yeah Keto is a trade name we own. The related
       design marks, and other trademarks on the Website are owned by us. Page
       headers, custom graphics, button icons and scripts are trademarks or trade
       dress we own. You may not use any of these trademarks, trade dress, or
@@ -326,7 +326,7 @@ export const TermsAndConditions = () => (
     <p className="list">7. Third Party Websites.</p>
     <p className="normal">&nbsp;</p>
     <p className="list">
-      AmericanScienceCBD.com may contain links to other websites on the Internet
+      yeahketo.com may contain links to other websites on the Internet
       that are owned and operated by third parties. We do not control the
       information, products or services available on these third party websites.
       The inclusion of any link does not imply our endorsement of the applicable
@@ -589,7 +589,7 @@ export const TermsAndConditions = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="text-center">
-      <b>Email:</b> support&#64;americansciencecbd.com
+      <b>Email:</b> support&#64;yeahketo.com
     </p>
     <p className="normal">&nbsp;</p>
     <p className="text-center">
