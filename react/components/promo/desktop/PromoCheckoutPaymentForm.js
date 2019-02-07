@@ -93,9 +93,6 @@ class PromoCheckoutPaymentFormClass extends React.Component {
           />
          
           <div className="cards">
-            {variation318676 === '419446' && (
-              <span className="cards-prefix">We accept:</span>
-            )}
             <span
               className={`card-visa ${
                 active_cc_type === 'visa' ? 'active' : ''
