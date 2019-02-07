@@ -8,12 +8,9 @@ import {
   shippingFormValidator,
   normalizePhone,
   normalizePostalCode,
-  // getQueryString,
-  // packages,
   getDiscountBanner,
 } from 'helpers';
 import {
-  // Footer,
   TextField,
   SelectField,
   AddressField,
@@ -34,25 +31,6 @@ class MobileShippingContainerComponent extends React.PureComponent {
     this.state = {
       showCheckingModal: false,
     };
-  }
-
-  componentDidUpdate(/* prevProps */) {
-    // const queryString = getQueryString();
-    // let nextUrl = '';
-    // let pack = {};
-    // [pack] = packages;
-    // nextUrl = `/promo/mobile/confirm?${queryString}&productId=${pack.id}`;
-    // if (
-    //   prevProps.submitStatus !== 'success' &&
-    //   this.props.submitStatus === 'success'
-    // ) {
-    //   this.setState({ showCheckingModal: false });
-    //   setTimeout(() => {
-    //     const { localStorage } = window;
-    //     localStorage.setItem('pack', JSON.stringify(pack));
-    //     window.location.assign(nextUrl);
-    //   }, 1000);
-    // }
   }
 
   onSubmit = e => {
@@ -79,8 +57,6 @@ class MobileShippingContainerComponent extends React.PureComponent {
     };
     axios.post('/abtasty', { ...body, action: 'visit_event' });
   };
-
-  // hideErrorModal = () => this.setState({ showErrorModal: false });
 
   render() {
     const { cid } = this.props.query;
