@@ -10,6 +10,7 @@ class PromoHomeNewSection extends React.PureComponent {
   };
 
   componentDidMount() {
+    // TODO: Remove jquery dependency
     function isScrolledIntoView(elem) {
       var docViewTop = $(window).scrollTop();
       var docViewBottom = docViewTop + $(window).height();

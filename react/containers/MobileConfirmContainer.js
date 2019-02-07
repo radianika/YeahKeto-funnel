@@ -201,16 +201,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
             </p>
           </div>
           <div className="clearall" />
-          {/* Just a dummy placeholder. Not used at all */}
-          <div className="frmFlds">
-            <label>Card Type</label>
-            <br />
-            <select>
-              <option selected>Visa</option>
-              <option>Master Card</option>
-              <option>Discover</option>
-            </select>
-          </div>
           <div style={{ display: 'block', 'padding': '0 0 0 33px' }} className="mobile-payment-wrapper" id="cardDiv">
             <div className="clearall" />
             <div className="clearall" />
