@@ -9,6 +9,34 @@ class PromoHomeNewSection extends React.PureComponent {
     });
   };
 
+  componentDidMount() {
+    function isScrolledIntoView(elem) {
+      var docViewTop = $(window).scrollTop();
+      var docViewBottom = docViewTop + $(window).height();
+      
+      var elemTop = $(elem).offset().top;
+      var elemBottom = elemTop + $(elem).height();
+      
+      return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+    }
+
+    $(document).ready(function () {
+      $(window).scroll(function() {
+        if (isScrolledIntoView('.s1-animate-arrow') === true) {
+          $('.s1-animate-arrow').addClass('sec1-arr-wo');
+        } else{
+          $('.s1-animate-arrow').removeClass('sec1-arr-wo');
+        }
+          
+        if (isScrolledIntoView('.s8arrow') === true) {
+          $('.s8arrow').addClass('sec8-arr-wo');
+        } else{
+          $('.s8arrow').removeClass('sec8-arr-wo');
+        }
+      })
+    })
+  }
+
   render() {
     return (
       <div>
