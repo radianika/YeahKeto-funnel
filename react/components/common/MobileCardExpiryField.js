@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { getMonths, getYears } from './Utils';
+
 /**
  * @class MobileCardExpiryField
  * @extends {React.PureComponent}
@@ -49,9 +51,9 @@ class MobileCardExpiryField extends React.PureComponent {
               onBlur={this.onBlur}
             >
               <option value="">– –</option>
-              {[...Array(12).keys()].map(month => (
-                <option key={month} value={month + 1}>
-                  {month + 1 < 10 ? `0${month + 1}` : month + 1}
+              {getMonths().map(month => (
+                <option key={month} value={parseInt(month, 10)}>
+                  {month}
                 </option>
               ))}
             </select>
@@ -65,7 +67,7 @@ class MobileCardExpiryField extends React.PureComponent {
               onBlur={this.onBlur}
             >
               <option value="">– –</option>
-              {[18, 19, 20, 21, 22, 23, 24].map(year => (
+              {getYears().map(year => (
                 <option key={year} value={`20${year}`}>
                   {year}
                 </option>
