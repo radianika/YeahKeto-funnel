@@ -8,20 +8,20 @@ import {
   shippingFormValidator,
   normalizePhone,
   normalizePostalCode,
-  getQueryString,
-  packages,
+  // getQueryString,
+  // packages,
   getDiscountBanner,
 } from 'helpers';
 import {
-  Footer,
+  // Footer,
   TextField,
   SelectField,
   AddressField,
   ImageModal,
+  FooterMobileNew,
 } from 'react/components/common';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'next/router';
-import { FooterMobileNew } from 'react/components/common';
 
 /**
  * @class MobileShippingContainerComponent
@@ -36,7 +36,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(/* prevProps */) {
     // const queryString = getQueryString();
     // let nextUrl = '';
     // let pack = {};
@@ -80,7 +80,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
     axios.post('/abtasty', { ...body, action: 'visit_event' });
   };
 
-  hideErrorModal = () => this.setState({ showErrorModal: false });
+  // hideErrorModal = () => this.setState({ showErrorModal: false });
 
   render() {
     const { cid } = this.props.query;
@@ -92,11 +92,15 @@ class MobileShippingContainerComponent extends React.PureComponent {
               className="spng-hd"
               style={{ height: getDiscountBanner({ cid }) ? '173px' : '143px' }}
             >
-              <img src="/static/promo/mobile/images/images/top-img.jpg" alt="" className="img-resp" />
+              <img
+                src="/static/promo/mobile/images/images/top-img.jpg"
+                alt=""
+                className="img-resp"
+              />
               <div id="ck-sec2">
                 <div className="frm-bg2">
                   <p className="chk-toptxt1">VERIFY YOUR SHIPPING INFO</p>
-                  <p className="chk-top-txt2"></p>
+                  <p className="chk-top-txt2" />
                 </div>
               </div>
             </div>
@@ -187,7 +191,8 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       label="Phone Number*"
                       placeholder="Example: (123) 555-6789"
                       normalize={normalizePhone}
-                      type="tel"
+                      inputMode="numeric"
+                      pattern="[0-9]*"
                       autoCorrect="off"
                       autoComplete="tel"
                     />
@@ -205,9 +210,23 @@ class MobileShippingContainerComponent extends React.PureComponent {
                   </div>
                   <div className="clearfix" />
                   <div className="btn-box">
-                    <img src="/static/promo/mobile/images/images/secure-img.png" className="secure-img" />                
-                    <a href="#" onClick={this.onSubmit}><img src="/static/promo/mobile/images/images/rush-button.png" alt className="trial-btn pulse" /></a>
-                    <img src="/static/promo/mobile/images/images/c-logo.png" alt className="c-logo" />
+                    <img
+                      src="/static/promo/mobile/images/images/secure-img.png"
+                      alt="secure"
+                      className="secure-img"
+                    />
+                    <a href="#" onClick={this.onSubmit}>
+                      <img
+                        src="/static/promo/mobile/images/images/rush-button.png"
+                        alt="rush"
+                        className="trial-btn pulse"
+                      />
+                    </a>
+                    <img
+                      src="/static/promo/mobile/images/images/c-logo.png"
+                      alt="c-logo"
+                      className="c-logo"
+                    />
                   </div>
                 </form>
               </div>
