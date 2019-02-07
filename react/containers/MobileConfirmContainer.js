@@ -197,20 +197,58 @@ class MobileConfirmContainerComponent extends React.PureComponent {
         <div className="frm-bg">
           <div className="sameas">
             <p className="membership">
-              <img src="/static/promo/mobile/images/images/cards.png" alt className="card" /> 
+              <div className="cards">
+                {this.props.isAuthentic.isAuthenticUser && (
+                  <span className="cards-prefix">We accept:</span>
+                )}
+                <span
+                  className={`card-visa ${
+                    active_cc_type === 'visa' ? 'active' : ''
+                  }`}
+                >
+                  <img
+                    src="/static/Visa.png"
+                    className="card-image"
+                    alt=""
+                  />
+                </span>
+                <span
+                  className={`card-mastercard ${
+                    active_cc_type === 'master-card' ? 'active' : ''
+                  }`}
+                >
+                  <img
+                    src="/static/Mastercard.png"
+                    className="card-image"
+                    alt=""
+                  />
+                </span>
+                <span
+                  className={`card-discover" ${
+                    active_cc_type === 'american-express' ? 'active' : ''
+                  }`}
+                >
+                  <img
+                    src="/static/amex.png"
+                    className="card-image"
+                    alt=""
+                  />
+                </span>
+                <span
+                  className={`card-discover" ${
+                    active_cc_type === 'discover' ? 'active' : ''
+                  }`}
+                >
+                  <img
+                    src="/static/discover.png"
+                    className="card-image"
+                    alt=""
+                  />
+                </span>
+              </div>
             </p>
           </div>
           <div className="clearall" />
-          {/* Just a dummy placeholder. Not used at all */}
-          <div className="frmFlds">
-            <label>Card Type</label>
-            <br />
-            <select>
-              <option selected>Visa</option>
-              <option>Master Card</option>
-              <option>Discover</option>
-            </select>
-          </div>
           <div style={{ display: 'block', 'padding': '0 0 0 33px' }} className="mobile-payment-wrapper" id="cardDiv">
             <div className="clearall" />
             <div className="clearall" />

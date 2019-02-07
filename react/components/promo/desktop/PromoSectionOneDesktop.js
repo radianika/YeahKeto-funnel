@@ -90,10 +90,10 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
           <div className="rgt-form">
             <img src="/static/promo/desktop/images/images/s1-arrow2.png" alt className="s1-animate-arrow" />
             <img src="/static/promo/desktop/images/images/s1-seal.png" alt className="s1-seal" />
-            <div className="form-position">
+            <div className="form-position form-wrapper">
               <p className="frm-timer">Hurry! Limited Time Offer <span id="stopwatch">{this.state.timerData}</span></p>
               <img src="/static/promo/desktop/images/images/s1-rgt-hd.png" alt className="s1-rgt-hd" />
-              <form action="checkout.php" method="post">                  
+              <form>              
                 <PromoShippingFormDesktop
                   id="promo-section1-submit-desktop"
                   onSubmit={this.submitShippingForm}

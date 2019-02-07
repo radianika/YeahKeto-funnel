@@ -67,10 +67,9 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
           className="fv-hidden-submit"
           style={{ display: 'none', width: '0px', height: '0px' }}
         />
-        <div className="rgt-form">
+        <div className="rgt-form inside-form">
           {/*<img src="/static/promo/desktop/images/images/s1-arrow2.png" alt className="s1-animate-arrow" />*/}
-          <div className="form-position">
-            <br/>
+          <div className="form-position form-wrapper-start">
             <Field
               component={TextField}
               containerClass="first-field"

@@ -154,6 +154,10 @@ class Promo extends React.PureComponent {
             type="text/css"
             href="/static/assets/css/sprites-style.css"
           />
+          <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous" />
           <script src="https://fast.wistia.net/assets/external/E-v1.js" async />
         </Head>
         {this.props.sessionId && <PromoSession pageType="leadPage" />}
