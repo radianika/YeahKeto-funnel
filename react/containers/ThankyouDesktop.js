@@ -38,8 +38,6 @@ const productMapping = {
   },
 };
 
-const { localStorage } = window;
-
 /**
  * @class ThankyouDesktopComponent
  * @extends {React.Component}
@@ -48,12 +46,14 @@ const { localStorage } = window;
 class ThankyouDesktopComponent extends React.Component {
   constructor(props) {
     super(props);
+    const { localStorage } = window;
     this.state = {
       leadData: JSON.parse(localStorage.getItem('leadData')),
     };
   }
 
   render() {
+    const { localStorage } = window;
     const products = JSON.parse(localStorage.getItem('pdcts'));
     const items = [];
     let totalPrice = 0;
