@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { getMonths, getYears } from './Utils';
+
 /**
  * @class CardExpiryField
  * @extends {React.PureComponent}
@@ -37,16 +39,15 @@ class CardExpiryField extends React.PureComponent {
     const valid = props.input.value && props.meta.valid;
     return (
       <React.Fragment>
-        // <div className="frmElemts exp-label">
-        //   <label>&nbsp;</label>
-        //   <label>(MM/YY)</label>
-        // </div>
+        <div className="frmElemts exp-label">
+          <label>&nbsp;</label>
+          <label>(MM/YY)</label>
+        </div>
         <div
           className={`pure-control-group ${
             props.large ? 'frmelements' : 'frmElemts'
           } fv-has-feedback ${hasError && 'fv-has-error'} ${valid &&
             'fv-has-success'}`}
-          style={{ marginTop: 0 }}
         >
           <label>
             Expiry Date<span>*</span>:
@@ -60,9 +61,9 @@ class CardExpiryField extends React.PureComponent {
               onBlur={this.onBlur}
             >
               <option value="">– –</option>
-              {[...Array(12).keys()].map(month => (
-                <option key={month} value={month + 1}>
-                  {month + 1 < 10 ? `0${month + 1}` : month + 1}
+              {getMonths().map(month => (
+                <option key={month} value={parseInt(month, 10)}>
+                  {month}
                 </option>
               ))}
             </select>
@@ -76,7 +77,7 @@ class CardExpiryField extends React.PureComponent {
               onBlur={this.onBlur}
             >
               <option value="">– –</option>
-              {[18, 19, 20, 21, 22, 23, 24].map(year => (
+              {getYears().map(year => (
                 <option key={year} value={`20${year}`}>
                   {year}
                 </option>
