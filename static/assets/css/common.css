@@ -28,7 +28,7 @@
 
 .js-div-loading-bar .sk-circle .sk-child::before {
   animation: sk-circleBounceDelay 1.2s infinite ease-in-out both;
-  background-color: #ff3f3f;
+  background-color: #6b2d92;
   border-radius: 100%;
   content: "";
   display: block;
