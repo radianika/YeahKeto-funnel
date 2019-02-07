@@ -608,3 +608,16 @@ transform: scale(0.9);
   top: 52px;
   right: 50px;
 }
+
+.fv-has-error, .fv-has-error label {
+  color: #da6e6d !important;
+}
+
+.fv-has-error input {
+  border: 1px solid #da6e6d;
+}
+
+.fv-has-error small {
+  font-size: 20px;
+  margin-top: 16px;
+}
