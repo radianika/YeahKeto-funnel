@@ -65,6 +65,8 @@ class ThankyouDesktopComponent extends React.Component {
       items.push(productMapping[prod.productId])
     });
 
+    totalPrice = totalPrice.toFixed(2);
+
     return (
       <div className="container">
         <div className="up-top">

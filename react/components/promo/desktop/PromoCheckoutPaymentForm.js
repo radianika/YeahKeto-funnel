@@ -91,9 +91,40 @@ class PromoCheckoutPaymentFormClass extends React.Component {
             className="fv-hidden-submit"
             style={{ display: 'none', height: 0, width: 0 }}
           />
-          <center>
-            <img src="/static/promo/desktop/images/images/we-accept.png" alt className="we-accept" />
-          </center>
+         
+          <div className="cards">
+            {variation318676 === '419446' && (
+              <span className="cards-prefix">We accept:</span>
+            )}
+            <span
+              className={`card-visa ${
+                active_cc_type === 'visa' ? 'active' : ''
+              }`}
+            >
+              <img src="/static/Visa.png" className="card-image" alt="" />
+            </span>
+            <span
+              className={`card-mastercard ${
+                active_cc_type === 'master-card' ? 'active' : ''
+              }`}
+            >
+              <img src="/static/Mastercard.png" className="card-image" alt="" />
+            </span>
+            <span
+              className={`card-discover" ${
+                active_cc_type === 'american-express' ? 'active' : ''
+              }`}
+            >
+              <img src="/static/amex.png" className="card-image" alt="" />
+            </span>
+            <span
+              className={`card-discover" ${
+                active_cc_type === 'discover' ? 'active' : ''
+              }`}
+            >
+              <img src="/static/discover.png" className="card-image" alt="" />
+            </span>
+          </div>
           {/*
             TODO: Some time later this might be used if we have a user requirement to input
               different addresses for billing and shipping.

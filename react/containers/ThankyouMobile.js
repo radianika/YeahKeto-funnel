@@ -64,6 +64,7 @@ class ThankyouMobileComponent extends React.PureComponent {
       totalPrice = totalPrice + productMapping[prod.productId].price;
       items.push(productMapping[prod.productId])
     });
+    totalPrice = totalPrice.toFixed(2);
 
     return (
       <div className="container"> 

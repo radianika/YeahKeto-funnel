@@ -512,3 +512,11 @@ a.what, a.what:hover {
   margin-right: 20px;
   width: 120px !important;
 }
+
+.cards {
+  padding: 10px 75px;
+}
+
+.cards img {
+  width: 50px;
+}
