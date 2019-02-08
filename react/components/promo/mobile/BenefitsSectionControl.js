@@ -5,7 +5,7 @@ class BenefitsSectionControl extends Component {
     return (
       <React.Fragment>
         <p className="s2-hd-txt">
-          <span>BENEFITS OF AMERICAN SCIENCE CBD</span>
+          <span>BENEFITS OF Yeah Keto</span>
           <br />Supports Neurological, Physical & Mental Health{' '}
         </p>
         <ul className="s4-list1">
@@ -24,9 +24,9 @@ class BenefitsSectionControl extends Component {
         </ul>
         <p className="clearall" />
         <p className="s2-txt1">
-          <strong>American Science CBD Oil</strong> positively modulates the ECS
-          system, improving mental clarity, sleep cycles, healthy inflammatory
-          response, cognitive function & more.{' '}
+          <strong>Yeah Keto Oil</strong> positively modulates the ECS system,
+          improving mental clarity, sleep cycles, healthy inflammatory response,
+          cognitive function & more.{' '}
         </p>
         <p className="clearall" />
         <ul className="s4-list2">

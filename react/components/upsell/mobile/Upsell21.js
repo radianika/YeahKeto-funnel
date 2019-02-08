@@ -161,9 +161,9 @@ class Upsell21 extends React.PureComponent {
             />
             <p className="box-txt1">INSTANTLY RELIEVES CHRONIC PAIN</p>
             <p className="box-txt2">
-              Melt away muscle fatigue, pain, swelling, and discomfort with
-              American Science CBD WARMING {"BALM'S"} deep, penetrating warmth
-              providing FAST relief that will amaze you.
+              Melt away muscle fatigue, pain, swelling, and discomfort with Yeah
+              Keto WARMING {"BALM'S"} deep, penetrating warmth providing FAST
+              relief that will amaze you.
             </p>
           </div>
 

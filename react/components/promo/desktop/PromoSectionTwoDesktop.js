@@ -11,23 +11,23 @@ class PromoSectionTwoDesktopComponent extends React.PureComponent {
       <div className="section2">
         <div className="container position">
           <p className="s2hding">
-            <span>American Science CBD OIL </span>
+            <span>Yeah Keto OIL </span>
             <br /> Enriched with Cannabidiol Extract (CBD){' '}
           </p>{' '}
           <i className="s2hdimg sprite3 sprite-s2hd" />
           <p className="sec2txt bdfont">
             Cannabidiol, part of a family of molecules called cannabinoids, is
             non-psychoactive and has been clinically proven to offer a wide
-            range of therapeutic health benefits.{' '}
-            <strong>American Science CBD Oil</strong> is formulated with organic
-            hemp, grown &amp; harvested in the US, and is patented (under Patent
-            #6,630,507) to support our bodies as we age.
+            range of therapeutic health benefits. <strong>Yeah Keto Oil</strong> is
+            formulated with organic hemp, grown &amp; harvested in the US, and
+            is patented (under Patent #6,630,507) to support our bodies as we
+            age.
             <br />
             <br />
             <b>
-              When used as directed, American Science CBD Oil regulates mood
-              patterns and sleep cycle, mitigates inflammatory response, and
-              boosts cognitive performance.{' '}
+              When used as directed, Yeah Keto Oil regulates mood patterns and
+              sleep cycle, mitigates inflammatory response, and boosts cognitive
+              performance.{' '}
             </b>{' '}
           </p>
           <p className="s2subhd1">All Natural Organic CBD Extract </p>

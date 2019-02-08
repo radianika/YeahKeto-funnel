@@ -7,7 +7,7 @@ class BenefitsSectionTreatment2 extends Component {
       <React.Fragment>
         <p className="s2-hd-txt">
           <span>
-            BENEFITS OF<br />american science cbd
+            BENEFITS OF<br />Yeah Keto
           </span>
           <br />Supports Neurological, <br />Physical &amp; Mental Health{' '}
         </p>

@@ -6,7 +6,7 @@ class PromoSectionTwoMobileComponent extends React.PureComponent {
     return (
       <div id="section-two">
         <p className="s2-hd-txt">
-          <span>AMERICAN SCIENCE CBD OIL </span>
+          <span>Yeah Keto OIL </span>
           <br />Enriched with Cannabidiol Extract (CBD)
         </p>
 
@@ -20,22 +20,22 @@ class PromoSectionTwoMobileComponent extends React.PureComponent {
         <p className="s2-txt1">
           {/* Cannabidiol is a non-psychoactive component of Hemp that has been
           clinically proven to offer a wide range of therapeutic health
-          benefits. <strong>American Science CBD Oil</strong> is formulated
+          benefits. <strong>Yeah Keto Oil</strong> is formulated
           with Cannabidiol extract that is organically grown & harvested in the USA and
           is patented (under Patent #6,630,507) to support nutritional health of
           aging bodies. */}
           Cannabidiol, part of a family of molecules called cannabinoids, is
           non-psychoactive and has been clinically proven to offer a wide range
           of therapeutic health <br />benefits.&nbsp;
-          <strong>American Science CBD Oil</strong> is formulated with organic
-          hemp, grown &amp; harvested in the US, and is patented (under Patent
-          #6,630,507) to support our bodies as we age.
+          <strong>Yeah Keto Oil</strong> is formulated with organic hemp, grown
+          &amp; harvested in the US, and is patented (under Patent #6,630,507)
+          to support our bodies as we age.
           <br />
           <br />{' '}
           <b>
-            When used as directed, American Science CBD Oil regulates mood
-            patterns and sleep cycle, mitigates inflammatory response, and
-            boosts cognitive performance.
+            When used as directed, Yeah Keto Oil regulates mood patterns and
+            sleep cycle, mitigates inflammatory response, and boosts cognitive
+            performance.
           </b>
         </p>
         <p className="s2-txt3">All Natural Organic CBD Extract</p>

@@ -7,7 +7,7 @@ class PromoSectionFourDesktop extends React.PureComponent {
       <div className="section4">
         <div className="container position">
           <p className="s4hding">
-            <span>Benefits of American Science CBD </span>
+            <span>Benefits of Yeah Keto </span>
             <br /> Supports Neurological, Physical &amp; Mental Health{' '}
           </p>{' '}
           <i className="s2hdimg sprite3 sprite-s2hd" />
@@ -25,9 +25,9 @@ class PromoSectionFourDesktop extends React.PureComponent {
           </ul>
           <p className="clearall" aria-hidden="true" />
           <p className="s4-txt1 bdfont">
-            <strong>American Science CBD Oil</strong> positively modulates the
-            ECS system, improving mental clarity, sleep cycles, healthy
-            inflammatory response, cognitive function &amp; more.{' '}
+            <strong>Yeah Keto Oil</strong> positively modulates the ECS system,
+            improving mental clarity, sleep cycles, healthy inflammatory
+            response, cognitive function &amp; more.{' '}
           </p>
           <p className="clearall" aria-hidden="true" />
           <ul className="s4-list2">
