@@ -169,14 +169,14 @@ ul.s1-uls li span {
   margin-top: 10px;
 }
 
-ul.slider {
+.slider {
   float: left;
   width: 100%;
   text-align: center;
   margin-top: 45px;
 }
 
-ul.slider li {
+.slider li {
   float: left;
   width: 100%;
 }
