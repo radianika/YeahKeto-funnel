@@ -245,7 +245,7 @@ function* placeOrder(action) {
       product1_qty: 1
     };
 
-    const queryString = `&orderId=${orderId}${
+    const queryString = `orderId=${orderId}${
       getQueryString().startsWith('&') || !getQueryString().length ? '' : '&'
     }${getQueryString()}`;
 
