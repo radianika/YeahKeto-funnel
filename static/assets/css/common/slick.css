@@ -94,6 +94,7 @@
   z-index:9;
   cursor:pointer;
 }
+
 .slick-prev {
   left: 238px;
   background:url(/static/promo/mobile/images/images/prev.png) no-repeat left center;
