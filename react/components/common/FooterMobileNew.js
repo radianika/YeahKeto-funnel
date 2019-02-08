@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import { Modal } from './Modal';
@@ -12,8 +11,8 @@ class FooterMobileNew extends React.Component {
     super(props);
 
     this.state = {
-      modal: null
-    }
+      modal: null,
+    };
   }
 
   closeModal = () => this.setState({ modal: null });
@@ -24,35 +23,36 @@ class FooterMobileNew extends React.Component {
       <div className="legal">
         <p className="ftr-txt">
           <a
-              href="javascript:void(0)"
-              onClick={() => {
-                this.setState({ modal: 'footer_terms' });
-              }}
-            >
-              Terms &amp; Conditions
-            </a>{' '}
-            &nbsp;|&nbsp;
-            <a
-              href="javascript:void(0)"
-              onClick={() => {
-                this.setState({ modal: 'footer_privacy' });
-              }}
-            >
-              Privacy Policy
-            </a>
-            &nbsp;|&nbsp;
-            <a
-              href="javascript:void(0)"
-              onClick={() => {
-                this.setState({ modal: 'footer_customer' });
-              }}
-            >
-              Contact Us
-            </a>
-            <br />
-          <span style={{textTransform: 'none'}}> 
-            { moment().year() } ©
-            Yeah Keto</span> 
+            href="javascript:void(0)"
+            onClick={() => {
+              this.setState({ modal: 'footer_terms' });
+            }}
+          >
+            Terms &amp; Conditions
+          </a>{' '}
+          &nbsp;|&nbsp;
+          <a
+            href="javascript:void(0)"
+            onClick={() => {
+              this.setState({ modal: 'footer_privacy' });
+            }}
+          >
+            Privacy Policy
+          </a>
+          &nbsp;|&nbsp;
+          <a
+            href="javascript:void(0)"
+            onClick={() => {
+              this.setState({ modal: 'footer_customer' });
+            }}
+          >
+            Contact Us
+          </a>
+          <br />
+          <br />
+          <span style={{ textTransform: 'none' }}>
+            {moment().year()} © Yeah Keto
+          </span>
         </p>
         {this.state.modal === 'footer_terms' && (
           <Modal
@@ -84,10 +84,6 @@ class FooterMobileNew extends React.Component {
       </div>
     );
   }
-}
-
-FooterMobileNew.propTypes = {
-  
 }
 
 export { FooterMobileNew };

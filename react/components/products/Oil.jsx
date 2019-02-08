@@ -48,7 +48,7 @@ class OilHowToUse extends React.PureComponent {
           <span>
             Step<br />1
           </span>
-          <p>Take 1 dropper full of the American Science CBD oil once a day.</p>
+          <p>Take 1 dropper full of the Yeah Keto oil once a day.</p>
         </li>
         <li>
           <span>

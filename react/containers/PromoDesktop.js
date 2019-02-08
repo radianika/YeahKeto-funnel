@@ -10,7 +10,7 @@ import {
   PromoSectionFiveDesktop,
   PromoSectionSixDesktop,
   PromoSectionSevenDesktop,
-  PromoHomeNewSection
+  PromoHomeNewSection,
 } from 'react/components/promo/desktop';
 import { createNewSession } from 'redux/actions/authActions';
 import { FooterPromo } from 'react/components/promo';
@@ -31,7 +31,7 @@ class PromoDesktop extends React.PureComponent {
   render() {
     return (
       <React.Fragment>
-        <h1 style={{ display: 'none' }}>American Science CBD</h1>
+        <h1 style={{ display: 'none' }}>Yeah Keto</h1>
         <div className="topbar">
           <div className="container">
             <p className="topbartxt">

@@ -11,9 +11,8 @@ class PromoSectionSixDesktop extends React.PureComponent {
           </p>{' '}
           <i className="s5hdimg sprite4 sprite-s5hd" />
           <p className="s5-txt1 bdfont">
-            Find out how <strong>American Science CBD Oil&#39;s</strong>{' '}
-            therapeutic benefits have helped people enjoy a healthier and fuller
-            lifestyle.{' '}
+            Find out how <strong>Yeah Keto Oil&#39;s</strong> therapeutic
+            benefits have helped people enjoy a healthier and fuller lifestyle.{' '}
           </p>
           <p className="clearall" aria-hidden="true" />
           <div className="t-box1 sprite5 sprite-t-box">

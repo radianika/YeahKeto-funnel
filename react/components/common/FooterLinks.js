@@ -74,7 +74,7 @@ class Footer extends PureComponent {
               </p>
 
               <p className="ftr-txt mtop2">
-                Copyright 2018 © All Rights Reserved - American Science CBD
+                Copyright 2018 © All Rights Reserved - Yeah Keto
               </p>
             </div>
           </div>

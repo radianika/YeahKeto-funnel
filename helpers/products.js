@@ -16,7 +16,7 @@ const products = {
     supplement: {
       image: '/static/assets/images/cbd-oil-label.jpg',
       how_to_use: {
-        1: 'Take 1 dropper full of the American Science CBD Oil once a day.',
+        1: 'Take 1 dropper full of the Yeah Keto Oil once a day.',
         2: 'Follow a healthy lifestyle along with a balanced diet & regular exercise.',
         3: 'Follow the supplementation & use daily for best results and maximum benefits.',
       },
@@ -42,7 +42,7 @@ const products = {
     supplement: {
       image: '/static/assets/images/cbd-capsule-label.jpg',
       how_to_use: {
-        1: 'Take one capsule of American Science CBD Capsule daily with a glass of water.',
+        1: 'Take one capsule of Yeah Keto Capsule daily with a glass of water.',
         2: 'Follow a healthy lifestyle along with a balanced diet & regular exercise. ',
         3: 'Follow the supplementation & use daily for best results and maximum benefits.',
       },
@@ -157,7 +157,7 @@ const getTyProductName = product => {
   if (name.toLowerCase().indexOf('capsule') >= 0) {
     return 'CBD Capsules 300 mg';
   }
-  const titleString = 'american science cbd';
+  const titleString = 'Yeah Keto';
   const titleIndex = name.toLowerCase().indexOf(titleString);
   const productName = name.substring(titleIndex + titleString.length);
   return productName;
@@ -165,7 +165,7 @@ const getTyProductName = product => {
 
 const getTyProductQuantity = product => {
   const name = product.ProductName || product.name;
-  const titleString = 'american science cbd';
+  const titleString = 'Yeah Keto';
   const titleIndex = name.toLowerCase().indexOf(titleString);
   const productQuantity = name.substring(0, titleIndex);
   return productQuantity;

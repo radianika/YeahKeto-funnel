@@ -6,14 +6,14 @@ class PromoSectionThreeDesktop extends React.PureComponent {
       <div className="section3">
         <div className="container">
           <p className="s3hding">
-            <span>Why American Science CBD Oil </span>
+            <span>Why Yeah Keto Oil </span>
             <br /> Triple Filtration Technology For High Potency{' '}
           </p>{' '}
           <i className="s3hdimg sprite3 sprite-s2hd" />
           <p className="sec3txt bdfont">
-            <strong>American Science CBD Oil</strong> is made with the purest
-            Cannabidiol extract at a certified facility to meet and exceed
-            industry standards.{' '}
+            <strong>Yeah Keto Oil</strong> is made with the purest Cannabidiol
+            extract at a certified facility to meet and exceed industry
+            standards.{' '}
           </p>
           <ul className="s3list">
             <li>

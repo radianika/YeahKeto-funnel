@@ -127,7 +127,7 @@ const isAuthentic = req => {
 
 // Security.js for protecting agains xss attacks
 server.use((req, res, cb) => {
-  res.set('X-Powered-By', 'American Science CBD');
+  res.set('X-Powered-By', 'Yeah Keto');
   res.set('X-XSS-Protection', 1);
   res.set('X-Frame-Options', 'SAMEORIGIN');
   res.set('Referrer-Policy', 'strict-origin');
