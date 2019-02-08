@@ -145,48 +145,56 @@ class FooterPromoComponent extends React.PureComponent {
               this.gotoShipping();
             }}
             className="shipping_redirect"
-            >
-              <img src="/static/promo/mobile/images/images/button.png" className="btn pulse" />
+          >
+            <img
+              src="/static/promo/mobile/images/images/button.png"
+              className="btn pulse"
+            />
           </a>
         </div>
 
         <p className="clearall" />
         <div className="legal">
-          <p className="ftr-txt">This product has not been evaluated by the FDA. This product is not intended to diagnose, treat, cure or prevent any disease.
-            Results in description and testimonials may not be typical results and individual results may vary.
-            This product intended to be used in conjunction with a healthy diet and regular exercise.
-            Consult your physician before starting any diet, exercise program, and taking any diet pill to avoid any health issues.
-            Images above are dramatizations. <br /><br />
+          <p className="ftr-txt">
+            This product has not been evaluated by the FDA. This product is not
+            intended to diagnose, treat, cure or prevent any disease. Results in
+            description and testimonials may not be typical results and
+            individual results may vary. This product intended to be used in
+            conjunction with a healthy diet and regular exercise. Consult your
+            physician before starting any diet, exercise program, and taking any
+            diet pill to avoid any health issues. Images above are
+            dramatizations. <br />
+            <br />
             <a
-                href="javascript:void(0)"
-                onClick={() => {
-                  this.setState({ modal: 'footer_terms' });
-                }}
-              >
-                Terms &amp; Conditions
-              </a>{' '}
-              &nbsp;|&nbsp;
-              <a
-                href="javascript:void(0)"
-                onClick={() => {
-                  this.setState({ modal: 'footer_privacy' });
-                }}
-              >
-                Privacy Policy
-              </a>
-              &nbsp;|&nbsp;
-              <a
-                href="javascript:void(0)"
-                onClick={() => {
-                  this.setState({ modal: 'footer_customer' });
-                }}
-              >
-                Contact Us
-              </a>
-              <br />
-            <span style={{textTransform: 'none'}}> 
-              { moment().year() } ©
-              Yeah Keto</span> 
+              href="javascript:void(0)"
+              onClick={() => {
+                this.setState({ modal: 'footer_terms' });
+              }}
+            >
+              TERMS &amp; CONDITIONS
+            </a>{' '}
+            &nbsp;|&nbsp;
+            <a
+              href="javascript:void(0)"
+              onClick={() => {
+                this.setState({ modal: 'footer_privacy' });
+              }}
+            >
+              PRIVACY POLICY
+            </a>
+            &nbsp;|&nbsp;
+            <a
+              href="javascript:void(0)"
+              onClick={() => {
+                this.setState({ modal: 'footer_customer' });
+              }}
+            >
+              CUSTOMER CARE
+            </a>
+            <br />
+            <span style={{ textTransform: 'none' }}>
+              {moment().year()} © Yeah Keto
+            </span>
           </p>
         </div>
         {this.state.modal === 'footer_terms' && (

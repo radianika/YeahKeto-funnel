@@ -43,27 +43,27 @@ export const TermsAndConditions = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
-      <b>Toll Free Customer Service phone:</b> 1-877-279-5390
+      <b>Toll Free Customer Service phone:</b> 1-844-302-2619
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
       <b>
         All charges on your bank statement will read:
-        &quot;AmericanScience8772795390&quot;
+        &quot;YeahKeto8443022619&quot;
       </b>
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal title">Prices</p>
     <p className="normal">&nbsp;</p>
-    <p className="list">Pack 5 CBD OIL: $195.00</p>
+    <p className="list">Yeah! Keto 5 Pack: $195.00</p>
     <p className="normal">&nbsp;</p>
-    <p className="list">Pack 3 CBD OIL: $147.00</p>
+    <p className="list">Yeah! Keto 3 Pack: $147.00</p>
     <p className="normal">&nbsp;</p>
-    <p className="list">Pack 1 CBD OIL: $69.00</p>
+    <p className="list">Yeah! Keto 1 Pack: $69.00</p>
     <p className="normal">&nbsp;</p>
-    <p className="list">Pack 1 CBD CAPSULES: $77.00</p>
+    <p className="list">Yeah! Caralluma 1 Pack: $69.00</p>
     <p className="normal">&nbsp;</p>
-    <p className="list">Pack 1 CBD PAIN RUB BALM: $87.00</p>
+    <p className="list">Yeah! Forskolin 1 Pack: $67.00</p>
     <p className="normal">&nbsp;</p>
     <p className="normal">&nbsp;</p>
     <p className="normal title">
@@ -105,13 +105,13 @@ export const TermsAndConditions = () => (
     <p className="normal">&nbsp;</p>
     <p className="normal b">Shipping</p>
     <p className="normal">
-      To initiate a return, please email us at
-      support&#64;yeahketo.com or contact us by phone (877) 279-5390
-      24/7/365 to request a return merchandise authorization number. We require
-      an RMA # received from customer support to accompany your return. All
-      returned merchandise should be sent to us at 6525 Gunpark Drive Ste
-      370-347, Boulder, CO 80301. You are responsible for paying for all
-      shipping costs for your returned item. Shipping costs are non-refundable.
+      To initiate a return, please email us at support&#64;yeahketo.com or
+      contact us by phone 1-844-302-2619 24/7/365 to request a return
+      merchandise authorization number. We require an RMA # received from
+      customer support to accompany your return. All returned merchandise should
+      be sent to us at PO Box 30111-81 Salt Lake City, UT, 84130. You are
+      responsible for paying for all shipping costs for your returned item.
+      Shipping costs are non-refundable.
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal b">Refunds and Exchanges</p>
@@ -139,13 +139,11 @@ export const TermsAndConditions = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">
-      Please address all returns to Yeah Keto Returns and include your
-      RMA # in your shipment.
+      Please address all returns to Yeah Keto Returns and include your RMA # in
+      your shipment.
     </p>
     <p className="normal">&nbsp;</p>
-    <p className="normal">
-      Returns: 6525 Gunpark Drive Ste 370-347, Boulder, CO 80301
-    </p>
+    <p className="normal">Returns: PO Box 30111-81 Salt Lake City, UT, 84130</p>
     <p className="normal">&nbsp;</p>
     <p className="normal title">
       <b>TERMS OF SERVICE</b>
@@ -153,18 +151,18 @@ export const TermsAndConditions = () => (
     <p className="normal">&nbsp;</p>
     <p className="normal">
       This Terms of Service (&quot;TOS&quot;) is a legally binding agreement
-      made by and between Yeah Keto (&quot;we&quot; or &quot;us&quot;)
-      and you, personally and, if applicable, on behalf of the entity for whom
-      you are using this web site (collectively, &quot;you&quot;). This TOS
-      governs your use of the website (&quot;Website&quot;) and the services we
-      offer on the Website (&quot;Services&quot;), so please read it carefully.
-      BY ACCESSING OR USING ANY PART OF THE WEBSITE, YOU AGREE THAT YOU HAVE
-      READ, UNDERSTAND AND AGREE TO BE BOUND BY THIS TOS. IF YOU DO NOT AGREE TO
-      BE SO BOUND, DO NOT ACCESS OR USE THE WEBSITE. INTERNET TECHNOLOGY AND THE
-      APPLICABLE LAWS, RULES, AND REGULATIONS CHANGE FREQUENTLY. ACCORDINGLY, WE
-      RESERVE THE RIGHT TO MAKE CHANGES TO THIS TOS AT ANY TIME. YOUR CONTINUED
-      USE OF THE WEBSITE CONSTITUTES ASSENT TO ANY NEW OR MODIFIED PROVISION OF
-      THIS TOS THAT MAY BE POSTED ON THE WEB SITE.
+      made by and between Yeah Keto (&quot;we&quot; or &quot;us&quot;) and you,
+      personally and, if applicable, on behalf of the entity for whom you are
+      using this web site (collectively, &quot;you&quot;). This TOS governs your
+      use of the website (&quot;Website&quot;) and the services we offer on the
+      Website (&quot;Services&quot;), so please read it carefully. BY ACCESSING
+      OR USING ANY PART OF THE WEBSITE, YOU AGREE THAT YOU HAVE READ, UNDERSTAND
+      AND AGREE TO BE BOUND BY THIS TOS. IF YOU DO NOT AGREE TO BE SO BOUND, DO
+      NOT ACCESS OR USE THE WEBSITE. INTERNET TECHNOLOGY AND THE APPLICABLE
+      LAWS, RULES, AND REGULATIONS CHANGE FREQUENTLY. ACCORDINGLY, WE RESERVE
+      THE RIGHT TO MAKE CHANGES TO THIS TOS AT ANY TIME. YOUR CONTINUED USE OF
+      THE WEBSITE CONSTITUTES ASSENT TO ANY NEW OR MODIFIED PROVISION OF THIS
+      TOS THAT MAY BE POSTED ON THE WEB SITE.
     </p>
     <p className="normal">&nbsp;</p>
     <p className="list">1. Using the Web Site.</p>
@@ -316,20 +314,20 @@ export const TermsAndConditions = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="sub-list">
-      (b) Trademarks. Yeah Keto is a trade name we own. The related
-      design marks, and other trademarks on the Website are owned by us. Page
-      headers, custom graphics, button icons and scripts are trademarks or trade
-      dress we own. You may not use any of these trademarks, trade dress, or
-      trade names without our express written permission.
+      (b) Trademarks. Yeah Keto is a trade name we own. The related design
+      marks, and other trademarks on the Website are owned by us. Page headers,
+      custom graphics, button icons and scripts are trademarks or trade dress we
+      own. You may not use any of these trademarks, trade dress, or trade names
+      without our express written permission.
     </p>
     <p className="normal">&nbsp;</p>
     <p className="list">7. Third Party Websites.</p>
     <p className="normal">&nbsp;</p>
     <p className="list">
-      yeahketo.com may contain links to other websites on the Internet
-      that are owned and operated by third parties. We do not control the
-      information, products or services available on these third party websites.
-      The inclusion of any link does not imply our endorsement of the applicable
+      yeahketo.com may contain links to other websites on the Internet that are
+      owned and operated by third parties. We do not control the information,
+      products or services available on these third party websites. The
+      inclusion of any link does not imply our endorsement of the applicable
       website or any association with the website&#39;s operators. Because we
       have no control over such websites and resources, you agree that we are
       not responsible or liable for the availability or the operation of such
@@ -593,7 +591,7 @@ export const TermsAndConditions = () => (
     </p>
     <p className="normal">&nbsp;</p>
     <p className="text-center">
-      <b>Toll Free Customer Service phone:</b> 1-877-279-5390
+      <b>Toll Free Customer Service phone:</b> 1-844-302-2619
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">&nbsp;</p>
