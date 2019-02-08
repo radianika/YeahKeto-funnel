@@ -15,13 +15,12 @@ class PromoHomeNewSection extends React.Component {
       dots:false,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay:true,
+      autoplay:false,
       autoplaySpeed:8000,
       adaptiveHeight: true,
       arrows: true,
       fade: false,
-      focusOnSelect: false,
-      className: 'slider'
+      focusOnSelect: false
     };
 
     return (
@@ -48,29 +47,31 @@ class PromoHomeNewSection extends React.Component {
           <p className="s2-heading-txt">The Proof In Results</p>
           <p className="s2-parag-txt">Join The Keto Lifestyle &amp; Lose Up To 1 lb per day!</p>
           <div className="clearall" />
-          <Slider {...settings} >
-            <div className="inner-slider-div">
-              <img src="/static/promo/mobile/images/images/s2-slide-img1.png" className="main-img-slider"/>
-              <div className="clearall" />
-              <img src="/static/promo/mobile/images/images/s2-star.png" className="s2-star" />
-              <p className="common-txt cmn-itlic">Stubborn belly fat was a major concern for me. Experienced an incredible transformation within a month of using Yeah Keto.</p>
-              <p className="slide-txt1"><span>- Susie P. </span> | Nevada</p>
-            </div>
-            <div className="inner-slider-div">
-              <img src="/static/promo/mobile/images/images/s2-slide-img2.png" className="main-img-slider"/>
-              <div className="clearall" />
-              <img src="/static/promo/mobile/images/images/s2-star.png" className="s2-star" />
-              <p className="common-txt cmn-itlic">Supplementing Yeah Keto with a keto diet was the perfect recipe for shedding those extra pounds I gained while pregnant. I feel more energetic than ever!</p>
-              <p className="slide-txt1"><span>- Taylor R. </span> | Montreal</p>
-            </div>
-            <div className="inner-slider-div">
-              <img src="/static/promo/mobile/images/images/s2-slide-img3.png" className="main-img-slider"/>
-              <div className="clearall" />
-              <img src="/static/promo/mobile/images/images/s2-star.png" className="s2-star" />
-              <p className="common-txt cmn-itlic">My ankle fracture stalled my workouts for a month making me gain 20lbs! My physician recommended <b>Yeah Keto</b> &amp; trust me it worked wonders!</p>
-              <p className="slide-txt1"><span>- Roxanne N.</span> | Texas</p>
-            </div>      
-          </Slider>
+          <ul className="slider">
+            <Slider {...settings} >
+              <li>
+                <img src="/static/promo/mobile/images/images/s2-slide-img1.png" className="main-img-slider"/>
+                <div className="clearall" />
+                <img src="/static/promo/mobile/images/images/s2-star.png" className="s2-star" />
+                <p className="common-txt cmn-itlic">Stubborn belly fat was a major concern for me. Experienced an incredible transformation within a month of using Yeah Keto.</p>
+                <p className="slide-txt1"><span>- Susie P. </span> | Nevada</p>
+              </li>
+              <li>
+                <img src="/static/promo/mobile/images/images/s2-slide-img2.png" className="main-img-slider"/>
+                <div className="clearall" />
+                <img src="/static/promo/mobile/images/images/s2-star.png" className="s2-star" />
+                <p className="common-txt cmn-itlic">Supplementing Yeah Keto with a keto diet was the perfect recipe for shedding those extra pounds I gained while pregnant. I feel more energetic than ever!</p>
+                <p className="slide-txt1"><span>- Taylor R. </span> | Montreal</p>
+              </li>
+              <li>
+                <img src="/static/promo/mobile/images/images/s2-slide-img3.png" className="main-img-slider"/>
+                <div className="clearall" />
+                <img src="/static/promo/mobile/images/images/s2-star.png" className="s2-star" />
+                <p className="common-txt cmn-itlic">My ankle fracture stalled my workouts for a month making me gain 20lbs! My physician recommended <b>Yeah Keto</b> &amp; trust me it worked wonders!</p>
+                <p className="slide-txt1"><span>- Roxanne N.</span> | Texas</p>
+              </li>      
+            </Slider>
+          </ul>
           <div className="clearall" />
           <img src="/static/promo/mobile/images/images/s2-bdr-line.jpg" className="s2-bdr-line" />
         </div> 
@@ -249,8 +250,8 @@ class PromoHomeNewSection extends React.Component {
           <p className="s2-parag-txt">Experience Real Transformation WIth <b>Yeah Keto</b>!</p>
           <p className="common-txt s7-txt1">Don't take our word for it, find out how <b>Yeah Keto</b> has helped people lose weight &amp; look great!</p>
           <div className="clearall" /> 
-          <Slider {...settings} >
-            <ul className="slider">
+          <ul className="slider">
+            <Slider {...settings} >
               <li>
                 <img src="/static/promo/mobile/images/images/s7-slide-img1.png" />
                 <div className="clearall" />
@@ -269,8 +270,8 @@ class PromoHomeNewSection extends React.Component {
                 <p className="common-txt s7-common-txt cmn-itlic">If you are going to follow a Keto lifestyle, I recommend you supplement it with <b>Yeah Keto</b>. I have lost over 20lbs from the most stubborn fat pockets on my body and fit back into my favorite dresses!</p>
                 <p className="slide-txt1"><span>- Cher N.</span> | South Carolina  &nbsp;&nbsp;<img src="/static/promo/mobile/images/images/s2-star.png" /></p>
               </li>                        
-            </ul>
-          </Slider>
+            </Slider>
+          </ul>
         </div> 
         {/*SECTION-STRIP-*/}
         <div className="s-strip s7-strip">
