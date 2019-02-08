@@ -9,8 +9,7 @@
     "build": "babel server -d dist && next build",
     "start": "NODE_ENV=production node ./dist/index.js",
     "generate-docs": "./node_modules/.bin/jsdoc react/* redux/* server/* helpers/* -r",
-    "postinstall": "yarn build",
-    "precommit": "lint-staged"
+    "postinstall": "yarn build"
   },
   "lint-staged": {
     "react/**/*.js": [
@@ -90,11 +89,12 @@
     "react-lazyload": "2.3.0",
     "react-modal": "3.4.4",
     "react-redux": "5.0.7",
-    "react-slick": "0.23.1",
+    "react-slick": "^0.23.1",
     "redux": "4.0.0",
     "redux-actions": "2.3.0",
     "redux-form": "7.3.0",
     "redux-saga": "0.16.0",
+    "slick-carousel": "^1.8.1",
     "strict-rate-limiter": "0.2.0",
     "uglifyjs-webpack-plugin": "1.2.5",
     "validator": "^10.0.0",

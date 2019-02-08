@@ -1,18 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Slider from "react-slick";
+
 import { getQueryString } from 'helpers';
 import { FooterPromo } from 'react/components/promo';
 
 class PromoHomeNewSection extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   gotoShipping = () => {
     window.location.assign(`/promo/mobile/shipping?${getQueryString()}`);
   };
 
   render() {
+    var settings = {
+      dots:false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay:true,
+      autoplaySpeed:8000,
+      adaptiveHeight: true,
+      arrows: true,
+      fade: false,
+      focusOnSelect: false,
+      className: 'slider'
+    };
+
     return (
       <div className="container">
         {/*SECTION-1*/}
@@ -37,29 +48,29 @@ class PromoHomeNewSection extends React.Component {
           <p className="s2-heading-txt">The Proof In Results</p>
           <p className="s2-parag-txt">Join The Keto Lifestyle &amp; Lose Up To 1 lb per day!</p>
           <div className="clearall" />
-          <ul className="slider">
-            <li>
-              <img src="/static/promo/mobile/images/images/s2-slide-img1.png" />
+          <Slider {...settings} >
+            <div className="inner-slider-div">
+              <img src="/static/promo/mobile/images/images/s2-slide-img1.png" className="main-img-slider"/>
               <div className="clearall" />
               <img src="/static/promo/mobile/images/images/s2-star.png" className="s2-star" />
               <p className="common-txt cmn-itlic">Stubborn belly fat was a major concern for me. Experienced an incredible transformation within a month of using Yeah Keto.</p>
               <p className="slide-txt1"><span>- Susie P. </span> | Nevada</p>
-            </li>
-            <li>
-              <img src="/static/promo/mobile/images/images/s2-slide-img2.png" />
+            </div>
+            <div className="inner-slider-div">
+              <img src="/static/promo/mobile/images/images/s2-slide-img2.png" className="main-img-slider"/>
               <div className="clearall" />
               <img src="/static/promo/mobile/images/images/s2-star.png" className="s2-star" />
               <p className="common-txt cmn-itlic">Supplementing Yeah Keto with a keto diet was the perfect recipe for shedding those extra pounds I gained while pregnant. I feel more energetic than ever!</p>
               <p className="slide-txt1"><span>- Taylor R. </span> | Montreal</p>
-            </li>
-            <li>
-              <img src="/static/promo/mobile/images/images/s2-slide-img3.png" />
+            </div>
+            <div className="inner-slider-div">
+              <img src="/static/promo/mobile/images/images/s2-slide-img3.png" className="main-img-slider"/>
               <div className="clearall" />
               <img src="/static/promo/mobile/images/images/s2-star.png" className="s2-star" />
               <p className="common-txt cmn-itlic">My ankle fracture stalled my workouts for a month making me gain 20lbs! My physician recommended <b>Yeah Keto</b> &amp; trust me it worked wonders!</p>
               <p className="slide-txt1"><span>- Roxanne N.</span> | Texas</p>
-            </li>            
-          </ul>
+            </div>      
+          </Slider>
           <div className="clearall" />
           <img src="/static/promo/mobile/images/images/s2-bdr-line.jpg" className="s2-bdr-line" />
         </div> 
@@ -238,26 +249,28 @@ class PromoHomeNewSection extends React.Component {
           <p className="s2-parag-txt">Experience Real Transformation WIth <b>Yeah Keto</b>!</p>
           <p className="common-txt s7-txt1">Don't take our word for it, find out how <b>Yeah Keto</b> has helped people lose weight &amp; look great!</p>
           <div className="clearall" /> 
-          <ul className="slider">
-            <li>
-              <img src="/static/promo/mobile/images/images/s7-slide-img1.png" />
-              <div className="clearall" />
-              <p className="common-txt s7-common-txt cmn-itlic"><b>Yeah Keto</b> has helped me get the most out of my keto diet! I have not only lost an incredible amount of weight in just 4 weeks but also feel more energetic and productive through the day!</p>
-              <p className="slide-txt1"><span>- Erica J. </span> | Los Angeles  &nbsp;&nbsp;<img src="/static/promo/mobile/images/images/s2-star.png" /></p>
-            </li>
-            <li>
-              <img src="/static/promo/mobile/images/images/s7-slide-img2.png" />
-              <div className="clearall" />
-              <p className="common-txt s7-common-txt cmn-itlic">The Keto Diet was not working for me, but then my trainer asked me to give <b>Yeah Keto</b> a try and it has transformed my results since then! I am almost 4 dress sizes down and my overall fitness and energy levels are at their peak.</p>
-              <p className="slide-txt1"><span>- Jane C.</span> | New York &nbsp;&nbsp;<img src="/static/promo/mobile/images/images/s2-star.png" /></p>
-            </li>
-            <li>
-              <img src="/static/promo/mobile/images/images/s7-slide-img3.png" />
-              <div className="clearall" />
-              <p className="common-txt s7-common-txt cmn-itlic">If you are going to follow a Keto lifestyle, I recommend you supplement it with <b>Yeah Keto</b>. I have lost over 20lbs from the most stubborn fat pockets on my body and fit back into my favorite dresses!</p>
-              <p className="slide-txt1"><span>- Cher N.</span> | South Carolina  &nbsp;&nbsp;<img src="/static/promo/mobile/images/images/s2-star.png" /></p>
-            </li>                        
-          </ul>   
+          <Slider {...settings} >
+            <ul className="slider">
+              <li>
+                <img src="/static/promo/mobile/images/images/s7-slide-img1.png" />
+                <div className="clearall" />
+                <p className="common-txt s7-common-txt cmn-itlic"><b>Yeah Keto</b> has helped me get the most out of my keto diet! I have not only lost an incredible amount of weight in just 4 weeks but also feel more energetic and productive through the day!</p>
+                <p className="slide-txt1"><span>- Erica J. </span> | Los Angeles  &nbsp;&nbsp;<img src="/static/promo/mobile/images/images/s2-star.png" /></p>
+              </li>
+              <li>
+                <img src="/static/promo/mobile/images/images/s7-slide-img2.png" />
+                <div className="clearall" />
+                <p className="common-txt s7-common-txt cmn-itlic">The Keto Diet was not working for me, but then my trainer asked me to give <b>Yeah Keto</b> a try and it has transformed my results since then! I am almost 4 dress sizes down and my overall fitness and energy levels are at their peak.</p>
+                <p className="slide-txt1"><span>- Jane C.</span> | New York &nbsp;&nbsp;<img src="/static/promo/mobile/images/images/s2-star.png" /></p>
+              </li>
+              <li>
+                <img src="/static/promo/mobile/images/images/s7-slide-img3.png" />
+                <div className="clearall" />
+                <p className="common-txt s7-common-txt cmn-itlic">If you are going to follow a Keto lifestyle, I recommend you supplement it with <b>Yeah Keto</b>. I have lost over 20lbs from the most stubborn fat pockets on my body and fit back into my favorite dresses!</p>
+                <p className="slide-txt1"><span>- Cher N.</span> | South Carolina  &nbsp;&nbsp;<img src="/static/promo/mobile/images/images/s2-star.png" /></p>
+              </li>                        
+            </ul>
+          </Slider>
         </div> 
         {/*SECTION-STRIP-*/}
         <div className="s-strip s7-strip">
