@@ -8,6 +8,20 @@ class PromoHomeNewSection extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    $('.slider').slick({
+      dots:false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay:false,
+      autoplaySpeed:8000,
+      adaptiveHeight: true,
+      arrows: true,
+      fade: false,
+      focusOnSelect: false,     
+    });
+  }
+
   gotoShipping = () => {
     window.location.assign(`/promo/mobile/shipping?${getQueryString()}`);
   };
