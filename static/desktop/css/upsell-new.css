@@ -91,7 +91,6 @@ CSS FOR UPSELL PAGE
   display:inline-block;
   width:100%;
   }
-
 .up-box-bg{
   border:1px solid #fee8fe;
   display:inline-block;
@@ -99,7 +98,7 @@ CSS FOR UPSELL PAGE
   border-radius:10px;
   margin:20px;
   background:#fff6ff;
-}
+  }
 .up2-box-bg{ background:#fff1f8; border:1px solid #ffd7ec;}
 .up-hdg{
   font-size:34px;
@@ -123,6 +122,8 @@ CSS FOR UPSELL PAGE
   position:relative;
   height:505px;
   }
+.up1-1-lft{
+  padding:25px 40px 0 10px;}
 .up2-lft{ background:#4b052a;}
 .up-2-pg .up-lft{padding:165px 40px 42px;}
 .up-lft-img1{
@@ -197,7 +198,7 @@ ul.up-list li:last-child{border-right:none;}
   border:2px dashed #ff0000;
   background:#fffcd7;
   border-radius:5px;
-  padding:14px;
+  padding:10px 15px 15px;
   }
 .up-prd-p1{
   font-size:24px;
@@ -224,7 +225,23 @@ ul.up-list li:last-child{border-right:none;}
   font-weight:bold;
   }
 .prd2-prc{ color:#4b052a;}
-.up-btn{display:inline-block;max-width:100%;cursor: pointer}
+.prd1-1-prc{ 
+  color:#4b052a;
+  font-size:35px;
+  line-height:45px;
+  }
+.prd1-1-prc sup{ display:inline-block; vertical-align:middle;}
+.prd-prc span{ 
+  position:relative; 
+  color:#666;
+  font-weight:300;
+  }
+.prd-prc span img{ 
+  position:absolute;
+  left:0;
+  top:10px;
+  }
+.up-btn{display:inline-block;max-width:100%;}
 .no-p {
   float: left;
   width: 100%;
@@ -284,7 +301,6 @@ CSS FOR THANKYOU PAGE
   color: #3a3a3c;
   font-size: 20px;
   line-height: 23px;
-  padding-top: 0;
   }
 .thk-p2 span{font-weight:600;}
 .thk-in-rit{

@@ -35,7 +35,7 @@ class Upsell1Component extends React.PureComponent {
   };
 
   skipUpsell = () => {
-    window.location.assign(`/promo/desktop/upsell-2?${getQueryString()}`);
+    window.location.assign(`/promo/desktop/upsell-1-1?${getQueryString()}`);
   };
 
   scrollToTop = () => {
