@@ -3,6 +3,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { PromoSession } from 'react/components/common';
 import { getQueryString } from 'helpers';
+import { Footer } from 'react/components/common';
 
 /**
  * @class Upsell21
@@ -11,7 +12,7 @@ import { getQueryString } from 'helpers';
  */
 class Upsell21 extends React.PureComponent {
   upgrade = () => {
-    this.props.upgrade(215, '/promo/desktop/thankyou');
+    this.props.upgrade(4169, '/promo/desktop/thankyou');
   };
 
   skipUpsell = () => {
@@ -22,160 +23,125 @@ class Upsell21 extends React.PureComponent {
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage2" />
-        <div className="upsell-strip">
-          <h3>WAIT! YOU QUALIFY FOR A LIMITED TIME DISCOUNT</h3>
-          <p>
-            Add 1 Bottle Of <strong>CBD Pain Relief Warming Balm</strong> To
-            Your Order Today!{' '}
-          </p>
-        </div>
-        <div className="up-mid-box-right">
-          <img
-            src="/static/assets/images/upsell2/single-jar.png"
-            alt="single-jar"
-            className="up-product-4"
-          />
-          <img
-            src="/static/assets/images/upsell2/up-arw1.png"
-            style={{ position: 'absolute', left: '220px', top: '400px' }}
-            alt="upsell-arrow-1"
-          />
-          <div className="up-rgt-content-opt2">
-            <p className="up-txt1">Get Instant Pain Relief</p>
-            <p className="with-txt">with</p>
-            <p className="up-txt2">CBD Warming Balm</p>
-            <div className="price-box">
-              <p className="price-box-txt1">
-                Buy 1 Jar Of CBD Pain Relief Balm
-              </p>
-              <p className="price-box-txt2">Save 30% Today</p>
-              <p className="price-box-txt3">
-                <img
-                  src="/static/assets/images/upsell2/arrow-left.png"
-                  alt="arrow-left"
-                  className="arrow-left"
-                  width="77"
-                  height="33"
-                />
-                97.00{' '}
-                <img
-                  src="/static/assets/images/arrow-right.png"
-                  alt="arrow-right"
-                  className="arrow-right"
-                  width="77"
-                  height="33"
-                />
-              </p>
-            </div>
-            <div className="bnt-sec">
-              <a
-                id="order-pulse-upsell21-desktop-1"
-                href="javascript:void(0)"
-                onClick={this.upgrade}
-              >
-                <img
-                  src="/static/assets/images/upsell2/ord-btn.png"
-                  alt="order-btn"
-                  className="ord-btn pulse"
-                  width="370"
-                  height="71"
-                />
-              </a>
-              <p className="thanks-txt">
-                <a
-                  id="skip-pulse-upsell21-desktop-1"
-                  href="javascript:void(0)"
-                  onClick={this.skipUpsell}
-                >
-                  <img
-                    src="/static/assets/images/upsell2/cut-icon.png"
-                    alt="cut-icon"
-                    className="cut-icon"
-                    width="15"
-                    height="15"
-                  />
-                  {"No, I don't want better results."}
-                </a>
-              </p>
+        <div className="up-bg">
+          <div className="inner-container">
+            <div className="up-inr">
+              <img
+                src="/static/promo/desktop/img/logo.png"
+                className="up-logo"
+              />
+              <img
+                src="/static/promo/desktop/img/chk-hdr.png"
+                alt
+                className="up-steps"
+              />
+              <div className="inr-chk inr-pack inr-upsell">
+                <div className="upsell-sec">
+                  <p className="up-hdg">
+                    WAIT! YOU QUALIFY FOR A LIMITED TIME DISCOUNT
+                  </p>
+                  <p className="up-sub-hdg">
+                    93% of customers who purchase <span>Yeah Keto</span> also
+                    purchase <span>Yeah Caralluma</span>
+                  </p>
+                  <div className="up-box-bg">
+                    <div className="up-lft up1-1-lft">
+                      <img
+                        src="/static/promo/desktop/img/up2-1-prd.png"
+                        alt
+                        className="up-prd"
+                      />
+                      <img
+                        src="/static/promo/desktop/img/up-lft-img1.png"
+                        alt
+                        className="up-lft-img1"
+                      />
+                      <div className="up-seal">
+                        <p>
+                          save<br />$44%
+                        </p>
+                      </div>
+                    </div>
+                    <div className="up-rgt">
+                      <p className="up-rgt-txt1">Curb Your Cravings With</p>
+                      <img
+                        src="/static/promo/desktop/img/up1-logo.png"
+                        className="up1-logo"
+                      />
+                      <p className="up-rgt-txt3">
+                        Advanced Appetite Suppression*
+                      </p>
+                      <ul className="up-list">
+                        <li>
+                          <img
+                            src="/static/promo/desktop/img/up-tick.png"
+                            alt
+                            className="for-desk"
+                          />
+                          <p>
+                            Suppress<br />
+                            <span>Appetite</span>
+                          </p>
+                        </li>
+                        <li>
+                          <img
+                            src="/static/promo/desktop/img/up-tick.png"
+                            alt
+                            className="for-desk"
+                          />
+                          <p>
+                            Reduces<br />
+                            <span>Overeating</span>
+                          </p>
+                        </li>
+                        <li>
+                          <img
+                            src="/static/promo/desktop/img/up-tick.png"
+                            alt
+                            className="for-desk"
+                          />
+                          <p>
+                            Boost<br />
+                            <span>Weight Loss</span>
+                          </p>
+                        </li>
+                      </ul>
+                      <div className="up-prd-info">
+                        <p className="up-prd-p1 up2-prd-p1">
+                          <span>Buy 2 Bottles + Get 1 Free</span>
+                          <br />Save 60% Today{' '}
+                        </p>
+                        <p className="prd-prc prd1-1-prc">
+                          <span>
+                            <img
+                              src="/static/promo/desktop/img/price-cut.png"
+                              alt
+                            />$120/<sup>ea</sup>
+                          </span>{' '}
+                          $77/<sup>ea</sup>
+                        </p>
+                        <a onClick={this.upgrade}>
+                          <img
+                            src="/static/promo/desktop/img/up-btn.png"
+                            alt
+                            className="up-btn"
+                          />
+                        </a>
+                        <a onClick={this.skipUpsell}>
+                          <p className="no-p">
+                            {' '}
+                            No thanks, I’m not interested{' '}
+                          </p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="upsell-strip">
-          <h4 className="strip-txt3">
-            BENEFITS OF CBD WARMING BALM INCLUDE ...
-          </h4>
-        </div>
-        <div className="clearall" />
-        <div className="up-bottom-box box1" style={{ height: '410px' }}>
-          <img
-            src="/static/assets/images/upsell2/full-spect.jpg"
-            alt="full-spect"
-          />
-          <p className="box-txt1">FULL SPECTRUM FORMULA</p>
-          <p className="box-txt2">
-            CBD Warming Balm is INFUSED with highly a concentrated CBD which is
-            known for its medicinal properties and yields a more effective
-            solution than any balm in the world.
-          </p>
-        </div>
-
-        <div className="up-bottom-box" style={{ height: '410px' }}>
-          <img
-            src="/static/assets/images/upsell2/up-bx2-bg.jpg"
-            alt="upsell-box-2-bg"
-          />
-          <p className="box-txt1">OFFERS ANTIOXIDANT SUPPORT</p>
-          <p className="box-txt2">
-            CBD Warming Balm works at a cellular level to combat free radical
-            damage, boost overall immunity, and provides healing as well as
-            aromatherapy benefits.
-          </p>
-        </div>
-
-        <div className="up-bottom-box" style={{ height: '410px' }}>
-          <img
-            src="/static/assets/images/upsell2/pain-releaf.jpg"
-            alt="pain-releaf"
-          />
-          <p className="box-txt1">INSTANTLY RELIEVES Chronic Pain</p>
-          <p className="box-txt2">
-            Melt away muscle fatigue, pain, swelling, and discomfort with Yeah
-            Keto WARMING {"BALM'S"} deep, penetrating warmth providing FAST
-            relief that will amaze you.
-          </p>
-        </div>
-
-        <div className="bnt-sec">
-          <a
-            id="order-pulse-upsell21-desktop-2"
-            href="javascript:void(0)"
-            onClick={this.upgrade}
-          >
-            <img
-              src="/static/assets/images/upsell2/ord-btn.png"
-              alt="oder-btn"
-              className="ord-btn pulse"
-              width="370"
-              height="71"
-            />
-          </a>
-          <p className="thanks-txt">
-            <a
-              id="skip-pulse-upsell21-desktop-2"
-              href="javascript:void(0)"
-              onClick={this.skipUpsell}
-            >
-              <img
-                src="/static/assets/images/upsell2/cut-icon.png"
-                alt="cut-icon"
-                className="cut-icon"
-                width="15"
-                height="15"
-              />
-              {"No, I don't want better results."}
-            </a>
-          </p>
-        </div>
+        <Footer />
       </React.Fragment>
     );
   }

@@ -35,6 +35,10 @@ class SelectPackage extends React.PureComponent {
             href="/static/assets/css/promo/desktop/upsell1.css"
             rel="stylesheet"
           />
+          <link
+            href="/static/desktop/css/upsell-new.css"
+            rel="stylesheet"
+          />
           <link href="/static/desktop/css/checkout.css" rel="stylesheet" />
         </Head>
         <UpsellDesktopContainer {...props} />
