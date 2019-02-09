@@ -5,16 +5,13 @@ import axios from 'axios';
 import moment from 'moment';
 import { OrderActions } from 'redux/actions';
 import {
-  Upsell1,
   Upsell1Treatment1,
   Upsell1Treatment2,
-  Upsell11,
   Upsell11Treatment1,
   Upsell11Treatment2,
-  Upsell2,
   Upsell2Treatment1,
   Upsell2Treatment2,
-  Upsell21,
+  Upsell21Treatment1,
 } from 'react/components/upsell/mobile';
 import { Spinner, SuccessModal } from 'react/components/common';
 
@@ -111,6 +108,7 @@ class UpsellMobileContainerComponent extends React.PureComponent {
             {upsell === 1 &&
               affId === 'cake' && (
                 <iframe
+                  title="Upsell"
                   src="https://response-pixel.com/p.ashx?o=608&e=232"
                   frameBorder="0"
                   width="1"
@@ -181,12 +179,23 @@ class UpsellMobileContainerComponent extends React.PureComponent {
             </React.Fragment>
           )}
           {upsell === '2-1' && (
-            <Upsell21
-              upgrade={this.upgrade}
-              {...this.props}
-              abtastyParams={abtastyParams}
-              sendTransactionDetails={this.sendTransactionDetails}
-            />
+            <React.Fragment>
+              {this.props.isAuthentic.isAuthenticUser ? (
+                <Upsell21Treatment1
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
+                />
+              ) : (
+                <Upsell21Treatment1
+                  upgrade={this.upgrade}
+                  {...this.props}
+                  abtastyParams={abtastyParams}
+                  sendTransactionDetails={this.sendTransactionDetails}
+                />
+              )}
+            </React.Fragment>
           )}
           {this.props.submitStatus === 'submitting' && <Spinner />}
         </div>

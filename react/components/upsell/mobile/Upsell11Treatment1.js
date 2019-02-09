@@ -1,51 +1,22 @@
 import React from 'react';
-import Head from 'next/head';
 import moment from 'moment';
 import axios from 'axios';
-import { PromoSession, Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
-import { getQueryString, getDiscountBanner } from 'helpers';
-import { SatisfactionBox } from './SatisfactionBox';
+import { getQueryString } from 'helpers';
+import { FooterMobileNew } from 'react/components/common';
 
 /**
- * @class Upsell11Component
+ * @class Upsell11Treatment1Component
  * @extends {React.PureComponent}
- * @description Mobile Component rendered after Upsell1 page
+ * @description Mobile component rendered after checkout page <br />
  */
 class Upsell11Treatment1Component extends React.PureComponent {
-  componentDidMount() {
-    this.postVisitEvent();
-  }
-
-  upgrade = button => {
-    this.props.sendTransactionDetails(
-      'order-confirmation-upsell-1-1',
-      'Upsell11Treatment1',
-    );
-    this.postActionTracker('upsell-1-1-yes', `upsell-1-1-yes-${button}`);
-    this.props.upgrade(212, '/promo/mobile/upsell-2?&prev=upsell11');
+  upgrade = () => {
+    this.props.upgrade(4168, '/promo/mobile/upsell-2');
   };
 
-  skipUpsell = button => {
-    this.postActionTracker('upsell-1-1-no', `upsell-1-1-no-${button}`);
+  skipUpsell = () => {
     window.location.assign(`/promo/mobile/upsell-2?${getQueryString()}`);
-  };
-
-  postActionTracker = (name, value_string) => {
-    const { abtastyParams } = this.props;
-    const body = {
-      name,
-      value_string,
-      type: 'CLICK',
-      tracking_data: {
-        visitor_id: abtastyParams.visitorId,
-        device_type: 'MOBILE_PHONE',
-        origin: 'Upsell11Treatment1',
-        timestamp: moment().format(),
-        ip: abtastyParams.ip,
-      },
-    };
-    axios.post('/abtasty', { ...body, action: 'action_tracking_event' });
   };
 
   postVisitEvent = () => {
@@ -53,7 +24,7 @@ class Upsell11Treatment1Component extends React.PureComponent {
     const body = {
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
-        device_type: 'DESKTOP',
+        device_type: 'MOBILE_PHONE',
         origin: window.location.href,
         timestamp: moment().format(),
         ip: abtastyParams.ip,
@@ -63,146 +34,90 @@ class Upsell11Treatment1Component extends React.PureComponent {
   };
 
   render() {
-    const { cid } = this.props.query;
     return (
-      <React.Fragment>
-        <Head>
-          <link
-            href="/static/mobile/css/upsell-treatment1.css"
-            rel="stylesheet"
-          />
-        </Head>
-        <PromoSession pageType="upsellPage1" />
-        {getDiscountBanner({ cid }) && (
-          <div className="topbar">
-            <p className="topbartxt">
-              PROMO CODE <span>CBD33</span> APPLIED!
-              <span> HURRY, GET 20% OFF TODAY!</span>
-            </p>
-          </div>
-        )}
-        <div className="up-strip">
-          <h3>YOU QUALIFY FOR A LIMITED TIME DISCOUNT</h3>
-          <p>
-            Add 1 Bottle Of <br />
-            <strong>Maximum Strength CBD Capsules</strong> To Your Order Today!
-          </p>
+      <div className="container">
+        <div className="upsell-hdr">
+          <img src="/static/promo/mobile/images/images/top-img.jpg" alt="" />
         </div>
-        <div className="upsell-box">
-          <p className="up-txt1">Amplify Your Results</p>
-          <p className="with-txt">with</p>
-          <p className="up-txt2">Maximum Strength CBD Capsules</p>
-          <img
-            src="/static/assets/images/up-prod-2.jpg"
-            className="up-prod"
-            alt="upsell-prod-2"
-          />
-          <div className="clearall" />
-          <div className="price-box">
-            <p className="price-box-txt1">Buy 1 Bottle Of CBD Capsules</p>
-            <p className="price-box-txt2">Save 30% Today</p>
-            <p className="price-box-txt3">
-              <img
-                src="/static/assets/images/arrow-left-upsell.png"
-                width="77"
-                height="33"
-                alt="arrow-left-upsell"
-                className="arrow-left"
-              />
-              {getDiscountBanner({ cid }) ? 69.0 : 87.0}
-              {'/ea'}
-              <img
-                src="/static/assets/images/arrow-right.png"
-                width="77"
-                height="33"
-                alt="arrow-right"
-                className="arrow-right"
-              />
-            </p>
-          </div>
-
-          <div className="bnt-sec">
-            <p className="offer-valid">
-              Offer Valid Till{' '}
-              <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
-            </p>
-            <a
-              id="cheaper-capsule-yes-top"
-              href="javascript:void(0)"
-              onClick={() => this.upgrade('top')}
-            >
-              <img
-                src="/static/assets/images/ord-btn.png"
-                alt="order-btn"
-                width="370"
-                height="71"
-                className="ord-btn pulse"
-              />
-            </a>
-            <p className="thanks-txt">
-              <a
-                id="cheaper-capsule-no-top"
-                href="javascript:void(0)"
-                onClick={() => this.skipUpsell('top')}
-              >
-                <img
-                  src="/static/assets/images/cut-icon.png"
-                  width="15"
-                  height="15"
-                  alt="cut-icon"
-                  className="cut-icon"
-                />
-                {"No, I don't want better results."}
-              </a>
-            </p>
-          </div>
-        </div>
-        <SatisfactionBox onSkip={this.skipUpsell} onUpgrade={this.upgrade} />
-        <div className="bnt-sec">
-          <p className="offer-valid">
-            Offer Valid Till{' '}
-            <span id="showdate"> {moment().format('Do MMMM YYYY')}</span>
+        <div className="upsell1-sec1">
+          <p className="upsell-txt1">
+            <span>WAIT!</span> YOU QUALIFY FOR A LIMITEDTIME DISCOUNT
           </p>
-          <a
-            id="cheaper-capsule-yes-bottom"
-            href="javascript:void(0)"
-            onClick={() => this.upgrade('bottom')}
-          >
+          <p className="upsell-txt2">
+            68% of customers who purchase <span>Yeah Keto</span> also purchase{' '}
+            <span>Yeah Forskolin.</span>
+          </p>
+          <div className="up-mid">
+            <p className="upsell-txt3">BOOST YOUR METABOLISM WITH</p>
+            <div className="clearall" />
             <img
-              src="/static/assets/images/ord-btn.png"
-              alt="order-btn"
-              width="370"
-              height="71"
-              className="ord-btn pulse"
+              src="/static/promo/mobile/images/images/up2-logo.png"
+              className="up1-logo"
+              alt=""
             />
-          </a>
-          <p className="thanks-txt">
-            <a
-              id="cheaper-capsule-no-bottom"
-              href="javascript:void(0)"
-              onClick={() => this.skipUpsell('bottom')}
-            >
-              <img
-                src="/static/assets/images/cut-icon.png"
-                width="15"
-                height="15"
-                alt="cut-icon"
-                className="cut-icon"
-              />
-              {"No, I don't want better results."}
-            </a>
-          </p>
-        </div>
-        <div id="footer">
-          <div className="container">
-            <div className="ftr-txt">
-              <Footer noLogo>
-                <span />
-              </Footer>
+            <p className="up-sub-name1 up-sub-name2">
+              Advanced Metabolic Support Formula*
+            </p>
+            <div className="upsell-sec1-prdct">
+              <div className="upsell1-s1-lftside">
+                <img
+                  src="/static/promo/mobile/images/images/upsell2-sec1-bg.png"
+                  className="upsell1-sec1-bg"
+                  alt=""
+                />
+                <img
+                  src="/static/promo/mobile/images/images/upsell2-prdct.png"
+                  className="upsell1-prdct"
+                  alt=""
+                />
+                <p className="save-txt1">save 44%</p>
+              </div>
+              <ul className="up1-s1-list up2-s1-list">
+                <li>
+                  Breaks Down<br /> <span>Fatty Tissue</span>
+                </li>
+                <li>
+                  Preserve<br /> <span>Lean Mucle</span>
+                </li>
+                <li>
+                  Boost<br /> <span>Metabolism</span>
+                </li>
+              </ul>
+            </div>
+            <div className="up1-dscount-cpn">
+              <p className="dscnt-txt1">
+                Add Your{' '}
+                <span className="spcl-dscnt spcl-dscnt1">Special Discounted</span>{' '}
+                Bottle Just Pay a Special Price{' '}
+                <span className="prc-dscnt">
+                  $89.99<img
+                    src="/static/promo/mobile/images/images/red-stick.png"
+                    alt=""
+                  />
+                </span>
+              </p>
+              <p className="price-text2 price-text2-up2">$49.99</p>
+              <a onClick={this.upgrade}>
+                <img
+                  src="/static/promo/mobile/images/images/upsell-btn.png"
+                  className="upsell-btn pulse"
+                  alt=""
+                />
+              </a>
+              <a onClick={this.skipUpsell}>
+                <p className="no-txt">
+                  <img
+                    src="/static/promo/mobile/images/images/cut-icon.png"
+                    alt=""
+                  />No thanks, I’m not interested
+                </p>
+              </a>
             </div>
           </div>
         </div>
-      </React.Fragment>
+        <p className="clearall" />
+        <FooterMobileNew />
+      </div>
     );
   }
 }

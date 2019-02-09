@@ -30,7 +30,7 @@ class FooterMobileNew extends React.Component {
           >
             Terms &amp; Conditions
           </a>{' '}
-          &nbsp;|&nbsp;
+          &nbsp;|&nbsp;{' '}
           <a
             href="javascript:void(0)"
             onClick={() => {
@@ -38,8 +38,8 @@ class FooterMobileNew extends React.Component {
             }}
           >
             Privacy Policy
-          </a>
-          &nbsp;|&nbsp;
+          </a>{' '}
+          &nbsp;|&nbsp;{' '}
           <a
             href="javascript:void(0)"
             onClick={() => {

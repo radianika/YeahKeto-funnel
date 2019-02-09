@@ -10,3 +10,4 @@ export * from './Upsell2';
 export * from './Upsell2Treatment1';
 export * from './Upsell2Treatment2';
 export * from './Upsell21';
+export * from './Upsell21Treatment1';
