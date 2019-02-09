@@ -12,7 +12,7 @@ import { Footer } from 'react/components/common';
  */
 class Upsell21 extends React.PureComponent {
   upgrade = () => {
-    this.props.upgrade(215, '/promo/desktop/thankyou');
+    this.props.upgrade(4169, '/promo/desktop/thankyou');
   };
 
   skipUpsell = () => {
@@ -61,8 +61,8 @@ class Upsell21 extends React.PureComponent {
                       <div className="up-prd-info">
                         <p className="up-prd-p1 up2-prd-p1"><span>Buy 2 Bottles + Get 1 Free</span><br />Save 60% Today </p>
                         <p className="prd-prc prd1-1-prc"><span><img src="/static/promo/desktop/images/images/price-cut.png" alt />$120/<sup>ea</sup></span> $77/<sup>ea</sup></p>
-                        <a href="thank-you.php"><img src="/static/promo/desktop/images/images/up-btn.png" alt className="up-btn" /></a>
-                        <a href="thank-you.php">
+                        <a onClick={this.upgrade}><img src="/static/promo/desktop/images/images/up-btn.png" alt className="up-btn" /></a>
+                        <a onClick={this.skipUpsell}>
                           <p className="no-p"> No thanks, I’m not interested </p>
                         </a>
                       </div>
