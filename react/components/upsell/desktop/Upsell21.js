@@ -3,6 +3,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { PromoSession } from 'react/components/common';
 import { getQueryString } from 'helpers';
+import { Footer } from 'react/components/common';
 
 /**
  * @class Upsell21
@@ -72,6 +73,7 @@ class Upsell21 extends React.PureComponent {
             </div>
           </div>
         </div>
+        <Footer />
       </React.Fragment>
     );
   }
