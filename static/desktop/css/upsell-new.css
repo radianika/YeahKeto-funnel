@@ -12,7 +12,7 @@ body {
   background: #fff;
   color: #636363;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
@@ -91,7 +91,6 @@ li {
   display: block;
 }
 
-
 /*-----------------------
 MAIN CSS START
 ------------------------*/
@@ -102,7 +101,6 @@ MAIN CSS START
   padding: 0;
   position: relative;
 }
-
 
 /*-==================================
 CSS FOR UPSELL PAGE
@@ -129,7 +127,7 @@ CSS FOR UPSELL PAGE
 .up-bg {
   float: left;
   width: 100%;
-  background: url(/static/promo/desktop/images/images/up-bg.jpg) center top no-repeat;
+  background: url(/static/promo/desktop/img/up-bg.jpg) center top no-repeat;
 }
 
 .up-inr {
@@ -185,7 +183,7 @@ CSS FOR UPSELL PAGE
   line-height: 38px;
   color: #ff0000;
   font-weight: bold;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
 .up-sub-hdg {
@@ -229,7 +227,7 @@ CSS FOR UPSELL PAGE
   position: absolute;
   right: -66px;
   top: 25px;
-  background: url(/static/promo/desktop/images/images/up-seal.png) center top no-repeat;
+  background: url(/static/promo/desktop/img/up-seal.png) center top no-repeat;
   width: 128px;
   height: 128px;
 }
@@ -255,7 +253,7 @@ CSS FOR UPSELL PAGE
   color: #000;
   font-weight: bold;
   text-transform: uppercase;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 }
 
 .up1-logo {
@@ -281,7 +279,7 @@ CSS FOR UPSELL PAGE
 ul.up-list {
   display: inline-block;
   width: 100%;
-  margin: 20px 0
+  margin: 20px 0;
 }
 
 ul.up-list li {
@@ -403,7 +401,6 @@ ul.up-list li img.for-mob {
   display: none;
 }
 
-
 /*-===========================
 CSS FOR THANKYOU PAGE
 ==============================*/
@@ -434,7 +431,8 @@ CSS FOR THANKYOU PAGE
 .thnk-recpt-box {
   float: left;
   width: 100%;
-  background: #f1f1f1 url(/static/promo/desktop/images/images/thnk-bg.png) repeat-x left top;
+  background: #f1f1f1 url(/static/promo/desktop/img/thnk-bg.png) repeat-x left
+    top;
   padding: 30px 35px;
   margin: 30px 0 0;
 }
@@ -610,7 +608,6 @@ ul.user-info li span {
 .pad-top {
   padding: 20px 0 0;
 }
-
 
 /*/*-------------------------
 CSS FOR FOOTER
