@@ -5,17 +5,17 @@ import { getQueryString } from 'helpers';
 import { FooterMobileNew } from 'react/components/common';
 
 /**
- * @class Upsell2Treatment1
+ * @class Upsell21Treatment1
  * @extends {React.PureComponent}
  * @description Mobile component rendered after Upsell1 pages
  */
-class Upsell2Treatment1 extends React.PureComponent {
+class Upsell21Treatment1 extends React.PureComponent {
   upgrade = () => {
     this.props.upgrade(4166, '/promo/mobile/thankyou');
   };
 
   skipUpsell = () => {
-    window.location.assign(`/promo/mobile/upsell-2-1?${getQueryString()}`);
+    window.location.assign(`/promo/mobile/thankyou?${getQueryString()}`);
   };
 
   postActionTracker = (name, value_string) => {
@@ -27,7 +27,7 @@ class Upsell2Treatment1 extends React.PureComponent {
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
         device_type: 'MOBILE_PHONE',
-        origin: 'Upsell2Treatment1',
+        origin: 'Upsell21Treatment1',
         timestamp: moment().format(),
         ip: abtastyParams.ip,
       },
@@ -40,7 +40,7 @@ class Upsell2Treatment1 extends React.PureComponent {
     const body = {
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
-        device_type: 'MOBILE_PHONE',
+        device_type: 'DESKTOP',
         origin: window.location.href,
         timestamp: moment().format(),
         ip: abtastyParams.ip,
@@ -80,9 +80,8 @@ class Upsell2Treatment1 extends React.PureComponent {
                   alt=""
                 />
                 <img
-                  src="/static/promo/mobile/images/images/upsell21-prdct.png"
+                  src="/static/promo/mobile/images/images/upsell1-prdct.png"
                   className="upsell1-prdct"
-                  style={{ left: 11 }}
                   alt=""
                 />
                 <p className="save-txt1">save 44%</p>
@@ -101,22 +100,16 @@ class Upsell2Treatment1 extends React.PureComponent {
             </div>
             <div className="up1-dscount-cpn">
               <p className="dscnt-txt1">
-                <span className="spcl-dscnt">Buy 2 Bottles + Get 1 Free</span>
-                <br /> Save 60% Today{' '}
-              </p>
-              <p
-                className="price-text2 price-text2-up1-2"
-                style={{ color: '#481048' }}
-              >
-                <span>
-                  <img
-                    src="/static/promo/mobile/images/images/price-cut.png"
+                Add Your <span className="spcl-dscnt">Special Discounted</span>{' '}
+                Bottle Just Pay a Special Price{' '}
+                <span className="prc-dscnt">
+                  $89.99<img
+                    src="/static/promo/mobile/images/images/red-stick.png"
                     alt=""
-                  />$120/<sup>ea</sup>
-                </span>{' '}
-                $77/<sup>ea</sup>
+                  />
+                </span>
               </p>
-
+              <p className="price-text2">$49.99</p>
               <a onClick={this.upgrade}>
                 <img
                   src="/static/promo/mobile/images/images/upsell-btn.png"
@@ -142,4 +135,4 @@ class Upsell2Treatment1 extends React.PureComponent {
   }
 }
 
-export { Upsell2Treatment1 };
+export { Upsell21Treatment1 };
