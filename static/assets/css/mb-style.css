@@ -23,7 +23,7 @@
 }
 
 .select-filed {
-  right: unset !important;
+  right: unset;
   left: 10px !important;
 }
 
