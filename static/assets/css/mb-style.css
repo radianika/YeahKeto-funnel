@@ -22,6 +22,11 @@
   right: 10px;
 }
 
+.select-filed {
+  right: unset !important;
+  left: 10px !important;
+}
+
 .hideIcon .fv-control-feedback {
   display: none !important;
 }

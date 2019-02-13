@@ -10,12 +10,12 @@ const SelectField = props => {
       } fv-has-feedback ${hasError && 'fv-has-error'} ${valid &&
         'fv-has-success'}`}
     >
-      {
-        props.label ? <label>
+      {props.label ? (
+        <label>
           {props.label}
           {props.required && <span>*</span>}
-        </label> : null
-      }
+        </label>
+      ) : null}
       {!props.large ? (
         <select
           {...props.input}
@@ -56,8 +56,8 @@ const SelectField = props => {
 
       <i
         style={{ display: hasError || valid }}
-        className={`fv-control-feedback ${hasError && 'fa fa-times'} ${valid &&
-          'fa fa-check'}`}
+        className={`fv-control-feedback select-filed ${hasError &&
+          'fa fa-times'} ${valid && 'fa fa-check'}`}
       />
       {hasError && <small className="fv-help-block">{props.meta.error}</small>}
     </div>
