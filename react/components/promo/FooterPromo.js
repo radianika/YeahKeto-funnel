@@ -4,7 +4,6 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { getQueryString } from 'helpers';
-import LazyLoad from 'react-lazyload';
 import { Modal } from '../common/Modal';
 import { CustomerCare } from '../common/CustomerCare';
 import { PrivacyPolicy } from '../common/PrivacyPolicy';
@@ -20,9 +19,6 @@ class FooterPromoComponent extends React.PureComponent {
       modal: null,
     };
   }
-
-  closeModal = () => this.setState({ modal: null });
-  closeModalImmediately = () => this.setState({ modal: null });
 
   componentDidMount() {
     if (this.props.isMobile) {
@@ -44,6 +40,10 @@ class FooterPromoComponent extends React.PureComponent {
       };
     }
   }
+
+  closeModal = () => this.setState({ modal: null });
+
+  closeModalImmediately = () => this.setState({ modal: null });
 
   gotoShipping = () => {
     window.location.assign(`/promo/mobile/shipping?${getQueryString()}`);
@@ -130,29 +130,22 @@ class FooterPromoComponent extends React.PureComponent {
   };
 
   render() {
-    const variation316344 = this.props.isAuthentic.isAuthenticUser
-      ? '416547'
-      : '416545';
-
     return (
       <footer ref={this.footerRef}>
         <div id="cta" ref={this.ctaRef} style={this.state.ctaStyle}>
           <a
             id={this.props.tagID}
-            href="javascript:void(0)"
             onClick={() => {
-              // this.postActionTracker();
               this.gotoShipping();
             }}
-            className="shipping_redirect"
           >
             <img
               src="/static/promo/mobile/images/images/button.png"
               className="btn pulse"
+              alt=""
             />
           </a>
         </div>
-
         <p className="clearall" />
         <div className="legal">
           <p className="ftr-txt">
@@ -166,31 +159,29 @@ class FooterPromoComponent extends React.PureComponent {
             dramatizations. <br />
             <br />
             <a
-              href="javascript:void(0)"
               onClick={() => {
                 this.setState({ modal: 'footer_terms' });
               }}
             >
-              TERMS &amp; CONDITIONS
+              Terms &amp; Conditions
             </a>{' '}
-            &nbsp;|&nbsp;
+            |{' '}
             <a
-              href="javascript:void(0)"
               onClick={() => {
                 this.setState({ modal: 'footer_privacy' });
               }}
             >
-              PRIVACY POLICY
-            </a>
-            &nbsp;|&nbsp;
+              Privacy Policy
+            </a>{' '}
+            |{' '}
             <a
-              href="javascript:void(0)"
               onClick={() => {
                 this.setState({ modal: 'footer_customer' });
               }}
             >
-              CUSTOMER CARE
+              Contact Us
             </a>
+            <br />
             <br />
             <span style={{ textTransform: 'none' }}>
               {moment().year()} © Yeah Keto
