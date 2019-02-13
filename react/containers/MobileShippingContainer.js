@@ -228,11 +228,6 @@ class MobileShippingContainerComponent extends React.PureComponent {
             />
           </ImageModal>
         )}
-        <img
-          alt=""
-          src="/static/assets/images/lead_form_success_popup.png"
-          style={{ width: 0, height: 0 }}
-        />
       </div>
     );
   }

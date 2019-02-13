@@ -250,6 +250,7 @@
 .modal-title {
   margin: 0;
   line-height: 1.5;
+  text-align: center;
 }
 
 .modal-header::after {
@@ -261,6 +262,8 @@
 .modal-body {
   position: relative;
   padding: 15px 30px;
+  font-size: 15px;
+  line-height: 27px;
 }
 
 #select_cart_form .fv-help-block {
@@ -466,6 +469,7 @@ input::-webkit-contacts-auto-fill-button {
   right: 0;
 }
 
-.legal, .modal-dialog {
+.legal,
+.modal-dialog {
   color: black !important;
 }

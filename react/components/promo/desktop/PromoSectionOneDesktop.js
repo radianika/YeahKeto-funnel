@@ -4,18 +4,20 @@ import { withRouter } from 'next/router';
 import { OrderActions } from 'redux/actions';
 import { ImageModal } from 'react/components/common';
 import { getQueryString } from 'helpers';
+import Waypoint from 'react-waypoint';
 import { PromoShippingFormDesktop } from './PromoShippingFormDesktop';
 
 class PromoSectionOneDesktopComponent extends React.PureComponent {
   constructor(props) {
     super(props);
     this.timerRef = '';
-  }
 
-  state = {
-    showCheckingModal: false,
-    timerData: '05:00',
-  };
+    this.state = {
+      showCheckingModal: false,
+      timerData: '05:00',
+      showArrow: false,
+    };
+  }
 
   componentDidMount() {
     const spd = 100;
@@ -56,6 +58,14 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
   componentWillUnmount() {
     clearInterval(this.timerRef);
   }
+
+  onScroll = e => {
+    if (e.currentPosition === 'inside') {
+      this.setState({ showArrow: true });
+    } else {
+      this.setState({ showArrow: false });
+    }
+  };
 
   submitShippingForm = values => {
     this.setState({ showCheckingModal: true });
@@ -116,10 +126,13 @@ class PromoSectionOneDesktopComponent extends React.PureComponent {
             </p>
           </div>
           <div className="rgt-form">
+            <Waypoint onEnter={this.onScroll} onLeave={this.onScroll} />
             <img
               src="/static/promo/desktop/images/images/s1-arrow2.png"
               alt=""
-              className="s1-animate-arrow"
+              className={`s1-animate-arrow ${
+                this.state.showArrow ? 'sec1-arr-wo' : ''
+              }`}
             />
             <img
               src="/static/promo/desktop/images/images/s1-seal.png"
