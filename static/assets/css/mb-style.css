@@ -23,8 +23,7 @@
 }
 
 .select-filed {
-  right: unset;
-  left: 10px !important;
+  right: 20px !important;
 }
 
 .hideIcon .fv-control-feedback {
