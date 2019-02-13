@@ -83,7 +83,7 @@ class ThankyouDesktopComponent extends React.Component {
             <p className="topbartxt">
               <span>WARNING:</span> Due to extremely high media demand, there is
               limited supply of <span>Yeah Keto</span> in stock as of{' '}
-              <span>{moment().format('dddd, ll')}</span>
+              <span>{moment().format('dddd, MMM DD, YYYY')}</span>
             </p>
           </div>
         </div>

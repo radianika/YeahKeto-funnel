@@ -2,19 +2,10 @@ import React from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import {
-  PromoStrip,
   PromoSectionOneDesktop,
-  PromoSectionTwoDesktop,
-  PromoSectionThreeDesktop,
-  PromoSectionFourDesktop,
-  PromoSectionFiveDesktop,
-  PromoSectionSixDesktop,
-  PromoSectionSevenDesktop,
   PromoHomeNewSection,
 } from 'react/components/promo/desktop';
 import { createNewSession } from 'redux/actions/authActions';
-import { FooterPromo } from 'react/components/promo';
-import { PromoSession } from 'react/components/common';
 
 /**
  * @class PromoDesktop
@@ -37,7 +28,7 @@ class PromoDesktop extends React.PureComponent {
             <p className="topbartxt">
               <span>WARNING:</span> Due to extremely high media demand, there is
               limited supply of <span>Yeah Keto</span> in stock as of{' '}
-              <span>{moment().format('dddd, ll')}</span>
+              <span>{moment().format('dddd, MMM DD, YYYY')}</span>
             </p>
           </div>
         </div>

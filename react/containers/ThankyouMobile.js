@@ -77,14 +77,17 @@ class ThankyouMobileComponent extends React.PureComponent {
             <span>
               {moment(this.state.leadData.dateCreated)
                 .add(3, 'days')
-                .format('dddd, LL')}
+                .format('dddd, MMM DD, YYYY')}
             </span>
             <span />
           </p>
           <p className="odr-rcpt">ORDER RECEIPT</p>
           <p className="odr-rcpt-txt">
             Order Placed:{' '}
-            {moment(this.state.leadData.dateCreated).format('dddd, LL')} <br />
+            {moment(this.state.leadData.dateCreated).format(
+              'dddd, MMM DD, YYYY',
+            )}{' '}
+            <br />
             Order Number: {this.state.leadData.orderId}
             <br />
             Items Ordered:

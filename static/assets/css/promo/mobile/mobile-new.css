@@ -648,6 +648,7 @@ ul.s6-uls li:last-child {
 .ftr-txt a:hover {
   color: #000;
   text-decoration: none;
+  text-transform: uppercase;
 }
 /*--------------------PLUSE--------------------*/
 .pulse {
