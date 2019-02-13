@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
-import LazyLoad from 'react-lazyload';
+import moment from 'moment';
 import { Modal } from './Modal';
 import { CustomerCare } from './CustomerCare';
 import { PrivacyPolicy } from './PrivacyPolicy';
 import { TermsAndConditions } from './TermsAndConditions';
-import moment from 'moment';
 
 /**
  * @class Footer
@@ -61,7 +60,7 @@ class Footer extends PureComponent {
                   this.setState({ modal: 'footer_customer' });
                 }}
               >
-                Contact Us
+                Customer Care
               </a>
               <br />
               {moment().year()} © Yeah Keto

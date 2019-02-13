@@ -3,7 +3,7 @@ import React from 'react';
 const CustomerCare = () => (
   <div className="modal-body">
     <p className="normal title">
-      <b>Contact Us</b>
+      <b>Customer Care</b>
     </p>
     <p className="normal">&nbsp;</p>
     <p className="normal">

@@ -46,7 +46,7 @@ class FooterMobileNew extends React.Component {
               this.setState({ modal: 'footer_customer' });
             }}
           >
-            Contact Us
+            Customer Care
           </a>
           <br />
           <br />

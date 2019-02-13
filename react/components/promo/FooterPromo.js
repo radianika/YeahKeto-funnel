@@ -179,7 +179,7 @@ class FooterPromoComponent extends React.PureComponent {
                 this.setState({ modal: 'footer_customer' });
               }}
             >
-              Contact Us
+              Customer Care
             </a>
             <br />
             <br />
