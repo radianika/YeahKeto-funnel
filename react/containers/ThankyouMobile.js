@@ -3,7 +3,6 @@ import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
 import moment from 'moment';
-import { FooterMobileNew } from 'react/components/common';
 
 const productMapping = {
   4165: {
@@ -186,7 +185,6 @@ class ThankyouMobileComponent extends React.PureComponent {
             </li>
           </ul>
         </div>
-        <FooterMobileNew />
       </div>
     );
   }

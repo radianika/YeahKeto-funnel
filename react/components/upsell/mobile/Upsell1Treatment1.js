@@ -3,7 +3,6 @@ import moment from 'moment';
 import axios from 'axios';
 import { withRouter } from 'next/router';
 import { getQueryString } from 'helpers';
-import { FooterMobileNew } from 'react/components/common';
 
 /**
  * @class Upsell1Treatment1Component
@@ -119,8 +118,6 @@ class Upsell1Treatment1Component extends React.PureComponent {
             </div>
           </div>
         </div>
-        <p className="clearall" />
-        <FooterMobileNew />
       </div>
     );
   }
