@@ -88,7 +88,7 @@ class Upsell2Treatment2 extends React.PureComponent {
             </div>
             <div className="up1-dscount-cpn">
               <p className="dscnt-txt1">Add Your <span className="spcl-dscnt">Special Discounted</span> Bottle Just Pay a Special Price <span className="prc-dscnt">$89.99<img src="/static/promo/mobile/images/images/red-stick.png" /></span></p>
-              <p className="price-text2">$49.99</p>
+              <p className="price-text2">$65.00</p>
               <a href="thank-you.php"><img src="/static/promo/mobile/images/images/upsell-btn.png" className="upsell-btn pulse" /></a>
               <a href="thank-you.php"><p className="no-txt">No thanks, I’m not interested</p></a>
             </div>

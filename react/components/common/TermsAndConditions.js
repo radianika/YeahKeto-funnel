@@ -46,13 +46,6 @@ export const TermsAndConditions = () => (
       <b>Toll Free Customer Service phone:</b> 1-844-302-2619
     </p>
     <p className="normal">&nbsp;</p>
-    <p className="normal">
-      <b>
-        All charges on your bank statement will read:
-        &quot;YeahKeto8443022619&quot;
-      </b>
-    </p>
-    <p className="normal">&nbsp;</p>
     <p className="normal title">Prices</p>
     <p className="normal">&nbsp;</p>
     <p className="list">Yeah! Keto 5 Pack: $195.00</p>
@@ -61,9 +54,13 @@ export const TermsAndConditions = () => (
     <p className="normal">&nbsp;</p>
     <p className="list">Yeah! Keto 1 Pack: $69.00</p>
     <p className="normal">&nbsp;</p>
-    <p className="list">Yeah! Caralluma 1 Pack: $69.00</p>
+    <p className="list">Yeah! Caralluma 1 Pack: $65.00</p>
+    <p className="normal">&nbsp;</p>
+    <p className="list">Yeah! Caralluma 3 Pack: $144.00</p>
     <p className="normal">&nbsp;</p>
     <p className="list">Yeah! Forskolin 1 Pack: $67.00</p>
+    <p className="normal">&nbsp;</p>
+    <p className="list">Yeah! Forskolin 3 Pack: $147.00</p>
     <p className="normal">&nbsp;</p>
     <p className="normal">&nbsp;</p>
     <p className="normal title">

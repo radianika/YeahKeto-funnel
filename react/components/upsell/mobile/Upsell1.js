@@ -92,7 +92,7 @@ class Upsell1Component extends React.PureComponent {
             </div>
             <div className="up1-dscount-cpn">
               <p className="dscnt-txt1">Add Your <span className="spcl-dscnt spcl-dscnt1">Special Discounted</span> Bottle Just Pay a Special Price <span className="prc-dscnt">$89.99<img src="images/red-stick.png" /></span></p>
-              <p className="price-text2 price-text2-up2">$49.99</p>
+              <p className="price-text2 price-text2-up2">$67.00</p>
               <a href="upsell-2.php"><img src="images/upsell-btn.png" className="upsell-btn pulse" /></a>
               <a href="upsell-2.php"><p className="no-txt">No thanks, I’m not interested</p></a>
             </div>
