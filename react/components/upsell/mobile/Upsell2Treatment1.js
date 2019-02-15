@@ -114,7 +114,7 @@ class Upsell2Treatment1 extends React.PureComponent {
                     alt=""
                   />$120/<sup>ea</sup>
                 </span>{' '}
-                $77/<sup>ea</sup>
+                48/<sup>ea</sup>
               </p>
 
               <a onClick={this.upgrade}>
