@@ -58,7 +58,7 @@ class Upsell21 extends React.PureComponent {
                       </ul>
                       <div className="up-prd-info">
                         <p className="up-prd-p1">Add Your <span>Special Discounted</span> Bottle<br />Just Pay a Special Price <span><img src="/static/promo/desktop/images/images/strike.png" alt />$89.99</span></p>
-                        <p className="prd-prc">$49.99</p>
+                        <p className="prd-prc">$65.00</p>
                         <a href="#" onClick={this.upgrade}><img src="/static/promo/desktop/images/images/up-btn.png" alt className="up-btn" /></a>
                         <a href="#" onClick={this.skipUpsell}><p className="no-p"> No thanks, I’m not interested </p></a>
                       </div>
