@@ -3,7 +3,6 @@ import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
 import moment from 'moment';
-import { Footer } from 'react/components/common';
 
 const productMapping = {
   4165: {
@@ -242,7 +241,6 @@ class ThankyouDesktopComponent extends React.Component {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
