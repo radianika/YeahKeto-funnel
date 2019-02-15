@@ -33,6 +33,7 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 0,
     'function-paren-newline': 0,
     'arrow-parens': 0,
+    'jsx-a11y/iframe-has-title': 0,
   },
   settings: {
     'import/resolver': {

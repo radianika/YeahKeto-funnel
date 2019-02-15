@@ -2,7 +2,6 @@ import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import { getQueryString } from 'helpers';
-import { FooterMobileNew } from 'react/components/common';
 
 /**
  * @class Upsell2Treatment1
@@ -135,8 +134,6 @@ class Upsell2Treatment1 extends React.PureComponent {
             </div>
           </div>
         </div>
-        <p className="clearall" />
-        <FooterMobileNew />
       </div>
     );
   }

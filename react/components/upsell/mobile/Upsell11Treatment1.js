@@ -3,7 +3,6 @@ import moment from 'moment';
 import axios from 'axios';
 import { withRouter } from 'next/router';
 import { getQueryString } from 'helpers';
-import { FooterMobileNew } from 'react/components/common';
 
 /**
  * @class Upsell11Treatment1Component
@@ -87,7 +86,9 @@ class Upsell11Treatment1Component extends React.PureComponent {
             <div className="up1-dscount-cpn">
               <p className="dscnt-txt1">
                 Add Your{' '}
-                <span className="spcl-dscnt spcl-dscnt1">Special Discounted</span>{' '}
+                <span className="spcl-dscnt spcl-dscnt1">
+                  Special Discounted
+                </span>{' '}
                 Bottle Just Pay a Special Price{' '}
                 <span className="prc-dscnt">
                   $89.99<img
@@ -115,8 +116,6 @@ class Upsell11Treatment1Component extends React.PureComponent {
             </div>
           </div>
         </div>
-        <p className="clearall" />
-        <FooterMobileNew />
       </div>
     );
   }

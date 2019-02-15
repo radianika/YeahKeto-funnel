@@ -1,9 +1,6 @@
 import React from 'react';
-import axios from 'axios';
-import moment from 'moment';
 import { PromoSession } from 'react/components/common';
 import { getQueryString } from 'helpers';
-import { Footer } from 'react/components/common';
 
 /**
  * @class Upsell2
@@ -29,10 +26,11 @@ class Upsell2 extends React.PureComponent {
               <img
                 src="/static/promo/desktop/img/logo.png"
                 className="up-logo"
+                alt=""
               />
               <img
                 src="/static/promo/desktop/img/chk-hdr.png"
-                alt
+                alt=""
                 className="up-steps"
               />
               <div className="inr-chk inr-pack inr-upsell">
@@ -48,12 +46,12 @@ class Upsell2 extends React.PureComponent {
                     <div className="up-lft up1-1-lft">
                       <img
                         src="/static/promo/desktop/img/up2-1-prd.png"
-                        alt
+                        alt=""
                         className="up-prd"
                       />
                       <img
                         src="/static/promo/desktop/img/up-lft-img1.png"
-                        alt
+                        alt=""
                         className="up-lft-img1"
                       />
                       <div className="up-seal">
@@ -67,6 +65,7 @@ class Upsell2 extends React.PureComponent {
                       <img
                         src="/static/promo/desktop/img/up1-logo.png"
                         className="up1-logo"
+                        alt=""
                       />
                       <p className="up-rgt-txt3">
                         Advanced Appetite Suppression*
@@ -75,7 +74,7 @@ class Upsell2 extends React.PureComponent {
                         <li>
                           <img
                             src="/static/promo/desktop/img/up-tick.png"
-                            alt
+                            alt=""
                             className="for-desk"
                           />
                           <p>
@@ -86,7 +85,7 @@ class Upsell2 extends React.PureComponent {
                         <li>
                           <img
                             src="/static/promo/desktop/img/up-tick.png"
-                            alt
+                            alt=""
                             className="for-desk"
                           />
                           <p>
@@ -97,7 +96,7 @@ class Upsell2 extends React.PureComponent {
                         <li>
                           <img
                             src="/static/promo/desktop/img/up-tick.png"
-                            alt
+                            alt=""
                             className="for-desk"
                           />
                           <p>
@@ -115,7 +114,7 @@ class Upsell2 extends React.PureComponent {
                           <span>
                             <img
                               src="/static/promo/desktop/img/price-cut.png"
-                              alt
+                              alt=""
                             />$120/<sup>ea</sup>
                           </span>{' '}
                           48/<sup>ea</sup>
@@ -123,7 +122,7 @@ class Upsell2 extends React.PureComponent {
                         <a onClick={this.upgrade}>
                           <img
                             src="/static/promo/desktop/img/up-btn.png"
-                            alt
+                            alt=""
                             className="up-btn"
                           />
                         </a>
@@ -141,7 +140,6 @@ class Upsell2 extends React.PureComponent {
             </div>
           </div>
         </div>
-        <Footer />
       </React.Fragment>
     );
   }

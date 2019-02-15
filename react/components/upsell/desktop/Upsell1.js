@@ -2,8 +2,6 @@ import React from 'react';
 import { PromoSession } from 'react/components/common';
 import { withRouter } from 'next/router';
 import { getQueryString } from 'helpers';
-import { SatisfactionBox } from './SatisfactionBox';
-import { Footer } from 'react/components/common';
 
 /**
  * @class Upsell1Component
@@ -23,19 +21,27 @@ class Upsell1Component extends React.PureComponent {
     return (
       <React.Fragment>
         <PromoSession pageType="upsellPage1" />
-        {/** Offer Conversion: Yeah Keto F  */ }
-        <iframe src="http://komodo.go2cloud.org/aff_l?offer_id=1" scrolling="no" frameBorder="0" width="1" height="1"></iframe>
-        {/** End Offer Conversion */ }
+        {/** Offer Conversion: Yeah Keto F  */}
+        <iframe
+          title=""
+          src="http://komodo.go2cloud.org/aff_l?offer_id=1"
+          scrolling="no"
+          frameBorder="0"
+          width="1"
+          height="1"
+        />
+        {/** End Offer Conversion */}
         <div className="up-bg">
           <div className="inner-container">
             <div className="up-inr">
               <img
                 src="/static/promo/desktop/img/logo.png"
                 className="up-logo"
+                alt=""
               />
               <img
                 src="/static/promo/desktop/img/chk-hdr.png"
-                alt
+                alt=""
                 className="up-steps"
               />
               <div className="inr-chk inr-pack inr-upsell">
@@ -51,12 +57,12 @@ class Upsell1Component extends React.PureComponent {
                     <div className="up-lft up2-lft up1-1-lft">
                       <img
                         src="/static/promo/desktop/img/up1-1-prd.png"
-                        alt
+                        alt=""
                         className="up-prd"
                       />
                       <img
                         src="/static/promo/desktop/img/up2-lft-img1.png"
-                        alt
+                        alt=""
                         className="up-lft-img1"
                       />
                       <div className="up-seal">
@@ -70,6 +76,7 @@ class Upsell1Component extends React.PureComponent {
                       <img
                         src="/static/promo/desktop/img/up2-logo.png"
                         className="up1-logo"
+                        alt=""
                       />
                       <p className="up-rgt-txt3 up2-rgt-txt3">
                         Advanced Metabolic Support Formula*
@@ -78,7 +85,7 @@ class Upsell1Component extends React.PureComponent {
                         <li>
                           <img
                             src="/static/promo/desktop/img/up2-tick.png"
-                            alt
+                            alt=""
                             className="for-desk"
                           />
                           <p>
@@ -89,7 +96,7 @@ class Upsell1Component extends React.PureComponent {
                         <li>
                           <img
                             src="/static/promo/desktop/img/up2-tick.png"
-                            alt
+                            alt=""
                             className="for-desk"
                           />
                           <p>
@@ -100,7 +107,7 @@ class Upsell1Component extends React.PureComponent {
                         <li>
                           <img
                             src="/static/promo/desktop/img/up2-tick.png"
-                            alt
+                            alt=""
                             className="for-desk"
                           />
                           <p>
@@ -118,7 +125,7 @@ class Upsell1Component extends React.PureComponent {
                           <span>
                             <img
                               src="/static/promo/desktop/img/price-cut.png"
-                              alt
+                              alt=""
                             />$120/<sup>ea</sup>
                           </span>{' '}
                           49/<sup>ea</sup>
@@ -126,7 +133,7 @@ class Upsell1Component extends React.PureComponent {
                         <a onClick={this.upgrade}>
                           <img
                             src="/static/promo/desktop/img/up-btn.png"
-                            alt
+                            alt=""
                             className="up-btn"
                           />
                         </a>
@@ -144,7 +151,6 @@ class Upsell1Component extends React.PureComponent {
             </div>
           </div>
         </div>
-        <Footer />
       </React.Fragment>
     );
   }

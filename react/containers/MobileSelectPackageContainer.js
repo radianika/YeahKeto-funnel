@@ -2,7 +2,6 @@ import React from 'react';
 // import { Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
 import { packages, getQueryString } from 'helpers';
-import { FooterMobileNew } from 'react/components/common';
 
 /**
  * @class MobileSelectPackageContainer
@@ -70,8 +69,6 @@ class MobileSelectPackageContainer extends React.PureComponent {
             </div>
           </div>
         ))}
-        <div className="clearboth" />
-        <FooterMobileNew />
       </div>
     );
   }
