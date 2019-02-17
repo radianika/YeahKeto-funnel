@@ -27,13 +27,13 @@ const productMapping = {
     imgUrl: '/static/promo/mobile/images/images/thk-prd-2.png',
     name: 'Yeah Forskolin',
     packSize: '1 Bottle',
-    price: 67.00,
+    price: 67.0,
   },
   4166: {
     imgUrl: '/static/promo/mobile/images/images/thk-prd-1.png',
     name: 'Yeah Caralluma',
     packSize: '1 Bottle',
-    price: 65.00,
+    price: 65.0,
   },
   4167: {
     imgUrl: '/static/promo/mobile/images/images/thk-prd-2.png',
