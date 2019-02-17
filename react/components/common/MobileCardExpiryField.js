@@ -33,6 +33,11 @@ class MobileCardExpiryField extends React.PureComponent {
     const { value } = props.input;
     const hasError = props.meta.touched && props.meta.error;
     const valid = props.input.value && props.meta.valid;
+
+    const validMonth = props.input.value.cardMonth;
+    const validYear = props.input.value.cardYear;
+    const errorMonth = validMonth ? false : hasError;
+    const errorYear = validYear ? false : hasError;
     return (
       <React.Fragment>
         <div
@@ -58,6 +63,11 @@ class MobileCardExpiryField extends React.PureComponent {
               ))}
             </select>
           </span>
+          <i
+            style={{ display: errorMonth || validMonth }}
+            className={`fv-control-feedback cardMonth ${errorMonth && 'fa fa-times'} ${validMonth &&
+            'fa fa-check'}`}
+          />
           <span>
             <select
               name="cardYear"
@@ -74,6 +84,11 @@ class MobileCardExpiryField extends React.PureComponent {
               ))}
             </select>
           </span>
+          <i
+            style={{ display: errorYear || validYear }}
+            className={`fv-control-feedback cardYear ${errorYear && 'fa fa-times'} ${validYear &&
+            'fa fa-check'}`}
+          />
           <div className="clearall" />
           {hasError && (
             <small className="fv-help-block">{props.meta.error}</small>

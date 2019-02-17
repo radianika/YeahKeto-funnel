@@ -37,6 +37,11 @@
   border-color: #0fff48;
 }
 
+.chkfrm-mid .fv-control-feedback {
+  top: 5px;
+  right: 5px;
+}
+
 .frm-elem-cvv.fv-has-feedback .fv-control-feedback,
 .frmElemts.fv-has-feedback .fv-control-feedback {
   /*display: none !important;*/

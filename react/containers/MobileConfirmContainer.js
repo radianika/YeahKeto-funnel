@@ -324,6 +324,11 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                       autoComplete="cc-csc"
                       pattern="[0-9]*"
                     />
+                    <i
+                      style={{ display: hasError || valid }}
+                      className={`fv-control-feedback mobile-cvv ${hasError && 'fa fa-times'} ${valid &&
+                      'fa fa-check'}`}
+                    />
                     <img
                       src="/static/promo/mobile/images/cvv.png"
                       width="402"
