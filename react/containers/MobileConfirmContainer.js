@@ -165,36 +165,74 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     const { cid } = this.props.query;
 
     return (
-      <div id="container"> 
+      <div id="container">
         {this.props.submitStatus === 'submitting' && <Spinner />}
         <img src="/static/promo/mobile/images/images/top-img.jpg" alt />
         <div id="ck-sec2">
-          <p className="chk-toptxt1" style={{margin: '0px'}}>enter your payment information</p>
+          <p className="chk-toptxt1" style={{ margin: '0px' }}>
+            enter your payment information
+          </p>
           <div id="form-info">
             <div className="detailbox">
-              <div className={`${this.state.summaryOpen ? 'rotate' : ''} order-summry smrhding`} onClick={this.toggleSummary}>Order Summary</div>
-              <div className={`${this.state.summaryOpen ? '' : 'display-none'} rgtbox`}>
-                <div className="pricelist" id="btl1" >
-                  <p className="rgtboxtxt1"><span>Yeah Keto</span><br />
-                    { this.state.pack.name } </p>
+              <div
+                className={`${
+                  this.state.summaryOpen ? 'rotate' : ''
+                } order-summry smrhding`}
+                onClick={this.toggleSummary}
+              >
+                Order Summary
+              </div>
+              <div
+                className={`${
+                  this.state.summaryOpen ? '' : 'display-none'
+                } rgtbox`}
+              >
+                <div className="pricelist" id="btl1">
+                  <p className="rgtboxtxt1">
+                    <span>Yeah Keto</span>
+                    <br />
+                    {this.state.pack.name}{' '}
+                  </p>
                   <ul className="rgtlist">
                     <li className="one">Price:</li>
                     <li className="two">${this.state.pack.packagePrice}</li>
                     <li className="one">Shipping &amp; Handling:</li>
                     <li className="two"> $0.00 </li>
-                    <li className="one" style={{background: '#143869', color: '#fff', marginTop: '15px'}}><span>TOTAL:</span></li>
-                    <li className="two" style={{background: '#143869', color: '#fff', marginTop: '15px'}}><span>${this.state.pack.packagePrice}</span></li>
+                    <li
+                      className="one"
+                      style={{
+                        background: '#143869',
+                        color: '#fff',
+                        marginTop: '15px',
+                      }}
+                    >
+                      <span>TOTAL:</span>
+                    </li>
+                    <li
+                      className="two"
+                      style={{
+                        background: '#143869',
+                        color: '#fff',
+                        marginTop: '15px',
+                      }}
+                    >
+                      <span>${this.state.pack.packagePrice}</span>
+                    </li>
                   </ul>
                 </div>
                 <center>
-                  <img src="/static/promo/mobile/images/images/post.jpg" width="100%" alt />
+                  <img
+                    src="/static/promo/mobile/images/images/post.jpg"
+                    width="100%"
+                    alt
+                  />
                 </center>
               </div>
             </div>
           </div>
         </div>
         <div className="clearall" />
-        <div className="frm-bg">
+        <div className="frm-bg checkout">
           <div className="sameas">
             <p className="membership">
               <div className="cards">
@@ -206,11 +244,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                     active_cc_type === 'visa' ? 'active' : ''
                   }`}
                 >
-                  <img
-                    src="/static/Visa.png"
-                    className="card-image"
-                    alt=""
-                  />
+                  <img src="/static/Visa.png" className="card-image" alt="" />
                 </span>
                 <span
                   className={`card-mastercard ${
@@ -228,11 +262,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                     active_cc_type === 'american-express' ? 'active' : ''
                   }`}
                 >
-                  <img
-                    src="/static/amex.png"
-                    className="card-image"
-                    alt=""
-                  />
+                  <img src="/static/amex.png" className="card-image" alt="" />
                 </span>
                 <span
                   className={`card-discover" ${
@@ -249,7 +279,11 @@ class MobileConfirmContainerComponent extends React.PureComponent {
             </p>
           </div>
           <div className="clearall" />
-          <div style={{ display: 'block', 'padding': '0 0 0 33px' }} className="mobile-payment-wrapper" id="cardDiv">
+          <div
+            style={{ display: 'block', padding: '0 0 0 33px' }}
+            className="mobile-payment-wrapper"
+            id="cardDiv"
+          >
             <div className="clearall" />
             <div className="clearall" />
             <Field
@@ -267,10 +301,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
               pattern="[0-9]*"
             />
             <div className="clearall" />
-            <Field
-              name="cardExpiry"
-              component={MobileCardExpiryField}
-            />
+            <Field name="cardExpiry" component={MobileCardExpiryField} />
             <div className="clearall" />
             <Field
               name="cardSecurityCode"
@@ -316,9 +347,22 @@ class MobileConfirmContainerComponent extends React.PureComponent {
         </div>
         <div className="clearall" />
         <div className="btn-box">
-          <img src="/static/promo/mobile/images/images/secure-img.png" className="secure-img" />  
-          <a href="#" onClick={this.props.handleSubmit(this.confirmOrder)}><img src="/static/promo/mobile/images/images/ck-btn.png" alt className="trial-btn pulse" /></a> 
-          <img src="/static/promo/mobile/images/images/c-logo.png" alt className="c-logo" /> 
+          <img
+            src="/static/promo/mobile/images/images/secure-img.png"
+            className="secure-img"
+          />
+          <a href="#" onClick={this.props.handleSubmit(this.confirmOrder)}>
+            <img
+              src="/static/promo/mobile/images/images/ck-btn.png"
+              alt
+              className="trial-btn pulse"
+            />
+          </a>
+          <img
+            src="/static/promo/mobile/images/images/c-logo.png"
+            alt
+            className="c-logo"
+          />
         </div>
         <FooterMobileNew />
       </div>
