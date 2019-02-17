@@ -20,19 +20,19 @@ const productMapping = {
   4161: {
     imgUrl: '/static/promo/mobile/images/images/thk-prd.png',
     name: 'Yeah Keto',
-    packSize: '1 Bottles',
+    packSize: '1 Bottle',
     price: 69,
   },
   4168: {
     imgUrl: '/static/promo/mobile/images/images/thk-prd-2.png',
     name: 'Yeah Forskolin',
-    packSize: '1 Bottles',
+    packSize: '1 Bottle',
     price: 67.00,
   },
   4166: {
     imgUrl: '/static/promo/mobile/images/images/thk-prd-1.png',
     name: 'Yeah Caralluma',
-    packSize: '1 Bottles',
+    packSize: '1 Bottle',
     price: 65.00,
   },
 };
