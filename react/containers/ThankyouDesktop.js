@@ -9,19 +9,19 @@ const productMapping = {
     imgUrl: '/static/promo/desktop/images/images/thk-prd.png',
     name: 'Yeah Keto',
     packSize: '5 Bottles',
-    price: 195,
+    price: 195.00,
   },
   4163: {
     imgUrl: '/static/promo/desktop/images/images/thk-prd.png',
     name: 'Yeah Keto',
     packSize: '3 Bottles',
-    price: 147,
+    price: 147.00,
   },
   4161: {
     imgUrl: '/static/promo/desktop/images/images/thk-prd.png',
     name: 'Yeah Keto',
     packSize: '1 Bottle',
-    price: 69,
+    price: 69.00,
   },
   4166: {
     imgUrl: '/static/promo/desktop/images/images/thk-prd-1.png',
