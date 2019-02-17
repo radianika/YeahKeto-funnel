@@ -10,7 +10,7 @@ import { getQueryString } from 'helpers';
  */
 class Upsell1Component extends React.PureComponent {
   upgrade = () => {
-    this.props.upgrade(4168, '/promo/desktop/upsell-2');
+    this.props.upgrade(4169, '/promo/desktop/upsell-2');
   };
 
   skipUpsell = () => {
@@ -133,7 +133,7 @@ class Upsell1Component extends React.PureComponent {
                         <a onClick={this.upgrade}>
                           <img
                             src="/static/promo/desktop/img/up-btn.png"
-                            alt=""
+                            alt="Update Order"
                             className="up-btn"
                           />
                         </a>
