@@ -9,25 +9,19 @@ const productMapping = {
     imgUrl: '/static/promo/mobile/images/images/thk-prd.png',
     name: 'Yeah Keto',
     packSize: '5 Bottles',
-    price: 195,
+    price: 195.00,
   },
   4163: {
     imgUrl: '/static/promo/mobile/images/images/thk-prd.png',
     name: 'Yeah Keto',
     packSize: '3 Bottles',
-    price: 147,
+    price: 147.00,
   },
   4161: {
     imgUrl: '/static/promo/mobile/images/images/thk-prd.png',
     name: 'Yeah Keto',
     packSize: '1 Bottle',
-    price: 69,
-  },
-  4168: {
-    imgUrl: '/static/promo/mobile/images/images/thk-prd-2.png',
-    name: 'Yeah Forskolin',
-    packSize: '1 Bottle',
-    price: 67.00,
+    price: 69.00,
   },
   4166: {
     imgUrl: '/static/promo/mobile/images/images/thk-prd-1.png',
@@ -36,17 +30,24 @@ const productMapping = {
     price: 65.00,
   },
   4167: {
-    imgUrl: '/static/promo/mobile/images/images/thk-prd-2.png',
-    name: 'Yeah Forskolin',
-    packSize: '3 Bottles',
-    price: 147.00,
-  },
-  4169: {
     imgUrl: '/static/promo/mobile/images/images/thk-prd-1.png',
     name: 'Yeah Caralluma',
     packSize: '3 Bottles',
     price: 144.00,
   },
+  4168: {
+    imgUrl: '/static/promo/mobile/images/images/thk-prd-2.png',
+    name: 'Yeah Forskolin',
+    packSize: '1 Bottle',
+    price: 67.00,
+  },
+  4169: {
+    imgUrl: '/static/promo/mobile/images/images/thk-prd-2.png',
+    name: 'Yeah Forskolin',
+    packSize: '3 Bottles',
+    price: 147.00,
+  },
+
 };
 
 /**
