@@ -113,7 +113,7 @@ class Upsell21Treatment1 extends React.PureComponent {
                 <img
                   src="/static/promo/mobile/images/images/upsell-btn.png"
                   className="upsell-btn pulse"
-                  alt=""
+                  alt="Update Order"
                 />
               </a>
               <a onClick={this.skipUpsell}>
