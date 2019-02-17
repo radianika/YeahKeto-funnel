@@ -96,7 +96,7 @@ class Upsell11Treatment1Component extends React.PureComponent {
                   />
                 </span>
               </p>
-              <p className="price-text2 price-text2-up2">$49.99</p>
+              <p className="price-text2 price-text2-up2">$67.00</p>
               <a onClick={this.upgrade}>
                 <img
                   src="/static/promo/mobile/images/images/upsell-btn.png"
