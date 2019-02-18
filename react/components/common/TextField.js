@@ -1,21 +1,24 @@
 import React from 'react';
 
-const TextField = props => {
+const TextField = originProps => {
+  const containerClass = originProps;
+  const props = Object.assign({}, originProps);
+  delete props.containerClass;
   const hasError = props.meta.touched && props.meta.error;
   const valid = props.input.value && props.meta.valid;
   return (
     <div
-      className={`${props.containerClass} pure-control-group ${
+      className={`${containerClass} pure-control-group ${
         props.large ? 'frmelements' : 'frmElemts'
       } fv-has-feedback ${hasError && 'fv-has-error'} ${valid &&
         'fv-has-success'}`}
     >
-      {
-        props.label ? <label>
+      {props.label ? (
+        <label>
           {props.label}
           {props.required && <span>*</span>}
-        </label> : null
-      }
+        </label>
+      ) : null}
       {!props.large ? (
         <React.Fragment>
           <input {...props} {...props.input} />
