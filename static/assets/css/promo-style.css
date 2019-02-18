@@ -37,6 +37,31 @@
   border-color: #0fff48;
 }
 
+.chkfrm-mid .fv-control-feedback {
+  top: 5px;
+  right: 40px;
+}
+
+.chkfrm-mid .pure-control-group {
+  width: 100%;
+}
+
+.chkfrm-mid .pure-control-group .fa-times {
+  color: #ca3c3c;
+}
+
+.chkfrm-mid .pure-control-group .fa-check {
+  color: #0fff48;
+}
+
+.desktop-cardMonth {
+  right: 200px!important;
+}
+
+.desktop-cardYear {
+  right: 135px!important;
+}
+
 .frm-elem-cvv.fv-has-feedback .fv-control-feedback,
 .frmElemts.fv-has-feedback .fv-control-feedback {
   /*display: none !important;*/
@@ -47,13 +72,8 @@
 }
 
 .frm-elem-cvv .fv-control-feedback {
-  right: 103px !important;
+  right: 133px !important;
 }
-
-/*.frmElemts input,
-.frmElemts select {
-  margin-bottom: 3px;
-}*/
 
 .thank-middle.package {
   display: none;
