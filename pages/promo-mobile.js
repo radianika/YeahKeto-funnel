@@ -159,7 +159,6 @@ class Promo extends React.PureComponent {
             type="text/css"
             href="/static/assets/css/common/slick.css"
           />
-          <script src="/static/assets/js/common/slick.js" />
         </Head>
         {this.props.sessionId && <PromoSession pageType="leadPage" />}
         <PromoMobileContainer {...this.props} />
