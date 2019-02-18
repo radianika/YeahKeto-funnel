@@ -825,6 +825,8 @@ app.prepare().then(() => {
       ) {
         console.log('coming here also');
         res.redirect('/promo');
+      } else if (req.url === '/') {
+        res.redirect('/promo');
       }
       return handle(req, res);
     } catch (error) {
