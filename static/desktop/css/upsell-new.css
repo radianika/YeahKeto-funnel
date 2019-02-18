@@ -20,36 +20,36 @@ body {
 }
 
 div,
-ul,
+form,
 h1,
 h2,
 h3,
 h4,
 h5,
+img,
+input,
 li,
 p,
-img,
-form,
-input,
-textarea {
+textarea,
+ul {
   margin: 0;
   padding: 0;
 }
 
-header,
-section,
-footer,
-aside,
-nav,
-main,
 article,
-figure {
+aside,
+figure,
+footer,
+header,
+main,
+nav,
+section {
   display: block;
 }
 
 table,
-tr,
-td {
+td,
+tr {
   border: 0;
 }
 
@@ -127,7 +127,7 @@ CSS FOR UPSELL PAGE
 .up-bg {
   float: left;
   width: 100%;
-  background: url(/static/promo/desktop/img/up-bg.jpg) center top no-repeat;
+  background: url("/static/promo/desktop/img/up-bg.jpg") center top no-repeat;
 }
 
 .up-inr {
@@ -227,7 +227,7 @@ CSS FOR UPSELL PAGE
   position: absolute;
   right: -66px;
   top: 25px;
-  background: url(/static/promo/desktop/img/up-seal.png) center top no-repeat;
+  background: url("/static/promo/desktop/img/up-seal.png") center top no-repeat;
   width: 128px;
   height: 128px;
 }
@@ -431,8 +431,7 @@ CSS FOR THANKYOU PAGE
 .thnk-recpt-box {
   float: left;
   width: 100%;
-  background: #f1f1f1 url(/static/promo/desktop/img/thnk-bg.png) repeat-x left
-    top;
+  /* background: #f1f1f1 url("/static/promo/desktop/img/thnk-bg.png") repeat-x left top; */
   padding: 30px 35px;
   margin: 30px 0 0;
 }
@@ -547,7 +546,7 @@ CSS FOR THANKYOU PAGE
 .thk-total-div {
   float: left;
   width: 100%;
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 
 .thk-total-inn {
@@ -592,7 +591,7 @@ ul.user-info li {
   width: 100%;
   position: relative;
   padding-left: 120px;
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
   color: #3a3a3c;
   font-size: 18px;
   line-height: 24px;
@@ -608,13 +607,11 @@ ul.user-info li span {
 .pad-top {
   padding: 20px 0 0;
 }
+/*/
 
-/*/*-------------------------
-CSS FOR FOOTER
---------------------------*/
-
+*------------------------- CSS FOR FOOTER --------------------------*/
 .footer {
-  padding: 40px 0 40px 0;
+  padding: 40px 0;
   float: left;
   width: 100%;
 }
