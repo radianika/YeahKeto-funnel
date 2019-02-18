@@ -20,34 +20,31 @@ class PromoCheckout extends React.PureComponent {
     this.timerRef = '';
     this.state = {
       selected: packages[0],
-      scrolled: false,
-      timerData: '05:00'
+      timerData: '05:00',
     };
-    console.log(this.props);
   }
 
   componentDidMount() {
-    var spd = 100;
-    var spdVal = 10;
-    var cntDown = 5 * 60 * spdVal;
+    const spd = 100;
+    const spdVal = 10;
+    let cntDown = 5 * 60 * spdVal;
 
     const self = this;
-    self.timerRef = setInterval(function () {
-      var mn, sc, ms;
-      cntDown--;
-      if(cntDown < 0) {
+    self.timerRef = setInterval(() => {
+      let mn;
+      let sc;
+      cntDown -= 1;
+      if (cntDown < 0) {
         return false;
       }
-      mn = Math.floor((cntDown / spdVal) / 60 );
-      mn = (mn < 10 ? '0' + mn : mn);
+      mn = Math.floor(cntDown / spdVal / 60);
+      mn = mn < 10 ? `0${mn}` : mn;
       sc = Math.floor((cntDown / spdVal) % 60);
-      sc = (sc < 10 ? '0' + sc : sc);
-      ms = Math.floor(cntDown % spdVal);
-      ms = (ms < 10 ? '0' + ms : ms);
-      var result = mn + ':' + sc;
-      self.setState({ timerData: result })
+      sc = sc < 10 ? `0${sc}` : sc;
+      const result = `${mn}:${sc}`;
+      self.setState({ timerData: result });
+      return true;
     }, spd);
-    window.addEventListener('scroll', () => this.setState({ scrolled: true }));
   }
 
   componentWillUnmount() {
@@ -69,11 +66,9 @@ class PromoCheckout extends React.PureComponent {
   sendTransactionDetails = () => {
     const { localStorage } = window;
     const id = `${this.state.selected.id}`;
-    const revenue = parseInt(this.state.selected.packagePrice);
+    const revenue = parseInt(this.state.selected.packagePrice, 10);
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
-    const eventsArray = [
-      'desktop-hp-text1-test-checkout'
-    ];
+    const eventsArray = ['desktop-hp-text1-test-checkout'];
     eventsArray.push(packMapping[id]);
     const tracking_data = {
       device_type: 'DESKTOP',
@@ -99,13 +94,7 @@ class PromoCheckout extends React.PureComponent {
   };
 
   render() {
-    const { selected } = this.state;
-    const shippingDate = moment().add(2, 'day');
     const { adv_sub, offerId, transaction_id } = this.props.query;
-    const variation313018 = this.props.abtastyParams.campaignMaps['313018'];
-    const variation319131 = this.props.abtastyParams.campaignMaps['319131'];
-    const variation319133 = this.props.abtastyParams.campaignMaps['319133'];
-    const variation319137 = this.props.abtastyParams.campaignMaps['319137'];
 
     return (
       <React.Fragment>
@@ -119,21 +108,42 @@ class PromoCheckout extends React.PureComponent {
           />
         ) : null}
         <div className="chk-section1">
-          <div className="chk-contentWrap"> 
+          <div className="chk-contentWrap">
             <div className="s1inner">
               <div className="chk-hdr">
-                <img src="/static/promo/desktop/images/images/logo.png" alt className="chk-logo" />
-                <img src="/static/promo/desktop/images/images/chk-hdr.png" alt className="chk-hdr-img" />
-                <img src="/static/promo/desktop/images/images/chk-seal.png" alt className="chk-seal" />
-              </div>        
+                <img
+                  src="/static/promo/desktop/images/images/logo.png"
+                  alt=""
+                  className="chk-logo"
+                />
+                <img
+                  src="/static/promo/desktop/images/images/chk-hdr.png"
+                  alt=""
+                  className="chk-hdr-img"
+                />
+                <img
+                  src="/static/promo/desktop/images/images/chk-seal.png"
+                  alt=""
+                  className="chk-seal"
+                />
+              </div>
               <div className="chkmid-lft">
                 <div className="timer-box">
-                  <p className="toptimer-txt">Your Special 40% OFF Savings expires in - 
-                    <img src="/static/promo/desktop/images/images/chk-eye.png" alt className="chk-eye" /><span id="stopwatch">{this.state.timerData}</span></p>            
+                  <p className="toptimer-txt">
+                    Your Special 40% OFF Savings expires in -
+                    <img
+                      src="/static/promo/desktop/images/images/chk-eye.png"
+                      alt=""
+                      className="chk-eye"
+                    />
+                    <span id="stopwatch">{this.state.timerData}</span>
+                  </p>
                 </div>
-                <p className="lft-top-txt">SELECT YOUR PACKAGE TODAY &amp; SAVE MORE!</p>
+                <p className="lft-top-txt">
+                  SELECT YOUR PACKAGE TODAY &amp; SAVE MORE!
+                </p>
                 {packages.map((pack, index) => (
-                  <div key={pack.id} className={`prdbox${index+1}`}>
+                  <div key={pack.id} className={`prdbox${index + 1}`}>
                     <a
                       id={`select-package-${pack.id}`}
                       href="javascript:void(0);"
@@ -150,17 +160,34 @@ class PromoCheckout extends React.PureComponent {
                       <div className="free-shipping">Free Shipping</div>
                       <div className="box-lft">
                         <div className="lft-btl">
-                          <img src={`/static/promo/desktop/images/images/${
+                          <img
+                            src={`/static/promo/desktop/images/images/${
                               pack.desktopImg
-                            }`} alt className="rvw-product" /> 
-                        </div>                              
+                            }`}
+                            alt=""
+                            className="rvw-product"
+                          />
+                        </div>
                       </div>
 
                       <div className="box-rgt">
                         <div className="selected-arrow">{pack.msg} </div>
-                        <p className="retail-price">REGULAR PRICE <span>{pack.regularPrice}<img src="/static/promo/desktop/images/images/red-cut.png" alt className="red-cut" /></span></p>
-                        <p className="prdct-price">{pack.price}<span>/ea</span></p>
-                        <p className="you-save">You Save $214.98</p>  
+                        <p className="retail-price">
+                          REGULAR PRICE{' '}
+                          <span>
+                            {pack.regularPrice}
+                            <img
+                              src="/static/promo/desktop/images/images/red-cut.png"
+                              alt=""
+                              className="red-cut"
+                            />
+                          </span>
+                        </p>
+                        <p className="prdct-price">
+                          {pack.price}
+                          <span>/ea</span>
+                        </p>
+                        <p className="you-save">You Save $214.98</p>
                         <div className="selected-btn" />
                       </div>
                     </a>
@@ -173,19 +200,49 @@ class PromoCheckout extends React.PureComponent {
                   <div className="clearall" />
                   <div id="show1">
                     <div className="smrybox-lft">
-                      <div id="prod_img"><img src="/static/promo/desktop/images/images/5btl.png" alt className="smry-btl" /></div>
-                      <img src="/static/promo/desktop/images/images/logos.png" alt className="clogo" />  
+                      <div id="prod_img">
+                        <img
+                          src="/static/promo/desktop/images/images/5btl.png"
+                          alt=""
+                          className="smry-btl"
+                        />
+                      </div>
+                      <img
+                        src="/static/promo/desktop/images/images/logos.png"
+                        alt=""
+                        className="clogo"
+                      />
                     </div>
                     <div className="smrybox-rgt">
                       <ul className="smrylist">
-                        <li className="lft" style={{lineHeight: '20px'}}><b>Keto</b><br /><span id="package_type">{this.state.selected.title}</span></li>
-                        <li className="rgt" style={{padding: '0 0 12px 0'}}><span id="sub_total">{`$${this.state.selected.packagePrice}`}</span></li>
+                        <li className="lft" style={{ lineHeight: '20px' }}>
+                          <b>Keto</b>
+                          <br />
+                          <span id="package_type">
+                            {this.state.selected.title}
+                          </span>
+                        </li>
+                        <li className="rgt" style={{ padding: '0 0 12px 0' }}>
+                          <span id="sub_total">
+                            {`$${this.state.selected.packagePrice}`}
+                          </span>
+                        </li>
                         <li className="lft">Shipping &amp; Handling:</li>
-                        <li className="rgt" id="shipping_price">$0.00</li>
+                        <li className="rgt" id="shipping_price">
+                          $0.00
+                        </li>
                         <li className="lft">Discount</li>
                         <li className="rgt">$0.00</li>
-                        <li className="lft" style={{borderBottom: 'none'}}><b>Total:</b></li>
-                        <li className="rgt" style={{borderBottom: 'none'}} id="total_price"><b>{`$${this.state.selected.packagePrice}`}</b></li>
+                        <li className="lft" style={{ borderBottom: 'none' }}>
+                          <b>Total:</b>
+                        </li>
+                        <li
+                          className="rgt"
+                          style={{ borderBottom: 'none' }}
+                          id="total_price"
+                        >
+                          <b>{`$${this.state.selected.packagePrice}`}</b>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -196,18 +253,28 @@ class PromoCheckout extends React.PureComponent {
                 <div className="chkfrm-mid">
                   <PromoCheckoutPaymentForm onSubmit={this.submitBillingForm} />
                 </div>
-                <div className="chkfrm-btm" />   
+                <div className="chkfrm-btm" />
                 <div className="clearall" />
                 <div className="ck-bottom">
-                  <img src="/static/promo/desktop/images/images/ck-ba.png" alt className="ck-ba" /> 
-                  <p className="ck-bottom-p1">Stubborn belly fat was a major concern for me. Experienced an incredible transformation within a month of using Yeah Keto.</p> 
-                  <p className="ck-bottom-p2"><span>- Susie P.</span>  | Nevada</p>
+                  <img
+                    src="/static/promo/desktop/images/images/ck-ba.png"
+                    alt=""
+                    className="ck-ba"
+                  />
+                  <p className="ck-bottom-p1">
+                    Stubborn belly fat was a major concern for me. Experienced
+                    an incredible transformation within a month of using Yeah
+                    Keto.
+                  </p>
+                  <p className="ck-bottom-p2">
+                    <span>- Susie P.</span> | Nevada
+                  </p>
                 </div>
               </div>
             </div>
-          </div>  
+          </div>
         </div>
-        <p className="clearall"></p>
+        <p className="clearall" />
         <Footer />
       </React.Fragment>
     );
