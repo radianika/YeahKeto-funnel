@@ -16,6 +16,7 @@ import {
   billingFormValidator,
   normalizeCardNumber,
   normalizeSecurityCode,
+  testCardNumbers,
 } from 'helpers';
 
 /**
@@ -64,7 +65,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
       this.setState({ active_cc_type: cc_type[0].type });
     } else if (value.length < 3) {
       this.setState({ active_cc_type: '' });
-    } else if (value.slice(0, 4) === '1333') {
+    } else if (value.slice(0, 4) === testCardNumbers[0].slice(0, 4)) {
       this.setState({ active_cc_type: 'visa' });
     }
   };
