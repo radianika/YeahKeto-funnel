@@ -91,13 +91,13 @@ class Upsell11Treatment1Component extends React.PureComponent {
                 </span>{' '}
                 Bottle Just Pay a Special Price{' '}
                 <span className="prc-dscnt">
-                  $89.99<img
+                  89.99<img
                     src="/static/promo/mobile/images/images/red-stick.png"
                     alt=""
                   />
                 </span>
               </p>
-              <p className="price-text2 price-text2-up2">$67.00</p>
+              <p className="price-text2 price-text2-up2">67.00</p>
               <a onClick={this.upgrade}>
                 <img
                   src="/static/promo/mobile/images/images/upsell-btn.png"

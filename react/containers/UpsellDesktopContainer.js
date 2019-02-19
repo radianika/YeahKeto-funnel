@@ -1,22 +1,22 @@
 import React from 'react';
-import Head from 'next/head';
+import moment from 'moment';
 import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
 import { OrderActions } from 'redux/actions';
-import { Footer, Spinner, SuccessModal } from 'react/components/common';
+import { Spinner, SuccessModal } from 'react/components/common';
 import {
   Upsell1,
   Upsell11,
   Upsell2,
   Upsell21,
 } from '../components/upsell/desktop';
-import moment from 'moment';
 
 /**
  * @class UpsellDesktopContainerComponent
  * @extends {React.PureComponent}
- * @description Desktop container components for Upsells : Renders the Upsell pages according to the stage <br />
- * Also renders iframe for tracking variables
+ * @description Desktop container components for Upsells
+ * - Renders the Upsell pages according to the stage
+ * - renders iframe for tracking variables
  */
 class UpsellDesktopContainerComponent extends React.PureComponent {
   upgrade = (productId, nextPage) => {
@@ -29,7 +29,9 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
   };
 
   render() {
-    const { upsell, offerId, adv_sub, affId } = this.props.query;
+    const {
+      upsell, offerId, adv_sub, affId,
+    } = this.props.query;
 
     return (
       <React.Fragment>
@@ -45,29 +47,27 @@ class UpsellDesktopContainerComponent extends React.PureComponent {
               style={{ position: 'absolute' }}
             />
           )}
-
-          <React.Fragment>
-            {upsell === 1 &&
-              affId === 'cake' && (
-                <iframe
-                  src="https://response-pixel.com/p.ashx?o=608&e=232"
-                  frameBorder="0"
-                  width="1"
-                  height="1"
-                  style={{ position: 'absolute' }}
-                />
-              )}
-          </React.Fragment>
-
+        <React.Fragment>
+          {upsell === 1 &&
+            affId === 'cake' && (
+              <iframe
+                src="https://response-pixel.com/p.ashx?o=608&e=232"
+                frameBorder="0"
+                width="1"
+                height="1"
+                style={{ position: 'absolute' }}
+              />
+            )}
+        </React.Fragment>
         <div className="container">
           <div className="upsell-box">
             <div className="up-top">
-            <p className="topbartxt">
-              <span>WARNING:</span> Due to extremely high media demand, there is
-              limited supply of <span>Yeah Keto</span> in stock as of{' '}
-              <span>{moment().format('dddd, ll')}</span>
-            </p>
-        </div>
+              <p className="topbartxt">
+                <span>WARNING:</span> Due to extremely high media demand, there
+                is limited supply of <span>Yeah Keto</span> in stock as of{' '}
+                <span>{moment().format('dddd, ll')}</span>
+              </p>
+            </div>
             {upsell === 1 && <Upsell1 upgrade={this.upgrade} {...this.props} />}
             {upsell === '1-1' && (
               <Upsell11 upgrade={this.upgrade} {...this.props} />

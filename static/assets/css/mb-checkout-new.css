@@ -631,35 +631,44 @@ input[type="checkbox"] {
 .mobile-payment-wrapper .fv-control-feedback {
   top: 52px;
   right: 50px;
+  font-size: 25px;
 }
 
 .mobile-cvv {
-  top: 60px!important;
-  right: 490px!important;
+  top: 60px !important;
+  right: 490px !important;
 }
 
 .cardMonth {
-  right: 450px!important;
+  right: 450px !important;
 }
 
 .cardYear {
-  right: 255px!important;
+  right: 255px !important;
 }
 
 .checkout .fa-check {
-  color: #651d85;
+  /*color: #651d85;*/
+  /* 93 */
+  color: #1cb841;
 }
 
 .checkout .fv-has-success input {
-  border: 1px solid #651d85;
+  /*border: 1px solid #651d85;*/
+  /* 93 */
+  border: 1px solid #1cb841;
 }
 
 .checkout .fv-has-success label {
-  color: #651d85 !important;
+  /*color: #651d85 !important;*/
+  /* 93 */
+  color: #1cb841;
 }
 
 .checkout .fv-has-success select {
-  border: 1px solid #651d85;
+  /*border: 1px solid #651d85;*/
+  /* 93 */
+  border: 1px solid #1cb841;
 }
 
 .fv-has-error,

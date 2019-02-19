@@ -9,43 +9,43 @@ const productMapping = {
     imgUrl: '/static/promo/desktop/images/images/thk-prd.png',
     name: 'Yeah Keto',
     packSize: '5 Bottles',
-    price: 195.00,
+    price: 195.0,
   },
   4163: {
     imgUrl: '/static/promo/desktop/images/images/thk-prd.png',
     name: 'Yeah Keto',
     packSize: '3 Bottles',
-    price: 147.00,
+    price: 147.0,
   },
   4161: {
     imgUrl: '/static/promo/desktop/images/images/thk-prd.png',
     name: 'Yeah Keto',
     packSize: '1 Bottle',
-    price: 69.00,
+    price: 69.0,
   },
   4166: {
     imgUrl: '/static/promo/desktop/images/images/thk-prd-1.png',
     name: 'Yeah Caralluma',
     packSize: '1 Bottle',
-    price: 65.00,
+    price: 65.0,
   },
   4167: {
     imgUrl: '/static/promo/desktop/images/images/thk-prd-1.png',
     name: 'Yeah Caralluma',
     packSize: '3 Bottles',
-    price: 144.00,
+    price: 144.0,
   },
   4168: {
     imgUrl: '/static/promo/desktop/images/images/thk-prd-2.png',
     name: 'Yeah Forskolin',
     packSize: '1 Bottle',
-    price: 67.00,
+    price: 67.0,
   },
   4169: {
     imgUrl: '/static/promo/desktop/images/images/thk-prd-2.png',
     name: 'Yeah Forskolin',
     packSize: '3 Bottles',
-    price: 147.00,
+    price: 147.0,
   },
 };
 
@@ -132,8 +132,8 @@ class ThankyouDesktopComponent extends React.Component {
                     <div className="thk-dtl-l">
                       <p className="thk-p3">Items Orderd</p>
                       <div className="thk-prds">
-                        {items.map(item => (
-                          <div className="thk-prd-row">
+                        {items.map((item, index) => (
+                          <div className="thk-prd-row" key={index}>
                             <div className="thk-prd-box">
                               <img src={item.imgUrl} alt="item" />
                             </div>

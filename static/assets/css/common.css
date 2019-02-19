@@ -473,3 +473,7 @@ input::-webkit-contacts-auto-fill-button {
 .modal-dialog {
   color: black !important;
 }
+
+.fv-control-feedback {
+  pointer-events: none;
+}

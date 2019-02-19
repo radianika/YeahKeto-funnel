@@ -4,7 +4,7 @@ import moment from 'moment';
 import { MobileConfirmContainer } from 'react/containers';
 import { connect } from 'react-redux';
 import { AuthActions, OrderActions } from 'redux/actions';
-import { PromoSession } from 'react/components/common';
+import { DisableBackButton, PromoSession } from 'react/components/common';
 import idx from 'idx';
 import axios from 'axios/index';
 
@@ -98,6 +98,7 @@ class Confirm extends React.PureComponent {
             href="/static/assets/css/formvalidation/formValidation.min.css"
           />
         </Head>
+        <DisableBackButton />
         <PromoSession pageType="checkoutPage" />
         <MobileConfirmContainer {...props} />
       </React.Fragment>
