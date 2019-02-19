@@ -171,7 +171,7 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       placeholder="Example: (123) 555-6789"
                       normalize={normalizePhone}
                       inputMode="numeric"
-                      pattern="[0-9]*"
+                      pattern="\d*"
                       autoCorrect="off"
                       autoComplete="tel"
                       type="tel"
