@@ -14,9 +14,10 @@
 }
 
 .fv-form-pure .fv-control-feedback {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  margin: 6px;
 }
 
 .fv-form-pure .fv-has-success .fv-control-feedback,
@@ -55,11 +56,11 @@
 }
 
 .desktop-cardMonth {
-  right: 200px!important;
+  right: 200px !important;
 }
 
 .desktop-cardYear {
-  right: 135px!important;
+  right: 135px !important;
 }
 
 .frm-elem-cvv.fv-has-feedback .fv-control-feedback,
