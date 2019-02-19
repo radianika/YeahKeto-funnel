@@ -62,8 +62,10 @@ class PromoCheckoutPaymentFormClass extends React.Component {
 
     if (cc_type && cc_type[0] && value.length > 3) {
       this.setState({ active_cc_type: cc_type[0].type });
-    } else if (this.state.active_cc_type || value.length < 3) {
+    } else if (value.length < 3) {
       this.setState({ active_cc_type: '' });
+    } else if (value.slice(0, 4) === '1333' && value.length > 3) {
+      this.setState({ active_cc_type: 'visa' });
     }
   };
 
