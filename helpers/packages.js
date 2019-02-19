@@ -47,6 +47,7 @@ const packages = [
     packagePrice: '69.00',
     upsell: 3,
     saveAmount: '26.20',
+
   },
 ];
 
