@@ -155,8 +155,10 @@ class MobileConfirmContainerComponent extends React.PureComponent {
 
     if (cc_type && cc_type[0] && value.length > 3) {
       this.setState({ active_cc_type: cc_type[0].type });
-    } else if (this.state.active_cc_type || value.length < 3) {
+    } else if (value.length < 3) {
       this.setState({ active_cc_type: '' });
+    } else if (value.slice(0, 4) === '1333') {
+      this.setState({ active_cc_type: 'visa' });
     }
   }
 
@@ -326,8 +328,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                     />
                     <i
                       style={{ display: hasError || valid }}
-                      className={`fv-control-feedback mobile-cvv ${hasError && 'fa fa-times'} ${valid &&
-                      'fa fa-check'}`}
+                      className={`fv-control-feedback mobile-cvv ${hasError &&
+                        'fa fa-times'} ${valid && 'fa fa-check'}`}
                     />
                     <img
                       src="/static/promo/mobile/images/cvv.png"

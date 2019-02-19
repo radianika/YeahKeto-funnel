@@ -64,7 +64,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
       this.setState({ active_cc_type: cc_type[0].type });
     } else if (value.length < 3) {
       this.setState({ active_cc_type: '' });
-    } else if (value.slice(0, 4) === '1333' && value.length > 3) {
+    } else if (value.slice(0, 4) === '1333') {
       this.setState({ active_cc_type: 'visa' });
     }
   };
@@ -93,7 +93,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
             className="fv-hidden-submit"
             style={{ display: 'none', height: 0, width: 0 }}
           />
-         
+
           <div className="cards">
             <span
               className={`card-visa ${
@@ -152,7 +152,12 @@ class PromoCheckoutPaymentFormClass extends React.Component {
             cvvClick={this._toggleCVVModal}
           />
           <div className="clearall" />
-          <input type="submit" className="chkbtn pulse" onClick={this.submitForm} value="" />
+          <input
+            type="submit"
+            className="chkbtn pulse"
+            onClick={this.submitForm}
+            value=""
+          />
         </form>
         {this.props.submitStatus === 'submitting' && <Spinner />}
         {this.props.submitStatus === 'success' && (
