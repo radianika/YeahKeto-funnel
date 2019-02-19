@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { connect } from 'react-redux';
+import { DisableBackButton } from 'react/components/common';
 import { UpsellDesktopContainer } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
 
@@ -35,12 +36,10 @@ class SelectPackage extends React.PureComponent {
             href="/static/assets/css/promo/desktop/upsell1.css"
             rel="stylesheet"
           />
-          <link
-            href="/static/desktop/css/upsell-new.css"
-            rel="stylesheet"
-          />
+          <link href="/static/desktop/css/upsell-new.css" rel="stylesheet" />
           <link href="/static/desktop/css/checkout.css" rel="stylesheet" />
         </Head>
+        <DisableBackButton />
         <UpsellDesktopContainer {...props} />
       </React.Fragment>
     );

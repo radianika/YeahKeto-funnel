@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { connect } from 'react-redux';
+import { DisableBackButton } from 'react/components/common';
 import { UpsellMobileContainer } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
 
@@ -63,6 +64,7 @@ class PromoMobileUpsell extends React.PureComponent {
           <link href="/static/mobile/css/upsell.css" rel="stylesheet" />
           {/* <link rel="stylesheet" type="text/css" href="/static/assets/css/mb-style.css" /> */}
         </Head>
+        <DisableBackButton />
         <UpsellMobileContainer {...props} />
       </React.Fragment>
     );
