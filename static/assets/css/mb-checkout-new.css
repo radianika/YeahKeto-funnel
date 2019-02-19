@@ -631,6 +631,7 @@ input[type="checkbox"] {
 .mobile-payment-wrapper .fv-control-feedback {
   top: 52px;
   right: 50px;
+  font-size: 25px;
 }
 
 .mobile-cvv {

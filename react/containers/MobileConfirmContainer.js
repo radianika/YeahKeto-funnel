@@ -13,6 +13,9 @@ import {
   getParameterByName,
   getQueryString,
   getRevenueAfterDiscount,
+  getDiscountPercent,
+  getDiscountAmount,
+  testCardNumbers
 } from 'helpers';
 import {
   TextField,
@@ -135,8 +138,10 @@ class MobileConfirmContainerComponent extends React.PureComponent {
 
     if (cc_type && cc_type[0] && value.length > 3) {
       this.setState({ active_cc_type: cc_type[0].type });
-    } else if (this.state.active_cc_type || value.length < 3) {
+    } else if (value.length < 3) {
       this.setState({ active_cc_type: '' });
+    } else if (value.slice(0, 4) === testCardNumbers[0].slice(0, 4)) {
+      this.setState({ active_cc_type: 'visa' });
     }
   }
 

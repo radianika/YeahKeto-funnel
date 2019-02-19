@@ -16,6 +16,7 @@ import {
   billingFormValidator,
   normalizeCardNumber,
   normalizeSecurityCode,
+  testCardNumbers,
 } from 'helpers';
 
 /**
@@ -62,8 +63,10 @@ class PromoCheckoutPaymentFormClass extends React.Component {
 
     if (cc_type && cc_type[0] && value.length > 3) {
       this.setState({ active_cc_type: cc_type[0].type });
-    } else if (this.state.active_cc_type || value.length < 3) {
+    } else if (value.length < 3) {
       this.setState({ active_cc_type: '' });
+    } else if (value.slice(0, 4) === testCardNumbers[0].slice(0, 4)) {
+      this.setState({ active_cc_type: 'visa' });
     }
   };
 
@@ -91,7 +94,7 @@ class PromoCheckoutPaymentFormClass extends React.Component {
             className="fv-hidden-submit"
             style={{ display: 'none', height: 0, width: 0 }}
           />
-         
+
           <div className="cards">
             <span
               className={`card-visa ${
@@ -150,7 +153,12 @@ class PromoCheckoutPaymentFormClass extends React.Component {
             cvvClick={this._toggleCVVModal}
           />
           <div className="clearall" />
-          <input type="submit" className="chkbtn pulse" onClick={this.submitForm} value="" />
+          <input
+            type="submit"
+            className="chkbtn pulse"
+            onClick={this.submitForm}
+            value=""
+          />
         </form>
         {this.props.submitStatus === 'submitting' && <Spinner />}
         {this.props.submitStatus === 'success' && (
