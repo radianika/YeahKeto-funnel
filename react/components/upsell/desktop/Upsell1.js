@@ -24,7 +24,7 @@ class Upsell1Component extends React.PureComponent {
         {/** Offer Conversion: Yeah Keto F  */}
         <iframe
           title=""
-          src="http://komodo.go2cloud.org/aff_l?offer_id=1"
+          src="https://komodo.go2cloud.org/aff_l?offer_id=1"
           scrolling="no"
           frameBorder="0"
           width="1"

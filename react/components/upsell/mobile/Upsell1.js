@@ -17,15 +17,14 @@ class Upsell1Component extends React.PureComponent {
     super(props);
     this.state = {
       shouldAddPixel: false,
-      revenue: ''
+      revenue: '',
     };
   }
-  
+
   componentDidMount() {
     // this.postVisitEvent();
     // let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
     // upsell1 = upsell1[0];
-  
     // this.setState({
     //   shouldAddPixel: true
     // },() => {
@@ -61,40 +60,71 @@ class Upsell1Component extends React.PureComponent {
       <div className="container">
         <noscript>
           <iframe
-            src="http://komodo.go2cloud.org/aff_l?offer_id=1`"
+            src="https://komodo.go2cloud.org/aff_l?offer_id=1`"
             width="1"
             height="1"
             alt=""
-            style={{display: 'none'}}
-            frameborder="0"
+            style={{ display: 'none' }}
+            frameBorder="0"
           />
         </noscript>
-        <div className="upsell-hdr"><img src="images/top-img.jpg" /></div>
+        <div className="upsell-hdr">
+          <img src="images/top-img.jpg" />
+        </div>
         <div className="upsell1-sec1">
-          <p className="upsell-txt1"><span>WAIT!</span> YOU QUALIFY FOR A LIMITEDTIME DISCOUNT</p>
-          <p className="upsell-txt2">68% of customers who purchase <span>Yeah Keto</span> also purchase <span>Yeah Forskolin.</span></p>
+          <p className="upsell-txt1">
+            <span>WAIT!</span> YOU QUALIFY FOR A LIMITEDTIME DISCOUNT
+          </p>
+          <p className="upsell-txt2">
+            68% of customers who purchase <span>Yeah Keto</span> also purchase{' '}
+            <span>Yeah Forskolin.</span>
+          </p>
           <div className="up-mid">
             <p className="upsell-txt3">BOOST YOUR METABOLISM WITH</p>
             <div className="clearall" />
             <img src="images/up2-logo.png" className="up1-logo" />
-            <p className="up-sub-name1 up-sub-name2">Advanced Metabolic Support Formula*</p>
+            <p className="up-sub-name1 up-sub-name2">
+              Advanced Metabolic Support Formula*
+            </p>
             <div className="upsell-sec1-prdct">
               <div className="upsell1-s1-lftside">
-                <img src="images/upsell2-sec1-bg.png" className="upsell1-sec1-bg" />
+                <img
+                  src="images/upsell2-sec1-bg.png"
+                  className="upsell1-sec1-bg"
+                />
                 <img src="images/upsell2-prdct.png" className="upsell1-prdct" />
                 <p className="save-txt1">save 44%</p>
               </div>
               <ul className="up1-s1-list up2-s1-list">
-                <li>Breaks Down<br /> <span>Fatty Tissue</span></li>
-                <li>Preserve<br /> <span>Lean Mucle</span></li>
-                <li>Boost<br /> <span>Metabolism</span></li>
+                <li>
+                  Breaks Down<br /> <span>Fatty Tissue</span>
+                </li>
+                <li>
+                  Preserve<br /> <span>Lean Mucle</span>
+                </li>
+                <li>
+                  Boost<br /> <span>Metabolism</span>
+                </li>
               </ul>
             </div>
             <div className="up1-dscount-cpn">
-              <p className="dscnt-txt1">Add Your <span className="spcl-dscnt spcl-dscnt1">Special Discounted</span> Bottle Just Pay a Special Price <span className="prc-dscnt">$89.99<img src="images/red-stick.png" /></span></p>
+              <p className="dscnt-txt1">
+                Add Your{' '}
+                <span className="spcl-dscnt spcl-dscnt1">
+                  Special Discounted
+                </span>{' '}
+                Bottle Just Pay a Special Price{' '}
+                <span className="prc-dscnt">
+                  $89.99<img src="images/red-stick.png" />
+                </span>
+              </p>
               <p className="price-text2 price-text2-up2">$67.00</p>
-              <a href="upsell-2.php"><img src="images/upsell-btn.png" className="upsell-btn pulse" /></a>
-              <a href="upsell-2.php"><p className="no-txt">No thanks, I’m not interested</p></a>
+              <a href="upsell-2.php">
+                <img src="images/upsell-btn.png" className="upsell-btn pulse" />
+              </a>
+              <a href="upsell-2.php">
+                <p className="no-txt">No thanks, I’m not interested</p>
+              </a>
             </div>
           </div>
         </div>
