@@ -36,7 +36,8 @@
 
 .mobile-body .pure-control-group.fv-has-success input,
 .mobile-body .pure-control-group.fv-has-success select {
-  border-color: #651d85;
+  /*border-color: #651d85;*/
+  border-color: #1cb841;
 }
 
 .mobile-body .pure-control-group.fv-has-error input,

@@ -22,19 +22,19 @@
 .fv-form-pure .fv-has-success .fv-control-feedback,
 .fv-form-pure .fv-has-success .fv-help-block,
 .fv-form-pure .fv-has-success label {
-  color: #0fff48;
+  color: #1cb841;
 }
 
 .fv-form-pure .fv-has-success .fv-control-feedback,
 .fv-form-pure .fv-has-success .fv-help-block,
 .fv-form-pure .fv-has-success input {
-  border-color: #0fff48;
+  border-color: #1cb841;
 }
 
 .fv-form-pure .fv-has-success .fv-control-feedback,
 .fv-form-pure .fv-has-success .fv-help-block,
 .fv-form-pure .fv-has-success select {
-  border-color: #0fff48;
+  border-color: #1cb841;
 }
 
 .chkfrm-mid .fv-control-feedback {
@@ -51,15 +51,15 @@
 }
 
 .chkfrm-mid .pure-control-group .fa-check {
-  color: #0fff48;
+  color: #1cb841;
 }
 
 .desktop-cardMonth {
-  right: 200px!important;
+  right: 200px !important;
 }
 
 .desktop-cardYear {
-  right: 135px!important;
+  right: 135px !important;
 }
 
 .frm-elem-cvv.fv-has-feedback .fv-control-feedback,
@@ -85,7 +85,7 @@
 
 .cards .active img {
   border-radius: 6px;
-  border: 3px solid #01e478;
+  border: 3px solid #1cb841;
 }
 
 input::-webkit-outer-spin-button,
