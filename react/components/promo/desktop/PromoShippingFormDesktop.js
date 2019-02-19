@@ -68,7 +68,6 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
           style={{ display: 'none', width: '0px', height: '0px' }}
         />
         <div className="rgt-form inside-form">
-          {/*<img src="/static/promo/desktop/images/images/s1-arrow2.png" alt className="s1-animate-arrow" />*/}
           <div className="form-position form-wrapper-start">
             <Field
               component={TextField}
@@ -92,11 +91,7 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
               name="Address2"
               placeholder="Apartment, suite, unit, building, floor, etc."
             />
-            <Field
-              component={TextField}
-              name="City"
-              placeholder="Your City"
-            />
+            <Field component={TextField} name="City" placeholder="Your City" />
             <Field
               component={SelectField}
               name="State"
@@ -121,10 +116,22 @@ class PromoShippingFormDesktopComponent extends React.PureComponent {
               placeholder="Example: email@somewhere.com"
             />
           </div>
-          <div><input type="submit" value="" id="rush-my-order-form-click" onClick={this.showErrorModal} class="submit pulse" /></div> 
+          <div>
+            <input
+              type="submit"
+              value=""
+              id="rush-my-order-form-click"
+              onClick={this.showErrorModal}
+              className="submit pulse"
+            />
+          </div>
           <div className="clearall" />
           <div>
-            <img src="/static/promo/desktop/images/images/secure.png"  alt=""  class="secure"/>
+            <img
+              src="/static/promo/desktop/images/images/secure.png"
+              alt=""
+              className="secure"
+            />
           </div>
         </div>
         <div className="clearall" />

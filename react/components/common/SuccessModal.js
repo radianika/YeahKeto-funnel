@@ -29,6 +29,10 @@ class SuccessModal extends React.PureComponent {
     };
   }
 
+  componentDidMount() {
+    Modal.setAppElement('body');
+  }
+
   componentDidUpdate() {
     if (this.props.visible === true) {
       this.openModal();
