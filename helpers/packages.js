@@ -16,6 +16,7 @@ const packages = [
     price: '39.00',
     packagePrice: '195.00',
     upsell: 1,
+    saveAmount: 214.98,
   },
   {
     id: 4163,
@@ -32,6 +33,7 @@ const packages = [
     price: '49.00',
     packagePrice: '147.00',
     upsell: 2,
+    saveAmount: 127.93,
   },
   {
     id: 4161,
@@ -44,6 +46,7 @@ const packages = [
     price: '69.00',
     packagePrice: '69.00',
     upsell: 3,
+    saveAmount: 26.20,
   },
 ];
 

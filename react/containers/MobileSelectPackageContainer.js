@@ -54,7 +54,7 @@ class MobileSelectPackageContainer extends React.PureComponent {
                 <p className="prc-details-txt1">{pack.price}</p>
                 <p className="prc-details-txt2">/ea</p>
               </div>
-              <p className="s-mid-txt2">You Save: $139.98</p>
+              <p className="s-mid-txt2">You Save: ${pack.saveAmount}</p>
               <p className="s-mid-txt3">FREE SHIPPING</p>
               <div
                 className="link-container-5"

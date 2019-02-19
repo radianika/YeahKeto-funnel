@@ -187,7 +187,7 @@ class PromoCheckout extends React.PureComponent {
                           {pack.price}
                           <span>/ea</span>
                         </p>
-                        <p className="you-save">You Save $214.98</p>
+                        <p className="you-save">You Save ${pack.saveAmount}</p>
                         <div className="selected-btn" />
                       </div>
                     </a>
