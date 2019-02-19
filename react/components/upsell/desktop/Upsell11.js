@@ -67,7 +67,7 @@ class Upsell11Component extends React.PureComponent {
             <noscript>
               <iframe
                 title=""
-                src="http://komodo.go2cloud.org/aff_l?offer_id=1`"
+                src="https://komodo.go2cloud.org/aff_l?offer_id=1`"
                 width="1"
                 height="1"
                 alt=""
