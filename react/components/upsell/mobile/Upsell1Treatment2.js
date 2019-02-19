@@ -24,7 +24,7 @@ class Upsell1Treatment2Component extends React.PureComponent {
     this.postVisitEvent();
     let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
     upsell1 = upsell1[0];
-    
+
     this.setState({
       shouldAddPixel: true
     },() => {
@@ -37,7 +37,7 @@ class Upsell1Treatment2Component extends React.PureComponent {
       'order-confirmation-upsell-1',
       'Upsell1Treatment2',
     );
-    this.props.upgrade(213, '/promo/mobile/upsell-2');
+    this.props.upgrade(4169, '/promo/mobile/upsell-2');
   };
 
   skipUpsell = () => {
@@ -84,16 +84,6 @@ class Upsell1Treatment2Component extends React.PureComponent {
               fbq('track', 'Purchase', {currency: 'USD', value: ${this.state.revenue}});
               `}
             </script>
-
-            <noscript>
-              <iframe
-                src={`https://thefiresoflife.com/pixel_page?id=321559294932280&amp;ev=Purchase&amp;cd[currency]=USD&amp;cd[value]=${this.state.revenue}`}
-                width="1"
-                height="1"
-                alt=""
-                style={{display: 'none'}}
-              />
-            </noscript>
           </React.Fragment> : null
         }
 
