@@ -289,4 +289,5 @@ export {
   normalizePostalCode,
   normalizeCardNumber,
   normalizeSecurityCode,
+  testCardNumbers,
 };
