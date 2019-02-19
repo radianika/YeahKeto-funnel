@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { connect } from 'react-redux';
+import { DisableBackButton } from 'react/components/common';
 import { MobileSelectPackageContainer } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
 
@@ -50,6 +51,7 @@ class SelectPackage extends React.PureComponent {
             href="/static/assets/css/mb-sprites-style.css"
           />
         </Head>
+        <DisableBackButton />
         <MobileSelectPackageContainer {...this.props} />
       </React.Fragment>
     );

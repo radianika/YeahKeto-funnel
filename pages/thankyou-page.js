@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { connect } from 'react-redux';
-import { PromoSession } from 'react/components/common';
+import { DisableBackButton, PromoSession } from 'react/components/common';
 import { ThankyouDesktop, ThankyouMobile } from 'react/containers';
 import { AuthActions, OrderActions } from 'redux/actions';
 import axios from 'axios';
@@ -159,6 +159,7 @@ class Thankyou extends React.PureComponent {
             </React.Fragment>
           )}
         </Head>
+        <DisableBackButton />
         <PromoSession pageType="thankyouPage" />
         {device === 'desktop' && this.state.items.length ? (
           <ThankyouDesktop
