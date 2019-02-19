@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TextField = originProps => {
-  const containerClass = originProps;
+  const { containerClass } = originProps;
   const props = Object.assign({}, originProps);
   delete props.containerClass;
   const hasError = props.meta.touched && props.meta.error;

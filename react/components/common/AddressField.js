@@ -103,13 +103,15 @@ class AddressField extends React.PureComponent {
 
   render() {
     const props = Object.assign({}, this.props);
+    const { containerClass } = props;
     delete props.changeField;
+    delete props.containerClass;
     const hasError = props.meta.touched && props.meta.error;
     const valid = props.meta.touched && props.meta.valid;
     return (
       <React.Fragment>
         <div
-          className={`${props.containerClass} pure-control-group ${
+          className={`${containerClass} pure-control-group ${
             props.large ? 'frmelements' : 'frmElemts'
           } fv-has-feedback ${hasError && 'fv-has-error'} ${valid &&
             'fv-has-success'}`}
