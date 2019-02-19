@@ -3,32 +3,22 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { withRouter } from 'next/router';
 import creditCartType from 'credit-card-type';
-import { FooterMobileNew } from 'react/components/common';
 import moment from 'moment';
 import axios from 'axios';
 import {
-  stateslist,
   packages,
   billingFormValidator,
-  normalizePhone,
-  normalizePostalCode,
   normalizeCardNumber,
   normalizeSecurityCode,
   getParameterByName,
   getQueryString,
-  getDiscountBanner,
   getRevenueAfterDiscount,
-  getDiscountPercent,
-  getDiscountAmount,
 } from 'helpers';
 import {
-  Footer,
   TextField,
-  SelectField,
-  AddressField,
   Spinner,
-  ImageModal,
   MobileCardExpiryField,
+  FooterMobileNew,
 } from 'react/components/common';
 import { OrderActions } from 'redux/actions';
 
@@ -43,7 +33,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     this.state = {
       isSame: true,
       summaryOpen: false,
-      showErrorModal: false,
       pack: {},
     };
     this.toggleSummary = this.toggleSummary.bind(this);
@@ -60,16 +49,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     if (
-      prevProps.submitStatus === 'submitting' &&
-      this.props.submitStatus === 'failure'
-    ) {
-      this.setState({ showErrorModal: true });
-    }
-    if (
       prevProps.submitStatus !== 'success' &&
       this.props.submitStatus === 'success'
     ) {
-      this.setState({ showErrorModal: false });
       const queryString = getQueryString();
       setTimeout(
         () => window.location.assign(`/promo/mobile/upsell-1?${queryString}`),
@@ -82,8 +64,6 @@ class MobileConfirmContainerComponent extends React.PureComponent {
     const priceToShow = this.state.pack.packagePrice || this.state.pack.price;
     return priceToShow;
   }
-
-  hideErrorModal = () => this.setState({ showErrorModal: false });
 
   sendTransactionDetails = () => {
     const { localStorage } = window;
@@ -162,12 +142,11 @@ class MobileConfirmContainerComponent extends React.PureComponent {
 
   render() {
     const { active_cc_type } = this.state;
-    const { cid } = this.props.query;
 
     return (
       <div id="container">
         {this.props.submitStatus === 'submitting' && <Spinner />}
-        <img src="/static/promo/mobile/images/images/top-img.jpg" alt />
+        <img src="/static/promo/mobile/images/images/top-img.jpg" alt="" />
         <div id="ck-sec2">
           <p className="chk-toptxt1" style={{ margin: '0px' }}>
             enter your payment information
@@ -224,7 +203,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                   <img
                     src="/static/promo/mobile/images/images/post.jpg"
                     width="100%"
-                    alt
+                    alt=""
                   />
                 </center>
               </div>
@@ -234,7 +213,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
         <div className="clearall" />
         <div className="frm-bg checkout">
           <div className="sameas">
-            <p className="membership">
+            <div className="membership">
               <div className="cards">
                 {this.props.isAuthentic.isAuthenticUser && (
                   <span className="cards-prefix">We accept:</span>
@@ -276,7 +255,7 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                   />
                 </span>
               </div>
-            </p>
+            </div>
           </div>
           <div className="clearall" />
           <div
@@ -326,8 +305,8 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                     />
                     <i
                       style={{ display: hasError || valid }}
-                      className={`fv-control-feedback mobile-cvv ${hasError && 'fa fa-times'} ${valid &&
-                      'fa fa-check'}`}
+                      className={`fv-control-feedback mobile-cvv ${hasError &&
+                        'fa fa-times'} ${valid && 'fa fa-check'}`}
                     />
                     <img
                       src="/static/promo/mobile/images/cvv.png"
@@ -355,17 +334,18 @@ class MobileConfirmContainerComponent extends React.PureComponent {
           <img
             src="/static/promo/mobile/images/images/secure-img.png"
             className="secure-img"
+            alt=""
           />
           <a href="#" onClick={this.props.handleSubmit(this.confirmOrder)}>
             <img
               src="/static/promo/mobile/images/images/ck-btn.png"
-              alt
+              alt=""
               className="trial-btn pulse"
             />
           </a>
           <img
             src="/static/promo/mobile/images/images/c-logo.png"
-            alt
+            alt=""
             className="c-logo"
           />
         </div>
