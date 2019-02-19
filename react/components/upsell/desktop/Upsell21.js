@@ -113,10 +113,10 @@ class Upsell21 extends React.PureComponent {
                             <img
                               src="/static/promo/desktop/images/images/strike.png"
                               alt=""
-                            />$89.99
+                            />89.99
                           </span>
                         </p>
-                        <p className="prd-prc">$65.00</p>
+                        <p className="prd-prc">65.00</p>
                         <a href="#" onClick={this.upgrade}>
                           <img
                             src="/static/promo/desktop/images/images/up-btn.png"
