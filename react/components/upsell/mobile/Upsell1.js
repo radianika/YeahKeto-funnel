@@ -3,7 +3,6 @@ import moment from 'moment';
 import axios from 'axios';
 import { withRouter } from 'next/router';
 import { getQueryString } from 'helpers';
-import { FooterMobileNew } from 'react/components/common';
 
 /**
  * @class Upsell1Component
@@ -11,26 +10,8 @@ import { FooterMobileNew } from 'react/components/common';
  * @description Mobile component rendered after checkout page <br />
  */
 class Upsell1Component extends React.PureComponent {
-  /*
-  state = {
-    shouldAddPixel: false,
-    revenue: '',
-  };
-  */
-
-  componentDidMount() {
-    // let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
-    // upsell1 = upsell1 && upsell1[0];
-    // this.setState({
-    //   shouldAddPixel: true
-    // },() => {
-    //   this.setState({ revenue: upsell1 && upsell1.totalAmount})
-    // });
-  }
-
   upgrade = () => {
-    this.props.sendTransactionDetails('order-confirmation-upsell-1', 'Upsell1');
-    this.props.upgrade(213, '/promo/mobile/upsell-2');
+    this.props.upgrade(4169, '/promo/mobile/upsell-2');
   };
 
   skipUpsell = () => {
@@ -42,7 +23,7 @@ class Upsell1Component extends React.PureComponent {
     const body = {
       tracking_data: {
         visitor_id: abtastyParams.visitorId,
-        device_type: 'DESKTOP',
+        device_type: 'MOBILE_PHONE',
         origin: window.location.href,
         timestamp: moment().format(),
         ip: abtastyParams.ip,
@@ -54,18 +35,8 @@ class Upsell1Component extends React.PureComponent {
   render() {
     return (
       <div className="container">
-        <noscript>
-          <iframe
-            src="https://komodo.go2cloud.org/aff_l?offer_id=1`"
-            width="1"
-            height="1"
-            alt=""
-            style={{ display: 'none' }}
-            frameBorder="0"
-          />
-        </noscript>
         <div className="upsell-hdr">
-          <img src="images/top-img.jpg" alt="" />
+          <img src="/static/promo/mobile/images/images/top-img.jpg" alt="" />
         </div>
         <div className="upsell1-sec1">
           <p className="upsell-txt1">
@@ -78,20 +49,25 @@ class Upsell1Component extends React.PureComponent {
           <div className="up-mid">
             <p className="upsell-txt3">BOOST YOUR METABOLISM WITH</p>
             <div className="clearall" />
-            <img src="images/up2-logo.png" className="up1-logo" alt="" />
+            <img
+              src="/static/promo/mobile/images/images/up2-logo.png"
+              className="up1-logo"
+              alt=""
+            />
             <p className="up-sub-name1 up-sub-name2">
               Advanced Metabolic Support Formula*
             </p>
             <div className="upsell-sec1-prdct">
               <div className="upsell1-s1-lftside">
                 <img
-                  src="images/upsell2-sec1-bg.png"
+                  src="/static/promo/mobile/images/images/upsell2-sec1-bg.png"
                   className="upsell1-sec1-bg"
                   alt=""
                 />
                 <img
-                  src="images/upsell2-prdct.png"
+                  src="/static/promo/mobile/images/images/upsell11-prdct.png"
                   className="upsell1-prdct"
+                  style={{ left: 11 }}
                   alt=""
                 />
                 <p className="save-txt1">save 44%</p>
@@ -110,31 +86,38 @@ class Upsell1Component extends React.PureComponent {
             </div>
             <div className="up1-dscount-cpn">
               <p className="dscnt-txt1">
-                Add Your{' '}
                 <span className="spcl-dscnt spcl-dscnt1">
-                  Special Discounted
-                </span>{' '}
-                Bottle Just Pay a Special Price{' '}
-                <span className="prc-dscnt">
-                  $89.99<img src="images/red-stick.png" alt="" />
+                  Buy 2 Bottles + Get 1 Free
                 </span>
+                <br />Save 60% Today
               </p>
-              <p className="price-text2 price-text2-up2">$67.00</p>
-              <a href="upsell-2.php">
+              <p className="price-text2 price-text2-up1-2">
+                <span>
+                  <img
+                    src="/static/promo/mobile/images/images/price-cut.png"
+                    alt=""
+                  />$120/<sup>ea</sup>
+                </span>{' '}
+                49/<sup>ea</sup>
+              </p>
+              <a onClick={this.upgrade}>
                 <img
-                  src="images/upsell-btn.png"
+                  src="/static/promo/mobile/images/images/upsell-btn.png"
                   className="upsell-btn pulse"
-                  alt=""
+                  alt="Update Order"
                 />
               </a>
-              <a href="upsell-2.php">
-                <p className="no-txt">No thanks, I’m not interested</p>
+              <a onClick={this.skipUpsell}>
+                <p className="no-txt">
+                  <img
+                    src="/static/promo/mobile/images/images/cut-icon.png"
+                    alt=""
+                  />No thanks, I’m not interested
+                </p>
               </a>
             </div>
           </div>
         </div>
-        <p className="clearall" />
-        <FooterMobileNew />
       </div>
     );
   }
