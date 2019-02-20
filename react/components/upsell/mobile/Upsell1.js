@@ -1,10 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import axios from 'axios';
-import { PromoSession, Footer } from 'react/components/common';
 import { withRouter } from 'next/router';
-import { getQueryString, getDiscountBanner } from 'helpers';
-import { SatisfactionBox } from './SatisfactionBox';
+import { getQueryString } from 'helpers';
 import { FooterMobileNew } from 'react/components/common';
 
 /**
@@ -13,22 +11,20 @@ import { FooterMobileNew } from 'react/components/common';
  * @description Mobile component rendered after checkout page <br />
  */
 class Upsell1Component extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      shouldAddPixel: false,
-      revenue: '',
-    };
-  }
+  /*
+  state = {
+    shouldAddPixel: false,
+    revenue: '',
+  };
+  */
 
   componentDidMount() {
-    // this.postVisitEvent();
     // let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
-    // upsell1 = upsell1[0];
+    // upsell1 = upsell1 && upsell1[0];
     // this.setState({
     //   shouldAddPixel: true
     // },() => {
-    //   this.setState({ revenue: upsell1.OrderInfo.TotalAmount})
+    //   this.setState({ revenue: upsell1 && upsell1.totalAmount})
     // });
   }
 
@@ -69,7 +65,7 @@ class Upsell1Component extends React.PureComponent {
           />
         </noscript>
         <div className="upsell-hdr">
-          <img src="images/top-img.jpg" />
+          <img src="images/top-img.jpg" alt="" />
         </div>
         <div className="upsell1-sec1">
           <p className="upsell-txt1">
@@ -82,7 +78,7 @@ class Upsell1Component extends React.PureComponent {
           <div className="up-mid">
             <p className="upsell-txt3">BOOST YOUR METABOLISM WITH</p>
             <div className="clearall" />
-            <img src="images/up2-logo.png" className="up1-logo" />
+            <img src="images/up2-logo.png" className="up1-logo" alt="" />
             <p className="up-sub-name1 up-sub-name2">
               Advanced Metabolic Support Formula*
             </p>
@@ -91,8 +87,13 @@ class Upsell1Component extends React.PureComponent {
                 <img
                   src="images/upsell2-sec1-bg.png"
                   className="upsell1-sec1-bg"
+                  alt=""
                 />
-                <img src="images/upsell2-prdct.png" className="upsell1-prdct" />
+                <img
+                  src="images/upsell2-prdct.png"
+                  className="upsell1-prdct"
+                  alt=""
+                />
                 <p className="save-txt1">save 44%</p>
               </div>
               <ul className="up1-s1-list up2-s1-list">
@@ -115,12 +116,16 @@ class Upsell1Component extends React.PureComponent {
                 </span>{' '}
                 Bottle Just Pay a Special Price{' '}
                 <span className="prc-dscnt">
-                  $89.99<img src="images/red-stick.png" />
+                  $89.99<img src="images/red-stick.png" alt="" />
                 </span>
               </p>
               <p className="price-text2 price-text2-up2">$67.00</p>
               <a href="upsell-2.php">
-                <img src="images/upsell-btn.png" className="upsell-btn pulse" />
+                <img
+                  src="images/upsell-btn.png"
+                  className="upsell-btn pulse"
+                  alt=""
+                />
               </a>
               <a href="upsell-2.php">
                 <p className="no-txt">No thanks, I’m not interested</p>

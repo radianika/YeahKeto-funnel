@@ -46,34 +46,22 @@ class Thankyou extends React.PureComponent {
 
   getItem = () => {
     const { localStorage } = window;
+    const upsellData = JSON.parse(localStorage.getItem('upsell1'));
+
     if (JSON.parse(localStorage.getItem('cartthankyou'))) {
-      const items = JSON.parse(localStorage.getItem('upsell1'));
-      const newItem = [];
-      const { Products } = items[0].OrderInfo;
-
-      Products.forEach((item, index) => {
-        const newObj = Object.assign(
-          {},
-          {
-            CustomerInfo: items[0].CustomerInfo,
-            OrderInfo: items[0].OrderInfo,
-          },
-        );
-
-        const newObj2 = Object.assign(newObj, {
-          OrderInfo: {
-            Products: new Array(item),
-            TransactionID: index,
-            SubTotalAmount: item.ProductAmount * item.Quantity,
-            TotalAmount: item.ProductAmount * item.Quantity,
-            CustomerID: items[0].OrderInfo.CustomerID,
-          },
-        });
-        newItem.push(newObj2);
-      });
-      return newItem;
+      return upsellData[0].items.map((item, index) => ({
+        CustomerInfo: upsellData[0].CustomerInfo,
+        OrderInfo: {
+          Products: [item],
+          TransactionID: index,
+          SubTotalAmount: item.price * item.productQty,
+          TotalAmount: item.price * item.productQty,
+          CustomerID: upsellData[0].customerId,
+        },
+      }));
     }
-    return JSON.parse(localStorage.getItem('upsell1'));
+
+    return upsellData;
   };
 
   postVisitEvent = () => {
@@ -95,10 +83,7 @@ class Thankyou extends React.PureComponent {
     const { localStorage } = window;
     const items = JSON.parse(localStorage.getItem('upsell1'));
     const id = items[0].OrderInfo.CustomerID.toString();
-    const revenue = items.reduce(
-      (agg, val) => agg + val.OrderInfo.TotalAmount,
-      0,
-    );
+    const revenue = items.reduce((agg, val) => agg + val.totalAmount, 0);
     const abtastyParams = JSON.parse(localStorage.getItem('abtastyParams'));
     const body = {
       name: 'order-confirmation-2',

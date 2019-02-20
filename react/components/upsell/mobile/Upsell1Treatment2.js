@@ -16,20 +16,23 @@ class Upsell1Treatment2Component extends React.PureComponent {
     super(props);
     this.state = {
       shouldAddPixel: false,
-      revenue: ''
+      revenue: '',
     };
   }
 
   componentDidMount() {
     this.postVisitEvent();
-    let upsell1 = JSON.parse(localStorage.getItem('upsell1'));
-    upsell1 = upsell1[0];
+    let upsell1 = JSON.parse(window.localStorage.getItem('upsell1'));
+    upsell1 = upsell1 && upsell1[0];
 
-    this.setState({
-      shouldAddPixel: true
-    },() => {
-      this.setState({ revenue: upsell1.OrderInfo.TotalAmount})
-    });
+    this.setState(
+      {
+        shouldAddPixel: true,
+      },
+      () => {
+        this.setState({ revenue: upsell1 && upsell1.totalAmount });
+      },
+    );
   }
 
   upgrade = () => {
@@ -69,9 +72,10 @@ class Upsell1Treatment2Component extends React.PureComponent {
           />
         </Head>
 
-        {this.state.shouldAddPixel ?
+        {this.state.shouldAddPixel ? (
           <React.Fragment>
-            <script>{`
+            <script>
+              {`
               !function(f,b,e,v,n,t,s)
               {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
                 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -81,11 +85,13 @@ class Upsell1Treatment2Component extends React.PureComponent {
                 s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '321559294932280');
-              fbq('track', 'Purchase', {currency: 'USD', value: ${this.state.revenue}});
+              fbq('track', 'Purchase', {currency: 'USD', value: ${
+                this.state.revenue
+              }});
               `}
             </script>
-          </React.Fragment> : null
-        }
+          </React.Fragment>
+        ) : null}
 
         <PromoSession pageType="upsellPage1" />
         <div className="upsell-top">
@@ -149,15 +155,16 @@ class Upsell1Treatment2Component extends React.PureComponent {
                   <span>129.95</span> {getDiscountBanner({ cid }) ? 61.0 : 77.0}/ea
                 </p>
                 <p className="shipping-txt">
-                  Plus we'll pay for the added shipping cost
+                  Plus we&apos;ll pay for the added shipping cost
                 </p>
               </div>
             </div>
             <p className="up-txt3">
-              This amazing offer won't ever be made again, and as always, you're
-              backed by a rock-solid, <span>100% money-back-guarantee</span>.
-              Just click the coupon above or the <span>"Yes"</span> button below
-              now to stock up while you can!
+              This amazing offer won&apos;t ever be made again, and as always,
+              you&apos;re backed by a rock-solid,{' '}
+              <span>100% money-back-guarantee</span>. Just click the coupon
+              above or the <span>&quot;Yes&quot;</span> button below now to
+              stock up while you can!
             </p>
             <input
               id="capsule-yes"
@@ -179,7 +186,7 @@ class Upsell1Treatment2Component extends React.PureComponent {
               onClick={this.skipUpsell}
             >
               <img alt="No Thanks" src="/static/assets/images/close-icon.png" />&nbsp;No,
-              I don't want better results.
+              I don&apos;t want better results.
             </a>
             <img
               src="/static/assets/images/card-secure.png"
