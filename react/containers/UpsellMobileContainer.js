@@ -5,13 +5,10 @@ import axios from 'axios';
 import moment from 'moment';
 import { OrderActions } from 'redux/actions';
 import {
-  Upsell1Treatment1,
-  Upsell1Treatment2,
-  Upsell11Treatment1,
-  Upsell11Treatment2,
-  Upsell2Treatment1,
-  Upsell2Treatment2,
-  Upsell21Treatment1,
+  Upsell1,
+  Upsell11,
+  Upsell2,
+  Upsell21,
 } from 'react/components/upsell/mobile';
 import { Spinner, SuccessModal } from 'react/components/common';
 
@@ -129,78 +126,42 @@ class UpsellMobileContainerComponent extends React.PureComponent {
                 height="1"
               />
               {/** End Offer Conversion */}
-              {this.props.isAuthentic.isAuthenticUser ? (
-                <Upsell1Treatment2
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
-              ) : (
-                <Upsell1Treatment1
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
-              )}
+              <Upsell1
+                upgrade={this.upgrade}
+                {...this.props}
+                abtastyParams={abtastyParams}
+                sendTransactionDetails={this.sendTransactionDetails}
+              />
             </React.Fragment>
           )}
           {upsell === '1-1' && (
             <React.Fragment>
-              {this.props.isAuthentic.isAuthenticUser ? (
-                <Upsell11Treatment2
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
-              ) : (
-                <Upsell11Treatment1
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
-              )}
+              <Upsell11
+                upgrade={this.upgrade}
+                {...this.props}
+                abtastyParams={abtastyParams}
+                sendTransactionDetails={this.sendTransactionDetails}
+              />
             </React.Fragment>
           )}
           {upsell === 2 && (
             <React.Fragment>
-              {this.props.isAuthentic.isAuthenticUser ? (
-                <Upsell2Treatment2
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
-              ) : (
-                <Upsell2Treatment1
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
-              )}
+              <Upsell2
+                upgrade={this.upgrade}
+                {...this.props}
+                abtastyParams={abtastyParams}
+                sendTransactionDetails={this.sendTransactionDetails}
+              />
             </React.Fragment>
           )}
           {upsell === '2-1' && (
             <React.Fragment>
-              {this.props.isAuthentic.isAuthenticUser ? (
-                <Upsell21Treatment1
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
-              ) : (
-                <Upsell21Treatment1
-                  upgrade={this.upgrade}
-                  {...this.props}
-                  abtastyParams={abtastyParams}
-                  sendTransactionDetails={this.sendTransactionDetails}
-                />
-              )}
+              <Upsell21
+                upgrade={this.upgrade}
+                {...this.props}
+                abtastyParams={abtastyParams}
+                sendTransactionDetails={this.sendTransactionDetails}
+              />
             </React.Fragment>
           )}
           {this.props.submitStatus === 'submitting' && <Spinner />}
