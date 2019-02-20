@@ -154,7 +154,7 @@ class Promo extends React.PureComponent {
             type="text/css"
             href="/static/assets/css/sprites-style.css"
           />
-          <script src="https://fast.wistia.net/assets/external/E-v1.js" async />
+          {/*<script src="https://fast.wistia.net/assets/external/E-v1.js" async />*/}
         </Head>
         {this.props.sessionId && <PromoSession pageType="leadPage" />}
         <PromoDesktopContainer />
