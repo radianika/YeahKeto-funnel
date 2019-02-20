@@ -130,7 +130,7 @@ class ThankyouDesktopComponent extends React.Component {
                   </div>
                   <div className="thk-in-box">
                     <div className="thk-dtl-l">
-                      <p className="thk-p3">Items Orderd</p>
+                      <p className="thk-p3">Items Ordered</p>
                       <div className="thk-prds">
                         {items.map(item => (
                           <div className="thk-prd-row">
