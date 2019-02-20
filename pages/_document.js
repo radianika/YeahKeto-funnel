@@ -34,12 +34,12 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
-          <noscript
-            dangerouslySetInnerHTML={{
-              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3ZF26T"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
-            }}
-          />
+          {/*<noscript*/}
+            {/*dangerouslySetInnerHTML={{*/}
+              {/*__html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3ZF26T"*/}
+            {/*height="0" width="0" style="display:none;visibility:hidden"></iframe>`,*/}
+            {/*}}*/}
+          {/*/>*/}
           <Main />
           <NextScript />
         </body>
