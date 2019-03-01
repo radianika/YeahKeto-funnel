@@ -165,6 +165,7 @@ function* submitLeadsForm(action) {
           ...billing,
           shipping,
           tracking_vars: trackingVars,
+          campaignId: 337,
         },
         sessionId,
         { ...headers, 'k-session-id': kSessionId },
@@ -251,7 +252,7 @@ function* placeOrder(action) {
 
     const apiResponse = yield post(
       '/v1/konnektive/order',
-      { ...payload, tracking_vars: trackingVars },
+      { ...payload, tracking_vars: trackingVars, campaignId: 337 },
       sessionId,
       { ...headers, 'k-session-id': kSessionId },
     );
