@@ -32,6 +32,7 @@ class PromoSessionComponent extends React.PureComponent {
         {
           pageType: this.props.pageType,
           requestUri: window.location.href,
+          campaignId: 337,
         },
         this.props.sessionId,
       );
@@ -47,6 +48,7 @@ class PromoSessionComponent extends React.PureComponent {
           pageType: this.props.pageType,
           sessionId: existingCookie,
           requestUri: window.location.href,
+          campaignId: 337,
         },
         this.props.sessionId,
       );
