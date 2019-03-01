@@ -824,7 +824,9 @@ app.prepare().then(() => {
         !permittedRoutes.includes(req.url)
       ) {
         console.log('coming here also');
-        res.redirect('/promo');
+        res.redirect(
+          `/promo?${querystring.stringify(req.query)}`,
+        );
       } else if (req.url === '/') {
         res.redirect('/promo');
       }
