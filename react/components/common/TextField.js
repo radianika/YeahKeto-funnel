@@ -3,29 +3,27 @@ import React from 'react';
 const TextField = originProps => {
   const { containerClass } = originProps;
   const props = Object.assign({}, originProps);
-  delete props.containerClass;
+  // delete props.containerClass;
   const hasError = props.meta.touched && props.meta.error;
   const valid = props.input.value && props.meta.valid;
   return (
     <div
-      className={`${containerClass} pure-control-group ${
+      className={`${props.containerClass} pure-control-group ${
         props.large ? 'frmelements' : 'frmElemts'
-      } fv-has-feedback ${hasError && 'fv-has-error'} ${valid &&
-        'fv-has-success'}`}
+        } fv-has-feedback ${hasError && 'fv-has-error'} ${valid &&
+      'fv-has-success'}`}
     >
-      {props.label ? (
-        <label>
-          {props.label}
-          {props.required && <span>*</span>}
-        </label>
-      ) : null}
+      <label>
+        {props.label}
+        {props.required && <span>*</span>}
+      </label>
       {!props.large ? (
         <React.Fragment>
           <input {...props} {...props.input} />
           <i
             style={{ display: hasError || valid }}
             className={`fv-control-feedback ${hasError &&
-              'fa fa-times'} ${valid && 'fa fa-check'}`}
+            'fa fa-times'} ${valid && 'fa fa-check'}`}
           />
         </React.Fragment>
       ) : (
@@ -47,6 +45,47 @@ const TextField = originProps => {
       {hasError && <small className="fv-help-block">{props.meta.error}</small>}
     </div>
   );
+  // return (
+  //   <div
+  //     className={`${containerClass} pure-control-group ${
+  //       props.large ? 'frmelements' : 'frmElemts'
+  //     } fv-has-feedback ${hasError && 'fv-has-error'} ${valid &&
+  //       'fv-has-success'}`}
+  //   >
+  //     {props.label ? (
+  //       <label>
+  //         {props.label}
+  //         {props.required && <span>*</span>}
+  //       </label>
+  //     ) : null}
+  //     {!props.large ? (
+  //       <React.Fragment>
+  //         <input {...props} {...props.input} />
+  //         <i
+  //           style={{ display: hasError || valid }}
+  //           className={`fv-control-feedback ${hasError &&
+  //             'fa fa-times'} ${valid && 'fa fa-check'}`}
+  //         />
+  //       </React.Fragment>
+  //     ) : (
+  //       <div className={`field ${!props.icon && 'no-icon'}`}>
+  //         {props.icon && (
+  //           <div className="icon-box">
+  //             <center>
+  //               <img src={props.icon} alt="input-icon" />
+  //             </center>
+  //           </div>
+  //         )}
+  //         <input
+  //           {...props}
+  //           {...props.input}
+  //           className={`ft-input ${props.className}`}
+  //         />
+  //       </div>
+  //     )}
+  //     {hasError && <small className="fv-help-block">{props.meta.error}</small>}
+  //   </div>
+  // );
 };
 
 const CVVField = props => {
