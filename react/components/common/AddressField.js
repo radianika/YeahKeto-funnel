@@ -126,7 +126,7 @@ class AddressField extends React.PureComponent {
             <input
               onFocus={this.geolocate}
               ref={this.autocompleteRef}
-              {...props}
+              placeholder={props.placeholder}
               {...props.input}
             />
           ) : (
@@ -140,7 +140,7 @@ class AddressField extends React.PureComponent {
                 className="ft-input"
                 onFocus={this.geolocate}
                 ref={this.autocompleteRef}
-                {...props}
+                placeholder={props.placeholder}
                 {...props.input}
               />
             </div>
