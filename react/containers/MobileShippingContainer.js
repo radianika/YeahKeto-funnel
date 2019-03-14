@@ -147,11 +147,9 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       label="Zip Code*"
                       placeholder="Zip Code"
                       normalize={normalizePostalCode}
-                      inputMode="numeric"
-                      pattern="[0-9]*"
+                      type="tel"
                       autoCorrect="off"
                       autoComplete="postal-code"
-                      type="tel"
                     />
                     <Field
                       inputStyle={{ width: '99%' }}
@@ -170,8 +168,6 @@ class MobileShippingContainerComponent extends React.PureComponent {
                       label="Phone Number*"
                       placeholder="Example: (123) 555-6789"
                       normalize={normalizePhone}
-                      inputMode="numeric"
-                      pattern="\d*"
                       autoCorrect="off"
                       autoComplete="tel"
                       type="tel"

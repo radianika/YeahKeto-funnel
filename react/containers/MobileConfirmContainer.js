@@ -15,7 +15,7 @@ import {
   getRevenueAfterDiscount,
   getDiscountPercent,
   getDiscountAmount,
-  testCardNumbers
+  testCardNumbers,
 } from 'helpers';
 import {
   TextField,
@@ -279,10 +279,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
               onChange={e => this._checkCardType(e.target.value)}
               label="Card Number*:"
               normalize={normalizeCardNumber}
-              inputMode="numeric"
+              type="tel"
               autoComplete="cc-number"
               autoCorrect="off"
-              pattern="[0-9]*"
             />
             <div className="clearall" />
             <Field name="cardExpiry" component={MobileCardExpiryField} />
@@ -303,10 +302,9 @@ class MobileConfirmContainerComponent extends React.PureComponent {
                     <input
                       {...props.input}
                       className="short"
-                      inputMode="numeric"
                       autoCorrect="off"
                       autoComplete="cc-csc"
-                      pattern="[0-9]*"
+                      type="tel"
                     />
                     <i
                       style={{ display: hasError || valid }}
