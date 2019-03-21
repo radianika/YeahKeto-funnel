@@ -156,64 +156,64 @@ class MobileConfirmContainerComponent extends React.PureComponent {
           <p className="chk-toptxt1" style={{ margin: '0px' }}>
             enter your payment information
           </p>
-          <div id="form-info">
-            <div className="detailbox">
-              <div
-                className={`${
-                  this.state.summaryOpen ? 'rotate' : ''
-                } order-summry smrhding`}
-                onClick={this.toggleSummary}
-              >
-                Order Summary
-              </div>
-              <div
-                className={`${
-                  this.state.summaryOpen ? '' : 'display-none'
-                } rgtbox`}
-              >
-                <div className="pricelist" id="btl1">
-                  <p className="rgtboxtxt1">
-                    <span>Yeah Keto</span>
-                    <br />
-                    {this.state.pack.name}{' '}
-                  </p>
-                  <ul className="rgtlist">
-                    <li className="one">Price:</li>
-                    <li className="two">${this.state.pack.packagePrice}</li>
-                    <li className="one">Shipping &amp; Handling:</li>
-                    <li className="two"> $0.00 </li>
-                    <li
-                      className="one"
-                      style={{
-                        background: '#143869',
-                        color: '#fff',
-                        marginTop: '15px',
-                      }}
-                    >
-                      <span>TOTAL:</span>
-                    </li>
-                    <li
-                      className="two"
-                      style={{
-                        background: '#143869',
-                        color: '#fff',
-                        marginTop: '15px',
-                      }}
-                    >
-                      <span>${this.state.pack.packagePrice}</span>
-                    </li>
-                  </ul>
-                </div>
-                <center>
-                  <img
-                    src="/static/promo/mobile/images/images/post.jpg"
-                    width="100%"
-                    alt=""
-                  />
-                </center>
-              </div>
-            </div>
-          </div>
+          {/*<div id="form-info">*/}
+            {/*<div className="detailbox">*/}
+              {/*<div*/}
+                {/*className={`${*/}
+                  {/*this.state.summaryOpen ? 'rotate' : ''*/}
+                {/*} order-summry smrhding`}*/}
+                {/*onClick={this.toggleSummary}*/}
+              {/*>*/}
+                {/*Order Summary*/}
+              {/*</div>*/}
+              {/*<div*/}
+                {/*className={`${*/}
+                  {/*this.state.summaryOpen ? '' : 'display-none'*/}
+                {/*} rgtbox`}*/}
+              {/*>*/}
+                {/*<div className="pricelist" id="btl1">*/}
+                  {/*<p className="rgtboxtxt1">*/}
+                    {/*<span>Yeah Keto</span>*/}
+                    {/*<br />*/}
+                    {/*{this.state.pack.name}{' '}*/}
+                  {/*</p>*/}
+                  {/*<ul className="rgtlist">*/}
+                    {/*<li className="one">Price:</li>*/}
+                    {/*<li className="two">${this.state.pack.packagePrice}</li>*/}
+                    {/*<li className="one">Shipping &amp; Handling:</li>*/}
+                    {/*<li className="two"> $0.00 </li>*/}
+                    {/*<li*/}
+                      {/*className="one"*/}
+                      {/*style={{*/}
+                        {/*background: '#143869',*/}
+                        {/*color: '#fff',*/}
+                        {/*marginTop: '15px',*/}
+                      {/*}}*/}
+                    {/*>*/}
+                      {/*<span>TOTAL:</span>*/}
+                    {/*</li>*/}
+                    {/*<li*/}
+                      {/*className="two"*/}
+                      {/*style={{*/}
+                        {/*background: '#143869',*/}
+                        {/*color: '#fff',*/}
+                        {/*marginTop: '15px',*/}
+                      {/*}}*/}
+                    {/*>*/}
+                      {/*<span>${this.state.pack.packagePrice}</span>*/}
+                    {/*</li>*/}
+                  {/*</ul>*/}
+                {/*</div>*/}
+                {/*<center>*/}
+                  {/*<img*/}
+                    {/*src="/static/promo/mobile/images/images/post.jpg"*/}
+                    {/*width="100%"*/}
+                    {/*alt=""*/}
+                  {/*/>*/}
+                {/*</center>*/}
+              {/*</div>*/}
+            {/*</div>*/}
+          {/*</div>*/}
         </div>
         <div className="clearall" />
         <div className="frm-bg checkout">
